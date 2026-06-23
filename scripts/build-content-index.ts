@@ -27,6 +27,7 @@ function main(): void {
 
   const files: Record<string, unknown> = {
     'herbs.json': index.herbs,
+    'combinations.json': index.combinations,
     'categories.json': index.categories,
     'tips.json': index.tips,
   };
@@ -43,7 +44,7 @@ function main(): void {
       }
     }
     if (drift) process.exit(1);
-    console.log(`content index OK (herbs ${index.counts.herbs}, categories ${index.counts.categories}, tips ${index.counts.tips})`);
+    console.log(`content index OK (herbs ${index.counts.herbs}, combinations ${index.counts.combinations}, categories ${index.counts.categories}, tips ${index.counts.tips})`);
     return;
   }
 
@@ -51,7 +52,7 @@ function main(): void {
   for (const [name, value] of Object.entries(files)) {
     writeFileSync(join(INDEX_DIR, name), serialize(value));
   }
-  console.log(`content index written (herbs ${index.counts.herbs}, categories ${index.counts.categories}, tips ${index.counts.tips})`);
+  console.log(`content index written (herbs ${index.counts.herbs}, combinations ${index.counts.combinations}, categories ${index.counts.categories}, tips ${index.counts.tips})`);
 }
 
 function serialize(value: unknown): string {

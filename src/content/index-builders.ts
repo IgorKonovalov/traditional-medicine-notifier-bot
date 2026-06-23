@@ -17,6 +17,15 @@ export interface HerbIndexEntry {
   readonly tags: readonly string[];
 }
 
+export interface CombinationIndexEntry {
+  readonly id: string;
+  readonly nameRu: string;
+  readonly nameOriginal?: string;
+  readonly tags: readonly string[];
+  readonly memberCount: number;
+  readonly sourceCount: number;
+}
+
 export interface CategoryIndexEntry {
   readonly id: string;
   readonly nameRu: string;
@@ -29,8 +38,9 @@ export interface TipIndexEntry {
 }
 
 export interface ContentIndex {
-  readonly counts: { herbs: number; categories: number; tips: number };
+  readonly counts: { herbs: number; combinations: number; categories: number; tips: number };
   readonly herbs: readonly HerbIndexEntry[];
+  readonly combinations: readonly CombinationIndexEntry[];
   readonly categories: readonly CategoryIndexEntry[];
   readonly tips: readonly TipIndexEntry[];
 }
@@ -44,6 +54,15 @@ export function buildIndex(content: LoadedContent): ContentIndex {
     tags: h.tags,
     ...(h.nameLatin !== undefined ? { nameLatin: h.nameLatin } : {}),
     ...(h.nameOriginal !== undefined ? { nameOriginal: h.nameOriginal } : {}),
+  }));
+
+  const combinations: CombinationIndexEntry[] = content.combinations.all.map((c) => ({
+    id: c.id,
+    nameRu: c.nameRu,
+    tags: c.tags,
+    memberCount: c.members?.length ?? 0,
+    sourceCount: c.sources.length,
+    ...(c.nameOriginal !== undefined ? { nameOriginal: c.nameOriginal } : {}),
   }));
 
   const herbCountByCategory = new Map<string, number>();
@@ -63,8 +82,14 @@ export function buildIndex(content: LoadedContent): ContentIndex {
   }));
 
   return {
-    counts: { herbs: herbs.length, categories: categories.length, tips: tips.length },
+    counts: {
+      herbs: herbs.length,
+      combinations: combinations.length,
+      categories: categories.length,
+      tips: tips.length,
+    },
     herbs,
+    combinations,
     categories,
     tips,
   };

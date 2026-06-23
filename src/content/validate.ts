@@ -11,6 +11,7 @@ export function validateCorpus(content: LoadedContent): void {
   const errors: string[] = [];
 
   assertUniqueIds(content.herbs.all, 'herb', errors);
+  assertUniqueIds(content.combinations.all, 'combination', errors);
   assertUniqueIds(content.categories.all, 'category', errors);
   assertUniqueIds(content.tips.all, 'tip', errors);
 
@@ -18,6 +19,19 @@ export function validateCorpus(content: LoadedContent): void {
   for (const herb of content.herbs.all) {
     if (!content.categories.byId.has(herb.category)) {
       errors.push(`herb "${herb.id}" references unknown category "${herb.category}"`);
+    }
+  }
+
+  // A combination needs a non-empty composition, and each cross-referenced
+  // member id must resolve to a real herb (ADR 005).
+  for (const combination of content.combinations.all) {
+    if (combination.composition.length === 0) {
+      errors.push(`combination "${combination.id}" has an empty composition`);
+    }
+    for (const memberId of combination.members ?? []) {
+      if (!content.herbs.byId.has(memberId)) {
+        errors.push(`combination "${combination.id}" references unknown herb member "${memberId}"`);
+      }
     }
   }
   // A tip may scope itself to a category; if it does, it must resolve.

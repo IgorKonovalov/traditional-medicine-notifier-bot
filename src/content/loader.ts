@@ -16,6 +16,7 @@ import matter from 'gray-matter';
 import { validateCorpus } from './validate';
 import type {
   Category,
+  Combination,
   ContentBucket,
   Herb,
   LoadedContent,
@@ -32,11 +33,13 @@ interface RawDoc {
 
 export function loadContent(contentDir: string): LoadedContent {
   const herbs = readDir(join(contentDir, 'herbs')).map(parseHerb);
+  const combinations = readDir(join(contentDir, 'combinations')).map(parseCombination);
   const categories = readDir(join(contentDir, 'categories')).map(parseCategory);
   const tips = readDir(join(contentDir, 'tips')).map(parseTip);
 
   const content: LoadedContent = {
     herbs: toBucket(herbs),
+    combinations: toBucket(combinations),
     categories: toBucket(categories),
     tips: toBucket(tips),
   };
@@ -58,7 +61,11 @@ function readDir(dir: string): RawDoc[] {
       out.push(...readDir(full));
     } else if (entry.isFile() && entry.name.endsWith('.md')) {
       const parsed = matter(readFileSync(full, 'utf8'));
-      out.push({ file: full, data: parsed.data as Record<string, unknown>, body: parsed.content.trim() });
+      out.push({
+        file: full,
+        data: parsed.data as Record<string, unknown>,
+        body: parsed.content.trim(),
+      });
     }
   }
   return out;
@@ -76,7 +83,9 @@ function parseHerb(doc: RawDoc): Herb {
   const id = reqString(doc, 'id');
   const tradition = reqString(doc, 'tradition');
   if (!TRADITIONS.includes(tradition as Tradition)) {
-    throw new Error(`${doc.file}: invalid tradition "${tradition}" (expected one of ${TRADITIONS.join(', ')})`);
+    throw new Error(
+      `${doc.file}: invalid tradition "${tradition}" (expected one of ${TRADITIONS.join(', ')})`,
+    );
   }
   const herb: Herb = {
     id,
@@ -92,6 +101,31 @@ function parseHerb(doc: RawDoc): Herb {
     ...optString(doc, 'name_original', 'nameOriginal'),
   };
   return herb;
+}
+
+function parseCombination(doc: RawDoc): Combination {
+  const tradition = reqString(doc, 'tradition');
+  if (!TRADITIONS.includes(tradition as Tradition)) {
+    throw new Error(
+      `${doc.file}: invalid tradition "${tradition}" (expected one of ${TRADITIONS.join(', ')})`,
+    );
+  }
+  const members = strArray(doc, 'members');
+  const combination: Combination = {
+    id: reqString(doc, 'id'),
+    tradition: tradition as Tradition,
+    nameRu: reqString(doc, 'name_ru'),
+    aliases: strArray(doc, 'aliases'),
+    composition: strArray(doc, 'composition'),
+    themes: strArray(doc, 'themes'),
+    cautions: strArray(doc, 'cautions'),
+    tags: strArray(doc, 'tags'),
+    sources: strArray(doc, 'sources'),
+    body: doc.body,
+    ...optString(doc, 'name_original', 'nameOriginal'),
+    ...(members.length > 0 ? { members } : {}),
+  };
+  return combination;
 }
 
 function parseCategory(doc: RawDoc): Category {

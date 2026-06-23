@@ -34,6 +34,35 @@ export interface Herb {
   readonly body: string;
 }
 
+/**
+ * A compound formula — a multi-herb traditional remedy (ADR 005). Unlike a
+ * `Herb`, it is defined by its `composition`. `themes` carries descriptive
+ * "traditionally associated with…" framing (never source indications/dosing);
+ * `members` optionally cross-references member ingredients to `Herb` ids.
+ */
+export interface Combination {
+  readonly id: string;
+  readonly tradition: Tradition;
+  /** Russian display name. */
+  readonly nameRu: string;
+  /** Transliterated Tibetan name, if known. */
+  readonly nameOriginal?: string;
+  /** Cross-source spelling variants (e.g. "Агар 8", "Орлиное дерево 8"). */
+  readonly aliases: readonly string[];
+  /** Descriptive member-ingredient list. Required, non-empty (validated). */
+  readonly composition: readonly string[];
+  /** Herb ids that resolve to a `Herb`; ingredients without a page stay in `composition`. */
+  readonly members?: readonly string[];
+  /** Descriptive traditional associations — never prescriptive. */
+  readonly themes: readonly string[];
+  /** Cautions / contraindications surfaced to the reader. */
+  readonly cautions: readonly string[];
+  readonly tags: readonly string[];
+  /** Provenance URLs the record was synthesized from. */
+  readonly sources: readonly string[];
+  readonly body: string;
+}
+
 /** A subscribable topic category. Its `id` is the subscription key. */
 export interface Category {
   readonly id: string;
@@ -55,6 +84,7 @@ export interface ContentBucket<T> {
 
 export interface LoadedContent {
   readonly herbs: ContentBucket<Herb>;
+  readonly combinations: ContentBucket<Combination>;
   readonly categories: ContentBucket<Category>;
   readonly tips: ContentBucket<Tip>;
 }
