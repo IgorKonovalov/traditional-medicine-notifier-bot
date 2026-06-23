@@ -1,0 +1,45 @@
+name: Deploy
+
+on:
+  push:
+    branches: [master, main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      # Compile to dist/ so emit-only TS errors (which `--noEmit` typecheck can
+      # miss) fail CI rather than the droplet build.
+      - run: npm run build
+      - run: npm test
+      - run: npm run content:index:check
+
+  # Deploy job is intentionally disabled until the bot is ready to ship.
+  # To enable: uncomment, add the SSH_* repo secrets (HOST / USER / KEY /
+  # PASSPHRASE — omit PASSPHRASE entirely if the key has none), and update the
+  # `cd ~/bots/...` path to match the server checkout.
+  #
+  # deploy:
+  #   needs: check
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: appleboy/ssh-action@v1
+  #       with:
+  #         host: ${{ secrets.SSH_HOST }}
+  #         username: ${{ secrets.SSH_USER }}
+  #         key: ${{ secrets.SSH_KEY }}
+  #         passphrase: ${{ secrets.SSH_PASSPHRASE }}
+  #         script: |
+  #           cd ~/bots/traditional-medicine-notifier-bot
+  #           git pull
+  #           docker compose up -d --build
+  #           docker image prune -f

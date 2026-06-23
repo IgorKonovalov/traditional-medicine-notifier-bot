@@ -1,0 +1,43 @@
+/**
+ * Corpus-level validation, run once at boot after loading. Per-field shape is
+ * already enforced in the loader; this catches cross-record problems:
+ * duplicate ids and dangling category references. Throws on the first failure
+ * so a broken corpus fails the boot loudly.
+ */
+
+import type { LoadedContent } from './types';
+
+export function validateCorpus(content: LoadedContent): void {
+  const errors: string[] = [];
+
+  assertUniqueIds(content.herbs.all, 'herb', errors);
+  assertUniqueIds(content.categories.all, 'category', errors);
+  assertUniqueIds(content.tips.all, 'tip', errors);
+
+  // Every herb's category must resolve to a real category.
+  for (const herb of content.herbs.all) {
+    if (!content.categories.byId.has(herb.category)) {
+      errors.push(`herb "${herb.id}" references unknown category "${herb.category}"`);
+    }
+  }
+  // A tip may scope itself to a category; if it does, it must resolve.
+  for (const tip of content.tips.all) {
+    if (tip.category !== undefined && !content.categories.byId.has(tip.category)) {
+      errors.push(`tip "${tip.id}" references unknown category "${tip.category}"`);
+    }
+  }
+
+  if (errors.length > 0) {
+    throw new Error(`Content validation failed:\n  - ${errors.join('\n  - ')}`);
+  }
+}
+
+function assertUniqueIds(items: readonly { id: string }[], label: string, errors: string[]): void {
+  const seen = new Set<string>();
+  for (const item of items) {
+    if (seen.has(item.id)) {
+      errors.push(`duplicate ${label} id "${item.id}"`);
+    }
+    seen.add(item.id);
+  }
+}

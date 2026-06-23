@@ -1,0 +1,37 @@
+# Dependencies (reinstalled inside the builder stage)
+node_modules
+
+# Build output (built inside the builder stage)
+dist
+
+# Runtime state (host-side only; mounted as volume in compose)
+data
+
+# Secrets — never send to the build context
+.env
+.env.local
+
+# Dev-only tooling / metadata
+.git
+.github
+.husky
+.vscode
+.idea
+.claude
+
+# Authoring / analysis artefacts
+coverage
+docs
+scripts
+README.md
+CLAUDE.md
+LICENSE
+
+# Test files (not needed in the runtime image)
+**/*.test.ts
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.log
+*.swp

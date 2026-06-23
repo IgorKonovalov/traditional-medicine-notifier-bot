@@ -1,0 +1,8 @@
+npx lint-staged
+
+# Regenerate the content index when any markdown under content/ is staged,
+# so content/.index/ never drifts from the corpus.
+if git diff --cached --name-only | grep -qE '^content/.*\.md$'; then
+  npm run --silent content:index
+  git add content/.index/
+fi

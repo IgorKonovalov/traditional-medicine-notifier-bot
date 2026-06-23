@@ -1,0 +1,12 @@
+[
+  {
+    "id": "digestive-herbs",
+    "nameRu": "Травы для пищеварения",
+    "herbCount": 2
+  },
+  {
+    "id": "tonic-herbs",
+    "nameRu": "Тонизирующие травы",
+    "herbCount": 1
+  }
+]

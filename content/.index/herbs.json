@@ -1,0 +1,38 @@
+[
+  {
+    "id": "tcm-astragalus",
+    "tradition": "chinese",
+    "category": "tonic-herbs",
+    "nameRu": "Астрагал",
+    "tags": [
+      "корень",
+      "укрепляющее"
+    ],
+    "nameLatin": "Astragalus membranaceus",
+    "nameOriginal": "Huang Qi (黄芪)"
+  },
+  {
+    "id": "tcm-ginger",
+    "tradition": "chinese",
+    "category": "digestive-herbs",
+    "nameRu": "Имбирь",
+    "tags": [
+      "корень",
+      "согревающее"
+    ],
+    "nameLatin": "Zingiber officinale",
+    "nameOriginal": "Sheng Jiang (生姜)"
+  },
+  {
+    "id": "tib-haritaki",
+    "tradition": "tibetan",
+    "category": "digestive-herbs",
+    "nameRu": "Миробалан хебула (харитаки)",
+    "tags": [
+      "плод",
+      "традиционный"
+    ],
+    "nameLatin": "Terminalia chebula",
+    "nameOriginal": "A ru ra (ཨ་རུ་ར།)"
+  }
+]
