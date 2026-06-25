@@ -1,310 +1,213 @@
 [
   {
     "id": "tib-formula-6-horoshih",
-    "nameRu": "Шесть хороших",
-    "tags": [
-      "пищеварение",
-      "согревающий",
-      "внутренние органы",
-      "профилактический",
-      "пряный"
-    ],
+    "nameRu": "Шесть хороших тибетский фитосбор (порошок)",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Шесть благих"
+  },
+  {
+    "id": "tib-formula-agar-15",
+    "nameRu": "Агар 15 тибетский фитосбор",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Агар 15 «Орлиное дерево 15» / Agar 15 / на монгольском: Агар 15 / на тибетском: А-гар-бчо-лнга, Ар-цхэс"
+  },
+  {
+    "id": "tib-formula-agar-17",
+    "nameRu": "Агар 17 тибетский фитосбор",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Агар 17 \"Орлиное дерево 17\" / Agar 17"
+  },
+  {
+    "id": "tib-formula-agar-20",
+    "nameRu": "Агар 20 тибетский фитосбор (пилюли) / Агар 20 «Орлиное дерево 20»",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Agar 20 (монг. Агар 20; «Орлиное дерево 20»)"
+  },
+  {
+    "id": "tib-formula-agar-24",
+    "nameRu": "Агар 24 (Ламэд) тибетский фитосбор",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Agar 24 Lamed / Орлиное дерево 24 (монгольское: Агар 24)"
+  },
+  {
+    "id": "tib-formula-agar-35",
+    "nameRu": "Агар 35 тибетский фитосбор",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Agar 35 «Орлиное дерево 35»; на монгольском: Агар 35; на тибетском: А-гар-со-лнга, Цхангс-лха"
+  },
+  {
+    "id": "tib-formula-agar-8",
+    "nameRu": "Агар 8 тибетский фитосбор \"Орлиное дерево 8\"",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Монгольское: Агар 8; Тибетские: А-гар-бргйад-па, Ар-клу; Английское: Agar 8"
+  },
+  {
+    "id": "tib-formula-aru-10",
+    "nameRu": "Ару 10 «Миробалан 10»",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Aru 10 / Ар 10"
+  },
+  {
+    "id": "tib-formula-aru-18",
+    "nameRu": "Ару 18 \"Миробалан 18\"",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Aru 18 / На монгольском: Ар ур 18 / На тибетском: А-ру-бчо-брйад, А-ру-заг-гчод"
+  },
+  {
+    "id": "tib-formula-aru-24",
+    "nameRu": "Ару 24 / Басам Лхалунг тибетский фитосбор «Миробалан 24»",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "На монгольском: Ар ур 24. На тибетском: 'б'а-сам-лха-лунг, 'б'а-сам, А-ру-нйэр-бжи, Лха-лунг"
+  },
+  {
+    "id": "tib-formula-aru-7",
+    "nameRu": "Ару 7 тибетский фитосбор (порошок)",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Ару 7 \"Миробалан 7\" / Aru 7"
+  },
+  {
+    "id": "tib-formula-awa-15",
+    "nameRu": "Ава 15 тибетский фитосбор",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Awa 15 / Гсал-бйэд-а-ва-бчо-лнга, А-ва-бчо-лнга"
+  },
+  {
+    "id": "tib-formula-baspru-7",
+    "nameRu": "Баспру 7 тибетский фитосбор",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Батру Дунпа, Ба Спру 7 / Baspru 7"
+  },
+  {
+    "id": "tib-formula-bimala",
+    "nameRu": "Бимала (Вимала) «Состав Вималамитры 20»",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Bimala Dzati-20 / Би-ма-ла, дза-ти-нйи-шу"
+  },
+  {
+    "id": "tib-formula-bitanka-7",
+    "nameRu": "Битанка 7 / Джитан 7 \"Эмбелия 7\"",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Бйи-танг-бдун-па; на монгольском: Жиданга 7"
+  },
+  {
+    "id": "tib-formula-blonpo-3",
+    "nameRu": "Блонпо-3 «3 Министра»",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true
+  },
+  {
+    "id": "tib-formula-bragzhun-9",
+    "nameRu": "Брагжун 9 тибетский фитосбор",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Bragjun-9 / Мумиё 9 / на монгольском: Врагшун 9"
+  },
+  {
+    "id": "tib-formula-brega-13",
+    "nameRu": "Брега 13 тибетский фитосбор",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Дрега 13 \"Ярутка 13\" / Brega 13 / Бираг 13 (монгольский)"
+  },
+  {
+    "id": "tib-formula-chakdor-dragocennaya-pilyulya",
+    "nameRu": "Чакдор драгоценная пилюля",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": false
   },
   {
-    "id": "tib-formula-agar-15",
-    "nameRu": "Агар 15",
-    "tags": [
-      "сердце",
-      "дыхание",
-      "ветер",
-      "тибетская формула",
-      "многокомпонентный"
-    ],
-    "memberCount": 1,
-    "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "А-гар-бчо-лнга"
-  },
-  {
-    "id": "tib-formula-agar-17",
-    "nameRu": "Агар 17 («Орлиное дерево 17»)",
-    "tags": [
-      "сердце",
-      "ветер",
-      "дыхание",
-      "поясница",
-      "согревающий"
-    ],
-    "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Agar 17"
-  },
-  {
-    "id": "tib-formula-agar-20",
-    "nameRu": "Агар 20",
-    "tags": [
-      "нервная система",
-      "речь",
-      "чувствительность",
-      "классическая формула",
-      "тибетская традиция"
-    ],
-    "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Agar 20"
-  },
-  {
-    "id": "tib-formula-agar-24",
-    "nameRu": "Агар 24 («Орлиное дерево 24»)",
-    "tags": [
-      "тибетская формула",
-      "голова",
-      "нервная система",
-      "ароматические",
-      "согревающие"
-    ],
-    "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Agar 24 Lamed"
-  },
-  {
-    "id": "tib-formula-agar-35",
-    "nameRu": "Агар 35 «А-гар-со-лнга»",
-    "tags": [
-      "ветер",
-      "сердце",
-      "сон",
-      "успокаивающие",
-      "ароматические"
-    ],
-    "memberCount": 1,
-    "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "А-гар-со-лнга (Цхангс-лха)"
-  },
-  {
-    "id": "tib-formula-agar-8",
-    "nameRu": "Агар 8 «Орлиное дерево 8»",
-    "tags": [
-      "сердце",
-      "ветер",
-      "жар",
-      "ум",
-      "грудь"
-    ],
-    "memberCount": 1,
-    "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "А-гар-бргйад-па"
-  },
-  {
-    "id": "tib-formula-aru-10",
-    "nameRu": "Ару 10 («Миробалан 10»)",
-    "tags": [
-      "почки",
-      "поясница",
-      "водный обмен",
-      "тибетская традиция",
-      "охлаждающие"
-    ],
-    "memberCount": 1,
-    "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Aru 10 / Ар 10"
-  },
-  {
-    "id": "tib-formula-aru-18",
-    "nameRu": "Ару 18 («Миробалан 18»)",
-    "tags": [
-      "почки",
-      "поясница",
-      "мочевыделение",
-      "охлаждающие",
-      "тибетская формула"
-    ],
-    "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "А-ру-бчо-брйад (А-ру-заг-гчод)"
-  },
-  {
-    "id": "tib-formula-aru-24",
-    "nameRu": "Ару 24 («Басам Лхалунг»)",
-    "tags": [
-      "почки",
-      "поясница",
-      "согревающий",
-      "мочевыделение",
-      "опорно-двигательный"
-    ],
-    "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "'б'а-сам-лха-лунг ('б'а-сам, А-ру-нйэр-бжи, Лха-лунг)"
-  },
-  {
-    "id": "tib-formula-aru-7",
-    "nameRu": "Ару 7 «Миробалан 7»",
-    "tags": [
-      "селезёнка",
-      "пищеварение",
-      "дыхание",
-      "тибетская традиция"
-    ],
-    "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Aru 7"
-  },
-  {
-    "id": "tib-formula-awa-15",
-    "nameRu": "Ава 15",
-    "tags": [
-      "глаза",
-      "зрение",
-      "печень",
-      "тибетская",
-      "классическая"
-    ],
-    "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Гсал-бйэд-а-ва-бчо-лнга"
-  },
-  {
-    "id": "tib-formula-baspru-7",
-    "nameRu": "Баспру 7",
-    "tags": [
-      "женская сфера",
-      "согревающие",
-      "малый таз",
-      "тибетская традиция",
-      "многокомпонентный"
-    ],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Ба Спру 7"
-  },
-  {
-    "id": "tib-formula-bimala",
-    "nameRu": "Бимала «Вимала» (Дзати-20)",
-    "tags": [
-      "ум",
-      "сон",
-      "нервная-система",
-      "сердце",
-      "ароматические"
-    ],
-    "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Би-ма-ла, дза-ти-нйи-шу (Bimala, Dzati-20)"
-  },
-  {
-    "id": "tib-formula-bitanka-7",
-    "nameRu": "Джидан 7 / Битанка 7",
-    "tags": [
-      "пищеварение",
-      "нижняя часть живота",
-      "согревающие",
-      "классическая формула"
-    ],
-    "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Бйи-танг-бдун-па (Жиданга 7)"
-  },
-  {
-    "id": "tib-formula-bragzhun-9",
-    "nameRu": "Брагжун 9",
-    "tags": [
-      "пищеварение",
-      "желудок",
-      "охлаждающие",
-      "классический-сбор"
-    ],
-    "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Bragjun-9"
-  },
-  {
-    "id": "tib-formula-brega-13",
-    "nameRu": "Брега 13 «Бираг 13»",
-    "tags": [
-      "почки",
-      "мочевыводящие пути",
-      "водный обмен",
-      "поясница",
-      "классическая формула"
-    ],
-    "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Brega 13 / Бираг 13 (монг.)"
-  },
-  {
     "id": "tib-formula-chakril-chenmo",
-    "nameRu": "Чакрил Ченмо «драгоценная пилюля»",
-    "tags": [
-      "ринчен",
-      "печень",
-      "зрение",
-      "минеральный",
-      "тибетская формула"
-    ],
+    "nameRu": "Чакрил Ченмо драгоценная пилюля",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "RINCHEN CHAKRIL CHENMO"
+    "hasIndications": true,
+    "nameOriginal": "RINCHEN CHAKRIL CHENMO / Ринчен \"Великая Железная Пилюля\""
   },
   {
     "id": "tib-formula-chini-aru-18",
-    "nameRu": "Чени Ару 18",
-    "tags": [
-      "обмен веществ",
-      "почки",
-      "пищеварение",
-      "кожа",
-      "тибетская формула"
-    ],
+    "nameRu": "Чени Ару 18 тибетский фитосбор (пилюли)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Chini Aru 18"
+    "hasIndications": true,
+    "nameOriginal": "Чени ﻿Ару 18 / Chini Aru 18"
   },
   {
     "id": "tib-formula-chisin-chimed-srinsel",
-    "nameRu": "Чисин / Чимед Сринсел",
-    "tags": [
-      "тибетская",
-      "пищеварение",
-      "кожа",
-      "очищение",
-      "горькие"
-    ],
+    "nameRu": "Чисин / Чимед Сринсел тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Чисин / Чимед Сринсел / Чисен"
+    "hasIndications": true,
+    "nameOriginal": "Чисин / Чимед Сринсел / Чисен (Chisin / Chimed Srinsel / Chisen)"
+  },
+  {
+    "id": "tib-formula-chongzhi-6",
+    "nameRu": "Чонгжи-6 «Кальцит-6»",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Чонгжи-6"
   },
   {
     "id": "tib-formula-chudlen-mandaravy",
-    "nameRu": "Чудлен Мандаравы",
-    "tags": [
-      "тибетская традиция",
-      "чудлен",
-      "пряные",
-      "тонус",
-      "пищеварение"
-    ],
+    "nameRu": "Чудлен Мандаравы (пилюли)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": false,
@@ -312,1835 +215,1246 @@
   },
   {
     "id": "tib-formula-chugang-25",
-    "nameRu": "Чуганг 25 (Чу-ганг-нйэр-лнга)",
-    "tags": [
-      "дыхание",
-      "грудь",
-      "лёгкие",
-      "охлаждающие",
-      "тибетская формула"
-    ],
+    "nameRu": "Чуганг 25 \"Бамбуковая манна 25\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Чу-ганг-нйэр-лнга (Cugang 25)"
+    "hasIndications": true,
+    "nameOriginal": "Cugang 25 / Чу-ганг-нйэр-лнга"
+  },
+  {
+    "id": "tib-formula-chugang-7",
+    "nameRu": "Чуганг 7 тибетский фитосбор (порошок)",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": false
   },
   {
     "id": "tib-formula-chuna-nila",
-    "nameRu": "Чуна Нила",
-    "tags": [
-      "тибетская",
-      "печень",
-      "пищеварение",
-      "кожа",
-      "многокомпонентная"
-    ],
+    "nameRu": "Чуна Нила тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
+    "hasIndications": true,
     "nameOriginal": "Chuna Nila"
   },
   {
     "id": "tib-formula-covo-25",
-    "nameRu": "Цово 25 («Гцо-бо-нйэр-лнга»)",
-    "tags": [
-      "дыхание",
-      "лёгкие",
-      "грудь",
-      "охлаждающие",
-      "тибетская формула"
-    ],
+    "nameRu": "Цово 25 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Гцо-бо-нйэр-лнга, Ва-гло-нйэр-лнга (Tsovo 25)"
+    "hasIndications": true,
+    "nameOriginal": "Tsovo 25 / Гцо-бо-нйэр-лнга, Ва-гло-нйэр-лнга"
   },
   {
     "id": "tib-formula-dadud",
-    "nameRu": "Дадуд (Дашел Дуцима) «Лунный кристалл по рецепту Дакинь»",
-    "tags": [
-      "печень",
-      "пищеварение",
-      "минеральный сбор",
-      "охлаждающий",
-      "тибетская формула"
-    ],
+    "nameRu": "Дадуд тибетский фитосбор (пилюли)",
+    "tags": [],
     "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Зла-шэл-бдуд-рци-ма, Зла-бдуд, Лчагс-пхйэ-бдун-па (Dadud)"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Дадуд (Дашел Дуцима) \"Лунный кристалл по рецепту Дакинь\" / Dadud; Зла-шэл-бдуд-рци-ма, Зла-бдуд, Лчагс-пхйэ-бдун-па"
   },
   {
     "id": "tib-formula-dali-16",
-    "nameRu": "Дали 16 («Даль 16»)",
-    "tags": [
-      "дыхание",
-      "слизь",
-      "ветер",
-      "пищеварение",
-      "кровь"
-    ],
+    "nameRu": "Дали 16 \"Рододендрон 16\"",
+    "tags": [],
     "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Да-ли-бчу-друг"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Dali-16"
   },
   {
     "id": "tib-formula-dali-18",
-    "nameRu": "Дали 18 («Рододендрон 18»)",
-    "tags": [
-      "тибетская традиция",
-      "многокомпонентный сбор",
-      "конечности",
-      "нервная система",
-      "тепло"
-    ],
+    "nameRu": "Дали 18 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Да-ли-бчо-бргйад (Dali-18)"
+    "hasIndications": true,
+    "nameOriginal": "Дали 18 «Рододендрон 18» / Dali-18; на монгольском: Даль 18; на тибетском: Да-ли-бчо-бргйад, да-лис-бчо-бргйад, два-лис-бчо-бргйад"
   },
   {
     "id": "tib-formula-danma-chudran",
-    "nameRu": "Данма Чхудран",
-    "tags": [
-      "пищеварение",
-      "водный обмен",
-      "согревающий",
-      "тибетская формула",
-      "классический сбор"
-    ],
+    "nameRu": "Данма Чхудран (тибетский фитосбор, порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Danma chu dran"
+    "hasIndications": true,
+    "nameOriginal": "Данма чхудран / Danma chu dran"
   },
   {
     "id": "tib-formula-dashel-37",
-    "nameRu": "Дашел 37 («лунный кристалл», зла-шэл)",
-    "tags": [
-      "пищеварение",
-      "желудок",
-      "жар",
-      "минеральный",
-      "классический"
-    ],
+    "nameRu": "Дашел 37 тибетский фитосбор (пилюли)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Зла-шэл-со-бдун (зла-шэл-мйу-гу'и-сбйор, зла-шэл)"
+    "hasIndications": true,
+    "nameOriginal": "Зла-шел, Зла-шэл-со-бдун, зла-шэл-мйу-гу'и-сбйор, Dashel 37"
   },
   {
     "id": "tib-formula-denem",
-    "nameRu": "Денем",
-    "tags": [
-      "пищеварение",
-      "обмен",
-      "слизь",
-      "холод",
-      "кожа"
-    ],
+    "nameRu": "Денём тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
+    "hasIndications": true,
     "nameOriginal": "Denyom"
   },
   {
     "id": "tib-formula-denyuk",
-    "nameRu": "Денюк («Кальцит-17»)",
-    "tags": [
-      "пищеварение",
-      "желудок",
-      "согревающие",
-      "минеральные",
-      "женское здоровье"
-    ],
+    "nameRu": "Денюк тибетский фитосбор \"Кальцит 17\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Бдэ-смйуг (Чонг-жи-бчу-бдун)"
+    "hasIndications": true,
+    "nameOriginal": "Денюг / Denyuk; Бдэ-смйуг, Бдэ-ба'и-мйу-гу, Зла-шэл-бдэ-мйуг, Чонг-жи-бчу-бдун"
   },
   {
     "id": "tib-formula-djubril",
-    "nameRu": "Джубрил («Груб-тхоб-рил-дкар»)",
-    "tags": [
-      "дыхание",
-      "пищеварение",
-      "горло",
-      "обмен веществ",
-      "тибетская традиция"
-    ],
+    "nameRu": "Джубрил тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Груб-тхоб-рил-дкар (Drubril / Jubril, Друптоп Рилкар)"
+    "hasIndications": true,
+    "nameOriginal": "Друптоп Рилкар / Drubril / Jubril; на тибетском: Груб-тхоб-рил-дкар, Груб-рил, Чонг-жи-рил-дкар; М7"
   },
   {
     "id": "tib-formula-dorab",
-    "nameRu": "Дораб (Дорже рабжон)",
-    "tags": [
-      "дыхание",
-      "нос",
-      "уши",
-      "согревающий",
-      "многокомпонентный"
-    ],
+    "nameRu": "Дораб (Дорже рабжон) \"Ваджрные доспехи\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "рдо-раб, рдор-рдже-раб-'джомс"
+    "hasIndications": true,
+    "nameOriginal": "Dorab; рдо-раб, рдор-рджэ-раб-'джомс, йа-сман-бчу-па"
   },
   {
     "id": "tib-formula-drangdzhor-dragocennaya-pilyulya",
     "nameRu": "Дрангджор драгоценная пилюля",
-    "tags": [
-      "ринчен",
-      "пищеварение",
-      "кровь",
-      "минеральный",
-      "хронические"
-    ],
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "RINCHEN DRANGJOR"
+    "hasIndications": true,
+    "nameOriginal": "RINCHEN DRANGJOR / Ринчен Дрангджор – Великая Драгоценная Чёрная Пилюля (DRANGJOR / DANGJOR)"
   },
   {
     "id": "tib-formula-dudci-chiso",
-    "nameRu": "Дудци Чисо («Гло-гсос»)",
-    "tags": [
-      "дыхание",
-      "лёгкие",
-      "грудь",
-      "охлаждающий",
-      "согревающий"
-    ],
+    "nameRu": "Дудци Чисо тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Бдуд-рци-'чхи-гсос, Гло-гсос (Bdud-rci-'chi-gsos, Glo-gsos)"
+    "hasIndications": true,
+    "nameOriginal": "Бдуд-рци-'чхи-гсос, Гло-гсос; Dudci Chiso"
   },
   {
     "id": "tib-formula-dugsel-degu",
-    "nameRu": "Дугсел Дегу («Устраняющий яды»)",
-    "tags": [
-      "очищение",
-      "кровь",
-      "обмен веществ",
-      "печень",
-      "органы"
-    ],
+    "nameRu": "Дугсел Дегу тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Dugsel Degu"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Dugsel Degu / Дугсел Дегу \"Устраняющий яды\" / Дугсэл Дэгу"
   },
   {
     "id": "tib-formula-dzati-14",
-    "nameRu": "Дзати 14 (Мускатный орех 14)",
-    "tags": [
-      "сердце",
-      "ветер",
-      "слизь",
-      "сон",
-      "согревающее"
-    ],
+    "nameRu": "Дзати 14 \"Мускатный орех 14\" (тибетский фитосбор)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "дза-ти-бчу-бжи"
+    "hasIndications": true,
+    "nameOriginal": "Dzati 14 / Задь 14 (монгольское) / дза-ти-бчу-бжи"
   },
   {
     "id": "tib-formula-dzati-5",
-    "nameRu": "Дзати 5 (Мускатный орех 5)",
-    "tags": [
-      "сердце",
-      "нервная-система",
-      "сон",
-      "ветер",
-      "слизь"
-    ],
+    "nameRu": "Дзати 5 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "дза-ти-нга-па"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "дза-ти-нга-па; Задь 5 (монг.); Dzati 5"
   },
   {
     "id": "tib-formula-dzhonshi-21",
-    "nameRu": "Джонши 21 («Чонг-жи-нйэр-гчиг»)",
-    "tags": [
-      "пищеварение",
-      "желудок",
-      "печень",
-      "тибетская традиция",
-      "многокомпонентный сбор"
-    ],
+    "nameRu": "Джонши 21 (Чонгжи 21) \"Кальцит 21\"",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Чонг-жи-нйэр-гчиг"
+    "hasIndications": true,
+    "nameOriginal": "Чонг-ши 21 / Chong-zhi 21; монгольское: Жонш-21; тибетское: Чонг-жи-нйэр-гчиг"
   },
   {
     "id": "tib-formula-dzhonshi-6",
-    "nameRu": "Джонши 6",
-    "tags": [
-      "пищеварение",
-      "желудок",
-      "согревающие",
-      "пряные",
-      "минеральные"
-    ],
+    "nameRu": "Джонши 6 - Тибетский фитосбор (Чонгжи 6) «Кальцит 6»",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Чонг-жи-друк-па (тиб.)"
+    "hasIndications": true,
+    "nameOriginal": "Чонгжи 6 (Чонг-ши 6); монгольское: Жонш-6; тибетское: Чонг-жи-друк-па; английское: Chong-zhi 6"
   },
   {
     "id": "tib-formula-gabur-25",
-    "nameRu": "Габур 25",
-    "tags": [
-      "жар",
-      "охлаждающее",
-      "органы",
-      "многокомпонентный",
-      "классика"
-    ],
+    "nameRu": "Габур 25 «Камфора 25»",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Gavar 25"
+    "hasIndications": true,
+    "nameOriginal": "Gabur 25 (монг. Гавар 25)"
   },
   {
     "id": "tib-formula-galomenmar",
-    "nameRu": "Галоменмар",
-    "tags": [
-      "дыхание",
-      "грудь",
-      "горло",
-      "жар",
-      "печень"
-    ],
+    "nameRu": "Галоменмар тибетский фитосбор",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
+    "hasIndications": true,
     "nameOriginal": "Galomenmar"
   },
   {
     "id": "tib-formula-garnag-10",
-    "nameRu": "Гарнаг 10 («Гранг-мкхрис-бчу-па»)",
-    "tags": [
-      "пищеварение",
-      "желчь",
-      "согревающие",
-      "специи",
-      "аппетит"
-    ],
+    "nameRu": "Гарнаг 10 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Гар-наг-бчу-па (Гар-пхйогс, Гранг-мкхрис-бчу-па)"
+    "hasIndications": true,
+    "nameOriginal": "Garnag 10 / Гар-наг-бчу-па, гар-пхйогс, гранг-мкхрис-бчу-па"
   },
   {
     "id": "tib-formula-garuda-5",
-    "nameRu": "Гаруда 5 \"Кьюнга\" / Чуна 5",
-    "tags": [
-      "дыхание",
-      "суставы",
-      "лимфа",
-      "сезонное",
-      "согревающее"
-    ],
+    "nameRu": "Гаруда 5 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Гаруда 5 \"Кьюнга\" / Чуна 5 / Garuda-5; На тибетском: Кхйунг-лнга, Гла-рци-лнга-па; На монгольском: Чун 5"
+  },
+  {
+    "id": "tib-formula-gava-16",
+    "nameRu": "Гава 16 тибетский фитосбор",
+    "tags": [],
+    "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": false,
-    "nameOriginal": "Garuda-5; Кхйунг-лнга; Гла-рци-лнга-па"
+    "nameOriginal": "Gawa 16"
   },
   {
     "id": "tib-formula-giwan-9",
-    "nameRu": "Гиван 9 («Ги-ванг-дгу-па»)",
-    "tags": [
-      "печень",
-      "пищеварение",
-      "жар",
-      "глаза",
-      "тибетская"
-    ],
+    "nameRu": "Гиван 9 тибетский фитосбор",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Ги-ванг-дгу-па (Giwan 9)"
+    "hasIndications": true,
+    "nameOriginal": "Гиван 9 \"Гиванг 9\" / Giwan 9; Ги-ванг-дгу-па"
   },
   {
     "id": "tib-formula-gonyod-5",
-    "nameRu": "Гонйод 5",
-    "tags": [
-      "ветер",
-      "согревающий",
-      "пищеварение",
-      "голова",
-      "ароматический"
-    ],
+    "nameRu": "Гонйод 5 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Goniod 5"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Гонйод 5 отвар \"Тмин 5 отвар\" / Goniod 5 / на монгольском: Гонид 5"
   },
   {
     "id": "tib-formula-gou-depak",
-    "nameRu": "Гоюдепак («Бетель 28»)",
-    "tags": [
-      "почки",
-      "согревающие",
-      "мужской тонус",
-      "пряные",
-      "тибетская формула"
-    ],
+    "nameRu": "Гоюдепак (Гойудепак) \"Бетель 28\"",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Гоюн Дэпак"
+    "hasIndications": true,
+    "nameOriginal": "Goyudepak / Гоюн Дэпак (монгольский)"
   },
   {
     "id": "tib-formula-goyu-28",
-    "nameRu": "Гою 28 («Го-йу 28»)",
-    "tags": [
-      "почки",
-      "согревающие",
-      "поясница",
-      "минеральные",
-      "мужская-сфера"
-    ],
+    "nameRu": "Гою 28 тибетский фитосбор / Гойу 28",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Го-йу-нйэр-бргйад"
+    "hasIndications": true,
+    "nameOriginal": "Гоюн 28 (монгольское); Го-йу-нйэр-бргйад (тибетское); Gou 28 (English); альтернативное название \"Бетель 28\""
   },
   {
     "id": "tib-formula-goyu-7",
-    "nameRu": "Гойу 7 («Го-йу-бдун-па»)",
-    "tags": [
-      "почки",
-      "согревающий",
-      "тонизирующий",
-      "мочеполовая",
-      "пряный"
-    ],
+    "nameRu": "Гою 7 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Го-йу-бдун-па"
+    "hasIndications": true,
+    "nameOriginal": "Гоюн 7 / Гойу 7 / Gou 7 / \"Бетель 7\" / \"Семь солнц излечивающие болезни почек\""
   },
   {
     "id": "tib-formula-gundrum-7",
-    "nameRu": "Гундрум 7 (Виноград 7)",
-    "tags": [
-      "дыхание",
-      "грудь",
-      "лёгкие",
-      "сердце",
-      "пряные"
-    ],
+    "nameRu": "Гундрум 7 тибетский фитосбор",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Ргун-'брум-бдун-па"
+    "hasIndications": true,
+    "nameOriginal": "Ргун-'брум-бдун-па / Gundrum 7 / Кундум 7 / Виноград 7"
   },
   {
     "id": "tib-formula-gurgum-13",
-    "nameRu": "Гургум 13 («Шафран 13»)",
-    "tags": [
-      "печень",
-      "кровь",
-      "пищеварение",
-      "тонус",
-      "почки"
-    ],
+    "nameRu": "Гургум 13 тибетский фитосбор / \"Шафран 13\"",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Гур-гум-бчу-гсум"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Гур-гум-бчу-гсум (тибетское); Гургэм 13 (монгольское); Gurgum 13 (английское)"
   },
   {
     "id": "tib-formula-gurgum-7",
-    "nameRu": "Гургум 7 (Шафран 7)",
-    "tags": [
-      "печень",
-      "кровь",
-      "шафран",
-      "классическая формула"
-    ],
+    "nameRu": "Гургум 7",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "гур-гум-мчхог-бдун"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "гур-гум-мчхог-бдун (Gurgum 7 / \"Шафран 7\" / Гургэм 7)"
   },
   {
     "id": "tib-formula-gurgum-8",
-    "nameRu": "Гургум 8 «Шафрановый сбор восьми компонентов»",
-    "tags": [
-      "кровь",
-      "печень",
-      "пищеварение",
-      "сосуды",
-      "охлаждающие"
-    ],
+    "nameRu": "Гургум 8 тибетский фитосбор \"Шафран 8\"",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "гур-гум-бргйад-па; Кхраг-гчод-гур-гум-бргйад-па"
+    "hasIndications": true,
+    "nameOriginal": "Gurgum 7; гур-гум-бргйад-па; Кхраг-гчод-гур-гум-бргйад-па"
   },
   {
     "id": "tib-formula-gurkyung",
-    "nameRu": "Гуркьюнг",
-    "tags": [
-      "тибетская формула",
-      "горячая природа",
-      "дыхание",
-      "почки",
-      "суставы"
-    ],
+    "nameRu": "Гуркьюнг тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false
+    "hasIndications": true
   },
   {
     "id": "tib-formula-gyamca-4",
-    "nameRu": "Гьямца 4 («Ргйам-цхва-бжи-тханг»)",
-    "tags": [
-      "пищеварение",
-      "желудок",
-      "согревающее",
-      "тибетская традиция"
-    ],
+    "nameRu": "Гьямца 4 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Ргйам-цхва-бжи-тханг, Чха-мнйам-бжи-тханг"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Ргйам-цхва-бжи-тханг, Чха-мнйам-бжи-тханг / Giamca 4 tan"
   },
   {
     "id": "tib-formula-gyaru-14",
-    "nameRu": "Гьяру 14",
-    "tags": [
-      "женское здоровье",
-      "почки",
-      "дыхание",
-      "поясница",
-      "тибетская формула"
-    ],
+    "nameRu": "Гьяру 14 тибетский фитосбор / Гьяру 14 тибетский сбор для глаз",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Ргйа-ру-бчу-бжи (Gyaru 14)"
+    "hasIndications": true,
+    "nameOriginal": "Ргйа-ру-бчу-бжи (тибетское); Gyaru 14"
   },
   {
     "id": "tib-formula-gzema-3",
-    "nameRu": "Зема 3 («Якорцы 3 отвар»)",
-    "tags": [
-      "почки",
-      "мочевой пузырь",
-      "водный обмен",
-      "охлаждение",
-      "тибетская формула"
-    ],
+    "nameRu": "Зема 3 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Зема сум тхан"
+    "hasIndications": true,
+    "nameOriginal": "Зема сум тхан \"Якорцы 3 отвар\"; на монгольском: \"Сэма 3\"; транслитерация: \"Zema 3\""
   },
   {
     "id": "tib-formula-indra-4",
-    "nameRu": "Индра 4 «Холларена 4»",
-    "tags": [
-      "пищеварение",
-      "кишечник",
-      "тибетская традиция",
-      "классическая формула"
-    ],
+    "nameRu": "Индра 4 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Indra 4"
+    "hasIndications": true,
+    "nameOriginal": "Индра 4 / Indra 4"
   },
   {
     "id": "tib-formula-iroltuev-17",
-    "nameRu": "Иролтуев 17",
-    "tags": [
-      "пищеварение",
-      "желудок",
-      "кишечник",
-      "горячий тип",
-      "слизистая"
-    ],
+    "nameRu": "Иролтуев 17 отвар",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false
+    "hasIndications": true,
+    "nameOriginal": "Iroltuev 17"
   },
   {
     "id": "tib-formula-Jumar-25",
-    "nameRu": "Жумар 25 (драгоценная пилюля ринчен)",
-    "tags": [
-      "ринчен",
-      "нервная система",
-      "сосуды",
-      "минералы",
-      "голова"
-    ],
+    "nameRu": "Жумар 25 драгоценная пилюля — Драгоценный Красный Коралл",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
+    "hasIndications": true,
     "nameOriginal": "RINCHEN JUMAR 25"
   },
   {
     "id": "tib-formula-jungva-4",
-    "nameRu": "Юнва 4 («Куркума-4»)",
-    "tags": [
-      "почки",
-      "мочевыделение",
-      "обмен веществ",
-      "очищение",
-      "куркума"
-    ],
+    "nameRu": "Юнва 4 тибетский фитосбор (порошок) / Юнва 4 \"Куркума - 4\"",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Yungba-4"
+    "hasIndications": true,
+    "nameOriginal": "Yungba-4 / Йунгва 4"
   },
   {
     "id": "tib-formula-kakola-19",
-    "nameRu": "Какола 19 («Черный кардамон 19»)",
-    "tags": [
-      "пищеварение",
-      "селезёнка",
-      "тибетская традиция",
-      "согревающие",
-      "многокомпонентный"
-    ],
+    "nameRu": "Какола 19 (Черный кардамон 19) / Гагола 19 / Кола-19",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Ко-ла-бчу-бду (ка-кол-бчуг-бду)"
+    "hasIndications": true,
+    "nameOriginal": "Монгольское: Гагал 19; тибетское: Ко-ла-бчу-бду, ка-кол-бчуг-бду; Kola-19"
   },
   {
     "id": "tib-formula-kershun-8",
-    "nameRu": "Кьершун 8 («Барбарис 8»)",
-    "tags": [
-      "почки",
-      "мочевыводящие пути",
-      "охлаждающее",
-      "тибетская формула",
-      "барбарис"
-    ],
+    "nameRu": "Кьершун 8 \"Барбарис 8\" тибетский сбор (фитосбор, пилюли)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Скйэр-шун-бргйад-па (Skyer-shun-brgyad-pa), Са-ра'и-мйонг-груб"
+    "hasIndications": true,
+    "nameOriginal": "Kershun 8; Скйэр-шун-бргйад-па, Са-ра 'и-мйонг-груб"
   },
   {
     "id": "tib-formula-kharuca-5",
-    "nameRu": "Кхаруца 5 («Харуц 5»)",
-    "tags": [
-      "пищеварение",
-      "согревающие",
-      "острые",
-      "тибетская формула",
-      "желудок"
-    ],
+    "nameRu": "Кхаруца 5 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Кха-ру-цхва-лнга-тханг"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Кха-ру-цхва-лнга-тханг / На монгольском: Харуц 5 / Kharuca-5 / \"Черная соль 5 отвар\""
   },
   {
     "id": "tib-formula-kodzhi-13",
-    "nameRu": "Коджи 13 «Ко-бйи-бчу-гсум»",
-    "tags": [
-      "сердце",
-      "ветер",
-      "кровь",
-      "грудь",
-      "тибетская традиция"
-    ],
+    "nameRu": "Коджи 13 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Ко-бйи-бчу-гсум"
+    "hasIndications": true,
+    "nameOriginal": "Ко-бйи-бчу-гсум / Коби 13 \"Орех коджи 13\" / Kodji 13"
   },
   {
     "id": "tib-formula-kola-11",
-    "nameRu": "Какола 11",
-    "tags": [
-      "пищеварение",
-      "селезёнка",
-      "согревающее",
-      "тибетская традиция"
-    ],
+    "nameRu": "Какола 11 (тибетский фитосбор) / «Черный кардамон 11»",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Ко-ла-бчу-гчиг (ka-kol bcu-gcig)"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Гагола 11 (монгольское); Kola-11; Ко-ла-бчу-гчиг, ка-кол-бчуг-гчиг (тибетские)"
   },
   {
     "id": "tib-formula-kola-4",
-    "nameRu": "Какола 4 (Кола 4) «Черный кардамон 4»",
-    "tags": [
-      "пищеварение",
-      "согревающие",
-      "пряности",
-      "селезёнка",
-      "тибетская традиция"
-    ],
+    "nameRu": "Какола 4 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Гагал 4 / Kola 4"
+    "hasIndications": true,
+    "nameOriginal": "Кола 4 / \"Черный кардамон 4\" / Гагола 4 / Гагал 4 (на монгольском) / Kola 4"
   },
   {
     "id": "tib-formula-kunde",
-    "nameRu": "Себру Кунде (Кундей)",
-    "tags": [
-      "пищеварение",
-      "тепло",
-      "почки",
-      "слизь",
-      "согревающий"
-    ],
+    "nameRu": "Себру Кунде (Сэбру Кунде) тибетский фитосбор",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Sebru Kunde"
+    "hasIndications": true,
+    "nameOriginal": "Sebru Kunde / Кундей / «Гранат, дарующий благо»"
   },
   {
     "id": "tib-formula-kyuru-6",
-    "nameRu": "Кюру 6 («Эмблика 6»)",
-    "tags": [
-      "кровь",
-      "пищеварение",
-      "почки",
-      "печень",
-      "обмен"
-    ],
+    "nameRu": "Кюру 6 тибетский фитосбор",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Skyu-ru-nyer-lnga, Khrag-shed-snyoms-ldan"
+    "hasIndications": true,
+    "nameOriginal": "Кюру 6 \"Эмблика 6\" / Kuru 6; на тибетском: Скйу-ру-нйэр-лнга, Кхраг-шэд-снйомс-лдан"
+  },
+  {
+    "id": "tib-formula-lchumtsa-3",
+    "nameRu": "Лчумца-3 тханг «Ревень-3 отвар»",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Лчумца-3 тханг"
   },
   {
     "id": "tib-formula-letre-2",
-    "nameRu": "Летре 2 («тиноспора 2, отвар»)",
-    "tags": [
-      "тибетская",
-      "пищеварение",
-      "охлаждающие",
-      "печень",
-      "очищающие"
-    ],
+    "nameRu": "Летре 2 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": false,
-    "nameOriginal": "Letre 2"
+    "nameOriginal": "Летре 2 тиноспора 2 отвар"
   },
   {
     "id": "tib-formula-letre-5",
-    "nameRu": "Летре 5 «Тиноспора 5 отвар»",
-    "tags": [
-      "суставы",
-      "почки",
-      "охлаждение",
-      "кровь",
-      "тибетская традиция"
-    ],
+    "nameRu": "Летре 5 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Letre 5"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Летре 5 \"Тиноспора 5 отвар\" / Letre 5 / Лэтрэ 5"
   },
   {
     "id": "tib-formula-lishi-11",
-    "nameRu": "Лигун 11 (Лиши 11)",
-    "tags": [
-      "дыхание",
-      "лёгкие",
-      "горло",
-      "слизь",
-      "согревающее"
-    ],
+    "nameRu": "Лигун 11 (Лиши 11) «Гвоздика 11»",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Lishi 11 / Ligun 11"
+    "hasIndications": true,
+    "nameOriginal": "Ligun 11 / Лишь 11 (монгольск.)"
+  },
+  {
+    "id": "tib-formula-lishi-35",
+    "nameRu": "Лиши 35 тибетский фитосбор (порошок)",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Лиши 35 «Гвоздика 35» / Lishi 35"
   },
   {
     "id": "tib-formula-lishi-6",
-    "nameRu": "Лиши 6",
-    "tags": [
-      "горло",
-      "дыхание",
-      "охлаждающее",
-      "тибетская",
-      "сбор"
-    ],
+    "nameRu": "Лиши 6 \"Гвоздика 6\"",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Lishi 6"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Lishi 6 / Лишь 6 (монгольское название)"
   },
   {
     "id": "tib-formula-loce-kunsel",
-    "nameRu": "Лоце Кунсел («очищающий жар легких»)",
-    "tags": [
-      "легкие",
-      "дыхание",
-      "жар",
-      "охлаждающий",
-      "тибетская формула"
-    ],
+    "nameRu": "Лоце Кунсел тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Гло-цхад-кун-сэл"
+    "hasIndications": true,
+    "nameOriginal": "Гло-цхад-кун-сэл, Гло-кун, Гло-цхад-бчу-бжи / Лоце Кунсел \"Локун\" / Лоце 14"
+  },
+  {
+    "id": "tib-formula-lomang-8",
+    "nameRu": "Ломанг-8 «Лёгочное-8»",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Ломанг-8"
   },
   {
     "id": "tib-formula-ludud-18",
-    "nameRu": "Лудуд 18 («Клу-бдуд 18»)",
-    "tags": [
-      "кожа",
-      "лимфа",
-      "суставы",
-      "тибетская",
-      "многокомпонентный"
-    ],
+    "nameRu": "Лудуд 18 Тибетский Фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Клу-бдуд-бчо-бргйад (klu-bdud bco-brgyad)"
+    "hasIndications": true,
+    "nameOriginal": "Клу-бдуд-бчо-бргйад, Гу-гул-бчо-бргйад (Луду 18 «Гугул 18» / Ludud 18)"
   },
   {
     "id": "tib-formula-lugmur-7",
-    "nameRu": "Лугмур 7 («Луг-мур»)",
-    "tags": [
-      "дыхание",
-      "горло",
-      "грудь",
-      "прохладные",
-      "голос"
-    ],
+    "nameRu": "Лугмур 7 фитосбор для горла \"Зопник 7\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Луг-мур-бдун-па"
+    "hasIndications": true,
+    "nameOriginal": "Lugmur 7 / Луг-мур-бдун-па"
   },
   {
     "id": "tib-formula-manag-chenbo",
-    "nameRu": "Манаг Ченбо «Сман-наг-чхэн-мо»",
-    "tags": [
-      "печень",
-      "желчь",
-      "пищеварение",
-      "горькие",
-      "тибетская формула"
-    ],
+    "nameRu": "Манаг Ченбо тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Сман-наг-чхэн-мо (Manag Chenbo)"
+    "hasIndications": true,
+    "nameOriginal": "Manag Chenbo / Сман-наг-чхэн-мо"
   },
   {
     "id": "tib-formula-manjor-chenmo",
-    "nameRu": "Манджор Ченмо «драгоценная пилюля»",
-    "tags": [
-      "ринчен",
-      "пищеварение",
-      "печень",
-      "жар",
-      "минеральные"
-    ],
+    "nameRu": "Манджор Ченмо «Великое накопление» драгоценная пилюля Ринчен",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
+    "hasIndications": true,
     "nameOriginal": "Rinchen Mandjor Chenmo"
   },
   {
     "id": "tib-formula-manushitan",
-    "nameRu": "Манушитан («Ману 4»)",
-    "tags": [
-      "простуда",
-      "согревающие",
-      "дыхание",
-      "сезонное",
-      "кровообращение"
-    ],
+    "nameRu": "Манушитан \"Девясил 4 - отвар\" (Ману 4 отвар)",
+    "tags": [],
     "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Manushitan"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Manushitan; на монгольском: Мана 4"
   },
   {
     "id": "tib-formula-marpo-3",
-    "nameRu": "Марпо 3 («Отвар трёх красных»)",
-    "tags": [
-      "почки",
-      "лёгкие",
-      "дыхание",
-      "жар",
-      "кровь"
-    ],
+    "nameRu": "Марпо 3 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Marpo 3"
+    "hasIndications": true,
+    "nameOriginal": "Marpo 3 / «Отвар трех красный»"
   },
   {
     "id": "tib-formula-martan-11",
-    "nameRu": "Мартан 11 («Красный отвар одиннадцати»)",
-    "tags": [
-      "тибетская традиция",
-      "жар крови",
-      "дыхание",
-      "лёгкие",
-      "многокомпонентный сбор"
-    ],
+    "nameRu": "Мартан 11 тибетский фитосбор / Красный отвар 11",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Дмар-тханг-бчу-гчиг"
+    "hasIndications": true,
+    "nameOriginal": "Martan 11; Дмар-тханг-бчу-гчиг (тибетск.)"
   },
   {
     "id": "tib-formula-mdzomo-6",
-    "nameRu": "Замошин 6 «Карагана-6»",
-    "tags": [
-      "согревающее",
-      "почки",
-      "поясница",
-      "холод"
-    ],
+    "nameRu": "Замошин 6 тибетский фитосбор (отвар / порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "mDzo-mo-6 (Замошин 6)"
+    "hasIndications": true,
+    "nameOriginal": "Zamoshin 6 / Зомшин 6 / \"Карагана 6 отвар\" (mdzomo-6)"
   },
   {
     "id": "tib-formula-mensil",
-    "nameRu": "Менсил («Чонг-жи-нйэр-лнга»)",
-    "tags": [
-      "тибетская",
-      "печень",
-      "пищеварение",
-      "охлаждающие",
-      "многокомпонентный"
-    ],
+    "nameRu": "Менсил тибетский фитосбор (пилюли)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Ман-нгаг-бсил-сбйор"
+    "hasIndications": true,
+    "nameOriginal": "Ман-нгаг-бсил-сбйор, Ман-бсил, Чонг-жи-нйэр-лнга"
+  },
+  {
+    "id": "tib-formula-mkhalma-9",
+    "nameRu": "Мхалма-9, «Почечный отвар-9»",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Мкхал-ма'и Дгу-тханг"
+  },
+  {
+    "id": "tib-formula-mutik-25-dragocennaya-pilyulya",
+    "nameRu": "Мутик 25 драгоценная пилюля",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": false
   },
   {
     "id": "tib-formula-mutik-25",
-    "nameRu": "Мутик 25 (Жемчуг 25)",
-    "tags": [
-      "тибетская традиция",
-      "нервная система",
-      "память",
-      "жемчужные сборы",
-      "многокомпонентный"
-    ],
+    "nameRu": "Мутик 25 (Мутиг 25) \"Жемчуг 25\"",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Му-тиг-нйэр-лнга (Ман-ргйуд-му-тиг-нйэр-лнга)"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Tibetan: Му-тиг-нйэр-лнга, Ман-ргйуд-му-тиг-нйэр-лнга; English: Mutik 25; Mongolian: Сувд 25"
   },
   {
     "id": "tib-formula-nenbo-18",
-    "nameRu": "Ненбо 18",
-    "tags": [
-      "почки",
-      "мочеполовая система",
-      "поясница",
-      "мужское здоровье",
-      "тибетская традиция"
-    ],
+    "nameRu": "Ненбо 18 тибетский фитосбор (пилюли)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
+    "hasIndications": true,
     "nameOriginal": "Nenbo 18"
   },
   {
     "id": "tib-formula-ngulchu-18",
-    "nameRu": "Улчу 18 («Нгулчу 18»)",
-    "tags": [
-      "тибетская",
-      "дыхание",
-      "очищение",
-      "обмен веществ",
-      "суставы"
-    ],
+    "nameRu": "Улчу 18 Тибетский Фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Нгулчу 18"
+    "hasIndications": true,
+    "nameOriginal": "Ngulchu 18 / Нгулчу 18"
   },
   {
     "id": "tib-formula-nikil",
-    "nameRu": "Себру Никил (Сожид 11)",
-    "tags": [
-      "пищеварение",
-      "почки",
-      "согревающие",
-      "тибетская формула",
-      "мочевыделение"
-    ],
+    "nameRu": "Себру Никил (Сожид 11) тибетский фитосбор",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Sebru Nikil"
+    "hasIndications": true,
+    "nameOriginal": "Себру Никил / Нигил / Сожид 11 / Sebru Nikil (Sozhid) / \"Гранат солнечная мандала\""
   },
   {
     "id": "tib-formula-norbu-7",
-    "nameRu": "Норбу 7 («Отвар из семи драгоценных»)",
-    "tags": [
-      "жар",
-      "кровь",
-      "ветер",
-      "простуда",
-      "согревающий"
-    ],
+    "nameRu": "Норбу 7 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Монгольское: Норов 7; Тибетские: Нор-бу-бдун-тханг, Нор-бу-чху-двангс, Чхам-цхад-бдун-тханг"
+  },
+  {
+    "id": "tib-formula-nyugrci-25",
+    "nameRu": "Нюгрци 25 тибетский фитосбор (порошок)",
+    "tags": [],
+    "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": false,
-    "nameOriginal": "Нор-бу-бдун-тханг"
+    "nameOriginal": "Нюгрци 25"
   },
   {
     "id": "tib-formula-olse-25",
-    "nameRu": "Олсе 25 «Олси 25»",
-    "tags": [
-      "женская сфера",
-      "малый таз",
-      "тёплый характер",
-      "тибетская формула",
-      "восстановление"
-    ],
+    "nameRu": "Олсе 25 (Олси 25) тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
+    "sourceCount": 2,
+    "hasIndications": true,
     "nameOriginal": "Olse 25"
   },
   {
     "id": "tib-formula-pakdzhub",
-    "nameRu": "Пакджуб (Джонши-11)",
-    "tags": [
-      "пищеварение",
-      "жкт",
-      "тибетская традиция",
-      "многокомпонентный сбор",
-      "тепло"
-    ],
+    "nameRu": "Пакджуб тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Pakdrub"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Пакджуб / Пакдруб / Pakdrub / Джонши-11"
   },
   {
     "id": "tib-formula-panci-12",
-    "nameRu": "Панци 12 («спанг-рци-бчу-нйи»)",
-    "tags": [
-      "жар",
-      "дыхание",
-      "простуда",
-      "воспаление",
-      "охлаждающие"
-    ],
+    "nameRu": "Панци 12 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "спанг-рци-бчу-нйи"
+    "hasIndications": true,
+    "nameOriginal": "Pantci 12 / спанг-рци-бчу-нйи"
   },
   {
     "id": "tib-formula-pangen-15",
     "nameRu": "Панген 15 «Горечавка 15»",
-    "tags": [
-      "тибетская",
-      "дыхание",
-      "горло",
-      "грудь",
-      "согревающая"
-    ],
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "спан-ргьен-бчо-лнга"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Pangen 15 / Спан-ргьен-бчо-лнга"
   },
   {
     "id": "tib-formula-penpa-kunden",
-    "nameRu": "Пенпа Кунден («Пхан-па-кун-лдан»)",
-    "tags": [
-      "тибетская традиция",
-      "голова",
-      "лор-область",
-      "отёчность",
-      "многокомпонентный сбор"
-    ],
+    "nameRu": "Пенпа Кунден тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Пхан-па-кун-лдан"
+    "hasIndications": true,
+    "nameOriginal": "Пхан-па-кун-лдан, Пхан-кун, Тханг-пхром-бчу-гчиг, Тханг-кхром-бчу-гчиг (англ. Penpa Kunden)"
   },
   {
     "id": "tib-formula-pokar-10",
-    "nameRu": "Покар-10 «Белый ладан-10»",
-    "tags": [
-      "кожа",
-      "лимфа",
-      "суставы",
-      "водное равновесие"
-    ],
+    "nameRu": "Покар 10 \"Ладан 10\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Спос-дкар-бчу-па (Pokar-10)"
+    "hasIndications": true,
+    "nameOriginal": "Pokar-10 / Тибетское: Спос-дкар-бчу-па / На монгольском: Бойгар 10"
   },
   {
     "id": "tib-formula-pokjyung-15",
-    "nameRu": "Байчун / Покьюнг 15 «Ладан-кхьюнг пятнадцати»",
-    "tags": [
-      "кожа",
-      "суставы",
-      "тибетская",
-      "ароматическая",
-      "многокомпонентная"
-    ],
+    "nameRu": "Байчун / Покьюнг 15 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Спос-кхйунг-бчо-лнга, Спос-рци-бчо-лнга (Pokiung-15)"
+    "hasIndications": true,
+    "nameOriginal": "Pokiung-15 / Покьюнг 15; тибетское название: Спос-кхйунг-бчо-лнга, Спос-рци-бчо-лнга"
   },
   {
     "id": "tib-formula-rashinamzhil1",
-    "nameRu": "Рашинамжил",
-    "tags": [
-      "женская сфера",
-      "тибетская традиция",
-      "многокомпонентный сбор",
-      "гормональный фон",
-      "согревающие качества"
-    ],
+    "nameRu": "Рашинамжил тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Rashinamzhil"
+    "hasIndications": true,
+    "nameOriginal": "Rashinamzhil / Раши Намгьял"
   },
   {
     "id": "tib-formula-ratna-sampel",
-    "nameRu": "Ратна Сампел («Драгоценная пилюля, исполняющая желания»)",
-    "tags": [
-      "нервная система",
-      "сердце",
-      "сосуды",
-      "восприятие",
-      "драгоценные пилюли"
-    ],
+    "nameRu": "Ратна Сампел драгоценная пилюля",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Ratna Samphel / Рин-чен Рат-на Бсам-'пхэл"
+    "hasIndications": true,
+    "nameOriginal": "Ratna Samphel (Рин-чен Рат-на Бсам-'пхэл); также называется Мутик-70 / Жемчуг-70"
+  },
+  {
+    "id": "tib-formula-rukyung-tibetskij-fitosbor-poroshok0",
+    "nameRu": "Рукьюнг тибетский фитосбор (порошок)",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": false
   },
   {
     "id": "tib-formula-ruta-6",
-    "nameRu": "Рута 6 «Соссюрея 6»",
-    "tags": [
-      "пищеварение",
-      "желудок",
-      "согревающий",
-      "острый",
-      "тибетская традиция"
-    ],
+    "nameRu": "Рута 6 (Рурта 6)",
+    "tags": [],
     "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Ру-рта-друг-па (M6)"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Ру-рта-друг-па / Ruta 6 / \"Соссюрея 6\" / М6 / на монгольском: Руда 6"
   },
   {
     "id": "tib-formula-samkjyung",
-    "nameRu": "Самкьюнг",
-    "tags": [
-      "опорно-двигательная",
-      "суставы",
-      "согревающая",
-      "пряная",
-      "тибетская"
-    ],
+    "nameRu": "Самкьюнг тибетский фитосбор (пилюли)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Samkiung"
+    "hasIndications": true,
+    "nameOriginal": "Samkiung / Samkjyung"
   },
   {
     "id": "tib-formula-samnor",
-    "nameRu": "Самнор (Сампел норбу) «Драгоценность, исполняющая желания»",
-    "tags": [
-      "нервная система",
-      "подвижность",
-      "память",
-      "согревающие",
-      "драгоценные формулы"
-    ],
+    "nameRu": "Самнор тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Бсам-'пхэл-нор-бу (Бсам-нор)"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Самнор (Сампел норбу) \"Драгоценность исполняющая желания\" / Samnor; монгольское: Сампилноров; тибетские: Бсам-'пхэл-нор-бу, Бсам-нор, Нйа-пхйис-со-гчиг"
   },
   {
     "id": "tib-formula-sarkiyung",
-    "nameRu": "Саричун «Гаруда Сарахи 16»",
-    "tags": [
-      "почки",
-      "поясница",
-      "жар",
-      "мочевыделение",
-      "тибетская формула"
-    ],
+    "nameRu": "Саричун тибетский фитосбор \"Гаруда Сарахи 16\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "тиб. Са-ра'и-бйа-кхйунг-'дзаг-сдом (Сар-кхйунг, Са-ра'и-бйа-кхйунг, А-ру-бчу-бдун, Са-ра'и-кхйунг-лнга); монг. Саричун"
+    "hasIndications": true,
+    "nameOriginal": "Саричун (монг.); Са-ра'и-бйа-кхйунг-'дзаг-сдом, Сар-кхйунг, Са-ра'и-бйа-кхйунг, А-ру-бчу-бдун, Са-ра'и-кхйунг-лнга (тиб.); Sarichun (англ.)"
   },
   {
     "id": "tib-formula-sebru-5",
-    "nameRu": "Себру-5 (с имбирём) «Гранат 5»",
-    "tags": [
-      "пищеварение",
-      "согревающее",
-      "слизь",
-      "пряности",
-      "гранат"
-    ],
+    "nameRu": "Себру-5 (с имбирем) \"Гранат 5\"",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Сэмбэруу 5"
+    "hasIndications": true,
+    "nameOriginal": "Сэмбру 5 / Сэмбэруу 5"
   },
   {
     "id": "tib-formula-sebru-dane",
-    "nameRu": "Себру Дане «Данма-5»",
-    "tags": [
-      "пищеварение",
-      "согревающее",
-      "почки",
-      "слизь",
-      "ткани"
-    ],
+    "nameRu": "Себру Дане (Данма-5) «Ставящий на место пищеварительный сок»",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Se-'bru lnga-pa (Себру Дане, Данма-5)"
+    "hasIndications": true,
+    "nameOriginal": "Sebru Dane"
   },
   {
     "id": "tib-formula-semde",
-    "nameRu": "Семде «Сэмс-бдэ»",
-    "tags": [
-      "сердце",
-      "ветер",
-      "успокаивающее",
-      "сон",
-      "ум"
-    ],
+    "nameRu": "Семде \"Счастливый ум\"",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Сэмс-бдэ, Сэмс-кйи-бдэ-скйид (Semde)"
+    "hasIndications": true,
+    "nameOriginal": "Сэмдэ / Semde; на тибетском: Сэмс-бдэ, Сэмс-кйи-бдэ-скйид, Сэмс-кйи-бдэ-бйэд"
   },
   {
     "id": "tib-formula-senden-18",
-    "nameRu": "Ценден 18 («Сандал 18»)",
-    "tags": [
-      "кровообращение",
-      "сосуды",
-      "сердце",
-      "опорно-двигательная",
-      "тибетская"
-    ],
+    "nameRu": "Ценден 18 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Цан-дан-бчо-бргйад (Tsenden-18)"
+    "hasIndications": true,
+    "nameOriginal": "Ценден 18 \"Сандал 18\" / Tsenden-18 / Цан-дан-бчо-бргйад"
   },
   {
     "id": "tib-formula-senden-23",
-    "nameRu": "Сенден 23 («Сэнг-лдэнг-нйэр-гсум»)",
-    "tags": [
-      "суставы",
-      "почки",
-      "лимфа",
-      "поясница",
-      "тибетская"
-    ],
+    "nameRu": "Сенден 23 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Сэнг-лдэнг-нйэр-гсум"
+    "hasIndications": true,
+    "nameOriginal": "Сэнг-лдэнг-нйэр-гсум / \"Акация 23\" / Senden 23"
   },
   {
     "id": "tib-formula-senden-25",
-    "nameRu": "Сенден 25 («Сэнг-лдэнг-нйэр-лнга»)",
-    "tags": [
-      "суставы",
-      "опорно-двигательный",
-      "тибетская формула",
-      "сон",
-      "нервы"
-    ],
+    "nameRu": "Сенден 25 тибетский фитосбор / Сенден 25 тибетский \"Акация 25\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Сэнг-лдэнг-нйэр-лнга"
+    "hasIndications": true,
+    "nameOriginal": "Сэнг-лдэнг-нйэр-лнга / Senden 25"
   },
   {
     "id": "tib-formula-senden-4",
-    "nameRu": "Сенден 4 («Акация 4»)",
-    "tags": [
-      "суставы",
-      "кожа",
-      "кровообращение",
-      "сердце",
-      "влага"
-    ],
+    "nameRu": "Сенден 4 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
+    "hasIndications": true,
     "nameOriginal": "Сэнг-лдэнг-бжи-па"
   },
   {
     "id": "tib-formula-serdok-11",
-    "nameRu": "Сердок 11 («Золотой блеск»)",
-    "tags": [
-      "желчь",
-      "пищеварение",
-      "печень",
-      "жар",
-      "слизь"
-    ],
+    "nameRu": "Сердок 11 / Сердог 11 «Золотой блеск 11»",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Гсэр-дог-бчу-чиг"
+    "hasIndications": true,
+    "nameOriginal": "Serdok 11; монг. Сэрдэг 11; тиб. Гсэр-дог-бчу-чиг"
   },
   {
     "id": "tib-formula-serdok-5",
-    "nameRu": "Сердок 5 («Золотой блеск 5»)",
-    "tags": [
-      "желчь",
-      "пищеварение",
-      "желудок",
-      "тибетская традиция"
-    ],
+    "nameRu": "Сердок 5 / Сердог 5 \"Золотой блеск 5\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Гсэр-мдог-лнга-па"
+    "hasIndications": true,
+    "nameOriginal": "Serdok 5 / Гсэр-мдог-лнга-па"
   },
   {
     "id": "tib-formula-seru-25",
-    "nameRu": "Серу 25 («Бсэ-ру-25»)",
-    "tags": [
-      "тибетская",
-      "дыхание",
-      "лёгкие",
-      "многокомпонентная",
-      "классическая"
-    ],
+    "nameRu": "Серу 25 тибетский фитосбор (пилюли)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Бсэ-ру-нйэр-лнга / Ша-рва-нйэр-лнга / Гва-дор-нйэр-лнга (Seru 25)"
+    "hasIndications": true,
+    "nameOriginal": "Серу 25 / Сэру 25 / Seru 25; На тибетском: Бсэ-ру-нйэр-лнга, Ша-рва-нйэр-лнга, Гва-дор-нйэр-лнга"
   },
   {
     "id": "tib-formula-shimshin-6",
-    "nameRu": "Шимшин 6 («Жим-шинг-друк-па»)",
-    "tags": [
-      "тибетская традиция",
-      "поясница",
-      "почки",
-      "женское здоровье",
-      "согревающие"
-    ],
+    "nameRu": "Шимшин 6 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Жим-шинг-друк-па"
+    "hasIndications": true,
+    "nameOriginal": "Жим-шинг-друк-па / Shimshin 6"
   },
   {
     "id": "tib-formula-shinkun-25",
-    "nameRu": "Шинкун 25 («Шинг-кун-нйэр-лнга»)",
-    "tags": [
-      "ветер",
-      "нервная-система",
-      "согревающие",
-      "ароматические",
-      "пищеварение"
-    ],
+    "nameRu": "Шинкун 25 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Шинг-кун-нйэр-лнга (Shing kun nyer lnga)"
+    "hasIndications": true,
+    "nameOriginal": "Shinkun 25 / Шингун 25 / Шинг-кун-нйэр-лнга / Ферула 25"
   },
   {
     "id": "tib-formula-shiru",
-    "nameRu": "Ширу",
-    "tags": [
-      "пищеварение",
-      "желудок",
-      "печень",
-      "согревающие",
-      "пряности"
-    ],
+    "nameRu": "Ширу тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Shiru"
+    "hasIndications": true,
+    "nameOriginal": "Ширу / Shiru"
   },
   {
     "id": "tib-formula-shiser",
-    "nameRu": "Шисер («Жи-гсэр»)",
-    "tags": [
-      "пищеварение",
-      "согревающие",
-      "горькие",
-      "минеральные",
-      "тибетская"
-    ],
+    "nameRu": "Шисер тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Жи-гсэр (Zhi-gser) / Гсэр-жи (Gser-zhi)"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Жи-гсэр (Гсэр-жи); Shiser"
   },
   {
     "id": "tib-formula-shizhet-11",
-    "nameRu": "Шижет 11 («Жи-бйэд-бчу-гчиг»)",
-    "tags": [
-      "пищеварение",
-      "женское здоровье",
-      "тибетская традиция",
-      "минеральные компоненты"
-    ],
+    "nameRu": "Шижет 11 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Жи-бйэд-бчу-гчиг (Скйэ-зуг-рил-бу)"
+    "hasIndications": true,
+    "nameOriginal": "Шижид 11 / Shijeet 11 / \"Умиротворяющий 11\"; тибет.: Жи-бйэд-бчу-гчиг, Скйэ-зуг-рил-бу"
   },
   {
     "id": "tib-formula-shizhet-6",
-    "nameRu": "Шижет 6 «Умиротворяющий 6»",
-    "tags": [
-      "пищеварение",
-      "слизь",
-      "ветер",
-      "согревающее",
-      "тибетская формула"
-    ],
+    "nameRu": "Шижет 6 \"Умиротворяющий 6\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Жи-бйэд-друг-па (жи-бйэд-дкар-по-друг-па)"
+    "hasIndications": true,
+    "nameOriginal": "Shijeet 6 / Жи-бйэд-друг-па, жи-бйэд-дкар-по-друг-па / На монгольском: Шижид 6"
   },
   {
     "id": "tib-formula-skyurura-25",
-    "nameRu": "Кюру 25 (Эмблика 25)",
-    "tags": [
-      "кровь",
-      "пищеварение",
-      "печень",
-      "женское здоровье",
-      "многокомпонентный"
-    ],
+    "nameRu": "Кюру 25 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Скйу-ру-нйэр-лнга, Кхраг-шэд-снйомс-лдан"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Кюру 25 \"Эмблика 25\" / Kuru 25; На тибетском: Скйу-ру-нйэр-лнга, Кхраг-шэд-снйомс-лдан"
   },
   {
     "id": "tib-formula-solnechnaya-mandala-22",
-    "nameRu": "Солнечная мандала 22 («солнечная мандала», Ро-ца-бчуд-лэн-дкйил-'кхор)",
-    "tags": [
-      "почки",
-      "тепло",
-      "тонизирующее",
-      "мочевыделение",
-      "классическая формула"
-    ],
+    "nameRu": "Солнечная мандала 22 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "'джу-бйэд-нйи-ма 'и-дкил-'кхор; Ро-ца-бчуд-лэн-дкйил-'кхор"
+    "hasIndications": true,
+    "nameOriginal": "Джубьед Нима Килкор ('джу-бйэд-нйи-ма 'и-дкил-'кхор'; 'джу-бйэд; Ро-ца-бчуд-лэн-дкйил-'кхор)"
   },
   {
     "id": "tib-formula-sorolo-4-srolo-4",
-    "nameRu": "Сороло 4 / Сроло 4",
-    "tags": [
-      "дыхание",
-      "лёгкие",
-      "грудь",
-      "жар",
-      "формула-4"
-    ],
+    "nameRu": "Сороло 4 / Сроло 4 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Sorolo 4 / Сроло 4"
+    "hasIndications": true,
+    "nameOriginal": "Сороло 4 / Сроло 4"
+  },
+  {
+    "id": "tib-formula-sposkar-10",
+    "nameRu": "Споскар-10 «Белый Ладан-10»",
+    "tags": [],
+    "memberCount": 1,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Sposkar-10 / sPOD-dKAR 10 / CAMPHOR 10"
   },
   {
     "id": "tib-formula-srogdzin-11",
-    "nameRu": "Срогдзин 11 («Держатель жизни 11»)",
-    "tags": [
-      "сон",
-      "нервная система",
-      "сердце",
-      "ароматические",
-      "рлунг"
-    ],
+    "nameRu": "Срогдзин 11 тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Srogdzin 11"
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Срогдзин 11 (Согдзин 11) «Держатель жизни 11» / Srogdzin 11; на монгольском: Сорогзин 11"
   },
   {
     "id": "tib-formula-srogdzin-norbu",
-    "nameRu": "Срогдзин Норбу («драгоценность, держащая жизнь»)",
-    "tags": [
-      "ветер",
-      "нервная-сфера",
-      "ароматические",
-      "классическая-формула",
-      "белые-каналы"
-    ],
+    "nameRu": "Срогдзин Норбу (Согдзин Норбу) \"Драгоценность, поддерживающая жизнь\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Срог-'дзин-нор-бу (монг. Сорогзинноров)"
+    "hasIndications": true,
+    "nameOriginal": "Срог-'дзин-нор-бу; монг. Сорогзинноров"
   },
   {
     "id": "tib-formula-sugmel-10",
-    "nameRu": "Сугмел 10 («Сугмэл-10»)",
-    "tags": [
-      "почки",
-      "мочевыводящие",
-      "поясница",
-      "согревающие",
-      "тибетская формула"
-    ],
+    "nameRu": "Сугмел 10 / Сугмэл 10 \"Зеленый кардамон 10\"",
+    "tags": [],
     "memberCount": 0,
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Sugmel 10"
+  },
+  {
+    "id": "tib-formula-sugmel-13",
+    "nameRu": "Сугмэл-13 «Зелёный кардамон-13»",
+    "tags": [],
+    "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Сугмэл 10 / Sugmel 10"
+    "hasIndications": true,
+    "nameOriginal": "Сугмэл-13 (Лчаба-13)"
   },
   {
     "id": "tib-formula-sugmel-7",
-    "nameRu": "Сугмэл 7 («Зелёный кардамон 7»)",
-    "tags": [
-      "эндокринная",
-      "женская сфера",
-      "тонизирующее",
-      "согревающее",
-      "репродуктивная"
-    ],
+    "nameRu": "Сугмэл 7 тибетский фитосбор (порошок)",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "Sugmel 7 / Сугмэл 7 \"Зеленый кардамон 7\""
+  },
+  {
+    "id": "tib-formula-tarbu-19",
+    "nameRu": "Тарбу 19 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": false,
-    "nameOriginal": "Sugmel 7"
+    "nameOriginal": "Тарбу 19"
   },
   {
     "id": "tib-formula-tarbu-5",
-    "nameRu": "Тарбу 5 («Облепиха-5»)",
-    "tags": [
-      "дыхание",
-      "пищеварение",
-      "тепло",
-      "женское здоровье",
-      "тибетская формула"
-    ],
+    "nameRu": "Тарбу 5 «Облепиха 5» тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Стар-бу-нга-па"
+    "hasIndications": true,
+    "nameOriginal": "Стар-бу-нга-па (монгольское название: Чацаргана 5)"
   },
   {
     "id": "tib-formula-tazi-marpo",
-    "nameRu": "Тази Марпо («Рта-зи-дмар-по»)",
-    "tags": [
-      "тибетская традиция",
-      "голова",
-      "дыхание",
-      "пищеварение",
-      "охлаждающие"
-    ],
+    "nameRu": "Тази Марпо тибетский сбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Рта-зи-дмар-по (Бсил-сбйор-бчо-лнга, Рта-бзи-дмар-по)"
+    "hasIndications": true,
+    "nameOriginal": "Рта-зи-дмар-по, Бсил-сбйор-бчо-лнга, Рта-бзи-дмар-по; Tazi marpo"
   },
   {
     "id": "tib-formula-tcovo-8",
-    "nameRu": "Цово 8",
-    "tags": [
-      "дыхание",
-      "охлаждающие",
-      "печень",
-      "сезонное",
-      "классическая формула"
-    ],
+    "nameRu": "Цово 8 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
-    "hasIndications": false,
+    "hasIndications": true,
     "nameOriginal": "Tsowo 8"
   },
   {
     "id": "tib-formula-tendzhom",
-    "nameRu": "Тенджом",
-    "tags": [
-      "тибетский",
-      "многокомпонентный",
-      "классический",
-      "восстановительный"
-    ],
+    "nameRu": "Тенджом тибетский фитосбор",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Тенджём"
+    "hasIndications": true,
+    "nameOriginal": "Тенджём / Тенжом"
   },
   {
     "id": "tib-formula-thanchen-10",
-    "nameRu": "Танчен 10 «Великий отвар 10»",
-    "tags": [
-      "жар",
-      "желчь",
-      "дыхание",
-      "пищеварение",
-      "сезонное"
-    ],
+    "nameRu": "Танчен 10 тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Тханчен 10 / Tanchen 10"
+    "hasIndications": true,
+    "nameOriginal": "Тханчен 10, Танчен 10 \"Великий отвар 10\" / Tanchen 10"
   },
   {
     "id": "tib-formula-thanchen-25",
-    "nameRu": "Танчен 25 («Великий отвар 25»)",
-    "tags": [
-      "жар",
-      "пищеварение",
-      "охлаждающие",
-      "детокс",
-      "многокомпонентные"
-    ],
+    "nameRu": "Танчен 25 \"Великий отвар 25\" тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
-    "hasIndications": false,
-    "nameOriginal": "Тханчен 25"
+    "hasIndications": true,
+    "nameOriginal": "Tanchen-25 / Тханчен 25 / Танчин 25 (монгольское)"
   },
   {
     "id": "tib-formula-tigta-25",
-    "nameRu": "Тигта 25 («Дэгд 25»)",
-    "tags": [
-      "желчь",
-      "пищеварение",
-      "охлаждающие",
-      "многокомпонентный",
-      "тибетская традиция"
-    ],
+    "nameRu": "Тигта 25 \"Горечавка 25\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Tigta 25 (Дэгд 25)"
+    "hasIndications": true,
+    "nameOriginal": "Tigta 25 (монгольское: Дэгд 25)"
   },
   {
     "id": "tib-formula-tigta-8",
-    "nameRu": "Тигта 8 «Горечавка 8»",
-    "tags": [
-      "печень",
-      "желчь",
-      "пищеварение",
-      "жар",
-      "горечь"
-    ],
+    "nameRu": "Тигта 8 тибетский фитосбор",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Tigta 8 / Дэгд 8"
+    "hasIndications": true,
+    "nameOriginal": "Tigta 8 / Дэгд 8 (монг.) / \"Горечавка 8\""
+  },
+  {
+    "id": "tib-formula-tragce-10",
+    "nameRu": "Трагце 10 тибетский фитосбор (порошок)",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": false
   },
   {
     "id": "tib-formula-tragshik-dordzhe-phalam",
-    "nameRu": "Трагшик Дордже Пхалам",
-    "tags": [
-      "женское здоровье",
-      "печень",
-      "кровь",
-      "лимфа",
-      "тибетская традиция"
-    ],
+    "nameRu": "Трагшик Дордже Пхалам тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
+    "hasIndications": true,
     "nameOriginal": "Трагшик Дордже Пхалам"
   },
   {
     "id": "tib-formula-tri-goryachih",
-    "nameRu": "Три горячих («Трикату»)",
-    "tags": [
-      "пищеварение",
-      "согревающие",
-      "слизь",
-      "тибетская традиция",
-      "пряности"
-    ],
+    "nameRu": "Три горячих тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Гапипо"
+    "hasIndications": true,
+    "nameOriginal": "Трикату / Гапипо"
   },
   {
     "id": "tib-formula-tri-ploda",
-    "nameRu": "Три плода («Гурван Урийн тан»)",
-    "tags": [
-      "кровь",
-      "пищеварение",
-      "три доши",
-      "жар",
-      "очищение"
-    ],
+    "nameRu": "Три плода тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
+    "sourceCount": 2,
+    "hasIndications": true,
+    "nameOriginal": "Гурван Урийн тан / Бребусум тан / Бребу 3"
+  },
+  {
+    "id": "tib-formula-truglo-kunsel",
+    "nameRu": "Тругло Кунсел тибетский фитосбор (порошок)",
+    "tags": [],
+    "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Гурван Урийн тан (Бребусум тан, Бребу 3)"
+    "hasIndications": false
   },
   {
     "id": "tib-formula-tsajor-chenmo",
-    "nameRu": "Ца Жор Ченмо «драгоценная пилюля»",
-    "tags": [
-      "суставы",
-      "кровообращение",
-      "согревающее",
-      "кожа",
-      "ринчен"
-    ],
+    "nameRu": "Ринчен Цажор Ченмо «Великий Жар»",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
+    "hasIndications": true,
     "nameOriginal": "RINCHEN TSAJOR CHENMO"
   },
   {
-    "id": "tib-formula-tsotru-dshel",
-    "nameRu": "Цотру дашел «драгоценная пилюля»",
-    "tags": [
-      "драгоценная пилюля",
-      "очищение",
-      "пищеварение",
-      "дыхание",
-      "лимфа"
-    ],
+    "id": "tib-formula-tsarbong-5",
+    "nameRu": "Царбонг-5 тханг «Пятикомпонентный отвар полыни»",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "RINCHEN TSO-TU DASHEL (TSO-TRU DASHEL)"
+    "hasIndications": true,
+    "nameOriginal": "Царбонг-5 тханг"
+  },
+  {
+    "id": "tib-formula-tshav-dzhor-chenmo-dragocennaya-pilulya",
+    "nameRu": "Цхва Джор ченмо драгоценная пилюля",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": false
+  },
+  {
+    "id": "tib-formula-tsotru-dshel",
+    "nameRu": "Цотру Дашел Ринчен \"Драгоценный Очищающий Лунный Кристалл\"",
+    "tags": [],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "RINCHEN TSO-TU DASHEL / TSO-TRU DASHEL"
   },
   {
     "id": "tib-formula-vangpo-kunsel",
-    "nameRu": "Вангпо Кунсел («дБанг-по-кун-сэл»)",
-    "tags": [
-      "дыхание",
-      "органы чувств",
-      "ароматический",
-      "тибетская формула"
-    ],
+    "nameRu": "Вангпо Кунсел тибетский фитосбор (порошок)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "дБанг-по-кун-сэл, Дбанг-кун (Wangpo Kunsel)"
+    "hasIndications": true,
+    "nameOriginal": "дБанг-по-кун-сэл (Дбанг-кун, Wangpo Kunsel)"
   },
   {
     "id": "tib-formula-vanlag-10",
-    "nameRu": "Ванлаг 10 (Ятрышник 10)",
-    "tags": [
-      "почки",
-      "энергия",
-      "согревающие",
-      "тонизирующие",
-      "мужское здоровье"
-    ],
+    "nameRu": "Ванлаг 10 тибетский фитосбор (пилюли)",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Wanlak 10"
+    "hasIndications": true,
+    "nameOriginal": "Ванлаг 10 \"Ятрышник 10\" / Wanlak 10"
   },
   {
     "id": "tib-formula-wanlak-37",
-    "nameRu": "Ванлаг 37 («Ятрышник 37»)",
-    "tags": [
-      "почки",
-      "тонизирующее",
-      "согревающее",
-      "мужское здоровье",
-      "энергия"
-    ],
+    "nameRu": "Ванлаг 37 тибетский фитосбор",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Wanlak 37"
+    "hasIndications": true,
+    "nameOriginal": "Ванлаг 37 \"Ятрышник 37\" / Wanlak 37"
   },
   {
     "id": "tib-formula-yanchen-rilbu-pilyuli-sarasvati",
-    "nameRu": "Янчен Рилбу «Сарасвати»",
-    "tags": [
-      "ум",
-      "память",
-      "речь",
-      "согревающие",
-      "ароматические"
-    ],
+    "nameRu": "Янчен Рилбу Пилюли Сарасвати тибетский фитосбор",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Кхйунг-лнга, Гла-рци-лнга-па (Yangchen Rilbu Saraswati)"
+    "hasIndications": true,
+    "nameOriginal": "Yangchen Rilbu Saraswati pills; Кхйунг-лнга, Гла-рци-лнга-па"
   },
   {
     "id": "tib-formula-yuning-25",
-    "nameRu": "Юнинг 25 (Старая бирюза 25), драгоценная пилюля Ринчен",
-    "tags": [
-      "ринчен",
-      "печень",
-      "пищеварение",
-      "сосуды",
-      "самоцветы"
-    ],
+    "nameRu": "Юнинг 25 драгоценная пилюля / \"Старая бирюза 25\"",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
+    "hasIndications": true,
     "nameOriginal": "RINCHEN YUNYING 25"
   },
   {
     "id": "tib-formula-yuril-13",
-    "nameRu": "Юрил 13 («Рута 13»)",
-    "tags": [
-      "пищеварение",
-      "желудок",
-      "печень",
-      "согревающие",
-      "ароматические"
-    ],
+    "nameRu": "Юрил 13 тибетский фитосбор",
+    "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Гйу-рил-бчу-гсум"
+    "hasIndications": true,
+    "nameOriginal": "Гйу-рил-бчу-гсум, гйу-дрил-бчу-гсум, ру-рта-бчу-гсум / Uril-13 / \"Рута 13\"; на монгольском: Юрил 13"
   },
   {
     "id": "tib-formula-zhachun-13",
-    "nameRu": "Жачун 13",
-    "tags": [
-      "тибетская медицина",
-      "опорно-двигательная сфера",
-      "конечности",
-      "тонизирующие",
-      "минеральные"
-    ],
+    "nameRu": "Жачун 13 тибетский фитосбор (пилюли)",
+    "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Са-ра'и-бйа-кхйунг-бчу-гсум"
+    "hasIndications": true,
+    "nameOriginal": "Са-ра 'и-бйа-кхйунг-бчу-гсум; Са-ра 'и-шэс-брцон; Шэс-брцон; Нйа-пхйис-бчу-гсум; \"Перламутр 13\" / Zhachun 13"
   }
 ]
