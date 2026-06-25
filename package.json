@@ -1,9 +1,9 @@
 {
   "name": "traditional-medicine-notifier-bot",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Telegram bot with reference information on Chinese (TCM) and Tibetan traditional medicine plus user-scheduled reminders and topic subscriptions",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "author": "Igor Konovalov",
   "type": "commonjs",
   "main": "dist/index.js",
