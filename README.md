@@ -92,7 +92,7 @@ npm run dev               # tsx watch src/index.ts
 | `DB_PATH` | no | `./data/tm-bot.db` | SQLite database path |
 | `CONTENT_DIR` | no | `./content` | Markdown content root |
 | `LOG_LEVEL` | no | `info` | `trace`/`debug`/`info`/`warn`/`error`/`fatal` |
-| `TIMEZONE` | no | `Europe/Belgrade` | Single timezone for schedules + day boundary |
+| `TIMEZONE` | no | `UTC` | Single timezone for schedules + day boundary |
 | `REMINDER_TICK_CRON` | no | `* * * * *` | Solicited-reminder dispatch tick |
 | `DAILY_TIP_CRON` | no | `0 9 * * *` | Proactive daily-tip dispatch |
 | `BACKUP_DIR` | no | `/var/backups/traditional-medicine-notifier-bot` | In-container backup path |
@@ -133,4 +133,4 @@ See [`CLAUDE.md`](CLAUDE.md) for the full rule set and commit conventions.
 
 ## License
 
-UNLICENSED — private project.
+[MIT](LICENSE) © 2026 Igor Konovalov

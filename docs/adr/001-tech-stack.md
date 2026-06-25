@@ -6,9 +6,8 @@
 ## Context
 
 A new Telegram bot for traditional-medicine reference + notifications. We want a
-small, boring, proven stack that a single maintainer can run cheaply on a shared
-droplet, and that matches the sibling `serbian-language-bot` so operational
-knowledge transfers.
+small, boring, proven stack that a single maintainer can run cheaply on a small
+VPS / droplet.
 
 ## Decision
 
@@ -26,7 +25,6 @@ knowledge transfers.
 - Single process, single SQLite file — trivial ops, daily file backup is sufficient.
 - Synchronous DB calls keep handlers simple; WAL + `busy_timeout` tolerates the cron/handler write overlap.
 - Polling means no inbound network exposure; the trade-off is the bot must be running to receive updates (acceptable).
-- Mirrors the sibling bot, so deploy/runbook knowledge is shared.
 
 ## Alternatives considered
 
