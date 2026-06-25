@@ -36,9 +36,14 @@ export interface Herb {
 
 /**
  * A compound formula — a multi-herb traditional remedy (ADR 005). Unlike a
- * `Herb`, it is defined by its `composition`. `themes` carries descriptive
- * "traditionally associated with…" framing (never source indications/dosing);
- * `members` optionally cross-references member ingredients to `Herb` ids.
+ * `Herb`, it is centred on its `composition`. `members` optionally
+ * cross-references member ingredients to `Herb` ids.
+ *
+ * Under ADR 006 (verbose, doctor-gated staging corpus) a record may also carry
+ * the **raw source data** — `indications`, `traditionalUse`, `dosingNotes`, and
+ * the full verbatim `sourceText`. These are non-sanitised and must not reach the
+ * production bot without the medical-review gate. `themes` (the older descriptive
+ * surface) is now optional and may be empty.
  */
 export interface Combination {
   readonly id: string;
@@ -49,12 +54,20 @@ export interface Combination {
   readonly nameOriginal?: string;
   /** Cross-source spelling variants (e.g. "Агар 8", "Орлиное дерево 8"). */
   readonly aliases: readonly string[];
-  /** Descriptive member-ingredient list. Required, non-empty (validated). */
+  /** Member-ingredient list. May be empty when the source publishes none (ADR 006). */
   readonly composition: readonly string[];
   /** Herb ids that resolve to a `Herb`; ingredients without a page stay in `composition`. */
   readonly members?: readonly string[];
-  /** Descriptive traditional associations — never prescriptive. */
+  /** Descriptive traditional associations. Optional under ADR 006. */
   readonly themes: readonly string[];
+  /** Verbose source indications (staging corpus, ADR 006). */
+  readonly indications?: readonly string[];
+  /** Verbose traditional-use notes from the source (ADR 006). */
+  readonly traditionalUse?: readonly string[];
+  /** Verbose dosing / administration notes from the source (ADR 006). */
+  readonly dosingNotes?: readonly string[];
+  /** Full verbatim source description text (ADR 006). */
+  readonly sourceText?: string;
   /** Cautions / contraindications surfaced to the reader. */
   readonly cautions: readonly string[];
   readonly tags: readonly string[];

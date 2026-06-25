@@ -130,7 +130,7 @@ Related: ADR 006 (governing), ADR 005 (superseded for combinations), ADR 002 (am
 
 ## Progress
 
-- [ ] Phase 1 — Policy, schema & disclaimer infra
+- [x] Phase 1 — Policy, schema & disclaimer infra
 - [ ] Phase 2 — Full verbatim re-crawl
 - [ ] Phase 3 — Verbose authoring & integration
 - [ ] Phase 4 — Doctor-review handoff & gate

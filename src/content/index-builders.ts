@@ -24,6 +24,8 @@ export interface CombinationIndexEntry {
   readonly tags: readonly string[];
   readonly memberCount: number;
   readonly sourceCount: number;
+  /** Whether the record carries verbose source indications (ADR 006). */
+  readonly hasIndications: boolean;
 }
 
 export interface CategoryIndexEntry {
@@ -62,6 +64,7 @@ export function buildIndex(content: LoadedContent): ContentIndex {
     tags: c.tags,
     memberCount: c.members?.length ?? 0,
     sourceCount: c.sources.length,
+    hasIndications: (c.indications?.length ?? 0) > 0,
     ...(c.nameOriginal !== undefined ? { nameOriginal: c.nameOriginal } : {}),
   }));
 

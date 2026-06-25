@@ -22,11 +22,19 @@ export function validateCorpus(content: LoadedContent): void {
     }
   }
 
-  // A combination needs a non-empty composition, and each cross-referenced
-  // member id must resolve to a real herb (ADR 005).
+  // A combination must carry SOME substance — composition, verbatim source text,
+  // or indications (ADR 006 relaxes the old non-empty-composition rule, since some
+  // formulas publish no ingredient list). Each cross-referenced member id must
+  // still resolve to a real herb (ADR 005).
   for (const combination of content.combinations.all) {
-    if (combination.composition.length === 0) {
-      errors.push(`combination "${combination.id}" has an empty composition`);
+    const hasSubstance =
+      combination.composition.length > 0 ||
+      (combination.sourceText?.trim().length ?? 0) > 0 ||
+      (combination.indications?.length ?? 0) > 0;
+    if (!hasSubstance) {
+      errors.push(
+        `combination "${combination.id}" has no composition, source text, or indications`,
+      );
     }
     for (const memberId of combination.members ?? []) {
       if (!content.herbs.byId.has(memberId)) {

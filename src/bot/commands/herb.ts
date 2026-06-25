@@ -17,7 +17,11 @@ import { clampToTelegram, toPlainText } from '../render/markdown';
 
 export function renderHerb(herb: Herb): string {
   const header = `${herb.nameRu}${herb.nameLatin ? ` (${herb.nameLatin})` : ''} · ${tradition(herb.tradition)}`;
-  return clampToTelegram(`${header}\n\n${toPlainText(herb.body)}`);
+  // The disclaimer is appended here at render time (ADR 006, amends ADR 002) —
+  // it is no longer baked into the content body. Clamp the body first so the
+  // disclaimer is never truncated away.
+  const body = clampToTelegram(`${header}\n\n${toPlainText(herb.body)}`);
+  return `${body}\n\n${messages.disclaimer}`;
 }
 
 export function registerHerbCommand(bot: Telegraf, deps: BotDeps): void {

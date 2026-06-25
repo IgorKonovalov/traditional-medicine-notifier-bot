@@ -114,15 +114,63 @@ describe('loadContent — combinations', () => {
     expect(() => loadContent(root)).toThrow(/unknown herb member "tib-missing"/);
   });
 
-  it('rejects a combination with an empty composition', () => {
-    const noComposition = COMBINATION.replace('composition:', 'composition: []\nignored:');
+  it('rejects a combination with no composition, source text, or indications', () => {
+    const empty = COMBINATION.replace('composition:', 'composition: []\nignored:');
     const root = writeCorpus({
       categories: { 'digestive-herbs': CATEGORY },
       herbs: { 'tib-haritaki': HERB },
-      combinations: { 'tib-formula-agar-8': noComposition },
+      combinations: { 'tib-formula-agar-8': empty },
     });
 
-    expect(() => loadContent(root)).toThrow(/empty composition/);
+    expect(() => loadContent(root)).toThrow(/no composition, source text, or indications/);
+  });
+
+  it('accepts an empty composition when source text is present (ADR 006)', () => {
+    const noComp = COMBINATION.replace(
+      'composition:\n  - миробалан хебула\n  - мускатный орех',
+      'composition: []',
+    ).replace('members:\n  - tib-haritaki\n', '');
+    const verbose = noComp.replace(
+      '---\n\nОписание состава.',
+      'source_text: Полный текст из источника о составе.\n---\n\nОписание состава.',
+    );
+    const root = writeCorpus({
+      categories: { 'digestive-herbs': CATEGORY },
+      herbs: { 'tib-haritaki': HERB },
+      combinations: { 'tib-formula-agar-8': verbose },
+    });
+
+    expect(() => loadContent(root)).not.toThrow();
+    const combo = loadContent(root).combinations.byId.get('tib-formula-agar-8');
+    expect(combo?.composition).toEqual([]);
+    expect(combo?.sourceText).toBe('Полный текст из источника о составе.');
+  });
+
+  it('parses verbose source fields (indications, traditionalUse, dosingNotes)', () => {
+    const verbose = COMBINATION.replace(
+      'sources:\n  - https://manla.ru/herbs/',
+      [
+        'indications:',
+        '  - жар сердца',
+        '  - бессонница',
+        'traditional_use:',
+        '  - применяли при расстройствах Ветра',
+        'dosing_notes:',
+        '  - принимать по 0,1-0,2 г',
+        'sources:',
+        '  - https://manla.ru/herbs/',
+      ].join('\n'),
+    );
+    const root = writeCorpus({
+      categories: { 'digestive-herbs': CATEGORY },
+      herbs: { 'tib-haritaki': HERB },
+      combinations: { 'tib-formula-agar-8': verbose },
+    });
+
+    const combo = loadContent(root).combinations.byId.get('tib-formula-agar-8');
+    expect(combo?.indications).toEqual(['жар сердца', 'бессонница']);
+    expect(combo?.traditionalUse).toEqual(['применяли при расстройствах Ветра']);
+    expect(combo?.dosingNotes).toEqual(['принимать по 0,1-0,2 г']);
   });
 
   it('rejects duplicate combination ids', () => {
@@ -153,6 +201,19 @@ describe('buildIndex — combinations', () => {
       nameOriginal: 'A gar 8',
       memberCount: 1,
       sourceCount: 1,
+      hasIndications: false,
     });
+  });
+
+  it('flags hasIndications when verbose indications are present', () => {
+    const verbose = COMBINATION.replace('themes:', 'indications:\n  - жар сердца\nthemes:');
+    const root = writeCorpus({
+      categories: { 'digestive-herbs': CATEGORY },
+      herbs: { 'tib-haritaki': HERB },
+      combinations: { 'tib-formula-agar-8': verbose },
+    });
+
+    const index = buildIndex(loadContent(root));
+    expect(index.combinations[0]?.hasIndications).toBe(true);
   });
 });

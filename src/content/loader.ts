@@ -111,6 +111,9 @@ function parseCombination(doc: RawDoc): Combination {
     );
   }
   const members = strArray(doc, 'members');
+  const indications = strArray(doc, 'indications');
+  const traditionalUse = strArray(doc, 'traditional_use');
+  const dosingNotes = strArray(doc, 'dosing_notes');
   const combination: Combination = {
     id: reqString(doc, 'id'),
     tradition: tradition as Tradition,
@@ -123,7 +126,11 @@ function parseCombination(doc: RawDoc): Combination {
     sources: strArray(doc, 'sources'),
     body: doc.body,
     ...optString(doc, 'name_original', 'nameOriginal'),
+    ...optString(doc, 'source_text', 'sourceText'),
     ...(members.length > 0 ? { members } : {}),
+    ...(indications.length > 0 ? { indications } : {}),
+    ...(traditionalUse.length > 0 ? { traditionalUse } : {}),
+    ...(dosingNotes.length > 0 ? { dosingNotes } : {}),
   };
   return combination;
 }

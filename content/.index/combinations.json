@@ -10,7 +10,8 @@
       "пряный"
     ],
     "memberCount": 0,
-    "sourceCount": 1
+    "sourceCount": 1,
+    "hasIndications": false
   },
   {
     "id": "tib-formula-agar-15",
@@ -24,6 +25,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "А-гар-бчо-лнга"
   },
   {
@@ -38,6 +40,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Agar 17"
   },
   {
@@ -52,6 +55,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Agar 20"
   },
   {
@@ -66,6 +70,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Agar 24 Lamed"
   },
   {
@@ -80,6 +85,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "А-гар-со-лнга (Цхангс-лха)"
   },
   {
@@ -94,6 +100,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "А-гар-бргйад-па"
   },
   {
@@ -108,6 +115,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Aru 10 / Ар 10"
   },
   {
@@ -122,6 +130,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "А-ру-бчо-брйад (А-ру-заг-гчод)"
   },
   {
@@ -136,6 +145,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "'б'а-сам-лха-лунг ('б'а-сам, А-ру-нйэр-бжи, Лха-лунг)"
   },
   {
@@ -149,6 +159,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Aru 7"
   },
   {
@@ -163,6 +174,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Гсал-бйэд-а-ва-бчо-лнга"
   },
   {
@@ -177,6 +189,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Ба Спру 7"
   },
   {
@@ -191,6 +204,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Би-ма-ла, дза-ти-нйи-шу (Bimala, Dzati-20)"
   },
   {
@@ -204,6 +218,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Бйи-танг-бдун-па (Жиданга 7)"
   },
   {
@@ -217,6 +232,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Bragjun-9"
   },
   {
@@ -231,6 +247,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Brega 13 / Бираг 13 (монг.)"
   },
   {
@@ -245,6 +262,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "RINCHEN CHAKRIL CHENMO"
   },
   {
@@ -259,6 +277,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Chini Aru 18"
   },
   {
@@ -273,6 +292,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Чисин / Чимед Сринсел / Чисен"
   },
   {
@@ -287,6 +307,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Mandarava Chudlen"
   },
   {
@@ -301,6 +322,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Чу-ганг-нйэр-лнга (Cugang 25)"
   },
   {
@@ -315,6 +337,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Chuna Nila"
   },
   {
@@ -329,6 +352,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Гцо-бо-нйэр-лнга, Ва-гло-нйэр-лнга (Tsovo 25)"
   },
   {
@@ -343,6 +367,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Зла-шэл-бдуд-рци-ма, Зла-бдуд, Лчагс-пхйэ-бдун-па (Dadud)"
   },
   {
@@ -357,6 +382,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Да-ли-бчу-друг"
   },
   {
@@ -371,6 +397,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Да-ли-бчо-бргйад (Dali-18)"
   },
   {
@@ -385,6 +412,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Danma chu dran"
   },
   {
@@ -399,6 +427,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Зла-шэл-со-бдун (зла-шэл-мйу-гу'и-сбйор, зла-шэл)"
   },
   {
@@ -413,6 +442,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Denyom"
   },
   {
@@ -427,6 +457,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Бдэ-смйуг (Чонг-жи-бчу-бдун)"
   },
   {
@@ -441,6 +472,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Груб-тхоб-рил-дкар (Drubril / Jubril, Друптоп Рилкар)"
   },
   {
@@ -455,6 +487,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "рдо-раб, рдор-рдже-раб-'джомс"
   },
   {
@@ -469,6 +502,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "RINCHEN DRANGJOR"
   },
   {
@@ -483,6 +517,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Бдуд-рци-'чхи-гсос, Гло-гсос (Bdud-rci-'chi-gsos, Glo-gsos)"
   },
   {
@@ -497,6 +532,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Dugsel Degu"
   },
   {
@@ -511,6 +547,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "дза-ти-бчу-бжи"
   },
   {
@@ -525,6 +562,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "дза-ти-нга-па"
   },
   {
@@ -539,6 +577,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Чонг-жи-нйэр-гчиг"
   },
   {
@@ -553,6 +592,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Чонг-жи-друк-па (тиб.)"
   },
   {
@@ -567,6 +607,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Gavar 25"
   },
   {
@@ -581,6 +622,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Galomenmar"
   },
   {
@@ -595,6 +637,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Гар-наг-бчу-па (Гар-пхйогс, Гранг-мкхрис-бчу-па)"
   },
   {
@@ -609,6 +652,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Garuda-5; Кхйунг-лнга; Гла-рци-лнга-па"
   },
   {
@@ -623,6 +667,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Ги-ванг-дгу-па (Giwan 9)"
   },
   {
@@ -637,6 +682,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Goniod 5"
   },
   {
@@ -651,6 +697,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Гоюн Дэпак"
   },
   {
@@ -665,6 +712,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Го-йу-нйэр-бргйад"
   },
   {
@@ -679,6 +727,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Го-йу-бдун-па"
   },
   {
@@ -693,6 +742,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Ргун-'брум-бдун-па"
   },
   {
@@ -707,6 +757,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Гур-гум-бчу-гсум"
   },
   {
@@ -720,6 +771,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "гур-гум-мчхог-бдун"
   },
   {
@@ -734,6 +786,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "гур-гум-бргйад-па; Кхраг-гчод-гур-гум-бргйад-па"
   },
   {
@@ -747,7 +800,8 @@
       "суставы"
     ],
     "memberCount": 1,
-    "sourceCount": 1
+    "sourceCount": 1,
+    "hasIndications": false
   },
   {
     "id": "tib-formula-gyamca-4",
@@ -760,6 +814,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Ргйам-цхва-бжи-тханг, Чха-мнйам-бжи-тханг"
   },
   {
@@ -774,6 +829,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Ргйа-ру-бчу-бжи (Gyaru 14)"
   },
   {
@@ -788,6 +844,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Зема сум тхан"
   },
   {
@@ -801,6 +858,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Indra 4"
   },
   {
@@ -814,7 +872,8 @@
       "слизистая"
     ],
     "memberCount": 0,
-    "sourceCount": 1
+    "sourceCount": 1,
+    "hasIndications": false
   },
   {
     "id": "tib-formula-Jumar-25",
@@ -828,6 +887,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "RINCHEN JUMAR 25"
   },
   {
@@ -842,6 +902,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Yungba-4"
   },
   {
@@ -856,6 +917,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Ко-ла-бчу-бду (ка-кол-бчуг-бду)"
   },
   {
@@ -870,6 +932,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Скйэр-шун-бргйад-па (Skyer-shun-brgyad-pa), Са-ра'и-мйонг-груб"
   },
   {
@@ -884,6 +947,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Кха-ру-цхва-лнга-тханг"
   },
   {
@@ -898,6 +962,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Ко-бйи-бчу-гсум"
   },
   {
@@ -911,6 +976,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Ко-ла-бчу-гчиг (ka-kol bcu-gcig)"
   },
   {
@@ -925,6 +991,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Гагал 4 / Kola 4"
   },
   {
@@ -939,6 +1006,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Sebru Kunde"
   },
   {
@@ -953,6 +1021,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Skyu-ru-nyer-lnga, Khrag-shed-snyoms-ldan"
   },
   {
@@ -967,6 +1036,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Letre 2"
   },
   {
@@ -981,6 +1051,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Letre 5"
   },
   {
@@ -995,6 +1066,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Lishi 11 / Ligun 11"
   },
   {
@@ -1009,6 +1081,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Lishi 6"
   },
   {
@@ -1023,6 +1096,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Гло-цхад-кун-сэл"
   },
   {
@@ -1037,6 +1111,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Клу-бдуд-бчо-бргйад (klu-bdud bco-brgyad)"
   },
   {
@@ -1051,6 +1126,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Луг-мур-бдун-па"
   },
   {
@@ -1065,6 +1141,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Сман-наг-чхэн-мо (Manag Chenbo)"
   },
   {
@@ -1079,6 +1156,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Rinchen Mandjor Chenmo"
   },
   {
@@ -1093,6 +1171,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Manushitan"
   },
   {
@@ -1107,6 +1186,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Marpo 3"
   },
   {
@@ -1121,6 +1201,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Дмар-тханг-бчу-гчиг"
   },
   {
@@ -1134,6 +1215,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "mDzo-mo-6 (Замошин 6)"
   },
   {
@@ -1148,6 +1230,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Ман-нгаг-бсил-сбйор"
   },
   {
@@ -1162,6 +1245,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Му-тиг-нйэр-лнга (Ман-ргйуд-му-тиг-нйэр-лнга)"
   },
   {
@@ -1176,6 +1260,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Nenbo 18"
   },
   {
@@ -1190,6 +1275,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Нгулчу 18"
   },
   {
@@ -1204,6 +1290,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Sebru Nikil"
   },
   {
@@ -1218,6 +1305,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Нор-бу-бдун-тханг"
   },
   {
@@ -1232,6 +1320,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Olse 25"
   },
   {
@@ -1246,6 +1335,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Pakdrub"
   },
   {
@@ -1260,6 +1350,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "спанг-рци-бчу-нйи"
   },
   {
@@ -1274,6 +1365,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "спан-ргьен-бчо-лнга"
   },
   {
@@ -1288,6 +1380,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Пхан-па-кун-лдан"
   },
   {
@@ -1301,6 +1394,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Спос-дкар-бчу-па (Pokar-10)"
   },
   {
@@ -1315,6 +1409,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Спос-кхйунг-бчо-лнга, Спос-рци-бчо-лнга (Pokiung-15)"
   },
   {
@@ -1329,6 +1424,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Rashinamzhil"
   },
   {
@@ -1343,6 +1439,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Ratna Samphel / Рин-чен Рат-на Бсам-'пхэл"
   },
   {
@@ -1357,6 +1454,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Ру-рта-друг-па (M6)"
   },
   {
@@ -1371,6 +1469,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Samkiung"
   },
   {
@@ -1385,6 +1484,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Бсам-'пхэл-нор-бу (Бсам-нор)"
   },
   {
@@ -1399,6 +1499,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "тиб. Са-ра'и-бйа-кхйунг-'дзаг-сдом (Сар-кхйунг, Са-ра'и-бйа-кхйунг, А-ру-бчу-бдун, Са-ра'и-кхйунг-лнга); монг. Саричун"
   },
   {
@@ -1413,6 +1514,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Сэмбэруу 5"
   },
   {
@@ -1427,6 +1529,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Se-'bru lnga-pa (Себру Дане, Данма-5)"
   },
   {
@@ -1441,6 +1544,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Сэмс-бдэ, Сэмс-кйи-бдэ-скйид (Semde)"
   },
   {
@@ -1455,6 +1559,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Цан-дан-бчо-бргйад (Tsenden-18)"
   },
   {
@@ -1469,6 +1574,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Сэнг-лдэнг-нйэр-гсум"
   },
   {
@@ -1483,6 +1589,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Сэнг-лдэнг-нйэр-лнга"
   },
   {
@@ -1497,6 +1604,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Сэнг-лдэнг-бжи-па"
   },
   {
@@ -1511,6 +1619,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Гсэр-дог-бчу-чиг"
   },
   {
@@ -1524,6 +1633,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Гсэр-мдог-лнга-па"
   },
   {
@@ -1538,6 +1648,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Бсэ-ру-нйэр-лнга / Ша-рва-нйэр-лнга / Гва-дор-нйэр-лнга (Seru 25)"
   },
   {
@@ -1552,6 +1663,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Жим-шинг-друк-па"
   },
   {
@@ -1566,6 +1678,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Шинг-кун-нйэр-лнга (Shing kun nyer lnga)"
   },
   {
@@ -1580,6 +1693,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Shiru"
   },
   {
@@ -1594,6 +1708,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Жи-гсэр (Zhi-gser) / Гсэр-жи (Gser-zhi)"
   },
   {
@@ -1607,6 +1722,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Жи-бйэд-бчу-гчиг (Скйэ-зуг-рил-бу)"
   },
   {
@@ -1621,6 +1737,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Жи-бйэд-друг-па (жи-бйэд-дкар-по-друг-па)"
   },
   {
@@ -1635,6 +1752,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Скйу-ру-нйэр-лнга, Кхраг-шэд-снйомс-лдан"
   },
   {
@@ -1649,6 +1767,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "'джу-бйэд-нйи-ма 'и-дкил-'кхор; Ро-ца-бчуд-лэн-дкйил-'кхор"
   },
   {
@@ -1663,6 +1782,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Sorolo 4 / Сроло 4"
   },
   {
@@ -1677,6 +1797,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Srogdzin 11"
   },
   {
@@ -1691,6 +1812,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Срог-'дзин-нор-бу (монг. Сорогзинноров)"
   },
   {
@@ -1705,6 +1827,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Сугмэл 10 / Sugmel 10"
   },
   {
@@ -1719,6 +1842,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Sugmel 7"
   },
   {
@@ -1733,6 +1857,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Стар-бу-нга-па"
   },
   {
@@ -1747,6 +1872,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Рта-зи-дмар-по (Бсил-сбйор-бчо-лнга, Рта-бзи-дмар-по)"
   },
   {
@@ -1761,6 +1887,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Tsowo 8"
   },
   {
@@ -1774,6 +1901,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Тенджём"
   },
   {
@@ -1788,6 +1916,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Тханчен 10 / Tanchen 10"
   },
   {
@@ -1802,6 +1931,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 2,
+    "hasIndications": false,
     "nameOriginal": "Тханчен 25"
   },
   {
@@ -1816,6 +1946,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Tigta 25 (Дэгд 25)"
   },
   {
@@ -1830,6 +1961,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Tigta 8 / Дэгд 8"
   },
   {
@@ -1844,6 +1976,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Трагшик Дордже Пхалам"
   },
   {
@@ -1858,6 +1991,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Гапипо"
   },
   {
@@ -1872,6 +2006,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Гурван Урийн тан (Бребусум тан, Бребу 3)"
   },
   {
@@ -1886,6 +2021,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "RINCHEN TSAJOR CHENMO"
   },
   {
@@ -1900,6 +2036,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "RINCHEN TSO-TU DASHEL (TSO-TRU DASHEL)"
   },
   {
@@ -1913,6 +2050,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "дБанг-по-кун-сэл, Дбанг-кун (Wangpo Kunsel)"
   },
   {
@@ -1927,6 +2065,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Wanlak 10"
   },
   {
@@ -1941,6 +2080,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Wanlak 37"
   },
   {
@@ -1955,6 +2095,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Кхйунг-лнга, Гла-рци-лнга-па (Yangchen Rilbu Saraswati)"
   },
   {
@@ -1969,6 +2110,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "RINCHEN YUNYING 25"
   },
   {
@@ -1983,6 +2125,7 @@
     ],
     "memberCount": 0,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Гйу-рил-бчу-гсум"
   },
   {
@@ -1997,6 +2140,7 @@
     ],
     "memberCount": 1,
     "sourceCount": 1,
+    "hasIndications": false,
     "nameOriginal": "Са-ра'и-бйа-кхйунг-бчу-гсум"
   }
 ]
