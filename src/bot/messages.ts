@@ -98,4 +98,9 @@ export const messages = {
     /** Wraps a daily-tip body pulled from content. */
     daily: (body: string): string => `🌿 Совет дня\n\n${body}`,
   },
+
+  notify: {
+    /** Inline-button label for the herb cross-link CTA attached to a notification. */
+    openCta: '📖 Открыть',
+  },
 } as const;

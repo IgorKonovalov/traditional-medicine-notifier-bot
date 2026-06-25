@@ -15,6 +15,7 @@ import { Markup, type Telegraf } from 'telegraf';
 
 import { getTelegramId, markInactive } from '../db/repositories/user.repo';
 import { getLogger } from '../logger';
+import { messages } from './messages';
 import { withRetry } from '../utils/retry';
 import type {
   NotificationCta,
@@ -48,7 +49,9 @@ export function createTelegrafNotifier(bot: Telegraf): Notifier {
 
 function buildCta(cta: NotificationCta): ReturnType<typeof Markup.inlineKeyboard> {
   // The bot's callback router resolves `herb:<id>` to a herb page.
-  return Markup.inlineKeyboard([[Markup.button.callback('📖 Открыть', `herb:${cta.herbId}`)]]);
+  return Markup.inlineKeyboard([
+    [Markup.button.callback(messages.notify.openCta, `herb:${cta.herbId}`)],
+  ]);
 }
 
 /**
