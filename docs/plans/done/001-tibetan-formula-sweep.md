@@ -1,8 +1,8 @@
 # Plan 001 — Tibetan formula content sweep (manla.ru + bimala.ru)
 
-**Status:** Approved
+**Status:** Completed
 **Created:** 2026-06-23
-**Completed:** —
+**Completed:** 2026-06-25
 **Bump on close:** minor
 
 ## Context
@@ -200,8 +200,29 @@ dev skills.
 ## Progress
 
 - [x] Phase 1 — Content model & infrastructure (ae58179)
-- [ ] Phase 2 — Source reconnaissance & manifest
-- [ ] Phase 3 — Deep crawl & normalization
-- [ ] Phase 4 — Compliance transform
-- [ ] Phase 5 — Authoring & integration
-- [ ] Phase 6 — Validation & close
+- [x] Phase 2 — Source reconnaissance & manifest (working artifact: scratchpad/formula-manifest.json)
+- [x] Phase 3 — Deep crawl & normalization (155/155 bimala pages; 26 manla; 144 with composition)
+- [x] Phase 4 — Compliance transform (indications → descriptive themes; adversarial verify pass)
+- [x] Phase 5 — Authoring & integration (144 `content/combinations/*.md`)
+- [x] Phase 6 — Validation & close
+
+## Outcome
+
+**144 Tibetan formula records** authored under `content/combinations/`, swept from
+manla.ru + bimala.ru, deduped to canonical `tib-formula-*` ids. Each is descriptive
+(indications reframed as "традиционно связывают с…" themes; dosing/prices/diagnoses
+stripped via an adversarial compliance pass + a post-render meta-strip), with member
+ingredients cross-linked to `tib-haritaki` where terminalia chebula appears.
+
+**Decisions taken mid-flight:** excluded the modern "Дакнанг" line, kits, and the
+pill-grinder; included rinchens/chudlen; kept symptom-level themes ("keep more
+detail"); proceeded on the gaps as-is (manla at 26/53; bimala-with-composition only).
+
+**Coverage gaps (logged, not authored):** 11 formulas had no published composition
+(8 classical + 3 rinchens) — can't satisfy the non-empty-`composition` invariant.
+~4 manla-only formulas (blonpo-3, sposkar-10, tsarbong-5, chongzhi-6) and the manla
+27/53 shortfall remain a backlog. Herb-stub backlog (non-`tib-haritaki` ingredients
+lacking a `Herb` page) also deferred.
+
+**Follow-ups:** bot UX for browsing/searching combinations; herb-stub authoring;
+optional manla repair + the no-composition formulas.
