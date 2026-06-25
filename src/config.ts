@@ -64,7 +64,7 @@ export function loadConfig(): Config {
     dbPath: optionalEnv('DB_PATH', './data/tm-bot.db'),
     contentDir: optionalEnv('CONTENT_DIR', './content'),
     logLevel: optionalEnv('LOG_LEVEL', 'info'),
-    timezone: optionalEnv('TIMEZONE', 'Europe/Belgrade'),
+    timezone: assertValidTimezone(optionalEnv('TIMEZONE', 'UTC')),
     reminderTickCron: optionalEnv('REMINDER_TICK_CRON', '* * * * *'),
     dailyTipCron: optionalEnv('DAILY_TIP_CRON', '0 9 * * *'),
     backupDir: optionalEnv('BACKUP_DIR', '/var/backups/traditional-medicine-notifier-bot'),
@@ -95,6 +95,23 @@ export function parseAdminTelegramIds(raw: string | undefined): {
     }
   }
   return { ids, malformed };
+}
+
+/**
+ * Validates an IANA time-zone name by asking `Intl` to build a formatter for
+ * it — an unknown zone throws a `RangeError`. Keeps config fail-fast so a typo
+ * in `TIMEZONE` surfaces at boot, not at the first scheduled dispatch.
+ * Exported so tests can drive the edge cases without mutating `process.env`.
+ */
+export function assertValidTimezone(tz: string): string {
+  try {
+    new Intl.DateTimeFormat('en-US', { timeZone: tz });
+  } catch {
+    throw new Error(
+      `Invalid TIMEZONE ${JSON.stringify(tz)}: must be a valid IANA time-zone name (e.g. "UTC", "Europe/Moscow", "Asia/Shanghai").`,
+    );
+  }
+  return tz;
 }
 
 function requireEnv(key: string): string {
