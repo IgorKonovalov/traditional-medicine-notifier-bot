@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.3.0 — 2026-06-25
+
+- Re-extract the Tibetan formula corpus verbosely (ADR 006): 163
+  `content/combinations/` records now carry full source indications, traditional
+  use, dosing notes, and verbatim text behind a doctor-review production gate
+  (`docs/medical-review.md`). The disclaimer is now appended by the bot at render
+  time instead of baked into each content file.
+
 ## 0.2.0 — 2026-06-25
 
 - Add the `combinations` content type (ADR 005) and sweep 144 Tibetan compound

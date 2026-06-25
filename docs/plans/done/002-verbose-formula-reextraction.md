@@ -1,8 +1,8 @@
 # Plan 002 — Verbose formula re-extraction (doctor-gated)
 
-**Status:** Approved
+**Status:** Completed
 **Created:** 2026-06-25
-**Completed:** —
+**Completed:** 2026-06-25
 **Bump on close:** minor
 
 ## Context
@@ -133,5 +133,19 @@ Related: ADR 006 (governing), ADR 005 (superseded for combinations), ADR 002 (am
 - [x] Phase 1 — Policy, schema & disclaimer infra
 - [x] Phase 2 — Full verbatim re-crawl (bimala 155/155, manla 53/53; research/raw-crawl-verbose.json)
 - [x] Phase 3 — Verbose authoring & integration (163 content/combinations/*.md)
-- [ ] Phase 4 — Doctor-review handoff & gate
-- [ ] Phase 5 — Validation & close
+- [x] Phase 4 — Doctor-review handoff & gate (docs/medical-review.md)
+- [x] Phase 5 — Validation & close
+
+## Outcome
+
+**163 verbose combination records** under `content/combinations/`, re-extracted from
+full verbatim re-crawl (bimala 155/155, manla 53/53). Each carries structured
+`indications` / `traditional_use` / `dosing_notes` / `composition` / `cautions` plus
+a verbatim two-source body — **non-sanitised**, no baked disclaimer (bot-appended).
+Schema relaxed so composition-less formulas persist via `source_text`. New since the
+descriptive set: the 11 composition-less formulas + 8 manla-only formulas.
+
+**Production gate is OPEN and owner-managed** (`docs/medical-review.md`): nothing
+ships to production until the practitioner review + owner sign-off. No in-code
+`reviewed` flag (owner will report). Дакнанг/kits excluded; message-splitting and a
+combinations bot command remain separate follow-ups. Released as **v0.3.0**.

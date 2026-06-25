@@ -37,7 +37,7 @@ Nothing in the domain imports Telegraf or `src/bot/` (ADR 003, ESLint-enforced).
 | `db/connection.ts` · `schema.ts` (migration 001) · `test-helper.ts` | ✅ | WAL, additive migrations, in-memory test DB |
 | `db/repositories/*` | ✅ | user, reminder, subscription, notification-log, session, donations |
 | `content/types.ts` · `loader.ts` · `validate.ts` · `index-builders.ts` | ✅ | loads herbs/**combinations**/categories/tips; builds `.index/` |
-| `content/combinations/*` (144 Tibetan formulas) | ✅ | compound-formula content type (ADR 005); descriptive-only, member→herb cross-refs |
+| `content/combinations/*` (163 Tibetan formulas) | ✅ | compound-formula content type (ADR 005); **verbose, non-sanitised staging corpus** behind the doctor-review gate (ADR 006, `docs/medical-review.md`) |
 | `notifications/types.ts` · `recurrence.ts` · `scheduler.ts` | ✅ | pure; recurrence is tz-aware, unit-tested |
 | `services/notifier.ts` (interface) | ✅ | the seam |
 | `services/notification-budget.ts` | ✅ | ≤1 proactive/user/day (ADR 004) |
