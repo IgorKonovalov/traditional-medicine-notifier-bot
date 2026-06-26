@@ -261,12 +261,13 @@ verbatim capture → label-split → diff vs current frontmatter → reconcile) 
 - [x] Phase 1 — Prune corpus & reproducible review tooling (#2)
   — `b0e4430` (gitignore research sources), `4d17c1d` (prune 11 → corpus 150),
   `609f23c` (committed `scripts/build-formula-review.ts` + `npm run content:review`)
-- [~] Phase 2 — Faithful manla re-crawl & fidelity restoration (#9)
-  — diagnosis done (see "Phase 2 diagnosis" above). Capture done `46c7093`:
-  multi-agent Workflow re-captured 150/150 (0 failures), agar-35 recovery gate
-  passed, `research/raw-crawl-verbose-v2.json` committed (every record fuller
-  than v1; 66 nature values recovered). **Reconcile into content/ markdown
-  pending** (next reviewed step).
+- [x] Phase 2 — Faithful manla re-crawl & fidelity restoration (#9)
+  — diagnosis (see "Phase 2 diagnosis" above); capture `46c7093` (Workflow
+  re-captured 150/150, 0 failures, agar-35 gate passed,
+  `research/raw-crawl-verbose-v2.json`); reconcile `ece7f35` (manla-canonical:
+  all 150 rewritten from the authoritative capture — verbose fields restored,
+  body = verbatim `## Источник: <host>`). Owner decision: for the 47
+  dual-source formulas manla is canonical, bimala embellishments dropped.
 - [ ] Phase 3 — Structured model extensions (#1 nature, #4 rinchen category + ADR 007)
 - [ ] Phase 4 — Content normalization (#7, #6, #3, #8)
 - [ ] Phase 5 — Review render & re-audit handoff (#5 + surface #1/#4)
