@@ -120,11 +120,13 @@ function qualOf(tags: readonly string[]): string {
   return 'complete';
 }
 
-function searchAttr(c: Combination, entry: MatchEntry | undefined): string {
+function searchAttr(c: Combination, entry: MatchEntry | undefined, catName: string | undefined): string {
   const parts = [
     c.nameRu,
     c.nameOriginal ?? '',
     c.id,
+    catName ?? '',
+    c.nature ?? '',
     ...c.composition,
     ...(c.indications ?? []),
     entry?.candidates[0]?.name ?? '',
@@ -132,19 +134,35 @@ function searchAttr(c: Combination, entry: MatchEntry | undefined): string {
   return esc(parts.join(' ').toLowerCase());
 }
 
-function renderCard(c: Combination, tier: Tier, entry: MatchEntry | undefined): string {
+function valueField(label: string, value: string | undefined): string {
+  if (!value) return '';
+  return `<div class="field "><div class="flabel">${label}</div><div>${esc(value)}</div></div>`;
+}
+
+function renderCard(
+  c: Combination,
+  tier: Tier,
+  entry: MatchEntry | undefined,
+  catNameById: ReadonlyMap<string, string>,
+): string {
   const qual = qualOf(c.tags);
+  const catBadge = c.category
+    ? `<span class="badge cat">${esc(catNameById.get(c.category) ?? c.category)}</span>`
+    : '';
   const badges =
     TIER_BADGE[tier] +
+    catBadge +
     (qual !== 'complete' ? `<span class="badge qual">${qual}</span>` : '') +
     `<span class="badge meta">${c.composition.length} ingr.</span>`;
   const norig = c.nameOriginal ? `<div class="norig">${esc(c.nameOriginal)}</div>\n    ` : '';
 
+  // Field order (#5): Traditional use → Показания → Природа → Состав → … .
   const fields = [
+    listField('Traditional use', c.traditionalUse ?? []),
+    listField('Показания', c.indications ?? []),
+    valueField('Природа', c.nature),
     listField('Состав', c.composition),
     listField('Members (herb ids)', c.members ?? []),
-    listField('Показания', c.indications ?? []),
-    listField('Traditional use', c.traditionalUse ?? []),
     listField('Dosing notes', c.dosingNotes ?? []),
     listField('Cautions', c.cautions),
     sourcesField(c.sources),
@@ -154,7 +172,8 @@ function renderCard(c: Combination, tier: Tier, entry: MatchEntry | undefined): 
   ].filter((f) => f !== '');
   const body = fields.map((f) => `    ${f}`).join('\n');
 
-  return `<article class="card" data-trad="${c.tradition}" data-tier="${tier}" data-qual="${qualOf(c.tags)}" data-search="${searchAttr(c, entry)}">
+  const catName = c.category ? catNameById.get(c.category) : undefined;
+  return `<article class="card" data-trad="${c.tradition}" data-tier="${tier}" data-cat="${c.category ?? ''}" data-qual="${qualOf(c.tags)}" data-search="${searchAttr(c, entry, catName)}">
   <header class="chead">
     <h2>${esc(c.nameRu)}</h2>
     ${norig}<div class="badges">${badges}</div>
@@ -192,6 +211,7 @@ main{padding:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(340
 .badge{font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--bd);color:var(--mut)}
 .badge.meta{color:#9aa4b8}
 .badge.qual{color:#ffd27d;border-color:#5a4a1f;background:#2a2310}
+.badge.cat{color:#d7a3ff;border-color:#5a3a7a;background:#1e1430}
 .tier-identity{color:#7ee2a8;border-color:#235e3f;background:#10241a}
 .tier-component{color:#9ec5ff;border-color:#284a7a;background:#101a2a}
 .tier-possible{color:#e0c06a;border-color:#5a4a1f;background:#221c0e}
@@ -216,7 +236,7 @@ pre{white-space:pre-wrap;background:#0c0e13;border:1px solid var(--bd);border-ra
 </style>`;
 
 const SCRIPT = `<script>
-const F={trad:"",tier:"",qual:""};
+const F={trad:"",tier:"",qual:"",cat:""};
 const q=document.getElementById('q'),main=document.getElementById('main'),countEl=document.getElementById('count');
 const cards=[...document.querySelectorAll('.card')];
 function apply(){
@@ -227,6 +247,7 @@ function apply(){
     if(F.trad && c.dataset.trad!==F.trad) ok=false;
     if(ok && F.tier && c.dataset.tier!==F.tier) ok=false;
     if(ok && F.qual && c.dataset.qual!==F.qual) ok=false;
+    if(ok && F.cat && c.dataset.cat!==F.cat) ok=false;
     if(ok && term && !c.dataset.search.includes(term)) ok=false;
     c.classList.toggle('hidden',!ok);
     if(ok) n++;
@@ -267,6 +288,9 @@ function header(summary: string): string {
     <span class="fbtn group" data-g="qual" data-v="complete">complete</span>
     <span class="fbtn group" data-g="qual" data-v="incomplete-composition">incomplete</span>
     <span class="fbtn group" data-g="qual" data-v="composition-non-itemized">non-itemized</span>
+    <span style="width:10px"></span>
+    <span class="fbtn group active" data-g="cat" data-v="">any class</span>
+    <span class="fbtn group" data-g="cat" data-v="rinchen-pills">rinchen</span>
   </div>
 </header>`;
 }
@@ -286,6 +310,10 @@ function main(): void {
     matchById.set(e.corpus.id, e);
   }
 
+  const catNameById = new Map<string, string>();
+  for (const cat of content.categories.all) catNameById.set(cat.id, cat.nameRu);
+  const rinchenCount = combos.filter((c) => c.category === 'rinchen-pills').length;
+
   const counts: Record<Tier, number> = { identity: 0, component: 0, possible: 0, none: 0 };
   let tib = 0;
   let chi = 0;
@@ -304,10 +332,10 @@ function main(): void {
   const summary =
     `${combos.length} formulas · tibetan ${tib} / chinese ${chi} · ` +
     `identity ${counts.identity} · component ${counts.component} · possible ${counts.possible} · ` +
-    `no-canon ${counts.none} · incomplete ${incomplete} · non-itemized ${nonItemized}`;
+    `no-canon ${counts.none} · incomplete ${incomplete} · non-itemized ${nonItemized} · rinchen ${rinchenCount}`;
 
   const cards = combos
-    .map((c) => renderCard(c, tierById.get(c.id) ?? 'none', matchById.get(c.id)))
+    .map((c) => renderCard(c, tierById.get(c.id) ?? 'none', matchById.get(c.id), catNameById))
     .join('\n');
 
   const html =
