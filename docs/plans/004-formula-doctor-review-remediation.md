@@ -271,6 +271,12 @@ verbatim capture → label-split → diff vs current frontmatter → reconcile) 
 - [x] Phase 3 — Structured model extensions (#1 nature, #4 rinchen category + ADR 007)
   — `177b48c`: `nature` field (66 populated) + generic combination `category`
   (ADR 007, `rinchen-pills` × 8); index gains `combinationCount`; +4 tests.
-- [ ] Phase 4 — Content normalization (#7, #6, #3, #8)
-- [ ] Phase 5 — Review render & re-audit handoff (#5 + surface #1/#4)
+- [x] Phase 4 — Content normalization (#7, #6, #3, #8)
+  — `6340b40`: #7 rename; #6 ingredients Russian-first (487 flips, 46 translated,
+  5 flagged for doctor); #3 cautions de-boilerplated (305 lines dropped, 100
+  fields cleared, specifics kept); #8 cap-first + sentence-case (TM terms safe).
+- [x] Phase 5 — Review render & re-audit handoff (#5 + surface #1/#4)
+  — generator reorders card fields (Traditional use → Показания → Природа →
+  Состав → …), surfaces «Природа» + the rinchen category badge, adds a rinchen
+  filter + summary count; `formula-review.html` regenerated (150 cards).
 - [ ] Phase 6 — Validation & close
