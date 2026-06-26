@@ -188,7 +188,9 @@ Run **after** Phase 2 so we normalize restored, not stale, text.
 
 ## Progress
 
-- [ ] Phase 1 — Prune corpus & reproducible review tooling (#2)
+- [x] Phase 1 — Prune corpus & reproducible review tooling (#2)
+  — `b0e4430` (gitignore research sources), `4d17c1d` (prune 11 → corpus 150),
+  `609f23c` (committed `scripts/build-formula-review.ts` + `npm run content:review`)
 - [ ] Phase 2 — Faithful manla re-crawl & fidelity restoration (#9)
 - [ ] Phase 3 — Structured model extensions (#1 nature, #4 rinchen category + ADR 007)
 - [ ] Phase 4 — Content normalization (#7, #6, #3, #8)
