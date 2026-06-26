@@ -158,6 +158,76 @@ Run **after** Phase 2 so we normalize restored, not stale, text.
   + ADR 007; update `docs/medical-review.md` (fidelity-restored, still gated);
   semver **minor** bump; move plan to `done/`.
 
+## Phase 2 diagnosis — crawl-fidelity root cause (2026-06-26)
+
+**Verdict:** the Plan 002 "full verbatim re-crawl" was **not verbatim**.
+Extraction was delegated to **LLM agents** (multi-agent fan-out; no committed
+deterministic parser exists), and the model **condensed, relabeled, and
+reordered** each formula section — dropping trailing sentences and tail
+indications. The raw JSON `sourceText` is a **model-generated paraphrase**, not
+source bytes; **manla.ru live is authoritative**.
+
+### Evidence
+
+1. **No deterministic parser to re-run.** Both crawls ran as ad-hoc Workflow
+   fan-outs — `raw-crawl.json` carries `agentCount: 161` and
+   `summary: "Deep-crawl … into structured raw records"`; Plan 002 Phase 2 is
+   labelled "batched workflow fan-out". The "parser" *was* an LLM.
+2. **`sourceText` is a generated field, not page text.**
+   - 4/155 bimala records are 100% synthetic templates
+     (`Русское название: … Состав: … Основной текст: …`) — field labels no source
+     page emits.
+   - manla output is **non-uniform under one pipeline**: only 3/53 reorder
+     «Свойство» ahead of «Показания»; the native manla field **«Сущность»**
+     (gurgum-13, aru-10) is silently relabeled to «Свойство» in agar-35; some
+     records preserve page line-breaks, others (agar-35) are reflowed to a single
+     paragraph. A deterministic DOM slice produces uniform structure — this
+     variance is an LLM fingerprint.
+   - `sourceText` length spans **391–2322 chars** (median 1049) with no fixed cap
+     → not a byte/length truncation.
+3. **agar-35 specifically.** Captured manla `sourceText` (1281 ch) is reordered to
+   `… Свойство: нейтральная. <action sentence> Показания: …гипертонический криз,
+   сердцебиение. Время приёма…` — it ends Показания at "сердцебиение." and keeps
+   only the *first* action sentence. Live manla additionally carries a second
+   action sentence ("Обладает общеукрепляющим, тонизирующим действием…") and a
+   longer Показания tail («лёгочные проблемы (… астма, удушье)», «головную боль от
+   Ветра», …). Both omissions are contiguous tail content — a summarization drop,
+   not a DOM-boundary cut. (Plan 001 `raw-crawl.json` captured even less: only
+   composition + one sentence + cautions, no Показания list at all.)
+
+### Why manla is the hard case
+
+`manla.ru/herbs/` is a **single anchored page** (53 formulas; `#agar-35`). There
+is no per-formula DOM container — a "section" is delimited only by an anchor, so
+its tail is trivially dropped by an LLM asked to "capture the description".
+bimala's per-formula detail pages fared better but are still LLM-extracted (hence
+the 4 templated records).
+
+### Fix — faithful re-crawl/parse (for the gated Workflow phase)
+
+Remove the "LLM summarizes prose → `sourceText`" step. Capture deterministically;
+use an LLM only to *split already-verbatim text* at the page's own labels:
+
+1. **manla** — fetch `https://manla.ru/herbs/` once; deterministically slice each
+   formula's section between consecutive anchors (`#agar-35` → next anchor);
+   capture **all** nodes verbatim into `sourceText` (every paragraph, full
+   Показания). No paraphrase, relabel, or reorder; preserve the native «Сущность».
+2. **bimala** (secondary cross-ref) — fetch each detail page; capture the
+   description container's full text verbatim.
+3. **Structuring (second pass)** — derive `indications` / `traditional_use` /
+   `dosing_notes` / `cautions` / `nature` by splitting the verbatim `sourceText`
+   on the page's own labels («Сущность:», «Показания:», «Время приёма:»,
+   «Противопоказания:»). Any LLM here is constrained to "copy clauses exactly
+   between these labels; never paraphrase, drop, reorder, or relabel".
+4. **Recovery gate (acceptance proof)** — assert re-captured agar-35 `sourceText`
+   contains both the marker `"Обладает общеукрепляющим"` and the tail indication
+   `"головную боль от Ветра"`. A doctor-chosen sample (5–10 formulas) is
+   spot-checked verbatim against live pages before the batch is accepted.
+
+This phase still runs as the **opt-in multi-agent Workflow** (per-formula fetch →
+verbatim capture → label-split → diff vs current frontmatter → reconcile) and
+**must not auto-run**.
+
 ## Risks / Open questions
 
 - **Crawl-fidelity root cause is a prerequisite (Phase 2).** Do not trust a
@@ -191,7 +261,10 @@ Run **after** Phase 2 so we normalize restored, not stale, text.
 - [x] Phase 1 — Prune corpus & reproducible review tooling (#2)
   — `b0e4430` (gitignore research sources), `4d17c1d` (prune 11 → corpus 150),
   `609f23c` (committed `scripts/build-formula-review.ts` + `npm run content:review`)
-- [ ] Phase 2 — Faithful manla re-crawl & fidelity restoration (#9)
+- [~] Phase 2 — Faithful manla re-crawl & fidelity restoration (#9)
+  — diagnosis done (see "Phase 2 diagnosis" above: LLM-extraction condensation,
+  no deterministic parser; manla live authoritative). Re-crawl Workflow pending
+  user opt-in.
 - [ ] Phase 3 — Structured model extensions (#1 nature, #4 rinchen category + ADR 007)
 - [ ] Phase 4 — Content normalization (#7, #6, #3, #8)
 - [ ] Phase 5 — Review render & re-audit handoff (#5 + surface #1/#4)
