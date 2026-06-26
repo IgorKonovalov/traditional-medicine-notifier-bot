@@ -36,7 +36,7 @@ indications:
   - тяжесть в теле
   - астма
   - Помогает при жаре в лёгких и астме
-  - Помогает при Жаре в груди и застарелых(хронических) болезнях лёгких
+  - Помогает при Жаре в груди и застарелых (хронических) болезнях лёгких
   - астме
   - туберкулёзе
   - бронхите
@@ -84,13 +84,13 @@ sources:
 
 ## Источник: manla.ru
 
-Чуганг-25 «Бамбуковая мана-25»
+Чуганг-25 «Бамбуковая манна-25»
 
 Состав: Bambusa textilis, Carthamus tinctorius, Eugenia caryophyllata, Amomum subulatum, Aristolochia moupinensis, Terminalia chebula, Foeniculum vulgare, Lancea tibetica, Myristica fragrans, Glycyrrhiza uralensis, Pterocarpus santalinus, Terminalia belerica, Saussurea lappa, Bos taurus domesticus, Picrorhiza kurroa, Hippophae rhamnoides, Elettaria cardamomum, Vitis vinifera, Santalum album, Emblica officinalis, Rhodiola saera, Arenaria glanduligera, Incarvillea younghusbandii, Artemisia sieversiana, Geranium sp.
 
 Сущность: слегка прохладная
 
-Помогает при Жаре в груди и застарелых(хронических) болезнях лёгких, астме, туберкулёзе, бронхите, недолеченных простудах, гриппе, нечистой крови в лёгких. Очищающее средство для курильщиков, противовоспалительное.
+Помогает при Жаре в груди и застарелых (хронических) болезнях лёгких, астме, туберкулёзе, бронхите, недолеченных простудах, гриппе, нечистой крови в лёгких. Очищающее средство для курильщиков, противовоспалительное.
 
 Противопоказания: несварение, индивидуальная непереносимость.
 

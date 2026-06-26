@@ -12,7 +12,7 @@ composition:
   - Elettaria cardamomum
   - Inula racemosa
   - Cinnamomum parthenoxylon
-  - Primus spp.
+  - Prunus spp.
 indications:
   - питает, согревает, восстанавливает и защищает почки
   - помогает при сильном кашле вызванном борьбой Крови и Ветра
@@ -45,7 +45,7 @@ sources:
 
 Мхалма-9 (Мкхал-ма'и Дгу-тханг), «Почечный отвар-9»
 
-Состав: Caragana tibetica, Mangifera indica, Syzygium cumini, Areca catechu, Alpinia officinarum Hance, Elettaria cardamomum, Inula racemosa, Cinnamomum parthenoxylon, Primus spp.
+Состав: Caragana tibetica, Mangifera indica, Syzygium cumini, Areca catechu, Alpinia officinarum Hance, Elettaria cardamomum, Inula racemosa, Cinnamomum parthenoxylon, Prunus spp.
 
 Сущность: слегка тёплая
 

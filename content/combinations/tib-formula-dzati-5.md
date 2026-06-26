@@ -68,7 +68,7 @@ sources:
 
 Дзати-5 «Мускат-5»
 
-Состав: Myristica fragrans, Piper longum, Inula racemosa, Sausserea lappa, Prunus sp.
+Состав: Myristica fragrans, Piper longum, Inula racemosa, Saussurea lappa, Prunus sp.
 
 Сущность: прохлада и тепло равны
 

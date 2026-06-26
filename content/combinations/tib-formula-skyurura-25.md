@@ -43,7 +43,7 @@ indications:
   - различных заболеваниях печени
   - Очищает кровь
   - уменьшает кровяное давление и холестерин
-  - очищает кожу (прыщи у женщин в следствии гормонального дисбаланса)
+  - очищает кожу (прыщи у женщин вследствие гормонального дисбаланса)
   - очищает печень
   - хорошо для щитовидной железы (особенно после операций)
   - помогает при гинекологических расстройствах (из-за дисбаланса Жара и Крови)
@@ -105,17 +105,17 @@ sources:
 
 Тибетский фитосбор Кюру 25 не является лекарственным препаратом. Перед применением необходимо проконсультироваться со специалистом тибетской медицины!
 
-Производитель: Тибет. Вес грамм: 30. Форма: порошок / пилюли. Цена: 1490.0р. / 1290.0р.
+Вес грамм: 30. Форма: порошок / пилюли.
 
 ## Источник: manla.ru
 
 КЙУ-РУ-25 «ЭМБЛИКА-25»
 
-Состав: Emblica officinalis, Veronica ciliata, Coriandrum sativum, Aristolochia moupinensis, Meconopsis grandis, Picrorhiza kurroa, Shilajid, Dracocephalum tanguticum, Pterocarpus santalinus, Dendrobium moniliforme, Geranium sp., Saussurea lappa, Tinospora cordifolia, Swertia chirata, Inula racemosa, Terminalia chebula, Carthamus tinctorius, Chenopodium aristatum, Rubia cordifolia, Terminalia belerica, Herpetospermum caudgerum, Rubus idaeopsis, Hippophae rhamnoides.
+Состав: Emblica officinalis, Veronica ciliata, Coriandrum sativum, Aristolochia moupinensis, Meconopsis grandis, Picrorhiza kurroa, Shilajid, Dracocephalum tanguticum, Pterocarpus santalinus, Dendrobium moniliforme, Geranium sp., Saussurea lappa, Tinospora cordifolia, Swertia chirata, Inula racemosa, Terminalia chebula, Carthamus tinctorius, Chenopodium aristatum, Rubia cordifolia, Terminalia belerica, Herpetospermum caudigerum, Rubus idaeopsis, Hippophae rhamnoides.
 
 Сущность: прохладная
 
-Очищает кровь, уменьшает кровяное давление и холестерин, очищает кожу (прыщи у женщин в следствии гормонального дисбаланса), очищает печень, хорошо для щитовидной железы (особенно после операций), помогает при гинекологических расстройствах (из-за дисбаланса Жара и Крови), аллергиях, болезненных и не регулярных менструациях (уменьшает боли), при кистах в яичниках, при эндометриозе и женском бесплодии, увеличивает молоко во время лактации, помогает во время менопаузы (вместе с Агар-35).
+Очищает кровь, уменьшает кровяное давление и холестерин, очищает кожу (прыщи у женщин вследствие гормонального дисбаланса), очищает печень, хорошо для щитовидной железы (особенно после операций), помогает при гинекологических расстройствах (из-за дисбаланса Жара и Крови), аллергиях, болезненных и не регулярных менструациях (уменьшает боли), при кистах в яичниках, при эндометриозе и женском бесплодии, увеличивает молоко во время лактации, помогает во время менопаузы (вместе с Агар-35).
 
 Показания: увеличение "плохой крови" (особенно в нижней части тела), боли в желудке и печени, заброс крови и желчи в желудок, сочетанная болезнь "смуг-по", хронические проблемы Желчи, нарушения менструального цикла.
 

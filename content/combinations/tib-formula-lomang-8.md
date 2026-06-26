@@ -8,7 +8,7 @@ composition:
   - Myristica fragrans
   - Rhododendron adamsii
   - Acorus calamus
-  - Curcuma longba
+  - Curcuma longa
   - Piper longum
   - Piper nigrum
   - Glycyrrhiza uralensis
@@ -40,7 +40,7 @@ sources:
 
 Ломанг-8 «Лёгочное-8»
 
-Состав: Punica granatum, Myristica fragrans, Rhododendron adamsii, Acorus calamus, Curcuma longba, Piper longum, Piper nigrum, Glycyrrhiza uralensis.
+Состав: Punica granatum, Myristica fragrans, Rhododendron adamsii, Acorus calamus, Curcuma longa, Piper longum, Piper nigrum, Glycyrrhiza uralensis.
 
 Сущность: тёплая
 

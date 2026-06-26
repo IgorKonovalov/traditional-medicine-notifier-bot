@@ -57,7 +57,7 @@ sources:
 
 Джамца-4 тханг «Каменная соль-4 отвар»
 
-Состав: Terminalia chebula, Piper longum, Zingiber officinalis, Salt.
+Состав: Terminalia chebula, Piper longum, Zingiber officinale, Salt.
 
 Сущность: тёплая
 

@@ -88,7 +88,7 @@ sources:
 Тханчен-10
 «Великий отвар-10»
 
-Состав : Inula racemosa, Rubus idaeopsis, Tinospora cordifolia, Hedychium spisatum, Terminalia chebula, Terminalia belerica, Emblica officinalis, Swertia chirata, Scutellaria baikalensis, Saussurea parwiflora .
+Состав : Inula racemosa, Rubus idaeopsis, Tinospora cordifolia, Hedychium spicatum, Terminalia chebula, Terminalia belerica, Emblica officinalis, Swertia chirata, Scutellaria baikalensis, Saussurea parviflora .
 
 Сущность : прохладная
 
