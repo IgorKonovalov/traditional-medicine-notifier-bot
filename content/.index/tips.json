@@ -1,37 +1,87 @@
 [
   {
     "id": "tip-001-warm-foods",
-    "category": "digestive-herbs"
+    "category": "digestive-herbs",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 14 «Сезонный образ жизни»"
+    }
   },
   {
-    "id": "tip-002-rhythm"
+    "id": "tip-002-rhythm",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
   },
   {
-    "id": "tip-003-seasonal-eating-rhythm"
+    "id": "tip-003-seasonal-eating-rhythm",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 14 «Сезонный образ жизни»"
+    }
   },
   {
     "id": "tip-004-seasonal-food-qualities",
-    "category": "digestive-herbs"
+    "category": "digestive-herbs",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 14 «Сезонный образ жизни»"
+    }
   },
   {
     "id": "tip-005-measure-of-eating",
-    "category": "digestive-herbs"
+    "category": "digestive-herbs",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 18 «Мера питания»"
+    }
   },
   {
     "id": "tip-006-light-and-heavy-foods",
-    "category": "digestive-herbs"
+    "category": "digestive-herbs",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 16 «О том, как надо питаться»"
+    }
   },
   {
-    "id": "tip-007-six-tastes"
+    "id": "tip-007-six-tastes",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 19 «Вкусы»"
+    }
   },
   {
     "id": "tip-008-warm-water",
-    "category": "digestive-herbs"
+    "category": "digestive-herbs",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 16 «О том, как надо питаться»"
+    }
   },
   {
-    "id": "tip-009-natural-urges"
+    "id": "tip-009-natural-urges",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 15 «Как вести себя в частных случаях»"
+    }
   },
   {
-    "id": "tip-010-conditions-of-illness"
+    "id": "tip-010-conditions-of-illness",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 23 «Как жить не болея»"
+    }
   }
 ]

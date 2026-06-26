@@ -21,6 +21,7 @@ import type {
   Herb,
   LoadedContent,
   Tip,
+  TipSource,
   Tradition,
 } from './types';
 import { TRADITIONS } from './types';
@@ -144,10 +145,40 @@ function parseCategory(doc: RawDoc): Category {
 }
 
 function parseTip(doc: RawDoc): Tip {
+  const source = parseTipSource(doc);
   return {
     id: reqString(doc, 'id'),
     body: doc.body,
     ...optString(doc, 'category', 'category'),
+    ...(source !== undefined ? { source } : {}),
+  };
+}
+
+/**
+ * Coerce the optional `source` block. Absent → `undefined`. When present it must
+ * be an object with a non-empty string `work`; `part`/`chapter` are optional
+ * strings. Any other shape fails fast with the file path (plan 003).
+ */
+function parseTipSource(doc: RawDoc): TipSource | undefined {
+  const value = doc.data['source'];
+  if (value === undefined || value === null) return undefined;
+  if (typeof value !== 'object' || Array.isArray(value)) {
+    throw new Error(`${doc.file}: field "source" must be an object`);
+  }
+  const raw = value as Record<string, unknown>;
+  const work = raw['work'];
+  if (typeof work !== 'string' || work.trim() === '') {
+    throw new Error(`${doc.file}: field "source.work" must be a non-empty string`);
+  }
+  for (const key of ['part', 'chapter'] as const) {
+    if (raw[key] !== undefined && typeof raw[key] !== 'string') {
+      throw new Error(`${doc.file}: field "source.${key}" must be a string`);
+    }
+  }
+  return {
+    work,
+    ...(typeof raw['part'] === 'string' ? { part: raw['part'] } : {}),
+    ...(typeof raw['chapter'] === 'string' ? { chapter: raw['chapter'] } : {}),
   };
 }
 

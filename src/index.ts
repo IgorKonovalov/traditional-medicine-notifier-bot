@@ -45,7 +45,10 @@ async function main(): Promise<void> {
   const adminParse = parseAdminTelegramIds(process.env['ADMIN_TELEGRAM_IDS']);
   log.info({ count: adminParse.ids.size }, 'admin allowlist loaded');
   if (adminParse.malformed.length > 0) {
-    log.warn({ count: adminParse.malformed.length }, 'ADMIN_TELEGRAM_IDS has non-numeric entries — ignored');
+    log.warn(
+      { count: adminParse.malformed.length },
+      'ADMIN_TELEGRAM_IDS has non-numeric entries — ignored',
+    );
   }
 
   initDb(config.dbPath);
@@ -81,7 +84,10 @@ async function main(): Promise<void> {
     notifier,
     buildMessage: (reminder: ScheduledReminder): NotificationPayload =>
       reminder.herbId
-        ? { body: messages.reminder.body(reminder.label), cta: { kind: 'open-herb', herbId: reminder.herbId } }
+        ? {
+            body: messages.reminder.body(reminder.label),
+            cta: { kind: 'open-herb', herbId: reminder.herbId },
+          }
         : { body: messages.reminder.body(reminder.label) },
   });
 
@@ -92,7 +98,7 @@ async function main(): Promise<void> {
     notifier,
     selectTip: () => {
       const tip = pickDailyTip(content.tips.all);
-      return tip === null ? null : { body: messages.tip.daily(toPlainText(tip.body)) };
+      return tip === null ? null : { body: messages.tip.daily(toPlainText(tip.body), tip.source) };
     },
   });
 
@@ -102,10 +108,13 @@ async function main(): Promise<void> {
   );
 
   // Periodic sweep of expired bot_sessions rows from SQLite.
-  const sessionSweepHandle = setInterval(() => {
-    const cleaned = deleteExpiredSessions();
-    if (cleaned > 0) log.debug({ cleaned }, 'swept expired bot_sessions rows');
-  }, 60 * 60 * 1000);
+  const sessionSweepHandle = setInterval(
+    () => {
+      const cleaned = deleteExpiredSessions();
+      if (cleaned > 0) log.debug({ cleaned }, 'swept expired bot_sessions rows');
+    },
+    60 * 60 * 1000,
+  );
   (sessionSweepHandle as { unref?: () => void }).unref?.();
 
   // Liveness heartbeat for the Docker HEALTHCHECK (the bot has no HTTP port).
@@ -132,7 +141,9 @@ async function main(): Promise<void> {
     closeDb();
   });
 
-  await setBotCommands(bot).catch((err) => log.warn({ err }, 'setMyCommands failed — bot starts anyway'));
+  await setBotCommands(bot).catch((err) =>
+    log.warn({ err }, 'setMyCommands failed — bot starts anyway'),
+  );
 
   await bot.launch();
 }

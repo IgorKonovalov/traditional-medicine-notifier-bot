@@ -8,10 +8,20 @@
  * the contract to keep.
  */
 
+import type { TipSource } from '../content/types';
+
 /** The informational disclaimer. Surfaced in /start, /help, and herb pages. */
 const disclaimer =
   '⚠️ Бот носит образовательный характер и не даёт медицинских рекомендаций, ' +
   'диагнозов или назначений. Перед применением любых средств проконсультируйтесь с врачом.';
+
+/** Formats a tip's source citation as one line, omitting any absent parts. */
+const formatTipSource = (source: TipSource): string => {
+  const parts = [`«${source.work}»`, source.part, source.chapter].filter(
+    (part): part is string => part !== undefined,
+  );
+  return `Источник: ${parts.join(', ')}`;
+};
 
 export const messages = {
   disclaimer,
@@ -95,8 +105,11 @@ export const messages = {
   },
 
   tip: {
-    /** Wraps a daily-tip body pulled from content. */
-    daily: (body: string): string => `🌿 Совет дня\n\n${body}`,
+    /** Wraps a daily-tip body pulled from content, with an optional source line. */
+    daily: (body: string, source?: TipSource): string =>
+      source !== undefined
+        ? `🌿 Совет дня\n\n${body}\n\n${formatTipSource(source)}`
+        : `🌿 Совет дня\n\n${body}`,
   },
 
   notify: {

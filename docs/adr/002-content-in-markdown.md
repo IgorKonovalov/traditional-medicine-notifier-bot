@@ -29,6 +29,7 @@ content reaches Telegram without coupling the corpus to Telegram's formatting.
 - Authoring is a git workflow (the content-curator skill); no CMS to run.
 - Content stays portable to a future non-Telegram client — no escape rules baked in.
 - If rich formatting is ever needed, it must be added behind the one render helper, never via ad-hoc `parse_mode` in a handler.
+- Provenance/framing that is structural rather than prose stays out of the body and is appended by the bot at render time — the herb disclaimer (ADR 006) and the daily-tip `source` citation (plan 003, a `Tip.source` field formatted in `messages.ts`).
 
 ## Alternatives considered
 

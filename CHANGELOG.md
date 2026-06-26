@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.4.0 — 2026-06-26
+
+- Add a structured `source` field to daily tips (plan 003): tip provenance now
+  lives in frontmatter and is rendered as an `Источник:` line by the bot at send
+  time instead of being baked into the body. The 10 «Чжуд-ши» tips carry their
+  chapter citation; `tips.json` projects it.
+
 ## 0.3.0 — 2026-06-25
 
 - Re-extract the Tibetan formula corpus verbosely (ADR 006): 163

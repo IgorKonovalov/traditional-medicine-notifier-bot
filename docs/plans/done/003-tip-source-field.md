@@ -1,7 +1,8 @@
 # Plan 003 — Structured `source` field for daily tips
 
-**Status:** Draft
+**Status:** Completed
 **Created:** 2026-06-26
+**Completed:** 2026-06-26
 **Bump on close:** minor
 
 ## Context
@@ -154,7 +155,10 @@ only required key inside the block.
 
 ## Progress
 
-- [ ] Phase 1 — schema + loader/validation
-- [ ] Phase 2 — index projection
-- [ ] Phase 3 — render at send time
-- [ ] Phase 4 — migrate 10 tips + reindex
+Implemented; staged and uncommitted, pending review. Gates green:
+`typecheck`, `lint`, `test` (28 passing), `content:index:check`.
+
+- [x] Phase 1 — schema + loader/validation (`TipSource` + `parseTipSource`)
+- [x] Phase 2 — index projection (`TipIndexEntry.source`)
+- [x] Phase 3 — render at send time (`messages.tip.daily` + `selectTip`)
+- [x] Phase 4 — migrate 10 tips + reindex

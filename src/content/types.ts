@@ -83,10 +83,24 @@ export interface Category {
   readonly body: string;
 }
 
-/** A daily-tip entry. Optionally scoped to a category. */
+/**
+ * Provenance for a tip paraphrased from a text. Structured so the bot formats
+ * the citation uniformly at render time and the index can project it (plan 003).
+ */
+export interface TipSource {
+  /** Work title, e.g. "Чжуд-ши". Required when a source is given. */
+  readonly work: string;
+  /** Sub-part, e.g. "Тантра объяснений". */
+  readonly part?: string;
+  /** Chapter reference, e.g. "гл. 18 «Мера питания»". */
+  readonly chapter?: string;
+}
+
+/** A daily-tip entry. Optionally scoped to a category and attributed to a source. */
 export interface Tip {
   readonly id: string;
   readonly category?: string;
+  readonly source?: TipSource;
   readonly body: string;
 }
 

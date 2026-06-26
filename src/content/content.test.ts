@@ -21,6 +21,7 @@ interface Corpus {
   readonly herbs?: Record<string, string>;
   readonly combinations?: Record<string, string>;
   readonly categories?: Record<string, string>;
+  readonly tips?: Record<string, string>;
 }
 
 function writeCorpus(corpus: Corpus): string {
@@ -215,5 +216,82 @@ describe('buildIndex — combinations', () => {
 
     const index = buildIndex(loadContent(root));
     expect(index.combinations[0]?.hasIndications).toBe(true);
+  });
+});
+
+const TIP_WITH_SOURCE = `---
+id: tip-x
+source:
+  work: Чжуд-ши
+  part: Тантра объяснений
+  chapter: гл. 18 «Мера питания»
+---
+
+Короткая образовательная заметка.
+`;
+
+const TIP_NO_SOURCE = `---
+id: tip-y
+---
+
+Заметка без источника.
+`;
+
+describe('loadContent — tips', () => {
+  it('parses a tip with a structured source block', () => {
+    const root = writeCorpus({ tips: { 'tip-x': TIP_WITH_SOURCE } });
+    const tip = loadContent(root).tips.byId.get('tip-x');
+
+    expect(tip?.source).toEqual({
+      work: 'Чжуд-ши',
+      part: 'Тантра объяснений',
+      chapter: 'гл. 18 «Мера питания»',
+    });
+    expect(tip?.body).not.toContain('Источник');
+  });
+
+  it('leaves source undefined when absent', () => {
+    const root = writeCorpus({ tips: { 'tip-y': TIP_NO_SOURCE } });
+    expect(loadContent(root).tips.byId.get('tip-y')?.source).toBeUndefined();
+  });
+
+  it('omits absent optional source parts (work only)', () => {
+    const workOnly = TIP_WITH_SOURCE.replace(
+      '  part: Тантра объяснений\n  chapter: гл. 18 «Мера питания»\n',
+      '',
+    );
+    const root = writeCorpus({ tips: { 'tip-x': workOnly } });
+    expect(loadContent(root).tips.byId.get('tip-x')?.source).toEqual({ work: 'Чжуд-ши' });
+  });
+
+  it('rejects a source missing the required work', () => {
+    const noWork = TIP_WITH_SOURCE.replace('  work: Чжуд-ши\n', '');
+    const root = writeCorpus({ tips: { 'tip-x': noWork } });
+    expect(() => loadContent(root)).toThrow(/source\.work/);
+  });
+
+  it('rejects a non-object source', () => {
+    const scalar = TIP_WITH_SOURCE.replace(
+      'source:\n  work: Чжуд-ши\n  part: Тантра объяснений\n  chapter: гл. 18 «Мера питания»',
+      'source: Чжуд-ши',
+    );
+    const root = writeCorpus({ tips: { 'tip-x': scalar } });
+    expect(() => loadContent(root)).toThrow(/"source" must be an object/);
+  });
+});
+
+describe('buildIndex — tips', () => {
+  it('projects the source when present and omits it otherwise', () => {
+    const root = writeCorpus({ tips: { 'tip-x': TIP_WITH_SOURCE, 'tip-y': TIP_NO_SOURCE } });
+    const index = buildIndex(loadContent(root));
+
+    const withSource = index.tips.find((t) => t.id === 'tip-x');
+    const without = index.tips.find((t) => t.id === 'tip-y');
+    expect(withSource?.source).toEqual({
+      work: 'Чжуд-ши',
+      part: 'Тантра объяснений',
+      chapter: 'гл. 18 «Мера питания»',
+    });
+    expect(without && 'source' in without).toBe(false);
   });
 });

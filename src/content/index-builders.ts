@@ -5,7 +5,7 @@
  * for fast lookups and corpus-count questions without re-walking markdown.
  */
 
-import type { Herb, LoadedContent } from './types';
+import type { Herb, LoadedContent, Tip } from './types';
 
 export interface HerbIndexEntry {
   readonly id: string;
@@ -37,6 +37,7 @@ export interface CategoryIndexEntry {
 export interface TipIndexEntry {
   readonly id: string;
   readonly category?: string;
+  readonly source?: Tip['source'];
 }
 
 export interface ContentIndex {
@@ -82,6 +83,7 @@ export function buildIndex(content: LoadedContent): ContentIndex {
   const tips: TipIndexEntry[] = content.tips.all.map((t) => ({
     id: t.id,
     ...(t.category !== undefined ? { category: t.category } : {}),
+    ...(t.source !== undefined ? { source: t.source } : {}),
   }));
 
   return {
