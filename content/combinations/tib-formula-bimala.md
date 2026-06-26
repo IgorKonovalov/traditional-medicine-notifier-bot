@@ -5,25 +5,25 @@ name_ru: Бимала (Вимала) «Состав Вималамитры 20»
 name_original: 'Bimala Dzati-20 / Би-ма-ла, дза-ти-нйи-шу'
 nature: слегка тёплая
 composition:
-  - Myristica fragrans (мускатный орех)
-  - Terminalia chebula (терминалия хебула)
-  - Terminalia belerica (терминалия беллерика)
-  - Emblica officinalis (эмблика лекарственная)
-  - Shorea robusta (сал)
-  - Aquilaria agallocha (орлиное дерево)
-  - Carex sp. (осока)
-  - Ferula jaeschkeana (асафетида)
-  - Bambusa textilis (бамбуковая манна)
-  - Amomum subulatum (чёрный кардамон)
-  - Elettaria cardamomum (зелёный кардамон)
-  - Eugenia caryophyllata (гвоздика)
-  - Carthamus tinctorius (сафлор красильный)
-  - Carum carvi (тмин)
-  - Santalum album (белый сандал)
-  - Pterocarpus santalinus (красный сандал)
-  - Melia composita (мелия)
-  - Allium sativum (чеснок)
-  - Geranium sp. (герань)
+  - Мускатный орех (Myristica fragrans)
+  - Терминалия хебула (Terminalia chebula)
+  - Терминалия беллерика (Terminalia belerica)
+  - Эмблика лекарственная (Emblica officinalis)
+  - Сал (Shorea robusta)
+  - Орлиное дерево (Aquilaria agallocha)
+  - Осока (Carex sp.)
+  - Асафетида (Ferula jaeschkeana)
+  - Бамбуковая манна (Bambusa textilis)
+  - Чёрный кардамон (Amomum subulatum)
+  - Зелёный кардамон (Elettaria cardamomum)
+  - Гвоздика (Eugenia caryophyllata)
+  - Сафлор красильный (Carthamus tinctorius)
+  - Тмин (Carum carvi)
+  - Белый сандал (Santalum album)
+  - Красный сандал (Pterocarpus santalinus)
+  - Мелия (Melia composita)
+  - Чеснок (Allium sativum)
+  - Герань (Geranium sp.)
 members:
   - tib-haritaki
 indications:
@@ -48,8 +48,6 @@ dosing_notes:
   - >-
     Оптимальное время приёма: перед сном, во время Ветра, или в соответствии с
     назначением.
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
 sources:
   - 'https://bimala.ru/sostav/bimala'
   - 'https://manla.ru/herbs/#vimala'

@@ -5,15 +5,15 @@ name_ru: 'Мхалма-9, «Почечный отвар-9»'
 name_original: Мкхал-ма'и Дгу-тханг
 nature: слегка тёплая
 composition:
-  - Caragana tibetica
-  - Mangifera indica
-  - Syzygium cumini
-  - Areca catechu
-  - Alpinia officinarum Hance
-  - Elettaria cardamomum
-  - Inula racemosa
-  - Cinnamomum parthenoxylon
-  - Prunus spp.
+  - Карагана (Caragana tibetica)
+  - Манго (Mangifera indica)
+  - Сизигиум ямболан (Syzygium cumini)
+  - Пальма бетель (Areca catechu)
+  - Калган лекарственный (Alpinia officinarum Hance)
+  - Кардамон зелёный (Elettaria cardamomum)
+  - Девясил (Inula racemosa)
+  - Коричник (Cinnamomum parthenoxylon)
+  - Слива (Prunus spp.)
 traditional_use:
   - >-
     Универсальный почечный состав нейтрального действия, питает, согревает,
@@ -32,12 +32,6 @@ dosing_notes:
     примерно до 1 стакана. Ещё лучше залить водой пополам с молоком, также
     упарить а затем добавить немного сливочного или топлёного масла и щепотку
     соли. Оптимальное время приёма утром натощак или с 17:00 до 19:00.
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни любые составы
-    Тибетской медицины могут не оказать эффекта. Перед применением рекомендуется
-    проконсультироваться у специалиста.
 sources:
   - 'https://manla.ru/herbs/#mkhalma-9'
 ---

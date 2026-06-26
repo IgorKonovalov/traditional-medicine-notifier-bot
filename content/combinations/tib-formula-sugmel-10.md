@@ -5,16 +5,16 @@ name_ru: Сугмел 10 / Сугмэл 10 "Зеленый кардамон 10"
 name_original: Sugmel 10 (SUG-MEL 10 / CARDAMOM 10)
 nature: тёплая
 composition:
-  - Elettaria cardamomum (кардамон зелёный)
-  - Hedychium spicatum (хедихиум колосистый)
-  - Mangifera indica (манго)
-  - Piper longum (длинный перец)
-  - Malva verticillata (мальва)
-  - Sodium chloride (каменная соль)
-  - Moschus moschiferus (мускус кабарги)
-  - Potamon yunnanensis (пресноводный краб)
-  - Caesalpinia bonducella (цезальпиния бондуковая)
-  - Eugenia jambolana (сизигиум кминовый)
+  - Кардамон зелёный (Elettaria cardamomum)
+  - Хедихиум колосистый (Hedychium spicatum)
+  - Манго (Mangifera indica)
+  - Длинный перец (Piper longum)
+  - Мальва (Malva verticillata)
+  - Каменная соль (Sodium chloride)
+  - Мускус кабарги (Moschus moschiferus)
+  - Пресноводный краб (Potamon yunnanensis)
+  - Цезальпиния бондуковая (Caesalpinia bonducella)
+  - Сизигиум кминовый (Eugenia jambolana)
 traditional_use:
   - >-
     Помогает при Холоде почек, задержке мочи и мочекаменной болезни, даёт почкам
@@ -30,14 +30,7 @@ traditional_use:
 dosing_notes:
   - 'Оптимальное время приёма: с 16 до 19, или в соответствии с назначением.'
 cautions:
-  - Жар; индивидуальная непереносимость.
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
+  - Жар.
 sources:
   - 'https://bimala.ru/sostav/sugmel-10'
   - 'https://manla.ru/herbs/#sugmel-10'

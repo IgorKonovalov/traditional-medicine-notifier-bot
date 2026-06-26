@@ -7,34 +7,34 @@ name_original: >-
   Mongolian: Сувд 25
 nature: прохлада и тепло равны
 composition:
-  - Margaritum (жемчуг)
-  - Bambusa textilis (бамбуковая манна)
-  - Carthamus tinctorius (шафран)
-  - Eugenia caryophyllata (гвоздика)
-  - Elettaria cardamomum (зелёный кардамон)
-  - Amomum subulatum (чёрный кардамон)
-  - Myristica fragrans (мускатный орех)
-  - Santalum album (белый сандал)
-  - Pterocarpus santalinus (красный сандал)
-  - Gmelina arborea (гмелина древовидная)
-  - Punica granatum (гранат)
-  - Moschus moschiferus (мускус)
-  - Saussurea lappa (соссюрея лопуховидная)
-  - Piper longum (длинный перец)
-  - Cinnamomum zeylanicum (корица)
+  - Жемчуг (Margaritum)
+  - Бамбуковая манна (Bambusa textilis)
+  - Шафран (Carthamus tinctorius)
+  - Гвоздика (Eugenia caryophyllata)
+  - Зелёный кардамон (Elettaria cardamomum)
+  - Чёрный кардамон (Amomum subulatum)
+  - Мускатный орех (Myristica fragrans)
+  - Белый сандал (Santalum album)
+  - Красный сандал (Pterocarpus santalinus)
+  - Гмелина древовидная (Gmelina arborea)
+  - Гранат (Punica granatum)
+  - Мускус (Moschus moschiferus)
+  - Соссюрея лопуховидная (Saussurea lappa)
+  - Длинный перец (Piper longum)
+  - Корица (Cinnamomum zeylanicum)
   - Potamom yunnanensis
-  - Terminalia chebula (терминалия хебула)
-  - Terminalia belerica (терминалия баллерика)
-  - Emblica officinalis (эмблика лекарственная)
-  - Malva verticillata (мальва)
-  - Cuminum cyminum (зира)
-  - Nigella sativa (калинджи)
-  - Polygonum aviculare (горец птичий)
+  - Терминалия хебула (Terminalia chebula)
+  - Терминалия баллерика (Terminalia belerica)
+  - Эмблика лекарственная (Emblica officinalis)
+  - Мальва (Malva verticillata)
+  - Зира (Cuminum cyminum)
+  - Калинджи (Nigella sativa)
+  - Горец птичий (Polygonum aviculare)
 members:
   - tib-haritaki
 indications:
   - >-
-    одно из лучших средств при болезнях белых каналов (нервы), хорошо работает в
+    Одно из лучших средств при болезнях белых каналов (нервы), хорошо работает в
     верхней части тела
 traditional_use:
   - >-
@@ -55,13 +55,6 @@ dosing_notes:
   - >-
     Оптимальное время приёма: перед завтраком или после ужина, или в
     соответствии с назначением.
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием! Перед применением
-    Тибетских составов рекомендуется проконсультироваться у специалиста.
 sources:
   - 'https://bimala.ru/sostav/mutik-25'
   - 'https://manla.ru/herbs/#mutik-25'

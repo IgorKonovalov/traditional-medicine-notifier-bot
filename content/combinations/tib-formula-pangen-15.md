@@ -5,28 +5,28 @@ name_ru: Панген 15 «Горечавка 15»
 name_original: Pangen 15 / Спан-ргьен-бчо-лнга
 nature: слегка прохладная
 composition:
-  - Eugenia caryophyllata (гвоздика)
-  - Bambusa textilis (бамбуковая манна)
-  - Glycyrrhiza glabra (солодка)
-  - Gentiana algida (горечавка холодная)
-  - Saussurea lappa (соссюрея лаппа)
-  - Terminalia chebula (терминалия хебула)
-  - Aquilaria agallocha (орлиное дерево)
-  - Myristica fragrans (мускатный орех)
-  - Santalum album (белый сандал)
-  - Melia composita (мелия)
-  - Terminalia belerica (терминалия баллерика)
-  - Emblica officinalis (эмблика лекарственная)
-  - Tinospora cordifolia (тиноспора сердцелистная)
-  - Veronica ciliata (вероника реснитчатая)
-  - Rhodiola sp. (родиола)
+  - Гвоздика (Eugenia caryophyllata)
+  - Бамбуковая манна (Bambusa textilis)
+  - Солодка (Glycyrrhiza glabra)
+  - Горечавка холодная (Gentiana algida)
+  - Соссюрея лаппа (Saussurea lappa)
+  - Терминалия хебула (Terminalia chebula)
+  - Орлиное дерево (Aquilaria agallocha)
+  - Мускатный орех (Myristica fragrans)
+  - Белый сандал (Santalum album)
+  - Мелия (Melia composita)
+  - Терминалия баллерика (Terminalia belerica)
+  - Эмблика лекарственная (Emblica officinalis)
+  - Тиноспора сердцелистная (Tinospora cordifolia)
+  - Вероника реснитчатая (Veronica ciliata)
+  - Родиола (Rhodiola sp.)
 members:
   - tib-haritaki
 indications:
   - Жар чхам в лёгких и горле (трахеи)
   - Жар Слизи в лёгких
   - '''брас лёгких'
-  - колющие боли в верхней части тела из-за Слизи и Ветра
+  - Колющие боли в верхней части тела из-за Слизи и Ветра
 traditional_use:
   - >-
     Состав для горла и лёгких, особенно при пост-простудных явлениях: жжение,
@@ -34,16 +34,7 @@ traditional_use:
     заложенности носоглотки; помогает при проблемах с щитовидной железой,
     одышке, бронхите, опухолях пищевода, рекомендуется курильщикам.
 dosing_notes:
-  - 'после еды, или в соответствии с назначением'
-cautions:
-  - индивидуальная непереносимость
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
+  - 'После еды, или в соответствии с назначением.'
 sources:
   - 'https://bimala.ru/sostav/pangen-15-tibetskij-fitosbor'
   - 'https://manla.ru/herbs/#pangen-15'

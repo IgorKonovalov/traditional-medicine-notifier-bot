@@ -5,26 +5,26 @@ name_ru: Себру Кунде (Сэбру Кунде) тибетский фит
 name_original: 'Sebru Kunde / Кундей / «Гранат, дарующий благо»'
 nature: немного тёплая
 composition:
-  - Punica granatum (гранат)
-  - Cinnamomum zeylanicum (корица цейлонская)
-  - Piper longum (длинный перец)
-  - Elettaria cardamomum (кардамон зелёный)
-  - Carthamus tinctorius (сафлор красильный)
-  - Malva verticillata (мальва)
-  - Emblica officinalis (эмблика лекарственная)
-  - Thlaspi arvense (ярутка полевая)
-  - Saxifraga umbellulata (камнеломка зонтичковая)
-  - Scutellaria baicalensis (шлемник байкальский)
-  - Adhatoda vasica (адхатода васика)
-  - Pterocephalus hookeri (птероцефалус Хукера)
-  - Dracocephalum tanguticum (змееголовник тангутский)
-  - Coriandrum (кориандр)
-  - Shilajid (мумиё)
+  - Гранат (Punica granatum)
+  - Корица цейлонская (Cinnamomum zeylanicum)
+  - Длинный перец (Piper longum)
+  - Кардамон зелёный (Elettaria cardamomum)
+  - Сафлор красильный (Carthamus tinctorius)
+  - Мальва (Malva verticillata)
+  - Эмблика лекарственная (Emblica officinalis)
+  - Ярутка полевая (Thlaspi arvense)
+  - Камнеломка зонтичковая (Saxifraga umbellulata)
+  - Шлемник байкальский (Scutellaria baicalensis)
+  - Адхатода васика (Adhatoda vasica)
+  - Птероцефалус Хукера (Pterocephalus hookeri)
+  - Змееголовник тангутский (Dracocephalum tanguticum)
+  - Кориандр (Coriandrum)
+  - Мумиё (Shilajid)
 indications:
-  - несварение из-за избытка Слизи
-  - мукпо
-  - холодные опухоли
-  - перемешанный Жар и Холод
+  - Несварение из-за избытка Слизи
+  - Мукпо
+  - Холодные опухоли
+  - Перемешанный Жар и Холод
 traditional_use:
   - >-
     Улучшает пищеварение, мягко согревает почки, восстанавливает аппетит,
@@ -33,15 +33,6 @@ traditional_use:
     Чудленом продлевающим жизнь.
 dosing_notes:
   - 'Оптимальное время приёма: утром натощак или в соответствии с назначением.'
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
 sources:
   - 'https://bimala.ru/sostav/kunde'
   - 'https://manla.ru/herbs/#sebru-kunde'

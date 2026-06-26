@@ -7,38 +7,38 @@ name_original: >-
   Кхраг-шэд-снйомс-лдан
 nature: прохладная
 composition:
-  - Emblica officinalis (эмблика лекарственная)
-  - Veronica ciliata (вероника реснитчатая)
-  - Coriandrum sativum (кориандр)
-  - Aristolochia moupinensis (кирказон)
-  - Meconopsis grandis (меконопсис)
-  - Picrorhiza kurroa
-  - Shilajid (мумиё)
-  - Dracocephalum tanguticum (змееголовник тангутский)
-  - Pterocarpus santalinus (сандал красный)
-  - Dendrobium moniliforme (дендробиум)
-  - Geranium sp. (герань)
-  - Saussurea lappa (соссюрея лопуховидная)
-  - Tinospora cordifolia (тиноспора сердцелистная)
-  - Swertia chirata (сверция)
-  - Inula racemosa (девясил)
-  - Terminalia chebula (терминалия хебула)
-  - Carthamus tinctorius (сафлор красильный)
-  - Chenopodium aristatum (марь остистая)
-  - Rubia cordifolia (марена сердцелистная)
-  - Terminalia belerica (терминалия беллерическая)
-  - Herpetospermum caudigerum
-  - Rubus idaeopsis (малина)
-  - Hippophae rhamnoides (облепиха)
+  - Эмблика лекарственная (Emblica officinalis)
+  - Вероника реснитчатая (Veronica ciliata)
+  - Кориандр (Coriandrum sativum)
+  - Кирказон (Aristolochia moupinensis)
+  - Меконопсис (Meconopsis grandis)
+  - Кутки (Picrorhiza kurroa)
+  - Мумиё (Shilajid)
+  - Змееголовник тангутский (Dracocephalum tanguticum)
+  - Сандал красный (Pterocarpus santalinus)
+  - Дендробиум (Dendrobium moniliforme)
+  - Герань (Geranium sp.)
+  - Соссюрея лопуховидная (Saussurea lappa)
+  - Тиноспора сердцелистная (Tinospora cordifolia)
+  - Сверция (Swertia chirata)
+  - Девясил (Inula racemosa)
+  - Терминалия хебула (Terminalia chebula)
+  - Сафлор красильный (Carthamus tinctorius)
+  - Марь остистая (Chenopodium aristatum)
+  - Марена сердцелистная (Rubia cordifolia)
+  - Терминалия беллерическая (Terminalia belerica)
+  - Герпетоспермум черешковый (Herpetospermum caudigerum)
+  - Малина (Rubus idaeopsis)
+  - Облепиха (Hippophae rhamnoides)
 members:
   - tib-haritaki
 indications:
-  - увеличение "плохой крови" (особенно в нижней части тела)
-  - боли в желудке и печени
-  - заброс крови и желчи в желудок
-  - сочетанная болезнь "смуг-по"
-  - хронические проблемы Желчи
-  - нарушения менструального цикла
+  - Увеличение "плохой крови" (особенно в нижней части тела)
+  - Боли в желудке и печени
+  - Заброс крови и желчи в желудок
+  - Сочетанная болезнь "смуг-по"
+  - Хронические проблемы Желчи
+  - Нарушения менструального цикла
 traditional_use:
   - >-
     Очищает кровь, уменьшает кровяное давление и холестерин, очищает кожу (прыщи
@@ -53,16 +53,7 @@ dosing_notes:
     Оптимальное время приёма: в полдень между завтраком и обедом, перед сном или
     в соответствии с назначением.
 cautions:
-  - >-
-    Противопоказания: Холод, несварение, беременность; индивидуальная
-    непереносимость.
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
+  - 'Холод, несварение, беременность.'
 sources:
   - 'https://bimala.ru/sostav/skyurura-25'
   - 'https://manla.ru/herbs/#kyuru-25'

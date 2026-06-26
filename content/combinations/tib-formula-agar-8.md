@@ -7,14 +7,14 @@ name_original: >-
   Agar 8 (Eaglewood 8)
 nature: слегка прохладная
 composition:
-  - Aquilaria agallocha (орлиное дерево)
-  - Myristica fragrans (мускатный орех)
-  - Bambusa textilis (бамбуковая манна)
-  - Saussurea lappa (соссюрея лопуховидная)
-  - Terminalia chebula (терминалия хебула)
-  - Melia composita (мелия)
-  - Commiphora camphora (ладан)
-  - Mesua ferrea (мезуа железная)
+  - Орлиное дерево (Aquilaria agallocha)
+  - Мускатный орех (Myristica fragrans)
+  - Бамбуковая манна (Bambusa textilis)
+  - Соссюрея лопуховидная (Saussurea lappa)
+  - Терминалия хебула (Terminalia chebula)
+  - Мелия (Melia composita)
+  - Ладан (Commiphora camphora)
+  - Мезуа железная (Mesua ferrea)
 members:
   - tib-haritaki
 indications:
@@ -36,15 +36,6 @@ dosing_notes:
   - >-
     Оптимальное время приёма: во второй половине дня, перед сном или в
     соответствии с назначением.
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
 sources:
   - 'https://bimala.ru/sostav/agar-8'
   - 'https://manla.ru/herbs/#agar-8'

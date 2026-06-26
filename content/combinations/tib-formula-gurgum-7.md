@@ -7,16 +7,16 @@ name_original: >-
   mCHOG-bDUN, MOST EXCELLENT SAFFLOWER 7)
 nature: прохладная
 composition:
-  - Carthamus tinctorius (сафлор красильный)
-  - Bambusa textilis (бамбуковая манна)
-  - 'Meconopsis grandis (меконопсис, голубой мак)'
-  - Aristolochia moupinensis (кирказон)
-  - Swertia chirata (сверция)
-  - Terminalia chebula (терминалия хебула)
+  - Сафлор красильный (Carthamus tinctorius)
+  - Бамбуковая манна (Bambusa textilis)
+  - 'Меконопсис, голубой мак (Meconopsis grandis)'
+  - Кирказон (Aristolochia moupinensis)
+  - Сверция (Swertia chirata)
+  - Терминалия хебула (Terminalia chebula)
 members:
   - tib-haritaki
 indications:
-  - 'увеличение Крови в печени, охлаждает при избытке Жара'
+  - 'Увеличение Крови в печени, охлаждает при избытке Жара'
 traditional_use:
   - >-
     Поддерживает печень, используется при сочетанных проблемах печени и желчного
@@ -29,15 +29,6 @@ dosing_notes:
   - >-
     Оптимальное время приёма: в полдень между завтраком и обедом, или в
     соответствии с назначением.
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
 sources:
   - 'https://bimala.ru/sostav/gurgum-7'
   - 'https://manla.ru/herbs/#gur-chog'

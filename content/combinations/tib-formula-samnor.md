@@ -8,46 +8,46 @@ name_original: >-
   Нйа-пхйис-со-гчиг
 nature: слегка прохладная
 composition:
-  - Carthamus tinctorius (сафлор красильный)
-  - Bambusa textilis (бамбуковая манна)
-  - Margaritum (жемчуг)
-  - Eugenia caryophyllata (гвоздика)
-  - Myristica fragrans (мускатный орех)
-  - Elettaria cardamomum (кардамон зелёный)
-  - Amomum subulatum (кардамон чёрный)
-  - Santalum album (сандал белый)
-  - Pterocarpus santalinus (сандал красный)
-  - Aquilaria agallocha (орлиное дерево)
-  - Terminalia chebula (терминалия хебула)
-  - Glycyrrhiza uralensis (солодка уральская)
-  - Verbascum thapsus (коровяк обыкновенный)
-  - Terminalia belerica (терминалия беллерическая)
-  - Emblica officinalis (эмблика лекарственная)
-  - Foeniculum vulgare (фенхель)
-  - Nigella sativa (чернушка посевная)
-  - Piper longum (длинный перец)
-  - Zingiber spectabile (имбирь)
-  - Moschus moschiferus (мускус кабарги)
-  - Potamon yunnanensis (пресноводный краб)
-  - Cinnamomum zeylanicum (корица цейлонская)
-  - Cinnamomum camphora (камфорный лавр)
-  - Cassia tora (кассия тора)
-  - Abelmoschus moschatus (абельмош мускусный)
-  - Inula racemosa (девясил кистевидный)
-  - 'Saussurea lappa (костус, соссюрея)'
-  - Fragaria nilgerrensis (земляника)
-  - и другие
+  - Сафлор красильный (Carthamus tinctorius)
+  - Бамбуковая манна (Bambusa textilis)
+  - Жемчуг (Margaritum)
+  - Гвоздика (Eugenia caryophyllata)
+  - Мускатный орех (Myristica fragrans)
+  - Кардамон зелёный (Elettaria cardamomum)
+  - Кардамон чёрный (Amomum subulatum)
+  - Сандал белый (Santalum album)
+  - Сандал красный (Pterocarpus santalinus)
+  - Орлиное дерево (Aquilaria agallocha)
+  - Терминалия хебула (Terminalia chebula)
+  - Солодка уральская (Glycyrrhiza uralensis)
+  - Коровяк обыкновенный (Verbascum thapsus)
+  - Терминалия беллерическая (Terminalia belerica)
+  - Эмблика лекарственная (Emblica officinalis)
+  - Фенхель (Foeniculum vulgare)
+  - Чернушка посевная (Nigella sativa)
+  - Длинный перец (Piper longum)
+  - Имбирь (Zingiber spectabile)
+  - Мускус кабарги (Moschus moschiferus)
+  - Пресноводный краб (Potamon yunnanensis)
+  - Корица цейлонская (Cinnamomum zeylanicum)
+  - Камфорный лавр (Cinnamomum camphora)
+  - Кассия тора (Cassia tora)
+  - Абельмош мускусный (Abelmoschus moschatus)
+  - Девясил кистевидный (Inula racemosa)
+  - 'Костус, соссюрея (Saussurea lappa)'
+  - Земляника (Fragaria nilgerrensis)
+  - И другие
 members:
   - tib-haritaki
 indications:
-  - устраняет болезни белых каналов
-  - провокации гЗа (планет)
-  - сушит Чху-сер
-  - оказывает мочегонное действие
+  - Устраняет болезни белых каналов
+  - Провокации гЗа (планет)
+  - Сушит Чху-сер
+  - Оказывает мочегонное действие
   - >-
-    не возбуждая Ветер и Слизь помогает при застарелом и мутном Жаре (в т.ч.
+    Не возбуждая Ветер и Слизь помогает при застарелом и мутном Жаре (в т.ч.
     почек)
-  - при рассеивании Жара по каналам
+  - При рассеивании Жара по каналам
 traditional_use:
   - >-
     Улучшает мозговое кровообращение, проведение нервных импульсов по организму,
@@ -63,16 +63,9 @@ traditional_use:
     Основное средство для восстановления после инсульта (особенно ишемического),
     а также предохраняет от его возникновения.
 dosing_notes:
-  - 'перед сном (можно с мёдом), или в соответствии с назначением.'
+  - 'Перед сном (можно с мёдом), или в соответствии с назначением.'
 cautions:
-  - 'индивидуальная непереносимость, эпилепсия.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
+  - Эпилепсия.
 sources:
   - 'https://bimala.ru/sostav/samnor'
   - 'https://manla.ru/herbs/#sam-nor'

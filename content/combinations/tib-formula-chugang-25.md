@@ -5,42 +5,42 @@ name_ru: Чуганг 25 "Бамбуковая манна 25"
 name_original: Cugang 25 / Чу-ганг-нйэр-лнга
 nature: слегка прохладная
 composition:
-  - Bambusa textilis (бамбуковая манна)
-  - Carthamus tinctorius (сафлор красильный)
-  - Eugenia caryophyllata (гвоздика)
-  - Amomum subulatum (чёрный кардамон)
-  - Aristolochia moupinensis (кирказон)
-  - Terminalia chebula (терминалия хебула)
-  - Foeniculum vulgare (фенхель)
-  - Lancea tibetica
-  - Myristica fragrans (мускатный орех)
-  - Glycyrrhiza uralensis (солодка)
-  - Pterocarpus santalinus (красный сандал)
-  - Terminalia belerica (терминалия беллерическая)
-  - Saussurea lappa (соссюрея лопуховидная)
+  - Бамбуковая манна (Bambusa textilis)
+  - Сафлор красильный (Carthamus tinctorius)
+  - Гвоздика (Eugenia caryophyllata)
+  - Чёрный кардамон (Amomum subulatum)
+  - Кирказон (Aristolochia moupinensis)
+  - Терминалия хебула (Terminalia chebula)
+  - Фенхель (Foeniculum vulgare)
+  - Ланцея тибетская (Lancea tibetica)
+  - Мускатный орех (Myristica fragrans)
+  - Солодка (Glycyrrhiza uralensis)
+  - Красный сандал (Pterocarpus santalinus)
+  - Терминалия беллерическая (Terminalia belerica)
+  - Соссюрея лопуховидная (Saussurea lappa)
   - Bos taurus domesticus
-  - Picrorhiza kurroa
-  - Hippophae rhamnoides (облепиха)
-  - Elettaria cardamomum (зелёный кардамон)
-  - Vitis vinifera (виноград)
-  - Santalum album (белый сандал)
-  - Emblica officinalis (эмблика лекарственная)
-  - Rhodiola saera (родиола)
-  - Arenaria glanduligera (песчанка)
-  - Incarvillea younghusbandii
-  - Artemisia sieversiana (полынь)
-  - Geranium sp. (герань)
+  - Кутки (Picrorhiza kurroa)
+  - Облепиха (Hippophae rhamnoides)
+  - Зелёный кардамон (Elettaria cardamomum)
+  - Виноград (Vitis vinifera)
+  - Белый сандал (Santalum album)
+  - Эмблика лекарственная (Emblica officinalis)
+  - Родиола (Rhodiola saera)
+  - Песчанка (Arenaria glanduligera)
+  - Инкарвиллея Янгхазбенда (Incarvillea younghusbandii)
+  - Полынь (Artemisia sieversiana)
+  - Герань (Geranium sp.)
 members:
   - tib-haritaki
 indications:
   - Жар в груди
-  - застарелые (хронические) болезни лёгких
-  - астма
-  - туберкулёз
-  - бронхит
-  - недолеченные простуды
-  - грипп
-  - нечистая кровь в лёгких
+  - Застарелые (хронические) болезни лёгких
+  - Астма
+  - Туберкулёз
+  - Бронхит
+  - Недолеченные простуды
+  - Грипп
+  - Нечистая кровь в лёгких
 traditional_use:
   - >-
     Помогает при Жаре в груди и застарелых(хронических) болезнях лёгких, астме,
@@ -52,14 +52,7 @@ dosing_notes:
     Оптимальное время приёма: в полдень после еды, или в соответствии с
     назначением.
 cautions:
-  - 'Противопоказания: несварение, индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
+  - Несварение.
 sources:
   - 'https://bimala.ru/sostav/chugang-25'
   - 'https://manla.ru/herbs/#chugang-25'

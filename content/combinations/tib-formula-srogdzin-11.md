@@ -7,21 +7,21 @@ name_original: >-
   OF LIFE); на монгольском: Сорогзин 11
 nature: тёплая
 composition:
-  - Aquilaria agallocha (орлиное дерево)
-  - Myristica fragrans (мускатный орех)
-  - Prunus spp. (слива)
-  - Bambusa textilis (бамбуковая манна)
-  - Shorea robusta (саловое дерево)
-  - Saussurea lappa (соссюрея лопуховидная)
-  - Terminalia chebula (терминалия хебула)
-  - Mesua ferrea (мезуя железная)
-  - Eugenia caryophyllata (гвоздика)
-  - Ferula jaeschkeana (ферула)
+  - Орлиное дерево (Aquilaria agallocha)
+  - Мускатный орех (Myristica fragrans)
+  - Слива (Prunus spp.)
+  - Бамбуковая манна (Bambusa textilis)
+  - Саловое дерево (Shorea robusta)
+  - Соссюрея лопуховидная (Saussurea lappa)
+  - Терминалия хебула (Terminalia chebula)
+  - Мезуя железная (Mesua ferrea)
+  - Гвоздика (Eugenia caryophyllata)
+  - Ферула (Ferula jaeschkeana)
   - И другие компоненты
 members:
   - tib-haritaki
 indications:
-  - 'нарушения Срог-дзин рЛунг, Ветер в сердце'
+  - 'Нарушения Срог-дзин рЛунг, Ветер в сердце'
 traditional_use:
   - >-
     Релаксант, улучшает память, помогает преодолеть депрессию, страхи,
@@ -33,15 +33,6 @@ dosing_notes:
   - >-
     Оптимальное время приёма: во второй половине дня, перед сном или в
     соответствии с назначением.
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
 sources:
   - 'https://bimala.ru/sostav/srogdzin-11'
   - 'https://manla.ru/herbs/#srogzin-11'

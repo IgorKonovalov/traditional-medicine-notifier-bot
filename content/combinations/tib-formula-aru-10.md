@@ -5,16 +5,16 @@ name_ru: Ару 10 «Миробалан 10»
 name_original: 'Aru 10 / Ар 10 / A-RU 10, MYROBALAN 10'
 nature: слегка прохладная
 composition:
-  - Terminalia chebula (терминалия хебула)
-  - Carthamus tinctorius (сафлор красильный)
-  - Chenopodium aristatum (марь остистая)
-  - Rubia cordifolia (марена)
-  - Bergenia crassifolia Fritsch (бадан толстолистный)
-  - Elettaria cardamomum (зелёный кардамон)
-  - Swertia chirata (сверция чиратта)
-  - Canavalia gladiata (фасоль луновидная)
-  - Juniperus communis (можжевельник)
-  - Shilajit (мумие)
+  - Терминалия хебула (Terminalia chebula)
+  - Сафлор красильный (Carthamus tinctorius)
+  - Марь остистая (Chenopodium aristatum)
+  - Марена (Rubia cordifolia)
+  - Бадан толстолистный (Bergenia crassifolia Fritsch)
+  - Зелёный кардамон (Elettaria cardamomum)
+  - Сверция чиратта (Swertia chirata)
+  - Фасоль луновидная (Canavalia gladiata)
+  - Можжевельник (Juniperus communis)
+  - Мумие (Shilajit)
 members:
   - tib-haritaki
 indications:
@@ -31,14 +31,7 @@ dosing_notes:
     Оптимальное время приёма: с 17:00 до 19:00, или в соответствии с
     назначением.
 cautions:
-  - 'Противопоказания: сильный Холод, индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
+  - Сильный Холод.
 sources:
   - 'https://bimala.ru/sostav/aru-10'
   - 'https://manla.ru/herbs/#aru-10'

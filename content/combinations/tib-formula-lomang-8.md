@@ -5,14 +5,14 @@ name_ru: Ломанг-8 «Лёгочное-8»
 name_original: Ломанг-8
 nature: тёплая
 composition:
-  - Punica granatum
-  - Myristica fragrans
-  - Rhododendron adamsii
-  - Acorus calamus
-  - Curcuma longa
-  - Piper longum
-  - Piper nigrum
-  - Glycyrrhiza uralensis
+  - Гранат (Punica granatum)
+  - Мускатный орех (Myristica fragrans)
+  - Рододендрон Адамса (Rhododendron adamsii)
+  - Аир болотный (Acorus calamus)
+  - Куркума длинная (Curcuma longa)
+  - Длинный перец (Piper longum)
+  - Чёрный перец (Piper nigrum)
+  - Солодка (Glycyrrhiza uralensis)
 traditional_use:
   - >-
     Это лучшее средство при Ветре и Слизи в лёгких, и при холодных расстройствах
@@ -28,14 +28,7 @@ traditional_use:
 dosing_notes:
   - 'Оптимальное время приёма: перед завтраком, или в соответствии с назначением.'
 cautions:
-  - Жар; индивидуальная непереносимость.
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
+  - Жар.
 sources:
   - 'https://manla.ru/herbs/#lomang-8'
 ---

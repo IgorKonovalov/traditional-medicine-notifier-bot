@@ -4,12 +4,12 @@ tradition: tibetan
 name_ru: Чудлен Мандаравы (пилюли)
 name_original: Mandarava Chudlen
 composition:
-  - терминалия хебула
-  - зеленый кардамон
-  - гвоздика
-  - мускатный орех
-  - купена
-  - и другие
+  - Терминалия хебула
+  - Зеленый кардамон
+  - Гвоздика
+  - Мускатный орех
+  - Купена
+  - И другие
 members:
   - tib-haritaki
 traditional_use:

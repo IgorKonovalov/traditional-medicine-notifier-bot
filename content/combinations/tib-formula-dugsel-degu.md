@@ -5,13 +5,13 @@ name_ru: Дугсел Дегу тибетский фитосбор (порошо
 name_original: Dugsel Degu / Дугсел Дегу "Устраняющий яды" / Дугсэл Дэгу
 nature: слегка прохладная
 composition:
-  - Rosa sertata Rolfe (шиповник)
-  - Carthamus tinctorius (сафлор красильный)
-  - Myristica fragrans (мускатный орех)
-  - Bambusa textilis (бамбуковая манна)
-  - Elettaria cardamomum (кардамон зелёный)
-  - Amomum subulatum (чёрный кардамон)
-  - Eugenia caryophyllata (гвоздика)
+  - Шиповник (Rosa sertata Rolfe)
+  - Сафлор красильный (Carthamus tinctorius)
+  - Мускатный орех (Myristica fragrans)
+  - Бамбуковая манна (Bambusa textilis)
+  - Кардамон зелёный (Elettaria cardamomum)
+  - Чёрный кардамон (Amomum subulatum)
+  - Гвоздика (Eugenia caryophyllata)
 traditional_use:
   - >-
     Очистительный состав, выводит яды и токсины, при этом поддерживая все
@@ -31,15 +31,6 @@ dosing_notes:
   - >-
     Перед приёмом рекомендуется проводить очищение организма отварами наподобие
     Лчумца-3.
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
 sources:
   - 'https://bimala.ru/sostav/dugsel-degu'
   - 'https://manla.ru/herbs/#dugsel-degu'

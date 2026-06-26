@@ -5,12 +5,12 @@ name_ru: Лиши 6 "Гвоздика 6"
 name_original: Lishi 6 / Лишь 6 (монгольское название)
 nature: слегка прохладная
 composition:
-  - Eugenia caryophyllata (гвоздика)
-  - Bambusa textilis (бамбуковая манна)
-  - Glycyrrhiza glabra (солодка)
-  - Gentiana algida (горечавка трехцветковая)
-  - Saussurea lappa (соссюрея лопуховидная)
-  - Terminalia chebula (терминалия хебула)
+  - Гвоздика (Eugenia caryophyllata)
+  - Бамбуковая манна (Bambusa textilis)
+  - Солодка (Glycyrrhiza glabra)
+  - Горечавка трехцветковая (Gentiana algida)
+  - Соссюрея лопуховидная (Saussurea lappa)
+  - Терминалия хебула (Terminalia chebula)
 members:
   - tib-haritaki
 traditional_use:
@@ -22,15 +22,6 @@ dosing_notes:
   - >-
     Оптимальное время приёма: по мере необходимости, или в соответствии с
     назначением.
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
 sources:
   - 'https://bimala.ru/sostav/lishi-6'
   - 'https://manla.ru/herbs/#lishi-6'

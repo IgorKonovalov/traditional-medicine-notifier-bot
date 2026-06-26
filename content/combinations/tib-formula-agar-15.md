@@ -7,27 +7,27 @@ name_original: >-
   монгольском: Агар 15 / на тибетском: А-гар-бчо-лнга, Ар-цхэс
 nature: слегка прохладная
 composition:
-  - Aquilaria agallocha (орлиное дерево)
-  - Myristica fragrans (мускатный орех)
-  - Melia composita (мелия)
-  - Bambusa textilis (бамбуковая манна)
-  - Saussurea lappa (соссюрея)
-  - Pterocarpus santalinus (красный сандал)
-  - Mesua ferrea (мезуя железная)
-  - Terminalia chebula (терминалия хебула)
-  - Terminalia belerica (терминалия баллерика)
-  - Emblica officinalis (эмблика лекарственная)
-  - Inula racemosa (девясил)
-  - Rubus idaeopsis (малина)
-  - Tinospora cordifolia (тиноспора сердцелистная)
-  - Hedychium spicatum (кемпферия)
-  - Shorea robusta (шорея)
+  - Орлиное дерево (Aquilaria agallocha)
+  - Мускатный орех (Myristica fragrans)
+  - Мелия (Melia composita)
+  - Бамбуковая манна (Bambusa textilis)
+  - Соссюрея (Saussurea lappa)
+  - Красный сандал (Pterocarpus santalinus)
+  - Мезуя железная (Mesua ferrea)
+  - Терминалия хебула (Terminalia chebula)
+  - Терминалия баллерика (Terminalia belerica)
+  - Эмблика лекарственная (Emblica officinalis)
+  - Девясил (Inula racemosa)
+  - Малина (Rubus idaeopsis)
+  - Тиноспора сердцелистная (Tinospora cordifolia)
+  - Кемпферия (Hedychium spicatum)
+  - Шорея (Shorea robusta)
 members:
   - tib-haritaki
 indications:
-  - при высоком давлении из-за Ветра
+  - При высоком давлении из-за Ветра
   - Ветер головного мозга и белых каналов
-  - приступы удушья из-за борьбы Крови и Ветра
+  - Приступы удушья из-за борьбы Крови и Ветра
   - Жар Крови
   - Пустой и Незрелый Жар
   - '"Жар между горой и степью"'
@@ -42,15 +42,6 @@ dosing_notes:
   - >-
     Оптимальное время приёма: во второй половине дня, перед сном или в
     соответствии с назначением.
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
 sources:
   - 'https://bimala.ru/sostav/agar-15'
   - 'https://manla.ru/herbs/#agar-15'

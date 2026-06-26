@@ -7,21 +7,21 @@ name_original: >-
   Pakdrub
 nature: тёплая
 composition:
-  - Punica granatum (гранат)
-  - Elettaria cardamomum (кардамон зелёный)
-  - Piper longum (перец длинный)
-  - Saussurea lappa (соссюрея лопуховидная)
-  - Carthamus tinctorius (сафлор красильный)
-  - Cinnamomum zeylanicum (корица цейлонская)
-  - Terminalia chebula (терминалия хебула)
-  - Zingiber officinale (имбирь аптечный)
-  - Piper nigrum (перец чёрный)
-  - Calcite (кальцит)
-  - rock Salt (каменная соль)
+  - Гранат (Punica granatum)
+  - Кардамон зелёный (Elettaria cardamomum)
+  - Перец длинный (Piper longum)
+  - Соссюрея лопуховидная (Saussurea lappa)
+  - Сафлор красильный (Carthamus tinctorius)
+  - Корица цейлонская (Cinnamomum zeylanicum)
+  - Терминалия хебула (Terminalia chebula)
+  - Имбирь аптечный (Zingiber officinale)
+  - Перец чёрный (Piper nigrum)
+  - Кальцит (Calcite)
+  - Каменная соль (rock Salt)
 members:
   - tib-haritaki
 indications:
-  - 'смуг-по с преобладанием Холода, лхэн, холодные опухоли'
+  - 'Смуг-по с преобладанием Холода, лхэн, холодные опухоли'
 traditional_use:
   - >-
     Помогает при ослабленном пищеварении (несварение вздутие, распирание
@@ -33,15 +33,7 @@ traditional_use:
 dosing_notes:
   - 'Оптимальное время приёма: утром натощак или в соответствии с назначением.'
 cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
   - Во время приёма данного состава не рекомендуется есть грибы.
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
 sources:
   - 'https://bimala.ru/sostav/pakdzhub-tibetskij-fitosbor'
   - 'https://manla.ru/herbs/#pag-grub'

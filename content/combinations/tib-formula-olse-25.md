@@ -7,31 +7,31 @@ name_original: >-
   27; «Олмосэ-25 / Соломоцвет-25»)
 nature: прохлада и тепло равны
 composition:
-  - Podophyllum emodii (подофиллум)
-  - Rubia cordifolia (марена красильная)
-  - Emblica officinalis (эмблика лекарственная)
-  - Punica granatum (гранат)
-  - Hedychium spicatum (кемпферия)
-  - Mirabilis himalaica (мирабилис гималайский)
-  - Onosma hookeri (оносма)
-  - Cinnamomum zeylanicum (корица)
-  - Pterocarpus santalinus (красный сандал)
-  - Veronica ciliata (вероника реснитчатая)
-  - Hippophae rhamnoides (облепиха)
-  - sal-ammoniac (нашатырь)
-  - Aquilaria agallocha (орлиное дерево)
-  - Myristica fragrans (мускатный орех)
-  - Inula racemosa (девясил)
-  - Coriandrum sativum (кориандр)
-  - Piper nigrum (чёрный перец)
-  - Cupressus torulosa (кипарис гималайский)
-  - Terminalia chebula (миробалан хебула)
-  - Corydalis sp. (хохлатка)
-  - и другие
+  - Подофиллум (Podophyllum emodii)
+  - Марена красильная (Rubia cordifolia)
+  - Эмблика лекарственная (Emblica officinalis)
+  - Гранат (Punica granatum)
+  - Кемпферия (Hedychium spicatum)
+  - Мирабилис гималайский (Mirabilis himalaica)
+  - Оносма (Onosma hookeri)
+  - Корица (Cinnamomum zeylanicum)
+  - Красный сандал (Pterocarpus santalinus)
+  - Вероника реснитчатая (Veronica ciliata)
+  - Облепиха (Hippophae rhamnoides)
+  - Нашатырь (sal-ammoniac)
+  - Орлиное дерево (Aquilaria agallocha)
+  - Мускатный орех (Myristica fragrans)
+  - Девясил (Inula racemosa)
+  - Кориандр (Coriandrum sativum)
+  - Чёрный перец (Piper nigrum)
+  - Кипарис гималайский (Cupressus torulosa)
+  - Миробалан хебула (Terminalia chebula)
+  - Хохлатка (Corydalis sp.)
+  - И другие
 members:
   - tib-haritaki
 indications:
-  - женские болезни "опасная Кровь" и "опасный Лунг"
+  - Женские болезни "опасная Кровь" и "опасный Лунг"
 traditional_use:
   - >-
     Основной состав при любых женских проблемах, нормализует менструальный цикл,
@@ -49,15 +49,6 @@ dosing_notes:
   - >-
     Оптимальное время приёма: утром или вечером, или в соответствии с
     назначением.
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
 sources:
   - 'https://bimala.ru/sostav/olse-25'
   - 'https://manla.ru/herbs/#olmose-25'

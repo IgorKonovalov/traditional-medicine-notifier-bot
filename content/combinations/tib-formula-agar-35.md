@@ -7,57 +7,57 @@ name_original: >-
   на тибетском: А-гар-со-лнга, Цхангс-лха
 nature: нейтральная
 composition:
-  - Aquilaria agallocha (орлиное дерево)
-  - Terminalia chebula (терминалия хебула)
-  - Terminalia belerica (терминалия белерическая)
-  - Emblica officinalis (эмблика лекарственная)
-  - Myristica fragrans (мускатный орех)
-  - Bambusa textilis (бамбуковая манна)
-  - Adhatoda vasica (адхатода)
-  - Mesua ferrea (мезуя железная)
-  - Saussurea lappa (соссюрея лопуховидная)
-  - Commiphora mukul (гуггул)
-  - Picrorhiza kurroa (кутки)
-  - Punica granatum (гранат)
-  - Swertia chirata (сверция чирата)
-  - Meconopsis horridula (меконопсис)
-  - Melia composita (мелия)
-  - Shorea robusta (шорея исполинская)
+  - Орлиное дерево (Aquilaria agallocha)
+  - Терминалия хебула (Terminalia chebula)
+  - Терминалия белерическая (Terminalia belerica)
+  - Эмблика лекарственная (Emblica officinalis)
+  - Мускатный орех (Myristica fragrans)
+  - Бамбуковая манна (Bambusa textilis)
+  - Адхатода (Adhatoda vasica)
+  - Мезуя железная (Mesua ferrea)
+  - Соссюрея лопуховидная (Saussurea lappa)
+  - Гуггул (Commiphora mukul)
+  - Кутки (Picrorhiza kurroa)
+  - Гранат (Punica granatum)
+  - Сверция чирата (Swertia chirata)
+  - Меконопсис (Meconopsis horridula)
+  - Мелия (Melia composita)
+  - Шорея исполинская (Shorea robusta)
   - Solms-Laubachia sp.
-  - Cinnamomum cecidodaphne (коричник)
-  - Carthamus tinctorius (сафлор красильный)
-  - Rubus idaeopsis (малина)
-  - Tinospora cordifolia (тиноспора сердцелистная)
-  - Amomum subulatum (кардамон чёрный)
-  - Hedychium spicatum (хедихиум колосистый)
-  - Chrysanthemum tatsienense (хризантема)
-  - Pterocarpus santalinus (красный сандал)
-  - Pulicaria insignis (пуликария)
-  - Strychnos nux vomica (чилибуха)
-  - Elettaria cardamomum (кардамон зелёный)
-  - Eugenia caryophyllata (гвоздика)
-  - Santalum album (белый сандал)
-  - Inula racemosa (девясил)
+  - Коричник (Cinnamomum cecidodaphne)
+  - Сафлор красильный (Carthamus tinctorius)
+  - Малина (Rubus idaeopsis)
+  - Тиноспора сердцелистная (Tinospora cordifolia)
+  - Кардамон чёрный (Amomum subulatum)
+  - Хедихиум колосистый (Hedychium spicatum)
+  - Хризантема (Chrysanthemum tatsienense)
+  - Красный сандал (Pterocarpus santalinus)
+  - Пуликария (Pulicaria insignis)
+  - Чилибуха (Strychnos nux vomica)
+  - Кардамон зелёный (Elettaria cardamomum)
+  - Гвоздика (Eugenia caryophyllata)
+  - Белый сандал (Santalum album)
+  - Девясил (Inula racemosa)
 members:
   - tib-haritaki
 indications:
-  - общий Ветер
+  - Общий Ветер
   - Ветер с Кровью
   - Жар Ветра - возбуждение Ветра при всех горячих болезнях
   - Холод в нижней части тела и Жар в верхней
-  - борьба Жара и Холода
-  - хронические проблемы Ветра
+  - Борьба Жара и Холода
+  - Хронические проблемы Ветра
   - Пустой Жар
   - Незрелый Жар в верхней части тела
   - Развитый Жар в сердце
-  - 'лёгочные проблемы (Жар, Ветер, затруднённое дыхание, астма, удушье и т.п.)'
-  - спутанность мыслей
-  - шум в ушах
-  - сухость во рту
-  - гипертонический криз
-  - сердцебиение (тахикардия)
-  - предотвращает различные психосоматические проблемы
-  - головную боль от Ветра и т.п.
+  - 'Лёгочные проблемы (Жар, Ветер, затруднённое дыхание, астма, удушье и т.п.)'
+  - Спутанность мыслей
+  - Шум в ушах
+  - Сухость во рту
+  - Гипертонический криз
+  - Сердцебиение (тахикардия)
+  - Предотвращает различные психосоматические проблемы
+  - Головную боль от Ветра и т.п.
 traditional_use:
   - >-
     Умиротворяет общий Ветер, укрепляет сердечно-сосудистую систему,
@@ -71,15 +71,6 @@ dosing_notes:
   - >-
     Оптимальное время приёма: во второй половине дня, перед сном или в
     соответствии с назначением.
-cautions:
-  - 'Противопоказания: индивидуальная непереносимость.'
-  - >-
-    Помните, что без соответствующего питания и образа жизни, любые составы
-    Тибетской медицины могут не оказать никакого эффекта, или принести лишь
-    временные блага. Работайте с причиной, а не со следствием!
-  - >-
-    Перед применением Тибетских составов рекомендуется проконсультироваться у
-    специалиста.
 sources:
   - 'https://bimala.ru/sostav/agar-35'
   - 'https://manla.ru/herbs/#agar-35'
