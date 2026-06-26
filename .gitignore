@@ -29,5 +29,11 @@ Thumbs.db
 # Scratch / throwaway scripts used by one-off plans
 docs/plans/scratch/
 
+# Local research source binaries (not distributed)
+research/*.pdf
+
+# Private research notes derived from local sources (not distributed)
+research/_private/
+
 # skills, settings
 .claude
