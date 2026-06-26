@@ -23,6 +23,7 @@
     "format": "prettier --write \"src/**/*.ts\" \"*.json\" \"*.yml\"",
     "content:index": "tsx scripts/build-content-index.ts",
     "content:index:check": "tsx scripts/build-content-index.ts --check --validate",
+    "content:review": "tsx scripts/build-formula-review.ts",
     "prepare": "husky"
   },
   "dependencies": {
