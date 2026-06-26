@@ -15,7 +15,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Агар 15 «Орлиное дерево 15» / Agar 15 / на монгольском: Агар 15 / на тибетском: А-гар-бчо-лнга, Ар-цхэс"
+    "nameOriginal": "Агар 15 «Орлиное дерево 15» / Agar 15 / A-GAR 15 / EAGLEWOOD 15 / на монгольском: Агар 15 / на тибетском: А-гар-бчо-лнга, Ар-цхэс"
   },
   {
     "id": "tib-formula-agar-17",
@@ -51,7 +51,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Agar 35 «Орлиное дерево 35»; на монгольском: Агар 35; на тибетском: А-гар-со-лнга, Цхангс-лха"
+    "nameOriginal": "Agar 35 «Орлиное дерево 35» (A-GAR 35, EAGLEWOOD 35); на монгольском: Агар 35; на тибетском: А-гар-со-лнга, Цхангс-лха"
   },
   {
     "id": "tib-formula-agar-8",
@@ -60,7 +60,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Монгольское: Агар 8; Тибетские: А-гар-бргйад-па, Ар-клу; Английское: Agar 8"
+    "nameOriginal": "Монгольское: Агар 8; Тибетские: А-гар-бргйад-па, Ар-клу, Шун-Агар; Английское: Agar 8 (Eaglewood 8)"
   },
   {
     "id": "tib-formula-aru-10",
@@ -69,7 +69,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Aru 10 / Ар 10"
+    "nameOriginal": "Aru 10 / Ар 10 / A-RU 10, MYROBALAN 10"
   },
   {
     "id": "tib-formula-aru-18",
@@ -363,7 +363,7 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "дза-ти-нга-па; Задь 5 (монг.); Dzati 5"
+    "nameOriginal": "дза-ти-нга-па; Задь 5 (монг.); Dzati 5; Дзати-5 «Мускат-5»"
   },
   {
     "id": "tib-formula-dzhonshi-21",
@@ -498,7 +498,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "гур-гум-мчхог-бдун (Gurgum 7 / \"Шафран 7\" / Гургэм 7)"
+    "nameOriginal": "гур-гум-мчхог-бдун (Gurgum 7 / \"Шафран 7\" / Гургэм 7 / Гур-Чог, GUR-GUM mCHOG-bDUN, MOST EXCELLENT SAFFLOWER 7)"
   },
   {
     "id": "tib-formula-gurgum-8",
@@ -524,7 +524,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Ргйам-цхва-бжи-тханг, Чха-мнйам-бжи-тханг / Giamca 4 tan"
+    "nameOriginal": "Ргйам-цхва-бжи-тханг, Чха-мнйам-бжи-тханг / Giamca 4 tan / Джамца-4 тханг «Каменная соль-4 отвар»"
   },
   {
     "id": "tib-formula-gyaru-14",
@@ -605,7 +605,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Кха-ру-цхва-лнга-тханг / На монгольском: Харуц 5 / Kharuca-5 / \"Черная соль 5 отвар\""
+    "nameOriginal": "Кха-ру-цхва-лнга-тханг / На монгольском: Харуц 5 / Kharuca-5 / \"Черная соль 5 отвар\" / КАРУЦА-5 ТХАНГ"
   },
   {
     "id": "tib-formula-kodzhi-13",
@@ -677,7 +677,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Летре 5 \"Тиноспора 5 отвар\" / Letre 5 / Лэтрэ 5"
+    "nameOriginal": "Летре 5 \"Тиноспора 5 отвар\" / Letre 5 / Лэтрэ 5 / Лэтрэ-5 тханг (Жонлон-5)"
   },
   {
     "id": "tib-formula-lishi-11",
@@ -767,7 +767,7 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Manushitan; на монгольском: Мана 4"
+    "nameOriginal": "Manushitan; Ману-4 тханг (Ману-шитан); на монгольском: Мана 4"
   },
   {
     "id": "tib-formula-marpo-3",
@@ -794,7 +794,7 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Zamoshin 6 / Зомшин 6 / \"Карагана 6 отвар\" (mdzomo-6)"
+    "nameOriginal": "Мдзомо-6 тханг «Карагана-6 отвар» / Zamoshin 6 / Зомшин 6 (mdzomo-6)"
   },
   {
     "id": "tib-formula-mensil",
@@ -856,7 +856,7 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Себру Никил / Нигил / Сожид 11 / Sebru Nikil (Sozhid) / \"Гранат солнечная мандала\""
+    "nameOriginal": "Себру Никил / Нигил / Сожид 11 / Со-Жед / Sebru Nikil (Sozhid) / Сэбру нйима-и дкйил кхор / \"Гранат Солнечная мандала - 11\""
   },
   {
     "id": "tib-formula-norbu-7",
@@ -865,7 +865,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Монгольское: Норов 7; Тибетские: Нор-бу-бдун-тханг, Нор-бу-чху-двангс, Чхам-цхад-бдун-тханг"
+    "nameOriginal": "Норбу-7 тханг «Отвар из 7 драгоценных»; Монгольское: Норов 7; Тибетские: Нор-бу-бдун-тханг, Нор-бу-чху-двангс, Чхам-цхад-бдун-тханг"
   },
   {
     "id": "tib-formula-nyugrci-25",
@@ -883,7 +883,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Olse 25"
+    "nameOriginal": "Olse 25 (альтернативное каталожное обозначение по manla: OL-SE 27, PODOPHYLLUM 27; «Олмосэ-25 / Соломоцвет-25»)"
   },
   {
     "id": "tib-formula-pakdzhub",
@@ -892,7 +892,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Пакджуб / Пакдруб / Pakdrub / Джонши-11"
+    "nameOriginal": "Паг-груб (Пхаг-мо-груб-сбйор), «Кальцит-11», Чонгжи-11 / Джонши-11 / Пакдруб / Pakdrub"
   },
   {
     "id": "tib-formula-panci-12",
@@ -928,7 +928,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Pokar-10 / sPOD-dKAR 10 / CAMPHOR 10 / Тибетское: Спос-дкар-бчу-па / На монгольском: Бойгар 10"
+    "nameOriginal": "Pokar-10 / sPOD-dKAR 10 / CAMPHOR 10 / Sposkar-10 «Белый Ладан-10» / Тибетское: Спос-дкар-бчу-па / На монгольском: Бойгар 10"
   },
   {
     "id": "tib-formula-pokjyung-15",
@@ -972,7 +972,7 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Ру-рта-друг-па / Ruta 6 / \"Соссюрея 6\" / М6 / на монгольском: Руда 6"
+    "nameOriginal": "Ру-рта-друг-па / Ruta 6 / \"Соссюрея 6\" / М6 / на монгольском: Руда 6 / RU-rTA 6, SAUSSUREA 6"
   },
   {
     "id": "tib-formula-samkjyung",
@@ -990,7 +990,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Самнор (Сампел норбу) \"Драгоценность исполняющая желания\" / Samnor; монгольское: Сампилноров; тибетские: Бсам-'пхэл-нор-бу, Бсам-нор, Нйа-пхйис-со-гчиг"
+    "nameOriginal": "Самнор (Сампел норбу) \"Драгоценность исполняющая желания\" / Sam-nor; монгольское: Сампилноров; тибетские: Бсам-'пхэл-нор-бу, Бсам-нор, Нйа-пхйис-со-гчиг"
   },
   {
     "id": "tib-formula-sarkiyung",
@@ -1008,16 +1008,16 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Сэмбру 5 / Сэмбэруу 5"
+    "nameOriginal": "Сэмбру 5 / Сэмбэруу 5 / SE-‘BRU 5, POMEGRANATE 5"
   },
   {
     "id": "tib-formula-sebru-dane",
-    "nameRu": "Себру Дане (Данма-5) «Ставящий на место пищеварительный сок»",
+    "nameRu": "Себру Дане (Данма-5) «Ставящий на место прозрачный сок»",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Sebru Dane"
+    "nameOriginal": "Sebru Dane (Дан Ма Нэ Джог)"
   },
   {
     "id": "tib-formula-semde",
@@ -1080,7 +1080,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Serdok 5 / Гсэр-мдог-лнга-па"
+    "nameOriginal": "Serdok 5 / Сэрдог-5 / Гсэр-мдог-лнга-па / gSER-mDOG-5 (GOLDEN COLOUR 5)"
   },
   {
     "id": "tib-formula-seru-25",
@@ -1125,7 +1125,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Жи-гсэр (Гсэр-жи); Shiser"
+    "nameOriginal": "Жи-гсэр (Гсэр-жи); Ши-Сэр (Шижет-6 + Сэрдок-5), «Умиротворяющий-6 + Золотой блеск-5»; Shiser"
   },
   {
     "id": "tib-formula-shizhet-11",
@@ -1143,7 +1143,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Shijeet 6 / Жи-бйэд-друг-па, жи-бйэд-дкар-по-друг-па / На монгольском: Шижид 6"
+    "nameOriginal": "Shijeet 6 / Жи-бйэд-друг-па, жи-бйэд-дкар-по-друг-па / ZHI-BYED 6, PACIFIC 6 / На монгольском: Шижид 6"
   },
   {
     "id": "tib-formula-skyurura-25",
@@ -1179,7 +1179,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Срогдзин 11 (Согдзин 11) «Держатель жизни 11» / Srogdzin 11; на монгольском: Сорогзин 11"
+    "nameOriginal": "Срогдзин 11 (Согдзин 11) «Держатель жизни 11» / Srog-'dzin 11 (ELEVEN HOLDERS OF LIFE); на монгольском: Сорогзин 11"
   },
   {
     "id": "tib-formula-srogdzin-norbu",
@@ -1197,7 +1197,7 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Sugmel 10"
+    "nameOriginal": "Sugmel 10 (SUG-MEL 10 / CARDAMOM 10)"
   },
   {
     "id": "tib-formula-sugmel-13",
@@ -1251,7 +1251,7 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Tsowo 8"
+    "nameOriginal": "Tsowo 8 / Цово-8 «8 главных»"
   },
   {
     "id": "tib-formula-tendzhom",
@@ -1331,7 +1331,7 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Гурван Урийн тан / Бребусум тан / Бребу 3"
+    "nameOriginal": "Гурван Урийн тан / Бребусум тан / Бребу 3 / Брэбу-3 тханг «Отвар 3 Плода»"
   },
   {
     "id": "tib-formula-truglo-kunsel",

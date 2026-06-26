@@ -10,7 +10,9 @@ complete and how any changes should be applied.
 
 - **Corpus:** `content/combinations/*.md` (161 formulas) — structured fields
   (`indications`, `traditional_use`, `dosing_notes`, `composition`, `cautions`) plus
-  a full verbatim body merging `bimala.ru` and `manla.ru` source text.
+  a body. Formulas that had both sources (47) are now **consolidated into a single
+  manla-preferred record** (see Dual-source consolidation); the rest keep their single
+  source body.
 - **Raw provenance:** `research/raw-crawl-verbose.json` — the unmerged crawl output
   (full verbatim text per source).
 
@@ -49,6 +51,63 @@ A data-cleanup pass ran over the corpus (163 → 161 formulas):
 Raw provenance in `research/raw-crawl-verbose.json` is unchanged, so every edit above
 is auditable against the original crawl.
 
+## Dual-source consolidation (2026-06-26)
+
+The **47 formulas that carried both `bimala.ru` and `manla.ru`** were consolidated
+into a **single manla-preferred record** each (the two `## Источник:` sections were
+collapsed). A read-only analysis flagged 53 genuine source conflicts (38 composition,
+8 dosing, 4 nature, 3 name); these were resolved with the owner via interview:
+
+- **Composition:** use **manla's component set only**, formatted `Latin (Russian)`;
+  bimala-divergent components were **dropped** (listed below for verification). The
+  Russian common names paired to manla's Latin binomials are **best-effort mappings**
+  and need a botanist/practitioner check.
+- **Nature:** manla's value as primary, bimala noted as `(вариант bimala: …)`.
+- **Dosing:** manla wins on timing conflicts; complementary bimala details kept.
+- **Names:** `bimala` keeps "20" with a note that only 19 components are enumerated;
+  `olse-25` keeps "25" (manla's "OL-SE 27 / PODOPHYLLUM 27" recorded only as an
+  alternate catalog code); `sebru-dane` adopts manla's "прозрачный сок" (dangs-ma).
+
+**Dropped bimala-only components (per formula) — confirm whether any are canonical:**
+
+- `agar-15`: слива, белый сандал, сафлор красильный, звездчатка, бузина черная
+- `agar-35`: слива, бузина, бомбакс сейба, ладан, зубчатка, шлемник байкальский, череда трёхраздельная, мордовник, цветы девясила, **аконит**
+- `aru-10`: рододендрон золотистый, лаковые червецы
+- `bimala`: акация катеху, бадан/Bergenia
+- `chugang-25`: каолин, шафран, звездчатка, бадан, шлемник байкальский
+- `dadud`: железо
+- `dali-16`: слива, бадан
+- `dugsel-degu`: шафран, каолин
+- `garuda-5`: **аконит джунгарский**
+- `gurgum-13`: шафран, красный сандал
+- `gurgum-7`: шафран, хвойник, водосбор
+- `kola-11`: хвойник, герпетоспермум
+- `lishi-11`: нивяник
+- `manushitan`: бузина черная, имбирь
+- `mutik-25`: орлиное дерево
+- `nikil`: пион уклоняющийся
+- `norbu-7`: бузина черная
+- `olse-25`: каменная соль, шеллак, **аконит**, витания, патока
+- `pakdzhub`: гвоздика, марена красильная, кемпферия галанга
+- `pangen-15`: адатода васика, звездчатка, слива непальская
+- `sebru-dane`: шафран
+- `shiser`: имбирь лекарственный
+- `shizhet-11`: имбирь, каменная соль
+- `skyurura-25`: шлемник байкальский, водосбор, соссюрея иволистная, лаковые червецы, оносма прицветочная, бадан толстолистный, ломатогониум, момордика, бузина
+- `sugmel-10`: имбирь
+- `tcovo-8`: шлемник байкальский, зубчатка поздняя, **аконит разнолистный**, мытник
+- `thanchen-10`: бузина
+- `thanchen-25`: шлемник байкальский, пустырник
+
+**Safety-relevant to confirm first:** `agar-35` — manla names `Strychnos nux vomica`
+(чилибуха) where bimala named **аконит** (Aconitum); distinct toxic plants. Verify the
+true toxic constituent(s) before any production use. `garuda-5`, `olse-25`, `tcovo-8`
+also dropped an aconite entry.
+
+The full per-formula analysis (manla vs bimala) and the consolidation changelog are in
+the session workflow outputs; raw verbatim source for both sites remains in
+`research/raw-crawl-verbose.json`.
+
 ## Open items for the review
 
 - **Source factual discrepancies surfaced during cleanup (NOT auto-corrected):**
@@ -62,6 +121,13 @@ is auditable against the original crawl.
 - A few **ambiguous case-agreement** spots were deliberately left (e.g. `giwan-9`
   "повреждение или ушибах печени" — nominative vs prepositional unclear). Decide
   during review.
+- **Food-timing conflicts** (`kharuca-5`, `kola-11`, `kola-4`): sources disagree on
+  taking the formula on an empty stomach vs after food — clinically meaningful; manla
+  kept as primary with an in-record note, confirm the correct administration.
+- **Best-effort Russian common names** were paired to manla's Latin binomials during
+  consolidation; verify the botanical identifications (several flagged per formula in
+  the workflow output, e.g. `agar-8` Mesua ferrea vs Bombax ceiba, Commiphora as
+  «ладан»).
 - Whether dosing/administration text is retained, reworded, or removed for production.
 
 ## Sign-off
