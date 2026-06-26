@@ -3,6 +3,7 @@ id: tib-formula-sugmel-10
 tradition: tibetan
 name_ru: Сугмел 10 / Сугмэл 10 "Зеленый кардамон 10"
 name_original: Sugmel 10 (SUG-MEL 10 / CARDAMOM 10)
+nature: тёплая
 composition:
   - Elettaria cardamomum (кардамон зелёный)
   - Hedychium spicatum (хедихиум колосистый)

@@ -3,6 +3,7 @@ id: tib-formula-tsarbong-5
 tradition: tibetan
 name_ru: Царбонг-5 тханг «Пятикомпонентный отвар полыни»
 name_original: Царбонг-5 тханг
+nature: прохладная
 composition:
   - Artemisia sieversiana
   - Rubia tinctórum

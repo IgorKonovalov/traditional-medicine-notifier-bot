@@ -5,6 +5,7 @@ name_ru: Пакджуб тибетский фитосбор
 name_original: >-
   Паг-груб (Пхаг-мо-груб-сбйор), «Кальцит-11», Чонгжи-11 / Джонши-11 / Пакдруб /
   Pakdrub
+nature: тёплая
 composition:
   - Punica granatum (гранат)
   - Elettaria cardamomum (кардамон зелёный)

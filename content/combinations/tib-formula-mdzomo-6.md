@@ -3,6 +3,7 @@ id: tib-formula-mdzomo-6
 tradition: tibetan
 name_ru: Замошин 6 тибетский фитосбор (отвар / порошок)
 name_original: Мдзомо-6 тханг «Карагана-6 отвар» / Zamoshin 6 / Зомшин 6 (mdzomo-6)
+nature: слегка тёплая
 composition:
   - Caragana tibetica (карагана)
   - Elettaria cardamomum (кардамон зелёный)

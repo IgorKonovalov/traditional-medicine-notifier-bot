@@ -52,6 +52,14 @@ export interface Combination {
   readonly nameRu: string;
   /** Transliterated Tibetan name, if known. */
   readonly nameOriginal?: string;
+  /**
+   * Optional combination category id (kebab-case); when set it must resolve to a
+   * `Category` — the same generic category model herbs use (ADR 007). E.g.
+   * `rinchen-pills` for the precious-pill (Ринчен) class.
+   */
+  readonly category?: string;
+  /** Thermal nature / essence («Сущность»), e.g. "нейтральная", "слегка прохладная". */
+  readonly nature?: string;
   /** Cross-source spelling variants (e.g. "Агар 8", "Орлиное дерево 8"). */
   readonly aliases: readonly string[];
   /** Member-ingredient list. May be empty when the source publishes none (ADR 006). */

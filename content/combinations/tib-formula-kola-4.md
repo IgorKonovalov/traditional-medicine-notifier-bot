@@ -3,6 +3,7 @@ id: tib-formula-kola-4
 tradition: tibetan
 name_ru: Какола 4 тибетский фитосбор (порошок)
 name_original: Кола 4 / "Черный кардамон 4" / Гагола 4 / Гагал 4 (на монгольском) / Kola 4
+nature: тёплая
 composition:
   - Amomum subulatum (чёрный кардамон)
   - Eugenia caryophyllata (гвоздика)

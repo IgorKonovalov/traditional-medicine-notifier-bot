@@ -3,6 +3,7 @@ id: tib-formula-tsajor-chenmo
 tradition: tibetan
 name_ru: Ринчен Цажор Ченмо «Великий Жар»
 name_original: RINCHEN TSAJOR CHENMO
+category: rinchen-pills
 composition:
   - >-
     «Тсошель», грамотно приготовленный с помощью ряда надлежащих процессов

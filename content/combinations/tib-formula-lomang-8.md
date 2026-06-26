@@ -3,6 +3,7 @@ id: tib-formula-lomang-8
 tradition: tibetan
 name_ru: Ломанг-8 «Лёгочное-8»
 name_original: Ломанг-8
+nature: тёплая
 composition:
   - Punica granatum
   - Myristica fragrans

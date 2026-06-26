@@ -5,6 +5,7 @@ name_ru: Срогдзин 11 тибетский фитосбор
 name_original: >-
   Срогдзин 11 (Согдзин 11) «Держатель жизни 11» / Srog-'dzin 11 (ELEVEN HOLDERS
   OF LIFE); на монгольском: Сорогзин 11
+nature: тёплая
 composition:
   - Aquilaria agallocha (орлиное дерево)
   - Myristica fragrans (мускатный орех)

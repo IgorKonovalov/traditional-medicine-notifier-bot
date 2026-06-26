@@ -5,6 +5,7 @@ name_ru: Ратна Сампел драгоценная пилюля
 name_original: >-
   Ratna Samphel (Рин-чен Рат-на Бсам-'пхэл); также называется Мутик-70 /
   Жемчуг-70
+category: rinchen-pills
 composition:
   - шафран
   - терминалия хебула

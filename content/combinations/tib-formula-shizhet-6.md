@@ -5,6 +5,7 @@ name_ru: Шижет 6 "Умиротворяющий 6"
 name_original: >-
   Shijeet 6 / Жи-бйэд-друг-па, жи-бйэд-дкар-по-друг-па / ZHI-BYED 6, PACIFIC 6 /
   На монгольском: Шижид 6
+nature: нейтрально-тёплый
 composition:
   - Terminalia chebula (терминалия хебула)
   - Rheum officinale (ревень)

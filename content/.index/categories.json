@@ -2,11 +2,19 @@
   {
     "id": "digestive-herbs",
     "nameRu": "Травы для пищеварения",
-    "herbCount": 2
+    "herbCount": 2,
+    "combinationCount": 0
+  },
+  {
+    "id": "rinchen-pills",
+    "nameRu": "Драгоценные пилюли (Ринчены)",
+    "herbCount": 0,
+    "combinationCount": 8
   },
   {
     "id": "tonic-herbs",
     "nameRu": "Тонизирующие травы",
-    "herbCount": 1
+    "herbCount": 1,
+    "combinationCount": 0
   }
 ]

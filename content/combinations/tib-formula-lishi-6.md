@@ -3,8 +3,7 @@ id: tib-formula-lishi-6
 tradition: tibetan
 name_ru: Лиши 6 "Гвоздика 6"
 name_original: Lishi 6 / Лишь 6 (монгольское название)
-members:
-  - tib-haritaki
+nature: слегка прохладная
 composition:
   - Eugenia caryophyllata (гвоздика)
   - Bambusa textilis (бамбуковая манна)
@@ -12,6 +11,8 @@ composition:
   - Gentiana algida (горечавка трехцветковая)
   - Saussurea lappa (соссюрея лопуховидная)
   - Terminalia chebula (терминалия хебула)
+members:
+  - tib-haritaki
 traditional_use:
   - >-
     Применяется при болях и воспалениях в горле, при охриплости голоса, одышке,

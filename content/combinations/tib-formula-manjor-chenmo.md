@@ -3,6 +3,7 @@ id: tib-formula-manjor-chenmo
 tradition: tibetan
 name_ru: Манджор Ченмо «Великое накопление» драгоценная пилюля Ринчен
 name_original: Rinchen Mandjor Chenmo
+category: rinchen-pills
 composition:
   - бирюза
   - коралл
@@ -18,6 +19,8 @@ composition:
   - и многие другие компоненты
 members:
   - tib-haritaki
+tags:
+  - composition-non-itemized
 indications:
   - заболевания ЖКТ
   - проблемы с печенью
@@ -56,8 +59,6 @@ cautions:
     Перед применением необходимо проконсультироваться со специалистом тибетской
     медицины.
   - 'Цвет упаковки может отличаться, от цвета на фотографии.'
-tags:
-  - composition-non-itemized
 sources:
   - 'https://bimala.ru/sostav/dragocennye-piluli-rincheny/manjor-chenmo'
 ---

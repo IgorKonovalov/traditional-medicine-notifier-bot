@@ -5,14 +5,15 @@ name_ru: Кхаруца 5 тибетский фитосбор (порошок)
 name_original: >-
   Кха-ру-цхва-лнга-тханг / На монгольском: Харуц 5 / Kharuca-5 / "Черная соль 5
   отвар" / КАРУЦА-5 ТХАНГ
-members:
-  - tib-haritaki
+nature: тёплая
 composition:
   - Terminalia chebula (терминалия хебула)
   - Piper longum (длинный перец)
   - Zingiber officinale (имбирь)
   - Salt (каменная соль)
   - Black salt (черная соль)
+members:
+  - tib-haritaki
 traditional_use:
   - >-
     Помогает при несварении, вздутии желудка и толстой кишки, урчании в животе,

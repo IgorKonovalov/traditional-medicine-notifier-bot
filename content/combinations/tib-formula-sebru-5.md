@@ -3,6 +3,7 @@ id: tib-formula-sebru-5
 tradition: tibetan
 name_ru: Себру-5 (с имбирем) "Гранат 5"
 name_original: 'Сэмбру 5 / Сэмбэруу 5 / SE-‘BRU 5, POMEGRANATE 5'
+nature: очень тёплая
 composition:
   - Punica granatum (гранат)
   - Cinnamomum zeylanicum (корица)

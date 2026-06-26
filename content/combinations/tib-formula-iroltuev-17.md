@@ -3,6 +3,7 @@ id: tib-formula-iroltuev-17
 tradition: tibetan
 name_ru: Иролтуев 17 отвар
 name_original: Iroltuev 17
+nature: нейтральная
 composition:
   - тысячелистник
   - ревень

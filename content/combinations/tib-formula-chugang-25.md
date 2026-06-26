@@ -3,6 +3,7 @@ id: tib-formula-chugang-25
 tradition: tibetan
 name_ru: Чуганг 25 "Бамбуковая манна 25"
 name_original: Cugang 25 / Чу-ганг-нйэр-лнга
+nature: слегка прохладная
 composition:
   - Bambusa textilis (бамбуковая манна)
   - Carthamus tinctorius (сафлор красильный)

@@ -5,6 +5,7 @@ name_ru: Агар 8 тибетский фитосбор "Орлиное дере
 name_original: >-
   Монгольское: Агар 8; Тибетские: А-гар-бргйад-па, Ар-клу, Шун-Агар; Английское:
   Agar 8 (Eaglewood 8)
+nature: слегка прохладная
 composition:
   - Aquilaria agallocha (орлиное дерево)
   - Myristica fragrans (мускатный орех)

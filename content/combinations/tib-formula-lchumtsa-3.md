@@ -3,6 +3,7 @@ id: tib-formula-lchumtsa-3
 tradition: tibetan
 name_ru: Лчумца-3 тханг «Ревень-3 отвар»
 name_original: Лчумца-3 тханг
+nature: прохлада и тепло равны
 composition:
   - Rheum officinale
   - Trona

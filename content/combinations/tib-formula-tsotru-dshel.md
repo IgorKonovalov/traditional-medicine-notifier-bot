@@ -3,12 +3,15 @@ id: tib-formula-tsotru-dshel
 tradition: tibetan
 name_ru: Цотру Дашел Ринчен "Драгоценный Очищающий Лунный Кристалл"
 name_original: RINCHEN TSO-TU DASHEL / TSO-TRU DASHEL
+category: rinchen-pills
 composition:
   - золото
   - серебро
   - >-
     детоксицированные бронза, свинец и другие металлы, смешанные с множеством
     лекарственных трав
+tags:
+  - composition-non-itemized
 indications:
   - Отравления ядами различного происхождения
   - заболевания ЖКТ
@@ -106,8 +109,6 @@ cautions:
   - >-
     Вся информация представленная на сайте несет ознакомительный характер, и мы
     убедительно просим Вас, не заниматься самолечением.
-tags:
-  - composition-non-itemized
 sources:
   - 'https://bimala.ru/sostav/dragocennye-piluli-rincheny/tsotru-dshel'
 ---

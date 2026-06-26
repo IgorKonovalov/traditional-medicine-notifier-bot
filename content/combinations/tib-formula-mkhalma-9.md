@@ -3,6 +3,7 @@ id: tib-formula-mkhalma-9
 tradition: tibetan
 name_ru: 'Мхалма-9, «Почечный отвар-9»'
 name_original: Мкхал-ма'и Дгу-тханг
+nature: слегка тёплая
 composition:
   - Caragana tibetica
   - Mangifera indica

@@ -2,6 +2,7 @@
 id: tib-formula-blonpo-3
 tradition: tibetan
 name_ru: Блонпо-3 «3 Министра»
+nature: прохладная
 composition:
   - Carthamus tinctorius
   - Bambusa textilis

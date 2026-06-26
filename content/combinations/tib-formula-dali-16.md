@@ -3,6 +3,7 @@ id: tib-formula-dali-16
 tradition: tibetan
 name_ru: Дали 16 "Рододендрон 16"
 name_original: Dali-16
+nature: слегка тёплая
 composition:
   - Rhododendron adamsii (Рододендрон Адамса)
   - Punica granatum (гранат)

@@ -174,6 +174,48 @@ describe('loadContent — combinations', () => {
     expect(combo?.dosingNotes).toEqual(['принимать по 0,1-0,2 г']);
   });
 
+  it('parses optional nature and category (#1, ADR 007)', () => {
+    const classified = COMBINATION.replace(
+      'name_original: A gar 8',
+      'name_original: A gar 8\ncategory: digestive-herbs\nnature: слегка прохладная',
+    );
+    const root = writeCorpus({
+      categories: { 'digestive-herbs': CATEGORY },
+      herbs: { 'tib-haritaki': HERB },
+      combinations: { 'tib-formula-agar-8': classified },
+    });
+
+    const combo = loadContent(root).combinations.byId.get('tib-formula-agar-8');
+    expect(combo?.category).toBe('digestive-herbs');
+    expect(combo?.nature).toBe('слегка прохладная');
+  });
+
+  it('leaves nature and category undefined when absent', () => {
+    const root = writeCorpus({
+      categories: { 'digestive-herbs': CATEGORY },
+      herbs: { 'tib-haritaki': HERB },
+      combinations: { 'tib-formula-agar-8': COMBINATION },
+    });
+
+    const combo = loadContent(root).combinations.byId.get('tib-formula-agar-8');
+    expect(combo?.category).toBeUndefined();
+    expect(combo?.nature).toBeUndefined();
+  });
+
+  it('rejects a combination whose category does not resolve (ADR 007)', () => {
+    const bad = COMBINATION.replace(
+      'name_original: A gar 8',
+      'name_original: A gar 8\ncategory: no-such-cat',
+    );
+    const root = writeCorpus({
+      categories: { 'digestive-herbs': CATEGORY },
+      herbs: { 'tib-haritaki': HERB },
+      combinations: { 'tib-formula-agar-8': bad },
+    });
+
+    expect(() => loadContent(root)).toThrow(/unknown category "no-such-cat"/);
+  });
+
   it('rejects duplicate combination ids', () => {
     const root = writeCorpus({
       categories: { 'digestive-herbs': CATEGORY },
@@ -216,6 +258,27 @@ describe('buildIndex — combinations', () => {
 
     const index = buildIndex(loadContent(root));
     expect(index.combinations[0]?.hasIndications).toBe(true);
+  });
+
+  it('projects nature/category and counts combinations per category (ADR 007)', () => {
+    const classified = COMBINATION.replace(
+      'name_original: A gar 8',
+      'name_original: A gar 8\ncategory: digestive-herbs\nnature: слегка прохладная',
+    );
+    const root = writeCorpus({
+      categories: { 'digestive-herbs': CATEGORY },
+      herbs: { 'tib-haritaki': HERB },
+      combinations: { 'tib-formula-agar-8': classified },
+    });
+
+    const index = buildIndex(loadContent(root));
+    expect(index.combinations[0]).toMatchObject({
+      category: 'digestive-herbs',
+      nature: 'слегка прохладная',
+    });
+    const cat = index.categories.find((c) => c.id === 'digestive-herbs');
+    expect(cat?.combinationCount).toBe(1);
+    expect(cat?.herbCount).toBe(1);
   });
 });
 

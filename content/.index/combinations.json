@@ -15,7 +15,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Агар 15 «Орлиное дерево 15» / Agar 15 / A-GAR 15 / EAGLEWOOD 15 / на монгольском: Агар 15 / на тибетском: А-гар-бчо-лнга, Ар-цхэс"
+    "nameOriginal": "Агар 15 «Орлиное дерево 15» / Agar 15 / A-GAR 15 / EAGLEWOOD 15 / на монгольском: Агар 15 / на тибетском: А-гар-бчо-лнга, Ар-цхэс",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-agar-17",
@@ -51,7 +52,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Agar 35 «Орлиное дерево 35» (A-GAR 35, EAGLEWOOD 35); на монгольском: Агар 35; на тибетском: А-гар-со-лнга, Цхангс-лха"
+    "nameOriginal": "Agar 35 «Орлиное дерево 35» (A-GAR 35, EAGLEWOOD 35); на монгольском: Агар 35; на тибетском: А-гар-со-лнга, Цхангс-лха",
+    "nature": "нейтральная"
   },
   {
     "id": "tib-formula-agar-8",
@@ -60,7 +62,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Монгольское: Агар 8; Тибетские: А-гар-бргйад-па, Ар-клу, Шун-Агар; Английское: Agar 8 (Eaglewood 8)"
+    "nameOriginal": "Монгольское: Агар 8; Тибетские: А-гар-бргйад-па, Ар-клу, Шун-Агар; Английское: Agar 8 (Eaglewood 8)",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-aru-10",
@@ -69,7 +72,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Aru 10 / Ар 10 / A-RU 10, MYROBALAN 10"
+    "nameOriginal": "Aru 10 / Ар 10 / A-RU 10, MYROBALAN 10",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-aru-18",
@@ -78,7 +82,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Aru 18 / На монгольском: Ар ур 18 / На тибетском: А-ру-бчо-брйад, А-ру-заг-гчод"
+    "nameOriginal": "Aru 18 / На монгольском: Ар ур 18 / На тибетском: А-ру-бчо-брйад, А-ру-заг-гчод",
+    "nature": "немного прохладная"
   },
   {
     "id": "tib-formula-aru-24",
@@ -96,7 +101,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Ару 7 \"Миробалан 7\" / Aru 7"
+    "nameOriginal": "Ару 7 \"Миробалан 7\" / Aru 7",
+    "nature": "немного прохладная"
   },
   {
     "id": "tib-formula-awa-15",
@@ -123,7 +129,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Bimala Dzati-20 / Би-ма-ла, дза-ти-нйи-шу"
+    "nameOriginal": "Bimala Dzati-20 / Би-ма-ла, дза-ти-нйи-шу",
+    "nature": "слегка тёплая"
   },
   {
     "id": "tib-formula-bitanka-7",
@@ -140,7 +147,8 @@
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
-    "hasIndications": false
+    "hasIndications": false,
+    "nature": "прохладная"
   },
   {
     "id": "tib-formula-bragzhun-9",
@@ -169,7 +177,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "RINCHEN CHAKRIL CHENMO / Ринчен \"Великая Железная Пилюля\""
+    "nameOriginal": "RINCHEN CHAKRIL CHENMO / Ринчен \"Великая Железная Пилюля\"",
+    "category": "rinchen-pills"
   },
   {
     "id": "tib-formula-chini-aru-18",
@@ -178,7 +187,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Чени Ару 18 / Chini Aru 18"
+    "nameOriginal": "Чени Ару 18 / Chini Aru 18",
+    "nature": "немного прохладная"
   },
   {
     "id": "tib-formula-chisin-chimed-srinsel",
@@ -205,7 +215,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Cugang 25 / Чу-ганг-нйэр-лнга"
+    "nameOriginal": "Cugang 25 / Чу-ганг-нйэр-лнга",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-chuna-nila",
@@ -232,7 +243,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": false,
-    "nameOriginal": "Дадуд (Дашел Дуцима) \"Лунный кристалл по рецепту Дакинь\" / Dadud; Зла-шэл-бдуд-рци-ма, Зла-бдуд, Лчагс-пхйэ-бдун-па"
+    "nameOriginal": "Дадуд (Дашел Дуцима) \"Лунный кристалл по рецепту Дакинь\" / Dadud; Зла-шэл-бдуд-рци-ма, Зла-бдуд, Лчагс-пхйэ-бдун-па",
+    "nature": "прохладная"
   },
   {
     "id": "tib-formula-dali-16",
@@ -241,7 +253,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Dali-16"
+    "nameOriginal": "Dali-16",
+    "nature": "слегка тёплая"
   },
   {
     "id": "tib-formula-dali-18",
@@ -315,7 +328,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "RINCHEN DRANGJOR / Ринчен Дрангджор – Великая Драгоценная Чёрная Пилюля (DRANGJOR / DANGJOR)"
+    "nameOriginal": "RINCHEN DRANGJOR / Ринчен Дрангджор – Великая Драгоценная Чёрная Пилюля (DRANGJOR / DANGJOR)",
+    "category": "rinchen-pills"
   },
   {
     "id": "tib-formula-dudci-chiso",
@@ -333,7 +347,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": false,
-    "nameOriginal": "Dugsel Degu / Дугсел Дегу \"Устраняющий яды\" / Дугсэл Дэгу"
+    "nameOriginal": "Dugsel Degu / Дугсел Дегу \"Устраняющий яды\" / Дугсэл Дэгу",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-dzati-14",
@@ -342,7 +357,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Dzati 14 / Задь 14 (монгольское) / дза-ти-бчу-бжи"
+    "nameOriginal": "Dzati 14 / Задь 14 (монгольское) / дза-ти-бчу-бжи",
+    "nature": "теплая"
   },
   {
     "id": "tib-formula-dzati-5",
@@ -351,7 +367,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "дза-ти-нга-па; Задь 5 (монг.); Dzati 5; Дзати-5 «Мускат-5»"
+    "nameOriginal": "дза-ти-нга-па; Задь 5 (монг.); Dzati 5; Дзати-5 «Мускат-5»",
+    "nature": "прохлада и тепло равны"
   },
   {
     "id": "tib-formula-dzhonshi-21",
@@ -369,7 +386,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Чонгжи 6 (Чонг-ши 6); монгольское: Жонш-6; тибетское: Чонг-жи-друк-па; английское: Chong-zhi 6"
+    "nameOriginal": "Чонгжи 6 (Чонг-ши 6); монгольское: Жонш-6; тибетское: Чонг-жи-друк-па; английское: Chong-zhi 6",
+    "nature": "прохлада и тепло равны"
   },
   {
     "id": "tib-formula-gabur-25",
@@ -378,7 +396,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Gabur 25 (монг. Гавар 25)"
+    "nameOriginal": "Gabur 25 (монг. Гавар 25)",
+    "nature": "холодная"
   },
   {
     "id": "tib-formula-galomenmar",
@@ -405,7 +424,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": false,
-    "nameOriginal": "Гаруда 5 \"Кьюнга\" / Чуна 5 / Garuda-5; На тибетском: Кхйунг-лнга, Гла-рци-лнга-па; На монгольском: Чун 5"
+    "nameOriginal": "Гаруда 5 \"Кьюнга\" / Чуна 5 / Garuda-5; На тибетском: Кхйунг-лнга, Гла-рци-лнга-па; На монгольском: Чун 5",
+    "nature": "уравновешенная, опьяняющая"
   },
   {
     "id": "tib-formula-giwan-9",
@@ -423,7 +443,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Гонйод 5 отвар \"Тмин 5 отвар\" / Goniod 5 / на монгольском: Гонид 5"
+    "nameOriginal": "Гонйод 5 отвар \"Тмин 5 отвар\" / Goniod 5 / на монгольском: Гонид 5",
+    "nature": "слегка тёплая"
   },
   {
     "id": "tib-formula-gou-depak",
@@ -450,7 +471,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Гоюн 7 / Гойу 7 / Gou 7 / \"Бетель 7\" / \"Семь солнц излечивающие болезни почек\""
+    "nameOriginal": "Гоюн 7 / Гойу 7 / Gou 7 / \"Бетель 7\" / \"Семь солнц излечивающие болезни почек\"",
+    "nature": "очень теплая"
   },
   {
     "id": "tib-formula-gundrum-7",
@@ -468,7 +490,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Гур-гум-бчу-гсум (тибетское); Гургэм 13 (монгольское); Gurgum 13 (английское)"
+    "nameOriginal": "Гур-гум-бчу-гсум (тибетское); Гургэм 13 (монгольское); Gurgum 13 (английское)",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-gurgum-7",
@@ -477,7 +500,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "гур-гум-мчхог-бдун (Gurgum 7 / \"Шафран 7\" / Гургэм 7 / Гур-Чог, GUR-GUM mCHOG-bDUN, MOST EXCELLENT SAFFLOWER 7)"
+    "nameOriginal": "гур-гум-мчхог-бдун (Gurgum 7 / \"Шафран 7\" / Гургэм 7 / Гур-Чог, GUR-GUM mCHOG-bDUN, MOST EXCELLENT SAFFLOWER 7)",
+    "nature": "прохладная"
   },
   {
     "id": "tib-formula-gurgum-8",
@@ -503,7 +527,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Ргйам-цхва-бжи-тханг, Чха-мнйам-бжи-тханг / Giamca 4 tan / Джамца-4 тханг «Каменная соль-4 отвар»"
+    "nameOriginal": "Ргйам-цхва-бжи-тханг, Чха-мнйам-бжи-тханг / Giamca 4 tan / Джамца-4 тханг «Каменная соль-4 отвар»",
+    "nature": "тёплая"
   },
   {
     "id": "tib-formula-gyaru-14",
@@ -539,7 +564,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Iroltuev 17"
+    "nameOriginal": "Iroltuev 17",
+    "nature": "нейтральная"
   },
   {
     "id": "tib-formula-Jumar-25",
@@ -550,7 +576,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "RINCHEN JUMAR 25"
+    "nameOriginal": "RINCHEN JUMAR 25",
+    "category": "rinchen-pills"
   },
   {
     "id": "tib-formula-jungva-4",
@@ -577,7 +604,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Kershun 8; Скйэр-шун-бргйад-па, Са-ра 'и-мйонг-груб"
+    "nameOriginal": "Kershun 8; Скйэр-шун-бргйад-па, Са-ра 'и-мйонг-груб",
+    "nature": "холодная"
   },
   {
     "id": "tib-formula-kharuca-5",
@@ -586,7 +614,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": false,
-    "nameOriginal": "Кха-ру-цхва-лнга-тханг / На монгольском: Харуц 5 / Kharuca-5 / \"Черная соль 5 отвар\" / КАРУЦА-5 ТХАНГ"
+    "nameOriginal": "Кха-ру-цхва-лнга-тханг / На монгольском: Харуц 5 / Kharuca-5 / \"Черная соль 5 отвар\" / КАРУЦА-5 ТХАНГ",
+    "nature": "тёплая"
   },
   {
     "id": "tib-formula-kodzhi-13",
@@ -604,7 +633,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Гагола 11 (монгольское); Kola-11; Ко-ла-бчу-гчиг, ка-кол-бчуг-гчиг (тибетские)"
+    "nameOriginal": "Гагола 11 (монгольское); Kola-11; Ко-ла-бчу-гчиг, ка-кол-бчуг-гчиг (тибетские)",
+    "nature": "тепло и холод равны"
   },
   {
     "id": "tib-formula-kola-4",
@@ -613,7 +643,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": false,
-    "nameOriginal": "Кола 4 / \"Черный кардамон 4\" / Гагола 4 / Гагал 4 (на монгольском) / Kola 4"
+    "nameOriginal": "Кола 4 / \"Черный кардамон 4\" / Гагола 4 / Гагал 4 (на монгольском) / Kola 4",
+    "nature": "тёплая"
   },
   {
     "id": "tib-formula-kunde",
@@ -622,7 +653,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Sebru Kunde / Кундей / «Гранат, дарующий благо»"
+    "nameOriginal": "Sebru Kunde / Кундей / «Гранат, дарующий благо»",
+    "nature": "немного тёплая"
   },
   {
     "id": "tib-formula-kyuru-6",
@@ -631,7 +663,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Кюру 6 \"Эмблика 6\" / Kuru 6; на тибетском: Скйу-ру-нйэр-лнга, Кхраг-шэд-снйомс-лдан"
+    "nameOriginal": "Кюру 6 \"Эмблика 6\" / Kuru 6; на тибетском: Скйу-ру-нйэр-лнга, Кхраг-шэд-снйомс-лдан",
+    "nature": "немного прохладная"
   },
   {
     "id": "tib-formula-lchumtsa-3",
@@ -640,7 +673,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": false,
-    "nameOriginal": "Лчумца-3 тханг"
+    "nameOriginal": "Лчумца-3 тханг",
+    "nature": "прохлада и тепло равны"
   },
   {
     "id": "tib-formula-letre-2",
@@ -658,7 +692,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Летре 5 \"Тиноспора 5 отвар\" / Letre 5 / Лэтрэ 5 / Лэтрэ-5 тханг (Жонлон-5)"
+    "nameOriginal": "Летре 5 \"Тиноспора 5 отвар\" / Letre 5 / Лэтрэ 5 / Лэтрэ-5 тханг (Жонлон-5)",
+    "nature": "прохлада и тепло примерно равны"
   },
   {
     "id": "tib-formula-lishi-11",
@@ -667,7 +702,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Ligun 11 / Лишь 11 (монгольск.)"
+    "nameOriginal": "Ligun 11 / Лишь 11 (монгольск.)",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-lishi-6",
@@ -676,7 +712,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": false,
-    "nameOriginal": "Lishi 6 / Лишь 6 (монгольское название)"
+    "nameOriginal": "Lishi 6 / Лишь 6 (монгольское название)",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-loce-kunsel",
@@ -694,7 +731,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": false,
-    "nameOriginal": "Ломанг-8"
+    "nameOriginal": "Ломанг-8",
+    "nature": "тёплая"
   },
   {
     "id": "tib-formula-ludud-18",
@@ -732,7 +770,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Rinchen Mandjor Chenmo"
+    "nameOriginal": "Rinchen Mandjor Chenmo",
+    "category": "rinchen-pills"
   },
   {
     "id": "tib-formula-manushitan",
@@ -741,7 +780,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Manushitan; Ману-4 тханг (Ману-шитан); на монгольском: Мана 4"
+    "nameOriginal": "Manushitan; Ману-4 тханг (Ману-шитан); на монгольском: Мана 4",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-marpo-3",
@@ -768,7 +808,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Мдзомо-6 тханг «Карагана-6 отвар» / Zamoshin 6 / Зомшин 6 (mdzomo-6)"
+    "nameOriginal": "Мдзомо-6 тханг «Карагана-6 отвар» / Zamoshin 6 / Зомшин 6 (mdzomo-6)",
+    "nature": "слегка тёплая"
   },
   {
     "id": "tib-formula-mensil",
@@ -786,7 +827,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": false,
-    "nameOriginal": "Мкхал-ма'и Дгу-тханг"
+    "nameOriginal": "Мкхал-ма'и Дгу-тханг",
+    "nature": "слегка тёплая"
   },
   {
     "id": "tib-formula-mutik-25",
@@ -795,7 +837,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Tibetan: Му-тиг-нйэр-лнга, Ман-ргйуд-му-тиг-нйэр-лнга; English: Mutik 25; Mongolian: Сувд 25"
+    "nameOriginal": "Tibetan: Му-тиг-нйэр-лнга, Ман-ргйуд-му-тиг-нйэр-лнга; English: Mutik 25; Mongolian: Сувд 25",
+    "nature": "прохлада и тепло равны"
   },
   {
     "id": "tib-formula-nenbo-18",
@@ -822,7 +865,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Себру Никил / Нигил / Сожид 11 / Со-Жед / Sebru Nikil (Sozhid) / Сэбру нйима-и дкйил кхор / \"Гранат Солнечная мандала - 11\""
+    "nameOriginal": "Себру Никил / Нигил / Сожид 11 / Со-Жед / Sebru Nikil (Sozhid) / Сэбру нйима-и дкйил кхор / \"Гранат Солнечная мандала - 11\"",
+    "nature": "тёплая"
   },
   {
     "id": "tib-formula-norbu-7",
@@ -831,7 +875,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Норбу-7 тханг «Отвар из 7 драгоценных»; Монгольское: Норов 7; Тибетские: Нор-бу-бдун-тханг, Нор-бу-чху-двангс, Чхам-цхад-бдун-тханг"
+    "nameOriginal": "Норбу-7 тханг «Отвар из 7 драгоценных»; Монгольское: Норов 7; Тибетские: Нор-бу-бдун-тханг, Нор-бу-чху-двангс, Чхам-цхад-бдун-тханг",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-olse-25",
@@ -840,7 +885,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Olse 25 (альтернативное каталожное обозначение по manla: OL-SE 27, PODOPHYLLUM 27; «Олмосэ-25 / Соломоцвет-25»)"
+    "nameOriginal": "Olse 25 (альтернативное каталожное обозначение по manla: OL-SE 27, PODOPHYLLUM 27; «Олмосэ-25 / Соломоцвет-25»)",
+    "nature": "прохлада и тепло равны"
   },
   {
     "id": "tib-formula-pakdzhub",
@@ -849,7 +895,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Паг-груб (Пхаг-мо-груб-сбйор), «Кальцит-11», Чонгжи-11 / Джонши-11 / Пакдруб / Pakdrub"
+    "nameOriginal": "Паг-груб (Пхаг-мо-груб-сбйор), «Кальцит-11», Чонгжи-11 / Джонши-11 / Пакдруб / Pakdrub",
+    "nature": "тёплая"
   },
   {
     "id": "tib-formula-panci-12",
@@ -867,7 +914,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Pangen 15 / Спан-ргьен-бчо-лнга"
+    "nameOriginal": "Pangen 15 / Спан-ргьен-бчо-лнга",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-penpa-kunden",
@@ -885,7 +933,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Pokar-10 / sPOD-dKAR 10 / CAMPHOR 10 / Sposkar-10 «Белый Ладан-10» / Тибетское: Спос-дкар-бчу-па / На монгольском: Бойгар 10"
+    "nameOriginal": "Pokar-10 / sPOD-dKAR 10 / CAMPHOR 10 / Sposkar-10 «Белый Ладан-10» / Тибетское: Спос-дкар-бчу-па / На монгольском: Бойгар 10",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-pokjyung-15",
@@ -912,7 +961,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Ratna Samphel (Рин-чен Рат-на Бсам-'пхэл); также называется Мутик-70 / Жемчуг-70"
+    "nameOriginal": "Ratna Samphel (Рин-чен Рат-на Бсам-'пхэл); также называется Мутик-70 / Жемчуг-70",
+    "category": "rinchen-pills"
   },
   {
     "id": "tib-formula-ruta-6",
@@ -921,7 +971,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Ру-рта-друг-па / Ruta 6 / \"Соссюрея 6\" / М6 / на монгольском: Руда 6 / RU-rTA 6, SAUSSUREA 6"
+    "nameOriginal": "Ру-рта-друг-па / Ruta 6 / \"Соссюрея 6\" / М6 / на монгольском: Руда 6 / RU-rTA 6, SAUSSUREA 6",
+    "nature": "прохлада и тепло равны"
   },
   {
     "id": "tib-formula-samkjyung",
@@ -939,7 +990,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Самнор (Сампел норбу) \"Драгоценность исполняющая желания\" / Sam-nor; монгольское: Сампилноров; тибетские: Бсам-'пхэл-нор-бу, Бсам-нор, Нйа-пхйис-со-гчиг"
+    "nameOriginal": "Самнор (Сампел норбу) \"Драгоценность исполняющая желания\" / Sam-nor; монгольское: Сампилноров; тибетские: Бсам-'пхэл-нор-бу, Бсам-нор, Нйа-пхйис-со-гчиг",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-sarkiyung",
@@ -957,7 +1009,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": false,
-    "nameOriginal": "Сэмбру 5 / Сэмбэруу 5 / SE-‘BRU 5, POMEGRANATE 5"
+    "nameOriginal": "Сэмбру 5 / Сэмбэруу 5 / SE-‘BRU 5, POMEGRANATE 5",
+    "nature": "очень тёплая"
   },
   {
     "id": "tib-formula-sebru-dane",
@@ -966,7 +1019,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Sebru Dane (Дан Ма Нэ Джог)"
+    "nameOriginal": "Sebru Dane (Дан Ма Нэ Джог)",
+    "nature": "слегка тёплая"
   },
   {
     "id": "tib-formula-semde",
@@ -1029,7 +1083,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Serdok 5 / Сэрдог-5 / Гсэр-мдог-лнга-па / gSER-mDOG-5 (GOLDEN COLOUR 5)"
+    "nameOriginal": "Serdok 5 / Сэрдог-5 / Гсэр-мдог-лнга-па / gSER-mDOG-5 (GOLDEN COLOUR 5)",
+    "nature": "прохлада и тепло равны"
   },
   {
     "id": "tib-formula-seru-25",
@@ -1065,7 +1120,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Ширу / Shiru"
+    "nameOriginal": "Ширу / Shiru",
+    "nature": "нейтральная"
   },
   {
     "id": "tib-formula-shiser",
@@ -1074,7 +1130,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Жи-гсэр (Гсэр-жи); Ши-Сэр (Шижет-6 + Сэрдок-5), «Умиротворяющий-6 + Золотой блеск-5»; Shiser"
+    "nameOriginal": "Жи-гсэр (Гсэр-жи); Ши-Сэр (Шижет-6 + Сэрдок-5), «Умиротворяющий-6 + Золотой блеск-5»; Shiser",
+    "nature": "прохлада и тепло равны"
   },
   {
     "id": "tib-formula-shizhet-11",
@@ -1083,7 +1140,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Шижид 11 / Shijeet 11 / \"Умиротворяющий 11\"; тибет.: Жи-бйэд-бчу-гчиг, Скйэ-зуг-рил-бу"
+    "nameOriginal": "Шижид 11 / Shijeet 11 / \"Умиротворяющий 11\"; тибет.: Жи-бйэд-бчу-гчиг, Скйэ-зуг-рил-бу",
+    "nature": "тёплая"
   },
   {
     "id": "tib-formula-shizhet-6",
@@ -1092,7 +1150,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Shijeet 6 / Жи-бйэд-друг-па, жи-бйэд-дкар-по-друг-па / ZHI-BYED 6, PACIFIC 6 / На монгольском: Шижид 6"
+    "nameOriginal": "Shijeet 6 / Жи-бйэд-друг-па, жи-бйэд-дкар-по-друг-па / ZHI-BYED 6, PACIFIC 6 / На монгольском: Шижид 6",
+    "nature": "нейтрально-тёплый"
   },
   {
     "id": "tib-formula-skyurura-25",
@@ -1101,7 +1160,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Кюру 25 \"Эмблика 25\" / Kuru 25; На тибетском: Скйу-ру-нйэр-лнга, Кхраг-шэд-снйомс-лдан"
+    "nameOriginal": "Кюру 25 \"Эмблика 25\" / Kuru 25; На тибетском: Скйу-ру-нйэр-лнга, Кхраг-шэд-снйомс-лдан",
+    "nature": "прохладная"
   },
   {
     "id": "tib-formula-solnechnaya-mandala-22",
@@ -1110,7 +1170,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Джубьед Нима Килкор ('джу-бйэд-нйи-ма 'и-дкил-'кхор'; 'джу-бйэд; Ро-ца-бчуд-лэн-дкйил-'кхор)"
+    "nameOriginal": "Джубьед Нима Килкор ('джу-бйэд-нйи-ма 'и-дкил-'кхор'; 'джу-бйэд; Ро-ца-бчуд-лэн-дкйил-'кхор)",
+    "nature": "очень горячая"
   },
   {
     "id": "tib-formula-sorolo-4-srolo-4",
@@ -1119,7 +1180,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Сороло 4 / Сроло 4"
+    "nameOriginal": "Сороло 4 / Сроло 4",
+    "nature": "нейтральная"
   },
   {
     "id": "tib-formula-srogdzin-11",
@@ -1128,7 +1190,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Срогдзин 11 (Согдзин 11) «Держатель жизни 11» / Srog-'dzin 11 (ELEVEN HOLDERS OF LIFE); на монгольском: Сорогзин 11"
+    "nameOriginal": "Срогдзин 11 (Согдзин 11) «Держатель жизни 11» / Srog-'dzin 11 (ELEVEN HOLDERS OF LIFE); на монгольском: Сорогзин 11",
+    "nature": "тёплая"
   },
   {
     "id": "tib-formula-srogdzin-norbu",
@@ -1146,7 +1209,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": false,
-    "nameOriginal": "Sugmel 10 (SUG-MEL 10 / CARDAMOM 10)"
+    "nameOriginal": "Sugmel 10 (SUG-MEL 10 / CARDAMOM 10)",
+    "nature": "тёплая"
   },
   {
     "id": "tib-formula-sugmel-13",
@@ -1155,7 +1219,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Сугмэл-13 (Лчаба-13)"
+    "nameOriginal": "Сугмэл-13 (Лчаба-13)",
+    "nature": "немного тёплая"
   },
   {
     "id": "tib-formula-sugmel-7",
@@ -1191,7 +1256,8 @@
     "memberCount": 0,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Tsowo 8 / Цово-8 «8 главных»"
+    "nameOriginal": "Tsowo 8 / Цово-8 «8 главных»",
+    "nature": "холодная"
   },
   {
     "id": "tib-formula-tendzhom",
@@ -1209,7 +1275,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Тханчен 10, Танчен 10 \"Великий отвар 10\" / Tanchen 10"
+    "nameOriginal": "Тханчен 10, Танчен 10 \"Великий отвар 10\" / Tanchen 10",
+    "nature": "прохладная"
   },
   {
     "id": "tib-formula-thanchen-25",
@@ -1218,7 +1285,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Tanchen-25 / Тханчен 25 / Танчин 25 (монгольское)"
+    "nameOriginal": "Tanchen-25 / Тханчен 25 / Танчин 25 (монгольское)",
+    "nature": "слегка прохладная"
   },
   {
     "id": "tib-formula-tigta-25",
@@ -1263,7 +1331,8 @@
     "memberCount": 1,
     "sourceCount": 2,
     "hasIndications": true,
-    "nameOriginal": "Гурван Урийн тан / Бребусум тан / Бребу 3 / Брэбу-3 тханг «Отвар 3 Плода»"
+    "nameOriginal": "Гурван Урийн тан / Бребусум тан / Бребу 3 / Брэбу-3 тханг «Отвар 3 Плода»",
+    "nature": "прохладная"
   },
   {
     "id": "tib-formula-tsajor-chenmo",
@@ -1272,7 +1341,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "RINCHEN TSAJOR CHENMO"
+    "nameOriginal": "RINCHEN TSAJOR CHENMO",
+    "category": "rinchen-pills"
   },
   {
     "id": "tib-formula-tsarbong-5",
@@ -1281,7 +1351,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": false,
-    "nameOriginal": "Царбонг-5 тханг"
+    "nameOriginal": "Царбонг-5 тханг",
+    "nature": "прохладная"
   },
   {
     "id": "tib-formula-tsotru-dshel",
@@ -1292,7 +1363,8 @@
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "RINCHEN TSO-TU DASHEL / TSO-TRU DASHEL"
+    "nameOriginal": "RINCHEN TSO-TU DASHEL / TSO-TRU DASHEL",
+    "category": "rinchen-pills"
   },
   {
     "id": "tib-formula-vangpo-kunsel",
@@ -1339,7 +1411,8 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "RINCHEN YUNYING 25"
+    "nameOriginal": "RINCHEN YUNYING 25",
+    "category": "rinchen-pills"
   },
   {
     "id": "tib-formula-yuril-13",
@@ -1357,6 +1430,7 @@
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
-    "nameOriginal": "Са-ра 'и-бйа-кхйунг-бчу-гсум; Са-ра 'и-шэс-брцон; Шэс-брцон; Нйа-пхйис-бчу-гсум; \"Перламутр 13\" / Zhachun 13"
+    "nameOriginal": "Са-ра 'и-бйа-кхйунг-бчу-гсум; Са-ра 'и-шэс-брцон; Шэс-брцон; Нйа-пхйис-бчу-гсум; \"Перламутр 13\" / Zhachun 13",
+    "nature": "нейтральная"
   }
 ]

@@ -3,6 +3,7 @@ id: tib-formula-tcovo-8
 tradition: tibetan
 name_ru: Цово 8 тибетский фитосбор (порошок)
 name_original: Tsowo 8 / Цово-8 «8 главных»
+nature: холодная
 composition:
   - Carthamus tinctorius (сафлор красильный)
   - Santalum album (сандал белый)

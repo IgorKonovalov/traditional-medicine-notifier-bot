@@ -3,6 +3,7 @@ id: tib-formula-dzati-5
 tradition: tibetan
 name_ru: Дзати 5 тибетский фитосбор (порошок)
 name_original: дза-ти-нга-па; Задь 5 (монг.); Dzati 5; Дзати-5 «Мускат-5»
+nature: прохлада и тепло равны
 composition:
   - Myristica fragrans (мускатный орех)
   - Piper longum (длинный перец)

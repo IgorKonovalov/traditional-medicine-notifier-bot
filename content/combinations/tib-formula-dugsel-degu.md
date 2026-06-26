@@ -3,6 +3,7 @@ id: tib-formula-dugsel-degu
 tradition: tibetan
 name_ru: Дугсел Дегу тибетский фитосбор (порошок)
 name_original: Dugsel Degu / Дугсел Дегу "Устраняющий яды" / Дугсэл Дэгу
+nature: слегка прохладная
 composition:
   - Rosa sertata Rolfe (шиповник)
   - Carthamus tinctorius (сафлор красильный)

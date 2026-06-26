@@ -5,6 +5,7 @@ name_ru: Себру Никил (Сожид 11) тибетский фитосбо
 name_original: >-
   Себру Никил / Нигил / Сожид 11 / Со-Жед / Sebru Nikil (Sozhid) / Сэбру нйима-и
   дкйил кхор / "Гранат Солнечная мандала - 11"
+nature: тёплая
 composition:
   - Punica granatum (гранат)
   - Cinnamomum zeylanicum (корица)

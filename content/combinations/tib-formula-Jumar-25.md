@@ -3,6 +3,7 @@ id: tib-formula-Jumar-25
 tradition: tibetan
 name_ru: Жумар 25 драгоценная пилюля — Драгоценный Красный Коралл
 name_original: RINCHEN JUMAR 25
+category: rinchen-pills
 composition:
   - Очищенное золото
   - Серебро
@@ -17,6 +18,8 @@ composition:
   - Металлы
   - Минералы
   - Растительные компоненты
+tags:
+  - composition-non-itemized
 indications:
   - Нарушения мозговой деятельности
   - заболевания нервной системы
@@ -72,8 +75,6 @@ cautions:
   - >-
     Вся информация представленная на сайте несет ознакомительный характер, и мы
     убедительно просим Вас, не заниматься самолечением.
-tags:
-  - composition-non-itemized
 sources:
   - 'https://bimala.ru/sostav/dragocennye-piluli-rincheny/Jumar-25'
 ---

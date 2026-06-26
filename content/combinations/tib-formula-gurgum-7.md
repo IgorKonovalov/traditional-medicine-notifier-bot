@@ -5,6 +5,7 @@ name_ru: Гургум 7
 name_original: >-
   гур-гум-мчхог-бдун (Gurgum 7 / "Шафран 7" / Гургэм 7 / Гур-Чог, GUR-GUM
   mCHOG-bDUN, MOST EXCELLENT SAFFLOWER 7)
+nature: прохладная
 composition:
   - Carthamus tinctorius (сафлор красильный)
   - Bambusa textilis (бамбуковая манна)

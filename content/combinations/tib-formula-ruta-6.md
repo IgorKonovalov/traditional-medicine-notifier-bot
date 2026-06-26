@@ -5,6 +5,7 @@ name_ru: Рута 6 (Рурта 6)
 name_original: >-
   Ру-рта-друг-па / Ruta 6 / "Соссюрея 6" / М6 / на монгольском: Руда 6 / RU-rTA
   6, SAUSSUREA 6
+nature: прохлада и тепло равны
 composition:
   - Saussurea lappa (соссюрея лопуховидная)
   - Emblica officinalis (эмблика лекарственная)

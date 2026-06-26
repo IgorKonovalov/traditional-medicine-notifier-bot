@@ -3,6 +3,7 @@ id: tib-formula-sugmel-13
 tradition: tibetan
 name_ru: Сугмэл-13 «Зелёный кардамон-13»
 name_original: Сугмэл-13 (Лчаба-13)
+nature: немного тёплая
 composition:
   - Elettaria cardamomum
   - Hypericum

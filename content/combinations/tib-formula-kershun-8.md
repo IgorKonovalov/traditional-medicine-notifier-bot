@@ -3,6 +3,7 @@ id: tib-formula-kershun-8
 tradition: tibetan
 name_ru: 'Кьершун 8 "Барбарис 8" тибетский сбор (фитосбор, пилюли)'
 name_original: 'Kershun 8; Скйэр-шун-бргйад-па, Са-ра ''и-мйонг-груб'
+nature: холодная
 composition:
   - барбарис
   - длинный перец

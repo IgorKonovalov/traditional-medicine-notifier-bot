@@ -3,6 +3,7 @@ id: tib-formula-aru-10
 tradition: tibetan
 name_ru: Ару 10 «Миробалан 10»
 name_original: 'Aru 10 / Ар 10 / A-RU 10, MYROBALAN 10'
+nature: слегка прохладная
 composition:
   - Terminalia chebula (терминалия хебула)
   - Carthamus tinctorius (сафлор красильный)

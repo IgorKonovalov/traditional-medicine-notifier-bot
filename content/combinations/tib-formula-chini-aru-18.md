@@ -3,6 +3,7 @@ id: tib-formula-chini-aru-18
 tradition: tibetan
 name_ru: Чени Ару 18 тибетский фитосбор (пилюли)
 name_original: Чени Ару 18 / Chini Aru 18
+nature: немного прохладная
 composition:
   - терминалия хебула
   - кардамон настоящий

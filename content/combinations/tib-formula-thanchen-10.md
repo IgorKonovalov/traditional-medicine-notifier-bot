@@ -3,6 +3,7 @@ id: tib-formula-thanchen-10
 tradition: tibetan
 name_ru: Танчен 10 тибетский фитосбор (порошок)
 name_original: 'Тханчен 10, Танчен 10 "Великий отвар 10" / Tanchen 10'
+nature: прохладная
 composition:
   - Inula racemosa (девясил)
   - Rubus idaeopsis (малина идеусовидная)

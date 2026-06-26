@@ -5,6 +5,7 @@ name_ru: Покар 10 "Ладан 10"
 name_original: >-
   Pokar-10 / sPOD-dKAR 10 / CAMPHOR 10 / Sposkar-10 «Белый Ладан-10» /
   Тибетское: Спос-дкар-бчу-па / На монгольском: Бойгар 10
+nature: слегка прохладная
 composition:
   - Commiphora camphora (ладан)
   - Terminalia chebula (терминалия хебула)

@@ -5,6 +5,7 @@ name_ru: Шижет 11 тибетский фитосбор
 name_original: >-
   Шижид 11 / Shijeet 11 / "Умиротворяющий 11"; тибет.: Жи-бйэд-бчу-гчиг,
   Скйэ-зуг-рил-бу
+nature: тёплая
 composition:
   - Rheum officinale (ревень)
   - Terminalia chebula (терминалия хебула)

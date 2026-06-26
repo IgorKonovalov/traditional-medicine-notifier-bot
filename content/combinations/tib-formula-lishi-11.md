@@ -3,6 +3,7 @@ id: tib-formula-lishi-11
 tradition: tibetan
 name_ru: Лигун 11 (Лиши 11) «Гвоздика 11»
 name_original: Ligun 11 / Лишь 11 (монгольск.)
+nature: слегка прохладная
 composition:
   - Eugenia caryophyllata (гвоздика)
   - Bambusa textilis (бамбуковая манна)

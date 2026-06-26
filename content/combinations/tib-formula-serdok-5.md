@@ -3,6 +3,7 @@ id: tib-formula-serdok-5
 tradition: tibetan
 name_ru: Сердок 5 / Сердог 5 "Золотой блеск 5"
 name_original: Serdok 5 / Сэрдог-5 / Гсэр-мдог-лнга-па / gSER-mDOG-5 (GOLDEN COLOUR 5)
+nature: прохлада и тепло равны
 composition:
   - Terminalia chebula (терминалия хебула)
   - Punica granatum (гранат)

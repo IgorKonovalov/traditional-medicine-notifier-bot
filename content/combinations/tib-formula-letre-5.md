@@ -3,6 +3,7 @@ id: tib-formula-letre-5
 tradition: tibetan
 name_ru: Летре 5 тибетский фитосбор (порошок)
 name_original: Летре 5 "Тиноспора 5 отвар" / Letre 5 / Лэтрэ 5 / Лэтрэ-5 тханг (Жонлон-5)
+nature: прохлада и тепло примерно равны
 composition:
   - Tinospora cordifolia (тиноспора сердцелистная)
   - Terminalia chebula (терминалия хебула)

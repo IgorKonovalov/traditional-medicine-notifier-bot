@@ -36,6 +36,12 @@ export function validateCorpus(content: LoadedContent): void {
         `combination "${combination.id}" has no composition, source text, or indications`,
       );
     }
+    // An optional combination category must resolve to a real category (ADR 007).
+    if (combination.category !== undefined && !content.categories.byId.has(combination.category)) {
+      errors.push(
+        `combination "${combination.id}" references unknown category "${combination.category}"`,
+      );
+    }
     for (const memberId of combination.members ?? []) {
       if (!content.herbs.byId.has(memberId)) {
         errors.push(`combination "${combination.id}" references unknown herb member "${memberId}"`);

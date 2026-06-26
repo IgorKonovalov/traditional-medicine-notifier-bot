@@ -3,6 +3,7 @@ id: tib-formula-bimala
 tradition: tibetan
 name_ru: Бимала (Вимала) «Состав Вималамитры 20»
 name_original: 'Bimala Dzati-20 / Би-ма-ла, дза-ти-нйи-шу'
+nature: слегка тёплая
 composition:
   - Myristica fragrans (мускатный орех)
   - Terminalia chebula (терминалия хебула)

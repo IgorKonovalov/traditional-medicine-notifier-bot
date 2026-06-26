@@ -5,6 +5,7 @@ name_ru: Мутик 25 (Мутиг 25) "Жемчуг 25"
 name_original: >-
   Tibetan: Му-тиг-нйэр-лнга, Ман-ргйуд-му-тиг-нйэр-лнга; English: Mutik 25;
   Mongolian: Сувд 25
+nature: прохлада и тепло равны
 composition:
   - Margaritum (жемчуг)
   - Bambusa textilis (бамбуковая манна)

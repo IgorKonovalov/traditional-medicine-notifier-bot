@@ -3,6 +3,7 @@ id: tib-formula-tri-ploda
 tradition: tibetan
 name_ru: Три плода тибетский фитосбор (порошок)
 name_original: Гурван Урийн тан / Бребусум тан / Бребу 3 / Брэбу-3 тханг «Отвар 3 Плода»
+nature: прохладная
 composition:
   - Terminalia chebula (терминалия хебула)
   - Terminalia belerica (терминалия баллерика)

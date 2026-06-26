@@ -5,6 +5,7 @@ name_ru: Дрангджор драгоценная пилюля
 name_original: >-
   RINCHEN DRANGJOR / Ринчен Дрангджор – Великая Драгоценная Чёрная Пилюля
   (DRANGJOR / DANGJOR)
+category: rinchen-pills
 composition:
   - >-
     Прокаленный порошок из различных благородных металлов (серебра и золота, а
@@ -18,6 +19,8 @@ composition:
   - Миробалана и другие
 members:
   - tib-haritaki
+tags:
+  - composition-non-itemized
 indications:
   - Заболевания ЖКТ
   - различные болезни крови
@@ -103,8 +106,6 @@ cautions:
   - >-
     Одновременно с ринченами крайне не рекомендуется употреблять другие
     лекарственные препараты, в том числе и аюрведические.
-tags:
-  - composition-non-itemized
 sources:
   - >-
     https://bimala.ru/sostav/dragocennye-piluli-rincheny/drangdzhor-dragocennaya-pilyulya

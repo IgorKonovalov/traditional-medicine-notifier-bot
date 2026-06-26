@@ -3,6 +3,7 @@ id: tib-formula-chakril-chenmo
 tradition: tibetan
 name_ru: Чакрил Ченмо драгоценная пилюля
 name_original: RINCHEN CHAKRIL CHENMO / Ринчен "Великая Железная Пилюля"
+category: rinchen-pills
 composition:
   - Очищенное самородное железо
   - Три миробалана
@@ -18,6 +19,8 @@ composition:
   - и прочие натуральные компоненты
 members:
   - tib-haritaki
+tags:
+  - composition-non-itemized
 indications:
   - >-
     Различные хронические заболевания, болезни, связанные со зрением, застои
@@ -85,8 +88,6 @@ cautions:
     Драгоценная пилюля Чакрил Ченмо не является лекарственным препаратом, перед
     применением необходимо проконсультироваться со специалистом тибетской
     медицины.
-tags:
-  - composition-non-itemized
 sources:
   - 'https://bimala.ru/sostav/dragocennye-piluli-rincheny/chakril-chenmo'
 ---

@@ -3,6 +3,7 @@ id: tib-formula-thanchen-25
 tradition: tibetan
 name_ru: Танчен 25 "Великий отвар 25" тибетский фитосбор
 name_original: Tanchen-25 / Тханчен 25 / Танчин 25 (монгольское)
+nature: слегка прохладная
 composition:
   - Terminalia chebula (терминалия хебула)
   - Terminalia belerica (терминалия беллерическая)

@@ -127,6 +127,8 @@ function parseCombination(doc: RawDoc): Combination {
     sources: strArray(doc, 'sources'),
     body: doc.body,
     ...optString(doc, 'name_original', 'nameOriginal'),
+    ...optString(doc, 'category', 'category'),
+    ...optString(doc, 'nature', 'nature'),
     ...optString(doc, 'source_text', 'sourceText'),
     ...(members.length > 0 ? { members } : {}),
     ...(indications.length > 0 ? { indications } : {}),

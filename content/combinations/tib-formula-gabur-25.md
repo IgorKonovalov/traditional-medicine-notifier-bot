@@ -3,6 +3,7 @@ id: tib-formula-gabur-25
 tradition: tibetan
 name_ru: Габур 25 «Камфора 25»
 name_original: Gabur 25 (монг. Гавар 25)
+nature: холодная
 composition:
   - камфора
   - шесть хороших

@@ -3,6 +3,7 @@ id: tib-formula-pangen-15
 tradition: tibetan
 name_ru: Панген 15 «Горечавка 15»
 name_original: Pangen 15 / Спан-ргьен-бчо-лнга
+nature: слегка прохладная
 composition:
   - Eugenia caryophyllata (гвоздика)
   - Bambusa textilis (бамбуковая манна)

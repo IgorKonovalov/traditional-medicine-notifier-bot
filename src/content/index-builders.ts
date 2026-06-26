@@ -21,6 +21,10 @@ export interface CombinationIndexEntry {
   readonly id: string;
   readonly nameRu: string;
   readonly nameOriginal?: string;
+  /** Combination category id (ADR 007), when classified (e.g. `rinchen-pills`). */
+  readonly category?: string;
+  /** Thermal nature / essence (#1), when known. */
+  readonly nature?: string;
   readonly tags: readonly string[];
   readonly memberCount: number;
   readonly sourceCount: number;
@@ -32,6 +36,8 @@ export interface CategoryIndexEntry {
   readonly id: string;
   readonly nameRu: string;
   readonly herbCount: number;
+  /** Combinations classified under this category (ADR 007). */
+  readonly combinationCount: number;
 }
 
 export interface TipIndexEntry {
@@ -67,6 +73,8 @@ export function buildIndex(content: LoadedContent): ContentIndex {
     sourceCount: c.sources.length,
     hasIndications: (c.indications?.length ?? 0) > 0,
     ...(c.nameOriginal !== undefined ? { nameOriginal: c.nameOriginal } : {}),
+    ...(c.category !== undefined ? { category: c.category } : {}),
+    ...(c.nature !== undefined ? { nature: c.nature } : {}),
   }));
 
   const herbCountByCategory = new Map<string, number>();
@@ -74,10 +82,20 @@ export function buildIndex(content: LoadedContent): ContentIndex {
     herbCountByCategory.set(h.category, (herbCountByCategory.get(h.category) ?? 0) + 1);
   }
 
+  const combinationCountByCategory = new Map<string, number>();
+  for (const c of content.combinations.all) {
+    if (c.category === undefined) continue;
+    combinationCountByCategory.set(
+      c.category,
+      (combinationCountByCategory.get(c.category) ?? 0) + 1,
+    );
+  }
+
   const categories: CategoryIndexEntry[] = content.categories.all.map((c) => ({
     id: c.id,
     nameRu: c.nameRu,
     herbCount: herbCountByCategory.get(c.id) ?? 0,
+    combinationCount: combinationCountByCategory.get(c.id) ?? 0,
   }));
 
   const tips: TipIndexEntry[] = content.tips.all.map((t) => ({

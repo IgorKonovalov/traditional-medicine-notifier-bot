@@ -3,6 +3,7 @@ id: tib-formula-sebru-dane
 tradition: tibetan
 name_ru: Себру Дане (Данма-5) «Ставящий на место прозрачный сок»
 name_original: Sebru Dane (Дан Ма Нэ Джог)
+nature: слегка тёплая
 composition:
   - Punica granatum (гранат)
   - Cinnamomum zeylanicum (корица)

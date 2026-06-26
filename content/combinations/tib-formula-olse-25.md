@@ -5,6 +5,7 @@ name_ru: Олсе 25 (Олси 25) тибетский фитосбор
 name_original: >-
   Olse 25 (альтернативное каталожное обозначение по manla: OL-SE 27, PODOPHYLLUM
   27; «Олмосэ-25 / Соломоцвет-25»)
+nature: прохлада и тепло равны
 composition:
   - Podophyllum emodii (подофиллум)
   - Rubia cordifolia (марена красильная)

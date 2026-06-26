@@ -3,6 +3,7 @@ id: tib-formula-yuning-25
 tradition: tibetan
 name_ru: Юнинг 25 драгоценная пилюля / "Старая бирюза 25"
 name_original: RINCHEN YUNYING 25
+category: rinchen-pills
 composition:
   - старая бирюза
   - три вида кораллов
@@ -15,6 +16,8 @@ composition:
   - и другие растительные компоненты
 members:
   - tib-haritaki
+tags:
+  - composition-non-itemized
 indications:
   - Различные заболевания печени и ЖКТ
   - Гипертония
@@ -75,8 +78,6 @@ cautions:
   - >-
     Также приём противопоказан женщинам, находящимся на сроке более четырех
     месяцев беременности.
-tags:
-  - composition-non-itemized
 sources:
   - 'https://bimala.ru/sostav/dragocennye-piluli-rincheny/yuning-25'
 ---

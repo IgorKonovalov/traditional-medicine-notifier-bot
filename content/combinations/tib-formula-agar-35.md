@@ -5,6 +5,7 @@ name_ru: Агар 35 тибетский фитосбор
 name_original: >-
   Agar 35 «Орлиное дерево 35» (A-GAR 35, EAGLEWOOD 35); на монгольском: Агар 35;
   на тибетском: А-гар-со-лнга, Цхангс-лха
+nature: нейтральная
 composition:
   - Aquilaria agallocha (орлиное дерево)
   - Terminalia chebula (терминалия хебула)

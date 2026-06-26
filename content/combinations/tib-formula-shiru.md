@@ -3,6 +3,7 @@ id: tib-formula-shiru
 tradition: tibetan
 name_ru: Ширу тибетский фитосбор (порошок)
 name_original: Ширу / Shiru
+nature: нейтральная
 composition:
   - Соссюрея лопуховидная (корень)
   - Зеленый кардамон
