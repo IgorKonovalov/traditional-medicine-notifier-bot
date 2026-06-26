@@ -161,17 +161,11 @@
     "nameOriginal": "Дрега 13 \"Ярутка 13\" / Brega 13 / Бираг 13 (монгольский)"
   },
   {
-    "id": "tib-formula-chakdor-dragocennaya-pilyulya",
-    "nameRu": "Чакдор драгоценная пилюля",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false
-  },
-  {
     "id": "tib-formula-chakril-chenmo",
     "nameRu": "Чакрил Ченмо драгоценная пилюля",
-    "tags": [],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
@@ -212,14 +206,6 @@
     "sourceCount": 2,
     "hasIndications": true,
     "nameOriginal": "Cugang 25 / Чу-ганг-нйэр-лнга"
-  },
-  {
-    "id": "tib-formula-chugang-7",
-    "nameRu": "Чуганг 7 тибетский фитосбор (порошок)",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false
   },
   {
     "id": "tib-formula-chuna-nila",
@@ -323,7 +309,9 @@
   {
     "id": "tib-formula-drangdzhor-dragocennaya-pilyulya",
     "nameRu": "Дрангджор драгоценная пилюля",
-    "tags": [],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
@@ -418,15 +406,6 @@
     "sourceCount": 2,
     "hasIndications": true,
     "nameOriginal": "Гаруда 5 \"Кьюнга\" / Чуна 5 / Garuda-5; На тибетском: Кхйунг-лнга, Гла-рци-лнга-па; На монгольском: Чун 5"
-  },
-  {
-    "id": "tib-formula-gava-16",
-    "nameRu": "Гава 16 тибетский фитосбор",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Gawa 16"
   },
   {
     "id": "tib-formula-giwan-9",
@@ -565,7 +544,9 @@
   {
     "id": "tib-formula-Jumar-25",
     "nameRu": "Жумар 25 драгоценная пилюля — Драгоценный Красный Коралл",
-    "tags": [],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
@@ -689,15 +670,6 @@
     "nameOriginal": "Ligun 11 / Лишь 11 (монгольск.)"
   },
   {
-    "id": "tib-formula-lishi-35",
-    "nameRu": "Лиши 35 тибетский фитосбор (порошок)",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": true,
-    "nameOriginal": "Лиши 35 «Гвоздика 35» / Lishi 35"
-  },
-  {
     "id": "tib-formula-lishi-6",
     "nameRu": "Лиши 6 \"Гвоздика 6\"",
     "tags": [],
@@ -754,7 +726,9 @@
   {
     "id": "tib-formula-manjor-chenmo",
     "nameRu": "Манджор Ченмо «Великое накопление» драгоценная пилюля Ринчен",
-    "tags": [],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
@@ -815,14 +789,6 @@
     "nameOriginal": "Мкхал-ма'и Дгу-тханг"
   },
   {
-    "id": "tib-formula-mutik-25-dragocennaya-pilyulya",
-    "nameRu": "Мутик 25 драгоценная пилюля",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false
-  },
-  {
     "id": "tib-formula-mutik-25",
     "nameRu": "Мутик 25 (Мутиг 25) \"Жемчуг 25\"",
     "tags": [],
@@ -866,15 +832,6 @@
     "sourceCount": 2,
     "hasIndications": true,
     "nameOriginal": "Норбу-7 тханг «Отвар из 7 драгоценных»; Монгольское: Норов 7; Тибетские: Нор-бу-бдун-тханг, Нор-бу-чху-двангс, Чхам-цхад-бдун-тханг"
-  },
-  {
-    "id": "tib-formula-nyugrci-25",
-    "nameRu": "Нюгрци 25 тибетский фитосбор (порошок)",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Нюгрци 25"
   },
   {
     "id": "tib-formula-olse-25",
@@ -956,14 +913,6 @@
     "sourceCount": 1,
     "hasIndications": true,
     "nameOriginal": "Ratna Samphel (Рин-чен Рат-на Бсам-'пхэл); также называется Мутик-70 / Жемчуг-70"
-  },
-  {
-    "id": "tib-formula-rukyung-tibetskij-fitosbor-poroshok0",
-    "nameRu": "Рукьюнг тибетский фитосбор (порошок)",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false
   },
   {
     "id": "tib-formula-ruta-6",
@@ -1218,15 +1167,6 @@
     "nameOriginal": "Sugmel 7 / Сугмэл 7 \"Зеленый кардамон 7\""
   },
   {
-    "id": "tib-formula-tarbu-19",
-    "nameRu": "Тарбу 19 тибетский фитосбор (порошок)",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false,
-    "nameOriginal": "Тарбу 19"
-  },
-  {
     "id": "tib-formula-tarbu-5",
     "nameRu": "Тарбу 5 «Облепиха 5» тибетский фитосбор (порошок)",
     "tags": [],
@@ -1299,14 +1239,6 @@
     "nameOriginal": "Tigta 8 / Дэгд 8 (монг.) / \"Горечавка 8\""
   },
   {
-    "id": "tib-formula-tragce-10",
-    "nameRu": "Трагце 10 тибетский фитосбор (порошок)",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false
-  },
-  {
     "id": "tib-formula-tragshik-dordzhe-phalam",
     "nameRu": "Трагшик Дордже Пхалам тибетский фитосбор (порошок)",
     "tags": [],
@@ -1334,14 +1266,6 @@
     "nameOriginal": "Гурван Урийн тан / Бребусум тан / Бребу 3 / Брэбу-3 тханг «Отвар 3 Плода»"
   },
   {
-    "id": "tib-formula-truglo-kunsel",
-    "nameRu": "Тругло Кунсел тибетский фитосбор (порошок)",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false
-  },
-  {
     "id": "tib-formula-tsajor-chenmo",
     "nameRu": "Ринчен Цажор Ченмо «Великий Жар»",
     "tags": [],
@@ -1360,17 +1284,11 @@
     "nameOriginal": "Царбонг-5 тханг"
   },
   {
-    "id": "tib-formula-tshav-dzhor-chenmo-dragocennaya-pilulya",
-    "nameRu": "Цхва Джор ченмо драгоценная пилюля",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": false
-  },
-  {
     "id": "tib-formula-tsotru-dshel",
     "nameRu": "Цотру Дашел Ринчен \"Драгоценный Очищающий Лунный Кристалл\"",
-    "tags": [],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
@@ -1415,7 +1333,9 @@
   {
     "id": "tib-formula-yuning-25",
     "nameRu": "Юнинг 25 драгоценная пилюля / \"Старая бирюза 25\"",
-    "tags": [],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,

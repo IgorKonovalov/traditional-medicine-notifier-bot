@@ -30,6 +30,8 @@ dosing_notes:
 cautions:
   - Индивидуальная непереносимость компонентов.
   - Также приём противопоказан женщинам, находящимся на сроке более четырех месяцев беременности.
+tags:
+  - composition-non-itemized
 sources:
   - "https://bimala.ru/sostav/dragocennye-piluli-rincheny/Jumar-25"
 ---
