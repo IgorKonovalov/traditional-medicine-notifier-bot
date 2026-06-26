@@ -1,8 +1,9 @@
 # Plan 004 — Formula corpus: doctor-review remediation & fidelity re-audit
 
-**Status:** Draft
+**Status:** Completed
 **Created:** 2026-06-26
-**Bump on close:** minor (user-facing content + new fields)
+**Completed:** 2026-06-26
+**Bump on close:** minor (shipped v0.5.0) (user-facing content + new fields)
 
 ## Context
 
@@ -279,4 +280,6 @@ verbatim capture → label-split → diff vs current frontmatter → reconcile) 
   — generator reorders card fields (Traditional use → Показания → Природа →
   Состав → …), surfaces «Природа» + the rinchen category badge, adds a rinchen
   filter + summary count; `formula-review.html` regenerated (150 cards).
-- [ ] Phase 6 — Validation & close
+- [x] Phase 6 — Validation & close
+  — gates green; ADR 005 amended note + ADR 007; `docs/medical-review.md`
+  fidelity-restored (still gated); CLAUDE.md / architecture refreshed; v0.5.0.

@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.5.0 — 2026-06-26
+
+- Restore source fidelity across the Tibetan-formula corpus and remediate the
+  doctor review (plan 004): pruned to 150 formulas, re-captured every record
+  verbatim from its authoritative source (`research/raw-crawl-verbose-v2.json`,
+  manla-canonical for dual-source), added a structured `nature` field and a
+  generic combination `category` with the `rinchen-pills` class (ADR 007),
+  normalized ingredients (Russian-first) / cautions (de-boilerplated) /
+  capitalization, and committed a reproducible review-HTML generator
+  (`npm run content:review`). Verbose corpus stays behind the ADR 006 gate.
+
 ## 0.4.0 — 2026-06-26
 
 - Add a structured `source` field to daily tips (plan 003): tip provenance now

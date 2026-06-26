@@ -6,15 +6,51 @@ reach the production bot** until a qualified Tibetan-medicine practitioner has
 reviewed it and the owner has signed off. The owner will report when the review is
 complete and how any changes should be applied.
 
+## Fidelity re-audit & remediation (Plan 004, 2026-06-26)
+
+A practitioner reviewed the corpus and found the prior extraction had **condensed
+and paraphrased** the sources, dropping sentences and indications. Plan 004
+remediated this and **regenerated the review HTML** for the next re-audit round.
+What changed since the sections below were written:
+
+- **Corpus 161 → 150.** The 11 genuinely composition-incomplete formulas were
+  removed; the 6 prose-composition ones stay.
+- **Source fidelity restored.** Every surviving formula was **re-captured verbatim**
+  from its authoritative source (manla.ru for the 53 manla formulas; each bimala
+  detail page for the 97 bimala-only) into **`research/raw-crawl-verbose-v2.json`**
+  — now the authoritative provenance. The old `raw-crawl-verbose.json` is **not**
+  faithful and is retained only for history. (Diagnosis: the earlier "verbatim
+  re-crawl" was LLM-mediated and condensed each section — see Plan 004 "Phase 2
+  diagnosis".)
+- **Dual-source = manla-canonical (owner decision).** For the 47 formulas with both
+  sources, manla is authoritative and bimala's extra/commercial indications were
+  **dropped** — superseding the "Dual-source consolidation" analysis below (now
+  historical). Each record's body is the verbatim manla section.
+- **Structured `nature`** («Сущность») recovered for 66 formulas; **rinchen category**
+  (`rinchen-pills`, 8 formulas) added (ADR 007).
+- **Normalization:** ingredients are Russian-first `Русское (Latin)`; caution
+  boilerplate stripped (formula-specific contraindications kept); list capitalization
+  normalized.
+
+**Still needs the reviewer's eye (flagged, not resolved):**
+
+- **5 ingredients have no confident Russian name** and stay Latin-only:
+  `Bos taurus domesticus` (animal-derived), `Potamom yunnanensis` (likely a crab,
+  animal), `Solms-Laubachia sp.` (genus only), `Trona` (mineral), and a stray `etc.`
+- The **toxic-constituent discrepancies** flagged below (aconite vs strychnine in
+  `agar-35`, `garuda-5`, `olse-25`, `tcovo-8`) **still stand** — confirm before any
+  production use.
+- Best-effort Russian↔Latin ingredient mappings still need a botanist check.
+
 ## Review inputs
 
-- **Corpus:** `content/combinations/*.md` (161 formulas) — structured fields
-  (`indications`, `traditional_use`, `dosing_notes`, `composition`, `cautions`) plus
-  a body. Formulas that had both sources (47) are now **consolidated into a single
-  manla-preferred record** (see Dual-source consolidation); the rest keep their single
-  source body.
-- **Raw provenance:** `research/raw-crawl-verbose.json` — the unmerged crawl output
-  (full verbatim text per source).
+- **Corpus:** `content/combinations/*.md` (150 formulas) — structured fields
+  (`indications`, `traditional_use`, `dosing_notes`, `composition`, `cautions`,
+  optional `nature`/`category`) plus a verbatim `## Источник:` body. Dual-source
+  formulas (47) are **manla-canonical** (Plan 004), superseding the earlier merge.
+- **Raw provenance:** `research/raw-crawl-verbose-v2.json` — the faithful per-formula
+  re-capture (authoritative). `research/raw-crawl-verbose.json` is the older,
+  condensed crawl (history only).
 
 ## What the corpus deliberately contains (non-sanitised)
 

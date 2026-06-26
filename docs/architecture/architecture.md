@@ -37,7 +37,7 @@ Nothing in the domain imports Telegraf or `src/bot/` (ADR 003, ESLint-enforced).
 | `db/connection.ts` · `schema.ts` (migration 001) · `test-helper.ts` | ✅ | WAL, additive migrations, in-memory test DB |
 | `db/repositories/*` | ✅ | user, reminder, subscription, notification-log, session, donations |
 | `content/types.ts` · `loader.ts` · `validate.ts` · `index-builders.ts` | ✅ | loads herbs/**combinations**/categories/tips; builds `.index/` |
-| `content/combinations/*` (163 Tibetan formulas) | ✅ | compound-formula content type (ADR 005); **verbose, non-sanitised staging corpus** behind the doctor-review gate (ADR 006, `docs/medical-review.md`) |
+| `content/combinations/*` (150 Tibetan formulas) | ✅ | compound-formula content type (ADR 005); optional `nature` + `category` facet (ADR 007, `rinchen-pills`); **verbose, non-sanitised staging corpus** behind the doctor-review gate (ADR 006, `docs/medical-review.md`). Source-fidelity restored from `research/raw-crawl-verbose-v2.json` (Plan 004); `npm run content:review` rebuilds the doctor review HTML |
 | `notifications/types.ts` · `recurrence.ts` · `scheduler.ts` | ✅ | pure; recurrence is tz-aware, unit-tested |
 | `services/notifier.ts` (interface) | ✅ | the seam |
 | `services/notification-budget.ts` | ✅ | ≤1 proactive/user/day (ADR 004) |

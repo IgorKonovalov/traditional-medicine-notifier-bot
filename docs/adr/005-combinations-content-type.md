@@ -1,7 +1,8 @@
 # ADR 005 — `combinations` content type (compound formulas)
 
 **Date:** 2026-06-23
-**Status:** Accepted
+**Status:** Accepted (amended by ADR 006 — verbose source fields; ADR 007 —
+combination categories add the `category` facet this ADR deferred)
 
 ## Context
 
