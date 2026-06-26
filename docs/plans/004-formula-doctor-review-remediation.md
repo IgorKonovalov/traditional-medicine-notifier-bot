@@ -268,7 +268,9 @@ verbatim capture → label-split → diff vs current frontmatter → reconcile) 
   all 150 rewritten from the authoritative capture — verbose fields restored,
   body = verbatim `## Источник: <host>`). Owner decision: for the 47
   dual-source formulas manla is canonical, bimala embellishments dropped.
-- [ ] Phase 3 — Structured model extensions (#1 nature, #4 rinchen category + ADR 007)
+- [x] Phase 3 — Structured model extensions (#1 nature, #4 rinchen category + ADR 007)
+  — `177b48c`: `nature` field (66 populated) + generic combination `category`
+  (ADR 007, `rinchen-pills` × 8); index gains `combinationCount`; +4 tests.
 - [ ] Phase 4 — Content normalization (#7, #6, #3, #8)
 - [ ] Phase 5 — Review render & re-audit handoff (#5 + surface #1/#4)
 - [ ] Phase 6 — Validation & close
