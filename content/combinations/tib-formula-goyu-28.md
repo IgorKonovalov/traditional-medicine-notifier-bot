@@ -5,6 +5,10 @@ name_ru: Гою 28 / Гойу 28
 name_original: >-
   Гоюн 28 (монгольское); Го-йу-нйэр-бргйад (тибетское); Gou 28 (English);
   альтернативное название "Бетель 28"
+aliases:
+  - Гоюдепак
+  - Гойудепак
+  - Бетель 28
 composition:
   - Пальма бетель
   - Кардамон зелёный
@@ -59,6 +63,7 @@ dosing_notes:
   - 'С 17 до 19 или в соответствии с назначением, запив тёплой кипячёной водой.'
 sources:
   - 'https://bimala.ru/sostav/goyu-28'
+  - 'https://bimala.ru/sostav/gou-depak-tibetskij-fitosbor'
 ---
 
 ## Источник: bimala.ru

@@ -447,20 +447,11 @@
     "nature": "слегка тёплая"
   },
   {
-    "id": "tib-formula-gou-depak",
-    "nameRu": "Гоюдепак (Гойудепак) \"Бетель 28\"",
-    "tags": [],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": true,
-    "nameOriginal": "Goyudepak / Гоюн Дэпак (монгольский)"
-  },
-  {
     "id": "tib-formula-goyu-28",
     "nameRu": "Гою 28 / Гойу 28",
     "tags": [],
     "memberCount": 0,
-    "sourceCount": 1,
+    "sourceCount": 2,
     "hasIndications": true,
     "nameOriginal": "Гоюн 28 (монгольское); Го-йу-нйэр-бргйад (тибетское); Gou 28 (English); альтернативное название \"Бетель 28\""
   },
