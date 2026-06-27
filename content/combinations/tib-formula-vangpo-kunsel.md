@@ -1,7 +1,7 @@
 ---
 id: tib-formula-vangpo-kunsel
 tradition: tibetan
-name_ru: Вангпо Кунсел тибетский фитосбор (порошок)
+name_ru: Вангпо Кунсел (порошок)
 name_original: 'дБанг-по-кун-сэл (Дбанг-кун, Wangpo Kunsel)'
 composition:
   - Красный сандал

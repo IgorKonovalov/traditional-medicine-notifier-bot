@@ -1,7 +1,7 @@
 ---
 id: tib-formula-brega-13
 tradition: tibetan
-name_ru: Брега 13 тибетский фитосбор
+name_ru: Брега 13
 name_original: Дрега 13 "Ярутка 13" / Brega 13 / Бираг 13 (монгольский)
 composition:
   - Ярутка

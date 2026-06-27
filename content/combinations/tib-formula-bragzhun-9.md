@@ -1,7 +1,7 @@
 ---
 id: tib-formula-bragzhun-9
 tradition: tibetan
-name_ru: Брагжун 9 тибетский фитосбор
+name_ru: Брагжун 9
 name_original: 'Bragjun-9 / Мумиё 9 / на монгольском: Врагшун 9'
 composition:
   - Мумиё (смола)

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-loce-kunsel
 tradition: tibetan
-name_ru: Лоце Кунсел тибетский фитосбор
+name_ru: Лоце Кунсел
 name_original: 'Гло-цхад-кун-сэл, Гло-кун, Гло-цхад-бчу-бжи / Лоце Кунсел "Локун" / Лоце 14'
 composition:
   - Охра

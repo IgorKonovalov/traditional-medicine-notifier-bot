@@ -1,7 +1,7 @@
 ---
 id: tib-formula-nenbo-18
 tradition: tibetan
-name_ru: Ненбо 18 тибетский фитосбор (пилюли)
+name_ru: Ненбо 18 (пилюли)
 name_original: Nenbo 18
 composition:
   - Терминалия хебула

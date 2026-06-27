@@ -1,7 +1,7 @@
 ---
 id: tib-formula-covo-25
 tradition: tibetan
-name_ru: Цово 25 тибетский фитосбор
+name_ru: Цово 25
 name_original: 'Tsovo 25 / Гцо-бо-нйэр-лнга, Ва-гло-нйэр-лнга'
 composition:
   - Сандал белый

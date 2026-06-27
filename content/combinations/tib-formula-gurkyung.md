@@ -1,7 +1,7 @@
 ---
 id: tib-formula-gurkyung
 tradition: tibetan
-name_ru: Гуркьюнг тибетский фитосбор
+name_ru: Гуркьюнг
 composition:
   - Сафлор красильный
   - Гвоздичное дерево

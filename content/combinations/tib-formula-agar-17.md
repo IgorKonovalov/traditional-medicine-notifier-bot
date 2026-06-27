@@ -1,7 +1,7 @@
 ---
 id: tib-formula-agar-17
 tradition: tibetan
-name_ru: Агар 17 тибетский фитосбор
+name_ru: Агар 17
 name_original: Агар 17 "Орлиное дерево 17" / Agar 17
 composition:
   - Орлиное дерево

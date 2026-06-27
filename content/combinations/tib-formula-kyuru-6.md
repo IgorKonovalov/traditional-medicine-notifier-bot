@@ -1,7 +1,7 @@
 ---
 id: tib-formula-kyuru-6
 tradition: tibetan
-name_ru: Кюру 6 тибетский фитосбор
+name_ru: Кюру 6
 name_original: >-
   Кюру 6 "Эмблика 6" / Kuru 6; на тибетском: Скйу-ру-нйэр-лнга,
   Кхраг-шэд-снйомс-лдан

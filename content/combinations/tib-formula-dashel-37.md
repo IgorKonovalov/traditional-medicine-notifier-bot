@@ -1,7 +1,7 @@
 ---
 id: tib-formula-dashel-37
 tradition: tibetan
-name_ru: Дашел 37 тибетский фитосбор (пилюли)
+name_ru: Дашел 37 (пилюли)
 name_original: 'Зла-шел, Зла-шэл-со-бдун, зла-шэл-мйу-гу''и-сбйор, Dashel 37'
 composition:
   - Кальцит

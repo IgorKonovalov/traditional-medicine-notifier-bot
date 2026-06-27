@@ -1,7 +1,7 @@
 ---
 id: tib-formula-indra-4
 tradition: tibetan
-name_ru: Индра 4 тибетский фитосбор (порошок)
+name_ru: Индра 4 (порошок)
 name_original: Индра 4 / Indra 4
 composition:
   - Холларена противодизентерийная

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-sugmel-7
 tradition: tibetan
-name_ru: Сугмэл 7 тибетский фитосбор (порошок)
+name_ru: Сугмэл 7 (порошок)
 name_original: Sugmel 7 / Сугмэл 7 "Зеленый кардамон 7"
 composition:
   - Кардамон зелёный

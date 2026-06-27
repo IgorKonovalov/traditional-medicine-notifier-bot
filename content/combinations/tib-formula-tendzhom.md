@@ -1,7 +1,7 @@
 ---
 id: tib-formula-tendzhom
 tradition: tibetan
-name_ru: Тенджом тибетский фитосбор
+name_ru: Тенджом
 name_original: Тенджём / Тенжом
 composition:
   - Кувшинка жёлтая

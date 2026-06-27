@@ -1,7 +1,7 @@
 ---
 id: tib-formula-wanlak-37
 tradition: tibetan
-name_ru: Ванлаг 37 тибетский фитосбор
+name_ru: Ванлаг 37
 name_original: Ванлаг 37 "Ятрышник 37" / Wanlak 37
 composition:
   - Ятрышник

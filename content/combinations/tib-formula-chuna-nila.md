@@ -1,7 +1,7 @@
 ---
 id: tib-formula-chuna-nila
 tradition: tibetan
-name_ru: Чуна Нила тибетский фитосбор
+name_ru: Чуна Нила
 name_original: Chuna Nila
 composition:
   - Аконит джунгарский

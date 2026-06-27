@@ -1,7 +1,7 @@
 ---
 id: tib-formula-awa-15
 tradition: tibetan
-name_ru: Ава 15 тибетский фитосбор
+name_ru: Ава 15
 name_original: 'Awa 15 / Гсал-бйэд-а-ва-бчо-лнга, А-ва-бчо-лнга'
 composition:
   - Кальцит

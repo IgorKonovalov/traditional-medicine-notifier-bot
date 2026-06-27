@@ -1,7 +1,7 @@
 ---
 id: tib-formula-nikil
 tradition: tibetan
-name_ru: Себру Никил (Сожид 11) тибетский фитосбор
+name_ru: Себру Никил (Сожид 11)
 name_original: >-
   Себру Никил / Нигил / Сожид 11 / Со-Жед / Sebru Nikil (Sozhid) / Сэбру нйима-и
   дкйил кхор / "Гранат Солнечная мандала - 11"

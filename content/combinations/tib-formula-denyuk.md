@@ -1,7 +1,7 @@
 ---
 id: tib-formula-denyuk
 tradition: tibetan
-name_ru: Денюк тибетский фитосбор "Кальцит 17"
+name_ru: Денюк "Кальцит 17"
 name_original: 'Денюг / Denyuk; Бдэ-смйуг, Бдэ-ба''и-мйу-гу, Зла-шэл-бдэ-мйуг, Чонг-жи-бчу-бдун'
 composition:
   - Кальцит

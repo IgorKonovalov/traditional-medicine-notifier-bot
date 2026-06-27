@@ -1,7 +1,7 @@
 ---
 id: tib-formula-garnag-10
 tradition: tibetan
-name_ru: Гарнаг 10 тибетский фитосбор
+name_ru: Гарнаг 10
 name_original: 'Garnag 10 / Гар-наг-бчу-па, гар-пхйогс, гранг-мкхрис-бчу-па'
 composition:
   - Семена граната

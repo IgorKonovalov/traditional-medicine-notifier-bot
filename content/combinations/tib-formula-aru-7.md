@@ -1,7 +1,7 @@
 ---
 id: tib-formula-aru-7
 tradition: tibetan
-name_ru: Ару 7 тибетский фитосбор (порошок)
+name_ru: Ару 7 (порошок)
 name_original: Ару 7 "Миробалан 7" / Aru 7
 nature: немного прохладная
 composition:

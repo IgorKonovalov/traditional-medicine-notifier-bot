@@ -1,7 +1,7 @@
 ---
 id: tib-formula-skyurura-25
 tradition: tibetan
-name_ru: Кюру 25 тибетский фитосбор
+name_ru: Кюру 25
 name_original: >-
   Кюру 25 "Эмблика 25" / Kuru 25; На тибетском: Скйу-ру-нйэр-лнга,
   Кхраг-шэд-снйомс-лдан

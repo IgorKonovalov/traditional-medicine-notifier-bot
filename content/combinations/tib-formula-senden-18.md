@@ -1,7 +1,7 @@
 ---
 id: tib-formula-senden-18
 tradition: tibetan
-name_ru: Ценден 18 тибетский фитосбор
+name_ru: Ценден 18
 name_original: Ценден 18 "Сандал 18" / Tsenden-18 / Цан-дан-бчо-бргйад
 composition:
   - Красный сандал

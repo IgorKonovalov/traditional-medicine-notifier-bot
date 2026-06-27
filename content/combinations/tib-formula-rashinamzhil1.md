@@ -1,7 +1,7 @@
 ---
 id: tib-formula-rashinamzhil1
 tradition: tibetan
-name_ru: Рашинамжил тибетский фитосбор
+name_ru: Рашинамжил
 name_original: Rashinamzhil / Раши Намгьял
 composition:
   - Терминалия хебула

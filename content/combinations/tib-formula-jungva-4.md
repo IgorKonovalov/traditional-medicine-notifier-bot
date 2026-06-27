@@ -1,7 +1,7 @@
 ---
 id: tib-formula-jungva-4
 tradition: tibetan
-name_ru: Юнва 4 тибетский фитосбор (порошок) / Юнва 4 "Куркума - 4"
+name_ru: Юнва 4 (порошок) / Юнва 4 "Куркума - 4"
 name_original: Yungba-4 / Йунгва 4
 composition:
   - Куркума корень

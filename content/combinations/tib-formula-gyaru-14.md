@@ -1,7 +1,7 @@
 ---
 id: tib-formula-gyaru-14
 tradition: tibetan
-name_ru: Гьяру 14 тибетский фитосбор / Гьяру 14 тибетский сбор для глаз
+name_ru: Гьяру 14 / Гьяру 14 тибетский сбор для глаз
 name_original: Ргйа-ру-бчу-бжи (тибетское); Gyaru 14
 composition:
   - Сафлор красильный

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-ludud-18
 tradition: tibetan
-name_ru: Лудуд 18 Тибетский Фитосбор
+name_ru: Лудуд 18
 name_original: 'Клу-бдуд-бчо-бргйад, Гу-гул-бчо-бргйад (Луду 18 «Гугул 18» / Ludud 18)'
 composition:
   - Коммифора мукул

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-letre-2
 tradition: tibetan
-name_ru: Летре 2 тибетский фитосбор (порошок)
+name_ru: Летре 2 (порошок)
 name_original: Летре 2 тиноспора 2 отвар
 composition:
   - Тиноспора сердцелистная

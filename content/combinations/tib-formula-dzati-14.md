@@ -1,7 +1,7 @@
 ---
 id: tib-formula-dzati-14
 tradition: tibetan
-name_ru: Дзати 14 "Мускатный орех 14" (тибетский фитосбор)
+name_ru: Дзати 14 "Мускатный орех 14"
 name_original: Dzati 14 / Задь 14 (монгольское) / дза-ти-бчу-бжи
 nature: теплая
 composition:

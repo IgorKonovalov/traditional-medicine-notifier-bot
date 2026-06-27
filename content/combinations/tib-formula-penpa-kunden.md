@@ -1,7 +1,7 @@
 ---
 id: tib-formula-penpa-kunden
 tradition: tibetan
-name_ru: Пенпа Кунден тибетский фитосбор
+name_ru: Пенпа Кунден
 name_original: >-
   Пхан-па-кун-лдан, Пхан-кун, Тханг-пхром-бчу-гчиг, Тханг-кхром-бчу-гчиг (англ.
   Penpa Kunden)

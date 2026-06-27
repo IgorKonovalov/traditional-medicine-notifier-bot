@@ -1,7 +1,7 @@
 ---
 id: tib-formula-chisin-chimed-srinsel
 tradition: tibetan
-name_ru: Чисин / Чимед Сринсел тибетский фитосбор
+name_ru: Чисин / Чимед Сринсел
 name_original: Чисин / Чимед Сринсел / Чисен (Chisin / Chimed Srinsel / Chisen)
 composition:
   - Аконит джунгарский

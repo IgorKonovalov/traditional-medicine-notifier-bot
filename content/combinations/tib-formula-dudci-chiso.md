@@ -1,7 +1,7 @@
 ---
 id: tib-formula-dudci-chiso
 tradition: tibetan
-name_ru: Дудци Чисо тибетский фитосбор (порошок)
+name_ru: Дудци Чисо (порошок)
 name_original: 'Бдуд-рци-''чхи-гсос, Гло-гсос; Dudci Chiso'
 composition:
   - Бамбуковая манна

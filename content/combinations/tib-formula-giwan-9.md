@@ -1,7 +1,7 @@
 ---
 id: tib-formula-giwan-9
 tradition: tibetan
-name_ru: Гиван 9 тибетский фитосбор
+name_ru: Гиван 9
 name_original: Гиван 9 "Гиванг 9" / Giwan 9; Ги-ванг-дгу-па
 composition:
   - Сафлор красильный

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-garuda-5
 tradition: tibetan
-name_ru: Гаруда 5 тибетский фитосбор
+name_ru: Гаруда 5
 name_original: >-
   Гаруда 5 "Кьюнга" / Чуна 5 / Garuda-5; На тибетском: Кхйунг-лнга,
   Гла-рци-лнга-па; На монгольском: Чун 5

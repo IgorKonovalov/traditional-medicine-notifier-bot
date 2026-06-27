@@ -1,7 +1,7 @@
 ---
 id: tib-formula-shizhet-11
 tradition: tibetan
-name_ru: Шижет 11 тибетский фитосбор
+name_ru: Шижет 11
 name_original: >-
   Шижид 11 / Shijeet 11 / "Умиротворяющий 11"; тибет.: Жи-бйэд-бчу-гчиг,
   Скйэ-зуг-рил-бу

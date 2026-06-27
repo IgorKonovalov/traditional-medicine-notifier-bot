@@ -1,7 +1,7 @@
 ---
 id: tib-formula-senden-25
 tradition: tibetan
-name_ru: Сенден 25 тибетский фитосбор / Сенден 25 тибетский "Акация 25"
+name_ru: Сенден 25 / Сенден 25 тибетский "Акация 25"
 name_original: Сэнг-лдэнг-нйэр-лнга / Senden 25
 composition:
   - Акация катеху

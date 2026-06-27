@@ -1,7 +1,7 @@
 ---
 id: tib-formula-gurgum-13
 tradition: tibetan
-name_ru: Гургум 13 тибетский фитосбор / "Шафран 13"
+name_ru: Гургум 13 / "Шафран 13"
 name_original: Гур-гум-бчу-гсум (тибетское); Гургэм 13 (монгольское); Gurgum 13 (английское)
 nature: слегка прохладная
 composition:

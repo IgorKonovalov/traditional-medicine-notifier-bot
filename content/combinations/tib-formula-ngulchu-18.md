@@ -1,7 +1,7 @@
 ---
 id: tib-formula-ngulchu-18
 tradition: tibetan
-name_ru: Улчу 18 Тибетский Фитосбор
+name_ru: Улчу 18
 name_original: Ngulchu 18 / Нгулчу 18
 composition:
   - Бамбуковая манна

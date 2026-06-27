@@ -1,7 +1,7 @@
 ---
 id: tib-formula-djubril
 tradition: tibetan
-name_ru: Джубрил тибетский фитосбор
+name_ru: Джубрил
 name_original: >-
   Друптоп Рилкар / Drubril / Jubril; на тибетском: Груб-тхоб-рил-дкар, Груб-рил,
   Чонг-жи-рил-дкар; М7

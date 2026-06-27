@@ -1,7 +1,7 @@
 ---
 id: tib-formula-agar-15
 tradition: tibetan
-name_ru: Агар 15 тибетский фитосбор
+name_ru: Агар 15
 name_original: >-
   Агар 15 «Орлиное дерево 15» / Agar 15 / A-GAR 15 / EAGLEWOOD 15 / на
   монгольском: Агар 15 / на тибетском: А-гар-бчо-лнга, Ар-цхэс

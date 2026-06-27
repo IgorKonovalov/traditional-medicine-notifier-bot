@@ -1,7 +1,7 @@
 ---
 id: tib-formula-baspru-7
 tradition: tibetan
-name_ru: Баспру 7 тибетский фитосбор
+name_ru: Баспру 7
 name_original: 'Батру Дунпа, Ба Спру 7 / Baspru 7'
 composition:
   - Витания снотворная

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-martan-11
 tradition: tibetan
-name_ru: Мартан 11 тибетский фитосбор / Красный отвар 11
+name_ru: Мартан 11 / Красный отвар 11
 name_original: Martan 11; Дмар-тханг-бчу-гчиг (тибетск.)
 composition:
   - Терминалия хебула

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-senden-4
 tradition: tibetan
-name_ru: Сенден 4 тибетский фитосбор (порошок)
+name_ru: Сенден 4 (порошок)
 name_original: Сэнг-лдэнг-бжи-па
 composition:
   - Акация катеху и другие

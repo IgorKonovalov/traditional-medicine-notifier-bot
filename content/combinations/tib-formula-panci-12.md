@@ -1,7 +1,7 @@
 ---
 id: tib-formula-panci-12
 tradition: tibetan
-name_ru: Панци 12 тибетский фитосбор
+name_ru: Панци 12
 name_original: Pantci 12 / спанг-рци-бчу-нйи
 composition:
   - Мускатный орех

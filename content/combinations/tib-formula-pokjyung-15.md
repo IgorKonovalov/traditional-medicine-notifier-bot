@@ -1,7 +1,7 @@
 ---
 id: tib-formula-pokjyung-15
 tradition: tibetan
-name_ru: Байчун / Покьюнг 15 тибетский фитосбор
+name_ru: Байчун / Покьюнг 15
 name_original: >-
   Pokiung-15 / Покьюнг 15; тибетское название: Спос-кхйунг-бчо-лнга,
   Спос-рци-бчо-лнга

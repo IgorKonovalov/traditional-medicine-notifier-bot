@@ -1,7 +1,7 @@
 ---
 id: tib-formula-galomenmar
 tradition: tibetan
-name_ru: Галоменмар тибетский фитосбор
+name_ru: Галоменмар
 name_original: Galomenmar
 composition:
   - Арнебия

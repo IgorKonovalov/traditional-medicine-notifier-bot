@@ -1,7 +1,7 @@
 ---
 id: tib-formula-shinkun-25
 tradition: tibetan
-name_ru: Шинкун 25 тибетский фитосбор
+name_ru: Шинкун 25
 name_original: Shinkun 25 / Шингун 25 / Шинг-кун-нйэр-лнга / Ферула 25
 composition:
   - Асафетида

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-pakdzhub
 tradition: tibetan
-name_ru: Пакджуб тибетский фитосбор
+name_ru: Пакджуб
 name_original: >-
   Паг-груб (Пхаг-мо-груб-сбйор), «Кальцит-11», Чонгжи-11 / Джонши-11 / Пакдруб /
   Pakdrub

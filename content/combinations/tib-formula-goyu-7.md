@@ -1,7 +1,7 @@
 ---
 id: tib-formula-goyu-7
 tradition: tibetan
-name_ru: Гою 7 тибетский фитосбор (порошок)
+name_ru: Гою 7 (порошок)
 name_original: Гоюн 7 / Гойу 7 / Gou 7 / "Бетель 7" / "Семь солнц излечивающие болезни почек"
 nature: очень теплая
 composition:

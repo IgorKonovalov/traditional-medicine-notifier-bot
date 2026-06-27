@@ -1,7 +1,7 @@
 ---
 id: tib-formula-srogdzin-11
 tradition: tibetan
-name_ru: Срогдзин 11 тибетский фитосбор
+name_ru: Срогдзин 11
 name_original: >-
   Срогдзин 11 (Согдзин 11) «Держатель жизни 11» / Srog-'dzin 11 (ELEVEN HOLDERS
   OF LIFE); на монгольском: Сорогзин 11

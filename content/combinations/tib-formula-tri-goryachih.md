@@ -1,7 +1,7 @@
 ---
 id: tib-formula-tri-goryachih
 tradition: tibetan
-name_ru: Три горячих тибетский фитосбор (порошок)
+name_ru: Три горячих (порошок)
 name_original: Трикату / Гапипо
 composition:
   - Черный перец

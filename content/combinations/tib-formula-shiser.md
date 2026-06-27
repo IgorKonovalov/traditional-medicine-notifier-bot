@@ -1,7 +1,7 @@
 ---
 id: tib-formula-shiser
 tradition: tibetan
-name_ru: Шисер тибетский фитосбор
+name_ru: Шисер
 name_original: >-
   Жи-гсэр (Гсэр-жи); Ши-Сэр (Шижет-6 + Сэрдок-5), «Умиротворяющий-6 + Золотой
   блеск-5»; Shiser

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-kodzhi-13
 tradition: tibetan
-name_ru: Коджи 13 тибетский фитосбор
+name_ru: Коджи 13
 name_original: Ко-бйи-бчу-гсум / Коби 13 "Орех коджи 13" / Kodji 13
 composition:
   - Орлиное дерево

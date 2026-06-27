@@ -1,7 +1,7 @@
 ---
 id: tib-formula-yanchen-rilbu-pilyuli-sarasvati
 tradition: tibetan
-name_ru: Янчен Рилбу Пилюли Сарасвати тибетский фитосбор
+name_ru: Янчен Рилбу Пилюли Сарасвати
 name_original: 'Yangchen Rilbu Saraswati pills; Кхйунг-лнга, Гла-рци-лнга-па'
 composition:
   - Терминалия хебула

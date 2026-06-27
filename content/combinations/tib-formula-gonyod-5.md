@@ -1,7 +1,7 @@
 ---
 id: tib-formula-gonyod-5
 tradition: tibetan
-name_ru: Гонйод 5 тибетский фитосбор (порошок)
+name_ru: Гонйод 5 (порошок)
 name_original: 'Гонйод 5 отвар "Тмин 5 отвар" / Goniod 5 / на монгольском: Гонид 5'
 nature: слегка тёплая
 composition:

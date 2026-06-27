@@ -1,7 +1,7 @@
 ---
 id: tib-formula-agar-24
 tradition: tibetan
-name_ru: Агар 24 (Ламэд) тибетский фитосбор
+name_ru: Агар 24 (Ламэд)
 name_original: 'Agar 24 Lamed / Орлиное дерево 24 (монгольское: Агар 24)'
 composition:
   - Орлиное дерево

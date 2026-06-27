@@ -1,7 +1,7 @@
 ---
 id: tib-formula-tigta-8
 tradition: tibetan
-name_ru: Тигта 8 тибетский фитосбор
+name_ru: Тигта 8
 name_original: Tigta 8 / Дэгд 8 (монг.) / "Горечавка 8"
 composition:
   - Горечавка бородатая

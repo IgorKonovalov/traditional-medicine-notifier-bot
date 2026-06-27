@@ -1,7 +1,7 @@
 ---
 id: tib-formula-denem
 tradition: tibetan
-name_ru: Денём тибетский фитосбор
+name_ru: Денём
 name_original: Denyom
 composition:
   - Гранат

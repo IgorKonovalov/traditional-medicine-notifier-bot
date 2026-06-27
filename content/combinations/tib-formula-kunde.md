@@ -1,7 +1,7 @@
 ---
 id: tib-formula-kunde
 tradition: tibetan
-name_ru: Себру Кунде (Сэбру Кунде) тибетский фитосбор
+name_ru: Себру Кунде (Сэбру Кунде)
 name_original: 'Sebru Kunde / Кундей / «Гранат, дарующий благо»'
 nature: немного тёплая
 composition:

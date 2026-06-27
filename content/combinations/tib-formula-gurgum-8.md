@@ -1,7 +1,7 @@
 ---
 id: tib-formula-gurgum-8
 tradition: tibetan
-name_ru: Гургум 8 тибетский фитосбор "Шафран 8"
+name_ru: Гургум 8 "Шафран 8"
 name_original: Gurgum 7; гур-гум-бргйад-па; Кхраг-гчод-гур-гум-бргйад-па
 composition:
   - Шафран
