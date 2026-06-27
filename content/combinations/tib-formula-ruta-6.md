@@ -1,7 +1,7 @@
 ---
 id: tib-formula-ruta-6
 tradition: tibetan
-name_ru: Костус-6
+name_ru: Рута 6 (Рурта 6)
 name_original: >-
   Ру-рта-друг-па / Ruta 6 / "Соссюрея 6" / М6 / на монгольском: Руда 6 / RU-rTA
   6, SAUSSUREA 6
@@ -28,7 +28,7 @@ sources:
   - 'https://bimala.ru/sostav/ruta-6'
   - 'https://manla.ru/herbs/#rurta-6'
 aliases:
-  - Рута 6 (Рурта 6)
+  - Костус-6
 ---
 
 ## Источник: manla.ru

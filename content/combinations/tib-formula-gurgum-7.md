@@ -1,7 +1,7 @@
 ---
 id: tib-formula-gurgum-7
 tradition: tibetan
-name_ru: Шафран лучший-7
+name_ru: Гургум 7
 name_original: >-
   гур-гум-мчхог-бдун (Gurgum 7 / "Шафран 7" / Гургэм 7 / Гур-Чог, GUR-GUM
   mCHOG-bDUN, MOST EXCELLENT SAFFLOWER 7)
@@ -33,7 +33,7 @@ sources:
   - 'https://bimala.ru/sostav/gurgum-7'
   - 'https://manla.ru/herbs/#gur-chog'
 aliases:
-  - Гургум 7
+  - Шафран лучший-7
 ---
 
 ## Источник: manla.ru

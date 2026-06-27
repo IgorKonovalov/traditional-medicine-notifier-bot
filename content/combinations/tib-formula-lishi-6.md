@@ -1,7 +1,7 @@
 ---
 id: tib-formula-lishi-6
 tradition: tibetan
-name_ru: Гвоздика-6
+name_ru: Лиши 6 "Гвоздика 6"
 name_original: Lishi 6 / Лишь 6 (монгольское название)
 nature: слегка прохладная
 composition:
@@ -26,7 +26,7 @@ sources:
   - 'https://bimala.ru/sostav/lishi-6'
   - 'https://manla.ru/herbs/#lishi-6'
 aliases:
-  - Лиши 6 "Гвоздика 6"
+  - Гвоздика-6
 ---
 
 ## Источник: manla.ru
