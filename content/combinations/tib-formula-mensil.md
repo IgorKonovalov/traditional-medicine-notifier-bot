@@ -1,7 +1,7 @@
 ---
 id: tib-formula-mensil
 tradition: tibetan
-name_ru: Менсил (пилюли)
+name_ru: Менсил
 name_original: 'Ман-нгаг-бсил-сбйор, Ман-бсил, Чонг-жи-нйэр-лнга'
 composition:
   - Кальцит

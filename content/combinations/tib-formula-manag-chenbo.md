@@ -1,7 +1,7 @@
 ---
 id: tib-formula-manag-chenbo
 tradition: tibetan
-name_ru: Манаг Ченбо (порошок)
+name_ru: Манаг Ченбо
 name_original: Manag Chenbo / Сман-наг-чхэн-мо
 composition:
   - Девясил

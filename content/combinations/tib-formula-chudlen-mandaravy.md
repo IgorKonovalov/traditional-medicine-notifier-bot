@@ -1,7 +1,7 @@
 ---
 id: tib-formula-chudlen-mandaravy
 tradition: tibetan
-name_ru: Чудлен Мандаравы (пилюли)
+name_ru: Чудлен Мандаравы
 name_original: Mandarava Chudlen
 composition:
   - Терминалия хебула

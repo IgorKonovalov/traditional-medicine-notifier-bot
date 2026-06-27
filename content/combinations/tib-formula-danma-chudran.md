@@ -1,7 +1,7 @@
 ---
 id: tib-formula-danma-chudran
 tradition: tibetan
-name_ru: Данма Чхудран (порошок)
+name_ru: Данма Чхудран
 name_original: Данма чхудран / Danma chu dran
 composition:
   - Сафлор красильный

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-marpo-3
 tradition: tibetan
-name_ru: Марпо 3 (порошок)
+name_ru: Марпо 3
 name_original: Marpo 3 / «Отвар трех красный»
 composition:
   - Лаковые червецы (шеллак)

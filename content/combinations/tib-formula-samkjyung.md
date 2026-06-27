@@ -1,7 +1,7 @@
 ---
 id: tib-formula-samkjyung
 tradition: tibetan
-name_ru: Самкьюнг (пилюли)
+name_ru: Самкьюнг
 name_original: Samkiung / Samkjyung
 composition:
   - Жемчуг

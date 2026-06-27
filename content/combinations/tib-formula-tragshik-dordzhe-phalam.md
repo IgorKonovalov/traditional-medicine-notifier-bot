@@ -1,7 +1,7 @@
 ---
 id: tib-formula-tragshik-dordzhe-phalam
 tradition: tibetan
-name_ru: Трагшик Дордже Пхалам (порошок)
+name_ru: Трагшик Дордже Пхалам
 name_original: Трагшик Дордже Пхалам
 composition:
   - Сандаловое дерево

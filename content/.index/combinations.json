@@ -1,7 +1,7 @@
 [
   {
     "id": "tib-formula-6-horoshih",
-    "nameRu": "Шесть благих (порошок)",
+    "nameRu": "Шесть благих",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -29,7 +29,7 @@
   },
   {
     "id": "tib-formula-agar-20",
-    "nameRu": "Агар 20 (пилюли) / Агар 20 «Орлиное дерево 20»",
+    "nameRu": "Агар 20 / Агар 20 «Орлиное дерево 20»",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -96,7 +96,7 @@
   },
   {
     "id": "tib-formula-aru-7",
-    "nameRu": "Ару 7 (порошок)",
+    "nameRu": "Ару 7",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -182,7 +182,7 @@
   },
   {
     "id": "tib-formula-chini-aru-18",
-    "nameRu": "Чени Ару 18 (пилюли)",
+    "nameRu": "Чени Ару 18",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -201,7 +201,7 @@
   },
   {
     "id": "tib-formula-chudlen-mandaravy",
-    "nameRu": "Чудлен Мандаравы (пилюли)",
+    "nameRu": "Чудлен Мандаравы",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -238,7 +238,7 @@
   },
   {
     "id": "tib-formula-dadud",
-    "nameRu": "Дадуд (пилюли)",
+    "nameRu": "Дадуд",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
@@ -267,7 +267,7 @@
   },
   {
     "id": "tib-formula-danma-chudran",
-    "nameRu": "Данма Чхудран (порошок)",
+    "nameRu": "Данма Чхудран",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -276,7 +276,7 @@
   },
   {
     "id": "tib-formula-dashel-37",
-    "nameRu": "Дашел 37 (пилюли)",
+    "nameRu": "Дашел 37",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -333,7 +333,7 @@
   },
   {
     "id": "tib-formula-dudci-chiso",
-    "nameRu": "Дудци Чисо (порошок)",
+    "nameRu": "Дудци Чисо",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -342,7 +342,7 @@
   },
   {
     "id": "tib-formula-dugsel-degu",
-    "nameRu": "Дугсел Дегу (порошок)",
+    "nameRu": "Дугсел Дегу",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
@@ -362,7 +362,7 @@
   },
   {
     "id": "tib-formula-dzati-5",
-    "nameRu": "Дзати 5 (порошок)",
+    "nameRu": "Дзати 5",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
@@ -438,7 +438,7 @@
   },
   {
     "id": "tib-formula-gonyod-5",
-    "nameRu": "Гонйод 5 (порошок)",
+    "nameRu": "Гонйод 5",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
@@ -466,7 +466,7 @@
   },
   {
     "id": "tib-formula-goyu-7",
-    "nameRu": "Гою 7 (порошок)",
+    "nameRu": "Гою 7",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -522,7 +522,7 @@
   },
   {
     "id": "tib-formula-gyamca-4",
-    "nameRu": "Гьямца 4 (порошок)",
+    "nameRu": "Гьямца 4",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
@@ -541,7 +541,7 @@
   },
   {
     "id": "tib-formula-gzema-3",
-    "nameRu": "Зема 3 (порошок)",
+    "nameRu": "Зема 3",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -550,7 +550,7 @@
   },
   {
     "id": "tib-formula-indra-4",
-    "nameRu": "Индра 4 (порошок)",
+    "nameRu": "Индра 4",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -581,7 +581,7 @@
   },
   {
     "id": "tib-formula-jungva-4",
-    "nameRu": "Юнва 4 (порошок) / Юнва 4 \"Куркума - 4\"",
+    "nameRu": "Юнва 4 / Юнва 4 \"Куркума - 4\"",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -599,7 +599,7 @@
   },
   {
     "id": "tib-formula-kershun-8",
-    "nameRu": "Кьершун 8 \"Барбарис 8\" (пилюли)",
+    "nameRu": "Кьершун 8 \"Барбарис 8\"",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -609,7 +609,7 @@
   },
   {
     "id": "tib-formula-kharuca-5",
-    "nameRu": "Кхаруца 5 (порошок)",
+    "nameRu": "Кхаруца 5",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
@@ -638,7 +638,7 @@
   },
   {
     "id": "tib-formula-kola-4",
-    "nameRu": "Какола 4 (порошок)",
+    "nameRu": "Какола 4",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
@@ -678,7 +678,7 @@
   },
   {
     "id": "tib-formula-letre-2",
-    "nameRu": "Летре 2 (порошок)",
+    "nameRu": "Летре 2",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -687,7 +687,7 @@
   },
   {
     "id": "tib-formula-letre-5",
-    "nameRu": "Летре 5 (порошок)",
+    "nameRu": "Летре 5",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
@@ -754,7 +754,7 @@
   },
   {
     "id": "tib-formula-manag-chenbo",
-    "nameRu": "Манаг Ченбо (порошок)",
+    "nameRu": "Манаг Ченбо",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -775,7 +775,7 @@
   },
   {
     "id": "tib-formula-manushitan",
-    "nameRu": "Манушитан \"Девясил 4 - отвар\" (Ману 4 отвар)",
+    "nameRu": "Манушитан \"Девясил 4 - отвар\" (Ману 4)",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
@@ -785,7 +785,7 @@
   },
   {
     "id": "tib-formula-marpo-3",
-    "nameRu": "Марпо 3 (порошок)",
+    "nameRu": "Марпо 3",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -803,7 +803,7 @@
   },
   {
     "id": "tib-formula-mdzomo-6",
-    "nameRu": "Замошин 6 (отвар / порошок)",
+    "nameRu": "Замошин 6",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
@@ -813,7 +813,7 @@
   },
   {
     "id": "tib-formula-mensil",
-    "nameRu": "Менсил (пилюли)",
+    "nameRu": "Менсил",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -842,7 +842,7 @@
   },
   {
     "id": "tib-formula-nenbo-18",
-    "nameRu": "Ненбо 18 (пилюли)",
+    "nameRu": "Ненбо 18",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -870,7 +870,7 @@
   },
   {
     "id": "tib-formula-norbu-7",
-    "nameRu": "Норбу 7 (порошок)",
+    "nameRu": "Норбу 7",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
@@ -976,7 +976,7 @@
   },
   {
     "id": "tib-formula-samkjyung",
-    "nameRu": "Самкьюнг (пилюли)",
+    "nameRu": "Самкьюнг",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -1042,7 +1042,7 @@
   },
   {
     "id": "tib-formula-senden-23",
-    "nameRu": "Сенден 23 (порошок)",
+    "nameRu": "Сенден 23",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -1060,7 +1060,7 @@
   },
   {
     "id": "tib-formula-senden-4",
-    "nameRu": "Сенден 4 (порошок)",
+    "nameRu": "Сенден 4",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -1088,7 +1088,7 @@
   },
   {
     "id": "tib-formula-seru-25",
-    "nameRu": "Серу 25 (пилюли)",
+    "nameRu": "Серу 25",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -1097,7 +1097,7 @@
   },
   {
     "id": "tib-formula-shimshin-6",
-    "nameRu": "Шимшин 6 (порошок)",
+    "nameRu": "Шимшин 6",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -1115,7 +1115,7 @@
   },
   {
     "id": "tib-formula-shiru",
-    "nameRu": "Ширу (порошок)",
+    "nameRu": "Ширу",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -1165,7 +1165,7 @@
   },
   {
     "id": "tib-formula-solnechnaya-mandala-22",
-    "nameRu": "Солнечная мандала 22 (порошок)",
+    "nameRu": "Солнечная мандала 22",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -1175,7 +1175,7 @@
   },
   {
     "id": "tib-formula-sorolo-4-srolo-4",
-    "nameRu": "Сороло 4 / Сроло 4 (порошок)",
+    "nameRu": "Сороло 4 / Сроло 4",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -1224,7 +1224,7 @@
   },
   {
     "id": "tib-formula-sugmel-7",
-    "nameRu": "Сугмэл 7 (порошок)",
+    "nameRu": "Сугмэл 7",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -1233,7 +1233,7 @@
   },
   {
     "id": "tib-formula-tarbu-5",
-    "nameRu": "Тарбу 5 «Облепиха 5» (порошок)",
+    "nameRu": "Тарбу 5 «Облепиха 5»",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -1251,7 +1251,7 @@
   },
   {
     "id": "tib-formula-tcovo-8",
-    "nameRu": "Цово 8 (порошок)",
+    "nameRu": "Цово 8",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
@@ -1270,7 +1270,7 @@
   },
   {
     "id": "tib-formula-thanchen-10",
-    "nameRu": "Танчен 10 (порошок)",
+    "nameRu": "Танчен 10",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
@@ -1308,7 +1308,7 @@
   },
   {
     "id": "tib-formula-tragshik-dordzhe-phalam",
-    "nameRu": "Трагшик Дордже Пхалам (порошок)",
+    "nameRu": "Трагшик Дордже Пхалам",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -1317,7 +1317,7 @@
   },
   {
     "id": "tib-formula-tri-goryachih",
-    "nameRu": "Три горячих (порошок)",
+    "nameRu": "Три горячих",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -1326,7 +1326,7 @@
   },
   {
     "id": "tib-formula-tri-ploda",
-    "nameRu": "Три плода (порошок)",
+    "nameRu": "Три плода",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
@@ -1368,7 +1368,7 @@
   },
   {
     "id": "tib-formula-vangpo-kunsel",
-    "nameRu": "Вангпо Кунсел (порошок)",
+    "nameRu": "Вангпо Кунсел",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,
@@ -1377,7 +1377,7 @@
   },
   {
     "id": "tib-formula-vanlag-10",
-    "nameRu": "Ванлаг 10 (пилюли)",
+    "nameRu": "Ванлаг 10",
     "tags": [],
     "memberCount": 0,
     "sourceCount": 1,
@@ -1425,7 +1425,7 @@
   },
   {
     "id": "tib-formula-zhachun-13",
-    "nameRu": "Жачун 13 (пилюли)",
+    "nameRu": "Жачун 13",
     "tags": [],
     "memberCount": 1,
     "sourceCount": 1,

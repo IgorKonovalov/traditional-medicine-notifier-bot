@@ -1,7 +1,7 @@
 ---
 id: tib-formula-manushitan
 tradition: tibetan
-name_ru: Манушитан "Девясил 4 - отвар" (Ману 4 отвар)
+name_ru: Манушитан "Девясил 4 - отвар" (Ману 4)
 name_original: 'Manushitan; Ману-4 тханг (Ману-шитан); на монгольском: Мана 4'
 nature: слегка прохладная
 composition:

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-tcovo-8
 tradition: tibetan
-name_ru: Цово 8 (порошок)
+name_ru: Цово 8
 name_original: Tsowo 8 / Цово-8 «8 главных»
 nature: холодная
 composition:

@@ -1,7 +1,7 @@
 ---
 id: tib-formula-6-horoshih
 tradition: tibetan
-name_ru: Шесть благих (порошок)
+name_ru: Шесть благих
 name_original: Шесть благих
 composition:
   - Мускатный орех

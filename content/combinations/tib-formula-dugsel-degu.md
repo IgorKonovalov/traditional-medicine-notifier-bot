@@ -1,7 +1,7 @@
 ---
 id: tib-formula-dugsel-degu
 tradition: tibetan
-name_ru: Дугсел Дегу (порошок)
+name_ru: Дугсел Дегу
 name_original: Dugsel Degu / Дугсел Дегу "Устраняющий яды" / Дугсэл Дэгу
 nature: слегка прохладная
 composition:

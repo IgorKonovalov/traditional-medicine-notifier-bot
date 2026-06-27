@@ -1,7 +1,7 @@
 ---
 id: tib-formula-zhachun-13
 tradition: tibetan
-name_ru: Жачун 13 (пилюли)
+name_ru: Жачун 13
 name_original: >-
   Са-ра 'и-бйа-кхйунг-бчу-гсум; Са-ра 'и-шэс-брцон; Шэс-брцон;
   Нйа-пхйис-бчу-гсум; "Перламутр 13" / Zhachun 13

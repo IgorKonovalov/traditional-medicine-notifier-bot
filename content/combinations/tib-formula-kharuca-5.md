@@ -1,7 +1,7 @@
 ---
 id: tib-formula-kharuca-5
 tradition: tibetan
-name_ru: Кхаруца 5 (порошок)
+name_ru: Кхаруца 5
 name_original: >-
   Кха-ру-цхва-лнга-тханг / На монгольском: Харуц 5 / Kharuca-5 / "Черная соль 5
   отвар" / КАРУЦА-5 ТХАНГ

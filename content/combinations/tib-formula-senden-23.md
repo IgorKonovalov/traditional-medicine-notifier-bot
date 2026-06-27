@@ -1,7 +1,7 @@
 ---
 id: tib-formula-senden-23
 tradition: tibetan
-name_ru: Сенден 23 (порошок)
+name_ru: Сенден 23
 name_original: Сэнг-лдэнг-нйэр-гсум / "Акация 23" / Senden 23
 composition:
   - Акация катеху

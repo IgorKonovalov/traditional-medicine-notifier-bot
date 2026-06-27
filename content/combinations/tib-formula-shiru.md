@@ -1,7 +1,7 @@
 ---
 id: tib-formula-shiru
 tradition: tibetan
-name_ru: Ширу (порошок)
+name_ru: Ширу
 name_original: Ширу / Shiru
 nature: нейтральная
 composition:

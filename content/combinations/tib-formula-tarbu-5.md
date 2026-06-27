@@ -1,7 +1,7 @@
 ---
 id: tib-formula-tarbu-5
 tradition: tibetan
-name_ru: Тарбу 5 «Облепиха 5» (порошок)
+name_ru: Тарбу 5 «Облепиха 5»
 name_original: 'Стар-бу-нга-па (монгольское название: Чацаргана 5)'
 composition:
   - Облепиха

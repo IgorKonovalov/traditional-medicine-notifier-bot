@@ -1,7 +1,7 @@
 ---
 id: tib-formula-sorolo-4-srolo-4
 tradition: tibetan
-name_ru: Сороло 4 / Сроло 4 (порошок)
+name_ru: Сороло 4 / Сроло 4
 name_original: Сороло 4 / Сроло 4
 nature: нейтральная
 composition:

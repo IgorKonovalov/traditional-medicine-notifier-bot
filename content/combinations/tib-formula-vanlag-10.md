@@ -1,7 +1,7 @@
 ---
 id: tib-formula-vanlag-10
 tradition: tibetan
-name_ru: Ванлаг 10 (пилюли)
+name_ru: Ванлаг 10
 name_original: Ванлаг 10 "Ятрышник 10" / Wanlak 10
 composition:
   - Ятрышник

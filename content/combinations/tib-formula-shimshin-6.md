@@ -1,7 +1,7 @@
 ---
 id: tib-formula-shimshin-6
 tradition: tibetan
-name_ru: Шимшин 6 (порошок)
+name_ru: Шимшин 6
 name_original: Жим-шинг-друк-па / Shimshin 6
 composition:
   - Облепиха
