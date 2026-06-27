@@ -1,0 +1,128 @@
+# Plan 006 — Long-form guide candidates (backlog draft)
+
+**Status:** Approved backlog — 2026-06-27 (owner vetted; all rows accepted)
+**Created:** 2026-06-27
+**Revised:** 2026-06-27 — re-flagged under the clarified framing rule (see below)
+**Companion to:** Plan 006 (long-form guides). Plan 006 ships the infra + 3 first
+guides; this is the **follow-up bulk-authoring backlog** that plan 006 defers as a
+non-goal. Nothing here is approved — it's a menu to check off.
+
+## Framing rule (clarified)
+
+The non-medical-advice invariant is scoped to **medical** prescriptions only:
+diagnosis of disease, treatment of disease, and **dosing of herbs / remedies /
+formulas**. **Lifestyle and conduct prescriptions are fine** even when phrased
+prescriptively — sex, diet schedules, sleep, daily routine, body-strengthening,
+behavior by constitution. **Age-appropriateness / explicitness is not a concern**
+on this surface. The single remaining guard: a guide must never tell the reader
+"you have condition X → take remedy Y." Disease *taxonomy* (Жар/Холод,
+classification) is fine — it describes how the tradition classifies, it does not
+diagnose or treat the reader.
+
+## How to read this
+
+Each row is a *candidate guide*. Columns:
+
+- **Title (RU)** — working title; final wording TBD by content-curator.
+- **Source** — `canon гл. N` = Чжуд-ши, **Тантра объяснений** (the Explanatory
+  Tantra; `research/zhud_shi_canon.pdf`, local) · `base`/`info` = the manla.ru
+  section. Most candidates pair a canon chapter with a manla section.
+- **Scope** — one-line description.
+- **Flag** — ✅ no medical-prescription risk (descriptive or lifestyle-prescriptive
+  is fine) · ⚠️ contains some disease-treatment material → author keeps the
+  diet/conduct, **drops any herb/formula/treatment prescription**.
+- **Tip** — existing tip that already touches it (a guide would expand, not
+  duplicate; candidate for tip→guide deep-link later, ADR 008).
+
+**Already stated in plan 006 (not re-listed):** flagship «Основы тибетской
+медицины»; seasonal eating & conduct; one of {daily conduct, water & drinks,
+incompatible foods}.
+
+**The one hard exclusion:** the **Тантра наставлений** (Instructional Tantra) —
+its chapters are disease-treatment protocols / herb dosing («Лечение болезней
+ветра» …) and are the actual medical-prescription material the invariant gates.
+Guides draw only from the Root/Explanatory tantras and manla's lifestyle/theory
+sections. Individual ⚠️ rows below may borrow a *descriptive* point from it but
+never its prescriptions.
+
+---
+
+## A. Foundations & theory (deepen the flagship)
+
+| ★ | Title (RU) | Source | Scope | Flag | Tip |
+|---|---|---|---|---|---|
+| ★ | Пищеварительный огонь (медро) | base · canon гл. 16 | Три стадии переваривания; почему традиция зовёт несварение корнем внутренних болезней | ✅ | — |
+| ★ | Шесть вкусов и их действие | canon гл. 19 · base | Вкус → первоэлементы → действие; «вкус после переваривания»; чем балансируют каждое начало | ✅ | tip-007 |
+|  | Семь сил тела и «чистый сок» | base · canon гл. 5 | Как пища очищается в семь тканей вплоть до «цвета»/жизненной эссенции | ✅ | — |
+|  | Принцип противоположного | base · canon | 17 качеств против 20 характеристик начал — механика балансировки | ✅ | — |
+|  | Тело в образах традиции | canon гл. 3–4 | Анатомия через классические сравнения (опоры, своды, каналы) | ✅ | — |
+|  | Зачатие и развитие (эмбриология) | canon гл. 2 | Как традиция описывает зарождение и роль трёх начал | ✅ | — |
+
+## B. Как традиция объясняет болезнь (descriptive mechanism — taxonomy, not diagnosis)
+
+| ★ | Title (RU) | Source | Scope | Flag | Tip |
+|---|---|---|---|---|---|
+| ★ | Причина и условие болезни | canon гл. 8–9 | Модель «семя и почва»: причина без условий не даёт плода | ✅ | tip-010 |
+|  | Как болезнь входит и проявляется | canon гл. 10–11 | Пути «вхождения» и общие признаки нарушений равновесия | ✅ | — |
+|  | Жар и Холод — подробно | canon (жар-раздел) | Виды Жара (пустой, незрелый, застарелый, мутный…) как **терминология корпуса** | ✅ | — |
+|  | Как традиция различает болезни | canon гл. 12 | Классификация по началам/природе | ✅ | — |
+|  | Признаки увядания тела | canon гл. 7 | Как традиция описывает старение и угасание сил — описательный очерк | ✅ | — |
+
+## C. Питание (manla /info Питание + canon diet chapters)
+
+| ★ | Title (RU) | Source | Scope | Flag | Tip |
+|---|---|---|---|---|---|
+| ★ | Питание по конституции | info | Что традиция советует едокам типов Ветра / Желчи / Слизи | ✅ | — |
+| ★ | Несовместимые сочетания продуктов | info · canon гл. 17 | «Пищевые запреты»: пары, которые традиция не сочетает | ✅ | — |
+|  | Мера питания: сколько есть | canon гл. 18 · info | Наполнение желудка на доли; умеренность как мера | ✅ | tip-005 |
+|  | Лёгкая и тяжёлая пища | canon гл. 16 · info | Тяжесть зависит от продукта и обработки | ✅ | tip-006 |
+|  | Вода и напитки | info | Виды воды/напитков и когда их связывают с теплом/прохладой | ✅ | tip-008 |
+|  | Масла и жарение | info | Роль масел; как обработка меняет свойства пищи | ✅ | — |
+|  | Время приёма пищи | info | Ритм еды в течение дня | ✅ | tip-002 |
+|  | Укрепление тела и снижение веса | info | Как традиция питанием и режимом наращивает или убавляет тело | ⚠️ | — |
+|  | Питание при несварении (мукпо) | info | Диетический режим при хроническом несварении | ⚠️ | — |
+
+## D. Образ жизни и поведение (manla /info Поведение + canon conduct chapters)
+
+| ★ | Title (RU) | Source | Scope | Flag | Tip |
+|---|---|---|---|---|---|
+| ★ | Распорядок дня | canon гл. 13 · info | Повседневный режим, естественные потребности, ритм | ✅ | tip-002, tip-009 |
+| ★ | Как жить не болея: профилактика | canon гл. 23 · info | Свод «здоровых привычек» традиции | ✅ | tip-010 |
+|  | Поведение по конституции | info | Образ жизни под тип Ветра / Желчи / Слизи | ✅ | — |
+|  | Сон: режим и значение | info | Что традиция говорит о сне, его избытке и недостатке | ✅ | — |
+|  | Активность и отдых | info | Баланс нагрузки и покоя | ✅ | — |
+|  | Половая жизнь в традиции | info | Как традиция вписывала половую активность в сезонный ритм и конституцию (частота по сезонам, оговорки) | ✅ | — |
+|  | Поведение в частных случаях | canon гл. 15 | Ситуативные/сезонные поправки к режиму | ✅ | — |
+|  | Водные процедуры и омовения | info | Купание, обтирания как практика ухода за телом | ✅ | — |
+|  | Массаж и масляные процедуры | info | Натирания и масла в традиционном уходе | ⚠️ | — |
+|  | Уход за зрением | info | Привычки и режим для глаз | ⚠️ | — |
+|  | О лекаре: этика традиции | canon гл. 31 | Каким традиция видит врача — культурно-этический очерк | ✅ | — |
+
+---
+
+## Notes on the ⚠️ rows
+
+These four are the only ones touching disease-treatment territory, and all are
+salvageable by keeping the **lifestyle/diet** content and dropping any
+herb/formula/treatment prescription:
+
+- **Укрепление/снижение веса, мукпо** — keep the dietary & conduct guidance
+  (lifestyle, fine); drop any "при этом принимают состав X" lines (medical).
+- **Массаж, зрение** — keep as descriptive wellness/conduct; reframe anything that
+  reads as "to cure ailment X do procedure Y."
+
+Nothing here needs outright dropping — the only hard-excluded material is the
+Тантра наставлений treatment protocols (above).
+
+## Suggested first wave (after plan 006 infra lands)
+
+The ★ rows — they (a) extend concepts the combination corpus already uses, (b) map
+to a clean canon chapter **and** a manla section for cross-checking, and (c) are
+zero medical-prescription risk. A natural bundle of ~8: digestive fire, six tastes,
+cause & condition, питание по конституции, несовместимые продукты, распорядок дня,
+профилактика, плюс Жар/Холод подробно if the flagman's section proves too tight.
+
+**Owner action:** tick the rows worth authoring, strike the rest, and flag any
+title where your read differs from mine. I'll turn the survivors into a numbered
+follow-up plan with section skeletons + canon cross-checks (same treatment as the
+flagship).
