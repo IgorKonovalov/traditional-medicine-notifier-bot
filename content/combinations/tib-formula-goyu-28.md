@@ -66,6 +66,10 @@ sources:
   - 'https://bimala.ru/sostav/gou-depak-tibetskij-fitosbor'
 ---
 
+## Канонная основа
+
+Основан на каноническом составе «Гранат-4» (Чжуд-ши).
+
 ## Источник: bimala.ru
 
 Гойу 28 (Гою 28) «Бетель 28» / Gou 28

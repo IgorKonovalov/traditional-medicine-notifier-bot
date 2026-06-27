@@ -1,7 +1,7 @@
 ---
 id: tib-formula-lugmur-7
 tradition: tibetan
-name_ru: Лугмур 7 фитосбор для горла "Зопник 7"
+name_ru: Масляное лекарство из термопсиса
 name_original: Lugmur 7 / Луг-мур-бдун-па
 composition:
   - Терминалия хебула
@@ -26,6 +26,8 @@ dosing_notes:
     водой.
 sources:
   - 'https://bimala.ru/sostav/lugmur-7'
+aliases:
+  - Лугмур 7 фитосбор для горла "Зопник 7"
 ---
 
 ## Источник: bimala.ru

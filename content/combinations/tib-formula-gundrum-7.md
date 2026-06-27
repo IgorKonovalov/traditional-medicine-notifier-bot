@@ -1,7 +1,7 @@
 ---
 id: tib-formula-gundrum-7
 tradition: tibetan
-name_ru: Гундрум 7
+name_ru: Виноград-7
 name_original: Ргун-'брум-бдун-па / Gundrum 7 / Кундум 7 / Виноград 7
 composition:
   - Виноград
@@ -33,6 +33,8 @@ dosing_notes:
     водой.
 sources:
   - 'https://bimala.ru/sostav/gundrum-7-tibetskij-fitosbor'
+aliases:
+  - Гундрум 7
 ---
 
 ## Источник: bimala.ru

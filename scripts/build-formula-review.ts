@@ -89,12 +89,17 @@ function sourcesField(sources: readonly string[]): string {
   return `<div class="field"><div class="flabel">Sources</div><ul>${lis}</ul></div>`;
 }
 
-function canonField(entry: MatchEntry | undefined): string {
+// Only Identity and Component matches are shown (Plan 004: Possible/None dropped
+// as noise). Identity is baked into name_ru; Component is baked as a body note —
+// the card keeps the labeled match as confirmation for the doctor.
+function canonField(entry: MatchEntry | undefined, tier: Tier): string {
+  if (tier !== 'identity' && tier !== 'component') return '';
   const c = entry?.candidates[0];
   if (!c) return '';
+  const label = tier === 'identity' ? 'Canon identity (Чжуд-ши)' : 'Based on canon (Чжуд-ши)';
   const ingr = c.ingredients.map((i) => `<li>${esc(i)}</li>`).join('');
   return (
-    `<div class="field match"><div class="flabel">Canon match (Чжуд-ши)</div>` +
+    `<div class="field match"><div class="flabel">${label}</div>` +
     `<div class="matchline">«${esc(c.name)}» <span class="mmeta">${esc(c.form)} · overlap ${fmtScore(c.score)} · ${c.shared} shared</span></div>` +
     `<div class="mref">${esc(c.ref)}</div>` +
     `<div class="field sub"><div class="flabel">Canon ingredients</div><ul>${ingr}</ul></div></div>`
@@ -166,7 +171,7 @@ function renderCard(
     listField('Dosing notes', c.dosingNotes ?? []),
     listField('Cautions', c.cautions),
     sourcesField(c.sources),
-    canonField(entry),
+    canonField(entry, tier),
     c.sourceText ? rawDetails('source_text', c.sourceText) : '',
     rawDetails('body (markdown)', c.body),
   ].filter((f) => f !== '');

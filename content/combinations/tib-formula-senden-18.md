@@ -36,6 +36,10 @@ sources:
   - 'https://bimala.ru/sostav/senden-18-tibetskij-fitosbor'
 ---
 
+## Канонная основа
+
+Основан на каноническом составе «Бамбуковая манна-5» (Чжуд-ши).
+
 ## Источник: bimala.ru
 
 Ценден 18 "Сандал 18" / Tsenden-18

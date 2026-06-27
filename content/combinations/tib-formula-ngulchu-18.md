@@ -43,6 +43,10 @@ sources:
   - 'https://bimala.ru/sostav/ngulchu-18-tibetskij-fitosbor'
 ---
 
+## Канонная основа
+
+Основан на каноническом составе «Бамбуковая манна-5» (Чжуд-ши).
+
 ## Источник: bimala.ru
 
 Улчу 18 / Ngulchu 18 (Нгулчу 18)

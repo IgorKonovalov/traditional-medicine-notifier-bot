@@ -42,6 +42,10 @@ sources:
   - 'https://bimala.ru/sostav/dudci-chiso-tibetskij-fitosbor-poroshok'
 ---
 
+## Канонная основа
+
+Основан на каноническом составе «Виноград-7» (Чжуд-ши).
+
 ## Источник: bimala.ru
 
 Дудци Чисо тибетский фитосбор (порошок)

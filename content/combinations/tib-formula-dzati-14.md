@@ -44,6 +44,10 @@ sources:
   - 'https://bimala.ru/sostav/dzati-14-tibetskij-fitosbor'
 ---
 
+## Канонная основа
+
+Основан на каноническом составе «Гранат-5» (Чжуд-ши).
+
 ## Источник: bimala.ru
 
 Дзати 14 "Мускатный орех 14" / Dzati 14

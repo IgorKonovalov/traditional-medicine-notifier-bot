@@ -32,6 +32,10 @@ sources:
   - 'https://bimala.ru/sostav/vanlag-10-tibetskij-fitosbor-pilyuli'
 ---
 
+## Канонная основа
+
+Основан на каноническом составе «Гранат-5» (Чжуд-ши).
+
 ## Источник: bimala.ru
 
 Ванлаг 10 тибетский фитосбор (пилюли)

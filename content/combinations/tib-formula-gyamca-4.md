@@ -1,7 +1,7 @@
 ---
 id: tib-formula-gyamca-4
 tradition: tibetan
-name_ru: Гьямца 4
+name_ru: Каменная соль-4
 name_original: >-
   Ргйам-цхва-бжи-тханг, Чха-мнйам-бжи-тханг / Giamca 4 tan / Джамца-4 тханг
   «Каменная соль-4 отвар»
@@ -34,6 +34,8 @@ dosing_notes:
 sources:
   - 'https://bimala.ru/sostav/gyamca-4-tibetskij-fitosbor-poroshok'
   - 'https://manla.ru/herbs/#dzhamtsa-4'
+aliases:
+  - Гьямца 4
 ---
 
 ## Источник: manla.ru
