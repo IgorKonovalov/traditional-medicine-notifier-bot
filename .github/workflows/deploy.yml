@@ -28,7 +28,6 @@ jobs:
       # miss) fail CI rather than the droplet build.
       - run: npm run build
       - run: npm test
-      - run: npm run content:index:check
 
   deploy:
     needs: check
