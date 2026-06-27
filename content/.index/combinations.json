@@ -11,7 +11,9 @@
   {
     "id": "tib-formula-Jumar-25",
     "nameRu": "Жумар 25 драгоценная пилюля — Драгоценный Красный Коралл",
-    "tags": ["composition-non-itemized"],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
@@ -181,7 +183,9 @@
   {
     "id": "tib-formula-chakril-chenmo",
     "nameRu": "Чакрил Ченмо драгоценная пилюля",
-    "tags": ["composition-non-itemized"],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
@@ -330,7 +334,9 @@
   {
     "id": "tib-formula-drangdzhor-dragocennaya-pilyulya",
     "nameRu": "Дрангджор драгоценная пилюля",
-    "tags": ["composition-non-itemized"],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
@@ -749,7 +755,9 @@
   {
     "id": "tib-formula-manjor-chenmo",
     "nameRu": "Манджор Ченмо «Великое накопление» драгоценная пилюля Ринчен",
-    "tags": ["composition-non-itemized"],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
@@ -1340,7 +1348,9 @@
   {
     "id": "tib-formula-tsotru-dshel",
     "nameRu": "Цотру Дашел Ринчен \"Драгоценный Очищающий Лунный Кристалл\"",
-    "tags": ["composition-non-itemized"],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
@@ -1386,7 +1396,9 @@
   {
     "id": "tib-formula-yuning-25",
     "nameRu": "Юнинг 25 драгоценная пилюля / \"Старая бирюза 25\"",
-    "tags": ["composition-non-itemized"],
+    "tags": [
+      "composition-non-itemized"
+    ],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
