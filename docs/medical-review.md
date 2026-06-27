@@ -41,6 +41,13 @@ What changed since the sections below were written:
   `agar-35`, `garuda-5`, `olse-25`, `tcovo-8`) **still stand** — confirm before any
   production use.
 - Best-effort Russian↔Latin ingredient mappings still need a botanist check.
+- **bimala re-audit (2026-06-27).** A completeness-gated re-capture of the 97
+  bimala-only formulas recovered dropped description sentences for **12** records
+  (`traditional_use` updated). **6 remain flagged** — verify their description
+  against the live page: `chisin-chimed-srinsel` (the fetch model paraphrased
+  rather than quoted), and `aru-24`, `aru-7`, `chudlen-mandaravy`, `letre-2`,
+  `senden-4` (capture self-flagged possibly incomplete). Provenance:
+  `research/raw-crawl-verbose-v2-bimala-reaudit.json`.
 
 ## Review inputs
 

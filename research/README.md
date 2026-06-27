@@ -40,3 +40,15 @@ multi-agent Workflow (one verbatim-fetch agent per formula). Carries full
 recovery gate (must contain the previously-dropped action sentence + tail
 indication). This is the source of truth for the content-restoration pass; verbose
 and non-sanitised — stays behind the ADR 006 production gate.
+
+## `raw-crawl-verbose-v2-bimala-reaudit.json`
+
+A **completeness-gated re-capture of the 97 bimala-only formulas** (2026-06-27),
+prompted after a spot-check found the Phase-2 bimala captures occasionally
+condensed the description (the manla captures were faithful). Each agent fetched
+the detail page **twice** and took the union, self-reporting a `complete` flag +
+`sentenceCount`; gated on `kodzhi-13` recovering its two dropped sentences. The
+reconcile updated `traditional_use` for **12** formulas with genuine recoveries;
+**6** are flagged for the doctor (1 fetch-paraphrased, 5 self-incomplete). Generic
+rinchen-preamble / commercial sentences in this capture were deliberately **not**
+merged into the content.
