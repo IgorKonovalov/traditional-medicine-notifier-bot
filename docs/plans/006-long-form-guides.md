@@ -3,6 +3,9 @@
 **Status:** Approved — not started
 **Created:** 2026-06-26
 **Approved:** 2026-06-26
+**Amended:** 2026-06-26 — flagship first guide is now «Основы тибетской медицины»
+(fundamentals: three ньепа + Жар/Холод), sourced from `manla.ru/base/`; this
+becomes guide #1 in Phase 4 (owner request). Seasonal-eating guides drop to two.
 **Bump on close:** minor (new user-facing content type + command)
 
 ## Context
@@ -12,6 +15,17 @@ Sova-Rigpa pages such as the `https://manla.ru/info/` seasonal-eating section
 (~3,000 words, table-structured). These are too big for a tip and are a category
 error inside the herb/combination card model. The owner wants them surfaced as
 "a list of helpful pages" the user pulls up and reads.
+
+**Why a fundamentals guide leads.** The whole combination corpus (165 files)
+already leans on `Ветер`, `Жар`, `Слизь`, `Кровь` and compound terms like
+"Пустой и Незрелый Жар" / "колик Ветра" (see `tib-formula-agar-15.md`) with **no
+explainer anywhere**. A guide on the **basics of Tibetan medicine** — the three
+ньепа (Ветер/rLung, Желчь/Трипа, Слизь/Бэкен), the five первоэлементы, and the
+Жар/Холод disease-nature duality — is the natural **glossary anchor** for the
+bot, a stronger first guide than seasonal eating and a future cross-link target
+from combination cards. Its source is the `manla.ru/base/` fundamentals section
+(distinct from the `/info/` advice pages), mapping to the **Чжуд-ши, Тантра
+основ**.
 
 **ADR 008** decided the shape: a new **`guide`** *pull* content type, delivered
 as **authored sections** (one per message) with a **generic splitter safety
@@ -34,8 +48,10 @@ exempt), **ADR 006** (render-time disclaimer); runs alongside **Plan 005** (tips
   - A `splitForTelegram()` helper that chunks any text on paragraph boundaries.
   - A browsable `/guides` flow: list titles → open a guide → page through its
     sections with ◀ ▶ / "к списку" inline navigation.
-  - At least **3 authored guides** paraphrased from manla.ru/info to prove the
-    end-to-end path (seasonal eating + two more), descriptively framed.
+  - At least **3 authored guides**, descriptively framed: the **flagship
+    fundamentals guide** «Основы тибетской медицины» (from `manla.ru/base/`,
+    ~7–8 sections) plus **two** shorter `manla.ru/info` guides (seasonal eating
+    + one more), to prove the end-to-end path across both source sections.
   - All gates green; `guides.json` in the committed index; CI drift guard covers it.
 - **Non-goals:**
   - **Not** authoring the full manla catalogue — 3 guides validate the surface;
@@ -109,18 +125,68 @@ exempt), **ADR 006** (render-time disclaimer); runs alongside **Plan 005** (tips
 
 ### Phase 4 — Author the first guides (≥3)
 *Owner: content-curator.*
-- **Deliverables:**
-  - `content/guides/tibetan/<id>.md` ×3, paraphrased from manla.ru/info:
-    **seasonal eating & conduct**, plus two of {daily conduct, water & drinks,
-    incompatible foods}. Each: frontmatter (`id`, `tradition: tibetan`, `title`,
-    `source` = `Сова Ригпа (manla.ru)` + section in `chapter`, `tags`) and a
-    body of `##`-delimited sections, **each section ≤ `TELEGRAM_LIMIT`**.
-  - **Descriptive framing throughout** (non-medical-advice invariant); manla
-    prose **paraphrased**, attributed to the tradition (Rule 2); any prescriptive
-    sub-topic reframed or dropped.
-  - Regenerate `content/.index/guides.json`.
-- **Acceptance:** 3 guides load & validate; section bodies within limit; spot-read
-  confirms faithful, descriptive prose; `content:index:check` green.
+
+- **Source grounding (cross-checked).** The flagship is grounded in the **Чжуд-ши
+  canon** (`research/zhud_shi_canon.pdf`, gitignored/local), not just manla. The
+  three доша — natures, the five subtypes each, and the property lists — come from
+  **Тантра объяснений, гл. 5 «Существенные признаки тела»**; constitution from
+  **гл. 6 «Деяния и типы телосложения»**; Жар/Холод types from the Тантра
+  наставлений fever section. manla.ru/base is the structural/secondary paraphrase
+  source. Full reconciliation in `research/_private/fundamentals-canon-crosscheck.md`.
+  Two authoring rules fall out:
+  - **Use canon-faithful subtype names** (the section list below already does);
+    manla's variants (e.g. «Восходящий», «Огнеподобный») may be glossed once in
+    parentheses but are not the headline term.
+  - **The canon vocabulary already matches the corpus** — «жар пустой / незрелый /
+    застарелый / мутный», «жар между степью и горой» appear in both the canon and
+    cards like `tib-formula-agar-15.md`. Match those spellings so the guide reads
+    as the glossary for the combination cards. In the intro, bridge the three
+    registers: **доша** (trakat term) = **ньепа / «три начала»** (popular) =
+    plain **Ветер/Желчь/Слизь** (corpus).
+- **Deliverable 4a — Flagship: «Основы тибетской медицины»** (`content/guides/
+  tibetan/tib-osnovy.md`). Frontmatter: `id: tib-osnovy`, `tradition: tibetan`,
+  `title: «Основы тибетской медицины»`, `source` (`work: Чжуд-ши`, `part: Тантра
+  объяснений`, `chapter: гл. 5–6`; attribute the popular paraphrase to `Сова Ригпа
+  (manla.ru/base)`), `tags`. Body = `##`-delimited sections, **each ≤
+  `TELEGRAM_LIMIT`**, in this order:
+  1. *Intro (text before the first `##`)* — «Здоровье — это равновесие»: the
+     premise that health is the dynamic balance of the three начала, and illness
+     their excess / недостаток / возмущение.
+  2. `## Пять первоэлементов` — пространство, ветер, огонь, вода, земля, and how
+     each is said to manifest in the body (дыхание/движение, тепло/пищеварение,
+     жидкости, плотные ткани, ум).
+  3. `## Ветер (rLung)` — природа прохладно-нейтральная; шесть свойств; **пять
+     видов** (Держатель жизни, Бегущий вверх, Проникающий, Равный огню, Очищающий
+     вниз) с их областями и функциями.
+  4. `## Желчь (Трипа)` — горячая природа; семь свойств; **пять видов**
+     (Переваривающая, Цвет изменяющая, Претворяющая, Дающая зрение, Ясный цвет).
+  5. `## Слизь (Бэкен)` — холодная природа; семь свойств; **пять видов**
+     (Опора, Разлагающая, Вкусовая, Насыщающая, Соединяющая).
+  6. `## Жар и Холод` — the disease-**nature** duality: what the tradition calls
+     Жар vs Холод, the four источника Жара, the named виды Жара (распространённый,
+     пустой, скрытый, застарелый, мутный) — **as taxonomy the corpus uses**, not
+     as a diagnostic key.
+  7. `## Конституция человека` — Ветер / Желчь / Слизь types and the common mixes;
+     strictly **descriptive** ("традиция описывает…"), never "определите свой тип
+     и делайте X".
+  8. `## Принцип противоположного` — balancing a quality by its opposite; tie to
+     the six вкусов (cross-reference, not duplicate, `tip-007-six-tastes`).
+- **Deliverable 4b — two `manla.ru/info` guides** (`content/guides/tibetan/
+  <id>.md` ×2): **seasonal eating & conduct** plus one of {daily conduct, water
+  & drinks, incompatible foods}. Same frontmatter shape; `source` cites
+  `Сова Ригпа (manla.ru/info)` + section in `chapter`.
+- **Framing (all three):** **descriptive throughout** (non-medical-advice
+  invariant); manla prose **paraphrased**, attributed to the tradition (Rule 2);
+  any prescriptive/diagnostic sub-topic reframed or dropped. The fundamentals
+  guide is the highest-risk: it names disease and constitution categories, so it
+  must read as *"how the tradition classifies"*, never as *"what to do about
+  your condition"*. No dosing, no "if you have X then Y".
+- Regenerate `content/.index/guides.json`.
+- **Acceptance:** 3 guides load & validate; **`tib-osnovy` has its 7 `##`
+  sections + intro**, each body ≤ `TELEGRAM_LIMIT`; spot-read confirms faithful,
+  descriptive prose with no diagnostic framing; humor/term spellings match the
+  combination corpus (Ветер, Желчь, Слизь, Жар, Холод); `content:index:check`
+  green.
 
 ### Phase 5 — Validation, docs & close
 *Owner: architect.*
@@ -145,7 +211,14 @@ exempt), **ADR 006** (render-time disclaimer); runs alongside **Plan 005** (tips
   navigation. Covered in Phase 3 acceptance.
 - **Non-medical-advice invariant.** manla's commercial, sometimes prescriptive
   prose is the main authoring risk; descriptive reframing + paraphrase are
-  mandatory (same gate as Plan 005 Phase 3).
+  mandatory (same gate as Plan 005 Phase 3). **The fundamentals guide raises the
+  bar:** the Жар/Холод and конституция sections describe *disease and body-type
+  categories*. They must stay taxonomic ("традиция различает…", "Жаром называют…")
+  and must never become a self-diagnosis or self-treatment key. This is the one
+  guide most likely to drift prescriptive — review it hardest.
+- **Two source surfaces now.** Phase 4 pulls from both `manla.ru/base/`
+  (fundamentals) and `manla.ru/info/` (advice). Cite them distinctly in `source`
+  so a reader/reviewer can trace each guide to its origin.
 - **Authoring effort is real.** Paraphrasing a 3,000-word page faithfully is
   slow; this plan caps scope at 3 guides to validate the surface, not the
   catalogue.
@@ -159,9 +232,10 @@ exempt), **ADR 006** (render-time disclaimer); runs alongside **Plan 005** (tips
 - `npm run typecheck && npm run lint && npm test && npm run build` — green.
 - `npm run content:index && npm run content:index:check` — `guides.json` present,
   no drift, `counts.guides === 3`.
-- Manual: `/guides` → list shows 3 titles → open seasonal guide → page ◀ ▶
-  through all sections, indicator correct, no wrap at ends, disclaimer once on
-  the last section, an overflowing section splits cleanly.
+- Manual: `/guides` → list shows 3 titles → open «Основы тибетской медицины» →
+  page ◀ ▶ through all 8 sections (intro → Принцип противоположного), indicator
+  correct, no wrap at ends, disclaimer once on the last section, an overflowing
+  section splits cleanly.
 - Unit tests: `splitForTelegram` boundary/packing/pathological cases.
 
 ## Progress
@@ -169,5 +243,5 @@ exempt), **ADR 006** (render-time disclaimer); runs alongside **Plan 005** (tips
 - [ ] Phase 1 — `Guide` type: types, loader, validate, index
 - [ ] Phase 2 — `splitForTelegram()` + render plumbing
 - [ ] Phase 3 — `/guides` browse + section pager
-- [ ] Phase 4 — Author ≥3 manla guides (descriptive)
+- [ ] Phase 4 — Author ≥3 guides: flagship «Основы тибетской медицины» (base) + 2 info guides (descriptive)
 - [ ] Phase 5 — Validation, docs & close
