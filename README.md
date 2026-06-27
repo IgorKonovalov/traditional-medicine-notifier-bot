@@ -12,10 +12,11 @@ opt-in topic subscriptions / daily tips. UI is **Russian only**. Content is
 
 ## Status
 
-🚧 **Skeleton.** The scaffold, architectural seams, types, and DB migration
-framework are in place; most feature bodies are intentional `TODO` stubs.
-`typecheck` / `lint` / `build` / `test` are green. Booting needs a real
-`BOT_TOKEN`.
+🚧 **In development.** The architectural seams, content pipeline, DB layer,
+notification dispatch (both paths), payments, and the existing slash commands are
+implemented; `typecheck` / `lint` / `build` / `test` are green. Booting needs a
+real `BOT_TOKEN`. The navigation shell and the richer UI surfaces (library,
+guides, reminder wizard) are approved and queued — see [Roadmap](#roadmap).
 
 ## Features (target)
 
@@ -70,20 +71,105 @@ content/
 
 See [`docs/architecture/architecture.md`](docs/architecture/architecture.md).
 
+## Roadmap
+
+The open plans in [`docs/plans/`](docs/plans/) form a dependency tree rooted at
+the navigation shell. Recommended implementation order:
+
+```
+007 Navigation shell ──┬──> 008 Reminder-create flow
+   (foundation)        ├──> 009 Library browser
+                       └──> 006 Long-form guides (retarget onto shared kit)
+
+005 Expand daily tips  ──> (independent; pure content — run in parallel)
+006 Guide candidates   ──> (backlog; bulk authoring after 006 infra)
+```
+
+| # | Plan | Why here | Blocks |
+|---|---|---|---|
+| 1 | **007 — Navigation shell** | Foundation. Every later UI plan stacks on its anchor/session/prologue/back-home kit (ADR 009). Land it before any UI work. | 008, 009, 006 |
+| 2 | **005 — Expand daily tips** | Pure content (~60 tips), **zero code**. Run in parallel with 007 — no conflict — so the tips branch is full before the library exposes it. | — |
+| 3 | **006 — Long-form guides** | New `guide` content type + message splitter + `/guides` browse (ADR 008). After 007 so it's built on the shared kit; feeds 009's `📖 Статьи` branch. | 009 guides branch |
+| 4 | **008 — Reminder-create flow** | Headline feature, wired. Back half (scheduler, dispatch, recurrence) already exists; this adds the create wizard on the 007 shell. | — |
+| 5 | **009 — Library browser** | Unifying surface. Last of the features — it hosts the sibling branches from 005, 006, and the gated formulas, which should exist before the hub links to them. | — |
+| 6 | **006 — Guide candidates** | Bulk guide-authoring backlog; only meaningful once 006 infra exists. Pull rows as desired. | — |
+
+**Critical path:** 007 → 006 → 009, with 008 sliding in anywhere after 007 and
+005 running alongside from the start. Fastest path to visible value:
+**007 → 008** (reminders) with 005 in parallel, then 006 → 009.
+
+> ⚠️ 009's combinations browser is **dark-shipped behind
+> `FEATURE_COMBINATIONS_BROWSER`** (ADR 006 doctor-gate). It builds in step 5 but
+> must not be enabled in production until the owner's documented medical sign-off.
+
 ## Setup
 
 ### Prerequisites
 
 - Node.js 22+
-- A Telegram bot token (from [@BotFather](https://t.me/BotFather))
+- A Telegram account
 
-### Install & run
+### 1. Create the bot on Telegram
+
+1. Open [@BotFather](https://t.me/BotFather) and send `/newbot`.
+2. Give it a **display name** and a **username** ending in `bot`.
+3. Copy the **HTTP API token** BotFather returns (`123456789:AAH...`).
+4. Note the **username** you chose (without the leading `@`) — used for deep links.
+5. *(Optional)* Send `/setcommands` and paste, so users get autocomplete:
+   ```
+   start - Запуск и главное меню
+   browse - Травы и средства
+   search - Поиск
+   reminders - Мои напоминания
+   subscriptions - Подписки и советы
+   settings - Настройки
+   donate - Поддержать проект
+   help - Справка
+   ```
+
+### 2. Find your numeric Telegram id (for admin commands)
+
+Message [@userinfobot](https://t.me/userinfobot); it replies with your numeric
+id. Put it in `ADMIN_TELEGRAM_IDS`.
+
+### 3. Configure environment
 
 ```bash
+cd traditional-medicine-notifier-bot
 npm install
-cp .env.example .env      # set BOT_TOKEN and BOT_USERNAME
-npm run dev               # tsx watch src/index.ts
+cp .env.example .env
 ```
+
+Edit `.env` and set at minimum:
+
+```ini
+BOT_TOKEN=123456789:AAH...          # from BotFather (step 1)
+BOT_USERNAME=tm_notifier_bot        # your bot username, no leading @
+TIMEZONE=Europe/Moscow              # IANA zone for all schedules
+ADMIN_TELEGRAM_IDS=123456789        # your id from step 2 (optional)
+```
+
+Everything else has working defaults.
+
+### 4. Run in development
+
+```bash
+npm run content:index   # build content/.index/ if not present
+npm run dev             # tsx watch src/index.ts — hot reload
+```
+
+The bot uses **long polling** — no webhook, public URL, or TLS needed. Open your
+bot in Telegram and send `/start`. The SQLite file is created automatically at
+`DB_PATH` on first boot.
+
+### 5. Verify the toolchain (optional)
+
+```bash
+npm run typecheck && npm run lint && npm test && npm run build
+npm run content:index:check   # validates corpus + guards index drift
+```
+
+### Environment variables
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
