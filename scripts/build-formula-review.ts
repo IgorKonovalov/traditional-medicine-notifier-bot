@@ -154,8 +154,12 @@ function renderCard(
   const catBadge = c.category
     ? `<span class="badge cat">${esc(catNameById.get(c.category) ?? c.category)}</span>`
     : '';
+  // Only Identity/Component carry a canon-tier badge; Possible/No-canon-basis
+  // are dropped as noise (their match field is hidden too). The data-tier
+  // attribute still drives the tier filter.
+  const tierBadge = tier === 'identity' || tier === 'component' ? TIER_BADGE[tier] : '';
   const badges =
-    TIER_BADGE[tier] +
+    tierBadge +
     catBadge +
     (qual !== 'complete' ? `<span class="badge qual">${qual}</span>` : '') +
     `<span class="badge meta">${c.composition.length} ingr.</span>`;
