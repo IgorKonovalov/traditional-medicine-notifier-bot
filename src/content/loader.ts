@@ -55,7 +55,15 @@ export function loadContent(contentDir: string): LoadedContent {
 function readDir(dir: string): RawDoc[] {
   if (!existsSync(dir)) return [];
   const out: RawDoc[] = [];
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+  // Sort by code-point order so traversal is deterministic across platforms:
+  // readdirSync yields NTFS-sorted names on Windows but arbitrary (inode) order
+  // on Linux, which makes the generated content index drift between dev machines
+  // and CI. Plain `<`/`>` keeps the ordering locale-independent (unlike
+  // localeCompare, whose result depends on the host ICU/locale).
+  const entries = readdirSync(dir, { withFileTypes: true }).sort((a, b) =>
+    a.name < b.name ? -1 : a.name > b.name ? 1 : 0,
+  );
+  for (const entry of entries) {
     if (entry.name.startsWith('.')) continue;
     const full = join(dir, entry.name);
     if (entry.isDirectory()) {

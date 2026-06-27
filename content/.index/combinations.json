@@ -9,6 +9,16 @@
     "nameOriginal": "Шесть благих"
   },
   {
+    "id": "tib-formula-Jumar-25",
+    "nameRu": "Жумар 25 драгоценная пилюля — Драгоценный Красный Коралл",
+    "tags": ["composition-non-itemized"],
+    "memberCount": 0,
+    "sourceCount": 1,
+    "hasIndications": true,
+    "nameOriginal": "RINCHEN JUMAR 25",
+    "category": "rinchen-pills"
+  },
+  {
     "id": "tib-formula-agar-15",
     "nameRu": "Агар 15",
     "tags": [],
@@ -171,9 +181,7 @@
   {
     "id": "tib-formula-chakril-chenmo",
     "nameRu": "Чакрил Ченмо драгоценная пилюля",
-    "tags": [
-      "composition-non-itemized"
-    ],
+    "tags": ["composition-non-itemized"],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
@@ -322,9 +330,7 @@
   {
     "id": "tib-formula-drangdzhor-dragocennaya-pilyulya",
     "nameRu": "Дрангджор драгоценная пилюля",
-    "tags": [
-      "composition-non-itemized"
-    ],
+    "tags": ["composition-non-itemized"],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
@@ -559,18 +565,6 @@
     "nature": "нейтральная"
   },
   {
-    "id": "tib-formula-Jumar-25",
-    "nameRu": "Жумар 25 драгоценная пилюля — Драгоценный Красный Коралл",
-    "tags": [
-      "composition-non-itemized"
-    ],
-    "memberCount": 0,
-    "sourceCount": 1,
-    "hasIndications": true,
-    "nameOriginal": "RINCHEN JUMAR 25",
-    "category": "rinchen-pills"
-  },
-  {
     "id": "tib-formula-jungva-4",
     "nameRu": "Юнва 4 / Юнва 4 \"Куркума - 4\"",
     "tags": [],
@@ -755,9 +749,7 @@
   {
     "id": "tib-formula-manjor-chenmo",
     "nameRu": "Манджор Ченмо «Великое накопление» драгоценная пилюля Ринчен",
-    "tags": [
-      "composition-non-itemized"
-    ],
+    "tags": ["composition-non-itemized"],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,
@@ -1348,9 +1340,7 @@
   {
     "id": "tib-formula-tsotru-dshel",
     "nameRu": "Цотру Дашел Ринчен \"Драгоценный Очищающий Лунный Кристалл\"",
-    "tags": [
-      "composition-non-itemized"
-    ],
+    "tags": ["composition-non-itemized"],
     "memberCount": 0,
     "sourceCount": 1,
     "hasIndications": true,
@@ -1396,9 +1386,7 @@
   {
     "id": "tib-formula-yuning-25",
     "nameRu": "Юнинг 25 драгоценная пилюля / \"Старая бирюза 25\"",
-    "tags": [
-      "composition-non-itemized"
-    ],
+    "tags": ["composition-non-itemized"],
     "memberCount": 1,
     "sourceCount": 1,
     "hasIndications": true,

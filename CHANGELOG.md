@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.5.1 — 2026-06-27
+
+- Sort the content-loader directory walk so corpus traversal — and the
+  generated `content/.index/` — is deterministic across platforms.
+  `readdirSync` is NTFS-sorted on Windows but inode-ordered on Linux, which
+  made `combinations.json` drift on CI. Regenerated the index in canonical
+  order and added a regression test.
+
 ## 0.5.0 — 2026-06-26
 
 - Restore source fidelity across the Tibetan-formula corpus and remediate the

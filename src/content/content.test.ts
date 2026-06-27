@@ -227,6 +227,31 @@ describe('loadContent — combinations', () => {
   });
 });
 
+describe('loadContent — deterministic traversal order', () => {
+  it('returns docs in code-point filename order regardless of write order', () => {
+    // Files are written in deliberately non-alphabetical order. The loader must
+    // sort its directory walk so the in-memory order — and thus the generated
+    // content index — is identical on every platform: readdirSync is NTFS-sorted
+    // on Windows but inode-ordered on Linux/CI. Regression guard for the
+    // cross-platform index-drift fix. On Linux this fails if the sort is dropped
+    // (readdirSync would echo the reverse write order); on Windows it is a
+    // weaker guard since NTFS pre-sorts.
+    const mk = (id: string): string => COMBINATION.replace('tib-formula-agar-8', id);
+    const root = writeCorpus({
+      categories: { 'digestive-herbs': CATEGORY },
+      herbs: { 'tib-haritaki': HERB },
+      combinations: {
+        'cmb-zebra': mk('cmb-zebra'),
+        'cmb-alpha': mk('cmb-alpha'),
+        'cmb-mango': mk('cmb-mango'),
+      },
+    });
+
+    const ids = loadContent(root).combinations.all.map((c) => c.id);
+    expect(ids).toEqual(['cmb-alpha', 'cmb-mango', 'cmb-zebra']);
+  });
+});
+
 describe('buildIndex — combinations', () => {
   it('projects combinations with member and source counts', () => {
     const root = writeCorpus({
