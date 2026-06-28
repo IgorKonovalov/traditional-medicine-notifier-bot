@@ -16,7 +16,7 @@ before the **dev** skill implements it, then moved to `done/` on close.
 | 007 | Navigation shell & UX foundation | Implemented — pending review |
 | 008 | Reminder-create flow | Approved — not started |
 | 009 | Library browser (gated formulas) | Approved — not started |
-| 011 | Drop subscriptions · optional herb link in reminders | Approved — not started |
+| 011 | Drop subscriptions · optional herb link in reminders | Completed → `done/` (v0.10.0) |
 | 012 | Tip sourcing reconciliation + content voice tightening | Approved — not started |
 | 013 | Sova Rigpa book guides (food properties · constitution portraits · rhythms/diagnosis) | Approved — blocked on 006 |
 
@@ -47,6 +47,8 @@ Plan 007 shared nav kit once 007 lands.
   is **excluded** (quasi-medical claims), not backlog.
 - Edit-an-existing-reminder (follow-up to Plan 008; v1 is create + cancel).
 - Per-user timezone (reminders currently use the bot-wide tz).
-- Per-category proactive digests (the `subscriptions` table + `listSubscribers` are ready).
+- Per-category proactive digests. The `subscriptions` table is retained, but its
+  UI and repo (`listSubscribers` et al.) were removed in Plan 011 — a digest
+  feature would re-add the access layer.
 - Admin `/stats` command (the `adminTelegramIds` allowlist is already wired).
 - Feedback admin-routing (today logs to stdout).

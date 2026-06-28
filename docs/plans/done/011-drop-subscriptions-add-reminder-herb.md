@@ -1,9 +1,9 @@
 # Plan 011 — Drop subscriptions surface · optional herb link in reminders
 
-**Status:** Implemented — pending review
+**Status:** Completed
 **Created:** 2026-06-28
 **Approved:** 2026-06-28
-**Completed:** —
+**Completed:** 2026-06-28 (v0.10.0)
 **Bump on close:** minor
 
 ## Context

@@ -4,6 +4,19 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.10.0 — 2026-06-28
+
+- Retired the topic-subscriptions surface and added an optional herb link to the
+  reminder wizard (Plan 011). The unused per-category subscriptions UI
+  (`/subscriptions` + the Settings → Подписки entry) is removed — nothing
+  dispatched a digest and the daily-tip path runs off the settings toggle, so it
+  stays intact (the `subscriptions` table is retained, dead, under the
+  additive-only rule). Creating a reminder from scratch (⏰ Напоминания → ➕
+  Новое) now offers an optional paginated herb picker between the label and
+  schedule steps, with a "Пропустить" skip; the herb-card ⏰ Напомнить path is
+  unchanged (herb pre-linked, picker skipped), and the confirm screen shows the
+  linked herb when one is attached.
+
 ## 0.9.0 — 2026-06-28
 
 - Greatly expand the daily-tip pool from 10 to 60 tips (Plan 005). Adds 20 new

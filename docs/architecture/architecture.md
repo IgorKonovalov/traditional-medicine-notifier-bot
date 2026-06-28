@@ -37,7 +37,7 @@ Nothing in the domain imports Telegraf or `src/bot/` (ADR 003, ESLint-enforced).
 |---|---|---|
 | `config.ts` / `logger.ts` | ✅ | typed env, pino |
 | `db/connection.ts` · `schema.ts` (migrations 001–002) · `test-helper.ts` | ✅ | WAL, additive migrations, in-memory test DB; migration 002 adds `users.notified_version` (plan 010) |
-| `db/repositories/*` | ✅ | user, reminder, subscription, notification-log, session, donations |
+| `db/repositories/*` | ✅ | user, reminder, notification-log, session, donations (the subscription repo was removed with its UI in Plan 011; the table is retained) |
 | `content/types.ts` · `loader.ts` · `validate.ts` · `index-builders.ts` | ✅ | loads herbs/**combinations**/categories/tips; builds `.index/` |
 | `content/combinations/*` (150 Tibetan formulas) | ✅ | compound-formula content type (ADR 005); optional `nature` + `category` facet (ADR 007, `rinchen-pills`); **verbose, non-sanitised staging corpus** behind the doctor-review gate (ADR 006, `docs/medical-review.md`). Source-fidelity restored from `research/raw-crawl-verbose-v2.json` (Plan 004); `npm run content:review` rebuilds the doctor review HTML |
 | `notifications/types.ts` · `recurrence.ts` · `scheduler.ts` | ✅ | pure; recurrence is tz-aware, unit-tested |
@@ -50,12 +50,11 @@ Nothing in the domain imports Telegraf or `src/bot/` (ADR 003, ESLint-enforced).
 | `bot/middleware/*` | ✅ | error-handler, logger, rate-limiter, ensure-user |
 | Navigation kit (`keyboards.ts` menu/back/home/pager · `menu-router.ts` · `render/anchor.ts` · `commands/_callback-prologue.ts` · `commands/_herb-card.ts`) | ✅ | persistent reply-keyboard menu + anchor-edit drilldown + callback prologue (ADR 009, Plan 007); `callback_data` ≤64 B guarded |
 | `bot/commands/start·help·settings·browse·search·herb·tips·donate·changelog` | ✅ | start = stepped onboarding; browse/search/herb = anchor-edit drilldown w/ back/home + pager; settings = state-reflecting hub (daily-tip + new-features opt-in toggles); `/help` shows version; `/changelog` = plaintext release history (plan 010); tips = day's tip (Plan 005 expands) |
-| `bot/commands/reminders` (list/cancel) · `reminder-create` (wizard) | ✅ | create flow wired — menu/list/herb-card entry, anchor-edit steps (Plan 008) |
-| `bot/commands/subscriptions` | ✅ | category sub/unsub |
+| `bot/commands/reminders` (list/cancel) · `reminder-create` (wizard) | ✅ | create flow wired — menu/list/herb-card entry, anchor-edit steps (Plan 008); optional paginated herb-link step from the ➕ Новое path (Plan 011) |
 | `bot/commands/feedback` | 🟡 | inline-arg relay; admin routing TODO |
-| Create-reminder multi-step session | ✅ | `reminder-create` wizard: label → kind → time(s) → date/weekdays → confirm; solicited path now fully closed (Plan 008) |
+| Create-reminder multi-step session | ✅ | `reminder-create` wizard: label → (optional herb link, ➕ Новое path only) → kind → time(s) → date/weekdays → confirm; solicited path now fully closed (Plan 008/011) |
 | Combinations (formula) library branch | ⛔ | held behind the ADR 006 doctor-gate — not built/registered until owner sign-off (Plan 009) |
-| Per-category proactive digests | ⛔ | `subscriptions` table + `listSubscribers` ready |
+| Per-category proactive digests | ⛔ | `subscriptions` table retained (dead); its UI **and** repo access layer were removed in Plan 011 — a future digest must re-add the repo helpers |
 | Admin commands (`/stats`) | ⛔ | allowlist plumbing present (`adminTelegramIds`) |
 
 ## Boot pipeline
@@ -72,7 +71,8 @@ and DB in reverse.
 `users` (internal PK; `notified_version` watermark added in migration 002 for
 the broadcast loop) · `auth_identities` (telegram→user) · `user_settings` (kv;
 holds the `feature_announcements` opt-in) ·
-`scheduled_reminders` (solicited) · `subscriptions` (proactive topics) ·
+`scheduled_reminders` (solicited) · `subscriptions` (proactive topics; UI
+retired in Plan 011, table retained under the additive-only rule) ·
 `notification_log` (append-only; powers the daily cap) · `bot_sessions`
 (persistence) · `donations` (Stars, unique charge id).
 
