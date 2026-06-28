@@ -33,11 +33,27 @@ export async function sendAnchor(
  * Edit the anchor in place. Call from within a callback handler whose tapped
  * message is the anchor (validated by the callback prologue), so the implicit
  * `editMessageText` target is correct.
+ *
+ * A fast double-tap that re-renders the identical screen makes Telegram answer
+ * 400 "message is not modified" — a benign no-op we swallow so the error
+ * boundary doesn't show the user a scary fallback. Other failures propagate.
  */
 export async function editAnchor(
   ctx: Context,
   body: string,
   keyboard?: InlineKeyboard,
 ): Promise<void> {
-  await ctx.editMessageText(clampToTelegram(body), keyboard);
+  try {
+    await ctx.editMessageText(clampToTelegram(body), keyboard);
+  } catch (err) {
+    if (!isNotModified(err)) throw err;
+  }
+}
+
+function isNotModified(err: unknown): boolean {
+  if (typeof err !== 'object' || err === null) return false;
+  const e = err as { response?: { error_code?: number; description?: string } };
+  return (
+    e.response?.error_code === 400 && /message is not modified/i.test(e.response.description ?? '')
+  );
 }

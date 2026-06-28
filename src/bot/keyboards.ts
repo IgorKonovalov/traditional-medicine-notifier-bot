@@ -88,20 +88,7 @@ export function pager(prefix: string, index: number, count: number): CallbackBut
   ];
 }
 
-export function traditionPicker(): ReturnType<typeof Markup.inlineKeyboard> {
-  return Markup.inlineKeyboard([
-    [Markup.button.callback('🇨🇳 Китайская', 'tradition:chinese')],
-    [Markup.button.callback('🏔 Тибетская', 'tradition:tibetan')],
-  ]);
-}
-
-export function herbActions(herbId: string): ReturnType<typeof Markup.inlineKeyboard> {
-  // Single action for the skeleton: start a reminder tied to this herb. Topic
-  // subscriptions are managed per-category in /subscriptions (a distinct
-  // callback namespace) to keep callback_data prefixes unambiguous.
-  return Markup.inlineKeyboard([[Markup.button.callback('⏰ Напомнить', `remind:${herbId}`)]]);
-}
-
+/** Display label for a tradition. */
 export function tradition(value: Tradition): string {
-  return value === 'chinese' ? '🇨🇳 Китайская' : '🏔 Тибетская';
+  return value === 'chinese' ? messages.browse.chinese : messages.browse.tibetan;
 }

@@ -90,11 +90,14 @@ export const messages = {
   browse: {
     title: 'Травы',
     empty: 'Пока нет доступных трав.',
+    chinese: '🇨🇳 Китайская',
+    tibetan: '🏔 Тибетская',
   },
 
   search: {
     prompt: 'Введите название травы для поиска:',
     nothingFound: 'Ничего не найдено. Попробуйте другое название.',
+    results: 'Результаты поиска',
   },
 
   tips: {

@@ -20,6 +20,13 @@ import {
 
 import { TTLMap, type TTLMapOptions } from './state-manager';
 
+/**
+ * Default lifetime for an anchor-edit drilldown session. Long enough that a user
+ * reading a herb card and tapping back stays live; short enough that abandoned
+ * anchors expire and stale taps no-op (ADR 009).
+ */
+export const SESSION_TTL_MS = 30 * 60 * 1000;
+
 /** Multi-step flows that persist a session. Extend as commands are built. */
 export type SessionKind =
   | 'browse'
