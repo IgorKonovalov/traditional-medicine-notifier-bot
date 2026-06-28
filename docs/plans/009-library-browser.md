@@ -193,8 +193,8 @@ lives under one roof.
 
 ## Progress
 
-- [ ] Phase 1 — Reverse cross-link index (herb ↔ formulas)
-- [ ] Phase 2 — Library hub + herb browse
+- [x] Phase 1 — Reverse cross-link index (herb ↔ formulas) — `4767591`
+- [x] Phase 2 — Library hub + herb browse
 - [ ] Phase 3 — Rich herb card with cross-links
 - [ ] Phase 4 — Search integrated into the library
 - [ ] Phase 5 — Combinations browser (withheld) + validation, docs & close

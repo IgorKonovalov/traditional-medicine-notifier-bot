@@ -123,6 +123,33 @@ export const messages = {
     tibetan: '🏔 Тибетская',
   },
 
+  /**
+   * Unified library surface (Plan 009). The hub gathers every reference branch
+   * under one roof; branches whose owning plan hasn't shipped (guides) or that
+   * are held behind the ADR 006 doctor-gate (formulas) are simply not rendered.
+   */
+  library: {
+    title: '📚 Библиотека',
+    intro: 'Выберите раздел.',
+    herbs: '🌿 Травы',
+    guides: '📖 Статьи',
+    tips: '💡 Совет дня',
+    search: '🔎 Поиск',
+    formulas: '🧪 Формулы',
+    // 🌿 Травы branch
+    herbsTitle: 'Травы — выберите способ просмотра.',
+    byTradition: 'По традиции',
+    byCategory: 'По категории',
+    pickTradition: 'Выберите традицию.',
+    pickCategory: 'Выберите категорию.',
+    emptyHerbs: 'Пока нет доступных трав.',
+    emptyCategories: 'Пока нет категорий с травами.',
+    /** Category button: name + how many herbs it groups. */
+    categoryButton: (name: string, count: number): string => `${name} (${count})`,
+    // 💡 Совет дня branch (links to the existing daily-tip surface)
+    tipsEmpty: 'Пока нет советов.',
+  },
+
   search: {
     prompt: 'Введите название травы для поиска:',
     nothingFound: 'Ничего не найдено. Попробуйте другое название.',

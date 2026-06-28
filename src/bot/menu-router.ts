@@ -14,8 +14,8 @@
 
 import type { Context, Telegraf } from 'telegraf';
 
-import { browseEntry } from './commands/browse';
 import { helpEntry } from './commands/help';
+import { libraryEntry } from './commands/library';
 import { remindersEntry } from './commands/reminders';
 import { settingsEntry } from './commands/settings';
 import { tipsEntry } from './commands/tips';
@@ -32,7 +32,7 @@ function disposeSessions(ctx: Context): void {
 export function registerMenuRouter(bot: Telegraf, deps: BotDeps): void {
   bot.hears(exact(MENU.library), async (ctx) => {
     disposeSessions(ctx);
-    await browseEntry(ctx);
+    await libraryEntry(ctx);
   });
 
   bot.hears(exact(MENU.reminders), async (ctx) => {

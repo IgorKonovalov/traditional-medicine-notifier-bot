@@ -17,7 +17,7 @@ import { rateLimiter } from './middleware/rate-limiter';
 import { registerStartCommand } from './commands/start';
 import { registerHelpCommand } from './commands/help';
 import { registerSettingsCommand } from './commands/settings';
-import { registerBrowseCommand } from './commands/browse';
+import { registerLibraryCommand } from './commands/library';
 import { registerSearchCommand } from './commands/search';
 import { registerHerbCommand } from './commands/herb';
 import { registerTipsCommand } from './commands/tips';
@@ -54,7 +54,7 @@ export function createBot(options: CreateBotOptions): CreatedBot {
   registerStartCommand(bot);
   registerHelpCommand(bot);
   registerSettingsCommand(bot, options.deps);
-  registerBrowseCommand(bot, options.deps);
+  registerLibraryCommand(bot, options.deps);
   registerSearchCommand(bot, options.deps);
   registerHerbCommand(bot, options.deps);
   registerTipsCommand(bot, options.deps);

@@ -13,7 +13,7 @@ import { messages } from '../messages';
 import { toPlainText } from '../render/markdown';
 
 /** Rotate the tip pool by local day so the same tip isn't shown all day. */
-function pickDailyTip(tips: readonly Tip[]): Tip | null {
+export function pickDailyTip(tips: readonly Tip[]): Tip | null {
   if (tips.length === 0) return null;
   const dayIndex = Math.floor(Date.now() / 86_400_000);
   return tips[dayIndex % tips.length] ?? null;
