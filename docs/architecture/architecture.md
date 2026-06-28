@@ -34,7 +34,7 @@ Nothing in the domain imports Telegraf or `src/bot/` (ADR 003, ESLint-enforced).
 
 | Module | Status | Notes |
 |---|---|---|
-| `config.ts` / `logger.ts` | ✅ | typed env, pino; `FEATURE_COMBINATIONS_BROWSER` flag (default off, ADR 009; Plan 009 consumes) |
+| `config.ts` / `logger.ts` | ✅ | typed env, pino |
 | `db/connection.ts` · `schema.ts` (migration 001) · `test-helper.ts` | ✅ | WAL, additive migrations, in-memory test DB |
 | `db/repositories/*` | ✅ | user, reminder, subscription, notification-log, session, donations |
 | `content/types.ts` · `loader.ts` · `validate.ts` · `index-builders.ts` | ✅ | loads herbs/**combinations**/categories/tips; builds `.index/` |
@@ -52,7 +52,7 @@ Nothing in the domain imports Telegraf or `src/bot/` (ADR 003, ESLint-enforced).
 | `bot/commands/subscriptions` | ✅ | category sub/unsub |
 | `bot/commands/feedback` | 🟡 | inline-arg relay; admin routing TODO |
 | Create-reminder multi-step session | ⛔ | data model + dispatch ready; UI flow (Plan 008) builds on the nav kit |
-| Combinations (formula) library branch | ⛔ | built dark behind `FEATURE_COMBINATIONS_BROWSER` (Plan 009, ADR 006 gate) |
+| Combinations (formula) library branch | ⛔ | held behind the ADR 006 doctor-gate — not built/registered until owner sign-off (Plan 009) |
 | Per-category proactive digests | ⛔ | `subscriptions` table + `listSubscribers` ready |
 | Admin commands (`/stats`) | ⛔ | allowlist plumbing present (`adminTelegramIds`) |
 

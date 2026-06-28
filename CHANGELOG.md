@@ -16,8 +16,7 @@ truth for the current version.
   `requireSessionAndAnchor` callback prologue, and back/home/pager builders with
   a 64-byte `callback_data` guard. Settings becomes a state-reflecting hub;
   `/start` is a stepped, idempotent onboarding; a minimal `/tips` entry backs the
-  Советы button. Adds the `FEATURE_COMBINATIONS_BROWSER` flag (default off) that
-  Plan 009 will consume to ship the doctor-gated formula browser dark (ADR 006).
+  Советы button.
 
 ## 0.5.1 — 2026-06-27
 

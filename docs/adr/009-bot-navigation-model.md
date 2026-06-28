@@ -68,12 +68,18 @@ shared **callback prologue**. Keep rendering **plaintext + emoji (no
    data follows `<scope>:<action>:<arg?>` and **must stay within Telegram's
    64-byte limit** (use stable content `id`s + indices, never titles).
 
-5. **Gated surfaces.** A navigation branch can be hidden behind a runtime config
-   flag. Specifically, the **combinations (formula) browser is built but gated**:
-   a `FEATURE_COMBINATIONS_BROWSER` config (default **off** in production)
-   controls whether the library shows the formula branch. This satisfies ADR 006
-   — the surface is reviewable in staging and ships dark until the owner's
-   documented medical sign-off.
+5. **Gated surfaces.** A navigation branch that is not yet cleared for users can
+   be withheld. Specifically, the **combinations (formula) browser is built but
+   withheld**: the library does not register/show the formula branch until the
+   owner's documented medical sign-off, satisfying ADR 006.
+
+   > **Update (2026-06-28):** the original mechanism — a
+   > `FEATURE_COMBINATIONS_BROWSER` runtime config flag (default off) — was
+   > **dropped** (added in Plan 007 then removed). The bot is private and
+   > pre-launch, so there is no staging/production split to toggle; the gate is
+   > enforced more simply by **not building/registering the formula branch**
+   > until sign-off (Plan 009 builds it last). The decision (withhold until
+   > sign-off) stands; only the mechanism changed.
 
 6. **Render stays plaintext.** UI chrome uses plain text + emoji and **no
    `parse_mode`**, matching `src/bot/render/markdown.ts` today. The render-time
@@ -84,9 +90,9 @@ shared **callback prologue**. Keep rendering **plaintext + emoji (no
 Concrete surface a reviewer can grep against: `src/bot/keyboards.ts`
 (`mainMenuKeyboard`, `MENU`, `exact`, `backRow`), `src/bot/menu-router.ts`
 (hears-routing), `src/bot/commands/_callback-prologue.ts`
-(`requireSessionAndAnchor`), `src/bot/render/markdown.ts` (anchor edit helpers),
-`src/bot/session-store.ts` (`SessionKind`s), `src/config.ts`
-(`FEATURE_COMBINATIONS_BROWSER`), and `messages.ts` for all Russian strings.
+(`requireSessionAndAnchor`), `src/bot/render/anchor.ts` (anchor edit helpers),
+`src/bot/session-store.ts` (`SessionKind`s), and `messages.ts` for all Russian
+strings.
 
 ## Consequences
 

@@ -98,9 +98,10 @@ the navigation shell. Recommended implementation order:
 005 running alongside from the start. Fastest path to visible value:
 **007 → 008** (reminders) with 005 in parallel, then 006 → 009.
 
-> ⚠️ 009's combinations browser is **dark-shipped behind
-> `FEATURE_COMBINATIONS_BROWSER`** (ADR 006 doctor-gate). It builds in step 5 but
-> must not be enabled in production until the owner's documented medical sign-off.
+> ⚠️ 009's combinations browser is **held behind the ADR 006 doctor-gate**: it is
+> built last and **not wired into the library hub** until the owner's documented
+> medical sign-off. (The bot is private and pre-launch, so this is enforced by
+> not registering the branch — no runtime feature flag.)
 
 ## Setup
 

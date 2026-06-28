@@ -41,12 +41,6 @@ export interface Config {
    * `auth_identities.external_id` is `TEXT`, so we keep the contract honest.
    */
   readonly adminTelegramIds: ReadonlySet<string>;
-  /**
-   * Gates the combinations (formula) library branch (ADR 006 / ADR 009).
-   * Default **false** — the verbose, doctor-gated corpus ships dark until the
-   * owner's documented medical sign-off. Plumbed here; Plan 009 consumes it.
-   */
-  readonly featureCombinationsBrowser: boolean;
 }
 
 /**
@@ -75,17 +69,7 @@ export function loadConfig(): Config {
     dailyTipCron: optionalEnv('DAILY_TIP_CRON', '0 9 * * *'),
     backupDir: optionalEnv('BACKUP_DIR', '/var/backups/traditional-medicine-notifier-bot'),
     adminTelegramIds: parseAdminTelegramIds(process.env['ADMIN_TELEGRAM_IDS']).ids,
-    featureCombinationsBrowser: parseBoolean(optionalEnv('FEATURE_COMBINATIONS_BROWSER', 'false')),
   };
-}
-
-/**
- * Parse a boolean feature flag from its env string. Accepts `1`/`true`/`yes`/`on`
- * (case-insensitive) as true; everything else — including unset (the caller's
- * fallback) — is false, so a flag is off unless explicitly enabled.
- */
-export function parseBoolean(raw: string): boolean {
-  return /^(1|true|yes|on)$/i.test(raw.trim());
 }
 
 /**

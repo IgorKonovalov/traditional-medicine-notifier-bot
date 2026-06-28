@@ -47,8 +47,10 @@ kit once this lands.
     entry point.
   - A multi-step **onboarding** (`/start`) that uses the new primitives and lands
     the user on the menu.
-  - A `FEATURE_COMBINATIONS_BROWSER` config flag plumbed (consumed by Plan 009),
-    default off in production.
+  - ~~A `FEATURE_COMBINATIONS_BROWSER` config flag plumbed~~ — **dropped after
+    implementation** (owner decision, 2026-06-28): the bot is private and
+    pre-launch, so the combinations browser will instead be held back by simply
+    not building/registering it until sign-off (ADR 006). Plan 009 retargeted.
   - All gates green; menu commands registered via `setMyCommands`.
 - **Non-goals:**
   - **No** reminder-create wizard (Plan 008) and **no** library redesign or
@@ -153,15 +155,16 @@ kit once this lands.
 ### Phase 6 — Feature flag, validation, docs & close
 *Owner: architect.*
 - **Deliverables:**
-  - `src/config.ts` + `.env.example`: add `FEATURE_COMBINATIONS_BROWSER`
-    (boolean, default **false**); documented but **unconsumed** here (Plan 009
-    consumes it).
+  - ~~`src/config.ts` + `.env.example`: add `FEATURE_COMBINATIONS_BROWSER`~~ —
+    **reverted** (owner decision, 2026-06-28). The flag was added then removed;
+    the combinations branch is held back by not registering it until sign-off
+    (ADR 006), not by a runtime toggle.
   - Full gate run: `typecheck`, `lint`, `test`, `build`, `content:index:check`.
   - Refresh `docs/architecture/architecture.md` (new bot-layer nav kit; menu
     router; flip create-reminder/menu rows as appropriate), `CLAUDE.md`
     (navigation model: persistent menu, anchor-edit, callback convention +
-    64-byte rule, the new feature flag), and flip **ADR 009** Status to
-    **Accepted** with this plan referenced.
+    64-byte rule), and flip **ADR 009** Status to **Accepted** with this plan
+    referenced.
   - Semver **minor** bump; `CHANGELOG.md`; move plan to `done/`.
 - **Acceptance:** all gates green; docs/ADR reflect the shipped model; plan in
   `done/`.

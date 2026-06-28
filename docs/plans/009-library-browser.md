@@ -7,6 +7,17 @@
 **Depends on:** Plan 007 (navigation shell). Coordinates with Plan 005 (tips) and
 Plan 006 (guides) for the library's sibling branches.
 
+> **Amendment (2026-06-28) — no runtime flag.** This plan originally gated the
+> combinations browser behind a `FEATURE_COMBINATIONS_BROWSER` config flag (added
+> in Plan 007). That flag was **removed** by owner decision: the bot is private
+> and pre-launch, so there is no staging/production split to toggle. The
+> **ADR 006 doctor-gate still holds** — the combinations browser is built **last
+> and simply not registered** into the library hub (no `🧪 Формулы` branch, no
+> formula search hits, no herb→formula cross-links) until the owner's documented
+> medical sign-off. Throughout this plan, read "behind the flag / flag on" as
+> "**once the formula branch is registered (post sign-off)**" and "flag off" as
+> "**withheld by default**". Mechanism changed; the gate did not.
+
 ## Context
 
 The corpus is rich but barely reachable. `/browse` only walks
@@ -18,11 +29,12 @@ a flat list. The **large Tibetan-formula corpus** (combinations, ADR 005) is
 
 This plan builds a unified **`📚 Библиотека`** surface on the navigation shell
 (Plan 007): a hub → browse-by-tradition / by-category / search → **rich item
-cards** with cross-links, plus a **combinations browser that is built but gated**
-behind `FEATURE_COMBINATIONS_BROWSER` (ADR 006 doctor-gate; flag added in Plan
-007). The combinations corpus is non-sanitised staging data and **must not ship
-to production** until the owner's documented medical sign-off — the flag lets the
-branch be reviewed in staging and shipped dark.
+cards** with cross-links, plus a **combinations browser that is built but
+withheld** — not registered into the hub until the owner's documented medical
+sign-off (ADR 006 doctor-gate; see the amendment above — no runtime flag). The
+combinations corpus is non-sanitised staging data and **must not reach users**
+until that sign-off; building the branch last and leaving it unregistered keeps
+it reviewable without exposing it.
 
 **Related:** consumes **ADR 009** / **Plan 007**; respects **ADR 002**
 (renderer-agnostic bodies), **ADR 005** (combinations type), **ADR 006**
@@ -46,10 +58,10 @@ lives under one roof.
   - **Search integrated into the library:** results render as a tappable list
     into the anchor → item card → back to results (replaces the flat `/search`
     print). Searches herbs always; includes formulas only when the flag is on.
-  - **Combinations browser (gated):** list/search formulas → formula card
+  - **Combinations browser (withheld):** list/search formulas → formula card
     (`composition`, `members` cross-links back to herbs, descriptive framing,
-    disclaimer). Entirely behind `FEATURE_COMBINATIONS_BROWSER`, default off in
-    production.
+    disclaimer). Built but not registered into the hub until medical sign-off
+    (no runtime flag — see the amendment above).
 - **Non-goals:**
   - No sanitisation or re-authoring of combinations content (ADR 006 / Plan 004
     own that); this is **surface only**, gated.
@@ -81,8 +93,8 @@ lives under one roof.
   - `src/bot/commands/library.ts`: the `📚 Библиотека` hub (menu entry from Plan
     007 now points here). Branches: `🌿 Травы` (→ by tradition / by category),
     `📖 Статьи` and `💡 Советы` (link to Plan 006 / Plan 005 entries if present,
-    else hidden), `🔎 Поиск`. `🧪 Формулы` rendered **iff**
-    `FEATURE_COMBINATIONS_BROWSER`.
+    else hidden), `🔎 Поиск`. `🧪 Формулы` rendered **only once the combinations
+    branch is registered** (post sign-off; omitted until then).
   - Herb browse: tradition picker → (optional category filter) → paginated herb
     list → herb card, all editing one anchor with `« Назад`/home; reuse Plan 007's
     `pager`.
@@ -119,34 +131,36 @@ lives under one roof.
   to results; formula hits appear only with the flag on; `/search foo` shortcut
   works.
 
-### Phase 5 — Combinations browser (gated) + validation, docs & close
+### Phase 5 — Combinations browser (withheld) + validation, docs & close
 *Owner: dev for the browser; architect for close.*
 - **Deliverables:**
-  - `🧪 Формулы` branch (flag-gated): browse/search formulas → formula card
+  - `🧪 Формулы` branch (unregistered until sign-off): browse/search formulas → formula card
     rendering `name`(s), `composition`, `members` cross-links **back to herb
     cards**, descriptive framing, render-time disclaimer. **No** indications/
     dosing surfaced beyond what the doctor-gate permits — keep to
     composition/membership + descriptive note; the verbose non-sanitised fields
     stay unsurfaced pending Plan 004 / ADR 006 sign-off. (Confirm the exact
     surfaced field set with the owner — see Open questions.)
-  - Confirm production safety: with `FEATURE_COMBINATIONS_BROWSER=false`, no
-    formula branch, no formula search hits, no cross-link section — verified by a
-    test that asserts the gated surface is absent when the flag is off.
+  - Confirm safety: by default (branch unregistered) there is no formula branch,
+    no formula search hits, no cross-link section — verified by a test that
+    asserts the combinations surface is absent unless explicitly registered.
   - Full gate run (typecheck, lint, test, build, content:index:check).
   - Refresh `docs/architecture/architecture.md` (library surface; reverse index;
-    gated combinations UI), `CLAUDE.md` (the flag and what it gates), and add a
-    line to `docs/medical-review.md` that the UI surface is gated until sign-off.
+    withheld combinations UI), `CLAUDE.md` (how the combinations branch is held
+    back), and add a line to `docs/medical-review.md` that the UI surface stays
+    withheld until sign-off.
   - Semver **minor** bump; `CHANGELOG.md`; move plan to `done/`.
-- **Acceptance:** with the flag **on** (staging) the formula browser works and
-  cross-links round-trip herb↔formula; with the flag **off** (production) the
-  branch is fully absent (asserted by test); all gates green; plan in `done/`.
+- **Acceptance:** when the formula branch is registered the browser works and
+  cross-links round-trip herb↔formula; by default the branch is fully absent
+  (asserted by test); all gates green; plan in `done/`.
 
 ## Risks / Open questions
 
-- **ADR 006 production gate is the central constraint.** The formula browser must
-  be provably dark in production. Mitigation: a single config flag consumed in
-  one hub-builder + one search-haystack + one cross-link section, plus a test
-  asserting absence when off. Any leak is a release blocker.
+- **ADR 006 doctor-gate is the central constraint.** The formula browser must be
+  provably absent until sign-off. Mitigation: don't register the branch — a
+  single registration point (hub-builder + search-haystack + cross-link section
+  all guarded by one "formula branch enabled" predicate, default false), plus a
+  test asserting absence by default. Any leak is a release blocker.
 - **Which formula fields may the gated UI show?** Recommendation: **composition +
   members + a descriptive line only**, never the raw `indications`/
   `traditional_use`/`dosing_notes` (those are exactly what Plan 004 / the
@@ -168,14 +182,14 @@ lives under one roof.
 
 - `npm run typecheck && npm run lint && npm test && npm run build &&
   npm run content:index:check` — green.
-- Manual (flag **off** = production): `📚 Библиотека` shows no `🧪 Формулы`;
+- Manual (branch **withheld** = default): `📚 Библиотека` shows no `🧪 Формулы`;
   search returns no formulas; herb cards show no cross-link section. A test
   asserts this.
-- Manual (flag **on** = staging): `🧪 Формулы` browses/searches; a formula card
-  cross-links to its member herbs; a herb card lists "входит в формулы" and links
-  back; disclaimer on every medicine card; one message per session; pagination
-  correct at both ends.
-- Unit: reverse cross-link map; gated-surface-absent-when-off; pager bounds.
+- Manual (branch **registered** = post sign-off): `🧪 Формулы` browses/searches; a
+  formula card cross-links to its member herbs; a herb card lists "входит в
+  формулы" and links back; disclaimer on every medicine card; one message per
+  session; pagination correct at both ends.
+- Unit: reverse cross-link map; combinations-surface-absent-by-default; pager bounds.
 
 ## Progress
 
@@ -183,4 +197,4 @@ lives under one roof.
 - [ ] Phase 2 — Library hub + herb browse
 - [ ] Phase 3 — Rich herb card with cross-links
 - [ ] Phase 4 — Search integrated into the library
-- [ ] Phase 5 — Combinations browser (gated) + validation, docs & close
+- [ ] Phase 5 — Combinations browser (withheld) + validation, docs & close

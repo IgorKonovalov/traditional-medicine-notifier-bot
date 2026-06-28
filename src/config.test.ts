@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { assertValidTimezone, parseAdminTelegramIds, parseBoolean } from './config';
+import { assertValidTimezone, parseAdminTelegramIds } from './config';
 
 describe('parseAdminTelegramIds', () => {
   it('returns an empty set for unset input', () => {
@@ -13,20 +13,6 @@ describe('parseAdminTelegramIds', () => {
     const { ids, malformed } = parseAdminTelegramIds(' 123 , 456 ,abc, ');
     expect([...ids].sort()).toEqual(['123', '456']);
     expect(malformed).toEqual(['abc']);
-  });
-});
-
-describe('parseBoolean', () => {
-  it('treats 1/true/yes/on (any case) as true', () => {
-    for (const v of ['1', 'true', 'TRUE', 'yes', 'On', ' true ']) {
-      expect(parseBoolean(v)).toBe(true);
-    }
-  });
-
-  it('treats everything else — including unset fallbacks — as false', () => {
-    for (const v of ['0', 'false', '', 'no', 'off', 'enabled', '2']) {
-      expect(parseBoolean(v)).toBe(false);
-    }
   });
 });
 
