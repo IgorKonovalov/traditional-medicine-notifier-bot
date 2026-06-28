@@ -26,7 +26,6 @@ import {
   registerReminderCreateCommand,
   registerReminderCreateTextCapture,
 } from './commands/reminder-create';
-import { registerSubscriptionsCommand } from './commands/subscriptions';
 import { registerDonateCommand } from './commands/donate';
 import { registerFeedbackCommand, registerFeedbackTextCapture } from './commands/feedback';
 import { registerChangelogCommand } from './commands/changelog';
@@ -61,7 +60,6 @@ export function createBot(options: CreateBotOptions): CreatedBot {
   registerTipsCommand(bot, options.deps);
   registerRemindersCommand(bot, options.deps);
   registerReminderCreateCommand(bot, options.deps);
-  registerSubscriptionsCommand(bot, options.deps);
   registerDonateCommand(bot);
   registerFeedbackCommand(bot, options.deps);
   registerChangelogCommand(bot);

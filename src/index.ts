@@ -198,7 +198,6 @@ async function setBotCommands(bot: Telegraf): Promise<void> {
     { command: 'search', description: 'Поиск травы по названию' },
     { command: 'tips', description: 'Совет дня' },
     { command: 'reminders', description: 'Напоминания' },
-    { command: 'subscriptions', description: 'Подписки и совет дня' },
     { command: 'settings', description: 'Настройки' },
     { command: 'changelog', description: 'История обновлений' },
     { command: 'donate', description: 'Поддержать проект' },
