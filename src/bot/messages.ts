@@ -159,6 +159,11 @@ export const messages = {
     useHerbName: '✅ Оставить название',
     enterCustom: '✏️ Ввести своё',
     labelTooLong: (max: number): string => `Слишком длинно — сократите до ${max} символов.`,
+    // step: herb (optional link)
+    herbPrompt: 'Привязать траву к напоминанию? Выберите из списка или пропустите.',
+    herbSkip: '⏭ Пропустить',
+    /** Linked-herb line shown on the confirm screen when a herb is attached. */
+    herbLine: (name: string): string => `🌿 Трава: ${name}`,
     // step: kind
     kindPrompt: (label: string): string => `«${label}»\n\nКак часто напоминать?`,
     kindOnce: 'Один раз',
