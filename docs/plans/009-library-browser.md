@@ -202,6 +202,6 @@ lives under one roof.
 - [x] Phase 2 — Library hub + herb browse — `5c6695e`
 - [x] Phase 3 — Rich herb card with cross-links — `6e8a5fb`
 - [x] Phase 4 — Search integrated into the library — `a4e4b22`
-- [x] Phase 5 — Combinations browser (withheld) built + validation + docs — close
-      ritual (version bump · CHANGELOG · announcement · move to `done/`) pending
-      architect review
+- [x] Phase 5 — Combinations browser (withheld) built + validation + docs — `83cd06c`;
+      close ritual (version bump · CHANGELOG · announcement · move to `done/`)
+      pending architect review
