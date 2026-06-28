@@ -150,6 +150,12 @@ export const messages = {
     tipsEmpty: 'Пока нет советов.',
   },
 
+  /** Shared herb-card chrome (the card body itself is content + disclaimer). */
+  herbCard: {
+    /** Header for the reverse cross-link section; formula names sit on buttons. */
+    inFormulas: 'Входит в формулы:',
+  },
+
   search: {
     prompt: 'Введите название травы для поиска:',
     nothingFound: 'Ничего не найдено. Попробуйте другое название.',

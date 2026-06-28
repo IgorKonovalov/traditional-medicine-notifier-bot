@@ -31,7 +31,7 @@ import { toPlainText } from '../render/markdown';
 import { type AnchoredSession, deleteSession, saveSession, SESSION_TTL_MS } from '../session-store';
 import { requireSessionAndAnchor, type ValidatedCallback } from './_callback-prologue';
 import { FORMULA_BRANCH_ENABLED } from './_formula-gate';
-import { herbCardKeyboard, renderHerb } from './_herb-card';
+import { herbCardKeyboard, herbFormulaLinks, renderHerb } from './_herb-card';
 import { pickDailyTip } from './tips';
 
 const PAGE_SIZE = 8;
@@ -198,9 +198,12 @@ function listView(deps: BotDeps, state: LibraryState): View & { readonly page: n
 function cardView(deps: BotDeps, herbId: string): View | null {
   const herb = deps.content.herbs.byId.get(herbId);
   if (herb === undefined) return null;
+  // Reverse cross-links — empty (section omitted) until the formula branch is
+  // registered post sign-off (ADR 006 doctor-gate, `_formula-gate`).
+  const links = herbFormulaLinks(herbId, deps.content, FORMULA_BRANCH_ENABLED);
   return {
-    text: renderHerb(herb),
-    keyboard: herbCardKeyboard(herbId, [backRow('lib:back'), homeRow('lib:home')]),
+    text: renderHerb(herb, links),
+    keyboard: herbCardKeyboard(herbId, [backRow('lib:back'), homeRow('lib:home')], links),
   };
 }
 

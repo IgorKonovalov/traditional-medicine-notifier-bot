@@ -1,38 +1,76 @@
 /**
- * Shared herb-card rendering, reused by the browse and search drilldown flows
+ * Shared herb-card rendering, reused by the library and search drilldown flows
  * and the notification "Открыть" CTA. Keeping it in one place means every entry
  * point renders an identical card with the render-time disclaimer (ADR 006).
+ *
+ * The card optionally carries a **"Входит в формулы"** cross-link section
+ * (Plan 009 Phase 3): the formulas whose `members` include this herb, resolved
+ * from `content.crossLinks`. The section is **omitted entirely** while the
+ * combinations branch is withheld (ADR 006 doctor-gate) — callers pass an empty
+ * list, so there are never dead links to an unregistered formula card.
  */
 
 import { Markup } from 'telegraf';
 
-import type { Herb } from '../../content/types';
-import { tradition } from '../keyboards';
+import type { Herb, LoadedContent } from '../../content/types';
+import { assertCallbackData, tradition } from '../keyboards';
 import { messages } from '../messages';
 import { clampToTelegram, toPlainText } from '../render/markdown';
 
 type CallbackButton = ReturnType<typeof Markup.button.callback>;
 
-export function renderHerb(herb: Herb): string {
-  const header = `${herb.nameRu}${herb.nameLatin ? ` (${herb.nameLatin})` : ''} · ${tradition(herb.tradition)}`;
-  // The disclaimer is appended here at render time (ADR 006, amends ADR 002) —
-  // it is no longer baked into the content body. Clamp the body first so the
-  // disclaimer is never truncated away.
-  const body = clampToTelegram(`${header}\n\n${toPlainText(herb.body)}`);
-  return `${body}\n\n${messages.disclaimer}`;
+/** A reverse cross-link to a formula the herb is a member of. */
+export interface FormulaLink {
+  readonly id: string;
+  readonly nameRu: string;
 }
 
 /**
- * Keyboard for an anchored herb card: the `⏰ Напомнить` CTA (still a stub —
- * Plan 008 wires the create flow) above whatever navigation rows the calling
- * flow supplies (its own back/home).
+ * Resolve the formulas a herb belongs to, for the card's cross-link section.
+ * Returns `[]` (so the section is omitted) when the combinations branch is
+ * withheld — the single doctor-gate (`_formula-gate`) flows in via `enabled`.
+ */
+export function herbFormulaLinks(
+  herbId: string,
+  content: Pick<LoadedContent, 'crossLinks' | 'combinations'>,
+  enabled: boolean,
+): FormulaLink[] {
+  if (!enabled) return [];
+  const ids = content.crossLinks.formulasByHerb.get(herbId) ?? [];
+  const links: FormulaLink[] = [];
+  for (const id of ids) {
+    const combination = content.combinations.byId.get(id);
+    if (combination !== undefined) links.push({ id: combination.id, nameRu: combination.nameRu });
+  }
+  return links;
+}
+
+export function renderHerb(herb: Herb, formulaLinks: readonly FormulaLink[] = []): string {
+  const header = `${herb.nameRu}${herb.nameLatin ? ` (${herb.nameLatin})` : ''} · ${tradition(herb.tradition)}`;
+  // The disclaimer is appended here at render time (ADR 006, amends ADR 002) —
+  // it is no longer baked into the content body. Clamp the body first so neither
+  // the cross-link header nor the disclaimer is ever truncated away.
+  const body = clampToTelegram(`${header}\n\n${toPlainText(herb.body)}`);
+  const parts = [body];
+  // The formula names live on the buttons below; this is just the section label.
+  if (formulaLinks.length > 0) parts.push(messages.herbCard.inFormulas);
+  parts.push(messages.disclaimer);
+  return parts.join('\n\n');
+}
+
+/**
+ * Keyboard for an anchored herb card: the `⏰ Напомнить` CTA (Plan 008), then one
+ * button per reverse-linked formula (Plan 009 — present only when the
+ * combinations branch is registered), then the calling flow's navigation rows.
  */
 export function herbCardKeyboard(
   herbId: string,
   navRows: CallbackButton[][],
+  formulaLinks: readonly FormulaLink[] = [],
 ): ReturnType<typeof Markup.inlineKeyboard> {
-  return Markup.inlineKeyboard([
-    [Markup.button.callback('⏰ Напомнить', `remind:${herbId}`)],
-    ...navRows,
-  ]);
+  const rows: CallbackButton[][] = [[Markup.button.callback('⏰ Напомнить', `remind:${herbId}`)]];
+  for (const link of formulaLinks) {
+    rows.push([Markup.button.callback(link.nameRu, assertCallbackData(`lib:formula:${link.id}`))]);
+  }
+  return Markup.inlineKeyboard([...rows, ...navRows]);
 }
