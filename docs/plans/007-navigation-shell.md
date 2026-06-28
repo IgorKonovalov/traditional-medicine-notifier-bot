@@ -201,5 +201,5 @@ kit once this lands.
 - [x] Phase 2 — Navigation kit: anchor render, sessions, callback prologue
 - [x] Phase 3 — Migrate browse / search / herb onto anchor + back/home
 - [x] Phase 4 — Settings hub with dynamic labels
-- [ ] Phase 5 — Onboarding refresh (`/start`)
+- [x] Phase 5 — Onboarding refresh (`/start`)
 - [ ] Phase 6 — Feature flag, validation, docs & close

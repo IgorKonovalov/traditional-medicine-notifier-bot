@@ -20,6 +20,8 @@ export const PROVIDER_TELEGRAM = 'telegram';
 export const SETTING_LAST_PROACTIVE_PUSH = 'last_proactive_push_date';
 /** Whether the user opted in to the daily tip (`'1'` = on). */
 export const SETTING_DAILY_TIP = 'daily_tip';
+/** Whether the user finished the stepped onboarding (`'1'` = done). */
+export const SETTING_ONBOARDED = 'onboarded';
 
 interface UserRow {
   id: number;
@@ -33,7 +35,11 @@ interface UserRow {
  * `last_seen_at`, refresh the username, and re-activate a user who had been
  * flipped inactive by a permanent send failure.
  */
-export function ensureUser(externalId: string, username: string | null, now: number = Date.now()): UserId {
+export function ensureUser(
+  externalId: string,
+  username: string | null,
+  now: number = Date.now(),
+): UserId {
   const db = getDb();
   const existing = db
     .prepare(
