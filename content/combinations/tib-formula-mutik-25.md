@@ -24,7 +24,7 @@ composition:
   - Корица (Cinnamomum zeylanicum)
   - Potamom yunnanensis
   - Терминалия хебула (Terminalia chebula)
-  - Терминалия баллерика (Terminalia belerica)
+  - Терминалия баллерика (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
   - Мальва (Malva verticillata)
   - Зира (Cuminum cyminum)
@@ -68,7 +68,7 @@ sources:
 
 Мутик-25 «Жемчуг-25»
 
-Состав: Margaritum, Bambusa textilis, Carthamus tinctorius, Eugenia caryophyllata, Elettaria cardamomum, Amomum subulatum, Myristica fragrans, Santalum album, Pterocarpus santalinus, Gmelina arborea, Punica granatum, Moschus moschiferus, Saussurea lappa, Piper longum, Cinnamomum zeylanicum, Potamom yunnanensis, Terminalia chebula, Terminalia belerica, Emblica officinalis, Malva verticillata, Cuminum cyminum, Nigella sativa, Polygonum aviculare, etc.
+Состав: Margaritum, Bambusa textilis, Carthamus tinctorius, Eugenia caryophyllata, Elettaria cardamomum, Amomum subulatum, Myristica fragrans, Santalum album, Pterocarpus santalinus, Gmelina arborea, Punica granatum, Moschus moschiferus, Saussurea lappa, Piper longum, Cinnamomum zeylanicum, Potamom yunnanensis, Terminalia chebula, Terminalia bellirica, Emblica officinalis, Malva verticillata, Cuminum cyminum, Nigella sativa, Polygonum aviculare, etc.
 
 Сущность: прохлада и тепло равны
 

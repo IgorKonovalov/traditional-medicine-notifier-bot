@@ -7,7 +7,7 @@ nature: слегка тёплая
 composition:
   - Мускатный орех (Myristica fragrans)
   - Терминалия хебула (Terminalia chebula)
-  - Терминалия беллерика (Terminalia belerica)
+  - Терминалия беллерика (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
   - Сал (Shorea robusta)
   - Орлиное дерево (Aquilaria agallocha)
@@ -61,7 +61,7 @@ sources:
 
 Вимала (Вималамитры состав)
 
-Состав: Myristica fragrans, Terminalia chebula, Terminalia belerica, Emblica officinalis, Shorea robusta, Aquilaria agollocha, Carex sp., Ferula jaeschkeana, Bambusa textilis, Amomum subulatum, Elettaria cardamomum, Eugenia caryophyllata, Carthamus tinctorius, Carum carvi, Santalum album, Pterocarpus santalinus, Melia composita, Allium sativum, Geranium sp.
+Состав: Myristica fragrans, Terminalia chebula, Terminalia bellirica, Emblica officinalis, Shorea robusta, Aquilaria agollocha, Carex sp., Ferula jaeschkeana, Bambusa textilis, Amomum subulatum, Elettaria cardamomum, Eugenia caryophyllata, Carthamus tinctorius, Carum carvi, Santalum album, Pterocarpus santalinus, Melia composita, Allium sativum, Geranium sp.
 
 Сущность: слегка тёплая
 

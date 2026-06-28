@@ -6,7 +6,7 @@ name_original: Гурван Урийн тан / Бребусум тан / Бре
 nature: прохладная
 composition:
   - Терминалия хебула (Terminalia chebula)
-  - Терминалия баллерика (Terminalia belerica)
+  - Терминалия баллерика (Terminalia bellirica)
   - 'Эмблика лекарственная, амла (Emblica officinalis)'
 members:
   - tib-haritaki
@@ -49,7 +49,7 @@ sources:
 
 Брэбу-3 тханг «Отвар 3 Плода»
 
-Состав: Terminalia chebula, Terminalia belerica, Emblica officinalis.
+Состав: Terminalia chebula, Terminalia bellirica, Emblica officinalis.
 
 Сущность: прохладная
 

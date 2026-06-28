@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.11.2 — 2026-06-28
+
+- Apply the practitioner's medical-review verdicts to the formula corpus
+  (`docs/medical-review.md`). **Group 1 (toxic constituents):** aconite confirmed
+  present in `agar-35`, `garuda-5`, `olse-25`, `tcovo-8` — added to each
+  `composition` (agar-35 keeps nux vomica too) and the interim caution is now
+  toxin-specific. **Group 5:** normalized the binomial `Terminalia belerica →
+  bellirica` corpus-wide. Groups 2–4 accepted as-is, Group 3 components kept
+  dropped (manla-canonical), Groups 6–7 deferred to the pre-large-production
+  review.
+
 ## 0.11.1 — 2026-06-28
 
 - Add an interim defensive caution to four formulas carrying unresolved

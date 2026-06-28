@@ -11,7 +11,7 @@ composition:
   - Цезальпиния бондуковая (Caesalpinia bonducella)
   - Соссюрея лопуховидная (Saussurea lappa)
   - Терминалия хебула (Terminalia chebula)
-  - Терминалия баллерическая (Terminalia belerica)
+  - Терминалия баллерическая (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
   - И др. (прочие компоненты)
 members:
@@ -48,7 +48,7 @@ sources:
 
 Гургум 13 тибетский фитосбор / «Шафран 13»
 
-Состав: Carthamus tinctorius, Eugenia caryophyllata, Santalum album, Caesalpinia bonducella, Saussurea lappa, Terminalia chebula, Terminalia belerica, Emblica officinalis, etc.
+Состав: Carthamus tinctorius, Eugenia caryophyllata, Santalum album, Caesalpinia bonducella, Saussurea lappa, Terminalia chebula, Terminalia bellirica, Emblica officinalis, etc.
 
 Сущность: слегка прохладная
 

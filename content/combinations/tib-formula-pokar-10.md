@@ -9,7 +9,7 @@ nature: слегка прохладная
 composition:
   - Ладан (Commiphora camphora)
   - Терминалия хебула (Terminalia chebula)
-  - Терминалия баллерика (Terminalia belerica)
+  - Терминалия баллерика (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
   - Кассия тора (Cassia tora)
   - Абельмош (Abelmoschus moschatus)
@@ -48,7 +48,7 @@ sources:
 
 Споскар-10 «Белый Ладан-10»
 
-Состав: Commiphora camphora, Terminalia chebula, Terminalia belerica, Emblica officinalis, Cassia tora, Abelmoschus moschatus, Saussurea lappa, Tinospora cordifolia, Veronica ciliata, Shilajid.
+Состав: Commiphora camphora, Terminalia chebula, Terminalia bellirica, Emblica officinalis, Cassia tora, Abelmoschus moschatus, Saussurea lappa, Tinospora cordifolia, Veronica ciliata, Shilajid.
 
 Сущность: слегка прохладная
 

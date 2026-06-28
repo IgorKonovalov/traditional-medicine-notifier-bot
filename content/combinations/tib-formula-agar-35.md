@@ -9,7 +9,7 @@ nature: нейтральная
 composition:
   - Орлиное дерево (Aquilaria agallocha)
   - Терминалия хебула (Terminalia chebula)
-  - Терминалия белерическая (Terminalia belerica)
+  - Терминалия белерическая (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
   - Мускатный орех (Myristica fragrans)
   - Бамбуковая манна (Bambusa textilis)
@@ -38,6 +38,7 @@ composition:
   - Гвоздика (Eugenia caryophyllata)
   - Белый сандал (Santalum album)
   - Девясил (Inula racemosa)
+  - Аконит (Aconitum sp.)
 members:
   - tib-haritaki
 indications:
@@ -73,8 +74,8 @@ dosing_notes:
     соответствии с назначением.
 cautions:
   - >-
-    Содержит сильнодействующие компоненты — применять только под наблюдением
-    врача.
+    Содержит сильнодействующие ядовитые компоненты (аконит, чилибуха / Strychnos
+    nux vomica); применять только по назначению и под наблюдением врача.
 sources:
   - 'https://bimala.ru/sostav/agar-35'
   - 'https://manla.ru/herbs/#agar-35'
@@ -88,7 +89,7 @@ sources:
 
 Агар-35 «Орлиное дерево-35»
 
-Состав: Aquilaria agollocha, Terminalia chebula, Terminalia belerica, Emblica officinalis, Myristica fragrans, Bambusa textilis, Adhatoda vasica, Mesua ferrea, Saussurea lappa, Commiphora mukul, Picrorhiza kurroa, Punica granatum, Swertia chirata, Meconopsis horridula, Melia composita, Shorea robusta, Solms-Laubachia sp., Cinnamomum cecidodaphne, Carthamus tinctorius, Rubus idaeopsis, Tinospora cordifolia, Amomum subulatum, Hedychium spicatum, Chrysanthemum tatsienense, Pterocarpus santalinus, Pulicaria insignis, Strychnos nux vomica, Elettaria cardamomum, Eugenia caryophyllata, Santalum album, Inula racemosa, etc.
+Состав: Aquilaria agollocha, Terminalia chebula, Terminalia bellirica, Emblica officinalis, Myristica fragrans, Bambusa textilis, Adhatoda vasica, Mesua ferrea, Saussurea lappa, Commiphora mukul, Picrorhiza kurroa, Punica granatum, Swertia chirata, Meconopsis horridula, Melia composita, Shorea robusta, Solms-Laubachia sp., Cinnamomum cecidodaphne, Carthamus tinctorius, Rubus idaeopsis, Tinospora cordifolia, Amomum subulatum, Hedychium spicatum, Chrysanthemum tatsienense, Pterocarpus santalinus, Pulicaria insignis, Strychnos nux vomica, Elettaria cardamomum, Eugenia caryophyllata, Santalum album, Inula racemosa, etc.
 
 Сущность: нейтральная
 

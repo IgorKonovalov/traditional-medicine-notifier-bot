@@ -26,7 +26,7 @@ composition:
   - Сафлор красильный (Carthamus tinctorius)
   - Марь остистая (Chenopodium aristatum)
   - Марена сердцелистная (Rubia cordifolia)
-  - Терминалия беллерическая (Terminalia belerica)
+  - Терминалия беллерическая (Terminalia bellirica)
   - Герпетоспермум черешковый (Herpetospermum caudigerum)
   - Малина (Rubus idaeopsis)
   - Облепиха (Hippophae rhamnoides)
@@ -63,7 +63,7 @@ sources:
 
 Кйуру-25 «Эмблика-25»
 
-Состав: Emblica officinalis, Veronica ciliata, Coriandrum sativum, Aristolochia moupinensis, Meconopsis grandis, Picrorhiza kurroa, Shilajid, Dracocephalum tanguticum, Pterocarpus santalinus, Dendrobium moniliforme, Geranium sp., Saussurea lappa, Tinospora cordifolia, Swertia chirata, Inula racemosa, Terminalia chebula, Carthamus tinctorius, Chenopodium aristatum, Rubia cordifolia, Terminalia belerica, Herpetospermum caudgerum, Rubus idaeopsis, Hippophae rhamnoides.
+Состав: Emblica officinalis, Veronica ciliata, Coriandrum sativum, Aristolochia moupinensis, Meconopsis grandis, Picrorhiza kurroa, Shilajid, Dracocephalum tanguticum, Pterocarpus santalinus, Dendrobium moniliforme, Geranium sp., Saussurea lappa, Tinospora cordifolia, Swertia chirata, Inula racemosa, Terminalia chebula, Carthamus tinctorius, Chenopodium aristatum, Rubia cordifolia, Terminalia bellirica, Herpetospermum caudgerum, Rubus idaeopsis, Hippophae rhamnoides.
 
 Сущность: прохладная
 

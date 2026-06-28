@@ -21,7 +21,7 @@ composition:
   - Терминалия хебула (Terminalia chebula)
   - Солодка уральская (Glycyrrhiza uralensis)
   - Коровяк обыкновенный (Verbascum thapsus)
-  - Терминалия беллерическая (Terminalia belerica)
+  - Терминалия беллерическая (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
   - Фенхель (Foeniculum vulgare)
   - Чернушка посевная (Nigella sativa)
@@ -79,7 +79,7 @@ sources:
 
 Сам-Нор (Сампхэл Норбу), «Исполняющий желания самоцвет»
 
-Состав: Carthamus tinctorius, Bambusa textilis, Margaritum, Eugenia caryophyllata, Myristica fragrans, Elettaria cardamomum, Amomum subulatum, Santalum album, Pterocarpus santalinus, Aquilaria agollocha, Terminalia chebula, Glycyrrhiza uralensis, Verbascum thapsus, Terminalia belerica, Emblica officinalis, Foeniculum vulgare, Nigella sativa, Piper longum, Zingiber spectabile, Moschus moschiferus, Potamon yunnanensis, Cinnamomum zeylanicum, Cinnamomum camphora, Cassia tora, Abelmoschus moschatus, Inula racemosa, Saussurea lappa, Fragaria nilgeernsis, etc.
+Состав: Carthamus tinctorius, Bambusa textilis, Margaritum, Eugenia caryophyllata, Myristica fragrans, Elettaria cardamomum, Amomum subulatum, Santalum album, Pterocarpus santalinus, Aquilaria agollocha, Terminalia chebula, Glycyrrhiza uralensis, Verbascum thapsus, Terminalia bellirica, Emblica officinalis, Foeniculum vulgare, Nigella sativa, Piper longum, Zingiber spectabile, Moschus moschiferus, Potamon yunnanensis, Cinnamomum zeylanicum, Cinnamomum camphora, Cassia tora, Abelmoschus moschatus, Inula racemosa, Saussurea lappa, Fragaria nilgeernsis, etc.
 
 Сущность: слегка прохладная
 

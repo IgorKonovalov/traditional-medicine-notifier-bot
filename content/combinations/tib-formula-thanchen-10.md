@@ -10,7 +10,7 @@ composition:
   - Тиноспора сердцелистная (Tinospora cordifolia)
   - Хедихиум колосистый (Hedychium spicatum)
   - Терминалия хебула (Terminalia chebula)
-  - Терминалия беллерическая (Terminalia belerica)
+  - Терминалия беллерическая (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
   - Сверция чирата (Swertia chirata)
   - Шлемник байкальский (Scutellaria baikalensis)
@@ -48,7 +48,7 @@ sources:
 
 Тханчен-10 «Великий отвар-10»
 
-Состав: Inula racemosa, Rubus idaeopsis, Tinospora cordifolia, Hedychium spisatum, Terminalia chebula, Terminalia belerica, Emblica officinalis, Swertia chirata, Scutellaria baikalensis, Saussurea parwiflora.
+Состав: Inula racemosa, Rubus idaeopsis, Tinospora cordifolia, Hedychium spisatum, Terminalia chebula, Terminalia bellirica, Emblica officinalis, Swertia chirata, Scutellaria baikalensis, Saussurea parwiflora.
 
 Сущность: прохладная
 

@@ -7,7 +7,7 @@ nature: прохлада и тепло примерно равны
 composition:
   - Тиноспора сердцелистная (Tinospora cordifolia)
   - Терминалия хебула (Terminalia chebula)
-  - Терминалия баллерическая (Terminalia belerica)
+  - Терминалия баллерическая (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
   - Горечавка бородатая (Swertia chirata)
 members:
@@ -42,7 +42,7 @@ sources:
 
 Лэтрэ-5 тханг (Жонлон-5), «Отвар тиноспоры - 5»
 
-Состав: Tinospora cordifolia, Terminalia chebula, Terminalia belerica, Emblica officinalis, Swertia chirata.
+Состав: Tinospora cordifolia, Terminalia chebula, Terminalia bellirica, Emblica officinalis, Swertia chirata.
 
 Сущность: прохлада и тепло примерно равны
 

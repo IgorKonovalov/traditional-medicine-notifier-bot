@@ -27,6 +27,7 @@ composition:
   - Кипарис гималайский (Cupressus torulosa)
   - Миробалан хебула (Terminalia chebula)
   - Хохлатка (Corydalis sp.)
+  - Аконит (Aconitum sp.)
   - И другие
 members:
   - tib-haritaki
@@ -51,8 +52,8 @@ dosing_notes:
     назначением.
 cautions:
   - >-
-    Содержит сильнодействующие компоненты — применять только под наблюдением
-    врача.
+    Содержит аконит — сильнодействующее ядовитое растение; применять только по
+    назначению и под наблюдением врача.
 sources:
   - 'https://bimala.ru/sostav/olse-25'
   - 'https://manla.ru/herbs/#olmose-25'

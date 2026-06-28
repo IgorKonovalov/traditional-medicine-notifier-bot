@@ -1,13 +1,15 @@
 # Medical review gate (ADR 006)
 
-**Status: PARTIAL sign-off — owner-managed.** The verbose Tibetan-formula corpus
-under `content/combinations/` is a **staging artifact**. Per ADR 006, **none of it
-may reach the production bot** until a qualified Tibetan-medicine practitioner has
-reviewed it and the owner has signed off. **As of 2026-06-28 the owner has approved
-the _minimal_ library UI surface** (formula browser showing name / nature /
-composition / member cross-links / themes / cautions only — Plan 009, gate lifted);
-the **verbose fields remain unsurfaced and unapproved** (see Sign-off table). The
-owner will report when the verbose-field review is complete.
+**Status: SIGNED OFF (pre-production phase) — owner-managed.** The verbose
+Tibetan-formula corpus under `content/combinations/` is a **staging artifact**
+(ADR 006). **As of 2026-06-28** the owner (relaying the practitioner) approved the
+**minimal library UI surface** (name / nature / composition / member cross-links /
+themes / cautions) and **adjudicated all seven review groups** (see Sign-off
+table) — the formula browser is live (Plan 009, gate lifted). The **verbose
+fields** (indications / traditional_use / dosing_notes / source_text) **remain
+unsurfaced**. The corpus **will be reviewed again on the live bot before large
+production**; the deferred items (Groups 6–7 and the left-as-is Group 5 entries)
+are revisited in that pass.
 
 ## Fidelity re-audit & remediation (Plan 004, 2026-06-26)
 
@@ -44,8 +46,8 @@ What changed since the sections below were written:
   Russian name opportunistically if a confident one is found, not required. (The
   literal `etc.` is a placeholder, not an ingredient — minor cleanup, still open.)
 - The **toxic-constituent discrepancies** flagged below (aconite vs strychnine in
-  `agar-35`, `garuda-5`, `olse-25`, `tcovo-8`) **still stand** — confirm before any
-  production use. **Interim mitigation (2026-06-28, v0.11.1):** a defensive
+  `agar-35`, `garuda-5`, `olse-25`, `tcovo-8`) are **resolved (2026-06-28,
+  v0.11.2)** — see the resolution note below. **Interim mitigation (v0.11.1):** a defensive
   caution («Содержит сильнодействующие компоненты — применять только под
   наблюдением врача») was added to all four `cautions` arrays — they ship in the
   live formula card — pending the verdict. `agar-35` ships *Strychnos nux vomica*
@@ -53,6 +55,10 @@ What changed since the sections below were written:
   («И другие») that may hide an aconite entry. Remove/refine once the true
   constituent is confirmed (verdict shape: is the toxin nux vomica, aconite, or
   both, and should the missing aconite be listed in `composition`?).
+  **Resolved (v0.11.2):** aconite confirmed present — added to each formula's
+  `composition` (`garuda-5` Aconitum soongaricum, `tcovo-8` A. heterophyllum,
+  `olse-25`/`agar-35` Aconitum sp.; `agar-35` retains nux vomica too → both), and
+  each caution is now toxin-specific.
 - Best-effort Russian↔Latin ingredient mappings still need a botanist check.
 - **bimala re-audit (2026-06-27).** A completeness-gated re-capture of the 97
   bimala-only formulas recovered dropped description sentences for **12** records
@@ -199,8 +205,12 @@ the session workflow outputs; raw verbatim source for both sites remains in
 | 2026-06-28 | Owner    | **Library UI surface** — formula browser, **minimal field set only** (name / nature / composition / member cross-links / themes / cautions). Verbose fields (indications / traditional_use / dosing_notes / source_text) stay unsurfaced. | **Approved — gate lifted** (`FORMULA_BRANCH_ENABLED = true`, Plan 009) |
 | 2026-06-28 | Owner    | **Group 2 — Latin-only ingredients** (`Bos taurus domesticus`, `Potamom yunnanensis`, `Solms-Laubachia sp.`, `Trona`) | **Accepted as-is** — translate if a confident RU name exists, not required |
 | 2026-06-28 | Owner    | **Group 3 — dropped bimala-only components** (28 formulas) | **Keep dropped** — manla-canonical confirmed; not restored (would break name=count) |
-| —          | —        | **Group 1 — toxic-constituent discrepancies** (`agar-35`, `garuda-5`, `olse-25`, `tcovo-8`) — interim defensive caution shipped (v0.11.1) | pending (aconite vs strychnine verdict) |
-| —          | —        | Verbose source fields (indications / dosing / traditional use) for any richer surface | pending |
+| 2026-06-28 | Owner    | **Group 1 — toxic-constituent discrepancies** (`agar-35`, `garuda-5`, `olse-25`, `tcovo-8`) | **Resolved — aconite confirmed present**: added to `composition` + toxin-specific caution (v0.11.2). `agar-35` carries aconite **and** nux vomica. |
+| 2026-06-28 | Owner    | **Group 4 — botanical Russian↔Latin mappings** | **Accepted as-is** — no changes; verify opportunistically. |
+| 2026-06-28 | Owner    | **Group 5 — source discrepancies** (`gurgum-8`, `srogdzin-11`, Melia, `gurkyung`, Terminalia spelling) | **Partial**: normalized `Terminalia belerica → bellirica` corpus-wide (v0.11.2); the rest left as-is. |
+| 2026-06-28 | Owner    | **Group 6 — incomplete descriptions** (6 bimala formulas, verbose) | **Leave as-is** — deferred to the pre-large-production live review. |
+| 2026-06-28 | Owner    | **Group 7 — dosing / administration & misc** (verbose) | **Retain what's possible, leave as-is** — deferred to the pre-large-production review. |
+| —          | —        | Verbose source fields (indications / dosing / traditional use) for any richer surface | pending (revisited before large production) |
 
 _When production-eligible content is approved, record it here and define how it is
 surfaced._

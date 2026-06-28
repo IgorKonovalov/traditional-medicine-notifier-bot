@@ -15,7 +15,7 @@ composition:
   - Мускатный орех (Myristica fragrans)
   - Белый сандал (Santalum album)
   - Мелия (Melia composita)
-  - Терминалия баллерика (Terminalia belerica)
+  - Терминалия баллерика (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
   - Тиноспора сердцелистная (Tinospora cordifolia)
   - Вероника реснитчатая (Veronica ciliata)
@@ -48,7 +48,7 @@ sources:
 
 Панген-15 «Горечавка-15»
 
-Состав: Eugenia caryophyllata, Bambusa textilis, Glycyrrhiza glabra, Gentiana algida, Saussurea lappa, Terminalia chebula, Aquilaria agollocha, Myristica fragrans, Santalum album, Melia composita, Terminalia belerica, Emblica officinalis, Tinospora cordifolia, Veronica ciliata, Rhodiola sp.
+Состав: Eugenia caryophyllata, Bambusa textilis, Glycyrrhiza glabra, Gentiana algida, Saussurea lappa, Terminalia chebula, Aquilaria agollocha, Myristica fragrans, Santalum album, Melia composita, Terminalia bellirica, Emblica officinalis, Tinospora cordifolia, Veronica ciliata, Rhodiola sp.
 
 Сущность: слегка прохладная
 

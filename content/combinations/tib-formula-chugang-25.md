@@ -16,7 +16,7 @@ composition:
   - Мускатный орех (Myristica fragrans)
   - Солодка (Glycyrrhiza uralensis)
   - Красный сандал (Pterocarpus santalinus)
-  - Терминалия беллерическая (Terminalia belerica)
+  - Терминалия беллерическая (Terminalia bellirica)
   - Соссюрея лопуховидная (Saussurea lappa)
   - Bos taurus domesticus
   - Кутки (Picrorhiza kurroa)
@@ -66,7 +66,7 @@ sources:
 
 Чуганг-25 «Бамбуковая мана-25»
 
-Состав: Bambusa textilis, Carthamus tinctorius, Eugenia caryophyllata, Amomum subulatum, Aristolochia moupinensis, Terminalia chebula, Foeniculum vulgare, Lancea tibetica, Myristica fragrans, Glycyrrhiza uralensis, Pterocarpus santalinus, Terminalia belerica, Saussurea lappa, Bos taurus domesticus, Picrorhiza kurroa, Hippophae rhamnoides, Elettaria cardamomum, Vitis vinifera, Santalum album, Emblica officinalis, Rhodiola saera, Arenaria glanduligera, Incarvillea younghusbandii, Artemisia sieversiana, Geranium sp.
+Состав: Bambusa textilis, Carthamus tinctorius, Eugenia caryophyllata, Amomum subulatum, Aristolochia moupinensis, Terminalia chebula, Foeniculum vulgare, Lancea tibetica, Myristica fragrans, Glycyrrhiza uralensis, Pterocarpus santalinus, Terminalia bellirica, Saussurea lappa, Bos taurus domesticus, Picrorhiza kurroa, Hippophae rhamnoides, Elettaria cardamomum, Vitis vinifera, Santalum album, Emblica officinalis, Rhodiola saera, Arenaria glanduligera, Incarvillea younghusbandii, Artemisia sieversiana, Geranium sp.
 
 Сущность: слегка прохладная
 

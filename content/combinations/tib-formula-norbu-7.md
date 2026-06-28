@@ -12,7 +12,7 @@ composition:
   - Тиноспора сердцелистная (Tinospora cordifolia)
   - Имбирь (Zingiber officinale)
   - Терминалия хебула (Terminalia chebula)
-  - Терминалия беллерическая (Terminalia belerica)
+  - Терминалия беллерическая (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
 members:
   - tib-haritaki
@@ -59,7 +59,7 @@ sources:
 
 Норбу-7 тханг «Отвар из 7 драгоценных»
 
-Состав (Ману-4 + Брэбу-3): Inula racemosa, Rubus idaeopsis, Tinospora cordifolia, Zingiber officinalis, Terminalia chebula, Terminalia belerica, Emblica officinalis.
+Состав (Ману-4 + Брэбу-3): Inula racemosa, Rubus idaeopsis, Tinospora cordifolia, Zingiber officinalis, Terminalia chebula, Terminalia bellirica, Emblica officinalis.
 
 Сущность: слегка прохладная
 

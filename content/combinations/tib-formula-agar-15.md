@@ -15,7 +15,7 @@ composition:
   - Красный сандал (Pterocarpus santalinus)
   - Мезуя железная (Mesua ferrea)
   - Терминалия хебула (Terminalia chebula)
-  - Терминалия баллерика (Terminalia belerica)
+  - Терминалия баллерика (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
   - Девясил (Inula racemosa)
   - Малина (Rubus idaeopsis)
@@ -51,7 +51,7 @@ sources:
 
 Агар-15 «Орлиное дерево-15»
 
-Состав: Aquilaria agollocha, Myristica fragrans, Melia composita, Bambusa textiles, Saussurea lappa, Pterocarpus santalinus, Mesua ferrea, Terminalia chebula, Terminalia belerica, Emblica officinalis, Inula racemosa, Rubus idaeopsis, Tinospora cordifolia, Hedychium spicatum, Shorea robusta.
+Состав: Aquilaria agollocha, Myristica fragrans, Melia composita, Bambusa textiles, Saussurea lappa, Pterocarpus santalinus, Mesua ferrea, Terminalia chebula, Terminalia bellirica, Emblica officinalis, Inula racemosa, Rubus idaeopsis, Tinospora cordifolia, Hedychium spicatum, Shorea robusta.
 
 Сущность: слегка прохладная
 
