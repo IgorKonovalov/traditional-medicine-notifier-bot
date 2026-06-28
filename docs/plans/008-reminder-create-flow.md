@@ -156,7 +156,7 @@ internal id).
 
 ## Progress
 
-- [ ] Phase 1 — Recurrence builder + session state
-- [ ] Phase 2 — The wizard flow (anchor-edited steps)
-- [ ] Phase 3 — List integration & dispatch confirmation
-- [ ] Phase 4 — Validation, docs & close
+- [x] Phase 1 — Recurrence builder + session state (`b7c8e00`)
+- [x] Phase 2 — The wizard flow (anchor-edited steps) (`3010e42`)
+- [x] Phase 3 — List integration & dispatch confirmation (`3010e42`)
+- [ ] Phase 4 — Validation, docs & close (architect)
