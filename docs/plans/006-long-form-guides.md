@@ -20,6 +20,15 @@ guides here, follow the **source-faithful clinical voice spec from Plan 012**
 (named mechanisms / source vocabulary, minimal hedging, no scare-quotes on
 technical terms, no reader-directed advice) rather than the softer register of the
 early tips.
+**Amended:** 2026-06-28 — audience clarified: the bot targets **practitioners
+already inside the Sowa Rigpa / Tibetan-Buddhist tradition**, not a general
+wellness audience. This is the *rationale* for the clinical register the prior
+amendment mandates — author in source-faithful medical language (named
+доша/ньепа, пищеварительный огонь, Жар/Холод, named principles; minimal hedging),
+**not** the soft wellness voice. This shifts **register only**: the
+non-medical-advice **stance** guards in Phase 4 (descriptive framing, no
+diagnosis/dosing, no "if you have X then Y") are unchanged — holding stance fixed
+is what keeps "medical/raw" from drifting into prescription.
 **Bump on close:** minor (new user-facing content type + command)
 
 ## Context
@@ -189,8 +198,11 @@ exempt), **ADR 006** (render-time disclaimer); runs alongside **Plan 005** (tips
   <id>.md` ×2): **seasonal eating & conduct** plus one of {daily conduct, water
   & drinks, incompatible foods}. Same frontmatter shape; `source` cites
   `Сова Ригпа (manla.ru/info)` + section in `chapter`.
-- **Framing (all three):** **descriptive throughout** (non-medical-advice
-  invariant); manla prose **paraphrased**, attributed to the tradition (Rule 2);
+- **Framing (all three):** **clinical, source-faithful register** for a
+  practitioner audience (Plan 012 voice spec — named mechanisms, minimal hedging,
+  no scare-quotes on technical terms), but **descriptive in stance throughout**
+  (non-medical-advice invariant); manla prose **paraphrased**, attributed to the
+  tradition (Rule 2);
   any prescriptive/diagnostic sub-topic reframed or dropped. The fundamentals
   guide is the highest-risk: it names disease and constitution categories, so it
   must read as *"how the tradition classifies"*, never as *"what to do about
