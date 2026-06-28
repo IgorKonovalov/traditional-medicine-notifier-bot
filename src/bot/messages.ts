@@ -210,6 +210,9 @@ export const messages = {
   feedback: {
     prompt: 'Напишите ваше сообщение разработчику одним сообщением:',
     sent: 'Спасибо! Сообщение отправлено.',
+    /** Admin-facing relay of a user's feedback. `userId` is the internal id. */
+    adminRelay: (userId: number, text: string): string =>
+      `✉️ Обратная связь от пользователя #${userId}:\n\n${text}`,
   },
 
   // ─── notification bodies (delivered via the Notifier) ───────────────────────

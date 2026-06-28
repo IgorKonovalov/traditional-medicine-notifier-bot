@@ -28,7 +28,7 @@ import {
 } from './commands/reminder-create';
 import { registerSubscriptionsCommand } from './commands/subscriptions';
 import { registerDonateCommand } from './commands/donate';
-import { registerFeedbackCommand } from './commands/feedback';
+import { registerFeedbackCommand, registerFeedbackTextCapture } from './commands/feedback';
 import { registerMenuRouter } from './menu-router';
 import { registerPaymentHandlers } from './payments';
 
@@ -62,7 +62,7 @@ export function createBot(options: CreateBotOptions): CreatedBot {
   registerReminderCreateCommand(bot, options.deps);
   registerSubscriptionsCommand(bot, options.deps);
   registerDonateCommand(bot);
-  registerFeedbackCommand(bot);
+  registerFeedbackCommand(bot, options.deps);
 
   // Reply-keyboard router last: `hears` matches plain text only, so it never
   // shadows the command/action handlers registered above (ADR 009).
@@ -71,6 +71,9 @@ export function createBot(options: CreateBotOptions): CreatedBot {
   // menu router: a menu tap (handled by `hears`) wins, so the capture only ever
   // sees non-menu text and consumes it solely while parked on the label step.
   registerReminderCreateTextCapture(bot, options.deps);
+  // Feedback capture: same late-registration discipline — consumes a plain text
+  // message only while a `feedback` session is armed, else falls through.
+  registerFeedbackTextCapture(bot, options.deps);
   registerPaymentHandlers(bot);
 
   return { bot, disposeRateLimiter: limiter.dispose };

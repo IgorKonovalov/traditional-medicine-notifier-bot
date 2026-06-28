@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.7.2 — 2026-06-28
+
+- Fix dead-end feedback: the ✉️ Обратная связь button and bare `/feedback` now
+  arm a one-shot text capture, so the follow-up message is actually received —
+  relayed to the admins in `ADMIN_TELEGRAM_IDS` (and logged) instead of silently
+  dropped. The inline `/feedback <text>` form also relays to admins now.
+
 ## 0.7.1 — 2026-06-28
 
 - Fix ragged mid-sentence line breaks in rendered content (daily tips, herb
