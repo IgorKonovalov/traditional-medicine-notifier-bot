@@ -127,7 +127,7 @@ of reinventing routing/session/render:
   `set:tip:toggle`), **≤64 bytes** — run payloads through `assertCallbackData`
   and use stable content `id`s/indices, never titles. Scopes in use: `br`
   (browse), `se` (search), `set` (settings), `ob` (onboarding), `herb`/`remind`
-  (global CTA), `sub`/`unsub`, `donate`.
+  (global CTA), `rc` (reminder-create wizard), `sub`/`unsub`, `donate`.
 - **Gated surfaces.** The combinations (formula) browser is held behind the
   ADR 006 doctor-gate: it is simply **not built/registered** until the owner's
   documented medical sign-off (no runtime flag — the bot is private and

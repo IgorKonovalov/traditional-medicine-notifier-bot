@@ -48,10 +48,10 @@ Nothing in the domain imports Telegraf or `src/bot/` (ADR 003, ESLint-enforced).
 | `bot/middleware/*` | ✅ | error-handler, logger, rate-limiter, ensure-user |
 | Navigation kit (`keyboards.ts` menu/back/home/pager · `menu-router.ts` · `render/anchor.ts` · `commands/_callback-prologue.ts` · `commands/_herb-card.ts`) | ✅ | persistent reply-keyboard menu + anchor-edit drilldown + callback prologue (ADR 009, Plan 007); `callback_data` ≤64 B guarded |
 | `bot/commands/start·help·settings·browse·search·herb·tips·donate` | ✅ | start = stepped onboarding; browse/search/herb = anchor-edit drilldown w/ back/home + pager; settings = state-reflecting hub; tips = day's tip (Plan 005 expands) |
-| `bot/commands/reminders` (list/cancel) | ✅ | create-reminder flow 🟡 (Plan 008) |
+| `bot/commands/reminders` (list/cancel) · `reminder-create` (wizard) | ✅ | create flow wired — menu/list/herb-card entry, anchor-edit steps (Plan 008) |
 | `bot/commands/subscriptions` | ✅ | category sub/unsub |
 | `bot/commands/feedback` | 🟡 | inline-arg relay; admin routing TODO |
-| Create-reminder multi-step session | ⛔ | data model + dispatch ready; UI flow (Plan 008) builds on the nav kit |
+| Create-reminder multi-step session | ✅ | `reminder-create` wizard: label → kind → time(s) → date/weekdays → confirm; solicited path now fully closed (Plan 008) |
 | Combinations (formula) library branch | ⛔ | held behind the ADR 006 doctor-gate — not built/registered until owner sign-off (Plan 009) |
 | Per-category proactive digests | ⛔ | `subscriptions` table + `listSubscribers` ready |
 | Admin commands (`/stats`) | ⛔ | allowlist plumbing present (`adminTelegramIds`) |

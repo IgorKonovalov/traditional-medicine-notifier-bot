@@ -4,6 +4,18 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.7.0 — 2026-06-28
+
+- Create-reminder wizard (Plan 008) — the headline solicited-notification path is
+  now fully wired. An anchor-edited flow (label → recurrence kind → time(s) →
+  date/weekdays → confirm) builds a `scheduled_reminders` row reachable from three
+  entry points: the ⏰ Напоминания menu hub, the `/reminders` list, and a herb
+  card's ⏰ Напомнить (pre-links the herb and offers its name as the default
+  label). Free-text label capture is a tightly-scoped `on('text')` claim active
+  only while a create session sits on the label step. The `/reminders` list renders
+  each row's human-readable schedule and next fire; reminders bypass the proactive
+  daily cap (ADR 004).
+
 ## 0.6.0 — 2026-06-28
 
 - Navigation shell & UX foundation (Plan 007, ADR 009). The bot gains a

@@ -1,8 +1,9 @@
 # Plan 008 — Reminder-create flow (the headline feature, wired)
 
-**Status:** Approved — not started
+**Status:** Completed
 **Created:** 2026-06-26
 **Approved:** 2026-06-26
+**Completed:** 2026-06-28
 **Bump on close:** minor (new user-facing capability)
 **Depends on:** Plan 007 (navigation shell) — uses its anchor/session/prologue kit.
 
@@ -159,4 +160,4 @@ internal id).
 - [x] Phase 1 — Recurrence builder + session state (`b7c8e00`)
 - [x] Phase 2 — The wizard flow (anchor-edited steps) (`3010e42`)
 - [x] Phase 3 — List integration & dispatch confirmation (`3010e42`)
-- [ ] Phase 4 — Validation, docs & close (architect)
+- [x] Phase 4 — Validation, docs & close (architect)
