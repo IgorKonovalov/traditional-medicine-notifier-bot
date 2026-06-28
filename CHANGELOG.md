@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.9.0 — 2026-06-28
+
+- Greatly expand the daily-tip pool from 10 to 60 tips (Plan 005). Adds 20 new
+  Чжуд-ши tips (deepening the seasonal, conduct, eating-manner and six-tastes
+  chapters) and 30 new Сова Ригпа (manla.ru) tips on constitution-based
+  nutrition, water, sleep, daily conduct and seasonal behaviour — a ~2-month
+  no-repeat rotation. All framing stays descriptive (non-medical-advice
+  invariant); prescriptive source topics (weight, fasting, mono-diets) are
+  recast descriptively with doctor pointers on the riskiest.
+
 ## 0.8.0 — 2026-06-28
 
 - Post-deploy version broadcast (Plan 010, ADR 010). On boot the bot now pings

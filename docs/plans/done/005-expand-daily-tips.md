@@ -1,9 +1,10 @@
 # Plan 005 — Greatly expand the daily-tip pool (Чжуд-ши + manla.ru)
 
-**Status:** Approved — not started
+**Status:** Completed
 **Created:** 2026-06-26
 **Approved:** 2026-06-26
-**Bump on close:** minor (user-facing content)
+**Completed:** 2026-06-28
+**Bump on close:** minor (user-facing content) — shipped as v0.9.0
 
 ## Context
 
@@ -185,7 +186,7 @@ render time, never baked into the body).
 
 ## Progress
 
-- [ ] Phase 1 — Source harvest & tip outline (incl. manla citation string)
-- [ ] Phase 2 — Author ~25 Чжуд-ши tips
-- [ ] Phase 3 — Author ~25 manla.ru tips (prescriptive sections reframed)
-- [ ] Phase 4 — Index regen, convention capture, validation & close
+- [x] Phase 1 — Source harvest & tip outline (manla string locked: «Сова Ригпа»)
+- [x] Phase 2 — Author 20 Чжуд-ши tips (deepening verified chapters)
+- [x] Phase 3 — Author 30 Сова Ригпа tips (prescriptive sections reframed)
+- [x] Phase 4 — Index regen (60 tips), convention capture, validation & close
