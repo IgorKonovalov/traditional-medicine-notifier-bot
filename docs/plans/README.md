@@ -14,7 +14,7 @@ before the **dev** skill implements it, then moved to `done/` on close.
 | 004 | Formula doctor-review remediation | Draft |
 | 005 | Expand daily tips | Approved — not started |
 | 006 | Long-form guides | Approved — not started |
-| 007 | Navigation shell & UX foundation | Approved — not started |
+| 007 | Navigation shell & UX foundation | Implemented — pending review |
 | 008 | Reminder-create flow | Approved — not started |
 | 009 | Library browser (gated formulas) | Approved — not started |
 

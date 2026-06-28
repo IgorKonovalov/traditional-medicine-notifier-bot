@@ -72,7 +72,8 @@ refactor(content): extract herb validator into dedicated module
 
 A PreToolUse hook in `.claude/settings.local.json` (→ `.claude/hooks/backdate-commit.js`)
 rewrites every `git commit` command to set `GIT_AUTHOR_DATE` and `GIT_COMMITTER_DATE`
-to a random time in today's 19:00–23:00 local window. This is intentional.
+to a random time in today's 19:00–23:00 local window, and **auto-approves** that
+commit (`permissionDecision: "allow"`) so commits don't prompt. This is intentional.
 
 - **Just run `git commit` normally.** Don't set the env vars yourself.
 - **Don't be surprised by evening timestamps** in `git log`. They're correct.
@@ -102,6 +103,35 @@ The headline feature. Two delivery paths, both behind the `Notifier` interface
   **≤1 proactive push per user per calendar day** (ADR 004) and records to
   `notification_log`. Any new proactive surface must route through this gate.
 
+## Navigation model (ADR 009)
+
+The bot spine is a **persistent reply-keyboard main menu + inline drilldown**
+(Plan 007). When adding or changing a screen, follow the established kit instead
+of reinventing routing/session/render:
+
+- **Menu = exact-match routing.** `mainMenuKeyboard()` (`keyboards.ts`) labels
+  live in `messages.menu`; `menu-router.ts` routes each via
+  `bot.hears(exact(LABEL), …)` to the **same `*Entry` function** the slash
+  command calls — keep the two in lockstep. A menu tap disposes open sessions
+  (`disposeAllSessions`) before dispatch.
+- **Anchor-edit drilldown.** A multi-step flow sends **one** message (the anchor)
+  via `sendAnchor` and edits it on each step via `editAnchor` (`render/anchor.ts`,
+  plaintext, ADR 002) — never a new message per step. Persist the anchor +
+  per-flow state as an `AnchoredSession<S>` (`session-store.ts`), keyed by
+  internal `user_id` (ADR 003), TTL `SESSION_TTL_MS`.
+- **Callback prologue.** Every inline-button handler starts with
+  `requireSessionAndAnchor(ctx, kind)` (`commands/_callback-prologue.ts`): it
+  validates the user, the live session, and that the tapped message **is** the
+  anchor. Stale taps ack silently and no-op.
+- **Callback-data convention:** `<scope>:<action>:<arg?>` (e.g. `br:herb:<id>`,
+  `set:tip:toggle`), **≤64 bytes** — run payloads through `assertCallbackData`
+  and use stable content `id`s/indices, never titles. Scopes in use: `br`
+  (browse), `se` (search), `set` (settings), `ob` (onboarding), `herb`/`remind`
+  (global CTA), `sub`/`unsub`, `donate`.
+- **Gated surfaces.** A library branch can ship dark behind a config flag:
+  `FEATURE_COMBINATIONS_BROWSER` (default **false**) gates the formula browser
+  per the ADR 006 doctor-gate. Consumed by Plan 009.
+
 ## Portability discipline (ADR 003)
 
 - **Internal `user_id` is the primary key on `users`.** Telegram ID lives in `auth_identities`, never as a PK.
@@ -114,4 +144,5 @@ If a planned change would violate any of these, flag it and update the relevant 
 ## Telegram constraints
 
 - Messages have a ~3800-character practical limit — split content proactively when approaching it.
+- `callback_data` is capped at **64 bytes** — guard every payload with `assertCallbackData` (`keyboards.ts`).
 - YAML frontmatter values containing colons must be quoted to avoid parsing errors.

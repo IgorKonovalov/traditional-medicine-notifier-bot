@@ -202,4 +202,4 @@ kit once this lands.
 - [x] Phase 3 — Migrate browse / search / herb onto anchor + back/home
 - [x] Phase 4 — Settings hub with dynamic labels
 - [x] Phase 5 — Onboarding refresh (`/start`)
-- [ ] Phase 6 — Feature flag, validation, docs & close
+- [x] Phase 6 — Feature flag, validation, docs & close (plan move to `done/` gated on owner review)

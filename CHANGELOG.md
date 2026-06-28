@@ -4,6 +4,21 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.6.0 — 2026-06-28
+
+- Navigation shell & UX foundation (Plan 007, ADR 009). The bot gains a
+  **persistent reply-keyboard main menu** (📚 Библиотека · ⏰ Напоминания ·
+  💡 Советы · ⚙️ Настройки · ❓ Помощь) routed by exact match to the same entry
+  functions as the slash commands. Browse/search/herb are migrated onto an
+  **anchor-edit drilldown** — one message edited in place per session, with
+  universal `« Назад`/home and paginated lists — backed by a shared navigation
+  kit: anchor render helpers, an `AnchoredSession` model, a
+  `requireSessionAndAnchor` callback prologue, and back/home/pager builders with
+  a 64-byte `callback_data` guard. Settings becomes a state-reflecting hub;
+  `/start` is a stepped, idempotent onboarding; a minimal `/tips` entry backs the
+  Советы button. Adds the `FEATURE_COMBINATIONS_BROWSER` flag (default off) that
+  Plan 009 will consume to ship the doctor-gated formula browser dark (ADR 006).
+
 ## 0.5.1 — 2026-06-27
 
 - Sort the content-loader directory walk so corpus traversal — and the
