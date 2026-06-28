@@ -47,11 +47,17 @@ function compareSemverDesc(a: string, b: string): number {
  * must have an entry or the announcer logs a warning and marks users notified
  * anyway (to prevent an infinite retry loop).
  *
- * Seeded **empty** — the first entry is authored by the architect at plan
- * close on a minor/major bump (plan 010 phase 4). Do not author entries here
- * during implementation.
+ * The first entry (`0.7.0`) is authored at plan-010 close. It seeds
+ * `/changelog` and sets the broadcast baseline; per the migration-002 backfill
+ * (existing users start at the current version) it is not itself broadcast to
+ * the pre-feature cohort — the first live "what's new" push is the next minor.
+ * Subsequent minor/major closes append one plaintext entry here (architect
+ * close ritual); patch closes stay silent (absent from the map).
  */
-export const versionAnnouncements: Record<string, string | AnnouncementMessage> = {};
+export const versionAnnouncements: Record<string, string | AnnouncementMessage> = {
+  '0.7.0':
+    '🆕 Версия 0.7.0. Бот теперь рассказывает о новых функциях — включить можно в ⚙️ Настройках, а всю историю обновлений показывает /changelog.',
+};
 
 /**
  * Retrospective view of `versionAnnouncements` for `/changelog`. Sort is

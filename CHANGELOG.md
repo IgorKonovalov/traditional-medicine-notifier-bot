@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.7.0 — 2026-06-28
+
+- Post-deploy version broadcast (Plan 010, ADR 010). On boot the bot now pings
+  active users about each new minor/major release they haven't seen — a
+  multi-version queue (≤3, oldest-first, spaced), gated by a default-off
+  `feature_announcements` opt-in with a `priority` bypass, idempotent via a new
+  `users.notified_version` column (migration 002) and delivered Notifier-direct,
+  exempt from the daily proactive cap (third notification path). Adds a
+  `/changelog` command (plaintext release history), a "new features" toggle in
+  ⚙️ Настройки, and a version footer in `/help`.
+
 ## 0.6.0 — 2026-06-28
 
 - Navigation shell & UX foundation (Plan 007, ADR 009). The bot gains a

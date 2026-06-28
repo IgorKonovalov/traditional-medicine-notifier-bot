@@ -1,7 +1,7 @@
 # ADR 004 — Notification architecture: solicited vs. proactive + daily cap
 
 **Date:** 2026-06-23
-**Status:** Accepted
+**Status:** Accepted (amended by ADR 010 — adds a third, cap-exempt broadcast path)
 
 ## Context
 
@@ -32,6 +32,16 @@ Split delivery into **two paths**, both behind the `Notifier` interface
 **Any new proactive surface must call `sendProactivePush`.** Sending proactively
 via the Notifier directly bypasses the cap and is a bug. Solicited reminders are
 the only sanctioned direct-send path.
+
+> **Amended by ADR 010.** A **third** path was added: the post-deploy version
+> broadcast (`services/version-announcer.ts`, plan 010). It is a one-shot-per-
+> version event made idempotent by a per-user `notified_version` watermark, so
+> it delivers **Notifier-direct and exempt from this cap** — like a solicited
+> reminder. The rule above now reads: every *proactive* (recurring,
+> bot-initiated) surface must call `sendProactivePush`; the sanctioned
+> direct-send paths are solicited reminders **and** the version broadcast. See
+> ADR 010 for the rationale (routing the broadcast through the cap would drop
+> release notes and create a per-boot retry loop).
 
 ## Consequences
 

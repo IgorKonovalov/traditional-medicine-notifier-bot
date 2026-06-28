@@ -89,9 +89,9 @@ commit (`permissionDecision: "allow"`) so commits don't prompt. This is intentio
 - **Combination source fidelity (ADR 006 staging).** The authoritative re-capture of every formula's source is `research/raw-crawl-verbose-v2.json` (Plan 004); the older `raw-crawl-verbose.json` is **not** faithful (it was LLM-condensed). `manla.ru` is canonical for dual-source formulas. `npm run content:review` rebuilds the doctor-facing review HTML under `research/_private/` (gitignored) for each fix→re-audit round.
 - **Plans live in `docs/plans/`**, ADRs in `docs/adr/`, architecture docs in `docs/architecture/`. Approved plans drive implementation; the dev skill must not deviate without flagging the user.
 
-## Notification model (two paths)
+## Notification model (three paths)
 
-The headline feature. Two delivery paths, both behind the `Notifier` interface
+The headline feature. Three delivery paths, all behind the `Notifier` interface
 (`src/services/notifier.ts`, ADR 003) so no Telegraf leaks into the domain:
 
 - **Solicited** — user-scheduled reminders. `services/reminder-dispatch.ts` runs
@@ -101,7 +101,17 @@ The headline feature. Two delivery paths, both behind the `Notifier` interface
 - **Proactive** — daily tips / topic digests. `services/subscription-dispatch.ts`
   routes every send through `services/notification-budget.ts`, which enforces
   **≤1 proactive push per user per calendar day** (ADR 004) and records to
-  `notification_log`. Any new proactive surface must route through this gate.
+  `notification_log`. Any new **proactive** (recurring, bot-initiated) surface
+  must route through this gate.
+- **Broadcast** — post-deploy "what's new" announcements. `services/version-announcer.ts`
+  runs once at boot and pings every active user whose `users.notified_version`
+  is behind the current `package.json` version, delivering the per-version
+  `messages.versionAnnouncements` strings (multi-version queue ≤3, oldest-first,
+  spaced; opt-in `feature_announcements` default off; `priority: true` bypasses
+  the opt-out). **Notifier-direct, exempt from the daily cap** (ADR 010) — it's a
+  one-shot-per-version event made idempotent by the `notified_version` watermark,
+  not by the budget. `/changelog` shows the history. Minor/major plan-closes add
+  an entry to the map (see the architect close ritual); patch closes stay silent.
 
 ## Navigation model (ADR 009)
 

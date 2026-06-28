@@ -1,9 +1,9 @@
 # Plan 010 — Post-deploy version broadcast ("what's new")
 
-**Status:** Draft
+**Status:** Completed
 **Created:** 2026-06-28
-**Completed:** —
-**Bump on close:** minor
+**Completed:** 2026-06-28
+**Bump on close:** minor (shipped v0.7.0)
 
 ## Context
 
@@ -259,4 +259,5 @@ stays Telegraf-free), ADR 004 (notification paths + cap), ADR 009 (navigation).
 - [x] Phase 1 — Version plumbing + schema (`eeae095`)
 - [x] Phase 2 — Announcer service + announcement map (`0e495c7`)
 - [x] Phase 3 — `/changelog`, settings toggle, `/help` version, boot wiring (`894b2f3`)
-- [ ] Phase 4 — ADR, close-ritual doc, validate
+- [x] Phase 4 — ADR 010, architecture/CLAUDE refresh, v0.7.0 bump + first
+  `versionAnnouncements` entry, close (this commit)
