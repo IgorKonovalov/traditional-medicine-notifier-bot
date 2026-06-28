@@ -50,6 +50,17 @@ export function disposeAllSessions(userId: number): void {
   for (const kind of SESSION_KINDS) deleteSession(userId, kind);
 }
 
+/**
+ * The persisted shape of an anchor-edit drilldown session (ADR 009): the
+ * `message_id` of the single message the flow edits in place, plus the
+ * per-flow `state`. The callback prologue checks the tapped message against
+ * `anchor.messageId` before handing `state` to a handler.
+ */
+export interface AnchoredSession<S = unknown> {
+  readonly anchor: { readonly messageId: number };
+  readonly state: S;
+}
+
 export function saveSession(userId: number, kind: SessionKind, data: unknown, ttlMs: number): void {
   saveSessionRow(userId, kind, JSON.stringify(data), Date.now() + ttlMs);
 }

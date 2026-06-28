@@ -198,7 +198,7 @@ kit once this lands.
 ## Progress
 
 - [x] Phase 1 — Main menu + router + command registration
-- [ ] Phase 2 — Navigation kit: anchor render, sessions, callback prologue
+- [x] Phase 2 — Navigation kit: anchor render, sessions, callback prologue
 - [ ] Phase 3 — Migrate browse / search / herb onto anchor + back/home
 - [ ] Phase 4 — Settings hub with dynamic labels
 - [ ] Phase 5 — Onboarding refresh (`/start`)
