@@ -42,7 +42,14 @@ What changed since the sections below were written:
   animal), `Solms-Laubachia sp.` (genus only), `Trona` (mineral), and a stray `etc.`
 - The **toxic-constituent discrepancies** flagged below (aconite vs strychnine in
   `agar-35`, `garuda-5`, `olse-25`, `tcovo-8`) **still stand** — confirm before any
-  production use.
+  production use. **Interim mitigation (2026-06-28, v0.11.1):** a defensive
+  caution («Содержит сильнодействующие компоненты — применять только под
+  наблюдением врача») was added to all four `cautions` arrays — they ship in the
+  live formula card — pending the verdict. `agar-35` ships *Strychnos nux vomica*
+  (no aconite); `garuda-5`/`olse-25`/`tcovo-8` ship truncated compositions
+  («И другие») that may hide an aconite entry. Remove/refine once the true
+  constituent is confirmed (verdict shape: is the toxin nux vomica, aconite, or
+  both, and should the missing aconite be listed in `composition`?).
 - Best-effort Russian↔Latin ingredient mappings still need a botanist check.
 - **bimala re-audit (2026-06-27).** A completeness-gated re-capture of the 97
   bimala-only formulas recovered dropped description sentences for **12** records

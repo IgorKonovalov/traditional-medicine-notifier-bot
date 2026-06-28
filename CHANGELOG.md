@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.11.1 — 2026-06-28
+
+- Add an interim defensive caution to four formulas carrying unresolved
+  toxic-constituent flags (`agar-35`, `garuda-5`, `olse-25`, `tcovo-8`) — it
+  flags the potent components in the now-live formula card pending practitioner
+  confirmation of the aconite-vs-strychnine discrepancy (ADR 006 review ongoing,
+  `docs/medical-review.md`).
+
 ## 0.11.0 — 2026-06-28
 
 - Unified **📚 Библиотека** surface (Plan 009): a hub gathering herbs (browse by
