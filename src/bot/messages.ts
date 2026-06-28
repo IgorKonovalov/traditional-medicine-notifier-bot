@@ -61,13 +61,13 @@ export const messages = {
   start: {
     welcome:
       'Здравствуйте! Это справочник по китайской и тибетской традиционной медицине ' +
-      'с напоминаниями и подписками.\n\n' +
+      'с напоминаниями и ежедневными советами.\n\n' +
       'Пользуйтесь меню внизу экрана или командами через «/».\n\n' +
       disclaimer,
     /** Onboarding step 1: welcome + disclaimer, then the daily-tip offer. */
     onboardingIntro:
       'Здравствуйте! Это справочник по китайской и тибетской традиционной медицине ' +
-      'с напоминаниями и подписками.\n\n' +
+      'с напоминаниями и ежедневными советами.\n\n' +
       disclaimer +
       '\n\nХотите получать ежедневный совет дня?',
     tipYes: '🔔 Да, присылайте',
@@ -89,7 +89,6 @@ export const messages = {
       '• /search — поиск травы по названию\n' +
       '• /tips — совет дня\n' +
       '• /reminders — ваши напоминания (создать, посмотреть, отключить)\n' +
-      '• /subscriptions — подписки на темы и ежедневный совет\n' +
       '• /settings — настройки\n' +
       '• /changelog — история обновлений бота\n' +
       '• /donate — поддержать проект\n' +
@@ -108,7 +107,6 @@ export const messages = {
     tipLabelOff: 'Совет дня: выкл 🔕',
     announcementsLabelOn: 'Новые функции: вкл ✅',
     announcementsLabelOff: 'Новые функции: выкл 🔕',
-    subscriptionsButton: '📂 Подписки',
     donateButton: '⭐️ Поддержать',
     feedbackButton: '✉️ Обратная связь',
     confirmTipOn: '✓ Ежедневный совет включён.',
@@ -161,6 +159,11 @@ export const messages = {
     useHerbName: '✅ Оставить название',
     enterCustom: '✏️ Ввести своё',
     labelTooLong: (max: number): string => `Слишком длинно — сократите до ${max} символов.`,
+    // step: herb (optional link)
+    herbPrompt: 'Привязать траву к напоминанию? Выберите из списка или пропустите.',
+    herbSkip: '⏭ Пропустить',
+    /** Linked-herb line shown on the confirm screen when a herb is attached. */
+    herbLine: (name: string): string => `🌿 Трава: ${name}`,
     // step: kind
     kindPrompt: (label: string): string => `«${label}»\n\nКак часто напоминать?`,
     kindOnce: 'Один раз',
@@ -201,13 +204,6 @@ export const messages = {
     describeDaily: (times: string): string => `Каждый день в ${times}`,
     describeWeekly: (days: string, times: string): string => `По дням: ${days}, в ${times}`,
     describeInterval: (n: number, times: string): string => `Каждые ${n} дн. в ${times}`,
-  },
-
-  subscriptions: {
-    title: 'Подписки',
-    empty: 'У вас пока нет подписок.',
-    subscribed: 'Вы подписались.',
-    unsubscribed: 'Вы отписались.',
   },
 
   donate: {

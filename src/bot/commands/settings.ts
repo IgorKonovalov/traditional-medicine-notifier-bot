@@ -2,8 +2,8 @@
  * ⚙️ Настройки — an anchor-edited settings hub (ADR 009) whose button labels
  * reflect current state (the daily-tip toggle reads вкл ✅ / выкл 🔕). Toggling
  * edits the anchor in place and re-renders with a `✓` confirmation line; the
- * other rows are entry points to existing surfaces (subscriptions, donate,
- * feedback) which open as their own messages.
+ * other rows are entry points to existing surfaces (donate, feedback) which
+ * open as their own messages.
  *
  * Callback scope `set:` — `set:tip:toggle`, `set:open:<surface>`, `set:close`.
  * Settings persist via the existing `user_settings` repo; the bot timezone is
@@ -27,7 +27,6 @@ import { type AnchoredSession, deleteSession, saveSession, SESSION_TTL_MS } from
 import { requireSessionAndAnchor } from './_callback-prologue';
 import { donateEntry } from './donate';
 import { feedbackEntry } from './feedback';
-import { subscriptionsEntry } from './subscriptions';
 
 interface HubView {
   readonly text: string;
@@ -61,7 +60,6 @@ function hubView(
           'set:ann:toggle',
         ),
       ],
-      [Markup.button.callback(messages.settings.subscriptionsButton, 'set:open:subs')],
       [
         Markup.button.callback(messages.settings.donateButton, 'set:open:donate'),
         Markup.button.callback(messages.settings.feedbackButton, 'set:open:feedback'),
@@ -136,10 +134,6 @@ export function registerSettingsCommand(bot: Telegraf, deps: BotDeps): void {
     await open(ctx);
   };
 
-  bot.action(
-    /^set:open:subs$/,
-    openSurface((ctx) => subscriptionsEntry(ctx, deps)),
-  );
   bot.action(/^set:open:donate$/, openSurface(donateEntry));
   bot.action(/^set:open:feedback$/, openSurface(feedbackEntry));
 

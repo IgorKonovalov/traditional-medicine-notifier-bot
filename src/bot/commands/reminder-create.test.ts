@@ -4,7 +4,9 @@ import {
   type ReminderDraft,
   draftToRecurrence,
   firstFireAt,
+  herbPageSlice,
   normalizeTimes,
+  stepsFor,
   validateDraft,
 } from './reminder-create';
 
@@ -48,6 +50,57 @@ describe('draftToRecurrence', () => {
       everyDays: 3,
       times: ['07:00'],
     });
+  });
+});
+
+describe('stepsFor', () => {
+  it('includes the herb step between label and kind when not pre-linked', () => {
+    expect(stepsFor('daily', false)).toEqual(['label', 'herb', 'kind', 'time', 'confirm']);
+  });
+
+  it('omits the herb step when the herb was pre-linked at entry', () => {
+    expect(stepsFor('daily', true)).toEqual(['label', 'kind', 'time', 'confirm']);
+  });
+
+  it('places the herb step before kind for every recurrence kind', () => {
+    for (const kind of ['once', 'weekly', 'interval'] as const) {
+      const steps = stepsFor(kind, false);
+      expect(steps.indexOf('herb')).toBe(1);
+      expect(steps.indexOf('herb')).toBeLessThan(steps.indexOf('kind'));
+    }
+  });
+
+  it('keeps the herb step in the pre-kind head while kind is still undefined', () => {
+    expect(stepsFor(undefined, false)).toEqual(['label', 'herb', 'kind']);
+    expect(stepsFor(undefined, true)).toEqual(['label', 'kind']);
+  });
+});
+
+describe('herbPageSlice', () => {
+  const items = Array.from({ length: 20 }, (_, i) => `h${i}`);
+
+  it('returns the requested page with the configured page size', () => {
+    const { slice, page, pageCount } = herbPageSlice(items, 1, 8);
+    expect(slice).toEqual(['h8', 'h9', 'h10', 'h11', 'h12', 'h13', 'h14', 'h15']);
+    expect(page).toBe(1);
+    expect(pageCount).toBe(3);
+  });
+
+  it('clamps an over-range page to the last page', () => {
+    const { slice, page } = herbPageSlice(items, 99, 8);
+    expect(page).toBe(2);
+    expect(slice).toEqual(['h16', 'h17', 'h18', 'h19']);
+  });
+
+  it('clamps a negative page to the first page', () => {
+    expect(herbPageSlice(items, -5, 8).page).toBe(0);
+  });
+
+  it('reports a single page for an empty corpus', () => {
+    const { slice, page, pageCount } = herbPageSlice([], 0, 8);
+    expect(slice).toEqual([]);
+    expect(page).toBe(0);
+    expect(pageCount).toBe(1);
   });
 });
 

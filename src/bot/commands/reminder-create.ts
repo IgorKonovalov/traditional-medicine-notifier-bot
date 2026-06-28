@@ -13,6 +13,7 @@
 
 import { Markup, type Context, type Telegraf } from 'telegraf';
 
+import type { Herb } from '../../content/types';
 import { createReminder } from '../../db/repositories/reminder.repo';
 import {
   addDays,
@@ -24,7 +25,7 @@ import type { RecurrenceSpec } from '../../notifications/types';
 import { formatDateTime, formatDayLabel } from '../../utils/datetime';
 import type { BotDeps } from '../context';
 import { getUserId } from '../context';
-import { assertCallbackData } from '../keyboards';
+import { assertCallbackData, pager } from '../keyboards';
 import { messages } from '../messages';
 import { type Anchor, editAnchor, editAnchorAt, sendAnchor } from '../render/anchor';
 import {
@@ -40,7 +41,15 @@ import { requireSessionAndAnchor } from './_callback-prologue';
 export type RecurrenceKind = RecurrenceSpec['kind'];
 
 /** Steps of the wizard, in nominal order; the active set depends on `kind`. */
-export type ReminderStep = 'label' | 'kind' | 'every' | 'time' | 'date' | 'weekdays' | 'confirm';
+export type ReminderStep =
+  | 'label'
+  | 'herb'
+  | 'kind'
+  | 'every'
+  | 'time'
+  | 'date'
+  | 'weekdays'
+  | 'confirm';
 
 /** Max label length — it is echoed back verbatim in every fired notification. */
 export const LABEL_MAX = 100;
@@ -55,6 +64,13 @@ export interface ReminderDraft {
   label?: string;
   /** Optional content herb this reminder links to. */
   herbId?: string;
+  /**
+   * Set when the herb was pre-linked at entry (herb-card `⏰ Напомнить` path).
+   * Suppresses the in-wizard herb picker step — the herb is already chosen.
+   */
+  herbPrelinked?: boolean;
+  /** Current page of the herb picker (0-based). */
+  herbPage?: number;
   kind?: RecurrenceKind;
   /** Selected local `HH:MM` slots (deduped/sorted on use). */
   times: string[];
@@ -201,6 +217,23 @@ const DATE_OFFSETS = [0, 1, 2, 3, 4, 5, 6];
 /** Weekday buttons in Monday-first display order (values stay 0=Sun…6=Sat). */
 const WEEKDAY_ORDER = [1, 2, 3, 4, 5, 6, 0];
 const MS_PER_DAY = 86_400_000;
+/** Herbs shown per page of the optional herb-link picker. */
+const HERBS_PER_PAGE = 8;
+
+/**
+ * Slice a list into a page, clamping `page` into `[0, pageCount)`. Pure and
+ * order-preserving so the herb picker pages a stable corpus deterministically.
+ */
+export function herbPageSlice<T>(
+  items: readonly T[],
+  page: number,
+  perPage: number = HERBS_PER_PAGE,
+): { slice: readonly T[]; page: number; pageCount: number } {
+  const pageCount = Math.max(1, Math.ceil(items.length / perPage));
+  const safePage = Math.min(Math.max(page, 0), pageCount - 1);
+  const start = safePage * perPage;
+  return { slice: items.slice(start, start + perPage), page: safePage, pageCount };
+}
 
 const timeCode = (t: string): string => t.replace(':', '');
 const timeFromCode = (c: string): string => `${c.slice(0, 2)}:${c.slice(2)}`;
@@ -211,30 +244,36 @@ function chunk<T>(items: readonly T[], size: number): T[][] {
   return out;
 }
 
-/** The step sequence for a given kind; drives next/prev and which steps exist. */
-function stepsFor(kind: RecurrenceKind | undefined): ReminderStep[] {
+/**
+ * The step sequence for a given kind; drives next/prev and which steps exist.
+ * The optional herb-link step sits between `label` and `kind`, and is present
+ * only when the herb was **not** pre-linked at entry (the herb-card path
+ * already chose it, so its picker is skipped).
+ */
+export function stepsFor(kind: RecurrenceKind | undefined, herbPrelinked: boolean): ReminderStep[] {
+  const head: ReminderStep[] = herbPrelinked ? ['label', 'kind'] : ['label', 'herb', 'kind'];
   switch (kind) {
     case 'once':
-      return ['label', 'kind', 'time', 'date', 'confirm'];
+      return [...head, 'time', 'date', 'confirm'];
     case 'daily':
-      return ['label', 'kind', 'time', 'confirm'];
+      return [...head, 'time', 'confirm'];
     case 'weekly':
-      return ['label', 'kind', 'time', 'weekdays', 'confirm'];
+      return [...head, 'time', 'weekdays', 'confirm'];
     case 'interval':
-      return ['label', 'kind', 'every', 'time', 'confirm'];
+      return [...head, 'every', 'time', 'confirm'];
     default:
-      return ['label', 'kind'];
+      return head;
   }
 }
 
 function nextStep(draft: ReminderDraft): ReminderStep {
-  const steps = stepsFor(draft.kind);
+  const steps = stepsFor(draft.kind, draft.herbPrelinked === true);
   const i = steps.indexOf(draft.step);
   return steps[Math.min(i + 1, steps.length - 1)] ?? draft.step;
 }
 
 function prevStep(draft: ReminderDraft): ReminderStep {
-  const steps = stepsFor(draft.kind);
+  const steps = stepsFor(draft.kind, draft.herbPrelinked === true);
   const i = steps.indexOf(draft.step);
   return steps[Math.max(i - 1, 0)] ?? draft.step;
 }
@@ -270,12 +309,27 @@ function labelView(draft: ReminderDraft): View {
   return { text: lines.join('\n'), keyboard: Markup.inlineKeyboard(rows) };
 }
 
+/** The optional herb-link picker: a paginated list of herbs + a skip button. */
+function herbView(draft: ReminderDraft, herbs: readonly Herb[]): View {
+  const rc = messages.reminderCreate;
+  const { slice, page, pageCount } = herbPageSlice(herbs, draft.herbPage ?? 0);
+  const rows: CallbackButton[][] = slice.map((h) => [
+    Markup.button.callback(h.nameRu, assertCallbackData(`rc:herb:${h.id}`)),
+  ]);
+  if (pageCount > 1) rows.push(pager('rc:hpg', page, pageCount));
+  rows.push([Markup.button.callback(rc.herbSkip, 'rc:herb:skip')]);
+  rows.push(navRow(true));
+  return { text: rc.herbPrompt, keyboard: Markup.inlineKeyboard(rows) };
+}
+
 /** Render the screen for the draft's current step. */
-function view(draft: ReminderDraft, timeZone: string, now: number): View {
+function view(draft: ReminderDraft, timeZone: string, now: number, herbs: readonly Herb[]): View {
   const rc = messages.reminderCreate;
   switch (draft.step) {
     case 'label':
       return labelView(draft);
+    case 'herb':
+      return herbView(draft, herbs);
     case 'kind':
       return {
         text: rc.kindPrompt(draft.label ?? ''),
@@ -355,8 +409,12 @@ function view(draft: ReminderDraft, timeZone: string, now: number): View {
         at === null
           ? rc.describeOnce('—')
           : describeReminder(draftToRecurrence(draft), at, timeZone);
+      const summary = rc.summary(draft.label ?? '', recurrenceText, timeZone);
+      const herbName =
+        draft.herbId !== undefined ? herbs.find((h) => h.id === draft.herbId)?.nameRu : undefined;
+      const body = herbName !== undefined ? `${summary}\n${rc.herbLine(herbName)}` : summary;
       return {
-        text: `${rc.confirmPrompt}\n\n${rc.summary(draft.label ?? '', recurrenceText, timeZone)}`,
+        text: `${rc.confirmPrompt}\n\n${body}`,
         keyboard: Markup.inlineKeyboard([
           [Markup.button.callback(rc.save, 'rc:save')],
           navRow(true),
@@ -390,9 +448,10 @@ export async function reminderCreateEntry(
   const draft = emptyDraft();
   if (opts?.herbId !== undefined) {
     draft.herbId = opts.herbId;
+    draft.herbPrelinked = true;
     if (opts.herbName !== undefined) draft.label = opts.herbName;
   }
-  const out = view(draft, deps.timezone, Date.now());
+  const out = view(draft, deps.timezone, Date.now(), deps.content.herbs.all);
   const anchor = await sendAnchor(ctx, out.text, out.keyboard);
   persist(userId, anchor, draft);
 }
@@ -438,7 +497,7 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     v: { userId: number; session: AnchoredSession<ReminderDraft> },
     draft: ReminderDraft,
   ): Promise<void> => {
-    const out = view(draft, tz, Date.now());
+    const out = view(draft, tz, Date.now(), deps.content.herbs.all);
     await editAnchor(ctx, out.text, out.keyboard);
     persist(v.userId, v.session.anchor, draft);
   };
@@ -468,6 +527,40 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     draft.step = 'label';
     await editAndPersist(ctx, v, draft);
   });
+
+  // Optional herb-link step. `rc:herb:skip` must be registered before the
+  // catch-all `rc:herb:(.+)` so the skip token never resolves as a herb id.
+  bot.action(/^rc:herb:skip$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const draft = v.session.state;
+    delete draft.herbId; // skip ⇒ no herb, even if one was picked then revisited
+    draft.step = nextStep(draft);
+    await editAndPersist(ctx, v, draft);
+  });
+
+  bot.action(/^rc:herb:(.+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const draft = v.session.state;
+    const herbId = ctx.match[1] ?? '';
+    if (deps.content.herbs.byId.has(herbId)) draft.herbId = herbId;
+    draft.step = nextStep(draft);
+    await editAndPersist(ctx, v, draft);
+  });
+
+  bot.action(/^rc:hpg:(\d+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const draft = v.session.state;
+    draft.herbPage = Number(ctx.match[1]);
+    await editAndPersist(ctx, v, draft);
+  });
+
+  bot.action(/^rc:hpg:noop$/, (ctx) => ctx.answerCbQuery());
 
   bot.action(/^rc:kind:(once|daily|weekly|interval)$/, async (ctx) => {
     const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
@@ -638,7 +731,7 @@ export function registerReminderCreateTextCapture(bot: Telegraf, deps: BotDeps):
     if (raw.length > LABEL_MAX) {
       draft.customLabel = true;
       delete draft.label;
-      const out = view(draft, deps.timezone, Date.now());
+      const out = view(draft, deps.timezone, Date.now(), deps.content.herbs.all);
       await editAnchorAt(
         ctx,
         session.anchor.messageId,
@@ -650,7 +743,7 @@ export function registerReminderCreateTextCapture(bot: Telegraf, deps: BotDeps):
     }
     draft.label = raw;
     draft.step = nextStep(draft);
-    const out = view(draft, deps.timezone, Date.now());
+    const out = view(draft, deps.timezone, Date.now(), deps.content.herbs.all);
     await editAnchorAt(ctx, session.anchor.messageId, out.text, out.keyboard);
     persist(userId, session.anchor, draft);
   });

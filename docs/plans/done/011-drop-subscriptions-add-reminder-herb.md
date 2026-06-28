@@ -1,9 +1,9 @@
 # Plan 011 — Drop subscriptions surface · optional herb link in reminders
 
-**Status:** Approved — not started
+**Status:** Completed
 **Created:** 2026-06-28
 **Approved:** 2026-06-28
-**Completed:** —
+**Completed:** 2026-06-28 (v0.10.0)
 **Bump on close:** minor
 
 ## Context
@@ -111,5 +111,5 @@ ADR 003 (portability), ADR 004 (proactive budget).
 
 ## Progress
 
-- [ ] Phase 1 — Remove subscriptions surface (commit hash on completion)
-- [ ] Phase 2 — Optional herb-link step (commit hash on completion)
+- [x] Phase 1 — Remove subscriptions surface (65997d6)
+- [x] Phase 2 — Optional herb-link step (1e3ac83)

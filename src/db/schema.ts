@@ -114,7 +114,9 @@ const migration001: MigrationFn = (db) => {
     CREATE INDEX idx_reminders_user ON scheduled_reminders(user_id);
 
     -- PROACTIVE notifications: topic/category subscriptions. One row per
-    -- (user, category). The daily-tip dispatch reads subscribers per category.
+    -- (user, category). The topic-subscriptions UI was retired in Plan 011;
+    -- this v1 baseline table is retained (dead, harmless) under the
+    -- additive-only migration rule.
     CREATE TABLE subscriptions (
       user_id     INTEGER NOT NULL,
       category    TEXT NOT NULL,

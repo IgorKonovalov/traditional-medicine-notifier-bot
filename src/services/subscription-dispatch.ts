@@ -7,9 +7,10 @@
  * calendar day even if other proactive surfaces (future per-category digests)
  * also fire.
  *
- * NOTE (skeleton): only the opt-in daily tip is wired. Per-category digests
- * built from the `subscriptions` table (via `listSubscribers`) are a future
- * extension — flagged here, not yet implemented.
+ * NOTE (skeleton): only the opt-in daily tip is wired. The topic-subscriptions
+ * UI was retired in Plan 011, but the `subscriptions` table is retained under
+ * the additive-only rule; per-category digests built from it remain a possible
+ * future extension — not yet implemented.
  *
  * Per ADR 003 rule 3 this depends on the `Notifier` interface, not Telegraf.
  */
