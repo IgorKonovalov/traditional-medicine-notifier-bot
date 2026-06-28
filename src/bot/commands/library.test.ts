@@ -4,7 +4,13 @@ import type { Combination, Herb, LoadedContent } from '../../content/types';
 import { buildCrossLinks } from '../../content/cross-links';
 import type { BotDeps } from '../context';
 
-import { backState, clampPage, formulaMatches, herbMatches, searchHits } from './library';
+import { FORMULA_BRANCH_ENABLED } from './_formula-gate';
+import { backState, clampPage, formulaMatches, herbMatches, hubView, searchHits } from './library';
+
+/** Pull every button label out of an inline keyboard. */
+function buttonLabels(view: ReturnType<typeof hubView>): string[] {
+  return view.keyboard.reply_markup.inline_keyboard.flat().map((b) => ('text' in b ? b.text : ''));
+}
 
 describe('clampPage', () => {
   it('clamps a too-high page to the last page (no wrap past the end)', () => {
@@ -148,5 +154,17 @@ describe('searchHits — formulas stay behind the doctor-gate', () => {
     const hits = searchHits(deps(), 'миробалан');
     expect(hits).toEqual([{ kind: 'herb', id: 'tib-haritaki', name: 'Миробалан хебула' }]);
     expect(hits.some((h) => h.kind === 'formula')).toBe(false);
+  });
+});
+
+describe('combinations surface is absent by default (ADR 006 doctor-gate)', () => {
+  it('the gate ships OFF — flipping it on is a release-blocking decision', () => {
+    // If this fails, the formula branch is live: confirm the owner's documented
+    // medical sign-off before letting it ship.
+    expect(FORMULA_BRANCH_ENABLED).toBe(false);
+  });
+
+  it('the hub shows no 🧪 Формулы branch while withheld', () => {
+    expect(buttonLabels(hubView())).not.toContain('🧪 Формулы');
   });
 });

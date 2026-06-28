@@ -148,6 +148,20 @@ export const messages = {
     categoryButton: (name: string, count: number): string => `${name} (${count})`,
     // 💡 Совет дня branch (links to the existing daily-tip surface)
     tipsEmpty: 'Пока нет советов.',
+    // 🧪 Формулы branch (withheld until the ADR 006 doctor-gate is lifted)
+    formulasTitle: 'Формулы',
+    formulasEmpty: 'Пока нет формул.',
+  },
+
+  /**
+   * Formula (combination) card chrome (Plan 009 Phase 5). The card is held
+   * behind the ADR 006 doctor-gate and surfaces only the minimal, owner-approved
+   * field set — composition, member cross-links, a descriptive line, cautions —
+   * never the verbose review-pending fields.
+   */
+  formulaCard: {
+    composition: (list: string): string => `Состав: ${list}`,
+    cautions: (list: string): string => `Предостережения: ${list}`,
   },
 
   /** Shared herb-card chrome (the card body itself is content + disclaimer). */

@@ -36,6 +36,7 @@ import {
   SESSION_TTL_MS,
 } from '../session-store';
 import { requireSessionAndAnchor, type ValidatedCallback } from './_callback-prologue';
+import { formulaCardKeyboard, formulaMemberLinks, renderFormula } from './_formula-card';
 import { FORMULA_BRANCH_ENABLED } from './_formula-gate';
 import { herbCardKeyboard, herbFormulaLinks, renderHerb } from './_herb-card';
 import { pickDailyTip } from './tips';
@@ -52,13 +53,16 @@ type Screen =
   | 'card'
   | 'tips'
   | 'search'
-  | 'results';
+  | 'results'
+  | 'formula-list'
+  | 'formula-card';
 
 /**
  * Library drilldown state. `tradition` xor `category` xor `query` records how
  * the current herb list / results were reached (so `« Назад` from a card returns
  * to the right origin and a list returns to the right picker); `page` is the
- * active list/results/picker page; `herbId` is set while a card is open.
+ * active list/results/picker page; `herbId` is set while a herb card is open,
+ * `formulaId` while a formula card is open (withheld branch, Phase 5).
  */
 interface LibraryState {
   readonly screen: Screen;
@@ -68,6 +72,7 @@ interface LibraryState {
   readonly query?: string;
   readonly page: number;
   readonly herbId?: string;
+  readonly formulaId?: string;
 }
 
 interface View {
@@ -123,8 +128,9 @@ function herbsFor(deps: BotDeps, state: LibraryState): readonly Herb[] {
 // ─── per-screen views ─────────────────────────────────────────────────────────
 
 /** The library root. Branches whose owning plan hasn't shipped stay hidden;
- *  `🧪 Формулы` appears only once the doctor-gate is lifted (`_formula-gate`). */
-function hubView(): View {
+ *  `🧪 Формулы` appears only once the doctor-gate is lifted (`_formula-gate`).
+ *  Exported so a test can assert the formula branch is absent by default. */
+export function hubView(): View {
   const rows: CallbackButton[][] = [
     [Markup.button.callback(messages.library.herbs, 'lib:herbs')],
     [Markup.button.callback(messages.library.search, 'lib:search')],
@@ -315,6 +321,43 @@ function resultsView(deps: BotDeps, state: LibraryState): View & { readonly page
   };
 }
 
+// ─── formulas (withheld until sign-off — _formula-gate) ───────────────────────
+
+function formulaListView(deps: BotDeps, page: number): View & { readonly page: number } {
+  const formulas = deps.content.combinations.all;
+  if (formulas.length === 0) {
+    return {
+      text: messages.library.formulasEmpty,
+      keyboard: Markup.inlineKeyboard([backRow('lib:back')]),
+      page: 0,
+    };
+  }
+  const { page: safePage, pageCount } = clampPage(page, formulas.length);
+  const slice = formulas.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
+  const rows = slice.map((f) => [
+    Markup.button.callback(f.nameRu, assertCallbackData(`lib:formula:${f.id}`)),
+  ]);
+  const nav: CallbackButton[][] = [];
+  if (pageCount > 1) nav.push(pager('lib:flist', safePage, pageCount));
+  nav.push(backRow('lib:back'), homeRow('lib:home'));
+  return {
+    text: messages.library.formulasTitle,
+    keyboard: Markup.inlineKeyboard([...rows, ...nav]),
+    page: safePage,
+  };
+}
+
+/** Formula card, or null when the id is unknown (stale tap / bad deep link). */
+function formulaCardView(deps: BotDeps, formulaId: string): View | null {
+  const formula = deps.content.combinations.byId.get(formulaId);
+  if (formula === undefined) return null;
+  const links = formulaMemberLinks(formula, deps.content);
+  return {
+    text: renderFormula(formula),
+    keyboard: formulaCardKeyboard(links, [backRow('lib:back'), homeRow('lib:home')]),
+  };
+}
+
 /** Render whichever screen `state` names, clamping page where it paginates. */
 function viewFor(deps: BotDeps, state: LibraryState): View & { readonly page: number } {
   switch (state.screen) {
@@ -332,6 +375,12 @@ function viewFor(deps: BotDeps, state: LibraryState): View & { readonly page: nu
       return { ...searchPromptView(), page: 0 };
     case 'results':
       return resultsView(deps, state);
+    case 'formula-list':
+      return formulaListView(deps, state.page);
+    case 'formula-card': {
+      const card = formulaCardView(deps, state.formulaId ?? '');
+      return card === null ? { ...hubView(), page: 0 } : { ...card, page: state.page };
+    }
     case 'card': {
       const card = cardView(deps, state.herbId ?? '');
       return card === null ? { ...hubView(), page: 0 } : { ...card, page: state.page };
@@ -369,6 +418,12 @@ export function backState(state: LibraryState): LibraryState {
       return { screen: 'herbs', page: 0 };
     case 'results':
       return { screen: 'search', page: 0 };
+    case 'formula-card':
+      // Back to search results (if reached from a search hit) else the formula list.
+      return state.query !== undefined
+        ? { screen: 'results', query: state.query, page: state.page }
+        : { screen: 'formula-list', page: state.page };
+    case 'formula-list':
     case 'herbs':
     case 'tips':
     case 'search':
@@ -571,6 +626,43 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
   });
 
   bot.action(/^lib:results:noop$/, (ctx) => ctx.answerCbQuery());
+
+  // 🧪 Формулы — built but registered ONLY when the doctor-gate is lifted
+  // (ADR 006, `_formula-gate`). While withheld, these handlers are never wired,
+  // so even a hand-crafted `lib:formula:*` callback falls through to a no-op.
+  if (FORMULA_BRANCH_ENABLED) {
+    bot.action(/^lib:formulas$/, async (ctx) => {
+      const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+      if (v === null) return;
+      await ctx.answerCbQuery();
+      await go(ctx, v, { screen: 'formula-list', page: 0 });
+    });
+
+    bot.action(/^lib:flist:(\d+)$/, async (ctx) => {
+      const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+      if (v === null) return;
+      await ctx.answerCbQuery();
+      await go(ctx, v, { screen: 'formula-list', page: Number(ctx.match[1] ?? '0') });
+    });
+
+    bot.action(/^lib:flist:noop$/, (ctx) => ctx.answerCbQuery());
+
+    bot.action(/^lib:formula:(.+)$/, async (ctx) => {
+      const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+      if (v === null) return;
+      await ctx.answerCbQuery();
+      const formulaId = ctx.match[1] ?? '';
+      if (!deps.content.combinations.byId.has(formulaId)) return;
+      const { query, page } = v.session.state;
+      await go(ctx, v, {
+        screen: 'formula-card',
+        formulaId,
+        page,
+        // Carry a search origin so `« Назад` returns to the results.
+        ...(query !== undefined ? { query } : {}),
+      });
+    });
+  }
 
   bot.action(/^lib:tips$/, async (ctx) => {
     const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');

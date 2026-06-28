@@ -139,10 +139,16 @@ of reinventing routing/session/render:
   (browse), `se` (search), `set` (settings), `ob` (onboarding), `herb`/`remind`
   (global CTA), `rc` (reminder-create wizard), `sub`/`unsub`, `donate`.
 - **Gated surfaces.** The combinations (formula) browser is held behind the
-  ADR 006 doctor-gate: it is simply **not built/registered** until the owner's
-  documented medical sign-off (no runtime flag — the bot is private and
-  pre-launch). Plan 009 builds it last and wires it into the library only after
-  sign-off.
+  ADR 006 doctor-gate. Plan 009 **built** it (list + search + formula card with
+  member cross-links, minimal field set) but **withholds** it via one
+  compile-time constant — `src/bot/commands/_formula-gate.ts →
+  FORMULA_BRANCH_ENABLED` (default `false`; not a runtime/env flag). That single
+  predicate gates all three surfaces: the `🧪 Формулы` hub branch, formula search
+  hits, and the herb-card "Входит в формулы" cross-links — **and** the formula
+  callback handlers are only registered when it is `true`, so a hand-crafted
+  `lib:formula:*` tap can't leak. Flipping it to `true` is the release action
+  requiring the owner's documented sign-off (`docs/medical-review.md`); tests
+  assert the surface is absent while it is `false`.
 
 ## Portability discipline (ADR 003)
 

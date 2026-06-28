@@ -180,5 +180,15 @@ the session workflow outputs; raw verbatim source for both sites remains in
 | —    | —        | —     | pending |
 
 _When production-eligible content is approved, record it here and define how it is
-surfaced (the bot currently has no combinations command — that is a separate
-follow-up plan)._
+surfaced._
+
+**UI surface status (Plan 009, 2026-06-28).** The library now contains a fully
+built **combinations (formula) browser** — list, search, and a formula card with
+member cross-links — but it is **withheld**: gated by the single
+`src/bot/commands/_formula-gate.ts → FORMULA_BRANCH_ENABLED` constant, default
+`false`. While withheld there is no `🧪 Формулы` hub branch, formulas never appear
+as search hits, and herb cards show no "Входит в формулы" cross-links (asserted by
+tests). The formula card surfaces only the owner-approved minimal field set
+(name / nature / composition / member cross-links / themes / cautions) — never the
+verbose review-pending fields. **Flipping `FORMULA_BRANCH_ENABLED` to `true` is the
+release action that requires the sign-off recorded in the table above.**

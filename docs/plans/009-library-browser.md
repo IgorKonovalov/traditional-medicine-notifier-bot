@@ -165,7 +165,12 @@ lives under one roof.
   members + a descriptive line only**, never the raw `indications`/
   `traditional_use`/`dosing_notes` (those are exactly what Plan 004 / the
   practitioner review are remediating). **Owner to confirm** the surfaced field
-  set before Phase 5 authoring.
+  set before Phase 5 authoring. **Resolved 2026-06-28 (owner):** minimal set —
+  name(s) + `nature` («Сущность») + `composition` + `members` as herb cross-links
+  + `themes` (one descriptive line) + `cautions` + render-time disclaimer. The
+  verbose review-pending fields (`indications`/`traditional_use`/`dosing_notes`/
+  `source_text`) and the raw `body` stay **unsurfaced**. Implemented in
+  `_formula-card.ts`; a test asserts the verbose fields never appear.
 - **Large formula list pagination.** The corpus is big; ensure the pager and
   `callback_data` (formula id + page index) stay within 64 bytes and the list is
   searchable, not just scrollable.
@@ -196,5 +201,7 @@ lives under one roof.
 - [x] Phase 1 — Reverse cross-link index (herb ↔ formulas) — `4767591`
 - [x] Phase 2 — Library hub + herb browse — `5c6695e`
 - [x] Phase 3 — Rich herb card with cross-links — `6e8a5fb`
-- [x] Phase 4 — Search integrated into the library
-- [ ] Phase 5 — Combinations browser (withheld) + validation, docs & close
+- [x] Phase 4 — Search integrated into the library — `a4e4b22`
+- [x] Phase 5 — Combinations browser (withheld) built + validation + docs — close
+      ritual (version bump · CHANGELOG · announcement · move to `done/`) pending
+      architect review
