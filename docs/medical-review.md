@@ -1,10 +1,13 @@
 # Medical review gate (ADR 006)
 
-**Status: PENDING — owner-managed.** The verbose Tibetan-formula corpus under
-`content/combinations/` is a **staging artifact**. Per ADR 006, **none of it may
-reach the production bot** until a qualified Tibetan-medicine practitioner has
-reviewed it and the owner has signed off. The owner will report when the review is
-complete and how any changes should be applied.
+**Status: PARTIAL sign-off — owner-managed.** The verbose Tibetan-formula corpus
+under `content/combinations/` is a **staging artifact**. Per ADR 006, **none of it
+may reach the production bot** until a qualified Tibetan-medicine practitioner has
+reviewed it and the owner has signed off. **As of 2026-06-28 the owner has approved
+the _minimal_ library UI surface** (formula browser showing name / nature /
+composition / member cross-links / themes / cautions only — Plan 009, gate lifted);
+the **verbose fields remain unsurfaced and unapproved** (see Sign-off table). The
+owner will report when the verbose-field review is complete.
 
 ## Fidelity re-audit & remediation (Plan 004, 2026-06-26)
 
@@ -175,20 +178,22 @@ the session workflow outputs; raw verbatim source for both sites remains in
 
 ## Sign-off
 
-| Date | Reviewer | Scope | Outcome |
-|------|----------|-------|---------|
-| —    | —        | —     | pending |
+| Date       | Reviewer | Scope                                                                 | Outcome    |
+|------------|----------|-----------------------------------------------------------------------|------------|
+| 2026-06-28 | Owner    | **Library UI surface** — formula browser, **minimal field set only** (name / nature / composition / member cross-links / themes / cautions). Verbose fields (indications / traditional_use / dosing_notes / source_text) stay unsurfaced. | **Approved — gate lifted** (`FORMULA_BRANCH_ENABLED = true`, Plan 009) |
+| —          | —        | Verbose source fields (indications / dosing / traditional use) for any richer surface | pending |
 
 _When production-eligible content is approved, record it here and define how it is
 surfaced._
 
-**UI surface status (Plan 009, 2026-06-28).** The library now contains a fully
-built **combinations (formula) browser** — list, search, and a formula card with
-member cross-links — but it is **withheld**: gated by the single
-`src/bot/commands/_formula-gate.ts → FORMULA_BRANCH_ENABLED` constant, default
-`false`. While withheld there is no `🧪 Формулы` hub branch, formulas never appear
-as search hits, and herb cards show no "Входит в формулы" cross-links (asserted by
-tests). The formula card surfaces only the owner-approved minimal field set
-(name / nature / composition / member cross-links / themes / cautions) — never the
-verbose review-pending fields. **Flipping `FORMULA_BRANCH_ENABLED` to `true` is the
-release action that requires the sign-off recorded in the table above.**
+**UI surface status (Plan 009, 2026-06-28 — gate LIFTED).** The library contains a
+fully built **combinations (formula) browser** — list, search, and a formula card
+with member cross-links — and it is now **registered**: the single
+`src/bot/commands/_formula-gate.ts → FORMULA_BRANCH_ENABLED` constant is `true`
+(owner sign-off, table above). The `🧪 Формулы` hub branch, formula search hits,
+and herb-card "Входит в формулы" cross-links are all live. The formula card
+surfaces only the owner-approved **minimal field set**
+(name / nature / composition / member cross-links / themes / cautions) — the
+verbose review-pending fields (indications / traditional_use / dosing_notes /
+source_text) and the raw body **remain unsurfaced**, still pending the
+verbose-field review.

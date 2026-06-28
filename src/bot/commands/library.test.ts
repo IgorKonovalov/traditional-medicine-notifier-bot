@@ -135,7 +135,7 @@ describe('herbMatches / formulaMatches', () => {
   });
 });
 
-describe('searchHits — formulas stay behind the doctor-gate', () => {
+describe('searchHits — formulas follow the doctor-gate', () => {
   function deps(): BotDeps {
     const herbs = [herb('tib-haritaki', 'Миробалан хебула')];
     const combos = [combo('tib-formula-agar-8', 'Миробалановая формула')];
@@ -149,22 +149,25 @@ describe('searchHits — formulas stay behind the doctor-gate', () => {
     return { content, timezone: 'UTC', botUsername: 'b', adminTelegramIds: new Set() };
   }
 
-  it('returns herb hits but never formula hits while the branch is withheld', () => {
-    // Both the herb and the formula contain "миробалан"; only the herb surfaces.
+  it('surfaces herb and formula hits when the branch is registered', () => {
+    // Both the herb and the formula contain "миробалан"; with the gate lifted
+    // both surface (herbs first, then formulas).
     const hits = searchHits(deps(), 'миробалан');
-    expect(hits).toEqual([{ kind: 'herb', id: 'tib-haritaki', name: 'Миробалан хебула' }]);
-    expect(hits.some((h) => h.kind === 'formula')).toBe(false);
+    expect(hits).toEqual([
+      { kind: 'herb', id: 'tib-haritaki', name: 'Миробалан хебула' },
+      { kind: 'formula', id: 'tib-formula-agar-8', name: 'Миробалановая формула' },
+    ]);
   });
 });
 
-describe('combinations surface is absent by default (ADR 006 doctor-gate)', () => {
-  it('the gate ships OFF — flipping it on is a release-blocking decision', () => {
-    // If this fails, the formula branch is live: confirm the owner's documented
-    // medical sign-off before letting it ship.
-    expect(FORMULA_BRANCH_ENABLED).toBe(false);
+describe('combinations surface tracks the ADR 006 doctor-gate', () => {
+  it('is registered (owner sign-off 2026-06-28 — docs/medical-review.md)', () => {
+    // The gate is now lifted. Turning it back OFF is a deliberate decision, not a
+    // regression — update this expectation in lockstep if that ever happens.
+    expect(FORMULA_BRANCH_ENABLED).toBe(true);
   });
 
-  it('the hub shows no 🧪 Формулы branch while withheld', () => {
-    expect(buttonLabels(hubView())).not.toContain('🧪 Формулы');
+  it('the hub shows the 🧪 Формулы branch when registered', () => {
+    expect(buttonLabels(hubView())).toContain('🧪 Формулы');
   });
 });

@@ -13,5 +13,10 @@
  *
  * Flip it to `true` only after sign-off. While it is `false`, the formula
  * surface is provably absent — asserted by a test (Phase 5).
+ *
+ * **Lifted 2026-06-28 (owner sign-off, recorded in `docs/medical-review.md`).**
+ * The combinations branch is now registered: the formula card surfaces only the
+ * owner-approved minimal field set (name/nature/composition/member cross-links/
+ * themes/cautions) — the verbose review-pending fields stay unsurfaced.
  */
-export const FORMULA_BRANCH_ENABLED = false;
+export const FORMULA_BRANCH_ENABLED = true;

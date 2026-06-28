@@ -53,7 +53,7 @@ Nothing in the domain imports Telegraf or `src/bot/` (ADR 003, ESLint-enforced).
 | `bot/commands/reminders` (list/cancel) · `reminder-create` (wizard) | ✅ | create flow wired — menu/list/herb-card entry, anchor-edit steps (Plan 008); optional paginated herb-link step from the ➕ Новое path (Plan 011) |
 | `bot/commands/feedback` | 🟡 | inline-arg relay; admin routing TODO |
 | Create-reminder multi-step session | ✅ | `reminder-create` wizard: label → (optional herb link, ➕ Новое path only) → kind → time(s) → date/weekdays → confirm; solicited path now fully closed (Plan 008/011) |
-| Combinations (formula) library branch | 🟡 | **built but withheld** (Plan 009): list + search + formula card (minimal field set: name/nature/composition/member cross-links/themes/cautions) all gated by `_formula-gate.FORMULA_BRANCH_ENABLED` (default `false`). Absent from hub/search/cross-links until owner sign-off flips the constant (ADR 006); tests assert the absence |
+| Combinations (formula) library branch | ✅ | **live** (Plan 009; owner sign-off 2026-06-28, `_formula-gate.FORMULA_BRANCH_ENABLED = true`): list + search + formula card (minimal field set: name/nature/composition/member cross-links/themes/cautions). Verbose review-pending fields stay unsurfaced (ADR 006, `docs/medical-review.md`) |
 | Per-category proactive digests | ⛔ | `subscriptions` table retained (dead); its UI **and** repo access layer were removed in Plan 011 — a future digest must re-add the repo helpers |
 | Admin commands (`/stats`) | ⛔ | allowlist plumbing present (`adminTelegramIds`) |
 
