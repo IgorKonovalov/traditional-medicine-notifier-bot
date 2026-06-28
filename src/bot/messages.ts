@@ -82,9 +82,18 @@ export const messages = {
   },
 
   settings: {
-    title: 'Настройки',
-    dailyTipOn: 'Ежедневный совет включён.',
-    dailyTipOff: 'Ежедневный совет выключен.',
+    title: '⚙️ Настройки',
+    body: 'Управляйте уведомлениями и поддержкой проекта.',
+    /** Read-only bot timezone line; per-user timezones are a later plan. */
+    timezone: (tz: string): string => `🕔 Часовой пояс напоминаний: ${tz}`,
+    tipLabelOn: 'Совет дня: вкл ✅',
+    tipLabelOff: 'Совет дня: выкл 🔕',
+    subscriptionsButton: '📂 Подписки',
+    donateButton: '⭐️ Поддержать',
+    feedbackButton: '✉️ Обратная связь',
+    confirmTipOn: '✓ Ежедневный совет включён.',
+    confirmTipOff: '✓ Ежедневный совет выключен.',
+    closed: 'Меню внизу экрана открывает разделы.',
   },
 
   browse: {

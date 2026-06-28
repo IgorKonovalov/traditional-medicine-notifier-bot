@@ -49,7 +49,7 @@ export function createBot(options: CreateBotOptions): CreatedBot {
 
   registerStartCommand(bot);
   registerHelpCommand(bot);
-  registerSettingsCommand(bot);
+  registerSettingsCommand(bot, options.deps);
   registerBrowseCommand(bot, options.deps);
   registerSearchCommand(bot, options.deps);
   registerHerbCommand(bot, options.deps);

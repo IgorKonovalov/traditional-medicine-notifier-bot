@@ -4,7 +4,7 @@
  * Callback namespace `sub:` / `unsub:` operates on category ids.
  */
 
-import { Markup, type Telegraf } from 'telegraf';
+import { Markup, type Context, type Telegraf } from 'telegraf';
 
 import {
   listUserSubscriptions,
@@ -15,7 +15,10 @@ import type { BotDeps } from '../context';
 import { getUserId } from '../context';
 import { messages } from '../messages';
 
-function keyboard(deps: BotDeps, subscribed: ReadonlySet<string>): ReturnType<typeof Markup.inlineKeyboard> {
+function keyboard(
+  deps: BotDeps,
+  subscribed: ReadonlySet<string>,
+): ReturnType<typeof Markup.inlineKeyboard> {
   const rows = deps.content.categories.all.map((c) => {
     const on = subscribed.has(c.id);
     return [
@@ -31,15 +34,18 @@ function subscribedSet(userId: number): Set<string> {
   return new Set(listUserSubscriptions(userId).map((s) => s.category));
 }
 
+/** Open the subscriptions list. Shared by /subscriptions and the settings hub. */
+export async function subscriptionsEntry(ctx: Context, deps: BotDeps): Promise<void> {
+  const userId = getUserId(ctx);
+  if (userId === undefined) {
+    await ctx.reply(messages.common.notRegistered);
+    return;
+  }
+  await ctx.reply(messages.subscriptions.title, keyboard(deps, subscribedSet(userId)));
+}
+
 export function registerSubscriptionsCommand(bot: Telegraf, deps: BotDeps): void {
-  bot.command('subscriptions', async (ctx) => {
-    const userId = getUserId(ctx);
-    if (userId === undefined) {
-      await ctx.reply(messages.common.notRegistered);
-      return;
-    }
-    await ctx.reply(messages.subscriptions.title, keyboard(deps, subscribedSet(userId)));
-  });
+  bot.command('subscriptions', (ctx) => subscriptionsEntry(ctx, deps));
 
   bot.action(/^(sub|unsub):(.+)$/, async (ctx) => {
     const userId = getUserId(ctx);
