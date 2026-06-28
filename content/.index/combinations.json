@@ -529,7 +529,7 @@
     "tags": [],
     "memberCount": 1,
     "sourceCount": 2,
-    "hasIndications": true,
+    "hasIndications": false,
     "nameOriginal": "Ргйам-цхва-бжи-тханг, Чха-мнйам-бжи-тханг / Giamca 4 tan / Джамца-4 тханг «Каменная соль-4 отвар»",
     "nature": "тёплая"
   },
@@ -1009,7 +1009,7 @@
     "tags": [],
     "memberCount": 0,
     "sourceCount": 2,
-    "hasIndications": true,
+    "hasIndications": false,
     "nameOriginal": "Sebru Dane (Дан Ма Нэ Джог)",
     "nature": "слегка тёплая"
   },
