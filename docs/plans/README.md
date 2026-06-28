@@ -4,7 +4,7 @@ Implementation plans authored by the **architect** skill drive all non-trivial
 work. Each plan is `NNN-short-name.md` (zero-padded), reviewed and approved
 before the **dev** skill implements it, then moved to `done/` on close.
 
-- **Next free number:** `010`
+- **Next free number:** `012`
 - **Completed:** see `done/`
 
 ### Active roster
@@ -17,6 +17,7 @@ before the **dev** skill implements it, then moved to `done/` on close.
 | 007 | Navigation shell & UX foundation | Implemented — pending review |
 | 008 | Reminder-create flow | Approved — not started |
 | 009 | Library browser (gated formulas) | Approved — not started |
+| 011 | Drop subscriptions · optional herb link in reminders | Approved — not started |
 
 ### UI overhaul plan set (007–009)
 

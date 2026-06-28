@@ -83,5 +83,157 @@
       "part": "Тантра объяснений",
       "chapter": "гл. 23 «Как жить не болея»"
     }
+  },
+  {
+    "id": "tip-011-spring-conduct",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 14 «Сезонный образ жизни»"
+    }
+  },
+  {
+    "id": "tip-012-summer-conduct",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 14 «Сезонный образ жизни»"
+    }
+  },
+  {
+    "id": "tip-013-autumn-conduct",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 14 «Сезонный образ жизни»"
+    }
+  },
+  {
+    "id": "tip-014-winter-conduct",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 14 «Сезонный образ жизни»"
+    }
+  },
+  {
+    "id": "tip-015-body-oiling",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
+  },
+  {
+    "id": "tip-016-sense-organs",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
+  },
+  {
+    "id": "tip-017-physical-activity",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
+  },
+  {
+    "id": "tip-018-care-in-special-cases",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 15 «Как вести себя в частных случаях»"
+    }
+  },
+  {
+    "id": "tip-019-fresh-warm-food",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 16 «О том, как надо питаться»"
+    }
+  },
+  {
+    "id": "tip-020-digest-before-next",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 16 «О том, как надо питаться»"
+    }
+  },
+  {
+    "id": "tip-021-measure-by-digestion",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 18 «Мера питания»"
+    }
+  },
+  {
+    "id": "tip-022-sweet-taste",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 19 «Вкусы»"
+    }
+  },
+  {
+    "id": "tip-023-pungent-taste",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 19 «Вкусы»"
+    }
+  },
+  {
+    "id": "tip-024-bitter-astringent-taste",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 19 «Вкусы»"
+    }
+  },
+  {
+    "id": "tip-025-sour-salty-taste",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 19 «Вкусы»"
+    }
+  },
+  {
+    "id": "tip-026-post-digestive-taste",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 19 «Вкусы»"
+    }
+  },
+  {
+    "id": "tip-027-moderation-prevention",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 23 «Как жить не болея»"
+    }
+  },
+  {
+    "id": "tip-028-early-signs",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 23 «Как жить не болея»"
+    }
+  },
+  {
+    "id": "tip-029-mental-conduct",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
   }
 ]
