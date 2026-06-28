@@ -117,9 +117,26 @@ export interface ContentBucket<T> {
   readonly byId: ReadonlyMap<string, T>;
 }
 
+/**
+ * Pre-computed herb↔formula cross-link maps (Plan 009). Built once at boot from
+ * `Combination.members`, so the library surface can answer "which formulas use
+ * this herb?" without re-scanning the corpus on every card render.
+ *
+ * Both maps are **sparse**: a herb in no formula is simply absent from
+ * `formulasByHerb` (callers read `.get(id) ?? []`). The forward direction is the
+ * resolved member-herb id list per formula.
+ */
+export interface CrossLinks {
+  /** herb id → ids of formulas whose `members` include it (corpus order). */
+  readonly formulasByHerb: ReadonlyMap<string, readonly string[]>;
+  /** formula id → its resolved member-herb ids (the `members` list). */
+  readonly herbsByFormula: ReadonlyMap<string, readonly string[]>;
+}
+
 export interface LoadedContent {
   readonly herbs: ContentBucket<Herb>;
   readonly combinations: ContentBucket<Combination>;
   readonly categories: ContentBucket<Category>;
   readonly tips: ContentBucket<Tip>;
+  readonly crossLinks: CrossLinks;
 }

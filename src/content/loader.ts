@@ -13,6 +13,7 @@ import { join } from 'node:path';
 
 import matter from 'gray-matter';
 
+import { buildCrossLinks } from './cross-links';
 import { validateCorpus } from './validate';
 import type {
   Category,
@@ -43,6 +44,7 @@ export function loadContent(contentDir: string): LoadedContent {
     combinations: toBucket(combinations),
     categories: toBucket(categories),
     tips: toBucket(tips),
+    crossLinks: buildCrossLinks(combinations),
   };
 
   validateCorpus(content);
