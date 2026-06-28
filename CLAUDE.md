@@ -138,17 +138,17 @@ of reinventing routing/session/render:
   and use stable content `id`s/indices, never titles. Scopes in use: `br`
   (browse), `se` (search), `set` (settings), `ob` (onboarding), `herb`/`remind`
   (global CTA), `rc` (reminder-create wizard), `sub`/`unsub`, `donate`.
-- **Gated surfaces.** The combinations (formula) browser is held behind the
-  ADR 006 doctor-gate. Plan 009 **built** it (list + search + formula card with
-  member cross-links, minimal field set) but **withholds** it via one
-  compile-time constant — `src/bot/commands/_formula-gate.ts →
-  FORMULA_BRANCH_ENABLED` (default `false`; not a runtime/env flag). That single
-  predicate gates all three surfaces: the `🧪 Формулы` hub branch, formula search
-  hits, and the herb-card "Входит в формулы" cross-links — **and** the formula
-  callback handlers are only registered when it is `true`, so a hand-crafted
-  `lib:formula:*` tap can't leak. Flipping it to `true` is the release action
-  requiring the owner's documented sign-off (`docs/medical-review.md`); tests
-  assert the surface is absent while it is `false`.
+- **Gated surfaces.** The combinations (formula) browser sat behind the ADR 006
+  doctor-gate — one compile-time constant, `src/bot/commands/_formula-gate.ts →
+  FORMULA_BRANCH_ENABLED` (not a runtime/env flag), gating all three surfaces:
+  the `🧪 Формулы` hub branch, formula search hits, and the herb-card "Входит в
+  формулы" cross-links (the formula callback handlers are only registered when it
+  is `true`, so a hand-crafted `lib:formula:*` tap can't leak while off). **The
+  gate was lifted on the owner's documented sign-off (2026-06-28,
+  `docs/medical-review.md`):** `FORMULA_BRANCH_ENABLED = true`, the branch is live,
+  and the formula card surfaces only the approved **minimal field set**
+  (name/nature/composition/member cross-links/themes/cautions) — the verbose
+  review-pending fields stay unsurfaced pending a separate verbose-field review.
 
 ## Portability discipline (ADR 003)
 

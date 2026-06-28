@@ -13,9 +13,9 @@ before the **dev** skill implements it, then moved to `done/` on close.
 |---|---|---|
 | 004 | Formula doctor-review remediation | Draft |
 | 006 | Long-form guides | Approved — not started |
-| 007 | Navigation shell & UX foundation | Implemented — pending review |
-| 008 | Reminder-create flow | Approved — not started |
-| 009 | Library browser (gated formulas) | Approved — not started |
+| 007 | Navigation shell & UX foundation | Completed → `done/` |
+| 008 | Reminder-create flow | Completed → `done/` |
+| 009 | Library browser (gated formulas) | **Completed** → `done/` (v0.11.0) — formulas gate lifted on owner sign-off |
 | 011 | Drop subscriptions · optional herb link in reminders | Completed → `done/` (v0.10.0) |
 | 012 | Tip sourcing reconciliation + content voice tightening | Approved — not started |
 | 013 | Sova Rigpa book guides (food properties · constitution portraits · rhythms/diagnosis) | Approved — blocked on 006 |
@@ -32,9 +32,10 @@ governed by **ADR 009** (bot navigation model). They are sequential:
 - **008 — Reminder-create flow** wires the half-built headline feature (the
   multi-step create wizard) onto the shell.
 - **009 — Library browser** unifies herbs/tips/guides under `📚 Библиотека` with
-  rich cross-linked cards; the combinations browser is built **last and held
-  back** — not registered into the hub until the owner's documented medical
-  sign-off (ADR 006 doctor-gate; no runtime flag).
+  rich cross-linked cards; the combinations browser was built **last and held
+  back** behind the ADR 006 doctor-gate (`FORMULA_BRANCH_ENABLED`). **Closed at
+  v0.11.0; the gate was lifted on the owner's sign-off**, so the 🧪 Формулы branch
+  is now live (minimal field set — `docs/medical-review.md`).
 
 `📖 Статьи` (guides) and `💡 Советы` (tips browse) branches of the library are
 owned by **Plan 006** and **Plan 005** respectively; Plan 006 should retarget the

@@ -4,6 +4,19 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.11.0 — 2026-06-28
+
+- Unified **📚 Библиотека** surface (Plan 009): a hub gathering herbs (browse by
+  tradition or category), an integrated 🔎 search, the day's tip, and the
+  **🧪 Формулы** browser — all on the anchor-edit navigation kit, superseding the
+  old `/browse` and `/search` flows. Herb cards gain a render-time "Входит в
+  формулы" cross-link section and formula cards cross-link back to their member
+  herbs (boot-time `crossLinks` reverse index). The combinations browser was
+  built behind the ADR 006 doctor-gate (`FORMULA_BRANCH_ENABLED`) and **lifted on
+  owner sign-off** (`docs/medical-review.md`), surfacing only the minimal field
+  set — name, nature, composition, member cross-links, themes, cautions — with
+  the verbose review-pending fields kept unsurfaced.
+
 ## 0.10.0 — 2026-06-28
 
 - Retired the topic-subscriptions surface and added an optional herb link to the

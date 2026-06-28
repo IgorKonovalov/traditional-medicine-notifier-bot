@@ -52,6 +52,13 @@ rather than one baked into every page.
   fields + provenance `sources`).
 - Reversible: if the gate review rejects the verbose approach, records can be
   re-sanitised back toward ADR 005's `themes`-only shape.
+- **Update (2026-06-28):** the owner has signed off the **minimal library UI
+  surface** (the Plan 009 formula browser — name/nature/composition/member
+  cross-links/themes/cautions only); the gate
+  (`_formula-gate.FORMULA_BRANCH_ENABLED`) is lifted for that surface. The
+  **verbose fields** (indications / traditional use / dosing / source text)
+  **remain unsurfaced and unapproved** pending a separate review. Tracker:
+  `docs/medical-review.md`.
 
 ## Alternatives considered
 

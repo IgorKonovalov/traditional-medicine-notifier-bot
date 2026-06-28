@@ -1,8 +1,9 @@
 # Plan 009 — Library browser (herbs, cross-links, gated formulas)
 
-**Status:** Approved — not started
+**Status:** Completed
 **Created:** 2026-06-26
 **Approved:** 2026-06-26
+**Completed:** 2026-06-28 (v0.11.0)
 **Bump on close:** minor (reworked, discoverable library surface)
 **Depends on:** Plan 007 (navigation shell). Coordinates with Plan 005 (tips) and
 Plan 006 (guides) for the library's sibling branches.
@@ -202,6 +203,8 @@ lives under one roof.
 - [x] Phase 2 — Library hub + herb browse — `5c6695e`
 - [x] Phase 3 — Rich herb card with cross-links — `6e8a5fb`
 - [x] Phase 4 — Search integrated into the library — `a4e4b22`
-- [x] Phase 5 — Combinations browser (withheld) built + validation + docs — `83cd06c`;
-      close ritual (version bump · CHANGELOG · announcement · move to `done/`)
-      pending architect review
+- [x] Phase 5 — Combinations browser built + validation + docs — `83cd06c`. **Doctor-gate
+      lifted at close** on owner sign-off (`c5d5818`, `FORMULA_BRANCH_ENABLED = true`,
+      recorded in `docs/medical-review.md`) — the 🧪 Формулы branch, formula search
+      hits and herb cross-links are now live (minimal field set; verbose fields stay
+      unsurfaced). Closed at v0.11.0.
