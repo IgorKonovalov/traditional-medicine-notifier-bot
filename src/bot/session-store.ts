@@ -21,7 +21,34 @@ import {
 import { TTLMap, type TTLMapOptions } from './state-manager';
 
 /** Multi-step flows that persist a session. Extend as commands are built. */
-export type SessionKind = 'browse' | 'search' | 'reminders' | 'feedback';
+export type SessionKind =
+  | 'browse'
+  | 'search'
+  | 'library'
+  | 'reminders'
+  | 'reminder-create'
+  | 'settings'
+  | 'feedback';
+
+/** Every `SessionKind`, for bulk operations like menu-tap disposal. */
+export const SESSION_KINDS: readonly SessionKind[] = [
+  'browse',
+  'search',
+  'library',
+  'reminders',
+  'reminder-create',
+  'settings',
+  'feedback',
+];
+
+/**
+ * Drop every persisted session for a user. The navigation spine calls this on a
+ * menu tap so a half-finished drilldown can't leave an orphan anchor bound to a
+ * stale `message_id` (ADR 009 — menu taps dispose sessions, defense in depth).
+ */
+export function disposeAllSessions(userId: number): void {
+  for (const kind of SESSION_KINDS) deleteSession(userId, kind);
+}
 
 export function saveSession(userId: number, kind: SessionKind, data: unknown, ttlMs: number): void {
   saveSessionRow(userId, kind, JSON.stringify(data), Date.now() + ttlMs);

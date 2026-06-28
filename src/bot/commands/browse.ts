@@ -3,17 +3,20 @@
  * herb page (`herb:<id>`). Reads the in-memory content corpus from deps.
  */
 
-import { Markup, type Telegraf } from 'telegraf';
+import { Markup, type Context, type Telegraf } from 'telegraf';
 
 import type { Tradition } from '../../content/types';
 import type { BotDeps } from '../context';
 import { traditionPicker } from '../keyboards';
 import { messages } from '../messages';
 
+/** Open the browse section (tradition picker). Shared by /browse and the menu. */
+export async function browseEntry(ctx: Context): Promise<void> {
+  await ctx.reply(messages.browse.title, traditionPicker());
+}
+
 export function registerBrowseCommand(bot: Telegraf, deps: BotDeps): void {
-  bot.command('browse', async (ctx) => {
-    await ctx.reply(messages.browse.title, traditionPicker());
-  });
+  bot.command('browse', browseEntry);
 
   bot.action(/^tradition:(chinese|tibetan)$/, async (ctx) => {
     const tradition = ctx.match[1] as Tradition;

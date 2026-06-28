@@ -6,7 +6,7 @@
  * session and is left as a TODO — the data model and dispatch already support it.
  */
 
-import { Markup, type Telegraf } from 'telegraf';
+import { Markup, type Context, type Telegraf } from 'telegraf';
 
 import { deactivateReminder, listUserReminders } from '../../db/repositories/reminder.repo';
 import { getUserId } from '../context';
@@ -25,23 +25,26 @@ function describe(recurrence: { kind: string }): string {
   }
 }
 
+/** Open the reminders list. Shared by /reminders and the menu. */
+export async function remindersEntry(ctx: Context): Promise<void> {
+  const userId = getUserId(ctx);
+  if (userId === undefined) {
+    await ctx.reply(messages.common.notRegistered);
+    return;
+  }
+  const reminders = listUserReminders(userId).filter((r) => r.active);
+  if (reminders.length === 0) {
+    await ctx.reply(messages.reminders.empty);
+    return;
+  }
+  const rows = reminders.map((r) => [
+    Markup.button.callback(`❌ ${r.label} (${describe(r.recurrence)})`, `rem:cancel:${r.id}`),
+  ]);
+  await ctx.reply(messages.reminders.title, Markup.inlineKeyboard(rows));
+}
+
 export function registerRemindersCommand(bot: Telegraf): void {
-  bot.command('reminders', async (ctx) => {
-    const userId = getUserId(ctx);
-    if (userId === undefined) {
-      await ctx.reply(messages.common.notRegistered);
-      return;
-    }
-    const reminders = listUserReminders(userId).filter((r) => r.active);
-    if (reminders.length === 0) {
-      await ctx.reply(messages.reminders.empty);
-      return;
-    }
-    const rows = reminders.map((r) => [
-      Markup.button.callback(`❌ ${r.label} (${describe(r.recurrence)})`, `rem:cancel:${r.id}`),
-    ]);
-    await ctx.reply(messages.reminders.title, Markup.inlineKeyboard(rows));
-  });
+  bot.command('reminders', remindersEntry);
 
   bot.action(/^rem:cancel:(\d+)$/, async (ctx) => {
     const userId = getUserId(ctx);

@@ -6,7 +6,7 @@
  * settings surface grows.
  */
 
-import { Markup, type Telegraf } from 'telegraf';
+import { Markup, type Context, type Telegraf } from 'telegraf';
 
 import { getSetting, setSetting, SETTING_DAILY_TIP } from '../../db/repositories/user.repo';
 import { getUserId } from '../context';
@@ -22,16 +22,19 @@ function settingsKeyboard(dailyTipOn: boolean): ReturnType<typeof Markup.inlineK
   ]);
 }
 
+/** Open the settings hub. Shared by /settings and the menu. */
+export async function settingsEntry(ctx: Context): Promise<void> {
+  const userId = getUserId(ctx);
+  if (userId === undefined) {
+    await ctx.reply(messages.common.notRegistered);
+    return;
+  }
+  const on = getSetting(userId, SETTING_DAILY_TIP) === '1';
+  await ctx.reply(messages.settings.title, settingsKeyboard(on));
+}
+
 export function registerSettingsCommand(bot: Telegraf): void {
-  bot.command('settings', async (ctx) => {
-    const userId = getUserId(ctx);
-    if (userId === undefined) {
-      await ctx.reply(messages.common.notRegistered);
-      return;
-    }
-    const on = getSetting(userId, SETTING_DAILY_TIP) === '1';
-    await ctx.reply(messages.settings.title, settingsKeyboard(on));
-  });
+  bot.command('settings', settingsEntry);
 
   bot.action(/^settings:tip:(on|off)$/, async (ctx) => {
     const userId = getUserId(ctx);

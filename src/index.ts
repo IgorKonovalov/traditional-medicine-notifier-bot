@@ -180,6 +180,7 @@ async function setBotCommands(bot: Telegraf): Promise<void> {
   await bot.telegram.setMyCommands([
     { command: 'browse', description: 'Травы — по традициям и категориям' },
     { command: 'search', description: 'Поиск травы по названию' },
+    { command: 'tips', description: 'Совет дня' },
     { command: 'reminders', description: 'Напоминания' },
     { command: 'subscriptions', description: 'Подписки и совет дня' },
     { command: 'settings', description: 'Настройки' },

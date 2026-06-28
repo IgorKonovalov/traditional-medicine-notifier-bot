@@ -35,20 +35,44 @@ export const messages = {
     notImplemented: 'Этот раздел ещё в разработке.',
   },
 
+  /**
+   * Persistent reply-keyboard menu (ADR 009). Labels double as the exact-match
+   * triggers in `menu-router.ts`, so they must stay stable and unique. `nav.*`
+   * are the inline back/home/pager affordances reused across drilldown screens.
+   */
+  menu: {
+    library: '📚 Библиотека',
+    reminders: '⏰ Напоминания',
+    tips: '💡 Советы',
+    settings: '⚙️ Настройки',
+    help: '❓ Помощь',
+  },
+
+  nav: {
+    back: '« Назад',
+    home: '🏠 В меню',
+    prev: '◀',
+    next: '▶',
+    /** Position indicator for the pager, e.g. "2 / 7". */
+    position: (index: number, count: number): string => `${index + 1} / ${count}`,
+  },
+
   start: {
     welcome:
       'Здравствуйте! Это справочник по китайской и тибетской традиционной медицине ' +
       'с напоминаниями и подписками.\n\n' +
-      'Команды: /browse — травы, /search — поиск, /reminders — напоминания, ' +
-      '/subscriptions — подписки, /settings — настройки, /help — справка.\n\n' +
+      'Пользуйтесь меню внизу экрана или командами через «/».\n\n' +
       disclaimer,
   },
 
   help: {
     body:
-      'Доступные команды:\n' +
+      'Меню внизу экрана открывает основные разделы: 📚 Библиотека, ⏰ Напоминания, ' +
+      '💡 Советы, ⚙️ Настройки, ❓ Помощь.\n\n' +
+      'Команды:\n' +
       '• /browse — список трав по традициям и категориям\n' +
       '• /search — поиск травы по названию\n' +
+      '• /tips — совет дня\n' +
       '• /reminders — ваши напоминания (создать, посмотреть, отключить)\n' +
       '• /subscriptions — подписки на темы и ежедневный совет\n' +
       '• /settings — настройки\n' +
@@ -71,6 +95,10 @@ export const messages = {
   search: {
     prompt: 'Введите название травы для поиска:',
     nothingFound: 'Ничего не найдено. Попробуйте другое название.',
+  },
+
+  tips: {
+    empty: 'Пока нет советов.',
   },
 
   reminders: {

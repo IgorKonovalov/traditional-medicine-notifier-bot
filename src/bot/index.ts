@@ -20,10 +20,12 @@ import { registerSettingsCommand } from './commands/settings';
 import { registerBrowseCommand } from './commands/browse';
 import { registerSearchCommand } from './commands/search';
 import { registerHerbCommand } from './commands/herb';
+import { registerTipsCommand } from './commands/tips';
 import { registerRemindersCommand } from './commands/reminders';
 import { registerSubscriptionsCommand } from './commands/subscriptions';
 import { registerDonateCommand } from './commands/donate';
 import { registerFeedbackCommand } from './commands/feedback';
+import { registerMenuRouter } from './menu-router';
 import { registerPaymentHandlers } from './payments';
 
 export interface CreateBotOptions {
@@ -51,10 +53,15 @@ export function createBot(options: CreateBotOptions): CreatedBot {
   registerBrowseCommand(bot, options.deps);
   registerSearchCommand(bot, options.deps);
   registerHerbCommand(bot, options.deps);
+  registerTipsCommand(bot, options.deps);
   registerRemindersCommand(bot);
   registerSubscriptionsCommand(bot, options.deps);
   registerDonateCommand(bot);
   registerFeedbackCommand(bot);
+
+  // Reply-keyboard router last: `hears` matches plain text only, so it never
+  // shadows the command/action handlers registered above (ADR 009).
+  registerMenuRouter(bot, options.deps);
   registerPaymentHandlers(bot);
 
   return { bot, disposeRateLimiter: limiter.dispose };
