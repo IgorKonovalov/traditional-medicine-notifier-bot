@@ -17,8 +17,7 @@ import { rateLimiter } from './middleware/rate-limiter';
 import { registerStartCommand } from './commands/start';
 import { registerHelpCommand } from './commands/help';
 import { registerSettingsCommand } from './commands/settings';
-import { registerLibraryCommand } from './commands/library';
-import { registerSearchCommand } from './commands/search';
+import { registerLibraryCommand, registerLibrarySearchTextCapture } from './commands/library';
 import { registerHerbCommand } from './commands/herb';
 import { registerTipsCommand } from './commands/tips';
 import { registerRemindersCommand } from './commands/reminders';
@@ -55,7 +54,6 @@ export function createBot(options: CreateBotOptions): CreatedBot {
   registerHelpCommand(bot);
   registerSettingsCommand(bot, options.deps);
   registerLibraryCommand(bot, options.deps);
-  registerSearchCommand(bot, options.deps);
   registerHerbCommand(bot, options.deps);
   registerTipsCommand(bot, options.deps);
   registerRemindersCommand(bot, options.deps);
@@ -74,6 +72,9 @@ export function createBot(options: CreateBotOptions): CreatedBot {
   // Feedback capture: same late-registration discipline — consumes a plain text
   // message only while a `feedback` session is armed, else falls through.
   registerFeedbackTextCapture(bot, options.deps);
+  // Library search capture: claims a typed query only while the library session
+  // is parked on the 🔎 Поиск prompt, else falls through (same discipline).
+  registerLibrarySearchTextCapture(bot, options.deps);
   registerPaymentHandlers(bot);
 
   return { bot, disposeRateLimiter: limiter.dispose };

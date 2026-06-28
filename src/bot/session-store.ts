@@ -30,7 +30,6 @@ export const SESSION_TTL_MS = 30 * 60 * 1000;
 /** Multi-step flows that persist a session. Extend as commands are built. */
 export type SessionKind =
   | 'onboarding'
-  | 'search'
   | 'library'
   | 'reminders'
   | 'reminder-create'
@@ -40,7 +39,6 @@ export type SessionKind =
 /** Every `SessionKind`, for bulk operations like menu-tap disposal. */
 export const SESSION_KINDS: readonly SessionKind[] = [
   'onboarding',
-  'search',
   'library',
   'reminders',
   'reminder-create',

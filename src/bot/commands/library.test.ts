@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
-import { backState, clampPage } from './library';
+import type { Combination, Herb, LoadedContent } from '../../content/types';
+import { buildCrossLinks } from '../../content/cross-links';
+import type { BotDeps } from '../context';
+
+import { backState, clampPage, formulaMatches, herbMatches, searchHits } from './library';
 
 describe('clampPage', () => {
   it('clamps a too-high page to the last page (no wrap past the end)', () => {
@@ -61,5 +65,88 @@ describe('backState — library navigation never wraps or dead-ends', () => {
   it('the herbs sub-menu and the tips leaf return to the hub', () => {
     expect(backState({ screen: 'herbs', page: 0 })).toEqual({ screen: 'hub', page: 0 });
     expect(backState({ screen: 'tips', page: 0 })).toEqual({ screen: 'hub', page: 0 });
+  });
+
+  it('a card opened from search results returns to those results', () => {
+    expect(backState({ screen: 'card', query: 'миро', page: 1, herbId: 'h' })).toEqual({
+      screen: 'results',
+      query: 'миро',
+      page: 1,
+    });
+  });
+
+  it('results return to the search prompt, and the prompt to the hub', () => {
+    expect(backState({ screen: 'results', query: 'миро', page: 2 })).toEqual({
+      screen: 'search',
+      page: 0,
+    });
+    expect(backState({ screen: 'search', page: 0 })).toEqual({ screen: 'hub', page: 0 });
+  });
+});
+
+// ─── search matching + the doctor-gate on formula hits ────────────────────────
+
+function herb(id: string, nameRu: string, nameLatin?: string): Herb {
+  return {
+    id,
+    tradition: 'tibetan',
+    category: 'digestive-herbs',
+    nameRu,
+    properties: [],
+    uses: [],
+    cautions: [],
+    tags: [],
+    body: '',
+    ...(nameLatin !== undefined ? { nameLatin } : {}),
+  };
+}
+
+function combo(id: string, nameRu: string): Combination {
+  return {
+    id,
+    tradition: 'tibetan',
+    nameRu,
+    aliases: [],
+    composition: [],
+    themes: [],
+    cautions: [],
+    tags: [],
+    sources: [],
+    body: '',
+  };
+}
+
+describe('herbMatches / formulaMatches', () => {
+  it('matches a herb case-insensitively across RU and Latin names', () => {
+    const h = herb('h', 'Миробалан хебула', 'Terminalia chebula');
+    expect(herbMatches(h, 'миробалан')).toBe(true);
+    expect(herbMatches(h, 'terminalia')).toBe(true);
+    expect(herbMatches(h, 'женьшень')).toBe(false);
+  });
+
+  it('matches a formula by name', () => {
+    expect(formulaMatches(combo('f', 'Агар-8'), 'агар')).toBe(true);
+  });
+});
+
+describe('searchHits — formulas stay behind the doctor-gate', () => {
+  function deps(): BotDeps {
+    const herbs = [herb('tib-haritaki', 'Миробалан хебула')];
+    const combos = [combo('tib-formula-agar-8', 'Миробалановая формула')];
+    const content = {
+      herbs: { all: herbs, byId: new Map(herbs.map((h) => [h.id, h])) },
+      combinations: { all: combos, byId: new Map(combos.map((c) => [c.id, c])) },
+      categories: { all: [], byId: new Map() },
+      tips: { all: [], byId: new Map() },
+      crossLinks: buildCrossLinks(combos),
+    } as unknown as LoadedContent;
+    return { content, timezone: 'UTC', botUsername: 'b', adminTelegramIds: new Set() };
+  }
+
+  it('returns herb hits but never formula hits while the branch is withheld', () => {
+    // Both the herb and the formula contain "миробалан"; only the herb surfaces.
+    const hits = searchHits(deps(), 'миробалан');
+    expect(hits).toEqual([{ kind: 'herb', id: 'tib-haritaki', name: 'Миробалан хебула' }]);
+    expect(hits.some((h) => h.kind === 'formula')).toBe(false);
   });
 });

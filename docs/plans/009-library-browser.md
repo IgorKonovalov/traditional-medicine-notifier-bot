@@ -195,6 +195,6 @@ lives under one roof.
 
 - [x] Phase 1 — Reverse cross-link index (herb ↔ formulas) — `4767591`
 - [x] Phase 2 — Library hub + herb browse — `5c6695e`
-- [x] Phase 3 — Rich herb card with cross-links
-- [ ] Phase 4 — Search integrated into the library
+- [x] Phase 3 — Rich herb card with cross-links — `6e8a5fb`
+- [x] Phase 4 — Search integrated into the library
 - [ ] Phase 5 — Combinations browser (withheld) + validation, docs & close

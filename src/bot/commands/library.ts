@@ -21,14 +21,20 @@
 
 import { Markup, type Context, type Telegraf } from 'telegraf';
 
-import type { Herb, Tradition } from '../../content/types';
+import type { Combination, Herb, Tradition } from '../../content/types';
 import type { BotDeps } from '../context';
 import { getUserId } from '../context';
 import { assertCallbackData, backRow, homeRow, pager } from '../keyboards';
 import { messages } from '../messages';
-import { type Anchor, editAnchor, sendAnchor } from '../render/anchor';
+import { type Anchor, editAnchor, editAnchorAt, sendAnchor } from '../render/anchor';
 import { toPlainText } from '../render/markdown';
-import { type AnchoredSession, deleteSession, saveSession, SESSION_TTL_MS } from '../session-store';
+import {
+  type AnchoredSession,
+  deleteSession,
+  loadSession,
+  saveSession,
+  SESSION_TTL_MS,
+} from '../session-store';
 import { requireSessionAndAnchor, type ValidatedCallback } from './_callback-prologue';
 import { FORMULA_BRANCH_ENABLED } from './_formula-gate';
 import { herbCardKeyboard, herbFormulaLinks, renderHerb } from './_herb-card';
@@ -37,18 +43,29 @@ import { pickDailyTip } from './tips';
 const PAGE_SIZE = 8;
 
 /** Which screen of the library drilldown is showing. */
-type Screen = 'hub' | 'herbs' | 'pick-tradition' | 'pick-category' | 'list' | 'card' | 'tips';
+type Screen =
+  | 'hub'
+  | 'herbs'
+  | 'pick-tradition'
+  | 'pick-category'
+  | 'list'
+  | 'card'
+  | 'tips'
+  | 'search'
+  | 'results';
 
 /**
- * Library drilldown state. `tradition` xor `category` records how the current
- * herb list was reached (so `« Назад` from a card returns to the right list and
- * the list returns to the right picker); `page` is the active list/picker page;
- * `herbId` is set while a card is open.
+ * Library drilldown state. `tradition` xor `category` xor `query` records how
+ * the current herb list / results were reached (so `« Назад` from a card returns
+ * to the right origin and a list returns to the right picker); `page` is the
+ * active list/results/picker page; `herbId` is set while a card is open.
  */
 interface LibraryState {
   readonly screen: Screen;
   readonly tradition?: Tradition;
   readonly category?: string;
+  /** Normalized (lowercased) search query — set on the results/search screens. */
+  readonly query?: string;
   readonly page: number;
   readonly herbId?: string;
 }
@@ -110,6 +127,7 @@ function herbsFor(deps: BotDeps, state: LibraryState): readonly Herb[] {
 function hubView(): View {
   const rows: CallbackButton[][] = [
     [Markup.button.callback(messages.library.herbs, 'lib:herbs')],
+    [Markup.button.callback(messages.library.search, 'lib:search')],
     [Markup.button.callback(messages.library.tips, 'lib:tips')],
   ];
   if (FORMULA_BRANCH_ENABLED) {
@@ -220,6 +238,83 @@ function tipsView(deps: BotDeps): View {
   };
 }
 
+// ─── search ───────────────────────────────────────────────────────────────────
+
+/** A search result: a herb always, a formula only when the branch is registered. */
+interface SearchHit {
+  readonly kind: 'herb' | 'formula';
+  readonly id: string;
+  readonly name: string;
+}
+
+export function herbMatches(herb: Herb, q: string): boolean {
+  return [herb.nameRu, herb.nameLatin, herb.nameOriginal]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+    .includes(q);
+}
+
+export function formulaMatches(combination: Combination, q: string): boolean {
+  return [combination.nameRu, combination.nameOriginal, ...combination.aliases]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+    .includes(q);
+}
+
+/**
+ * Case-insensitive substring search. Herbs always; formulas only once the
+ * combinations branch is registered (ADR 006 doctor-gate) — so a withheld
+ * formula can never surface as a search hit.
+ */
+export function searchHits(deps: BotDeps, query: string): SearchHit[] {
+  const hits: SearchHit[] = deps.content.herbs.all
+    .filter((h) => herbMatches(h, query))
+    .map((h) => ({ kind: 'herb', id: h.id, name: h.nameRu }));
+  if (FORMULA_BRANCH_ENABLED) {
+    for (const c of deps.content.combinations.all) {
+      if (formulaMatches(c, query)) hits.push({ kind: 'formula', id: c.id, name: c.nameRu });
+    }
+  }
+  return hits;
+}
+
+/** The 🔎 Поиск prompt — typed queries are claimed by the text capture below. */
+function searchPromptView(): View {
+  return {
+    text: messages.search.prompt,
+    keyboard: Markup.inlineKeyboard([backRow('lib:back'), homeRow('lib:home')]),
+  };
+}
+
+function resultsView(deps: BotDeps, state: LibraryState): View & { readonly page: number } {
+  const hits = searchHits(deps, state.query ?? '');
+  if (hits.length === 0) {
+    return {
+      text: messages.search.nothingFound,
+      keyboard: Markup.inlineKeyboard([backRow('lib:back'), homeRow('lib:home')]),
+      page: 0,
+    };
+  }
+  const { page: safePage, pageCount } = clampPage(state.page, hits.length);
+  const slice = hits.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
+  const rows = slice.map((hit) => [
+    Markup.button.callback(
+      hit.name,
+      assertCallbackData(hit.kind === 'herb' ? `lib:herb:${hit.id}` : `lib:formula:${hit.id}`),
+    ),
+  ]);
+  const nav: CallbackButton[][] = [];
+  if (pageCount > 1) nav.push(pager('lib:results', safePage, pageCount));
+  nav.push(backRow('lib:back'), homeRow('lib:home'));
+  return {
+    text: messages.search.results,
+    keyboard: Markup.inlineKeyboard([...rows, ...nav]),
+    page: safePage,
+  };
+}
+
 /** Render whichever screen `state` names, clamping page where it paginates. */
 function viewFor(deps: BotDeps, state: LibraryState): View & { readonly page: number } {
   switch (state.screen) {
@@ -233,6 +328,10 @@ function viewFor(deps: BotDeps, state: LibraryState): View & { readonly page: nu
       return listView(deps, state);
     case 'tips':
       return { ...tipsView(deps), page: 0 };
+    case 'search':
+      return { ...searchPromptView(), page: 0 };
+    case 'results':
+      return resultsView(deps, state);
     case 'card': {
       const card = cardView(deps, state.herbId ?? '');
       return card === null ? { ...hubView(), page: 0 } : { ...card, page: state.page };
@@ -247,8 +346,11 @@ function viewFor(deps: BotDeps, state: LibraryState): View & { readonly page: nu
 export function backState(state: LibraryState): LibraryState {
   switch (state.screen) {
     case 'card':
-      // Back to the originating list, or the hub for a context-free card
-      // (the notification "Открыть" deep link).
+      // Back to the originating screen: search results, then a herb list, else
+      // the hub (a context-free card from the notification "Открыть" deep link).
+      if (state.query !== undefined) {
+        return { screen: 'results', query: state.query, page: state.page };
+      }
       if (state.tradition !== undefined || state.category !== undefined) {
         return {
           screen: 'list',
@@ -265,8 +367,11 @@ export function backState(state: LibraryState): LibraryState {
     case 'pick-tradition':
     case 'pick-category':
       return { screen: 'herbs', page: 0 };
+    case 'results':
+      return { screen: 'search', page: 0 };
     case 'herbs':
     case 'tips':
+    case 'search':
     default:
       return { screen: 'hub', page: 0 };
   }
@@ -298,6 +403,30 @@ export async function libraryHerbsEntry(ctx: Context): Promise<void> {
   const view = herbsMenuView();
   const anchor = await sendAnchor(ctx, view.text, view.keyboard);
   persist(userId, anchor, { screen: 'herbs', page: 0 });
+}
+
+/**
+ * Open the 🔎 Поиск branch as a fresh library session. With a query (the
+ * `/search <query>` shortcut) it lands straight on the results; without one it
+ * shows the prompt and the text capture claims the next typed message.
+ */
+export async function librarySearchEntry(
+  ctx: Context,
+  deps: BotDeps,
+  rawQuery?: string,
+): Promise<void> {
+  const userId = getUserId(ctx);
+  if (userId === undefined) {
+    await ctx.reply(messages.common.notRegistered);
+    return;
+  }
+  deleteSession(userId, 'library');
+  const query = (rawQuery ?? '').trim().toLowerCase();
+  const state: LibraryState =
+    query === '' ? { screen: 'search', page: 0 } : { screen: 'results', query, page: 0 };
+  const out = viewFor(deps, state);
+  const anchor = await sendAnchor(ctx, out.text, out.keyboard);
+  persist(userId, anchor, { ...state, page: out.page });
 }
 
 /**
@@ -340,6 +469,10 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
 
   bot.command('library', libraryEntry);
   bot.command('browse', libraryHerbsEntry);
+  bot.command('search', async (ctx) => {
+    const raw = ctx.message.text.replace(/^\/search(@\w+)?\s*/i, '');
+    await librarySearchEntry(ctx, deps, raw);
+  });
 
   bot.action(/^lib:herbs$/, async (ctx) => {
     const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
@@ -406,15 +539,38 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
     if (v === null) return;
     await ctx.answerCbQuery();
-    const { tradition, category, page } = v.session.state;
+    const { tradition, category, query, page } = v.session.state;
     await go(ctx, v, {
       screen: 'card',
       herbId: ctx.match[1] ?? '',
       page,
-      ...(tradition !== undefined ? { tradition } : {}),
-      ...(category !== undefined ? { category } : {}),
+      // Carry the origin so `« Назад` returns to the right screen (results vs list).
+      ...(query !== undefined
+        ? { query }
+        : {
+            ...(tradition !== undefined ? { tradition } : {}),
+            ...(category !== undefined ? { category } : {}),
+          }),
     });
   });
+
+  bot.action(/^lib:search$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    await go(ctx, v, { screen: 'search', page: 0 });
+  });
+
+  bot.action(/^lib:results:(\d+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const { query } = v.session.state;
+    if (query === undefined) return;
+    await go(ctx, v, { screen: 'results', query, page: Number(ctx.match[1] ?? '0') });
+  });
+
+  bot.action(/^lib:results:noop$/, (ctx) => ctx.answerCbQuery());
 
   bot.action(/^lib:tips$/, async (ctx) => {
     const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
@@ -435,5 +591,37 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     if (v === null) return;
     await ctx.answerCbQuery();
     await go(ctx, v, { screen: 'hub', page: 0 });
+  });
+}
+
+/**
+ * Free-text search-query capture. Registered **after** the menu router so a menu
+ * tap (handled by `bot.hears`) wins; this consumes a plain text message only
+ * while the library session is parked on the `search` prompt, editing the anchor
+ * into the results, and calls `next()` otherwise so it never swallows unrelated
+ * messages (mirrors the reminder-create / feedback captures).
+ */
+export function registerLibrarySearchTextCapture(bot: Telegraf, deps: BotDeps): void {
+  bot.on('text', async (ctx, next) => {
+    const userId = getUserId(ctx);
+    if (userId === undefined) {
+      await next();
+      return;
+    }
+    const session = loadSession<AnchoredSession<LibraryState>>(userId, 'library');
+    if (session === null || session.state.screen !== 'search') {
+      await next();
+      return;
+    }
+    const msg = ctx.message;
+    const raw = msg !== undefined && 'text' in msg ? msg.text.trim() : '';
+    if (raw === '') {
+      await next();
+      return;
+    }
+    const state: LibraryState = { screen: 'results', query: raw.toLowerCase(), page: 0 };
+    const out = viewFor(deps, state);
+    await editAnchorAt(ctx, session.anchor.messageId, out.text, out.keyboard);
+    persist(userId, session.anchor, { ...state, page: out.page });
   });
 }
