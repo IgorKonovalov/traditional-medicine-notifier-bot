@@ -4,7 +4,7 @@ Implementation plans authored by the **architect** skill drive all non-trivial
 work. Each plan is `NNN-short-name.md` (zero-padded), reviewed and approved
 before the **dev** skill implements it, then moved to `done/` on close.
 
-- **Next free number:** `012`
+- **Next free number:** `014`
 - **Completed:** see `done/`
 
 ### Active roster
@@ -17,6 +17,8 @@ before the **dev** skill implements it, then moved to `done/` on close.
 | 008 | Reminder-create flow | Approved — not started |
 | 009 | Library browser (gated formulas) | Approved — not started |
 | 011 | Drop subscriptions · optional herb link in reminders | Approved — not started |
+| 012 | Tip sourcing reconciliation + content voice tightening | Approved — not started |
+| 013 | Sova Rigpa book guides (food properties · constitution portraits · rhythms/diagnosis) | Approved — blocked on 006 |
 
 ### UI overhaul plan set (007–009)
 
@@ -40,6 +42,9 @@ Plan 007 shared nav kit once 007 lands.
 
 ## Other candidates (not yet planned)
 
+- **Elderly nutrition & lifestyle guide** — гл. 6 of «Наука о здоровье»
+  (Сова Ригпа book); descoped from Plan 013 to backlog. Pregnancy/children (гл. 5)
+  is **excluded** (quasi-medical claims), not backlog.
 - Edit-an-existing-reminder (follow-up to Plan 008; v1 is create + cancel).
 - Per-user timezone (reminders currently use the bot-wide tz).
 - Per-category proactive digests (the `subscriptions` table + `listSubscribers` are ready).

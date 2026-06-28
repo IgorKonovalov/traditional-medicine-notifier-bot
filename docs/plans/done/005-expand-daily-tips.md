@@ -190,3 +190,20 @@ render time, never baked into the body).
 - [x] Phase 2 — Author 20 Чжуд-ши tips (deepening verified chapters)
 - [x] Phase 3 — Author 30 Сова Ригпа tips (prescriptive sections reframed)
 - [x] Phase 4 — Index regen (60 tips), convention capture, validation & close
+
+## Post-completion reconciliation (2026-06-28, see Plan 012)
+
+After this plan closed, an authoritative source book —
+**«Наука о здоровье. Сова Ригпа»** (Ринчен Тензин, 2015) — entered `research/`,
+prompting a sourcing review. Two corrections:
+
+- **Citation-string drift.** The *Citation conventions* section above prescribes
+  `work: Сова Ригпа (manla.ru)`, but Phase 1 actually locked the bare string
+  `Сова Ригпа` and all 30 authored files use `work: Сова Ригпа` + `chapter:
+  раздел «…»`. The `(manla.ru)` variant **never shipped** — treat it as stale.
+- **Citations enriched to the book.** The 30 Сова Ригпа tips (`tip-031..060`)
+  were paraphrased from `manla.ru/info` and cite the tradition generically.
+  **Plan 012** cross-checks them against the book and re-cites the matching ones
+  to real «Наука о здоровье» chapters (book citation convention defined there).
+  This note supersedes the `(manla.ru)` convention; **Plan 012 is authoritative**
+  for tip sourcing going forward.

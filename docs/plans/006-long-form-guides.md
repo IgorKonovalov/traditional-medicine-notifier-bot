@@ -6,6 +6,20 @@
 **Amended:** 2026-06-26 — flagship first guide is now «Основы тибетской медицины»
 (fundamentals: three ньепа + Жар/Холод), sourced from `manla.ru/base/`; this
 becomes guide #1 in Phase 4 (owner request). Seasonal-eating guides drop to two.
+**Amended:** 2026-06-28 — an authoritative source book,
+**«Наука о здоровье. Сова Ригпа»** (Ринчен Тензин, 2015; text at
+`research/_private/nauka-zdorovye-text.txt`), is now available and is a **stronger,
+more citable source** than `manla.ru/base/` for the constitution material. When
+authoring this plan's fundamentals guide (Phase 4, the `## Конституция человека`
+section), **prefer the book** (cite via the Plan 012 convention) over manla for
+that section. The book's richer constitution portraits, its food-properties
+catalogue, and its rhythm/diagnosis material are **not** in this plan's scope —
+they are the deferred "bulk guide authoring follow-up" this plan anticipates, now
+spec'd as **Plan 013** (blocked on this plan landing first). When authoring the
+guides here, follow the **source-faithful clinical voice spec from Plan 012**
+(named mechanisms / source vocabulary, minimal hedging, no scare-quotes on
+technical terms, no reader-directed advice) rather than the softer register of the
+early tips.
 **Bump on close:** minor (new user-facing content type + command)
 
 ## Context
