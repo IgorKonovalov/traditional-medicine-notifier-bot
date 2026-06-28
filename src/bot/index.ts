@@ -22,6 +22,10 @@ import { registerSearchCommand } from './commands/search';
 import { registerHerbCommand } from './commands/herb';
 import { registerTipsCommand } from './commands/tips';
 import { registerRemindersCommand } from './commands/reminders';
+import {
+  registerReminderCreateCommand,
+  registerReminderCreateTextCapture,
+} from './commands/reminder-create';
 import { registerSubscriptionsCommand } from './commands/subscriptions';
 import { registerDonateCommand } from './commands/donate';
 import { registerFeedbackCommand } from './commands/feedback';
@@ -54,7 +58,8 @@ export function createBot(options: CreateBotOptions): CreatedBot {
   registerSearchCommand(bot, options.deps);
   registerHerbCommand(bot, options.deps);
   registerTipsCommand(bot, options.deps);
-  registerRemindersCommand(bot);
+  registerRemindersCommand(bot, options.deps);
+  registerReminderCreateCommand(bot, options.deps);
   registerSubscriptionsCommand(bot, options.deps);
   registerDonateCommand(bot);
   registerFeedbackCommand(bot);
@@ -62,6 +67,10 @@ export function createBot(options: CreateBotOptions): CreatedBot {
   // Reply-keyboard router last: `hears` matches plain text only, so it never
   // shadows the command/action handlers registered above (ADR 009).
   registerMenuRouter(bot, options.deps);
+  // Free-text label capture for the create-reminder wizard must come AFTER the
+  // menu router: a menu tap (handled by `hears`) wins, so the capture only ever
+  // sees non-menu text and consumes it solely while parked on the label step.
+  registerReminderCreateTextCapture(bot, options.deps);
   registerPaymentHandlers(bot);
 
   return { bot, disposeRateLimiter: limiter.dispose };

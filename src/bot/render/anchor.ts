@@ -50,6 +50,34 @@ export async function editAnchor(
   }
 }
 
+/**
+ * Edit an anchor by explicit `messageId`, for handlers with no callback context
+ * (e.g. a free-text step where the incoming update is the user's typed message,
+ * not a tap on the anchor). Targets the anchor via `ctx.telegram.editMessageText`
+ * using the current chat. Swallows the benign "not modified" 400 like
+ * {@link editAnchor}.
+ */
+export async function editAnchorAt(
+  ctx: Context,
+  messageId: number,
+  body: string,
+  keyboard?: InlineKeyboard,
+): Promise<void> {
+  const chatId = ctx.chat?.id;
+  if (chatId === undefined) return;
+  try {
+    await ctx.telegram.editMessageText(
+      chatId,
+      messageId,
+      undefined,
+      clampToTelegram(body),
+      keyboard,
+    );
+  } catch (err) {
+    if (!isNotModified(err)) throw err;
+  }
+}
+
 function isNotModified(err: unknown): boolean {
   if (typeof err !== 'object' || err === null) return false;
   const e = err as { response?: { error_code?: number; description?: string } };

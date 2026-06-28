@@ -19,6 +19,31 @@ export function formatDate(now: number, timeZone: string): string {
 }
 
 /**
+ * Human-readable local date + time in Russian, e.g. «28 июня, 08:00». Used to
+ * show a reminder's next fire instant in the create-wizard summary and the
+ * reminders list. Display-only — scheduling math stays in `notifications/`.
+ */
+export function formatDateTime(now: number, timeZone: string): string {
+  return new Intl.DateTimeFormat('ru-RU', {
+    timeZone,
+    day: 'numeric',
+    month: 'long',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(new Date(now));
+}
+
+/** Short local day label in Russian, e.g. «пн, 30.06». For date-picker buttons. */
+export function formatDayLabel(now: number, timeZone: string): string {
+  return new Intl.DateTimeFormat('ru-RU', {
+    timeZone,
+    weekday: 'short',
+    day: '2-digit',
+    month: '2-digit',
+  }).format(new Date(now));
+}
+
+/**
  * Local hour (0–23) in the given timezone. Used by the dispatch tick to match
  * a user's chosen reminder hour against the current local hour.
  */

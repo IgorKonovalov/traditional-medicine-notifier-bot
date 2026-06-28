@@ -37,7 +37,7 @@ export function registerMenuRouter(bot: Telegraf, deps: BotDeps): void {
 
   bot.hears(exact(MENU.reminders), async (ctx) => {
     disposeSessions(ctx);
-    await remindersEntry(ctx);
+    await remindersEntry(ctx, deps);
   });
 
   bot.hears(exact(MENU.tips), async (ctx) => {

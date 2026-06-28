@@ -132,6 +132,67 @@ export const messages = {
     empty: 'У вас пока нет напоминаний. Создайте первое.',
     created: 'Напоминание создано.',
     cancelled: 'Напоминание отключено.',
+    newButton: '➕ Новое',
+    /** Per-row cancel button: the reminder summary + its next fire. */
+    rowCancel: (summary: string): string => `❌ ${summary}`,
+    /** Next-fire line under the list title. */
+    nextFire: (whenText: string): string => `Ближайшее: ${whenText}`,
+  },
+
+  /**
+   * Create-reminder wizard (Plan 008). One anchor message, edited per step.
+   * Button labels stay short; copy is polite "вы". Error strings are surfaced as
+   * `answerCbQuery` toasts, so they must be ≤200 chars.
+   */
+  reminderCreate: {
+    // step: label
+    labelPromptFree: 'Введите текст напоминания одним сообщением — например, «Выпить тёплую воду».',
+    labelPromptHerb: (name: string): string =>
+      `Напоминание о траве «${name}». Оставить это название или ввести своё?`,
+    labelCurrent: (label: string): string => `Текущий текст: «${label}»`,
+    useHerbName: '✅ Оставить название',
+    enterCustom: '✏️ Ввести своё',
+    labelTooLong: (max: number): string => `Слишком длинно — сократите до ${max} символов.`,
+    // step: kind
+    kindPrompt: (label: string): string => `«${label}»\n\nКак часто напоминать?`,
+    kindOnce: 'Один раз',
+    kindDaily: 'Каждый день',
+    kindWeekly: 'По дням недели',
+    kindInterval: 'Каждые N дней',
+    // step: every (interval)
+    everyPrompt: 'Каждые сколько дней напоминать?',
+    everyLabel: (n: number): string => `${n} дн.`,
+    // step: time
+    timePrompt: 'Выберите время. Можно несколько — затем «Далее».',
+    timePromptOnce: 'Выберите время.',
+    // step: date (once)
+    datePrompt: 'В какой день напомнить?',
+    dateToday: 'Сегодня',
+    dateTomorrow: 'Завтра',
+    // step: weekdays (weekly)
+    weekdaysPrompt: 'В какие дни недели? Затем «Далее».',
+    /** Weekday button labels, indexed 0=Вс … 6=Сб (matches RecurrenceSpec). */
+    weekdayShort: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'] as const,
+    // step: confirm
+    confirmPrompt: 'Проверьте напоминание:',
+    summary: (label: string, recurrence: string, tz: string): string =>
+      `«${label}»\n${recurrence}\n\n🕔 Часовой пояс: ${tz}`,
+    // shared chrome
+    next: 'Далее ▶',
+    save: '💾 Сохранить',
+    cancel: '✖️ Отмена',
+    // outcomes
+    saved: (whenText: string): string => `✓ Напоминание создано. Ближайшее: ${whenText}.`,
+    cancelled: 'Создание отменено.',
+    // validation toasts
+    needTime: 'Выберите хотя бы одно время.',
+    needWeekday: 'Выберите хотя бы один день недели.',
+    pastOnce: 'Это время уже прошло. Выберите другой день или время.',
+    // human-readable recurrence (reused by the reminders list)
+    describeOnce: (whenText: string): string => `Один раз — ${whenText}`,
+    describeDaily: (times: string): string => `Каждый день в ${times}`,
+    describeWeekly: (days: string, times: string): string => `По дням: ${days}, в ${times}`,
+    describeInterval: (n: number, times: string): string => `Каждые ${n} дн. в ${times}`,
   },
 
   subscriptions: {

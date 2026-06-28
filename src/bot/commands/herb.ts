@@ -4,14 +4,15 @@
  * fresh anchored browse session (`openHerbAnchor`), so the card gets back/home
  * navigation and the render-time disclaimer (ADR 006).
  *
- * `remind:<id>` is acknowledged but the create-reminder flow itself is Plan 008.
+ * `remind:<id>` launches the create-reminder wizard (Plan 008) pre-linked to the
+ * herb, offering its name as the default label.
  */
 
 import type { Telegraf } from 'telegraf';
 
 import type { BotDeps } from '../context';
-import { messages } from '../messages';
 import { openHerbAnchor } from './browse';
+import { reminderCreateEntry } from './reminder-create';
 
 export { renderHerb } from './_herb-card';
 
@@ -22,7 +23,13 @@ export function registerHerbCommand(bot: Telegraf, deps: BotDeps): void {
   });
 
   bot.action(/^remind:(.+)$/, async (ctx) => {
-    // TODO (Plan 008): launch the create-reminder flow prefilled with this herb.
-    await ctx.answerCbQuery(messages.common.notImplemented);
+    await ctx.answerCbQuery();
+    const herbId = ctx.match[1] ?? '';
+    const herb = deps.content.herbs.byId.get(herbId);
+    await reminderCreateEntry(
+      ctx,
+      deps,
+      herb !== undefined ? { herbId, herbName: herb.nameRu } : { herbId },
+    );
   });
 }
