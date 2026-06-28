@@ -15,9 +15,11 @@
 
 import type Database from 'better-sqlite3';
 
+import { getVersion } from '../utils/version';
+
 type MigrationFn = (db: Database.Database) => void;
 
-const LATEST_VERSION = 1;
+const LATEST_VERSION = 2;
 
 export function runMigrations(db: Database.Database): void {
   db.exec(`
@@ -158,4 +160,23 @@ const migration001: MigrationFn = (db) => {
   `);
 };
 
-const MIGRATIONS: readonly MigrationFn[] = [migration001];
+/**
+ * Migration 002 — `notified_version` column on `users` for the post-deploy
+ * version-broadcast loop (plan 010). Existing rows are backfilled to the
+ * **current** `getVersion()` so the deploy that ships this migration does
+ * **not** retro-ping them; they only start receiving "what's new" pushes from
+ * the next minor/major bump onward (the announcer compares against this
+ * baseline).
+ *
+ * New users created after the migration keep `notified_version = NULL` until
+ * the announcer marks them — `classifyDelta(null, …)` treats them as behind,
+ * but with the map empty / opt-in off they are simply marked current with no
+ * send. Reading `getVersion()` in the migration body is safe: `utils/version`
+ * is dependency-free.
+ */
+const migration002: MigrationFn = (db) => {
+  db.exec(`ALTER TABLE users ADD COLUMN notified_version TEXT;`);
+  db.prepare('UPDATE users SET notified_version = ?').run(getVersion());
+};
+
+const MIGRATIONS: readonly MigrationFn[] = [migration001, migration002];

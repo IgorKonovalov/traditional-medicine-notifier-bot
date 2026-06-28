@@ -12,7 +12,12 @@
 
 import { Markup, type Context, type Telegraf } from 'telegraf';
 
-import { getSetting, setSetting, SETTING_DAILY_TIP } from '../../db/repositories/user.repo';
+import {
+  getSetting,
+  setSetting,
+  SETTING_DAILY_TIP,
+  SETTING_FEATURE_ANNOUNCEMENTS,
+} from '../../db/repositories/user.repo';
 import type { BotDeps } from '../context';
 import { getUserId } from '../context';
 import { backRow } from '../keyboards';
@@ -30,7 +35,12 @@ interface HubView {
 }
 
 /** Render the hub. `confirmation` prepends a `✓` line after a state change. */
-function hubView(dailyTipOn: boolean, timezone: string, confirmation?: string): HubView {
+function hubView(
+  dailyTipOn: boolean,
+  announcementsOn: boolean,
+  timezone: string,
+  confirmation?: string,
+): HubView {
   const lines = [messages.settings.title, ''];
   if (confirmation !== undefined) lines.push(confirmation, '');
   lines.push(messages.settings.body, '', messages.settings.timezone(timezone));
@@ -41,6 +51,14 @@ function hubView(dailyTipOn: boolean, timezone: string, confirmation?: string): 
         Markup.button.callback(
           dailyTipOn ? messages.settings.tipLabelOn : messages.settings.tipLabelOff,
           'set:tip:toggle',
+        ),
+      ],
+      [
+        Markup.button.callback(
+          announcementsOn
+            ? messages.settings.announcementsLabelOn
+            : messages.settings.announcementsLabelOff,
+          'set:ann:toggle',
         ),
       ],
       [Markup.button.callback(messages.settings.subscriptionsButton, 'set:open:subs')],
@@ -57,6 +75,10 @@ function dailyTipOn(userId: number): boolean {
   return getSetting(userId, SETTING_DAILY_TIP) === '1';
 }
 
+function announcementsOn(userId: number): boolean {
+  return getSetting(userId, SETTING_FEATURE_ANNOUNCEMENTS) === '1';
+}
+
 function persist(userId: number, messageId: number): void {
   const session: AnchoredSession<Record<string, never>> = { anchor: { messageId }, state: {} };
   saveSession(userId, 'settings', session, SESSION_TTL_MS);
@@ -70,7 +92,7 @@ export async function settingsEntry(ctx: Context, deps: BotDeps): Promise<void> 
     return;
   }
   deleteSession(userId, 'settings');
-  const view = hubView(dailyTipOn(userId), deps.timezone);
+  const view = hubView(dailyTipOn(userId), announcementsOn(userId), deps.timezone);
   const anchor = await sendAnchor(ctx, view.text, view.keyboard);
   persist(userId, anchor.messageId);
 }
@@ -85,7 +107,21 @@ export function registerSettingsCommand(bot: Telegraf, deps: BotDeps): void {
     setSetting(v.userId, SETTING_DAILY_TIP, turnOn ? '1' : '0');
     await ctx.answerCbQuery();
     const confirmation = turnOn ? messages.settings.confirmTipOn : messages.settings.confirmTipOff;
-    const view = hubView(turnOn, deps.timezone, confirmation);
+    const view = hubView(turnOn, announcementsOn(v.userId), deps.timezone, confirmation);
+    await editAnchor(ctx, view.text, view.keyboard);
+    persist(v.userId, v.session.anchor.messageId);
+  });
+
+  bot.action(/^set:ann:toggle$/, async (ctx) => {
+    const v = await requireSessionAndAnchor(ctx, 'settings');
+    if (v === null) return;
+    const turnOn = !announcementsOn(v.userId);
+    setSetting(v.userId, SETTING_FEATURE_ANNOUNCEMENTS, turnOn ? '1' : '0');
+    await ctx.answerCbQuery();
+    const confirmation = turnOn
+      ? messages.settings.confirmAnnouncementsOn
+      : messages.settings.confirmAnnouncementsOff;
+    const view = hubView(dailyTipOn(v.userId), turnOn, deps.timezone, confirmation);
     await editAnchor(ctx, view.text, view.keyboard);
     persist(v.userId, v.session.anchor.messageId);
   });

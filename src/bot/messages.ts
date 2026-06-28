@@ -9,6 +9,7 @@
  */
 
 import type { TipSource } from '../content/types';
+import { changelogMessages, versionAnnouncements } from './messages/version-announcements';
 
 /** The informational disclaimer. Surfaced in /start, /help, and herb pages. */
 const disclaimer =
@@ -90,9 +91,12 @@ export const messages = {
       '• /reminders — ваши напоминания (создать, посмотреть, отключить)\n' +
       '• /subscriptions — подписки на темы и ежедневный совет\n' +
       '• /settings — настройки\n' +
+      '• /changelog — история обновлений бота\n' +
       '• /donate — поддержать проект\n' +
       '• /feedback — написать разработчику\n\n' +
       disclaimer,
+    /** Version footer line appended to /help; filled with getVersion() at render time. */
+    version: (v: string): string => `Версия ${v}`,
   },
 
   settings: {
@@ -102,11 +106,15 @@ export const messages = {
     timezone: (tz: string): string => `🕔 Часовой пояс напоминаний: ${tz}`,
     tipLabelOn: 'Совет дня: вкл ✅',
     tipLabelOff: 'Совет дня: выкл 🔕',
+    announcementsLabelOn: 'Новые функции: вкл ✅',
+    announcementsLabelOff: 'Новые функции: выкл 🔕',
     subscriptionsButton: '📂 Подписки',
     donateButton: '⭐️ Поддержать',
     feedbackButton: '✉️ Обратная связь',
     confirmTipOn: '✓ Ежедневный совет включён.',
     confirmTipOff: '✓ Ежедневный совет выключен.',
+    confirmAnnouncementsOn: '✓ Уведомления о новых функциях включены.',
+    confirmAnnouncementsOff: '✓ Уведомления о новых функциях выключены.',
     closed: 'Меню внизу экрана открывает разделы.',
   },
 
@@ -234,4 +242,13 @@ export const messages = {
     /** Inline-button label for the herb cross-link CTA attached to a notification. */
     openCta: '📖 Открыть',
   },
+
+  /**
+   * Per-version "what's new" announcement strings + the /changelog renderer
+   * (plan 010). Authored in `messages/version-announcements.ts`; re-exported
+   * here so the public surface stays `messages.versionAnnouncements` and
+   * `messages.changelog`.
+   */
+  versionAnnouncements,
+  changelog: changelogMessages,
 } as const;

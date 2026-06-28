@@ -29,6 +29,8 @@ import { getLogger, initLogger } from './logger';
 import { runBackup } from './services/db-backup';
 import { startReminderDispatch } from './services/reminder-dispatch';
 import { startSubscriptionDispatch } from './services/subscription-dispatch';
+import { announceNewVersion, validateAnnouncements } from './services/version-announcer';
+import { getVersion } from './utils/version';
 import { createBot } from './bot/index';
 import { createTelegrafNotifier } from './bot/notifier';
 import { deleteExpiredSessions } from './bot/session-store';
@@ -64,6 +66,11 @@ async function main(): Promise<void> {
     },
     'content loaded',
   );
+
+  // Fail fast at boot if any announcement CTA points at a missing herb or
+  // yields an over-cap callback — better than a per-recipient failure mid-
+  // broadcast (plan 010).
+  validateAnnouncements(messages.versionAnnouncements, content);
 
   const { bot, disposeRateLimiter } = createBot({
     token: config.botToken,
@@ -145,6 +152,15 @@ async function main(): Promise<void> {
     log.warn({ err }, 'setMyCommands failed — bot starts anyway'),
   );
 
+  // Post-deploy "what's new" broadcast (plan 010): one-shot per version,
+  // idempotent via notified_version, Notifier-direct (bypasses the daily cap).
+  await announceNewVersion({
+    currentVersion: getVersion(),
+    announcements: messages.versionAnnouncements,
+    notifier,
+    logger: log,
+  });
+
   await bot.launch();
 }
 
@@ -184,6 +200,7 @@ async function setBotCommands(bot: Telegraf): Promise<void> {
     { command: 'reminders', description: 'Напоминания' },
     { command: 'subscriptions', description: 'Подписки и совет дня' },
     { command: 'settings', description: 'Настройки' },
+    { command: 'changelog', description: 'История обновлений' },
     { command: 'donate', description: 'Поддержать проект' },
     { command: 'feedback', description: 'Написать разработчику' },
     { command: 'help', description: 'Справка' },
