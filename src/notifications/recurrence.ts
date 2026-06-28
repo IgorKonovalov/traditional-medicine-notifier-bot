@@ -21,7 +21,11 @@ const SEARCH_HORIZON_DAYS = 366; // guarantees a hit for any weekly/interval spe
  * Next fire instant strictly after `after`, or `null` when the spec never fires
  * again (a `once` reminder, or an empty schedule).
  */
-export function computeNextFire(spec: RecurrenceSpec, after: number, timeZone: string): number | null {
+export function computeNextFire(
+  spec: RecurrenceSpec,
+  after: number,
+  timeZone: string,
+): number | null {
   if (spec.kind === 'once') return null;
 
   const times = [...spec.times].filter(isValidTime).sort();
@@ -40,7 +44,12 @@ export function computeNextFire(spec: RecurrenceSpec, after: number, timeZone: s
   return null;
 }
 
-function dayMatches(spec: RecurrenceSpec, dateStr: string, baseDate: string, dayOffset: number): boolean {
+function dayMatches(
+  spec: RecurrenceSpec,
+  dateStr: string,
+  baseDate: string,
+  dayOffset: number,
+): boolean {
   switch (spec.kind) {
     case 'daily':
       return true;
@@ -70,7 +79,7 @@ export function formatLocalDate(epoch: number, timeZone: string): string {
 }
 
 /** Add `n` days to a `YYYY-MM-DD` string (anchored at UTC noon to dodge DST). */
-function addDays(dateStr: string, n: number): string {
+export function addDays(dateStr: string, n: number): string {
   const [y, m, d] = dateStr.split('-').map(Number) as [number, number, number];
   const base = Date.UTC(y, m - 1, d, 12) + n * MS_PER_DAY;
   const dt = new Date(base);
