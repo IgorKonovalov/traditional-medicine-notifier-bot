@@ -40,6 +40,9 @@ What changed since the sections below were written:
 - **5 ingredients have no confident Russian name** and stay Latin-only:
   `Bos taurus domesticus` (animal-derived), `Potamom yunnanensis` (likely a crab,
   animal), `Solms-Laubachia sp.` (genus only), `Trona` (mineral), and a stray `etc.`
+  **Resolved 2026-06-28 (owner): accepted as-is** — Latin-only is fine; add a
+  Russian name opportunistically if a confident one is found, not required. (The
+  literal `etc.` is a placeholder, not an ingredient — minor cleanup, still open.)
 - The **toxic-constituent discrepancies** flagged below (aconite vs strychnine in
   `agar-35`, `garuda-5`, `olse-25`, `tcovo-8`) **still stand** — confirm before any
   production use. **Interim mitigation (2026-06-28, v0.11.1):** a defensive
@@ -123,6 +126,12 @@ collapsed). A read-only analysis flagged 53 genuine source conflicts (38 composi
 
 **Dropped bimala-only components (per formula) — confirm whether any are canonical:**
 
+> **Resolved 2026-06-28 (owner): keep dropped.** manla-canonical confirmed — the
+> dropped bimala extras are **not** restored. A dry-run showed restoring them
+> breaks the name=ingredient-count rule for all 20 numbered formulas (manla's set
+> already matches each formula's named count). The list below is retained for
+> provenance only.
+
 - `agar-15`: слива, белый сандал, сафлор красильный, звездчатка, бузина черная
 - `agar-35`: слива, бузина, бомбакс сейба, ладан, зубчатка, шлемник байкальский, череда трёхраздельная, мордовник, цветы девясила, **аконит**
 - `aru-10`: рододендрон золотистый, лаковые червецы
@@ -188,6 +197,9 @@ the session workflow outputs; raw verbatim source for both sites remains in
 | Date       | Reviewer | Scope                                                                 | Outcome    |
 |------------|----------|-----------------------------------------------------------------------|------------|
 | 2026-06-28 | Owner    | **Library UI surface** — formula browser, **minimal field set only** (name / nature / composition / member cross-links / themes / cautions). Verbose fields (indications / traditional_use / dosing_notes / source_text) stay unsurfaced. | **Approved — gate lifted** (`FORMULA_BRANCH_ENABLED = true`, Plan 009) |
+| 2026-06-28 | Owner    | **Group 2 — Latin-only ingredients** (`Bos taurus domesticus`, `Potamom yunnanensis`, `Solms-Laubachia sp.`, `Trona`) | **Accepted as-is** — translate if a confident RU name exists, not required |
+| 2026-06-28 | Owner    | **Group 3 — dropped bimala-only components** (28 formulas) | **Keep dropped** — manla-canonical confirmed; not restored (would break name=count) |
+| —          | —        | **Group 1 — toxic-constituent discrepancies** (`agar-35`, `garuda-5`, `olse-25`, `tcovo-8`) — interim defensive caution shipped (v0.11.1) | pending (aconite vs strychnine verdict) |
 | —          | —        | Verbose source fields (indications / dosing / traditional use) for any richer surface | pending |
 
 _When production-eligible content is approved, record it here and define how it is
