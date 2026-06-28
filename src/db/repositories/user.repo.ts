@@ -22,11 +22,21 @@ export const SETTING_LAST_PROACTIVE_PUSH = 'last_proactive_push_date';
 export const SETTING_DAILY_TIP = 'daily_tip';
 /** Whether the user finished the stepped onboarding (`'1'` = done). */
 export const SETTING_ONBOARDED = 'onboarded';
+/** Whether the user opted in to post-deploy "what's new" pushes (`'1'` = on). */
+export const SETTING_FEATURE_ANNOUNCEMENTS = 'feature_announcements';
 
 interface UserRow {
   id: number;
   username: string | null;
   active: number;
+}
+
+/** Full user record including the version-broadcast bookkeeping column. */
+export interface UserRecord {
+  id: number;
+  username: string | null;
+  active: number;
+  notified_version: string | null;
 }
 
 /**
@@ -86,6 +96,72 @@ export function getTelegramId(userId: UserId): string | null {
     .prepare('SELECT external_id FROM auth_identities WHERE provider = ? AND user_id = ?')
     .get(PROVIDER_TELEGRAM, userId) as { external_id: string } | undefined;
   return row?.external_id ?? null;
+}
+
+/** Read a full user record by internal id. Returns `undefined` if unknown. */
+export function getUserById(userId: UserId): UserRecord | undefined {
+  return getDb()
+    .prepare('SELECT id, username, active, notified_version FROM users WHERE id = ?')
+    .get(userId) as UserRecord | undefined;
+}
+
+// ─── version broadcast (plan 010) ──────────────────────────────────────────
+
+/**
+ * A candidate row for the version-announcer multi-message queue. Carries the
+ * opt-in flag per row so the announcer decides locally whether a priority
+ * entry overrides the user's `feature_announcements` preference, without a
+ * second query.
+ */
+export interface VersionCandidate {
+  id: number;
+  notifiedVersion: string | null;
+  optedIn: boolean;
+}
+
+/**
+ * Active users whose `notified_version` is stale relative to `currentVersion`.
+ * LEFT JOIN keeps opted-out and no-row users in the result so priority
+ * announcements can still reach them; the announcer applies the per-row
+ * `optedIn` filter for non-priority entries. Inactive users are filtered out —
+ * their chats are dead (a permanent send failure flipped `active = 0`).
+ */
+export function findActiveUsersBehindCurrentVersion(currentVersion: string): VersionCandidate[] {
+  const rows = getDb()
+    .prepare(
+      `SELECT u.id AS id,
+              u.notified_version AS notified_version,
+              CASE WHEN s.value = '1' THEN 1 ELSE 0 END AS opted_in
+         FROM users u
+         LEFT JOIN user_settings s
+           ON s.user_id = u.id AND s.key = ?
+        WHERE u.active = 1
+          AND (u.notified_version IS NULL OR u.notified_version != ?)`,
+    )
+    .all(SETTING_FEATURE_ANNOUNCEMENTS, currentVersion) as {
+    id: number;
+    notified_version: string | null;
+    opted_in: number;
+  }[];
+  return rows.map((r) => ({
+    id: r.id,
+    notifiedVersion: r.notified_version,
+    optedIn: r.opted_in === 1,
+  }));
+}
+
+/** Advance a user's broadcast watermark to `version` (idempotency key). */
+export function markNotified(userId: UserId, version: string): void {
+  getDb().prepare('UPDATE users SET notified_version = ? WHERE id = ?').run(version, userId);
+}
+
+/**
+ * Strict opt-in: only an explicit `'1'` is enabled. Absent row and explicit
+ * `'0'` both read as disabled — the version-announcer JOIN relies on the same
+ * equivalence.
+ */
+export function getFeatureAnnouncementsEnabled(userId: UserId): boolean {
+  return getSetting(userId, SETTING_FEATURE_ANNOUNCEMENTS) === '1';
 }
 
 export function getSetting(userId: UserId, key: string): string | null {
