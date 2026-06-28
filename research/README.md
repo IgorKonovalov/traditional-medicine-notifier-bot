@@ -52,3 +52,19 @@ reconcile updated `traditional_use` for **12** formulas with genuine recoveries;
 **6** are flagged for the doctor (1 fetch-paraphrased, 5 self-incomplete). Generic
 rinchen-preamble / commercial sentences in this capture were deliberately **not**
 merged into the content.
+
+## `НАУКА_О_ЗДОРОВЬЕ_1.pdf` (gitignored) + `_private/nauka-zdorovye-text.txt`
+
+«Наука о здоровье. Сова Ригпа» — popular-lecture book by Dr. Rinchen Tenzin
+(lectures 2012–2013, compiled by T. Rastorgueva, 2nd ed. 2015; free for
+non-commercial use with attribution to sowa-rigpa.ru). A Bön-tradition Sowa Rigpa
+health guide: origins/diagnosis, 5 elements + 3 life-principles, daily/annual
+rhythm, six tastes, constitution portraits (Wind/Fire/Earth-Water), a food-
+properties catalogue, and chapters on pregnancy/children and the elderly. This is
+the **source corpus for the daily-tips content** (existing tips already cite
+«Сова Ригпа»).
+
+**Extraction note:** the PDF text layer uses a broken font encoding — `pdftotext`
+silently drops **all** Cyrillic. Use **PyMuPDF** (`fitz`) to recover clean UTF-8
+text; that recovered text is `_private/nauka-zdorovye-text.txt` (gitignored, with
+`===== PAGE n =====` markers). The PDF itself is gitignored via `research/*.pdf`.
