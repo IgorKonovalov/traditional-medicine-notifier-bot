@@ -37,6 +37,22 @@ export interface NotificationPayload {
 }
 
 /**
+ * A single post-deploy "what's new" announcement (plan 010). Authored per
+ * minor/major version in `src/bot/messages/version-announcements.ts` and
+ * delivered once per user by the version-announcer. `priority` entries bypass
+ * the `feature_announcements` opt-in gate (used for structurally important
+ * changes — a new top-level command, a destructive change).
+ *
+ * Additive to the interface and framework-free by design (ADR 003): it carries
+ * only a pre-rendered body and a domain `NotificationCta`, never Telegraf.
+ */
+export interface AnnouncementMessage {
+  readonly body: string;
+  readonly cta?: NotificationCta;
+  readonly priority?: boolean;
+}
+
+/**
  * Tri-state send outcome.
  *   'ok'                 — delivered.
  *   'permanent-failure'  — the chat is dead (bot blocked, user deactivated,

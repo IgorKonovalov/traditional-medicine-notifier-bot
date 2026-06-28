@@ -9,6 +9,7 @@
  */
 
 import type { TipSource } from '../content/types';
+import { versionAnnouncements } from './messages/version-announcements';
 
 /** The informational disclaimer. Surfaced in /start, /help, and herb pages. */
 const disclaimer =
@@ -170,4 +171,11 @@ export const messages = {
     /** Inline-button label for the herb cross-link CTA attached to a notification. */
     openCta: '📖 Открыть',
   },
+
+  /**
+   * Per-version "what's new" announcement strings (plan 010). Authored in
+   * `messages/version-announcements.ts`; re-exported here so the public surface
+   * stays `messages.versionAnnouncements`.
+   */
+  versionAnnouncements,
 } as const;
