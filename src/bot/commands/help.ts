@@ -7,10 +7,12 @@ import type { Context, Telegraf } from 'telegraf';
 
 import { mainMenuKeyboard } from '../keyboards';
 import { messages } from '../messages';
+import { getVersion } from '../../utils/version';
 
 /** Show the help text. Shared by /help and the menu. */
 export async function helpEntry(ctx: Context): Promise<void> {
-  await ctx.reply(messages.help.body, mainMenuKeyboard());
+  const body = `${messages.help.body}\n\n${messages.help.version(getVersion())}`;
+  await ctx.reply(body, mainMenuKeyboard());
 }
 
 export function registerHelpCommand(bot: Telegraf): void {

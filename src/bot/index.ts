@@ -25,6 +25,7 @@ import { registerRemindersCommand } from './commands/reminders';
 import { registerSubscriptionsCommand } from './commands/subscriptions';
 import { registerDonateCommand } from './commands/donate';
 import { registerFeedbackCommand } from './commands/feedback';
+import { registerChangelogCommand } from './commands/changelog';
 import { registerMenuRouter } from './menu-router';
 import { registerPaymentHandlers } from './payments';
 
@@ -58,6 +59,7 @@ export function createBot(options: CreateBotOptions): CreatedBot {
   registerSubscriptionsCommand(bot, options.deps);
   registerDonateCommand(bot);
   registerFeedbackCommand(bot);
+  registerChangelogCommand(bot);
 
   // Reply-keyboard router last: `hears` matches plain text only, so it never
   // shadows the command/action handlers registered above (ADR 009).
