@@ -257,6 +257,6 @@ stays Telegraf-free), ADR 004 (notification paths + cap), ADR 009 (navigation).
 ## Progress
 
 - [x] Phase 1 — Version plumbing + schema (`eeae095`)
-- [ ] Phase 2 — Announcer service + announcement map
-- [ ] Phase 3 — `/changelog`, settings toggle, `/help` version, boot wiring
+- [x] Phase 2 — Announcer service + announcement map (`0e495c7`)
+- [x] Phase 3 — `/changelog`, settings toggle, `/help` version, boot wiring (`894b2f3`)
 - [ ] Phase 4 — ADR, close-ritual doc, validate
