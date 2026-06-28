@@ -1,9 +1,10 @@
 # Plan 007 — Navigation shell & UX foundation
 
-**Status:** Approved — not started
+**Status:** Completed
 **Created:** 2026-06-26
 **Approved:** 2026-06-26
-**Bump on close:** minor (new persistent menu + reworked navigation are user-facing)
+**Completed:** 2026-06-28
+**Bump on close:** minor (new persistent menu + reworked navigation are user-facing) — shipped as v0.6.0
 
 ## Context
 
@@ -205,4 +206,4 @@ kit once this lands.
 - [x] Phase 3 — Migrate browse / search / herb onto anchor + back/home
 - [x] Phase 4 — Settings hub with dynamic labels
 - [x] Phase 5 — Onboarding refresh (`/start`)
-- [x] Phase 6 — Feature flag, validation, docs & close (plan move to `done/` gated on owner review)
+- [x] Phase 6 — Feature flag, validation, docs & close (owner-reviewed 2026-06-28; moved to `done/`)
