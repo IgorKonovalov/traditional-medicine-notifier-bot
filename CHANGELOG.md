@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.7.1 — 2026-06-28
+
+- Fix ragged mid-sentence line breaks in rendered content (daily tips, herb
+  cards): `toPlainText` now joins ~72-char soft-wrap newlines into spaces while
+  preserving blank-line paragraph breaks.
+
 ## 0.7.0 — 2026-06-28
 
 - Create-reminder wizard (Plan 008) — the headline solicited-notification path is

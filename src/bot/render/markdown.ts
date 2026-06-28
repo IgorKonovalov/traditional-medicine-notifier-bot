@@ -19,6 +19,7 @@ export function toPlainText(markdown: string): string {
     .replace(/_(.+?)_/g, '$1') // italic (underscore)
     .replace(/`(.+?)`/g, '$1') // inline code
     .replace(/\[(.+?)\]\((.+?)\)/g, '$1') // links → label
+    .replace(/([^\n])\n(?!\n)/g, '$1 ') // join soft-wrap newlines within a paragraph
     .replace(/\n{3,}/g, '\n\n') // collapse blank runs
     .trim();
 }
