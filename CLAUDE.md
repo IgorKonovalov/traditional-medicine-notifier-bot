@@ -160,6 +160,13 @@ of reinventing routing/session/render:
   display-only split; do not chase a full rename of the stable join keys. It also
   carries a formula-only 🔎 search (`lib:fsearch`/`lib:fresults`) reachable from
   the top of the list, *in addition to* the unified top-level 🔎 Поиск.
+- **The 🌿 herb branch is *labelled* «Ингредиенты» (Plan 019)** — same
+  display-only split: code, callbacks (`lib:herb:`), the `tib-` ids, the
+  `content/herbs/` dir and the `Herb` type keep "herb" vocabulary, while minerals/
+  resins/animal materia medica (e.g. `tib-shilajit`, `tib-calcite`, `tib-musk`)
+  are authored as `herb`-typed content. Formula→ingredient cross-links resolve
+  from each formula's `members:`, backfilled from its `composition:` Latin
+  binomials by `npm run content:members` (map: `research/ingredient-member-map.json`).
 
 ## Portability discipline (ADR 003)
 

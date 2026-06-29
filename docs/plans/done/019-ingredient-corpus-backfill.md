@@ -1,9 +1,9 @@
 # Plan 019 — Ingredient corpus backfill & formula→ingredient cross-link
 
-**Status:** Approved — 2026-06-29
+**Status:** Completed — 2026-06-29 (v0.21.0)
 **Created:** 2026-06-29
-**Completed:** —
-**Bump on close:** minor
+**Completed:** 2026-06-29
+**Bump on close:** minor (0.20.0 → 0.21.0)
 
 ## Context
 

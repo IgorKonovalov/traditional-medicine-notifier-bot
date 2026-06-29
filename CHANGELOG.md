@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.21.0 — 2026-06-29
+
+- Grow the visible ingredient corpus from 1 → **35** (Plan 019): the
+  highest-frequency formula ingredients across 6 categories, including
+  non-botanicals (мумиё, кальцит, мускус). The 🌿 library branch is relabelled
+  **«Ингредиенты»** (display-only; code/ids/`Herb` type keep "herb" vocabulary).
+- Backfill `members:` on 53 formulas from their `composition:` Latin binomials,
+  so formula cards now show **441 tappable ingredient cross-links** across 113
+  cards (`npm run content:members`, map `research/ingredient-member-map.json`).
+
 ## 0.20.0 — 2026-06-29
 
 - Grow the daily-tip pool from 60 to **87** with 27 new tips (Plan 018): 13 from
