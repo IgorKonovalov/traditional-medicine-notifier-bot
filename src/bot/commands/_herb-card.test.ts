@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 import { buildCrossLinks } from '../../content/cross-links';
 import type { Combination, Herb, LoadedContent } from '../../content/types';
 
-import { herbFormulaLinks, renderHerb } from './_herb-card';
+import { herbCardKeyboard, herbFormulaLinks, renderHerb } from './_herb-card';
 
 function combo(id: string, nameRu: string, members?: string[]): Combination {
   return {
@@ -77,5 +77,37 @@ describe('renderHerb — cross-link section', () => {
   it('always ends with the render-time disclaimer (ADR 006)', () => {
     const out = renderHerb(herb('tib-haritaki'), [{ id: 'tib-formula-agar-8', nameRu: 'Агар-8' }]);
     expect(out.endsWith('консультируйтесь с врачом.')).toBe(true);
+  });
+
+  it('notes the truncation when the herb is in more formulas than the cap', () => {
+    const links = Array.from({ length: 94 }, (_, i) => ({ id: `f-${i}`, nameRu: `Ф ${i}` }));
+    expect(renderHerb(herb('tib-haritaki'), links)).toContain(
+      'Входит в формулы (показаны 8 из 94):',
+    );
+  });
+
+  it('uses the plain label when within the cap', () => {
+    const links = Array.from({ length: 5 }, (_, i) => ({ id: `f-${i}`, nameRu: `Ф ${i}` }));
+    const out = renderHerb(herb('tib-haritaki'), links);
+    expect(out).toContain('Входит в формулы:');
+    expect(out).not.toContain('показаны');
+  });
+});
+
+describe('herbCardKeyboard — reverse-link cap', () => {
+  const links = (n: number): { id: string; nameRu: string }[] =>
+    Array.from({ length: n }, (_, i) => ({ id: `tib-formula-${i}`, nameRu: `Формула ${i}` }));
+
+  const formulaButtons = (kb: ReturnType<typeof herbCardKeyboard>): unknown[] =>
+    kb.reply_markup.inline_keyboard
+      .flat()
+      .filter((b) => 'callback_data' in b && b.callback_data.startsWith('lib:formula:'));
+
+  it('caps formula buttons to 8 so the keyboard stays within Telegram limits', () => {
+    expect(formulaButtons(herbCardKeyboard('tib-haritaki', [], links(94)))).toHaveLength(8);
+  });
+
+  it('shows every formula button when within the cap', () => {
+    expect(formulaButtons(herbCardKeyboard('tib-haritaki', [], links(3)))).toHaveLength(3);
   });
 });

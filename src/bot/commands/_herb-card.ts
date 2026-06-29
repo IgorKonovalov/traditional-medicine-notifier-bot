@@ -19,6 +19,16 @@ import { clampToTelegram, toPlainText } from '../render/markdown';
 
 type CallbackButton = ReturnType<typeof Markup.button.callback>;
 
+/**
+ * Cap on the reverse cross-link buttons. A ubiquitous ingredient like
+ * `tib-haritaki` (Миробалан хебула) is a member of ~94 formulas; one button each
+ * builds an inline keyboard Telegram rejects (the whole edit then fails with the
+ * generic error). Cap the buttons to a useful sample — the rest stay reachable
+ * via 🔎 search — and tell the reader the section is truncated. 8 mirrors the
+ * library `PAGE_SIZE`.
+ */
+const MAX_FORMULA_LINKS = 8;
+
 /** A reverse cross-link to a formula the herb is a member of. */
 export interface FormulaLink {
   readonly id: string;
@@ -53,7 +63,14 @@ export function renderHerb(herb: Herb, formulaLinks: readonly FormulaLink[] = []
   const body = clampToTelegram(`${header}\n\n${toPlainText(herb.body)}`);
   const parts = [body];
   // The formula names live on the buttons below; this is just the section label.
-  if (formulaLinks.length > 0) parts.push(messages.herbCard.inFormulas);
+  // When the herb belongs to more formulas than fit on the keyboard, say so.
+  if (formulaLinks.length > 0) {
+    parts.push(
+      formulaLinks.length > MAX_FORMULA_LINKS
+        ? messages.herbCard.inFormulasCapped(MAX_FORMULA_LINKS, formulaLinks.length)
+        : messages.herbCard.inFormulas,
+    );
+  }
   parts.push(messages.disclaimer);
   return parts.join('\n\n');
 }
@@ -69,7 +86,9 @@ export function herbCardKeyboard(
   formulaLinks: readonly FormulaLink[] = [],
 ): ReturnType<typeof Markup.inlineKeyboard> {
   const rows: CallbackButton[][] = [[Markup.button.callback('⏰ Напомнить', `remind:${herbId}`)]];
-  for (const link of formulaLinks) {
+  // Cap the reverse-link buttons so a herb in dozens of formulas can't build an
+  // oversized keyboard Telegram rejects (the render label notes the truncation).
+  for (const link of formulaLinks.slice(0, MAX_FORMULA_LINKS)) {
     rows.push([Markup.button.callback(link.nameRu, assertCallbackData(`lib:formula:${link.id}`))]);
   }
   return Markup.inlineKeyboard([...rows, ...navRows]);

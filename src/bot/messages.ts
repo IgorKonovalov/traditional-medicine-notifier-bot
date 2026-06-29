@@ -183,6 +183,9 @@ export const messages = {
   herbCard: {
     /** Header for the reverse cross-link section; formula names sit on buttons. */
     inFormulas: 'Входит в формулы:',
+    /** Variant when the herb belongs to more formulas than the keyboard shows. */
+    inFormulasCapped: (shown: number, total: number): string =>
+      `Входит в формулы (показаны ${shown} из ${total}):`,
   },
 
   search: {
