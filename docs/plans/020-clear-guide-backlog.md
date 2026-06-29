@@ -1,8 +1,8 @@
 # Plan 020 — Clear the guide backlog (bulk-author remaining waves)
 
-**Status:** Approved — 2026-06-29
+**Status:** Completed — 2026-06-29 (awaiting owner review before move to `done/`)
 **Created:** 2026-06-29
-**Completed:** —
+**Completed:** 2026-06-29 — all 5 waves shipped (27 guides), v0.23.0
 **Bump on close:** minor (single close after all waves)
 
 ## Context
@@ -171,4 +171,6 @@ manla `/info` section already named per-row in `guide-backlog.md`.
   `tib-vodnye-procedury`, `tib-massazh` ⚠️, `tib-uhod-za-zreniem` ⚠️, `tib-o-lekare`
   (массаж/зрение reframed descriptively, eye remedy dropped; активность sourced to
   the Nauka book since гл. 13 has no exercise teaching; о лекаре confirmed ethics)
-- [ ] Wave 5 — elderly nutrition (1)
+- [x] Wave 5 — elderly nutrition (1) — `tib-pitanie-pozhilyh` (Сова Ригпа book
+  гл. 6; diet/conduct only, all medical material dropped); README "Other
+  candidates" entry cleared
