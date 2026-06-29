@@ -108,8 +108,27 @@ untouched), **ADR 002** (renderer-agnostic; `Источник:` built by
 
 ## Phases
 
-### Phase 1 — Lock the gating design + tier targets (architect → owner)
+### Phase 1 — Lock the gating design + tier targets (architect → owner) ✅ DONE (2026-06-29)
 *No code/content yet — design only.*
+
+**Outcome — locked in [ADR 014](../adr/014-tip-staging-gate.md):**
+- Gate = `Tip.status: 'published' | 'staging'` (default `published`); single
+  `loadContent` chokepoint via `includeStagingTips` opt (mirrors
+  `includeHiddenTraditions`); index builder opts in; `status` projected into
+  `tips.json`.
+- **Pre-launch exposure (open question) — resolved: review-only.** Owner chose
+  (2026-06-29) that gated tips are visible on **no** bot (private or public) — the
+  loader default excludes them, so `pickDailyTip`/💡 leaf/search never serve them.
+  Review happens via a generated `research/_private` HTML artifact, tracked in
+  `docs/medical-review.md`. Reviewers are never pushed unvetted disease-indication
+  claims; the public launch is a no-op for users.
+- **Promotion is per-tip, not a blanket flip.** On documented doctor sign-off, a
+  tip's `status: staging` is removed (→ published). This **supersedes the
+  "one-edit production flip" phrasing** below (it described the rejected
+  formula-style model).
+- Tier targets confirmed: production ~95–100, gated ~80–90; land-point chosen in
+  Phase 4 within 170–200.
+
 - **Deliverables:**
   - **Gate design**, recommended: `Tip.status: 'published' | 'staging'` in
     frontmatter (default `published` when absent — the 60 existing tips need no
@@ -229,8 +248,9 @@ untouched), **ADR 002** (renderer-agnostic; `Источник:` built by
   the **canonical** source. Phase 4 dedup makes this explicit per tip.
 - **Scope vs. Plans 005/012.** This adds infra (gate + ADR) those didn't. Phases
   1–2 are gated by owner sign-off before bulk authoring (dry-run-before-bulk).
-- **Pre-launch exposure of gated tips** (Phase 1 open question) — recommendation:
-  keep them out of the proactive push + 💡 leaf, review-only. Owner to confirm.
+- **Pre-launch exposure of gated tips** (Phase 1 open question) — ✅ **resolved
+  (2026-06-29): review-only** on no bot (ADR 014). Loader default excludes
+  `staging`; review via `research/_private` HTML + `docs/medical-review.md`.
 - **Rotation cycle.** A ~95–100 production pool → ~3-month no-repeat cycle (the
   gated tier doesn't enter rotation). Pure index-order shuffle stays out of scope.
 
@@ -250,7 +270,7 @@ untouched), **ADR 002** (renderer-agnostic; `Источник:` built by
 
 ## Progress
 
-- [ ] Phase 1 — Gating design + targets + ADR (owner-approved)
+- [x] Phase 1 — Gating design + targets + ADR (owner-approved) — ADR 014, review-only
 - [ ] Phase 2 — Tip-staging gate built (dev)
 - [ ] Phase 3 — Чжуд-ши extracted + OCR-cleaned + chapter map
 - [ ] Phase 4 — Master tip outline (owner-reviewed)
