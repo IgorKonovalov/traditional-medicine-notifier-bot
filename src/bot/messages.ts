@@ -182,7 +182,7 @@ export const messages = {
     intro: 'Выберите раздел.',
     herbs: '🌿 Ингредиенты',
     guides: '📖 Статьи',
-    tips: '💡 Совет дня',
+    tips: '💡 Случайный совет',
     search: '🔎 Поиск',
     formulas: '🧪 Составы',
     foods: '🥗 Продукты',
@@ -196,7 +196,7 @@ export const messages = {
     emptyCategories: 'Пока нет категорий с ингредиентами.',
     /** Category button: name + how many herbs it groups. */
     categoryButton: (name: string, count: number): string => `${name} (${count})`,
-    // 💡 Совет дня branch (links to the existing daily-tip surface)
+    // 💡 Случайный совет branch (on-demand random tip, Plan 021)
     tipsEmpty: 'Пока нет советов.',
     // 📖 Статьи branch (long-form guides, Plan 006)
     guidesTitle: 'Статьи — выберите, что почитать.',
@@ -382,6 +382,14 @@ export const messages = {
       source !== undefined
         ? `🌿 Совет дня\n\n${body}\n\n${formatTipSource(source)}`
         : `🌿 Совет дня\n\n${body}`,
+    /**
+     * On-demand variant (Plan 021): the menu / `/tips` / library leaf serve a
+     * *random* tip per tap, so the "дня" wording would be false here.
+     */
+    random: (body: string, source?: TipSource): string =>
+      source !== undefined
+        ? `🌿 Совет\n\n${body}\n\n${formatTipSource(source)}`
+        : `🌿 Совет\n\n${body}`,
   },
 
   notify: {

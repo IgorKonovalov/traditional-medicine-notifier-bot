@@ -3,7 +3,7 @@
  * message, edited in place across screens:
  *
  *   hub → 🌿 Травы → (Все травы | По категории) → herb list → herb card
- *       → 💡 Совет дня (in-anchor)
+ *       → 💡 Случайный совет (in-anchor, random per tap — Plan 021)
  *       → 🧪 Составы (formula browser, live post sign-off — gated by `_formula-gate`;
  *         labelled «Составы» while code/ids keep the "formula/combination" vocabulary)
  *
@@ -57,7 +57,8 @@ import { formulaCardKeyboard, formulaMemberLinks, renderFormula } from './_formu
 import { FORMULA_BRANCH_ENABLED } from './_formula-gate';
 import { guidePages } from './_guide-card';
 import { herbCardKeyboard, herbFormulaLinks, renderHerb } from './_herb-card';
-import { pickDailyTip } from './tips';
+import { getRecent, recordShown } from './tip-history';
+import { pickRandomTip } from './tips';
 
 const PAGE_SIZE = 8;
 
@@ -305,15 +306,24 @@ function cardView(deps: BotDeps, herbId: string): View | null {
   };
 }
 
-/** The 💡 Совет дня leaf — today's tip rendered into the anchor. */
-function tipsView(deps: BotDeps): View {
-  const tip = pickDailyTip(deps.content.tips.all);
-  const text =
-    tip === null
-      ? messages.library.tipsEmpty
-      : messages.tip.daily(toPlainText(tip.body), tip.source);
+/**
+ * The 💡 Случайный совет leaf — a random tip rendered into the anchor (Plan 021),
+ * sharing the same per-user recent-history exclusion as `/tips` and the menu so
+ * repeated visits don't immediately repeat. `userId` is `undefined` only when
+ * ensure-user hasn't run (stateless fallback: still random, no exclusion).
+ */
+function tipsView(deps: BotDeps, userId: number | undefined): View {
+  const exclude = userId === undefined ? new Set<string>() : getRecent(userId);
+  const tip = pickRandomTip(deps.content.tips.all, exclude);
+  if (tip === null) {
+    return {
+      text: messages.library.tipsEmpty,
+      keyboard: Markup.inlineKeyboard([backRow('lib:back'), homeRow('lib:home')]),
+    };
+  }
+  if (userId !== undefined) recordShown(userId, tip.id);
   return {
-    text,
+    text: messages.tip.random(toPlainText(tip.body), tip.source),
     keyboard: Markup.inlineKeyboard([backRow('lib:back'), homeRow('lib:home')]),
   };
 }
@@ -668,10 +678,16 @@ function foodCardView(deps: BotDeps, foodId: string): View | null {
   };
 }
 
-/** Render whichever screen `state` names, clamping page where it paginates. */
+/**
+ * Render whichever screen `state` names, clamping page where it paginates.
+ * `userId` is threaded through only for the `tips` screen, whose render is a
+ * random pick that records into the user's recent-tip history (Plan 021); every
+ * other screen ignores it.
+ */
 function viewFor(
   deps: BotDeps,
   state: LibraryState,
+  userId: number | undefined,
 ): View & { readonly page: number; readonly section?: number } {
   switch (state.screen) {
     case 'herbs':
@@ -681,7 +697,7 @@ function viewFor(
     case 'list':
       return listView(deps, state);
     case 'tips':
-      return { ...tipsView(deps), page: 0 };
+      return { ...tipsView(deps, userId), page: 0 };
     case 'search':
       return { ...searchPromptView(), page: 0 };
     case 'results':
@@ -844,7 +860,7 @@ export async function librarySearchEntry(
   const query = (rawQuery ?? '').trim().toLowerCase();
   const state: LibraryState =
     query === '' ? { screen: 'search', page: 0 } : { screen: 'results', query, page: 0 };
-  const out = viewFor(deps, state);
+  const out = viewFor(deps, state, userId);
   const anchor = await sendView(ctx, out);
   persist(userId, anchor, { ...state, page: out.page });
 }
@@ -857,7 +873,7 @@ export async function libraryGuidesEntry(ctx: Context, deps: BotDeps): Promise<v
     return;
   }
   deleteSession(userId, 'library');
-  const out = viewFor(deps, { screen: 'guide-list', page: 0 });
+  const out = viewFor(deps, { screen: 'guide-list', page: 0 }, userId);
   const anchor = await sendView(ctx, out);
   persist(userId, anchor, { screen: 'guide-list', page: out.page });
 }
@@ -870,7 +886,7 @@ export async function libraryFoodsEntry(ctx: Context, deps: BotDeps): Promise<vo
     return;
   }
   deleteSession(userId, 'library');
-  const out = viewFor(deps, { screen: 'food-groups', page: 0 });
+  const out = viewFor(deps, { screen: 'food-groups', page: 0 }, userId);
   const anchor = await sendView(ctx, out);
   persist(userId, anchor, { screen: 'food-groups', page: out.page });
 }
@@ -908,7 +924,7 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     v: ValidatedCallback<LibraryState>,
     next: LibraryState,
   ): Promise<void> => {
-    const out = viewFor(deps, next);
+    const out = viewFor(deps, next, v.userId);
     await editView(ctx, out);
     persist(v.userId, v.session.anchor, {
       ...next,
@@ -1272,7 +1288,7 @@ export function registerLibrarySearchTextCapture(bot: Telegraf, deps: BotDeps): 
       parked === 'formula-search'
         ? { screen: 'formula-results', query, page: 0 }
         : { screen: 'results', query, page: 0 };
-    const out = viewFor(deps, state);
+    const out = viewFor(deps, state, userId);
     await editViewAt(ctx, session.anchor.messageId, out);
     persist(userId, session.anchor, { ...state, page: out.page });
   });
