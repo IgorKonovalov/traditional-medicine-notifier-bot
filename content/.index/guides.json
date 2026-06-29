@@ -3,7 +3,7 @@
     "id": "tib-osnovy",
     "tradition": "tibetan",
     "title": "«Основы тибетской медицины»",
-    "sectionCount": 8,
+    "sectionCount": 9,
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -30,6 +30,17 @@
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
       "chapter": "гл. 14 «Сезонный образ жизни»"
+    }
+  },
+  {
+    "id": "tib-sutochnyj-ritm",
+    "tradition": "tibetan",
+    "title": "«Суточный ритм трёх начал»",
+    "sectionCount": 6,
+    "source": {
+      "work": "Наука о здоровье. Сова Ригпа",
+      "part": "Ринчен Тензин, популярные лекции 2012–2013",
+      "chapter": "гл. 2 «Питание и образ жизни»"
     }
   }
 ]
