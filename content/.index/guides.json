@@ -11,6 +11,17 @@
     }
   },
   {
+    "id": "tib-nablyudenie-tela",
+    "tradition": "tibetan",
+    "title": "«Как врач наблюдает тело»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Заключительная тантра",
+      "chapter": "гл. 1–2 «Исследование пульса и мочи»"
+    }
+  },
+  {
     "id": "tib-osnovy",
     "tradition": "tibetan",
     "title": "«Основы тибетской медицины»",
