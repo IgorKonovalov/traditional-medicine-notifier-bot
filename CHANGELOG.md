@@ -4,6 +4,19 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.20.0 — 2026-06-29
+
+- Grow the daily-tip pool from 60 to **87** with 27 new tips (Plan 018): 13 from
+  the **«Чжуд-ши»** canon (causes of illness and the three ньепа, body-types,
+  body structure, food properties, bathing, incompatible foods — newly-mined
+  чч. 2/4/6/8/9/17 of Тантра объяснений) and 14 from **«Наука о здоровье. Сова
+  Ригпа»** (the tradition's origins and four healing methods, elderly daily
+  conduct, food preparation).
+- A two-tier design with a gated disease-indication tier + tip-staging gate was
+  built and then **reverted** before release (gated tier dropped; ADR 014
+  withdrawn): the food-property material already lives in the `foods` corpus and
+  a smaller, fully-published pool was preferred. Net: published tips only.
+
 ## 0.19.0 — 2026-06-29
 
 - Add a structured, queryable **`foods` content type** (ADR 012) and a

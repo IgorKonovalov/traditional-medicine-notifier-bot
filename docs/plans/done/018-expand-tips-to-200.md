@@ -1,10 +1,34 @@
 # Plan 018 — Expand the daily-tip pool to ~190–200 (two-tier: production + gated indication)
 
-**Status:** Approved
+**Status:** Completed
 **Created:** 2026-06-29
 **Approved:** 2026-06-29 (owner)
-**Completed:** (on close)
-**Bump on close:** minor (user-facing content + a new gated content surface)
+**Completed:** 2026-06-29 (v0.20.0)
+**Bump on close:** minor (27 new user-facing published tips)
+
+## Outcome (final, supersedes the two-tier plan below)
+
+Shipped as a **published-tier-only** expansion. The two-tier design (production +
+gated disease-indication tier behind a tip-staging gate) was built, then the
+**gated tier was dropped entirely on the owner's decision** during review
+(2026-06-29): the food-property content already lives in the structured `foods`
+corpus (ADR 012), the geriatric audience is out of focus, and a smaller fully-
+published pool was preferred (other sources may come later).
+
+**Delivered:**
+- **27 new published tips** (`tip-061`…`tip-087`), pool 60 → **87**: 13 Чжуд-ши
+  canonical theory/food + 14 Сова Ригпа foundations/elderly-lifestyle/food-prep.
+- Чжуд-ши canon **extracted + OCR-cleaned** to gitignored
+  `research/_private/zhud-shi-text.txt` + chapter map (kept for future authoring;
+  README provenance committed).
+- `conventions.md` amended: newly-verified Чжуд-ши chapters (чч. 2/4/6/8/9/17) +
+  the direct-conduct voice allowance (non-medical lifestyle only).
+
+**Built then reverted (no user-facing trace):** the tip-staging gate
+(`Tip.status`, `includeStagingTips`, `isProductionTip`, index `status`, gate
+tests, review tooling) and the **39 gated tips** — all removed (commit 81adeb0).
+**ADR 014 is Withdrawn** (kept as a historical record; revive via a fresh ADR if
+a gated tip tier returns).
 
 ## Context
 
@@ -282,11 +306,10 @@ untouched), **ADR 002** (renderer-agnostic; `Источник:` built by
 - [x] Phase 5 — Production tier authored (27: tips 061–087) — 13 Чжуд-ши canonical
   theory/food (Тантра объяснений, чч 2/4/6/8/9/13/16/17) + 14 Сова Ригпа
   foundations (гл 1) + elderly-lifestyle (гл 6) + food-prep (гл 4); index 87, green
-- [x] Phase 6 — Gated tier authored (39: tips 088–126, all `status: staging`) —
-  30 food-property (гл 4) + 9 geriatric (гл 6). **Revised down from ~72**: the
-  genuine disease-indication yield is ~39 (constitution-only properties already
-  live in the foods corpus; padding ruled out by owner; gated tier is review-only
-  so count doesn't affect rotation). Gate verified: prod pool 87, 0 staging leaked;
-  index 126. High-risk (рак/диабет/давление: tips 094,095,112,119,120) flagged for
-  doctor.
-- [ ] Phase 7 — Index, conventions, doctor-review surface, close + minor bump
+- [~] Phase 6 — Gated tier authored (39 tips) then **DROPPED** — authored 30
+  food-property + 9 geriatric `status: staging` tips, then **removed entirely on
+  owner decision** (commit 81adeb0): food properties already in the `foods` corpus,
+  geriatric out of focus. The Phase-2 gate was reverted with them; ADR 014 withdrawn.
+- [x] Phase 7 — Close (reduced scope) — conventions amended (verified Чжуд-ши
+  chapters + direct-conduct voice); no gate to document in architecture (reverted);
+  v0.20.0, CHANGELOG + `versionAnnouncements` entry (published tier only); plan → done/
