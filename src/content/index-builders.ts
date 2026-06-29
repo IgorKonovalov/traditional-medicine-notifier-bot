@@ -42,6 +42,8 @@ export interface CategoryIndexEntry {
 
 export interface TipIndexEntry {
   readonly id: string;
+  /** Publication tier (ADR 014); `staging` tips are indexed but production-hidden. */
+  readonly status: Tip['status'];
   readonly category?: string;
   readonly source?: Tip['source'];
 }
@@ -132,6 +134,7 @@ export function buildIndex(content: LoadedContent): ContentIndex {
 
   const tips: TipIndexEntry[] = content.tips.all.map((t) => ({
     id: t.id,
+    status: t.status,
     ...(t.category !== undefined ? { category: t.category } : {}),
     ...(t.source !== undefined ? { source: t.source } : {}),
   }));

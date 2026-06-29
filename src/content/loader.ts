@@ -15,7 +15,7 @@ import matter from 'gray-matter';
 
 import { buildCrossLinks } from './cross-links';
 import { validateCorpus } from './validate';
-import { isVisibleTradition } from './visibility';
+import { isProductionTip, isVisibleTradition } from './visibility';
 import type {
   Category,
   Combination,
@@ -31,7 +31,14 @@ import type {
   TipSource,
   Tradition,
 } from './types';
-import { EFFECTS, FOOD_GROUPS, HEAVINESS_LEVELS, TRADITIONS, WARMTH_LEVELS } from './types';
+import {
+  EFFECTS,
+  FOOD_GROUPS,
+  HEAVINESS_LEVELS,
+  TIP_STATUSES,
+  TRADITIONS,
+  WARMTH_LEVELS,
+} from './types';
 
 interface RawDoc {
   readonly file: string;
@@ -47,6 +54,13 @@ export interface LoadOptions {
    * index keeps every authored record (Chinese files stay indexed, not deleted).
    */
   readonly includeHiddenTraditions?: boolean;
+  /**
+   * Include gated `status: staging` tips (ADR 014) instead of dropping them. The
+   * runtime bot loads with the gate **on** (default), so staging tips never reach
+   * the pool; the content-index builder loads with it **off** so the committed
+   * index keeps every authored tip for doctor review.
+   */
+  readonly includeStagingTips?: boolean;
 }
 
 export function loadContent(contentDir: string, opts: LoadOptions = {}): LoadedContent {
@@ -62,7 +76,12 @@ export function loadContent(contentDir: string, opts: LoadOptions = {}): LoadedC
     .map(parseCombination)
     .filter((c) => visible(c.tradition));
   const categories = readDir(join(contentDir, 'categories')).map(parseCategory);
-  const tips = readDir(join(contentDir, 'tips')).map(parseTip);
+  // Tip-staging gate (ADR 014): gated `status: staging` tips are dropped from the
+  // runtime pool here, the same way the tradition gate drops hidden traditions.
+  // The index builder opts out (includeStagingTips) to index every authored tip.
+  const tips = readDir(join(contentDir, 'tips'))
+    .map(parseTip)
+    .filter((t) => opts.includeStagingTips === true || isProductionTip(t));
   const guides = readDir(join(contentDir, 'guides')).map(parseGuide);
   const foods = readDir(join(contentDir, 'foods'))
     .map(parseFood)
@@ -191,6 +210,8 @@ function parseTip(doc: RawDoc): Tip {
   const source = parseTipSource(doc);
   return {
     id: reqString(doc, 'id'),
+    // Absent `status` defaults to published (ADR 014) — the existing tips need no edit.
+    status: optEnum(doc, 'status', TIP_STATUSES) ?? 'published',
     body: doc.body,
     ...optString(doc, 'category', 'category'),
     ...(source !== undefined ? { source } : {}),

@@ -22,9 +22,13 @@ function main(): void {
   const args = new Set(process.argv.slice(2));
   const check = args.has('--check');
 
-  // Index the FULL corpus — the visibility gate (ADR 013) hides traditions from
-  // the runtime bot, not from the committed index (Chinese files stay indexed).
-  const content = loadContent(CONTENT_DIR, { includeHiddenTraditions: true });
+  // Index the FULL corpus — the visibility gates hide records from the runtime
+  // bot, not from the committed index: hidden traditions (ADR 013, Chinese files)
+  // and gated staging tips (ADR 014) both stay indexed for tooling/review.
+  const content = loadContent(CONTENT_DIR, {
+    includeHiddenTraditions: true,
+    includeStagingTips: true,
+  });
   const index = buildIndex(content);
 
   const files: Record<string, unknown> = {

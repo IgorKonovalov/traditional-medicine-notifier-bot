@@ -417,6 +417,52 @@ describe('buildIndex — tips', () => {
     });
     expect(without && 'source' in without).toBe(false);
   });
+
+  it('projects the publication status for every tip', () => {
+    const root = writeCorpus({
+      tips: { 'tip-y': TIP_NO_SOURCE, 'tip-staging': TIP_STAGING },
+    });
+    const index = buildIndex(loadContent(root, { includeStagingTips: true }));
+
+    expect(index.tips.find((t) => t.id === 'tip-y')?.status).toBe('published');
+    expect(index.tips.find((t) => t.id === 'tip-staging')?.status).toBe('staging');
+  });
+});
+
+const TIP_STAGING = `---
+id: tip-staging
+status: staging
+---
+
+Заметка с показанием при болезни (gated).
+`;
+
+describe('loadContent — tip-staging gate (ADR 014)', () => {
+  it('drops status: staging tips from the production pool, keeps published ones', () => {
+    const root = writeCorpus({ tips: { 'tip-y': TIP_NO_SOURCE, 'tip-staging': TIP_STAGING } });
+
+    const content = loadContent(root);
+    expect(content.tips.all.map((t) => t.id)).toEqual(['tip-y']);
+    expect(content.tips.byId.has('tip-staging')).toBe(false);
+  });
+
+  it('keeps staging tips when includeStagingTips is set (the index builder path)', () => {
+    const root = writeCorpus({ tips: { 'tip-y': TIP_NO_SOURCE, 'tip-staging': TIP_STAGING } });
+
+    const content = loadContent(root, { includeStagingTips: true });
+    expect(content.tips.all.map((t) => t.id).sort()).toEqual(['tip-staging', 'tip-y']);
+  });
+
+  it('defaults an absent status to published', () => {
+    const root = writeCorpus({ tips: { 'tip-y': TIP_NO_SOURCE } });
+    expect(loadContent(root).tips.byId.get('tip-y')?.status).toBe('published');
+  });
+
+  it('rejects an unknown status value', () => {
+    const bad = TIP_STAGING.replace('status: staging', 'status: draft');
+    const root = writeCorpus({ tips: { 'tip-staging': bad } });
+    expect(() => loadContent(root)).toThrow(/field "status" must be one of/);
+  });
 });
 
 const GUIDE = `---
