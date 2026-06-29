@@ -71,10 +71,14 @@ describe('renderFormula — rich HTML card (ADR 011)', () => {
     const out = renderFormula(verboseFormula());
     expect(out).toContain('<b>Показания:</b>');
     expect(out).toContain('ЖАР-СЕРДЦА-СЕКРЕТ');
-    expect(out).toContain('<b>Применение:</b>');
-    expect(out).toContain('<blockquote expandable>ТРАД-ИСПОЛЬЗОВАНИЕ-СЕКРЕТ</blockquote>');
-    expect(out).toContain('<b>Приём:</b>');
-    expect(out).toContain('<blockquote expandable>ДОЗИРОВКА-СЕКРЕТ по 0,2 г</blockquote>');
+    // Label then the quote on the next line with NO leading indentation.
+    expect(out).toContain(
+      '<b>Применение:</b>\n<blockquote expandable>ТРАД-ИСПОЛЬЗОВАНИЕ-СЕКРЕТ</blockquote>',
+    );
+    expect(out).toContain(
+      '<b>Приём:</b>\n<blockquote expandable>ДОЗИРОВКА-СЕКРЕТ по 0,2 г</blockquote>',
+    );
+    expect(out).not.toMatch(/\n +<blockquote/); // no baked-in source indent
   });
 
   it('never surfaces the raw sourceText or the markdown body (ADR 006)', () => {

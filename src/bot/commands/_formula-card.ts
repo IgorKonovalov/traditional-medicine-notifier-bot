@@ -125,6 +125,19 @@ function compositionLine(entry: string): Html {
   return html`• ${entry}`;
 }
 
+/**
+ * A labelled long field folded into a collapsed-by-default `<blockquote
+ * expandable>` (tap to expand) — the reusable "long field" convention. The label
+ * and quote are built separately and `join`ed on a newline rather than embedding
+ * one in a template literal, so the rendered line break carries no source
+ * indentation (a multi-line backtick template would bake the indent in).
+ */
+function expandableSection(label: string, value: string): Html {
+  const head = html`<b>${label}:</b>`;
+  const quote = html`<blockquote expandable>${value}</blockquote>`;
+  return unsafeHtml([head, quote].join('\n'));
+}
+
 export function renderFormula(combination: Combination): Html {
   const c = combination;
   const sections: string[] = [];
@@ -147,16 +160,10 @@ export function renderFormula(combination: Combination): Html {
     sections.push(html`<b>${messages.formulaCard.indications}:</b> ${c.indications.join('; ')}`);
   }
   if (c.traditionalUse?.length) {
-    sections.push(
-      html`<b>${messages.formulaCard.use}:</b>
-        <blockquote expandable>${c.traditionalUse.join('\n')}</blockquote>`,
-    );
+    sections.push(expandableSection(messages.formulaCard.use, c.traditionalUse.join('\n')));
   }
   if (c.dosingNotes?.length) {
-    sections.push(
-      html`<b>${messages.formulaCard.dosing}:</b>
-        <blockquote expandable>${c.dosingNotes.join('\n')}</blockquote>`,
-    );
+    sections.push(expandableSection(messages.formulaCard.dosing, c.dosingNotes.join('\n')));
   }
   if (c.cautions.length > 0) {
     sections.push(html`⚠️ <b>${messages.formulaCard.cautions}:</b> ${c.cautions.join('; ')}`);
