@@ -297,6 +297,6 @@ only genuinely-uncovered material is **diagnosis observation**.
 - [x] Phase 2 — `🥗 Продукты` browse + constitution/warmth filter — `9a22378` (ux-telegram review of filter flow/wording still pending)
 - [x] Phase 3 — Author the food catalogue (55 foods, all 10 groups) — `875ea5e`
 - [x] Phase 4 — Guide «Три природы человека» (constitution portraits) — `4794716`
-- [ ] Phase 5 — Diagnosis observation guide/section (narrowed; rhythms already shipped — unblocked)
+- [x] Phase 5 — Diagnosis observation guide `tib-nablyudenie-tela` (annual-cycle note skipped — already covered by `tib-sezonnoe-pitanie`) — `20acf08`
 - [ ] Phase 6 — Index regen, docs & close
 </content>
