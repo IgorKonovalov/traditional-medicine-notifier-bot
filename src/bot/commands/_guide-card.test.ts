@@ -25,7 +25,7 @@ describe('renderGuideSection', () => {
 });
 
 describe('guidePages', () => {
-  it('produces one page per section and appends the disclaimer to the last page only', () => {
+  it('produces one page per section and carries no disclaimer (scoped to formulas, 2026-06-29)', () => {
     const pages = guidePages(
       guide([
         { heading: '', body: 'Вступление.' },
@@ -35,8 +35,8 @@ describe('guidePages', () => {
 
     expect(pages).toHaveLength(2);
     expect(pages[0]).toBe('Вступление.');
-    expect(pages[0]).not.toContain(messages.disclaimer);
-    expect(pages[1]).toBe(`Раздел\n\nТекст раздела.\n\n${messages.disclaimer}`);
+    expect(pages[1]).toBe('Раздел\n\nТекст раздела.');
+    for (const page of pages) expect(page).not.toContain(messages.disclaimer);
   });
 
   it('keeps every page within the Telegram limit, splitting an oversized section', () => {
@@ -45,7 +45,5 @@ describe('guidePages', () => {
 
     expect(pages.length).toBeGreaterThan(1);
     for (const page of pages) expect(page.length).toBeLessThanOrEqual(TELEGRAM_LIMIT);
-    // The disclaimer rides the final page.
-    expect(pages[pages.length - 1]).toContain(messages.disclaimer);
   });
 });

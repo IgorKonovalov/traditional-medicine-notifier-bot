@@ -1,7 +1,9 @@
 /**
  * Shared herb-card rendering, reused by the library and search drilldown flows
  * and the notification "Открыть" CTA. Keeping it in one place means every entry
- * point renders an identical card with the render-time disclaimer (ADR 006).
+ * point renders an identical card. The render-time disclaimer was scoped down to
+ * the formula card + /start + /help only (2026-06-29, amends ADR 006 #2/#4), so
+ * ingredient cards no longer carry it.
  *
  * The card optionally carries a **"Входит в составы"** cross-link section
  * (Plan 009 Phase 3; UI label «Составы», code keeps "formula" — Plan 017): the
@@ -58,9 +60,9 @@ export function herbFormulaLinks(
 
 export function renderHerb(herb: Herb, formulaLinks: readonly FormulaLink[] = []): string {
   const header = `${herb.nameRu}${herb.nameLatin ? ` (${herb.nameLatin})` : ''} · ${tradition(herb.tradition)}`;
-  // The disclaimer is appended here at render time (ADR 006, amends ADR 002) —
-  // it is no longer baked into the content body. Clamp the body first so neither
-  // the cross-link header nor the disclaimer is ever truncated away.
+  // No render-time disclaimer here: as of 2026-06-29 it is scoped to the formula
+  // card + /start + /help only (amends ADR 006 #2/#4). Clamp the body first so
+  // the cross-link header is never truncated away.
   const body = clampToTelegram(`${header}\n\n${toPlainText(herb.body)}`);
   const parts = [body];
   // The formula names live on the buttons below; this is just the section label.
@@ -72,7 +74,6 @@ export function renderHerb(herb: Herb, formulaLinks: readonly FormulaLink[] = []
         : messages.herbCard.inFormulas,
     );
   }
-  parts.push(messages.disclaimer);
   return parts.join('\n\n');
 }
 

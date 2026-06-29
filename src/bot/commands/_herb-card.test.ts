@@ -74,9 +74,9 @@ describe('renderHerb — cross-link section', () => {
     expect(out).toContain('Входит в составы:');
   });
 
-  it('always ends with the render-time disclaimer (ADR 006)', () => {
+  it('carries no render-time disclaimer (scoped to formulas + /start + /help, 2026-06-29)', () => {
     const out = renderHerb(herb('tib-haritaki'), [{ id: 'tib-formula-agar-8', nameRu: 'Агар-8' }]);
-    expect(out.endsWith('консультируйтесь с врачом.')).toBe(true);
+    expect(out).not.toContain('консультируйтесь с врачом.');
   });
 
   it('notes the truncation when the herb is in more formulas than the cap', () => {

@@ -65,6 +65,18 @@ rather than one baked into every page.
   for in-situ review before large production). The raw `source_text`/`body` stay
   unsurfaced; final production sign-off of the verbose fields remains pending.
   Tracker: `docs/medical-review.md`.
+- **Update (2026-06-29) — disclaimer scope narrowed (amends #2 and #4).** The
+  render-time disclaimer is no longer appended to *every* medicine page. On the
+  owner's call ("enough to show once"), it is now scoped to **the formula
+  (составы) card + `/start` + `/help`** only. Ingredient (herb), food, and guide
+  cards no longer carry it; tips never did. Rationale: the disclaimer trailing
+  every harmless descriptive page was excessive; the audience is informed, and
+  the clinically sensitive surface (formulas, which expose indications /
+  traditional use / dosing) still carries it, alongside the once-on-entry `/start`
+  and the always-available `/help`. Decision #2's "every medicine page" and #4's
+  "the herb corpus moves to the bot-appended disclaimer too" are superseded by
+  this narrower scope. Reversible — re-append in the per-card renderers if a
+  reviewer wants broader coverage before production.
 
 ## Alternatives considered
 

@@ -11,7 +11,12 @@
 import type { Effect, Food, FoodGroup, TipSource } from '../content/types';
 import { changelogMessages, versionAnnouncements } from './messages/version-announcements';
 
-/** The informational disclaimer. Surfaced in /start, /help, and herb pages. */
+/**
+ * The informational disclaimer. Scoped (2026-06-29, amends ADR 006 #2/#4) to the
+ * formula (составы) card + /start + /help only — it no longer trails every
+ * ingredient/food/guide page. Showing it once on entry and on the clinically
+ * sensitive formula surface is enough.
+ */
 const disclaimer =
   '⚠️ Бот носит образовательный характер и не даёт медицинских рекомендаций, ' +
   'диагнозов или назначений. Перед применением любых средств проконсультируйтесь с врачом.';
@@ -48,8 +53,9 @@ const FOOD_EFFECT_LABELS: Record<Effect, string> = {
 /**
  * Builds the plain-text food card (ADR 002): warmth (+ heaviness), tastes, the
  * three начала with their effect — glossed Желчь (Огонь) / Слизь (Земля-Вода)
- * once — the descriptive effect prose, cautions, source, and the render-time
- * disclaimer (ADR 006). Food properties, never a prescription.
+ * once — the descriptive effect prose, cautions, and source. No render-time
+ * disclaimer (scoped to the formula card + /start + /help as of 2026-06-29,
+ * amends ADR 006 #2/#4). Food properties, never a prescription.
  */
 const formatFoodCard = (food: Food): string => {
   const facets: string[] = [`🥗 ${food.nameRu}`, ''];
@@ -68,7 +74,6 @@ const formatFoodCard = (food: Food): string => {
     parts.push(['Предостережения:', ...food.cautions.map((c) => `• ${c}`)].join('\n'));
   }
   if (food.source !== undefined) parts.push(formatTipSource(food.source));
-  parts.push(disclaimer);
   return parts.join('\n\n');
 };
 
@@ -213,7 +218,8 @@ export const messages = {
    * 🥗 Продукты — the foods browse + filter branch (Plan 013, ADR 012). Groups
    * are listed with counts; the filter screen narrows by which начало a food
    * успокаивает or by its warmth band. The card itself is built by `card`
-   * (`formatFoodCard`), which appends the render-time disclaimer (ADR 006).
+   * (`formatFoodCard`); it carries no render-time disclaimer (scoped to the
+   * formula card + /start + /help, 2026-06-29).
    */
   foods: {
     groupsTitle: 'Продукты — выберите раздел или подберите по свойствам.',
@@ -236,7 +242,7 @@ export const messages = {
     filterCool: 'Прохладные',
     warmTitle: 'Тёплые продукты',
     coolTitle: 'Прохладные продукты',
-    /** Plain-text food card (ADR 002) with the render-time disclaimer (ADR 006). */
+    /** Plain-text food card (ADR 002); no render-time disclaimer (2026-06-29). */
     card: formatFoodCard,
   },
 
