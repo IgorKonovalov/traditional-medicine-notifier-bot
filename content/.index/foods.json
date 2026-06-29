@@ -1,1 +1,836 @@
-[]
+[
+  {
+    "id": "food-apple",
+    "tradition": "tibetan",
+    "nameRu": "Яблоки",
+    "group": "fruit",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "фрукты"
+    ]
+  },
+  {
+    "id": "food-apricot",
+    "tradition": "tibetan",
+    "nameRu": "Персики и абрикосы",
+    "group": "fruit",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "фрукты"
+    ]
+  },
+  {
+    "id": "food-banana",
+    "tradition": "tibetan",
+    "nameRu": "Бананы",
+    "group": "fruit",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "фрукты"
+    ]
+  },
+  {
+    "id": "food-barley",
+    "tradition": "tibetan",
+    "nameRu": "Ячмень",
+    "group": "grain",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "злаки"
+    ]
+  },
+  {
+    "id": "food-bean",
+    "tradition": "tibetan",
+    "nameRu": "Фасоль",
+    "group": "legume",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "aggravates",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "бобовые"
+    ]
+  },
+  {
+    "id": "food-beef",
+    "tradition": "tibetan",
+    "nameRu": "Мясо коровы",
+    "group": "meat",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "pacifies",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "мясо"
+    ]
+  },
+  {
+    "id": "food-beet",
+    "tradition": "tibetan",
+    "nameRu": "Свёкла",
+    "group": "root-vegetable",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "корнеплоды",
+      "овощи"
+    ]
+  },
+  {
+    "id": "food-buckwheat",
+    "tradition": "tibetan",
+    "nameRu": "Гречиха",
+    "group": "grain",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "aggravates",
+      "bile": "aggravates",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "злаки"
+    ]
+  },
+  {
+    "id": "food-carrot",
+    "tradition": "tibetan",
+    "nameRu": "Морковь",
+    "group": "root-vegetable",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "корнеплоды",
+      "овощи"
+    ]
+  },
+  {
+    "id": "food-celery",
+    "tradition": "tibetan",
+    "nameRu": "Сельдерей",
+    "group": "green-vegetable",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "pacifies",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "зелень"
+    ]
+  },
+  {
+    "id": "food-cherry",
+    "tradition": "tibetan",
+    "nameRu": "Вишня и тёмные ягоды",
+    "group": "berry",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "ягоды"
+    ]
+  },
+  {
+    "id": "food-chicken",
+    "tradition": "tibetan",
+    "nameRu": "Мясо птицы",
+    "group": "meat",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "мясо",
+      "птица"
+    ]
+  },
+  {
+    "id": "food-chickpea",
+    "tradition": "tibetan",
+    "nameRu": "Нут",
+    "group": "legume",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "aggravates",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "бобовые"
+    ]
+  },
+  {
+    "id": "food-cilantro",
+    "tradition": "tibetan",
+    "nameRu": "Кинза",
+    "group": "green-vegetable",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "зелень"
+    ]
+  },
+  {
+    "id": "food-cow-milk",
+    "tradition": "tibetan",
+    "nameRu": "Коровье молоко",
+    "group": "dairy",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "молоко"
+    ]
+  },
+  {
+    "id": "food-dandelion",
+    "tradition": "tibetan",
+    "nameRu": "Одуванчик",
+    "group": "green-vegetable",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "aggravates",
+      "bile": "pacifies",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "зелень"
+    ]
+  },
+  {
+    "id": "food-dill",
+    "tradition": "tibetan",
+    "nameRu": "Укроп",
+    "group": "green-vegetable",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "зелень"
+    ]
+  },
+  {
+    "id": "food-egg",
+    "tradition": "tibetan",
+    "nameRu": "Яйца",
+    "group": "egg",
+    "warmth": "горячая",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "aggravates",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "яйца"
+    ]
+  },
+  {
+    "id": "food-fish",
+    "tradition": "tibetan",
+    "nameRu": "Рыба",
+    "group": "meat",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "мясо",
+      "рыба"
+    ]
+  },
+  {
+    "id": "food-flaxseed",
+    "tradition": "tibetan",
+    "nameRu": "Льняное семя",
+    "group": "legume",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "бобовые",
+      "семена"
+    ]
+  },
+  {
+    "id": "food-game-meat",
+    "tradition": "tibetan",
+    "nameRu": "Дичь",
+    "group": "meat",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "мясо"
+    ]
+  },
+  {
+    "id": "food-garlic",
+    "tradition": "tibetan",
+    "nameRu": "Чеснок",
+    "group": "green-vegetable",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "зелень",
+      "овощи"
+    ]
+  },
+  {
+    "id": "food-ghee",
+    "tradition": "tibetan",
+    "nameRu": "Топлёное масло",
+    "group": "oil",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "масло"
+    ]
+  },
+  {
+    "id": "food-goat-meat",
+    "tradition": "tibetan",
+    "nameRu": "Мясо козы",
+    "group": "meat",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "pacifies",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "мясо"
+    ]
+  },
+  {
+    "id": "food-goat-milk",
+    "tradition": "tibetan",
+    "nameRu": "Козье молоко",
+    "group": "dairy",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "молоко"
+    ]
+  },
+  {
+    "id": "food-grape",
+    "tradition": "tibetan",
+    "nameRu": "Виноград",
+    "group": "fruit",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "neutral",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "фрукты"
+    ]
+  },
+  {
+    "id": "food-horse",
+    "tradition": "tibetan",
+    "nameRu": "Мясо лошади",
+    "group": "meat",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "мясо"
+    ]
+  },
+  {
+    "id": "food-lemon",
+    "tradition": "tibetan",
+    "nameRu": "Лимон",
+    "group": "fruit",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "фрукты"
+    ]
+  },
+  {
+    "id": "food-lentil",
+    "tradition": "tibetan",
+    "nameRu": "Чечевица",
+    "group": "legume",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "pacifies",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "бобовые"
+    ]
+  },
+  {
+    "id": "food-mango",
+    "tradition": "tibetan",
+    "nameRu": "Манго",
+    "group": "fruit",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "фрукты"
+    ]
+  },
+  {
+    "id": "food-melon",
+    "tradition": "tibetan",
+    "nameRu": "Дыня",
+    "group": "berry",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "neutral",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "ягоды"
+    ]
+  },
+  {
+    "id": "food-millet",
+    "tradition": "tibetan",
+    "nameRu": "Пшено",
+    "group": "grain",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "злаки"
+    ]
+  },
+  {
+    "id": "food-mustard-oil",
+    "tradition": "tibetan",
+    "nameRu": "Горчичное масло",
+    "group": "oil",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "масло"
+    ]
+  },
+  {
+    "id": "food-mutton",
+    "tradition": "tibetan",
+    "nameRu": "Баранина",
+    "group": "meat",
+    "warmth": "горячая",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "мясо"
+    ]
+  },
+  {
+    "id": "food-oats",
+    "tradition": "tibetan",
+    "nameRu": "Овёс",
+    "group": "grain",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "злаки"
+    ]
+  },
+  {
+    "id": "food-olive-oil",
+    "tradition": "tibetan",
+    "nameRu": "Оливковое масло",
+    "group": "oil",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "масло"
+    ]
+  },
+  {
+    "id": "food-onion",
+    "tradition": "tibetan",
+    "nameRu": "Лук",
+    "group": "green-vegetable",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "зелень",
+      "овощи"
+    ]
+  },
+  {
+    "id": "food-orange",
+    "tradition": "tibetan",
+    "nameRu": "Апельсины",
+    "group": "fruit",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "фрукты"
+    ]
+  },
+  {
+    "id": "food-parsley",
+    "tradition": "tibetan",
+    "nameRu": "Петрушка",
+    "group": "green-vegetable",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "зелень"
+    ]
+  },
+  {
+    "id": "food-pear",
+    "tradition": "tibetan",
+    "nameRu": "Груши",
+    "group": "fruit",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "фрукты"
+    ]
+  },
+  {
+    "id": "food-pineapple",
+    "tradition": "tibetan",
+    "nameRu": "Ананас",
+    "group": "berry",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "pacifies",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "ягоды"
+    ]
+  },
+  {
+    "id": "food-pomegranate",
+    "tradition": "tibetan",
+    "nameRu": "Гранат",
+    "group": "fruit",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "фрукты"
+    ]
+  },
+  {
+    "id": "food-pork",
+    "tradition": "tibetan",
+    "nameRu": "Свинина",
+    "group": "meat",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "aggravates",
+      "bile": "aggravates",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "мясо"
+    ]
+  },
+  {
+    "id": "food-potato",
+    "tradition": "tibetan",
+    "nameRu": "Картофель",
+    "group": "root-vegetable",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "neutral",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "корнеплоды",
+      "овощи"
+    ]
+  },
+  {
+    "id": "food-pumpkin",
+    "tradition": "tibetan",
+    "nameRu": "Тыква",
+    "group": "berry",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "pacifies",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "ягоды"
+    ]
+  },
+  {
+    "id": "food-radish",
+    "tradition": "tibetan",
+    "nameRu": "Редька",
+    "group": "root-vegetable",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "корнеплоды",
+      "овощи"
+    ]
+  },
+  {
+    "id": "food-rice",
+    "tradition": "tibetan",
+    "nameRu": "Рис",
+    "group": "grain",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "злаки"
+    ]
+  },
+  {
+    "id": "food-sesame-oil",
+    "tradition": "tibetan",
+    "nameRu": "Кунжутное масло",
+    "group": "oil",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "масло"
+    ]
+  },
+  {
+    "id": "food-sheep-milk",
+    "tradition": "tibetan",
+    "nameRu": "Овечье молоко",
+    "group": "dairy",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "молоко"
+    ]
+  },
+  {
+    "id": "food-soy",
+    "tradition": "tibetan",
+    "nameRu": "Соя",
+    "group": "legume",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "pacifies",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "бобовые"
+    ]
+  },
+  {
+    "id": "food-strawberry",
+    "tradition": "tibetan",
+    "nameRu": "Клубника",
+    "group": "berry",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "ягоды"
+    ]
+  },
+  {
+    "id": "food-watermelon",
+    "tradition": "tibetan",
+    "nameRu": "Арбуз",
+    "group": "berry",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "aggravates",
+      "bile": "pacifies",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "ягоды"
+    ]
+  },
+  {
+    "id": "food-wheat",
+    "tradition": "tibetan",
+    "nameRu": "Пшеница",
+    "group": "grain",
+    "warmth": "прохладная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "pacifies",
+      "phlegm": "aggravates"
+    },
+    "tags": [
+      "злаки"
+    ]
+  },
+  {
+    "id": "food-yak",
+    "tradition": "tibetan",
+    "nameRu": "Мясо яка",
+    "group": "meat",
+    "warmth": "тёплая",
+    "constitutions": {
+      "wind": "neutral",
+      "bile": "neutral",
+      "phlegm": "pacifies"
+    },
+    "tags": [
+      "мясо"
+    ]
+  },
+  {
+    "id": "food-yogurt",
+    "tradition": "tibetan",
+    "nameRu": "Кисломолочные продукты",
+    "group": "dairy",
+    "warmth": "нейтральная",
+    "constitutions": {
+      "wind": "pacifies",
+      "bile": "neutral",
+      "phlegm": "neutral"
+    },
+    "tags": [
+      "молоко"
+    ]
+  }
+]
