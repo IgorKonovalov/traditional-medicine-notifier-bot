@@ -10,6 +10,12 @@ composition:
   - Длинный перец (Piper longum)
   - Кардамон зелёный (Elettaria cardamomum)
   - Имбирь лекарственный (Zingiber officinale)
+members:
+  - tib-pomegranate
+  - tib-cinnamon
+  - tib-long-pepper
+  - tib-cardamom
+  - tib-ginger
 traditional_use:
   - >-
     Усиливает огненную теплоту (переваривающую способность) желудка (при

@@ -14,6 +14,9 @@ composition:
   - Сверция (Swertia chirata)
   - Терминалия хебула (Terminalia chebula)
 members:
+  - tib-safflower
+  - tib-bamboo-manna
+  - tib-swertia
   - tib-haritaki
 indications:
   - 'Увеличение Крови в печени, охлаждает при избытке Жара'

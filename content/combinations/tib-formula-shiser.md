@@ -18,7 +18,12 @@ composition:
   - Ревень эмоди (Rheum emodi)
   - Герпетоспермум (Herpetospermum caudgerum)
 members:
+  - tib-inula
+  - tib-hedychium
+  - tib-pomegranate
   - tib-haritaki
+  - tib-calcite
+  - tib-shilajit
 indications:
   - >-
     Устраняет нарушения Ветра Тур Сел – устремляющего вниз, холод Желчи,

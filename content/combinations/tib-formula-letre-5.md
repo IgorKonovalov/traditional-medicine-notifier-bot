@@ -11,7 +11,11 @@ composition:
   - Эмблика лекарственная (Emblica officinalis)
   - Горечавка бородатая (Swertia chirata)
 members:
+  - tib-tinospora
   - tib-haritaki
+  - tib-bibhitaki
+  - tib-amla
+  - tib-swertia
 indications:
   - >-
     Когда Старый Жар въелся в ткани тела - очищает и выводит Застарелый Жар, Жар

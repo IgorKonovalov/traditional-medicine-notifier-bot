@@ -23,7 +23,21 @@ composition:
   - Кемпферия (Hedychium spicatum)
   - Шорея (Shorea robusta)
 members:
+  - tib-agarwood
+  - tib-nutmeg
+  - tib-melia
+  - tib-bamboo-manna
+  - tib-saussurea
+  - tib-red-sandalwood
+  - tib-mesua
   - tib-haritaki
+  - tib-bibhitaki
+  - tib-amla
+  - tib-inula
+  - tib-raspberry
+  - tib-tinospora
+  - tib-hedychium
+  - tib-shorea
 indications:
   - При высоком давлении из-за Ветра
   - Ветер головного мозга и белых каналов

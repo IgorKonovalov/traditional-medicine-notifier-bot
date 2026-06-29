@@ -13,6 +13,11 @@ composition:
   - Длинный перец (Piper longum)
   - Чёрный перец (Piper nigrum)
   - Солодка (Glycyrrhiza uralensis)
+members:
+  - tib-pomegranate
+  - tib-nutmeg
+  - tib-long-pepper
+  - tib-licorice
 traditional_use:
   - >-
     Это лучшее средство при Ветре и Слизи в лёгких, и при холодных расстройствах

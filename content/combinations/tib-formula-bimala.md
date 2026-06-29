@@ -25,7 +25,21 @@ composition:
   - Чеснок (Allium sativum)
   - Герань (Geranium sp.)
 members:
+  - tib-nutmeg
   - tib-haritaki
+  - tib-bibhitaki
+  - tib-amla
+  - tib-shorea
+  - tib-agarwood
+  - tib-bamboo-manna
+  - tib-black-cardamom
+  - tib-cardamom
+  - tib-clove
+  - tib-safflower
+  - tib-white-sandalwood
+  - tib-red-sandalwood
+  - tib-melia
+  - tib-geranium
 indications:
   - >-
     «Ветер в сердце» и расстройства Ветра «Держатель жизни» (психические и

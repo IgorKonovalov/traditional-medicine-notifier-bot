@@ -8,6 +8,8 @@ composition:
   - Бамбуковая манна (Bambusa textilis)
   - Терминалия хебула (Terminalia chebula)
 members:
+  - tib-safflower
+  - tib-bamboo-manna
   - tib-haritaki
 traditional_use:
   - >-

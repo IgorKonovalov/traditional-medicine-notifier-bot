@@ -15,7 +15,13 @@ composition:
   - Эмблика лекарственная (Emblica officinalis)
   - И др. (прочие компоненты)
 members:
+  - tib-safflower
+  - tib-clove
+  - tib-white-sandalwood
+  - tib-saussurea
   - tib-haritaki
+  - tib-bibhitaki
+  - tib-amla
 indications:
   - >-
     Жар или Ветер печени, почек и селезёнки, глазные болезни из-за Крови и

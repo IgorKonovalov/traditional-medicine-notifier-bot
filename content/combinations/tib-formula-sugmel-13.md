@@ -19,6 +19,9 @@ composition:
   - Терминалия хебула (Terminalia chebula)
   - Омела (Víscum)
 members:
+  - tib-cardamom
+  - tib-clove
+  - tib-nutmeg
   - tib-haritaki
 indications:
   - >-

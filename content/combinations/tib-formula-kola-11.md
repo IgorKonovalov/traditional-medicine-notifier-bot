@@ -16,7 +16,14 @@ composition:
   - Девясил (Inula racemosa)
   - Момордика харанция (Momordica charantia)
 members:
+  - tib-black-cardamom
+  - tib-cardamom
+  - tib-clove
+  - tib-long-pepper
+  - tib-rubia
   - tib-haritaki
+  - tib-saussurea
+  - tib-inula
 indications:
   - Панкреатит
   - Ощущение тяжести и вздутия живота

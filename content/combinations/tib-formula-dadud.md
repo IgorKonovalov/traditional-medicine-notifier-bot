@@ -14,6 +14,13 @@ composition:
   - Кальцит (Calcite)
   - Мумиё (Shilajid)
   - Etc.
+members:
+  - tib-safflower
+  - tib-dracocephalum
+  - tib-inula
+  - tib-saussurea
+  - tib-calcite
+  - tib-shilajit
 traditional_use:
   - >-
     Помогает при хронических проблемах желудка и печени (гепатиты, опухоли,

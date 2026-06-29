@@ -38,7 +38,24 @@ composition:
   - Земляника (Fragaria nilgerrensis)
   - И другие
 members:
+  - tib-safflower
+  - tib-bamboo-manna
+  - tib-clove
+  - tib-nutmeg
+  - tib-cardamom
+  - tib-black-cardamom
+  - tib-white-sandalwood
+  - tib-red-sandalwood
+  - tib-agarwood
   - tib-haritaki
+  - tib-licorice
+  - tib-bibhitaki
+  - tib-amla
+  - tib-long-pepper
+  - tib-musk
+  - tib-cinnamon
+  - tib-inula
+  - tib-saussurea
 indications:
   - Устраняет болезни белых каналов
   - Провокации гЗа (планет)

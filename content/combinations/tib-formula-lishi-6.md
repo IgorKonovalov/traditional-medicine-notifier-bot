@@ -12,6 +12,10 @@ composition:
   - Соссюрея лопуховидная (Saussurea lappa)
   - Терминалия хебула (Terminalia chebula)
 members:
+  - tib-clove
+  - tib-bamboo-manna
+  - tib-licorice
+  - tib-saussurea
   - tib-haritaki
 traditional_use:
   - >-

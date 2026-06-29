@@ -31,7 +31,22 @@ composition:
   - Калинджи (Nigella sativa)
   - Горец птичий (Polygonum aviculare)
 members:
+  - tib-bamboo-manna
+  - tib-safflower
+  - tib-clove
+  - tib-cardamom
+  - tib-black-cardamom
+  - tib-nutmeg
+  - tib-white-sandalwood
+  - tib-red-sandalwood
+  - tib-pomegranate
+  - tib-musk
+  - tib-saussurea
+  - tib-long-pepper
+  - tib-cinnamon
   - tib-haritaki
+  - tib-bibhitaki
+  - tib-amla
 indications:
   - >-
     Одно из лучших средств при болезнях белых каналов (нервы), хорошо работает в

@@ -18,6 +18,7 @@ composition:
   - Холларена
   - И другие
 members:
+  - tib-picrorhiza
   - tib-haritaki
 indications:
   - Жар головного мозга

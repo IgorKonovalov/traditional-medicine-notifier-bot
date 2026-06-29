@@ -10,6 +10,12 @@ composition:
   - Длинный перец (Piper longum)
   - Кардамон зелёный (Elettaria cardamomum)
   - Сафлор красильный (Carthamus tinctorius)
+members:
+  - tib-pomegranate
+  - tib-cinnamon
+  - tib-long-pepper
+  - tib-cardamom
+  - tib-safflower
 traditional_use:
   - >-
     Самый универсальный состав при проблемах с пищеварением, защищает печень и

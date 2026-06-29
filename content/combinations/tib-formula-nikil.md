@@ -18,6 +18,12 @@ composition:
   - Мирабилис гималайский (Mirabilis himalaica)
   - 'Спаржа, шатавари (Asparagus spinosissimus)'
   - Дягиль (Angelica sp.)
+members:
+  - tib-pomegranate
+  - tib-cinnamon
+  - tib-long-pepper
+  - tib-cardamom
+  - tib-safflower
 indications:
   - 'Утомляемость, медленный обмен веществ и малокровие'
   - Чрезмерная худоба и холодные конечности

@@ -12,6 +12,13 @@ composition:
   - Вероника реснитчатая (Veronica ciliata)
   - Сверция чирата (Swertia chirata)
   - Аконит разнолистный (Aconitum heterophyllum)
+members:
+  - tib-safflower
+  - tib-white-sandalwood
+  - tib-bamboo-manna
+  - tib-picrorhiza
+  - tib-veronica
+  - tib-swertia
 indications:
   - >-
     Распространённый, свежий и застарелый Жар, Жар Крови и Желчи, Жар в полых и

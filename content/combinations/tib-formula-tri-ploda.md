@@ -10,6 +10,8 @@ composition:
   - 'Эмблика лекарственная, амла (Emblica officinalis)'
 members:
   - tib-haritaki
+  - tib-bibhitaki
+  - tib-amla
 indications:
   - Доводит до созревания Жар Крови
   - Инфекционный Жар

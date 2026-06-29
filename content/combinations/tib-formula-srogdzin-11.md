@@ -19,7 +19,14 @@ composition:
   - Ферула (Ferula jaeschkeana)
   - И другие компоненты
 members:
+  - tib-agarwood
+  - tib-nutmeg
+  - tib-bamboo-manna
+  - tib-shorea
+  - tib-saussurea
   - tib-haritaki
+  - tib-mesua
+  - tib-clove
 indications:
   - 'Нарушения Срог-дзин рЛунг, Ветер в сердце'
 traditional_use:

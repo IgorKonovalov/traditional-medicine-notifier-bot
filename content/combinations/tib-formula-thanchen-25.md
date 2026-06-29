@@ -31,6 +31,17 @@ composition:
   - Герпетоспермум (Herpetospermum caudigerum)
 members:
   - tib-haritaki
+  - tib-bibhitaki
+  - tib-inula
+  - tib-shilajit
+  - tib-picrorhiza
+  - tib-dracocephalum
+  - tib-safflower
+  - tib-amla
+  - tib-pomegranate
+  - tib-veronica
+  - tib-swertia
+  - tib-cardamom
 indications:
   - >-
     Мугпо, сочетанные болезни Жара и Холода, интоксикации, успокаивает Желчь и

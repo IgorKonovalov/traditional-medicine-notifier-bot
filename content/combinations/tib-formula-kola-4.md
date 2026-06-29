@@ -9,6 +9,11 @@ composition:
   - Гвоздика (Eugenia caryophyllata)
   - Длинный перец (Piper longum)
   - Имбирь (Zingiber officinale)
+members:
+  - tib-black-cardamom
+  - tib-clove
+  - tib-long-pepper
+  - tib-ginger
 traditional_use:
   - >-
     Общий тонизатор селезёнки и поджелудочной железы, согревает, помогает при

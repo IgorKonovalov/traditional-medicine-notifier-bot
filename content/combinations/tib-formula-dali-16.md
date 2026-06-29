@@ -21,6 +21,20 @@ composition:
   - Корица (Cinnamomum zeylanicum)
   - Краб (Potamon yunnanensis)
   - Герань (Geranium sp.)
+members:
+  - tib-pomegranate
+  - tib-long-pepper
+  - tib-clove
+  - tib-melia
+  - tib-licorice
+  - tib-bamboo-manna
+  - tib-saussurea
+  - tib-agarwood
+  - tib-cardamom
+  - tib-safflower
+  - tib-nutmeg
+  - tib-cinnamon
+  - tib-geranium
 indications:
   - Улучшает пищеварение
   - Убирает отёки

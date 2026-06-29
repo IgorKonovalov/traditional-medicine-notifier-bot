@@ -16,7 +16,13 @@ composition:
   - Ладан (Commiphora camphora)
   - Мезуа железная (Mesua ferrea)
 members:
+  - tib-agarwood
+  - tib-nutmeg
+  - tib-bamboo-manna
+  - tib-saussurea
   - tib-haritaki
+  - tib-melia
+  - tib-mesua
 indications:
   - Жар Крови (сердца)
   - Ветер в сердце

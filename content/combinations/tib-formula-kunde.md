@@ -20,6 +20,15 @@ composition:
   - Змееголовник тангутский (Dracocephalum tanguticum)
   - Кориандр (Coriandrum)
   - Мумиё (Shilajid)
+members:
+  - tib-pomegranate
+  - tib-cinnamon
+  - tib-long-pepper
+  - tib-cardamom
+  - tib-safflower
+  - tib-amla
+  - tib-dracocephalum
+  - tib-shilajit
 indications:
   - Несварение из-за избытка Слизи
   - Мукпо

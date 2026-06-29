@@ -12,6 +12,8 @@ composition:
   - Мумие (Shilajit)
 members:
   - tib-haritaki
+  - tib-pomegranate
+  - tib-shilajit
 indications:
   - Холод Желчи (застой желчи в желчном пузыре)
   - >-

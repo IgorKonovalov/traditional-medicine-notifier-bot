@@ -15,6 +15,11 @@ composition:
   - Пресноводный краб (Potamon yunnanensis)
   - Цезальпиния бондуковая (Caesalpinia bonducella)
   - Сизигиум кминовый (Eugenia jambolana)
+members:
+  - tib-cardamom
+  - tib-hedychium
+  - tib-long-pepper
+  - tib-musk
 traditional_use:
   - >-
     Помогает при Холоде почек, задержке мочи и мочекаменной болезни, даёт почкам

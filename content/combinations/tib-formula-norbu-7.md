@@ -15,7 +15,13 @@ composition:
   - Терминалия беллерическая (Terminalia bellirica)
   - Эмблика лекарственная (Emblica officinalis)
 members:
+  - tib-inula
+  - tib-raspberry
+  - tib-tinospora
+  - tib-ginger
   - tib-haritaki
+  - tib-bibhitaki
+  - tib-amla
 indications:
   - >-
     Возбуждение (Жар) Крови и Ветра (не переохлаждая), когда Жар нападает на

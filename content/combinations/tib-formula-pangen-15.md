@@ -21,7 +21,19 @@ composition:
   - Вероника реснитчатая (Veronica ciliata)
   - Родиола (Rhodiola sp.)
 members:
+  - tib-clove
+  - tib-bamboo-manna
+  - tib-licorice
+  - tib-saussurea
   - tib-haritaki
+  - tib-agarwood
+  - tib-nutmeg
+  - tib-white-sandalwood
+  - tib-melia
+  - tib-bibhitaki
+  - tib-amla
+  - tib-tinospora
+  - tib-veronica
 indications:
   - Жар чхам в лёгких и горле (трахеи)
   - Жар Слизи в лёгких

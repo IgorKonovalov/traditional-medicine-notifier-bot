@@ -14,6 +14,9 @@ composition:
   - Девясил (Inula racemosa)
   - Коричник (Cinnamomum parthenoxylon)
   - Слива (Prunus spp.)
+members:
+  - tib-cardamom
+  - tib-inula
 traditional_use:
   - >-
     Универсальный почечный состав нейтрального действия, питает, согревает,

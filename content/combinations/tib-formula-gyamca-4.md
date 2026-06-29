@@ -13,6 +13,8 @@ composition:
   - Каменная соль
 members:
   - tib-haritaki
+  - tib-long-pepper
+  - tib-ginger
 traditional_use:
   - >-
     Улучшает пищеварение, помогает при несварении, увеличивая огненное тепло

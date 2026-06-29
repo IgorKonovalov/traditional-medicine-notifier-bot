@@ -19,6 +19,12 @@ composition:
   - Мумие (Shilajid)
 members:
   - tib-haritaki
+  - tib-bibhitaki
+  - tib-amla
+  - tib-saussurea
+  - tib-tinospora
+  - tib-veronica
+  - tib-shilajit
 indications:
   - 'Боли, опухание суставов из-за подагры, артрита, ревматизма'
   - 'Кожные проблемы, сыпь, зуд, волдыри, покраснение и т.д'

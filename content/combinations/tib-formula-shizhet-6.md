@@ -15,6 +15,8 @@ composition:
   - Имбирь (Hedychium spicatum)
 members:
   - tib-haritaki
+  - tib-inula
+  - tib-hedychium
 indications:
   - Нарушения работы пищеварения и Нисходящего Ветра
 traditional_use:

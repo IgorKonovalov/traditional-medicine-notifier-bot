@@ -17,7 +17,14 @@ composition:
   - Сафлор красильный (Carthamus tinctorius)
   - Виноград (Vitis vinifera)
 members:
+  - tib-clove
+  - tib-bamboo-manna
+  - tib-licorice
+  - tib-saussurea
   - tib-haritaki
+  - tib-pomegranate
+  - tib-cinnamon
+  - tib-safflower
 indications:
   - 'Жар, Холод и любые проблемы лёгких.'
 traditional_use:

@@ -19,6 +19,10 @@ composition:
   - И другие
 members:
   - tib-haritaki
+  - tib-inula
+  - tib-hedychium
+  - tib-seabuckthorn
+  - tib-calcite
 indications:
   - >-
     Нарушения работы Нисходящего Ветра и связанные с этим гинекологические

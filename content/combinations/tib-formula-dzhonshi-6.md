@@ -13,6 +13,13 @@ composition:
   - Длинный перец (Piper longum)
   - 'Соссюрея лопуховидная, корень (Saussurea lappa)'
   - Сафлор красильный (Carthamus tinctorius)
+members:
+  - tib-pomegranate
+  - tib-calcite
+  - tib-cardamom
+  - tib-long-pepper
+  - tib-saussurea
+  - tib-safflower
 indications:
   - Начальная стадия мугпо
 traditional_use:

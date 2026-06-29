@@ -13,6 +13,13 @@ composition:
   - Вероника реснитчатая (Veronica ciliata)
   - Кардамон зелёный (Elettaria cardamomum)
   - Перец длинный (Piper longum)
+members:
+  - tib-saussurea
+  - tib-amla
+  - tib-pomegranate
+  - tib-veronica
+  - tib-cardamom
+  - tib-long-pepper
 indications:
   - 'Смуг-по в стадии борьбы, перепутанные Жар и Холод'
 traditional_use:

@@ -10,6 +10,8 @@ composition:
   - Зубчатка обыкновенная (Odontítes vulgáris)
   - Горечавка (Gentiána)
   - Куркума (Cúrcuma)
+members:
+  - tib-rubia
 traditional_use:
   - >-
     Этот отвар действительно помогает при боли и любых воспалительных процессах

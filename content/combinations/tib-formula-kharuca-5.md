@@ -14,6 +14,8 @@ composition:
   - Черная соль (Black salt)
 members:
   - tib-haritaki
+  - tib-long-pepper
+  - tib-ginger
 traditional_use:
   - >-
     Помогает при несварении, вздутии желудка и толстой кишки, урчании в животе,

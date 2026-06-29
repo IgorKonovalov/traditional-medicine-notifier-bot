@@ -40,7 +40,29 @@ composition:
   - Девясил (Inula racemosa)
   - Аконит (Aconitum sp.)
 members:
+  - tib-agarwood
   - tib-haritaki
+  - tib-bibhitaki
+  - tib-amla
+  - tib-nutmeg
+  - tib-bamboo-manna
+  - tib-mesua
+  - tib-saussurea
+  - tib-picrorhiza
+  - tib-pomegranate
+  - tib-swertia
+  - tib-melia
+  - tib-shorea
+  - tib-safflower
+  - tib-raspberry
+  - tib-tinospora
+  - tib-black-cardamom
+  - tib-hedychium
+  - tib-red-sandalwood
+  - tib-cardamom
+  - tib-clove
+  - tib-white-sandalwood
+  - tib-inula
 indications:
   - Общий Ветер
   - Ветер с Кровью

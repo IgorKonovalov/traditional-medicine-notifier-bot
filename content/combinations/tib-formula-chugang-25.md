@@ -31,7 +31,22 @@ composition:
   - Полынь (Artemisia sieversiana)
   - Герань (Geranium sp.)
 members:
+  - tib-bamboo-manna
+  - tib-safflower
+  - tib-clove
+  - tib-black-cardamom
   - tib-haritaki
+  - tib-nutmeg
+  - tib-licorice
+  - tib-red-sandalwood
+  - tib-bibhitaki
+  - tib-saussurea
+  - tib-picrorhiza
+  - tib-seabuckthorn
+  - tib-cardamom
+  - tib-white-sandalwood
+  - tib-amla
+  - tib-geranium
 indications:
   - Жар в груди
   - Застарелые (хронические) болезни лёгких

@@ -30,6 +30,17 @@ composition:
   - Аконит (Aconitum sp.)
   - И другие
 members:
+  - tib-rubia
+  - tib-amla
+  - tib-pomegranate
+  - tib-hedychium
+  - tib-cinnamon
+  - tib-red-sandalwood
+  - tib-veronica
+  - tib-seabuckthorn
+  - tib-agarwood
+  - tib-nutmeg
+  - tib-inula
   - tib-haritaki
 indications:
   - Женские болезни "опасная Кровь" и "опасный Лунг"

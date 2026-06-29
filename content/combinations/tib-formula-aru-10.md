@@ -17,6 +17,11 @@ composition:
   - Мумие (Shilajit)
 members:
   - tib-haritaki
+  - tib-safflower
+  - tib-rubia
+  - tib-cardamom
+  - tib-swertia
+  - tib-shilajit
 indications:
   - Жар почек и мочевого пузыря
 traditional_use:

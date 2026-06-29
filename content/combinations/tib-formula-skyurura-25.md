@@ -31,7 +31,23 @@ composition:
   - Малина (Rubus idaeopsis)
   - Облепиха (Hippophae rhamnoides)
 members:
+  - tib-amla
+  - tib-veronica
+  - tib-picrorhiza
+  - tib-shilajit
+  - tib-dracocephalum
+  - tib-red-sandalwood
+  - tib-geranium
+  - tib-saussurea
+  - tib-tinospora
+  - tib-swertia
+  - tib-inula
   - tib-haritaki
+  - tib-safflower
+  - tib-rubia
+  - tib-bibhitaki
+  - tib-raspberry
+  - tib-seabuckthorn
 indications:
   - Увеличение "плохой крови" (особенно в нижней части тела)
   - Боли в желудке и печени

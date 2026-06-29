@@ -19,7 +19,15 @@ composition:
   - Кальцит (Calcite)
   - Каменная соль (rock Salt)
 members:
+  - tib-pomegranate
+  - tib-cardamom
+  - tib-long-pepper
+  - tib-saussurea
+  - tib-safflower
+  - tib-cinnamon
   - tib-haritaki
+  - tib-ginger
+  - tib-calcite
 indications:
   - 'Смуг-по с преобладанием Холода, лхэн, холодные опухоли'
 traditional_use:

@@ -12,6 +12,13 @@ composition:
   - Кардамон зелёный (Elettaria cardamomum)
   - Чёрный кардамон (Amomum subulatum)
   - Гвоздика (Eugenia caryophyllata)
+members:
+  - tib-safflower
+  - tib-nutmeg
+  - tib-bamboo-manna
+  - tib-cardamom
+  - tib-black-cardamom
+  - tib-clove
 traditional_use:
   - >-
     Очистительный состав, выводит яды и токсины, при этом поддерживая все

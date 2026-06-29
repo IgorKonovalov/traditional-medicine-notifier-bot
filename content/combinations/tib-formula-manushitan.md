@@ -9,6 +9,11 @@ composition:
   - Малина (Rubus idaeopsis)
   - Тиноспора сердцелистная (Tinospora cordifolia)
   - Хедихиум колосковый (Hedychium spicatum)
+members:
+  - tib-inula
+  - tib-raspberry
+  - tib-tinospora
+  - tib-hedychium
 indications:
   - Увеличение крови и боли в печени
   - Покраснение глаз

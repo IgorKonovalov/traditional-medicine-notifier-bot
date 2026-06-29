@@ -11,6 +11,11 @@ composition:
   - Девясил (Inula racemosa)
   - Пальма бетель (Areca catechu)
   - Красный имбирь (Zingiber officinale)
+members:
+  - tib-cardamom
+  - tib-black-cardamom
+  - tib-inula
+  - tib-ginger
 indications:
   - 'Сочетание (избыток) Крови и Ветра, Холод низа и Ветер с Жаром верха'
 traditional_use:

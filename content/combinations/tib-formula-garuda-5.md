@@ -14,6 +14,8 @@ composition:
   - Аконит джунгарский (Aconitum soongaricum)
 members:
   - tib-haritaki
+  - tib-saussurea
+  - tib-musk
 traditional_use:
   - >-
     Антибиотик естественного происхождения: любой вид инфекции, воспаления,

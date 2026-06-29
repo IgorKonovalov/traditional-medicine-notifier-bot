@@ -10,6 +10,11 @@ composition:
   - Черный кардамон (Amomum subulatum)
   - Гвоздика (Eugenia caryophyllata)
   - Мускатный орех (Myristica fragrans)
+members:
+  - tib-saussurea
+  - tib-black-cardamom
+  - tib-clove
+  - tib-nutmeg
 indications:
   - >-
     Умиротворяет Ветер в целом, а особенно хорошо помогает при головокружении и

@@ -10,6 +10,11 @@ composition:
   - Девясил (Inula racemosa)
   - Соссюрея лопуховидная (Saussurea lappa)
   - Слива (Prunus sp.)
+members:
+  - tib-nutmeg
+  - tib-long-pepper
+  - tib-inula
+  - tib-saussurea
 indications:
   - >-
     Умиротворяет общий Ветер (особенно в верхней части тела, в костях, мышцах,

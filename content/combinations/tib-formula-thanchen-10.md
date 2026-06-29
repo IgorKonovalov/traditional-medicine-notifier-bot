@@ -16,7 +16,14 @@ composition:
   - Шлемник байкальский (Scutellaria baikalensis)
   - Соссюрея мелкоцветковая (Saussurea parviflora)
 members:
+  - tib-inula
+  - tib-raspberry
+  - tib-tinospora
+  - tib-hedychium
   - tib-haritaki
+  - tib-bibhitaki
+  - tib-amla
+  - tib-swertia
 indications:
   - Свежий и застарелый Жар Желчи
   - 'Распространённый, скрытый, незрелый, инфекционный Жары'
