@@ -7,6 +7,12 @@
 guides; this is the **follow-up bulk-authoring backlog** that plan 006 defers as a
 non-goal. Nothing here is approved — it's a menu to check off.
 
+## Tradition scope — Tibetan-only (2026-06-29)
+
+Every candidate below is Tibetan (Чжуд-ши / manla.ru). **Guides are Tibetan-only
+by decision** — Chinese (TCM) guides are deferred (too little material, no
+canonical source) and may be added later. See the *Scope note* in ADR 008.
+
 ## Framing rule (clarified)
 
 The non-medical-advice invariant is scoped to **medical** prescriptions only:

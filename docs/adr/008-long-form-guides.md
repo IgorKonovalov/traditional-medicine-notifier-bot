@@ -95,6 +95,23 @@ A guide is page-flattened by `_guide-card.guidePages()` (sections →
 `splitForTelegram` pages); the pager steps pages and the disclaimer rides the
 final page. Owner-approved deviation (see `docs/plans/006-long-form-guides.md`).
 
+## Scope note — guides are Tibetan-only (2026-06-29)
+
+`Guide.tradition` reuses the shared `Tradition` union (`chinese | tibetan`), but
+**every guide is, and for now remains, `tibetan`**. No Chinese (TCM) guide
+content, source, or UI branch exists or is planned: the guides surface is a
+**flat list with no tradition split** (unlike the herb browser's 🇨🇳/🏔 branches),
+and the entire backlog — Plan 006 (shipped), its candidate menu
+(`006-guide-candidates.md`), and Plan 013 — draws solely from Tibetan sources
+(Чжуд-ши, manla.ru, «Сова Ригпа»). Plan 006 already recorded *"No Chinese (TCM)
+guides this pass."*
+
+**Decision:** keep guides Tibetan-only. Chinese guides are **deferred** — too
+little material and no canonical Chinese source lined up — and **may be added
+later**. The shared `Tradition` type is left **unchanged** so a future Chinese
+guide needs no type churn; this is a scope decision, not a code change, and does
+not alter the ADR's Decision above.
+
 ## Consequences
 
 - **Easier:** a real home for rich reference material; a sanctioned, reusable
