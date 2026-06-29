@@ -67,18 +67,14 @@ describe('renderFormula — rich HTML card (ADR 011)', () => {
     expect(out).toContain('возможна индивидуальная непереносимость');
   });
 
-  it('surfaces the structured verbose fields, folding long ones into expandable quotes', () => {
+  it('surfaces the structured verbose fields as plain labelled sections (no quote)', () => {
     const out = renderFormula(verboseFormula());
     expect(out).toContain('<b>Показания:</b>');
     expect(out).toContain('ЖАР-СЕРДЦА-СЕКРЕТ');
-    // Label then the quote on the next line with NO leading indentation.
-    expect(out).toContain(
-      '<b>Применение:</b>\n<blockquote expandable>ТРАД-ИСПОЛЬЗОВАНИЕ-СЕКРЕТ</blockquote>',
-    );
-    expect(out).toContain(
-      '<b>Приём:</b>\n<blockquote expandable>ДОЗИРОВКА-СЕКРЕТ по 0,2 г</blockquote>',
-    );
-    expect(out).not.toMatch(/\n +<blockquote/); // no baked-in source indent
+    // Label then the value on the next line — NOT wrapped in a blockquote.
+    expect(out).toContain('<b>Применение:</b>\nТРАД-ИСПОЛЬЗОВАНИЕ-СЕКРЕТ');
+    expect(out).toContain('<b>Приём:</b>\nДОЗИРОВКА-СЕКРЕТ по 0,2 г');
+    expect(out).not.toContain('expandable'); // verbose fields are not expandable quotes
   });
 
   it('never surfaces the raw sourceText or the markdown body (ADR 006)', () => {
@@ -88,10 +84,11 @@ describe('renderFormula — rich HTML card (ADR 011)', () => {
     }
   });
 
-  it('appends the disclaimer in a blockquote, last and never truncated', () => {
+  it('appends the disclaimer in a blockquote, last and the only blockquote', () => {
     const out = renderFormula(verboseFormula());
     expect(out).toContain('проконсультируйтесь с врачом.');
     expect(out.endsWith('</blockquote>')).toBe(true);
+    expect((out.match(/<blockquote/g) ?? []).length).toBe(1); // disclaimer only
     expect(tagsBalanced(out)).toBe(true);
   });
 

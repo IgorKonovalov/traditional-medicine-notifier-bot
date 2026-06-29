@@ -126,16 +126,17 @@ function compositionLine(entry: string): Html {
 }
 
 /**
- * A labelled long field folded into a collapsed-by-default `<blockquote
- * expandable>` (tap to expand) — the reusable "long field" convention. The label
- * and quote are built separately and `join`ed on a newline rather than embedding
- * one in a template literal, so the rendered line break carries no source
- * indentation (a multi-line backtick template would bake the indent in).
+ * A labelled multi-line field: a bold label then the value on the following
+ * line(s). Built by `join`ing the two on a newline rather than embedding one in
+ * a template literal, so the rendered break carries no source indentation (a
+ * multi-line backtick template would bake the indent in). The only `<blockquote>`
+ * on the card is the disclaimer — verbose fields stay plain so the card doesn't
+ * read as a stack of quotes.
  */
-function expandableSection(label: string, value: string): Html {
+function labeledSection(label: string, value: string): Html {
   const head = html`<b>${label}:</b>`;
-  const quote = html`<blockquote expandable>${value}</blockquote>`;
-  return unsafeHtml([head, quote].join('\n'));
+  const body = html`${value}`;
+  return unsafeHtml([head, body].join('\n'));
 }
 
 export function renderFormula(combination: Combination): Html {
@@ -155,15 +156,15 @@ export function renderFormula(combination: Combination): Html {
     sections.push(`${label}\n${lines}`);
   }
 
-  // Indications inline; traditional-use / dosing folded into expandable quotes.
+  // Indications inline; traditional-use / dosing as plain labelled sections.
   if (c.indications?.length) {
     sections.push(html`<b>${messages.formulaCard.indications}:</b> ${c.indications.join('; ')}`);
   }
   if (c.traditionalUse?.length) {
-    sections.push(expandableSection(messages.formulaCard.use, c.traditionalUse.join('\n')));
+    sections.push(labeledSection(messages.formulaCard.use, c.traditionalUse.join('\n')));
   }
   if (c.dosingNotes?.length) {
-    sections.push(expandableSection(messages.formulaCard.dosing, c.dosingNotes.join('\n')));
+    sections.push(labeledSection(messages.formulaCard.dosing, c.dosingNotes.join('\n')));
   }
   if (c.cautions.length > 0) {
     sections.push(html`⚠️ <b>${messages.formulaCard.cautions}:</b> ${c.cautions.join('; ')}`);
