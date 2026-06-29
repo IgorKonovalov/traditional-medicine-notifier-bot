@@ -1,7 +1,6 @@
 [
   {
     "id": "tip-001-warm-foods",
-    "status": "published",
     "category": "digestive-herbs",
     "source": {
       "work": "Чжуд-ши",
@@ -11,7 +10,6 @@
   },
   {
     "id": "tip-002-rhythm",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -20,7 +18,6 @@
   },
   {
     "id": "tip-003-seasonal-eating-rhythm",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -29,7 +26,6 @@
   },
   {
     "id": "tip-004-seasonal-food-qualities",
-    "status": "published",
     "category": "digestive-herbs",
     "source": {
       "work": "Чжуд-ши",
@@ -39,7 +35,6 @@
   },
   {
     "id": "tip-005-measure-of-eating",
-    "status": "published",
     "category": "digestive-herbs",
     "source": {
       "work": "Чжуд-ши",
@@ -49,7 +44,6 @@
   },
   {
     "id": "tip-006-light-and-heavy-foods",
-    "status": "published",
     "category": "digestive-herbs",
     "source": {
       "work": "Чжуд-ши",
@@ -59,7 +53,6 @@
   },
   {
     "id": "tip-007-six-tastes",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -68,7 +61,6 @@
   },
   {
     "id": "tip-008-warm-water",
-    "status": "published",
     "category": "digestive-herbs",
     "source": {
       "work": "Чжуд-ши",
@@ -78,7 +70,6 @@
   },
   {
     "id": "tip-009-natural-urges",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -87,7 +78,6 @@
   },
   {
     "id": "tip-010-conditions-of-illness",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -96,7 +86,6 @@
   },
   {
     "id": "tip-011-spring-conduct",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -105,7 +94,6 @@
   },
   {
     "id": "tip-012-summer-conduct",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -114,7 +102,6 @@
   },
   {
     "id": "tip-013-autumn-conduct",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -123,7 +110,6 @@
   },
   {
     "id": "tip-014-winter-conduct",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -132,7 +118,6 @@
   },
   {
     "id": "tip-015-body-oiling",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -141,7 +126,6 @@
   },
   {
     "id": "tip-016-sense-organs",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -150,7 +134,6 @@
   },
   {
     "id": "tip-017-physical-activity",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -159,7 +142,6 @@
   },
   {
     "id": "tip-018-care-in-special-cases",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -168,7 +150,6 @@
   },
   {
     "id": "tip-019-fresh-warm-food",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -177,7 +158,6 @@
   },
   {
     "id": "tip-020-digest-before-next",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -186,7 +166,6 @@
   },
   {
     "id": "tip-021-measure-by-digestion",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -195,7 +174,6 @@
   },
   {
     "id": "tip-022-sweet-taste",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -204,7 +182,6 @@
   },
   {
     "id": "tip-023-pungent-taste",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -213,7 +190,6 @@
   },
   {
     "id": "tip-024-bitter-astringent-taste",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -222,7 +198,6 @@
   },
   {
     "id": "tip-025-sour-salty-taste",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -231,7 +206,6 @@
   },
   {
     "id": "tip-026-post-digestive-taste",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -240,7 +214,6 @@
   },
   {
     "id": "tip-027-moderation-prevention",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -249,7 +222,6 @@
   },
   {
     "id": "tip-028-early-signs",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -258,7 +230,6 @@
   },
   {
     "id": "tip-029-mental-conduct",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -267,7 +238,6 @@
   },
   {
     "id": "tip-030-not-forcing-urges",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -276,7 +246,6 @@
   },
   {
     "id": "tip-031-constitution-diet-overview",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -285,7 +254,6 @@
   },
   {
     "id": "tip-032-wind-diet",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -294,7 +262,6 @@
   },
   {
     "id": "tip-033-bile-diet",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -303,7 +270,6 @@
   },
   {
     "id": "tip-034-phlegm-diet",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -312,7 +278,6 @@
   },
   {
     "id": "tip-035-water-drinking",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -321,7 +286,6 @@
   },
   {
     "id": "tip-036-incompatible-foods",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "chapter": "раздел «Несовместимая пища»"
@@ -329,7 +293,6 @@
   },
   {
     "id": "tip-037-cooking-method",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -338,7 +301,6 @@
   },
   {
     "id": "tip-038-food-form",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -347,7 +309,6 @@
   },
   {
     "id": "tip-039-when-to-eat",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -356,7 +317,6 @@
   },
   {
     "id": "tip-040-quantity-naturalness",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -365,7 +325,6 @@
   },
   {
     "id": "tip-041-weight-and-constitution",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -374,7 +333,6 @@
   },
   {
     "id": "tip-042-fasting-tradition",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "chapter": "раздел «Очищение, голодание и пост»"
@@ -382,7 +340,6 @@
   },
   {
     "id": "tip-043-mono-diets",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "chapter": "раздел «Моно-диеты»"
@@ -390,7 +347,6 @@
   },
   {
     "id": "tip-044-strengthening-body",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "chapter": "раздел «Как укрепить тело»"
@@ -398,7 +354,6 @@
   },
   {
     "id": "tip-045-healthy-habits",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "chapter": "раздел «Здоровые привычки»"
@@ -406,7 +361,6 @@
   },
   {
     "id": "tip-046-constitution-behavior",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -415,7 +369,6 @@
   },
   {
     "id": "tip-047-body-care-daily",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -424,7 +377,6 @@
   },
   {
     "id": "tip-048-sleep",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -433,7 +385,6 @@
   },
   {
     "id": "tip-049-insomnia",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -442,7 +393,6 @@
   },
   {
     "id": "tip-050-daytime-sleepiness",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -451,7 +401,6 @@
   },
   {
     "id": "tip-051-cold-onset",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "chapter": "раздел «Как справляться с „простудой\"»"
@@ -459,7 +408,6 @@
   },
   {
     "id": "tip-052-prostration-exercise",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -468,7 +416,6 @@
   },
   {
     "id": "tip-053-general-nutrition",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -477,7 +424,6 @@
   },
   {
     "id": "tip-054-what-tradition-avoids",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "chapter": "раздел «Само собой разумеется»"
@@ -485,7 +431,6 @@
   },
   {
     "id": "tip-055-occasional-indulgence",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "chapter": "раздел «Приободряющее»"
@@ -493,7 +438,6 @@
   },
   {
     "id": "tip-056-activity-and-rest",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -502,7 +446,6 @@
   },
   {
     "id": "tip-057-seasonal-behavior",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -511,7 +454,6 @@
   },
   {
     "id": "tip-058-sense-care-daily",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "chapter": "раздел «Повседневное поведение»"
@@ -519,7 +461,6 @@
   },
   {
     "id": "tip-059-intimacy-and-measure",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -528,7 +469,6 @@
   },
   {
     "id": "tip-060-age-and-constitution",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "chapter": "раздел «Питание согласно конституции»"
@@ -536,7 +476,6 @@
   },
   {
     "id": "tip-061-causes-of-illness",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -545,7 +484,6 @@
   },
   {
     "id": "tip-062-bile-is-fire",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -554,7 +492,6 @@
   },
   {
     "id": "tip-063-phlegm-earth-water",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -563,7 +500,6 @@
   },
   {
     "id": "tip-064-wind-pervades",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -572,7 +508,6 @@
   },
   {
     "id": "tip-065-doshas-in-balance",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -581,7 +516,6 @@
   },
   {
     "id": "tip-066-conception-elements",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -590,7 +524,6 @@
   },
   {
     "id": "tip-067-body-types",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -599,7 +532,6 @@
   },
   {
     "id": "tip-068-body-as-tree",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -608,7 +540,6 @@
   },
   {
     "id": "tip-069-grain-properties",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -617,7 +548,6 @@
   },
   {
     "id": "tip-070-meat-properties",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -626,7 +556,6 @@
   },
   {
     "id": "tip-071-oil-for-mind",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -635,7 +564,6 @@
   },
   {
     "id": "tip-072-bathing",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -644,7 +572,6 @@
   },
   {
     "id": "tip-073-incompatible-canon",
-    "status": "published",
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
@@ -653,7 +580,6 @@
   },
   {
     "id": "tip-074-tradition-origins",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -662,7 +588,6 @@
   },
   {
     "id": "tip-075-three-divisions",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -671,7 +596,6 @@
   },
   {
     "id": "tip-076-four-methods",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -680,7 +604,6 @@
   },
   {
     "id": "tip-077-first-illness",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -689,7 +612,6 @@
   },
   {
     "id": "tip-078-knowledge-from-observation",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -698,7 +620,6 @@
   },
   {
     "id": "tip-079-elderly-wind-age",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -707,7 +628,6 @@
   },
   {
     "id": "tip-080-elderly-meal-rhythm",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -716,7 +636,6 @@
   },
   {
     "id": "tip-081-elderly-early-breakfast",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -725,7 +644,6 @@
   },
   {
     "id": "tip-082-elderly-warm-belly",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -734,7 +652,6 @@
   },
   {
     "id": "tip-083-elderly-walk-after-dinner",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -743,7 +660,6 @@
   },
   {
     "id": "tip-084-preheat-oil",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -752,7 +668,6 @@
   },
   {
     "id": "tip-085-aged-grain",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -761,7 +676,6 @@
   },
   {
     "id": "tip-086-garden-produce",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
@@ -770,362 +684,10 @@
   },
   {
     "id": "tip-087-processed-food",
-    "status": "published",
     "source": {
       "work": "Сова Ригпа",
       "part": "«Наука о здоровье» (Ринчен Тензин)",
       "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-088-staging-rice",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-089-staging-millet",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-090-staging-beans-weight",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-091-staging-beans-kidney",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-092-staging-chickpea",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-093-staging-mutton-head",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-094-staging-mouse-meat",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-095-staging-fish",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-096-staging-horse-meat",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-097-staging-radish",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-098-staging-beet",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-099-staging-potato",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-100-staging-dandelion",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-101-staging-parsley",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-102-staging-cilantro",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-103-staging-garlic-onion",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-104-staging-pumpkin",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-105-staging-peach-kernel",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-106-staging-pomegranate",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-107-staging-lemon",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-108-staging-watermelon",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-109-staging-strawberry",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-110-staging-mustard-oil",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-111-staging-bone-marrow",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-112-staging-cow-milk",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-113-staging-goat-milk",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-114-staging-sheep-milk",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-115-staging-mare-milk",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-116-staging-kefir",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-117-staging-oats",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Продукты и их свойства»"
-    }
-  },
-  {
-    "id": "tip-118-staging-elderly-digestion",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
-    }
-  },
-  {
-    "id": "tip-119-staging-elderly-hypertension",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
-    }
-  },
-  {
-    "id": "tip-120-staging-elderly-hypotension",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
-    }
-  },
-  {
-    "id": "tip-121-staging-elderly-salt",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
-    }
-  },
-  {
-    "id": "tip-122-staging-elderly-rice-constipation",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
-    }
-  },
-  {
-    "id": "tip-123-staging-elderly-constipation-remedy",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
-    }
-  },
-  {
-    "id": "tip-124-staging-elderly-meat-choice",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
-    }
-  },
-  {
-    "id": "tip-125-staging-elderly-alcohol",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
-    }
-  },
-  {
-    "id": "tip-126-staging-elderly-evening",
-    "status": "staging",
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
     }
   }
 ]

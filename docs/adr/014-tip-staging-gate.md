@@ -1,7 +1,20 @@
 # ADR 014 — Tip-staging gate (disease-indication tips authored-but-gated)
 
 **Date:** 2026-06-29
-**Status:** Accepted (2026-06-29, Plan 018)
+**Status:** **Withdrawn (2026-06-29)** — built and then reverted within Plan 018
+before any release. The gated disease-indication tier it governed was dropped on
+the owner's decision: the food-property content already lives in the structured
+**foods corpus** (ADR 012), the geriatric audience is out of focus, and a smaller
+tip pool is acceptable. With no staging content, the gate was unused machinery, so
+`Tip.status`, the `includeStagingTips` loader opt, `isProductionTip`, the index
+`status` projection, the gate tests, and the review tooling were all removed. The
+record is kept so the design isn't silently re-proposed; **if a gated tip tier is
+revived, write a fresh ADR** rather than reinstating this one. Everything below is
+the original (now historical) decision.
+
+---
+
+**Original status:** Accepted (2026-06-29, Plan 018)
 
 ## Context
 

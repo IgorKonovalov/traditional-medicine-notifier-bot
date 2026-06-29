@@ -196,21 +196,9 @@ export interface TipSource {
   readonly chapter?: string;
 }
 
-/**
- * Publication state of a tip (ADR 014). `published` tips populate the runtime
- * pool; `staging` tips are **gated** disease-indication content kept out of the
- * production pool until documented doctor sign-off, surfaced only via the
- * content index + a review artifact. Absent in frontmatter → `published`.
- */
-export type TipStatus = 'published' | 'staging';
-
-export const TIP_STATUSES: readonly TipStatus[] = ['published', 'staging'];
-
 /** A daily-tip entry. Optionally scoped to a category and attributed to a source. */
 export interface Tip {
   readonly id: string;
-  /** Publication state (ADR 014); `published` by default when omitted. */
-  readonly status: TipStatus;
   readonly category?: string;
   readonly source?: TipSource;
   readonly body: string;
