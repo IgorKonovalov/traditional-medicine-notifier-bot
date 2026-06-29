@@ -88,6 +88,16 @@ describe('backState — library navigation never wraps or dead-ends', () => {
     });
     expect(backState({ screen: 'search', page: 0 })).toEqual({ screen: 'hub', page: 0 });
   });
+
+  it('a guide section returns to the guide list, restoring its list page', () => {
+    expect(
+      backState({ screen: 'guide-section', guideId: 'tib-osnovy', section: 3, page: 1 }),
+    ).toEqual({ screen: 'guide-list', page: 1 });
+  });
+
+  it('the guide list returns to the hub', () => {
+    expect(backState({ screen: 'guide-list', page: 2 })).toEqual({ screen: 'hub', page: 0 });
+  });
 });
 
 // ─── search matching + the doctor-gate on formula hits ────────────────────────
@@ -169,5 +179,11 @@ describe('combinations surface tracks the ADR 006 doctor-gate', () => {
 
   it('the hub shows the 🧪 Формулы branch when registered', () => {
     expect(buttonLabels(hubView())).toContain('🧪 Формулы');
+  });
+});
+
+describe('library hub — guides branch (Plan 006)', () => {
+  it('the hub always shows the 📖 Статьи branch', () => {
+    expect(buttonLabels(hubView())).toContain('📖 Статьи');
   });
 });

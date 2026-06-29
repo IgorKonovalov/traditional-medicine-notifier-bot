@@ -38,6 +38,7 @@ import {
 import { requireSessionAndAnchor, type ValidatedCallback } from './_callback-prologue';
 import { formulaCardKeyboard, formulaMemberLinks, renderFormula } from './_formula-card';
 import { FORMULA_BRANCH_ENABLED } from './_formula-gate';
+import { guidePages } from './_guide-card';
 import { herbCardKeyboard, herbFormulaLinks, renderHerb } from './_herb-card';
 import { pickDailyTip } from './tips';
 
@@ -54,6 +55,8 @@ type Screen =
   | 'tips'
   | 'search'
   | 'results'
+  | 'guide-list'
+  | 'guide-section'
   | 'formula-list'
   | 'formula-card';
 
@@ -73,6 +76,10 @@ interface LibraryState {
   readonly page: number;
   readonly herbId?: string;
   readonly formulaId?: string;
+  /** Open guide id (guide-section screen). */
+  readonly guideId?: string;
+  /** Active page index within the open guide (guide-section pager). */
+  readonly section?: number;
 }
 
 interface View {
@@ -127,14 +134,15 @@ function herbsFor(deps: BotDeps, state: LibraryState): readonly Herb[] {
 
 // ─── per-screen views ─────────────────────────────────────────────────────────
 
-/** The library root. Branches whose owning plan hasn't shipped stay hidden;
- *  `🧪 Формулы` appears only once the doctor-gate is lifted (`_formula-gate`).
- *  Exported so a test can assert the formula branch is absent by default. */
+/** The library root. The 📖 Статьи (guides) branch ships with Plan 006; the
+ *  `🧪 Формулы` branch appears only once the doctor-gate is lifted
+ *  (`_formula-gate`). Exported so a test can assert the formula branch presence. */
 export function hubView(): View {
   const rows: CallbackButton[][] = [
     [Markup.button.callback(messages.library.herbs, 'lib:herbs')],
     [Markup.button.callback(messages.library.search, 'lib:search')],
     [Markup.button.callback(messages.library.tips, 'lib:tips')],
+    [Markup.button.callback(messages.library.guides, 'lib:guides')],
   ];
   if (FORMULA_BRANCH_ENABLED) {
     rows.push([Markup.button.callback(messages.library.formulas, 'lib:formulas')]);
@@ -358,8 +366,63 @@ function formulaCardView(deps: BotDeps, formulaId: string): View | null {
   };
 }
 
+// ─── guides (📖 Статьи — Plan 006) ────────────────────────────────────────────
+
+function guideListView(deps: BotDeps, page: number): View & { readonly page: number } {
+  const guides = deps.content.guides.all;
+  if (guides.length === 0) {
+    return {
+      text: messages.library.guidesEmpty,
+      keyboard: Markup.inlineKeyboard([backRow('lib:back'), homeRow('lib:home')]),
+      page: 0,
+    };
+  }
+  const { page: safePage, pageCount } = clampPage(page, guides.length);
+  const slice = guides.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
+  const rows = slice.map((g) => [
+    Markup.button.callback(g.title, assertCallbackData(`lib:guide:${g.id}`)),
+  ]);
+  const nav: CallbackButton[][] = [];
+  if (pageCount > 1) nav.push(pager('lib:glist', safePage, pageCount));
+  nav.push(backRow('lib:back'), homeRow('lib:home'));
+  return {
+    text: messages.library.guidesTitle,
+    keyboard: Markup.inlineKeyboard([...rows, ...nav]),
+    page: safePage,
+  };
+}
+
+/**
+ * One page of an open guide. The guide is flattened into ≤-limit pages
+ * (`guidePages`) and the pager steps through them; `page` carries the *list* page
+ * to return to, while `section` is the active page index. An unknown id (stale
+ * tap / bad deep link) falls back to the hub.
+ */
+function guideSectionView(
+  deps: BotDeps,
+  state: LibraryState,
+): View & { readonly page: number; readonly section: number } {
+  const guide = deps.content.guides.byId.get(state.guideId ?? '');
+  if (guide === undefined) return { ...hubView(), page: 0, section: 0 };
+  const pages = guidePages(guide);
+  // pageSize 1: each guide page is its own pager step.
+  const { page: safeSection, pageCount } = clampPage(state.section ?? 0, pages.length, 1);
+  const nav: CallbackButton[][] = [];
+  if (pageCount > 1) nav.push(pager('lib:gsec', safeSection, pageCount));
+  nav.push(backRow('lib:back'), homeRow('lib:home'));
+  return {
+    text: pages[safeSection] ?? '',
+    keyboard: Markup.inlineKeyboard(nav),
+    page: state.page,
+    section: safeSection,
+  };
+}
+
 /** Render whichever screen `state` names, clamping page where it paginates. */
-function viewFor(deps: BotDeps, state: LibraryState): View & { readonly page: number } {
+function viewFor(
+  deps: BotDeps,
+  state: LibraryState,
+): View & { readonly page: number; readonly section?: number } {
   switch (state.screen) {
     case 'herbs':
       return { ...herbsMenuView(), page: 0 };
@@ -375,6 +438,10 @@ function viewFor(deps: BotDeps, state: LibraryState): View & { readonly page: nu
       return { ...searchPromptView(), page: 0 };
     case 'results':
       return resultsView(deps, state);
+    case 'guide-list':
+      return guideListView(deps, state.page);
+    case 'guide-section':
+      return guideSectionView(deps, state);
     case 'formula-list':
       return formulaListView(deps, state.page);
     case 'formula-card': {
@@ -418,12 +485,16 @@ export function backState(state: LibraryState): LibraryState {
       return { screen: 'herbs', page: 0 };
     case 'results':
       return { screen: 'search', page: 0 };
+    case 'guide-section':
+      // Back to the guide list, restoring the list page the guide was opened from.
+      return { screen: 'guide-list', page: state.page };
     case 'formula-card':
       // Back to search results (if reached from a search hit) else the formula list.
       return state.query !== undefined
         ? { screen: 'results', query: state.query, page: state.page }
         : { screen: 'formula-list', page: state.page };
     case 'formula-list':
+    case 'guide-list':
     case 'herbs':
     case 'tips':
     case 'search':
@@ -484,6 +555,19 @@ export async function librarySearchEntry(
   persist(userId, anchor, { ...state, page: out.page });
 }
 
+/** Open the 📖 Статьи guide list as a fresh library session. Menu + `/guides`. */
+export async function libraryGuidesEntry(ctx: Context, deps: BotDeps): Promise<void> {
+  const userId = getUserId(ctx);
+  if (userId === undefined) {
+    await ctx.reply(messages.common.notRegistered);
+    return;
+  }
+  deleteSession(userId, 'library');
+  const out = viewFor(deps, { screen: 'guide-list', page: 0 });
+  const anchor = await sendAnchor(ctx, out.text, out.keyboard);
+  persist(userId, anchor, { screen: 'guide-list', page: out.page });
+}
+
 /**
  * Open a herb card as a fresh library session — the notification "Открыть" CTA.
  * Back lands on the hub (the card carries no list context).
@@ -511,7 +595,7 @@ export async function openHerbCardAnchor(
 // ─── registration ─────────────────────────────────────────────────────────────
 
 export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
-  /** Edit the anchor to `next`, clamping its page, and persist. */
+  /** Edit the anchor to `next`, clamping its page/section, and persist. */
   const go = async (
     ctx: Context,
     v: ValidatedCallback<LibraryState>,
@@ -519,11 +603,16 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
   ): Promise<void> => {
     const out = viewFor(deps, next);
     await editAnchor(ctx, out.text, out.keyboard);
-    persist(v.userId, v.session.anchor, { ...next, page: out.page });
+    persist(v.userId, v.session.anchor, {
+      ...next,
+      page: out.page,
+      ...(out.section !== undefined ? { section: out.section } : {}),
+    });
   };
 
   bot.command('library', libraryEntry);
   bot.command('browse', libraryHerbsEntry);
+  bot.command('guides', (ctx) => libraryGuidesEntry(ctx, deps));
   bot.command('search', async (ctx) => {
     const raw = ctx.message.text.replace(/^\/search(@\w+)?\s*/i, '');
     await librarySearchEntry(ctx, deps, raw);
@@ -626,6 +715,54 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
   });
 
   bot.action(/^lib:results:noop$/, (ctx) => ctx.answerCbQuery());
+
+  // 📖 Статьи — the guides branch (Plan 006). Always registered.
+  bot.action(/^lib:guides$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    await go(ctx, v, { screen: 'guide-list', page: 0 });
+  });
+
+  bot.action(/^lib:glist:(\d+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    await go(ctx, v, { screen: 'guide-list', page: Number(ctx.match[1] ?? '0') });
+  });
+
+  bot.action(/^lib:glist:noop$/, (ctx) => ctx.answerCbQuery());
+
+  bot.action(/^lib:guide:(.+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const guideId = ctx.match[1] ?? '';
+    if (!deps.content.guides.byId.has(guideId)) return;
+    // Carry the current list page so `« Назад` returns to it.
+    await go(ctx, v, {
+      screen: 'guide-section',
+      guideId,
+      section: 0,
+      page: v.session.state.page,
+    });
+  });
+
+  bot.action(/^lib:gsec:(\d+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const { guideId, page } = v.session.state;
+    if (guideId === undefined) return;
+    await go(ctx, v, {
+      screen: 'guide-section',
+      guideId,
+      section: Number(ctx.match[1] ?? '0'),
+      page,
+    });
+  });
+
+  bot.action(/^lib:gsec:noop$/, (ctx) => ctx.answerCbQuery());
 
   // 🧪 Формулы — built but registered ONLY when the doctor-gate is lifted
   // (ADR 006, `_formula-gate`). While withheld, these handlers are never wired,

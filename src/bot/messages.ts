@@ -87,6 +87,7 @@ export const messages = {
       'Команды:\n' +
       '• /browse — список трав по традициям и категориям\n' +
       '• /search — поиск травы по названию\n' +
+      '• /guides — статьи и руководства\n' +
       '• /tips — совет дня\n' +
       '• /reminders — ваши напоминания (создать, посмотреть, отключить)\n' +
       '• /settings — настройки\n' +
@@ -148,6 +149,9 @@ export const messages = {
     categoryButton: (name: string, count: number): string => `${name} (${count})`,
     // 💡 Совет дня branch (links to the existing daily-tip surface)
     tipsEmpty: 'Пока нет советов.',
+    // 📖 Статьи branch (long-form guides, Plan 006)
+    guidesTitle: 'Статьи — выберите, что почитать.',
+    guidesEmpty: 'Пока нет статей.',
     // 🧪 Формулы branch (withheld until the ADR 006 doctor-gate is lifted)
     formulasTitle: 'Формулы',
     formulasEmpty: 'Пока нет формул.',
