@@ -158,20 +158,25 @@ export const messages = {
   },
 
   /**
-   * Formula (combination) card chrome (Plan 009 Phase 5). The card is held
-   * behind the ADR 006 doctor-gate and, in addition to the minimal field set
-   * (composition, member cross-links, a descriptive line, cautions), now also
-   * surfaces the structured verbose fields — indications, traditional use and
-   * dosing — as a live-review surface (owner sign-off 2026-06-29, pending final
-   * review before large production). The raw `sourceText`/`body` stay
-   * unsurfaced.
+   * Formula (combination) card section labels (Plan 009 Phase 5; rich-text
+   * rendering Plan 014 / ADR 011). The card is live post the ADR 006 owner
+   * sign-off and, in addition to the minimal field set (composition, member
+   * cross-links, a descriptive line, cautions), surfaces the structured verbose
+   * fields — indications, traditional use and dosing — as a live-review surface
+   * (owner sign-off 2026-06-29, pending final review before large production).
+   * The raw `sourceText`/`body` stay unsurfaced.
+   *
+   * These are **plain-text labels only** — the emphasis tags (`<b>`, blockquote,
+   * etc.) live in the static parts of the `html` template in `_formula-card.ts`,
+   * so a label interpolated through the template is escaped harmlessly. Never
+   * put HTML markup in these strings.
    */
   formulaCard: {
-    composition: (list: string): string => `Состав: ${list}`,
-    indications: (list: string): string => `Показания: ${list}`,
-    use: (text: string): string => `Применение: ${text}`,
-    dosing: (text: string): string => `Приём: ${text}`,
-    cautions: (list: string): string => `Предостережения: ${list}`,
+    composition: 'Состав',
+    indications: 'Показания',
+    use: 'Применение',
+    dosing: 'Приём',
+    cautions: 'Предостережения',
   },
 
   /** Shared herb-card chrome (the card body itself is content + disclaimer). */

@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest';
 
-import { clampToTelegram, splitForTelegram, TELEGRAM_LIMIT, toPlainText } from './markdown';
+import {
+  clampToTelegram,
+  escapeHtml,
+  splitForTelegram,
+  TELEGRAM_LIMIT,
+  toPlainText,
+  truncateRenderedHtml,
+} from './markdown';
 
 describe('toPlainText', () => {
   it('joins soft-wrap newlines within a paragraph and preserves paragraph breaks', () => {
@@ -49,6 +56,52 @@ describe('clampToTelegram', () => {
     expect(out.length).toBeLessThanOrEqual(3801);
     expect(out.endsWith('…')).toBe(true);
     expect(out).not.toMatch(/слов…$/); // cut at a space, not mid-word
+  });
+});
+
+describe('escapeHtml', () => {
+  it('escapes the four HTML-context metacharacters', () => {
+    expect(escapeHtml('a < b & c > d "e"')).toBe('a &lt; b &amp; c &gt; d &quot;e&quot;');
+  });
+
+  it('escapes & first so it does not double-escape produced entities', () => {
+    expect(escapeHtml('<')).toBe('&lt;');
+    expect(escapeHtml('&lt;')).toBe('&amp;lt;');
+  });
+
+  it('leaves Cyrillic and emoji untouched', () => {
+    expect(escapeHtml('Агар-8 🧪')).toBe('Агар-8 🧪');
+  });
+});
+
+describe('truncateRenderedHtml', () => {
+  it('returns short HTML unchanged', () => {
+    expect(truncateRenderedHtml('<b>hi</b>', 100)).toBe('<b>hi</b>');
+  });
+
+  it('never cuts inside a tag and closes tags left open', () => {
+    const html = '<b>' + 'a'.repeat(50) + '</b>';
+    const out = truncateRenderedHtml(html, 20);
+    expect(out.length).toBeLessThanOrEqual(20 + '</b>'.length);
+    expect(out.startsWith('<b>')).toBe(true);
+    expect(out.endsWith('</b>')).toBe(true);
+    // The cut must not leave a half-written opening tag like "<b" or "<".
+    expect(out).not.toMatch(/<b?$/);
+  });
+
+  it('closes nested tags innermost-first', () => {
+    const html = '<blockquote expandable>' + 'x'.repeat(80) + '</blockquote>';
+    const out = truncateRenderedHtml(html, 40);
+    expect(out.endsWith('</blockquote>')).toBe(true);
+    expect(out.startsWith('<blockquote expandable>')).toBe(true);
+  });
+
+  it('does not cut inside an HTML entity', () => {
+    // Force the budget to land right inside the "&amp;" entity.
+    const html = 'aaaa&amp;bbbb';
+    const out = truncateRenderedHtml(html, 6); // index 6 is inside "&amp;"
+    expect(out).not.toMatch(/&[a-z]*$/); // no dangling "&am"
+    expect(out).toBe('aaaa');
   });
 });
 

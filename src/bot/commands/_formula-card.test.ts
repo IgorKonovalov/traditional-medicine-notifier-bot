@@ -1,15 +1,17 @@
 import { describe, expect, it } from 'vitest';
 
 import type { Combination, Herb, LoadedContent } from '../../content/types';
+import { TELEGRAM_LIMIT } from '../render/markdown';
 
-import { formulaMemberLinks, renderFormula } from './_formula-card';
+import { formulaMemberLinks, parseOriginalNames, renderFormula } from './_formula-card';
 
 /**
  * A formula carrying every verbose field: the structured ones
- * (indications/traditionalUse/dosingNotes) are now surfaced, while the raw
- * `sourceText`/`body` must never leak.
+ * (indications/traditionalUse/dosingNotes) are surfaced as a live-review surface
+ * (ADR 006), while the raw `sourceText`/`body` must never leak. One composition
+ * entry carries a Latin parenthetical so the `<code>` wrap is exercised.
  */
-function verboseFormula(): Combination {
+function verboseFormula(overrides: Partial<Combination> = {}): Combination {
   return {
     id: 'tib-formula-agar-8',
     tradition: 'tibetan',
@@ -17,7 +19,7 @@ function verboseFormula(): Combination {
     nameOriginal: 'A gar 8',
     nature: 'слегка прохладная',
     aliases: ['Агар 8'],
-    composition: ['миробалан хебула', 'мускатный орех'],
+    composition: ['миробалан хебула (Terminalia chebula)', 'мускатный орех'],
     members: ['tib-haritaki'],
     themes: ['традиционно связывают с поддержкой нервной системы'],
     indications: ['ЖАР-СЕРДЦА-СЕКРЕТ', 'бессонница'],
@@ -28,28 +30,51 @@ function verboseFormula(): Combination {
     tags: ['сердце'],
     sources: ['https://manla.ru/herbs/'],
     body: 'СЫРОЙ-BODY-СЕКРЕТ из источника.',
+    ...overrides,
   };
 }
 
-describe('renderFormula — surfaces structured verbose fields, never the raw body', () => {
-  it('surfaces name(s), nature, composition, themes and cautions', () => {
+/** True when every HTML tag in `s` is properly opened and closed (LIFO). */
+function tagsBalanced(s: string): boolean {
+  const stack: string[] = [];
+  const re = /<(\/?)([a-z][a-z0-9-]*)[^>]*>/gi;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(s)) !== null) {
+    if (m[0].endsWith('/>')) continue;
+    const name = m[2]!.toLowerCase();
+    if (m[1] === '/') {
+      if (stack.pop() !== name) return false;
+    } else {
+      stack.push(name);
+    }
+  }
+  return stack.length === 0;
+}
+
+describe('renderFormula — rich HTML card (ADR 011)', () => {
+  it('renders the name bold and the original-names sub-line in italics', () => {
     const out = renderFormula(verboseFormula());
-    expect(out).toContain('Агар-8');
-    expect(out).toContain('A gar 8');
-    expect(out).toContain('слегка прохладная');
-    expect(out).toContain('Состав: миробалан хебула, мускатный орех');
-    expect(out).toContain('традиционно связывают с поддержкой нервной системы');
-    expect(out).toContain('Предостережения: возможна индивидуальная непереносимость');
+    expect(out).toContain('<b>Агар-8</b>');
+    expect(out).toContain('<i>A gar 8</i>'); // verbatim fallback, italic
   });
 
-  it('surfaces the structured verbose fields with their labels (live-review surface)', () => {
+  it('surfaces nature, a bulleted composition, the Latin code-wrap and cautions', () => {
     const out = renderFormula(verboseFormula());
-    expect(out).toContain('Показания:');
+    expect(out).toContain('слегка прохладная');
+    expect(out).toContain('• миробалан хебула (<code>Terminalia chebula</code>)');
+    expect(out).toContain('• мускатный орех');
+    expect(out).toContain('<b>Предостережения:</b>');
+    expect(out).toContain('возможна индивидуальная непереносимость');
+  });
+
+  it('surfaces the structured verbose fields, folding long ones into expandable quotes', () => {
+    const out = renderFormula(verboseFormula());
+    expect(out).toContain('<b>Показания:</b>');
     expect(out).toContain('ЖАР-СЕРДЦА-СЕКРЕТ');
-    expect(out).toContain('Применение:');
-    expect(out).toContain('ТРАД-ИСПОЛЬЗОВАНИЕ-СЕКРЕТ');
-    expect(out).toContain('Приём:');
-    expect(out).toContain('ДОЗИРОВКА-СЕКРЕТ');
+    expect(out).toContain('<b>Применение:</b>');
+    expect(out).toContain('<blockquote expandable>ТРАД-ИСПОЛЬЗОВАНИЕ-СЕКРЕТ</blockquote>');
+    expect(out).toContain('<b>Приём:</b>');
+    expect(out).toContain('<blockquote expandable>ДОЗИРОВКА-СЕКРЕТ по 0,2 г</blockquote>');
   });
 
   it('never surfaces the raw sourceText or the markdown body (ADR 006)', () => {
@@ -59,8 +84,69 @@ describe('renderFormula — surfaces structured verbose fields, never the raw bo
     }
   });
 
-  it('always ends with the render-time disclaimer', () => {
-    expect(renderFormula(verboseFormula()).endsWith('консультируйтесь с врачом.')).toBe(true);
+  it('appends the disclaimer in a blockquote, last and never truncated', () => {
+    const out = renderFormula(verboseFormula());
+    expect(out).toContain('проконсультируйтесь с врачом.');
+    expect(out.endsWith('</blockquote>')).toBe(true);
+    expect(tagsBalanced(out)).toBe(true);
+  });
+
+  it('omits optional sections cleanly (no nature, no verbose fields)', () => {
+    const out = renderFormula(
+      verboseFormula({
+        nameOriginal: undefined,
+        nature: undefined,
+        indications: undefined,
+        traditionalUse: undefined,
+        dosingNotes: undefined,
+      }),
+    );
+    expect(out).toContain('<b>Агар-8</b>');
+    expect(out).not.toContain('Показания:');
+    expect(out).not.toContain('Применение:');
+    expect(tagsBalanced(out)).toBe(true);
+  });
+
+  it('escapes HTML metacharacters in every interpolated field (ADR 011)', () => {
+    const out = renderFormula(
+      verboseFormula({
+        nameRu: 'Тест <b> & >',
+        composition: ['ингредиент <x> & <y>'],
+        cautions: ['осторожно: a < b & c > d'],
+      }),
+    );
+    expect(out).toContain('Тест &lt;b&gt; &amp; &gt;');
+    expect(out).toContain('ингредиент &lt;x&gt; &amp; &lt;y&gt;');
+    expect(out).toContain('a &lt; b &amp; c &gt; d');
+    // The injected angle brackets must not survive as real tags.
+    expect(out).not.toContain('<x>');
+    expect(out).not.toContain('<y>');
+    expect(tagsBalanced(out)).toBe(true);
+  });
+
+  it('produces valid, tag-closed HTML under the limit even when oversized', () => {
+    const out = renderFormula(verboseFormula({ traditionalUse: ['x'.repeat(6000)] }));
+    expect(out.length).toBeLessThanOrEqual(TELEGRAM_LIMIT);
+    expect(tagsBalanced(out)).toBe(true);
+    expect(out.endsWith('</blockquote>')).toBe(true);
+    expect(out).toContain('проконсультируйтесь с врачом.');
+  });
+});
+
+describe('parseOriginalNames', () => {
+  it('returns a non-matching simple string verbatim', () => {
+    expect(parseOriginalNames('A gar 8')).toBe('A gar 8');
+    expect(parseOriginalNames('Ширу / Shiru')).toBe('Ширу / Shiru');
+  });
+
+  it('compacts a labelled multi-script string to abbreviated parts', () => {
+    expect(parseOriginalNames('Монгольское: Гагал 19; тибетское: Ко-ла-бчу-бду; Kola-19')).toBe(
+      'Монг.: Гагал 19 · Тиб.: Ко-ла-бчу-бду · Kola-19',
+    );
+  });
+
+  it('keeps the verbatim string when no segment carries a known label', () => {
+    expect(parseOriginalNames('Сороло 4 / Сроло 4')).toBe('Сороло 4 / Сроло 4');
   });
 });
 

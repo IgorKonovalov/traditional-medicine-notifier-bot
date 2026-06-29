@@ -1,25 +1,42 @@
 /**
- * Formula (combination) card rendering — the **withheld** combinations surface
- * (Plan 009 Phase 5, ADR 006 doctor-gate). Reached only once the formula branch
- * is registered post sign-off (`_formula-gate`).
+ * Formula (combination) card rendering — the combinations surface (Plan 009
+ * Phase 5, ADR 006 doctor-gate, now live post owner sign-off 2026-06-29). As of
+ * Plan 014 / ADR 011 the card renders as **rich Telegram HTML** through the
+ * branded `html` seam: bold name, an italic original-names sub-line, a
+ * nature·tradition tag line, a bulleted composition (Latin parenthetical in
+ * `<code>`), the verbose fields folded into `<blockquote expandable>`, distinct
+ * cautions, and the render-time disclaimer in a `<blockquote>` (ADR 006).
  *
  * Owner-approved field set: name(s) + `nature` («Сущность») + `composition` +
- * `members` as herb cross-links + `themes` (one descriptive line) + `cautions` +
- * the render-time disclaimer (ADR 006). As of the owner sign-off 2026-06-29 the
- * structured verbose fields `indications`/`traditionalUse`/`dosingNotes` are now
- * surfaced too, as a live-review surface ahead of large production. The raw
- * `sourceText` and the markdown `body` remain **unsurfaced** — they stay behind
- * the Plan 004 practitioner review.
+ * `members` as herb cross-links + `cautions` + the disclaimer, and — as a
+ * live-review surface ahead of large production — the structured verbose fields
+ * `indications`/`traditionalUse`/`dosingNotes`. The raw `sourceText` and the
+ * markdown `body` remain **unsurfaced** (Plan 004 practitioner review). The older
+ * `themes` line is dropped from the card now that the richer verbose fields are
+ * surfaced.
+ *
+ * Every interpolated content value is HTML-escaped at the boundary (the `html`
+ * tagged template does this automatically) — one unescaped `< > &` would make
+ * Telegram reject the whole message (ADR 011).
  */
 
 import { Markup } from 'telegraf';
 
 import type { Combination, LoadedContent } from '../../content/types';
-import { assertCallbackData } from '../keyboards';
+import { assertCallbackData, tradition } from '../keyboards';
 import { messages } from '../messages';
-import { clampToTelegram } from '../render/markdown';
+import { html, unsafeHtml, type Html } from '../render/html';
+import { TELEGRAM_LIMIT, truncateRenderedHtml } from '../render/markdown';
 
 type CallbackButton = ReturnType<typeof Markup.button.callback>;
+
+/**
+ * Headroom for the close tags {@link truncateRenderedHtml} may append past its
+ * budget when a cut lands inside an open tag (deepest case: a `<code>` inside a
+ * composition bullet nested in nothing else, or a lone `</blockquote>`). 32 is a
+ * comfortable upper bound on the card's shallow nesting.
+ */
+const TAG_CLOSE_MARGIN = 32;
 
 /** A cross-link from a formula to one of its member herbs (resolved to a page). */
 export interface MemberLink {
@@ -40,32 +57,120 @@ export function formulaMemberLinks(
   return links;
 }
 
-export function renderFormula(combination: Combination): string {
-  const header =
-    `${combination.nameRu}` +
-    `${combination.nameOriginal ? ` (${combination.nameOriginal})` : ''}` +
-    `${combination.nature ? ` · ${combination.nature}` : ''}`;
+/**
+ * Known `name_original` label prefixes → a compact abbreviation. The freeform
+ * source string occasionally follows a `Монгольское: … ; тибетское: … ` shape;
+ * when it does we compact it to a single scannable italic line. The mapping is
+ * deliberately small — anything unrecognised falls back to the verbatim string
+ * (see {@link parseOriginalNames}).
+ */
+const ORIGINAL_NAME_LABELS: ReadonlyArray<readonly [RegExp, string]> = [
+  [/^монгольск(?:ое|ий)$|^монг\.?$/i, 'Монг.'],
+  [/^тибетск(?:ое|ие|ий)$|^на тибетском$|^тиб\.?$/i, 'Тиб.'],
+  [/^санскрит$|^санскр\.?$/i, 'Санскр.'],
+  [/^китайск(?:ое|ий)$|^кит\.?$/i, 'Кит.'],
+  [/^английск(?:ое|ий)$|^англ\.?$/i, 'англ.'],
+];
 
-  const sections: string[] = [header];
-  if (combination.composition.length > 0) {
-    sections.push(messages.formulaCard.composition(combination.composition.join(', ')));
+function labelAbbrev(label: string): string | null {
+  const trimmed = label.trim();
+  for (const [re, abbrev] of ORIGINAL_NAME_LABELS) {
+    if (re.test(trimmed)) return abbrev;
   }
-  if (combination.themes.length > 0) sections.push(combination.themes.join('; '));
-  if (combination.indications?.length) {
-    sections.push(messages.formulaCard.indications(combination.indications.join('; ')));
+  return null;
+}
+
+/**
+ * Compact a freeform `name_original` string for the italic sub-line. When the
+ * string is a `;`-separated list of `Label: value` segments using a recognised
+ * script label, each labelled segment is abbreviated (`Монг.: …`) and the parts
+ * are joined with ` · `; unlabelled parts (e.g. a trailing Latin variant) are
+ * kept verbatim. Anything that matches **no** label falls back to the whole
+ * string unchanged — never throws. Returns plain text; the caller wraps it in
+ * `<i>` and the `html` template escapes it.
+ */
+export function parseOriginalNames(raw: string): string {
+  const parts = raw
+    .split(';')
+    .map((p) => p.trim())
+    .filter((p) => p !== '');
+  const out: string[] = [];
+  let matched = false;
+  for (const part of parts) {
+    const colon = part.indexOf(':');
+    if (colon > 0) {
+      const abbrev = labelAbbrev(part.slice(0, colon));
+      if (abbrev !== null) {
+        matched = true;
+        out.push(`${abbrev}: ${part.slice(colon + 1).trim()}`);
+        continue;
+      }
+    }
+    out.push(part);
   }
-  if (combination.traditionalUse?.length) {
-    sections.push(messages.formulaCard.use(combination.traditionalUse.join('\n')));
+  // No recognised label anywhere → keep the original string verbatim.
+  return matched ? out.join(' · ') : raw.trim();
+}
+
+/**
+ * One composition line. Entries shaped `Русское (Latin)` get the parenthetical
+ * Latin wrapped in `<code>`; entries without one render as a plain bullet
+ * (best-effort, no frontmatter change — Plan 014).
+ */
+function compositionLine(entry: string): Html {
+  const m = /^(.*?)\s*\(([^)]+)\)\s*$/.exec(entry);
+  if (m !== null && m[1]!.trim() !== '') {
+    return html`• ${m[1]!.trim()} (<code>${m[2]!.trim()}</code>)`;
   }
-  if (combination.dosingNotes?.length) {
-    sections.push(messages.formulaCard.dosing(combination.dosingNotes.join('\n')));
-  }
-  if (combination.cautions.length > 0) {
-    sections.push(messages.formulaCard.cautions(combination.cautions.join('; ')));
+  return html`• ${entry}`;
+}
+
+export function renderFormula(combination: Combination): Html {
+  const c = combination;
+  const sections: string[] = [];
+
+  // Header + italic original-names sub-line + nature·tradition tag line.
+  sections.push(html`🧪 <b>${c.nameRu}</b>`);
+  if (c.nameOriginal) sections.push(html`<i>${parseOriginalNames(c.nameOriginal)}</i>`);
+  const trad = tradition(c.tradition);
+  sections.push(c.nature ? html`<i>${c.nature} · ${trad}</i>` : html`<i>${trad}</i>`);
+
+  // Composition — bold label then one bulleted line per entry.
+  if (c.composition.length > 0) {
+    const label = html`<b>${messages.formulaCard.composition}:</b>`;
+    const lines = c.composition.map(compositionLine).join('\n');
+    sections.push(`${label}\n${lines}`);
   }
 
-  // Clamp before the disclaimer so the disclaimer is never truncated (ADR 006).
-  return `${clampToTelegram(sections.join('\n\n'))}\n\n${messages.disclaimer}`;
+  // Indications inline; traditional-use / dosing folded into expandable quotes.
+  if (c.indications?.length) {
+    sections.push(html`<b>${messages.formulaCard.indications}:</b> ${c.indications.join('; ')}`);
+  }
+  if (c.traditionalUse?.length) {
+    sections.push(
+      html`<b>${messages.formulaCard.use}:</b>
+        <blockquote expandable>${c.traditionalUse.join('\n')}</blockquote>`,
+    );
+  }
+  if (c.dosingNotes?.length) {
+    sections.push(
+      html`<b>${messages.formulaCard.dosing}:</b>
+        <blockquote expandable>${c.dosingNotes.join('\n')}</blockquote>`,
+    );
+  }
+  if (c.cautions.length > 0) {
+    sections.push(html`⚠️ <b>${messages.formulaCard.cautions}:</b> ${c.cautions.join('; ')}`);
+  }
+
+  // Truncate the body with room reserved for the disclaimer, which is appended
+  // **after** the cut so it is never truncated (ADR 006 / ADR 011). The extra
+  // TAG_CLOSE_MARGIN covers the close tags truncateRenderedHtml may append past
+  // its budget (e.g. a 13-char `</blockquote>`), so the assembled card stays at
+  // or under TELEGRAM_LIMIT.
+  const disclaimer = html`<blockquote>${messages.disclaimer}</blockquote>`;
+  const budget = TELEGRAM_LIMIT - disclaimer.length - TAG_CLOSE_MARGIN - 2;
+  const body = truncateRenderedHtml(sections.join('\n\n'), budget);
+  return unsafeHtml(`${body}\n\n${disclaimer}`);
 }
 
 /**

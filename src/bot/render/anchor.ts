@@ -10,7 +10,8 @@
 
 import { Markup, type Context } from 'telegraf';
 
-import { clampToTelegram } from './markdown';
+import type { Html } from './html';
+import { clampToTelegram, truncateRenderedHtml } from './markdown';
 
 type InlineKeyboard = ReturnType<typeof Markup.inlineKeyboard>;
 
@@ -73,6 +74,65 @@ export async function editAnchorAt(
       clampToTelegram(body),
       keyboard,
     );
+  } catch (err) {
+    if (!isNotModified(err)) throw err;
+  }
+}
+
+// ─── HTML-aware siblings (ADR 011) ──────────────────────────────────────────
+//
+// Identical to the plain trio above but the body is branded {@link Html}, the
+// length backstop is the tag-aware {@link truncateRenderedHtml} (never slices a
+// tag or entity), and the send carries `parse_mode: 'HTML'`. The benign "message
+// is not modified" 400 swallow is preserved. A surface opts into this lane
+// explicitly (e.g. the `View.html` discriminator); nothing flips implicitly.
+
+/** Send the anchor as HTML and capture its id for later in-place edits. */
+export async function sendAnchorHtml(
+  ctx: Context,
+  body: Html,
+  keyboard?: InlineKeyboard,
+): Promise<Anchor> {
+  const message = await ctx.reply(truncateRenderedHtml(body), {
+    // eslint-disable-next-line no-restricted-syntax -- centralized HTML seam (ADR 011)
+    parse_mode: 'HTML',
+    ...keyboard,
+  });
+  return { messageId: message.message_id };
+}
+
+/** Edit the anchor in place as HTML. Mirrors {@link editAnchor}. */
+export async function editAnchorHtml(
+  ctx: Context,
+  body: Html,
+  keyboard?: InlineKeyboard,
+): Promise<void> {
+  try {
+    await ctx.editMessageText(truncateRenderedHtml(body), {
+      // eslint-disable-next-line no-restricted-syntax -- centralized HTML seam (ADR 011)
+      parse_mode: 'HTML',
+      ...keyboard,
+    });
+  } catch (err) {
+    if (!isNotModified(err)) throw err;
+  }
+}
+
+/** Edit an anchor by explicit `messageId` as HTML. Mirrors {@link editAnchorAt}. */
+export async function editAnchorAtHtml(
+  ctx: Context,
+  messageId: number,
+  body: Html,
+  keyboard?: InlineKeyboard,
+): Promise<void> {
+  const chatId = ctx.chat?.id;
+  if (chatId === undefined) return;
+  try {
+    await ctx.telegram.editMessageText(chatId, messageId, undefined, truncateRenderedHtml(body), {
+      // eslint-disable-next-line no-restricted-syntax -- centralized HTML seam (ADR 011)
+      parse_mode: 'HTML',
+      ...keyboard,
+    });
   } catch (err) {
     if (!isNotModified(err)) throw err;
   }

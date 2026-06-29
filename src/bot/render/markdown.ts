@@ -11,6 +11,78 @@
 /** Telegram's practical per-message character ceiling (well under the 4096 hard cap). */
 export const TELEGRAM_LIMIT = 3800;
 
+/**
+ * Escape the characters that break Telegram HTML context (ADR 011). `&`, `<`,
+ * `>` are mandatory in text context; `"` is escaped too so the same helper is
+ * safe inside an attribute value (e.g. `href="…"`) — defence in depth, even
+ * though no current call site emits content into an attribute. This is the one
+ * escape applied to every interpolation on the HTML render path (the `html`
+ * tagged template calls it automatically).
+ */
+export function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+/**
+ * Truncate rendered Telegram-HTML at `maxLen` on a safe boundary, then close any
+ * tags left open so Telegram accepts the message (ADR 011). Unlike
+ * {@link clampToTelegram} (word-boundary, plain text only), this never cuts
+ * inside a tag or an HTML entity — slicing `<b>foo` or `&am` would emit invalid
+ * markup and Telegram would reject the whole message with HTTP 400. Ported from
+ * the serbian-language-bot production seam (its ADR 008).
+ */
+export function truncateRenderedHtml(html: string, maxLen: number = TELEGRAM_LIMIT): string {
+  if (html.length <= maxLen) return html;
+
+  // Don't cut inside a tag — back up to the last unclosed '<'.
+  let cutAt = maxLen;
+  let inTag = false;
+  for (let i = 0; i < cutAt; i++) {
+    if (html[i] === '<') inTag = true;
+    if (html[i] === '>') inTag = false;
+  }
+  if (inTag) {
+    const last = html.lastIndexOf('<', cutAt - 1);
+    if (last > 0) cutAt = last;
+  }
+
+  // Retreat to a word boundary when one is close (don't lose more than ~20%).
+  const lastSpace = Math.max(html.lastIndexOf(' ', cutAt), html.lastIndexOf('\n', cutAt));
+  if (lastSpace > cutAt * 0.8) cutAt = lastSpace;
+
+  let truncated = html.slice(0, cutAt);
+
+  // Don't cut inside an HTML entity. All `&` in rendered output start an entity
+  // (literals are escaped to `&amp;`), so if the last `&` has no closing `;` in
+  // the tail, the slice landed mid-entity — back up past it.
+  const amp = truncated.lastIndexOf('&');
+  if (amp !== -1 && !truncated.slice(amp).includes(';')) {
+    truncated = truncated.slice(0, amp);
+  }
+
+  // Close any tags left open after the cut, innermost-first.
+  const openTags: string[] = [];
+  const tagRe = /<\/?([a-z][a-z0-9-]*)[^>]*>/gi;
+  let m: RegExpExecArray | null;
+  while ((m = tagRe.exec(truncated)) !== null) {
+    const tagName = m[1]!.toLowerCase();
+    if (m[0][1] === '/') {
+      const idx = openTags.lastIndexOf(tagName);
+      if (idx !== -1) openTags.splice(idx, 1);
+    } else if (!m[0].endsWith('/>')) {
+      openTags.push(tagName);
+    }
+  }
+  for (let i = openTags.length - 1; i >= 0; i--) {
+    truncated += `</${openTags[i]}>`;
+  }
+  return truncated;
+}
+
 /** Strip headings, emphasis, and link syntax to plain text. */
 export function toPlainText(markdown: string): string {
   return markdown

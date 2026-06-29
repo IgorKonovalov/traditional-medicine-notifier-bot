@@ -26,7 +26,16 @@ import type { BotDeps } from '../context';
 import { getUserId } from '../context';
 import { assertCallbackData, backRow, homeRow, pager } from '../keyboards';
 import { messages } from '../messages';
-import { type Anchor, editAnchor, editAnchorAt, sendAnchor } from '../render/anchor';
+import {
+  type Anchor,
+  editAnchor,
+  editAnchorAt,
+  editAnchorAtHtml,
+  editAnchorHtml,
+  sendAnchor,
+  sendAnchorHtml,
+} from '../render/anchor';
+import { unsafeHtml } from '../render/html';
 import { toPlainText } from '../render/markdown';
 import {
   type AnchoredSession,
@@ -85,9 +94,35 @@ interface LibraryState {
 interface View {
   readonly text: string;
   readonly keyboard: ReturnType<typeof Markup.inlineKeyboard>;
+  /**
+   * Opt-in HTML render discriminator (ADR 011) — when set, the anchor dispatch
+   * uses the HTML-aware helper; omitted on every plain-text branch.
+   */
+  readonly html?: true;
 }
 
 type CallbackButton = ReturnType<typeof Markup.button.callback>;
+
+// ─── view dispatch (plain vs HTML, ADR 011) ─────────────────────────────────────
+
+// unsafeHtml is legitimate here: an html-flagged View's text was already minted
+// through the escaping `html` template in renderFormula; View.text is the plain
+// transport type. Plain Views go through the untouched plain helpers (ADR 011).
+function sendView(ctx: Context, view: View): Promise<Anchor> {
+  return view.html
+    ? sendAnchorHtml(ctx, unsafeHtml(view.text), view.keyboard)
+    : sendAnchor(ctx, view.text, view.keyboard);
+}
+function editView(ctx: Context, view: View): Promise<void> {
+  return view.html
+    ? editAnchorHtml(ctx, unsafeHtml(view.text), view.keyboard)
+    : editAnchor(ctx, view.text, view.keyboard);
+}
+function editViewAt(ctx: Context, messageId: number, view: View): Promise<void> {
+  return view.html
+    ? editAnchorAtHtml(ctx, messageId, unsafeHtml(view.text), view.keyboard)
+    : editAnchorAt(ctx, messageId, view.text, view.keyboard);
+}
 
 function persist(userId: number, anchor: Anchor, state: LibraryState): void {
   const session: AnchoredSession<LibraryState> = { anchor, state };
@@ -363,6 +398,7 @@ function formulaCardView(deps: BotDeps, formulaId: string): View | null {
   return {
     text: renderFormula(formula),
     keyboard: formulaCardKeyboard(links, [backRow('lib:back'), homeRow('lib:home')]),
+    html: true,
   };
 }
 
@@ -514,7 +550,7 @@ export async function libraryEntry(ctx: Context): Promise<void> {
   }
   deleteSession(userId, 'library');
   const view = hubView();
-  const anchor = await sendAnchor(ctx, view.text, view.keyboard);
+  const anchor = await sendView(ctx, view);
   persist(userId, anchor, { screen: 'hub', page: 0 });
 }
 
@@ -527,7 +563,7 @@ export async function libraryHerbsEntry(ctx: Context): Promise<void> {
   }
   deleteSession(userId, 'library');
   const view = herbsMenuView();
-  const anchor = await sendAnchor(ctx, view.text, view.keyboard);
+  const anchor = await sendView(ctx, view);
   persist(userId, anchor, { screen: 'herbs', page: 0 });
 }
 
@@ -551,7 +587,7 @@ export async function librarySearchEntry(
   const state: LibraryState =
     query === '' ? { screen: 'search', page: 0 } : { screen: 'results', query, page: 0 };
   const out = viewFor(deps, state);
-  const anchor = await sendAnchor(ctx, out.text, out.keyboard);
+  const anchor = await sendView(ctx, out);
   persist(userId, anchor, { ...state, page: out.page });
 }
 
@@ -564,7 +600,7 @@ export async function libraryGuidesEntry(ctx: Context, deps: BotDeps): Promise<v
   }
   deleteSession(userId, 'library');
   const out = viewFor(deps, { screen: 'guide-list', page: 0 });
-  const anchor = await sendAnchor(ctx, out.text, out.keyboard);
+  const anchor = await sendView(ctx, out);
   persist(userId, anchor, { screen: 'guide-list', page: out.page });
 }
 
@@ -588,7 +624,7 @@ export async function openHerbCardAnchor(
     return;
   }
   deleteSession(userId, 'library');
-  const anchor = await sendAnchor(ctx, view.text, view.keyboard);
+  const anchor = await sendView(ctx, view);
   persist(userId, anchor, { screen: 'card', page: 0, herbId });
 }
 
@@ -602,7 +638,7 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     next: LibraryState,
   ): Promise<void> => {
     const out = viewFor(deps, next);
-    await editAnchor(ctx, out.text, out.keyboard);
+    await editView(ctx, out);
     persist(v.userId, v.session.anchor, {
       ...next,
       page: out.page,
@@ -850,7 +886,7 @@ export function registerLibrarySearchTextCapture(bot: Telegraf, deps: BotDeps): 
     }
     const state: LibraryState = { screen: 'results', query: raw.toLowerCase(), page: 0 };
     const out = viewFor(deps, state);
-    await editAnchorAt(ctx, session.anchor.messageId, out.text, out.keyboard);
+    await editViewAt(ctx, session.anchor.messageId, out);
     persist(userId, session.anchor, { ...state, page: out.page });
   });
 }
