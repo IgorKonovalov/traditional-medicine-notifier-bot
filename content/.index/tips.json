@@ -533,5 +533,248 @@
       "work": "Сова Ригпа",
       "chapter": "раздел «Питание согласно конституции»"
     }
+  },
+  {
+    "id": "tip-061-causes-of-illness",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 8 «Причины болезней»"
+    }
+  },
+  {
+    "id": "tip-062-bile-is-fire",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 9 «Условия возникновения болезней»"
+    }
+  },
+  {
+    "id": "tip-063-phlegm-earth-water",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 9 «Условия возникновения болезней»"
+    }
+  },
+  {
+    "id": "tip-064-wind-pervades",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 9 «Условия возникновения болезней»"
+    }
+  },
+  {
+    "id": "tip-065-doshas-in-balance",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 9 «Условия возникновения болезней»"
+    }
+  },
+  {
+    "id": "tip-066-conception-elements",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 2 «Зачатие»"
+    }
+  },
+  {
+    "id": "tip-067-body-types",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 6 «Деяния и типы телосложения»"
+    }
+  },
+  {
+    "id": "tip-068-body-as-tree",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 4 «Строение тела»"
+    }
+  },
+  {
+    "id": "tip-069-grain-properties",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 16 «О том, как надо питаться»"
+    }
+  },
+  {
+    "id": "tip-070-meat-properties",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 16 «О том, как надо питаться»"
+    }
+  },
+  {
+    "id": "tip-071-oil-for-mind",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 16 «О том, как надо питаться»"
+    }
+  },
+  {
+    "id": "tip-072-bathing",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
+  },
+  {
+    "id": "tip-073-incompatible-canon",
+    "status": "published",
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 17 «Пищевые запреты»"
+    }
+  },
+  {
+    "id": "tip-074-tradition-origins",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 1 «Древняя наука Сова Ригпа и законы природы»"
+    }
+  },
+  {
+    "id": "tip-075-three-divisions",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 1 «Древняя наука Сова Ригпа и законы природы»"
+    }
+  },
+  {
+    "id": "tip-076-four-methods",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 1 «Древняя наука Сова Ригпа и законы природы»"
+    }
+  },
+  {
+    "id": "tip-077-first-illness",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 1 «Древняя наука Сова Ригпа и законы природы»"
+    }
+  },
+  {
+    "id": "tip-078-knowledge-from-observation",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 1 «Древняя наука Сова Ригпа и законы природы»"
+    }
+  },
+  {
+    "id": "tip-079-elderly-wind-age",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
+    }
+  },
+  {
+    "id": "tip-080-elderly-meal-rhythm",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
+    }
+  },
+  {
+    "id": "tip-081-elderly-early-breakfast",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
+    }
+  },
+  {
+    "id": "tip-082-elderly-warm-belly",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
+    }
+  },
+  {
+    "id": "tip-083-elderly-walk-after-dinner",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
+    }
+  },
+  {
+    "id": "tip-084-preheat-oil",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 4 «Продукты и их свойства»"
+    }
+  },
+  {
+    "id": "tip-085-aged-grain",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 4 «Продукты и их свойства»"
+    }
+  },
+  {
+    "id": "tip-086-garden-produce",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 4 «Продукты и их свойства»"
+    }
+  },
+  {
+    "id": "tip-087-processed-food",
+    "status": "published",
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 4 «Продукты и их свойства»"
+    }
   }
 ]

@@ -279,6 +279,8 @@ untouched), **ADR 002** (renderer-agnostic; `Источник:` built by
 - [x] Phase 4 — Master tip outline (owner-reviewed) — `_private/tips-018-outline.md`;
   owner signed off **~165 land-point** (prod ~93 / gated ~72), high-risk gated tips
   authored behind the gate for doctor review (2026-06-29)
-- [ ] Phase 5 — Production tier authored (~36)
+- [x] Phase 5 — Production tier authored (27: tips 061–087) — 13 Чжуд-ши canonical
+  theory/food (Тантра объяснений, чч 2/4/6/8/9/13/16/17) + 14 Сова Ригпа
+  foundations (гл 1) + elderly-lifestyle (гл 6) + food-prep (гл 4); index 87, green
 - [ ] Phase 6 — Gated tier authored (~80)
 - [ ] Phase 7 — Index, conventions, doctor-review surface, close + minor bump
