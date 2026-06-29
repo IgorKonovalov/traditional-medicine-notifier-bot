@@ -282,5 +282,11 @@ untouched), **ADR 002** (renderer-agnostic; `Источник:` built by
 - [x] Phase 5 — Production tier authored (27: tips 061–087) — 13 Чжуд-ши canonical
   theory/food (Тантра объяснений, чч 2/4/6/8/9/13/16/17) + 14 Сова Ригпа
   foundations (гл 1) + elderly-lifestyle (гл 6) + food-prep (гл 4); index 87, green
-- [ ] Phase 6 — Gated tier authored (~80)
+- [x] Phase 6 — Gated tier authored (39: tips 088–126, all `status: staging`) —
+  30 food-property (гл 4) + 9 geriatric (гл 6). **Revised down from ~72**: the
+  genuine disease-indication yield is ~39 (constitution-only properties already
+  live in the foods corpus; padding ruled out by owner; gated tier is review-only
+  so count doesn't affect rotation). Gate verified: prod pool 87, 0 staging leaked;
+  index 126. High-risk (рак/диабет/давление: tips 094,095,112,119,120) flagged for
+  doctor.
 - [ ] Phase 7 — Index, conventions, doctor-review surface, close + minor bump
