@@ -25,6 +25,18 @@ Newer guide plans pull from this menu and cite rows back here. Consumed so far:
 - **Rhythms & diagnosis** (the daily/seasonal cycles) → daily shipped as
   `tib-sutochnyj-ritm`, seasonal as `tib-sezonnoe-pitanie`; **diagnosis** remains,
   owned by **Plan 013** Phase 5. Do not author here.
+- **D. Образ жизни и поведение (9 open rows)** → cleared by **Plan 020** Wave 4:
+  **Профилактика** → `tib-profilaktika` (Чжуд-ши гл. 23); **Сон** → `tib-son`
+  (гл. 13); **Активность и отдых** → `tib-aktivnost-i-otdyh` (Сова Ригпа book
+  гл. 2 — гл. 13 has no exercise teaching); **Половая жизнь** →
+  `tib-polovaya-zhizn` (гл. 13); **Поведение в частных случаях** →
+  `tib-povedenie-v-chastnyh-sluchayah` (гл. 15 — the 13 natural urges);
+  **Водные процедуры** → `tib-vodnye-procedury` (гл. 13); **Массаж** ⚠️ →
+  `tib-massazh` (гл. 13 — body-care with the canon's own cautions, no cure-claims);
+  **Уход за зрением** ⚠️ → `tib-uhod-za-zreniem` (гл. 13 — conduct/habits only,
+  the barberry-khandu eye remedy dropped; short, source is thin); **О лекаре** →
+  `tib-o-lekare` (гл. 31, the closing chapter of Тантра объяснений — confirmed an
+  ethical/cultural portrait, not treatment).
 - **C. Питание (8 open rows)** → cleared by **Plan 020** Wave 3: **Несовместимые
   сочетания** → `tib-nesovmestimye-produkty` (Чжуд-ши гл. 17); **Мера питания** →
   `tib-mera-pitaniya` (гл. 18); **Лёгкая и тяжёлая пища** → `tib-legkaya-i-tyazhelaya-pishcha`

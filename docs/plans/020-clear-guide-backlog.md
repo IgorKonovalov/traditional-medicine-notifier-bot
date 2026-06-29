@@ -166,5 +166,9 @@ manla `/info` section already named per-row in `guide-backlog.md`.
   `tib-masla-i-zharenie`, `tib-vremya-priema-pishchi`, `tib-ukreplenie-i-ves` ⚠️,
   `tib-pitanie-pri-nesvarenii` ⚠️ (both ⚠️ rows diet/conduct only, zero
   formula/dosing; несварение keeps the source's anti-fasting stance)
-- [ ] Wave 4 — D. Lifestyle (9, incl. 2 ⚠️)
+- [x] Wave 4 — D. Lifestyle (9, incl. 2 ⚠️) — `tib-profilaktika`, `tib-son`,
+  `tib-aktivnost-i-otdyh`, `tib-polovaya-zhizn`, `tib-povedenie-v-chastnyh-sluchayah`,
+  `tib-vodnye-procedury`, `tib-massazh` ⚠️, `tib-uhod-za-zreniem` ⚠️, `tib-o-lekare`
+  (массаж/зрение reframed descriptively, eye remedy dropped; активность sourced to
+  the Nauka book since гл. 13 has no exercise teaching; о лекаре confirmed ethics)
 - [ ] Wave 5 — elderly nutrition (1)
