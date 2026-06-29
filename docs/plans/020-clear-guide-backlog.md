@@ -161,6 +161,10 @@ manla `/info` section already named per-row in `guide-backlog.md`.
   `tib-zhar-i-holod`, `tib-klassifikaciya-boleznej`, `tib-priznaki-uvyadaniya`
   (heat sub-types named as taxonomy only; увядание reframed as element/sense
   dissolution since гл. 7 is death, not aging)
-- [ ] Wave 3 — C. Nutrition (8, incl. 2 ⚠️)
+- [x] Wave 3 — C. Nutrition (8, incl. 2 ⚠️) — `tib-nesovmestimye-produkty`,
+  `tib-mera-pitaniya`, `tib-legkaya-i-tyazhelaya-pishcha`, `tib-voda-i-napitki`,
+  `tib-masla-i-zharenie`, `tib-vremya-priema-pishchi`, `tib-ukreplenie-i-ves` ⚠️,
+  `tib-pitanie-pri-nesvarenii` ⚠️ (both ⚠️ rows diet/conduct only, zero
+  formula/dosing; несварение keeps the source's anti-fasting stance)
 - [ ] Wave 4 — D. Lifestyle (9, incl. 2 ⚠️)
 - [ ] Wave 5 — elderly nutrition (1)

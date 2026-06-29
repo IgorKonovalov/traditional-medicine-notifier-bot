@@ -33,6 +33,39 @@
     }
   },
   {
+    "id": "tib-legkaya-i-tyazhelaya-pishcha",
+    "tradition": "tibetan",
+    "title": "«Лёгкая и тяжёлая пища»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 16 «О том, как надо питаться»"
+    }
+  },
+  {
+    "id": "tib-masla-i-zharenie",
+    "tradition": "tibetan",
+    "title": "«Масла и приготовление пищи»",
+    "sectionCount": 4,
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 4 «Приготовление пищи»"
+    }
+  },
+  {
+    "id": "tib-mera-pitaniya",
+    "tradition": "tibetan",
+    "title": "«Мера питания: сколько есть»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 18 «Мера питания»"
+    }
+  },
+  {
     "id": "tib-nablyudenie-tela",
     "tradition": "tibetan",
     "title": "«Как врач наблюдает тело»",
@@ -41,6 +74,17 @@
       "work": "Чжуд-ши",
       "part": "Заключительная тантра",
       "chapter": "гл. 1–2 «Исследование пульса и мочи»"
+    }
+  },
+  {
+    "id": "tib-nesovmestimye-produkty",
+    "tradition": "tibetan",
+    "title": "«Несовместимые сочетания продуктов»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 17 «Пищевые запреты»"
     }
   },
   {
@@ -63,6 +107,17 @@
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
       "chapter": "гл. 5 «Существенные признаки тела»"
+    }
+  },
+  {
+    "id": "tib-pitanie-pri-nesvarenii",
+    "tradition": "tibetan",
+    "title": "«Питание при слабом пищеварении»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 2 «Питание и образ жизни»"
     }
   },
   {
@@ -162,6 +217,39 @@
       "work": "Наука о здоровье. Сова Ригпа",
       "part": "Ринчен Тензин, популярные лекции 2012–2013",
       "chapter": "гл. 3 «Люди природы Ветра, Огня, Земли-Воды»"
+    }
+  },
+  {
+    "id": "tib-ukreplenie-i-ves",
+    "tradition": "tibetan",
+    "title": "«Укрепление тела и вес»",
+    "sectionCount": 4,
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 2 «Питание и образ жизни»"
+    }
+  },
+  {
+    "id": "tib-voda-i-napitki",
+    "tradition": "tibetan",
+    "title": "«Вода и напитки»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 16 «О том, как надо питаться»"
+    }
+  },
+  {
+    "id": "tib-vremya-priema-pishchi",
+    "tradition": "tibetan",
+    "title": "«Время приёма пищи»",
+    "sectionCount": 4,
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 2 «Питание и образ жизни»"
     }
   },
   {

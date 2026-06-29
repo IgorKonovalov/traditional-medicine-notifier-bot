@@ -25,6 +25,18 @@ Newer guide plans pull from this menu and cite rows back here. Consumed so far:
 - **Rhythms & diagnosis** (the daily/seasonal cycles) → daily shipped as
   `tib-sutochnyj-ritm`, seasonal as `tib-sezonnoe-pitanie`; **diagnosis** remains,
   owned by **Plan 013** Phase 5. Do not author here.
+- **C. Питание (8 open rows)** → cleared by **Plan 020** Wave 3: **Несовместимые
+  сочетания** → `tib-nesovmestimye-produkty` (Чжуд-ши гл. 17); **Мера питания** →
+  `tib-mera-pitaniya` (гл. 18); **Лёгкая и тяжёлая пища** → `tib-legkaya-i-tyazhelaya-pishcha`
+  (гл. 16); **Вода и напитки** → `tib-voda-i-napitki` (гл. 16, раздел о питье);
+  **Масла и жарение** → `tib-masla-i-zharenie` (Сова Ригпа book гл. 4
+  «Приготовление пищи»); **Время приёма пищи** → `tib-vremya-priema-pishchi`
+  (book гл. 2); **Укрепление и вес** ⚠️ → `tib-ukreplenie-i-ves` (book гл. 2 —
+  diet/conduct only, anti-Ветер tonics dropped as medical); **Питание при
+  несварении** ⚠️ → `tib-pitanie-pri-nesvarenii` (book гл. 2 — dietary regimen by
+  fire-state, no formulas; the source warns *against* long fasting, so no
+  meal-skipping claim). manla `/info` rows were sourced to the readable Сова Ригпа
+  book + canon diet chapters covering the same material.
 - **B. Как традиция объясняет болезнь (whole group)** → cleared by **Plan 020**
   Wave 2: **Как болезнь входит** → `tib-kak-bolezn-vhodit` (гл. 10–11);
   **Жар и Холод — подробно** → `tib-zhar-i-holod` (гл. 12 — the Жар/Холод
