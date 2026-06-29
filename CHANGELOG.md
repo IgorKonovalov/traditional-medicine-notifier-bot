@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.15.1 — 2026-06-29
+
+- Render the formula card's traditional-use / dosing as plain bold-labelled
+  sections instead of expandable quotes, so the disclaimer is the only blockquote.
+- Fix the herb card crashing («Что-то пошло не так») for a herb that belongs to
+  many formulas: the reverse cross-link buttons (≈94 for Миробалан хебула) built
+  an inline keyboard Telegram rejects. Cap them at 8 and label the section
+  «показаны N из M»; the rest stay reachable via search.
+
 ## 0.15.0 — 2026-06-29
 
 - Render the **formula card as rich Telegram HTML** (ADR 011, Plan 014 Phase 1):
