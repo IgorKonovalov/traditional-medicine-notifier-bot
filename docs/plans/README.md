@@ -4,7 +4,7 @@ Implementation plans authored by the **architect** skill drive all non-trivial
 work. Each plan is `NNN-short-name.md` (zero-padded), reviewed and approved
 before the **dev** skill implements it, then moved to `done/` on close.
 
-- **Next free number:** `018` (017 is taken)
+- **Next free number:** `020` (019 is taken)
 - **Completed:** see `done/`
 
 ### Active roster
@@ -17,9 +17,10 @@ before the **dev** skill implements it, then moved to `done/` on close.
 | 009 | Library browser (gated formulas) | **Completed** → `done/` (v0.11.0) — formulas gate lifted on owner sign-off |
 | 011 | Drop subscriptions · optional herb link in reminders | Completed → `done/` (v0.10.0) |
 | 012 | Tip sourcing reconciliation + content voice tightening | Completed → `done/` (v0.12.0) |
-| 013 | Foods content type · constitution portraits · diagnosis | Approved — Phases 1–4 unblocked; Phase 5 narrowed to diagnosis only (rhythms shipped as `tib-sutochnyj-ritm` + `tib-sezonnoe-pitanie`), revised 2026-06-29 |
+| 013 | Foods content type · constitution portraits · diagnosis | **Completed** → `done/` (v0.19.0) — `foods` type + 🥗 Продукты branch (ADR 012), 55-food catalogue, and the «Три природы человека» + «Как врач наблюдает тело» guides |
 | 015 | Hide the Chinese tradition (Tibetan-only surface) | Completed → `done/` (v0.16.0, ADR 013) |
 | 016 | Foundational theory guides | Completed (Wave 1) → `done/` (v0.17.0); Waves 2–3 deferred to backlog |
+| 019 | Ingredient corpus backfill · formula→ingredient cross-link | Approved — 2026-06-29 (Plan 017 display/code split; corpus 1→35, `members:` backfill) |
 
 ### UI overhaul plan set (007–009)
 
