@@ -1,6 +1,6 @@
 {
   "name": "traditional-medicine-notifier-bot",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Telegram bot with reference information on Chinese (TCM) and Tibetan traditional medicine plus user-scheduled reminders and topic subscriptions",
   "private": true,
   "license": "MIT",

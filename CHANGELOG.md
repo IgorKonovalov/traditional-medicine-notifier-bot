@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.15.0 — 2026-06-29
+
+- Render the **formula card as rich Telegram HTML** (ADR 011, Plan 014 Phase 1):
+  bold name, italic original-names sub-line, bulleted composition with Latin in
+  monospace, traditional-use/dosing folded into expandable quotes, and the
+  disclaimer in a blockquote. Adds a centralized, escaping-safe `Html` render
+  seam (`render/html.ts` + HTML-aware anchor helpers); `parse_mode` stays banned
+  everywhere outside the seam. Every other library surface is unchanged plain text.
+
 ## 0.14.0 — 2026-06-29
 
 - Add **long-form guides** (ADR 008, Plan 006): a new pull content type browsed

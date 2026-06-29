@@ -1,7 +1,11 @@
 # ADR 002 — Content in markdown, renderer-agnostic (no `parse_mode`)
 
 **Date:** 2026-06-23
-**Status:** Accepted
+**Status:** Accepted — **amended by ADR 011** (2026-06-29): the "delivered as plain
+text / no `parse_mode`" clause is narrowed to "plain text **unless rendered
+through the centralized HTML seam** (`src/bot/render/html.ts` + the HTML-aware
+anchor helpers)". The content-is-markdown and renderer-agnostic-bodies clauses
+remain in force.
 
 ## Context
 

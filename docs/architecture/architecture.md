@@ -49,12 +49,12 @@ Nothing in the domain imports Telegraf or `src/bot/` (ADR 003, ESLint-enforced).
 | `services/db-backup.ts` | ✅ | dated snapshot + rotation |
 | `bot/notifier.ts` | ✅ | Telegraf-backed Notifier impl |
 | `bot/middleware/*` | ✅ | error-handler, logger, rate-limiter, ensure-user |
-| Navigation kit (`keyboards.ts` menu/back/home/pager · `menu-router.ts` · `render/anchor.ts` · `commands/_callback-prologue.ts` · `commands/_herb-card.ts` · `_formula-card.ts` · `_formula-gate.ts`) | ✅ | persistent reply-keyboard menu + anchor-edit drilldown + callback prologue (ADR 009, Plan 007); `callback_data` ≤64 B guarded; `_formula-gate` is the single doctor-gate predicate (Plan 009) |
+| Navigation kit (`keyboards.ts` menu/back/home/pager · `menu-router.ts` · `render/anchor.ts` · `render/html.ts` · `commands/_callback-prologue.ts` · `commands/_herb-card.ts` · `_formula-card.ts` · `_formula-gate.ts`) | ✅ | persistent reply-keyboard menu + anchor-edit drilldown + callback prologue (ADR 009, Plan 007); `callback_data` ≤64 B guarded; `_formula-gate` is the single doctor-gate predicate (Plan 009). **Rich-text HTML seam** (ADR 011, Plan 014): branded `Html` + auto-escaping `html` template + tag-aware truncation in `render/html.ts`/`render/markdown.ts`; HTML-aware anchor siblings (`sendAnchorHtml`/`editAnchorHtml`/`editAnchorAtHtml`); `parse_mode` confined to the seam, global ESLint ban otherwise |
 | `bot/commands/start·help·settings·library·herb·tips·donate·changelog` | ✅ | start = stepped onboarding; **`library` = unified 📚 Библиотека hub** (herbs by tradition/category → card · integrated 🔎 search · 💡 day's tip · 📖 **guides** · 🧪 formulas) on the anchor-edit kit, supersedes the old `browse`/`search` (Plan 009); the 📖 Статьи branch lists guides → section pager (`/guides` opens it; Plan 006, folded into the hub); herb card carries `⏰ Напомнить` + "Входит в формулы" cross-links; settings = state-reflecting hub; `/help` shows version; `/changelog` = release history (plan 010) |
 | `bot/commands/reminders` (list/cancel) · `reminder-create` (wizard) | ✅ | create flow wired — menu/list/herb-card entry, anchor-edit steps (Plan 008); optional paginated herb-link step from the ➕ Новое path (Plan 011) |
 | `bot/commands/feedback` | 🟡 | inline-arg relay; admin routing TODO |
 | Create-reminder multi-step session | ✅ | `reminder-create` wizard: label → (optional herb link, ➕ Новое path only) → kind → time(s) → date/weekdays → confirm; solicited path now fully closed (Plan 008/011) |
-| Combinations (formula) library branch | ✅ | **live** (Plan 009; owner sign-off 2026-06-28, `_formula-gate.FORMULA_BRANCH_ENABLED = true`): list + search + formula card (name/nature/composition/member cross-links/themes/cautions **+ structured verbose fields indications/traditional_use/dosing_notes as a live-review surface, 2026-06-29**). Raw `source_text`/`body` stay unsurfaced; final verbose sign-off pending (ADR 006, `docs/medical-review.md`) |
+| Combinations (formula) library branch | ✅ | **live** (Plan 009; owner sign-off 2026-06-28, `_formula-gate.FORMULA_BRANCH_ENABLED = true`): list + search + formula card. **Rendered as rich Telegram HTML** (Plan 014 / ADR 011): bold name · italic original-names sub-line (`parseOriginalNames`, verbatim fallback) · nature·tradition tag line · bulleted composition (Latin in `<code>`) · member cross-links · indications inline · traditional_use/dosing in `<blockquote expandable>` · cautions · disclaimer in `<blockquote>` (appended after truncation, never cut). The older `themes` line was dropped from the card. Raw `source_text`/`body` stay unsurfaced; final verbose sign-off pending (ADR 006, `docs/medical-review.md`) |
 | Per-category proactive digests | ⛔ | `subscriptions` table retained (dead); its UI **and** repo access layer were removed in Plan 011 — a future digest must re-add the repo helpers |
 | Admin commands (`/stats`) | ⛔ | allowlist plumbing present (`adminTelegramIds`) |
 
@@ -80,7 +80,7 @@ retired in Plan 011, table retained under the additive-only rule) ·
 ## Key decisions
 
 - ADR 001 — tech stack
-- ADR 002 — content in markdown, no `parse_mode`
+- ADR 002 — content in markdown, no `parse_mode` (**amended by ADR 011**)
 - ADR 003 — portability discipline (Notifier seam, framework-free domain)
 - ADR 004 — notification architecture (solicited vs. proactive + daily cap)
 - ADR 005 — combinations content type · ADR 006 — verbose corpus doctor-gate +
@@ -93,5 +93,9 @@ retired in Plan 011, table retained under the additive-only rule) ·
   callback prologue, gated surfaces); operationalised by Plan 007
 - ADR 010 — post-deploy version broadcast bypasses the daily cap (third
   notification path); operationalised by Plan 010
+- ADR 011 — rich-text Telegram-HTML rendering behind a branded `Html` seam
+  (amends ADR 002); `parse_mode` permitted only in `render/html.ts` + the
+  HTML-aware anchor helpers, every interpolation escaped, tag-aware truncation;
+  operationalised by Plan 014 (formula card the first surface, Phase 1)
 
 Keep this file's status table in sync as layers move from 🟡/⛔ to ✅.

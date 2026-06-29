@@ -1,8 +1,9 @@
 # Plan 014 — Rich-text formatting (Phase 1: render foundation + formula card)
 
-**Status:** Approved
+**Status:** Completed
 **Created:** 2026-06-29
 **Approved:** 2026-06-29
+**Completed:** 2026-06-29 (v0.15.0)
 **Bump on close:** minor (visible formatting change to a live surface)
 **Introduces:** ADR 011 (rich-text Telegram-HTML rendering, amends ADR 002)
 
