@@ -1,8 +1,9 @@
 # Plan 021 — random tip on the on-demand surfaces
 
-**Status:** Implemented — pending review
+**Status:** Completed
 **Created:** 2026-06-29
-**Bump on close:** minor
+**Completed:** 2026-06-29
+**Bump on close:** minor (shipped as v0.22.0)
 
 ## Context
 

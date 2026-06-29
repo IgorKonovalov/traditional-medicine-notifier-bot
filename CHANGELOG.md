@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.22.0 — 2026-06-29
+
+- The on-demand tip surfaces (💡 Советы menu button, `/tips`, and the library
+  leaf, now relabelled **«Случайный совет»**) serve a **uniformly-random** tip
+  per tap instead of the day's deterministic «Совет дня», excluding the few each
+  user saw most recently (in-memory ring buffer, ≤8) so repeats feel fresh
+  (Plan 021). The proactive once-a-day push keeps its deterministic «Совет дня».
+
 ## 0.21.0 — 2026-06-29
 
 - Grow the visible ingredient corpus from 1 → **35** (Plan 019): the
