@@ -19,6 +19,8 @@ import type {
   Category,
   Combination,
   ContentBucket,
+  Guide,
+  GuideSection,
   Herb,
   LoadedContent,
   Tip,
@@ -38,12 +40,14 @@ export function loadContent(contentDir: string): LoadedContent {
   const combinations = readDir(join(contentDir, 'combinations')).map(parseCombination);
   const categories = readDir(join(contentDir, 'categories')).map(parseCategory);
   const tips = readDir(join(contentDir, 'tips')).map(parseTip);
+  const guides = readDir(join(contentDir, 'guides')).map(parseGuide);
 
   const content: LoadedContent = {
     herbs: toBucket(herbs),
     combinations: toBucket(combinations),
     categories: toBucket(categories),
     tips: toBucket(tips),
+    guides: toBucket(guides),
     crossLinks: buildCrossLinks(combinations),
   };
 
@@ -192,6 +196,52 @@ function parseTipSource(doc: RawDoc): TipSource | undefined {
     ...(typeof raw['part'] === 'string' ? { part: raw['part'] } : {}),
     ...(typeof raw['chapter'] === 'string' ? { chapter: raw['chapter'] } : {}),
   };
+}
+
+function parseGuide(doc: RawDoc): Guide {
+  const tradition = reqString(doc, 'tradition');
+  if (!TRADITIONS.includes(tradition as Tradition)) {
+    throw new Error(
+      `${doc.file}: invalid tradition "${tradition}" (expected one of ${TRADITIONS.join(', ')})`,
+    );
+  }
+  const source = parseTipSource(doc);
+  return {
+    id: reqString(doc, 'id'),
+    tradition: tradition as Tradition,
+    title: reqString(doc, 'title'),
+    tags: strArray(doc, 'tags'),
+    sections: splitSections(doc.body),
+    ...(source !== undefined ? { source } : {}),
+  };
+}
+
+/**
+ * Split a guide's markdown body into ordered sections on `##` headings — the
+ * fixed section-delimiter convention (ADR 008). Text before the first `##` is an
+ * intro section with an empty heading. Deeper headings (`###`+) are *not* section
+ * breaks: they stay inside the body so authors can nest without spawning pages.
+ */
+function splitSections(body: string): GuideSection[] {
+  const sections: GuideSection[] = [];
+  let heading = '';
+  let buffer: string[] = [];
+  const flush = (): void => {
+    const text = buffer.join('\n').trim();
+    if (heading !== '' || text !== '') sections.push({ heading, body: text });
+    buffer = [];
+  };
+  for (const line of body.split('\n')) {
+    const match = /^##(?!#)\s+(.+?)\s*$/.exec(line);
+    if (match) {
+      flush();
+      heading = match[1] ?? '';
+    } else {
+      buffer.push(line);
+    }
+  }
+  flush();
+  return sections;
 }
 
 // ─── field coercion ─────────────────────────────────────────────────────────────

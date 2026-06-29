@@ -14,6 +14,7 @@ export function validateCorpus(content: LoadedContent): void {
   assertUniqueIds(content.combinations.all, 'combination', errors);
   assertUniqueIds(content.categories.all, 'category', errors);
   assertUniqueIds(content.tips.all, 'tip', errors);
+  assertUniqueIds(content.guides.all, 'guide', errors);
 
   // Every herb's category must resolve to a real category.
   for (const herb of content.herbs.all) {
@@ -52,6 +53,13 @@ export function validateCorpus(content: LoadedContent): void {
   for (const tip of content.tips.all) {
     if (tip.category !== undefined && !content.categories.byId.has(tip.category)) {
       errors.push(`tip "${tip.id}" references unknown category "${tip.category}"`);
+    }
+  }
+  // A guide must have a title (loader-enforced) and at least one section carrying
+  // body text — a guide of empty headings is malformed (ADR 008).
+  for (const guide of content.guides.all) {
+    if (!guide.sections.some((section) => section.body.trim() !== '')) {
+      errors.push(`guide "${guide.id}" has no non-empty section`);
     }
   }
 

@@ -112,6 +112,36 @@ export interface Tip {
   readonly body: string;
 }
 
+/**
+ * One authored section of a long-form `Guide` (ADR 008). The `heading` is the
+ * `##` title that opens the section (empty string for the intro text that
+ * precedes the first heading); `body` is renderer-agnostic markdown (ADR 002).
+ * The section is the unit of delivery — each is authored to fit Telegram's limit.
+ */
+export interface GuideSection {
+  readonly heading: string;
+  readonly body: string;
+}
+
+/**
+ * A long-form reference article (ADR 008) — too big for a tip, a category error
+ * inside the herb/combination card model. Pulled, not pushed: the user browses a
+ * `/guides` list and pages through the ordered `sections`. `source` reuses the
+ * `TipSource` citation shape (Plan 003). The standard disclaimer is appended at
+ * render time (ADR 006), never baked into the body.
+ */
+export interface Guide {
+  readonly id: string;
+  readonly tradition: Tradition;
+  /** Russian display title. */
+  readonly title: string;
+  /** Provenance citation, formatted uniformly at render time. */
+  readonly source?: TipSource;
+  readonly tags: readonly string[];
+  /** Ordered sections, split from the markdown body on `##` headings. */
+  readonly sections: readonly GuideSection[];
+}
+
 export interface ContentBucket<T> {
   readonly all: readonly T[];
   readonly byId: ReadonlyMap<string, T>;
@@ -138,5 +168,6 @@ export interface LoadedContent {
   readonly combinations: ContentBucket<Combination>;
   readonly categories: ContentBucket<Category>;
   readonly tips: ContentBucket<Tip>;
+  readonly guides: ContentBucket<Guide>;
   readonly crossLinks: CrossLinks;
 }

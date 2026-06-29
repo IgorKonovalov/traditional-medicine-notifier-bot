@@ -22,6 +22,7 @@ interface Corpus {
   readonly combinations?: Record<string, string>;
   readonly categories?: Record<string, string>;
   readonly tips?: Record<string, string>;
+  readonly guides?: Record<string, string>;
 }
 
 function writeCorpus(corpus: Corpus): string {
@@ -381,5 +382,108 @@ describe('buildIndex — tips', () => {
       chapter: 'гл. 18 «Мера питания»',
     });
     expect(without && 'source' in without).toBe(false);
+  });
+});
+
+const GUIDE = `---
+id: tib-osnovy
+tradition: tibetan
+title: «Основы тибетской медицины»
+source:
+  work: Чжуд-ши
+  part: Тантра объяснений
+  chapter: гл. 5–6
+tags:
+  - основы
+---
+
+Здоровье — это равновесие трёх начал.
+
+## Пять первоэлементов
+
+Пространство, ветер, огонь, вода и земля.
+
+### Подраздел
+
+Этот заголовок не делит на секции.
+
+## Ветер (rLung)
+
+Природа прохладно-нейтральная.
+`;
+
+describe('loadContent — guides', () => {
+  it('splits the body into an intro section plus one section per ## heading', () => {
+    const root = writeCorpus({ guides: { 'tib-osnovy': GUIDE } });
+    const guide = loadContent(root).guides.byId.get('tib-osnovy');
+
+    expect(guide?.title).toBe('«Основы тибетской медицины»');
+    expect(guide?.tradition).toBe('tibetan');
+    expect(guide?.tags).toEqual(['основы']);
+    expect(guide?.source).toEqual({
+      work: 'Чжуд-ши',
+      part: 'Тантра объяснений',
+      chapter: 'гл. 5–6',
+    });
+    expect(guide?.sections.map((s) => s.heading)).toEqual([
+      '',
+      'Пять первоэлементов',
+      'Ветер (rLung)',
+    ]);
+    // The intro keeps its lead-in text; a ### heading stays inside its section.
+    expect(guide?.sections[0]?.body).toBe('Здоровье — это равновесие трёх начал.');
+    expect(guide?.sections[1]?.body).toContain('### Подраздел');
+  });
+
+  it('omits an empty leading intro when the body opens with a ## heading', () => {
+    const noIntro = GUIDE.replace('Здоровье — это равновесие трёх начал.\n\n## Пять', '## Пять');
+    const root = writeCorpus({ guides: { 'tib-osnovy': noIntro } });
+    const guide = loadContent(root).guides.byId.get('tib-osnovy');
+
+    expect(guide?.sections[0]?.heading).toBe('Пять первоэлементов');
+  });
+
+  it('rejects a guide with an invalid tradition', () => {
+    const bad = GUIDE.replace('tradition: tibetan', 'tradition: martian');
+    const root = writeCorpus({ guides: { 'tib-osnovy': bad } });
+    expect(() => loadContent(root)).toThrow(/invalid tradition "martian"/);
+  });
+
+  it('rejects a guide missing its title', () => {
+    const noTitle = GUIDE.replace('title: «Основы тибетской медицины»\n', '');
+    const root = writeCorpus({ guides: { 'tib-osnovy': noTitle } });
+    expect(() => loadContent(root)).toThrow(/required string field "title"/);
+  });
+
+  it('rejects a guide with no non-empty section', () => {
+    const empty = `---
+id: tib-empty
+tradition: tibetan
+title: Пустая статья
+---
+`;
+    const root = writeCorpus({ guides: { 'tib-empty': empty } });
+    expect(() => loadContent(root)).toThrow(/has no non-empty section/);
+  });
+
+  it('rejects duplicate guide ids', () => {
+    const root = writeCorpus({ guides: { a: GUIDE, b: GUIDE } });
+    expect(() => loadContent(root)).toThrow(/duplicate guide id/);
+  });
+});
+
+describe('buildIndex — guides', () => {
+  it('projects guides with their section count and source', () => {
+    const root = writeCorpus({ guides: { 'tib-osnovy': GUIDE } });
+    const index = buildIndex(loadContent(root));
+
+    expect(index.counts.guides).toBe(1);
+    expect(index.guides[0]).toMatchObject({
+      id: 'tib-osnovy',
+      tradition: 'tibetan',
+      title: '«Основы тибетской медицины»',
+      sectionCount: 3,
+      source: { work: 'Чжуд-ши', part: 'Тантра объяснений', chapter: 'гл. 5–6' },
+    });
   });
 });

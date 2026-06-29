@@ -5,7 +5,7 @@
  * for fast lookups and corpus-count questions without re-walking markdown.
  */
 
-import type { Herb, LoadedContent, Tip } from './types';
+import type { Guide, Herb, LoadedContent, Tip } from './types';
 
 export interface HerbIndexEntry {
   readonly id: string;
@@ -46,12 +46,27 @@ export interface TipIndexEntry {
   readonly source?: Tip['source'];
 }
 
+export interface GuideIndexEntry {
+  readonly id: string;
+  readonly tradition: Guide['tradition'];
+  readonly title: string;
+  readonly sectionCount: number;
+  readonly source?: Guide['source'];
+}
+
 export interface ContentIndex {
-  readonly counts: { herbs: number; combinations: number; categories: number; tips: number };
+  readonly counts: {
+    herbs: number;
+    combinations: number;
+    categories: number;
+    tips: number;
+    guides: number;
+  };
   readonly herbs: readonly HerbIndexEntry[];
   readonly combinations: readonly CombinationIndexEntry[];
   readonly categories: readonly CategoryIndexEntry[];
   readonly tips: readonly TipIndexEntry[];
+  readonly guides: readonly GuideIndexEntry[];
 }
 
 export function buildIndex(content: LoadedContent): ContentIndex {
@@ -104,16 +119,26 @@ export function buildIndex(content: LoadedContent): ContentIndex {
     ...(t.source !== undefined ? { source: t.source } : {}),
   }));
 
+  const guides: GuideIndexEntry[] = content.guides.all.map((g) => ({
+    id: g.id,
+    tradition: g.tradition,
+    title: g.title,
+    sectionCount: g.sections.length,
+    ...(g.source !== undefined ? { source: g.source } : {}),
+  }));
+
   return {
     counts: {
       herbs: herbs.length,
       combinations: combinations.length,
       categories: categories.length,
       tips: tips.length,
+      guides: guides.length,
     },
     herbs,
     combinations,
     categories,
     tips,
+    guides,
   };
 }
