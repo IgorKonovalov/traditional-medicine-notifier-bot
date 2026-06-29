@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "id": "tib-osnovy",
+    "tradition": "tibetan",
+    "title": "«Основы тибетской медицины»",
+    "sectionCount": 8,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 5–6"
+    }
+  },
+  {
+    "id": "tib-rasporyadok-dnya",
+    "tradition": "tibetan",
+    "title": "«Распорядок дня»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
+  },
+  {
+    "id": "tib-sezonnoe-pitanie",
+    "tradition": "tibetan",
+    "title": "«Питание и образ жизни по сезонам»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 14 «Сезонный образ жизни»"
+    }
+  }
+]
