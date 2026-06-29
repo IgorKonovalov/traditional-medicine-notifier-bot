@@ -12,6 +12,11 @@ deferred as a non-goal. Nothing here is auto-approved — it's a menu to check o
 
 ## Rows already consumed (don't re-author)
 
+> **Backlog fully consumed as of Plan 020 (2026-06-29).** All four groups (A/B/C/D)
+> and the one "other candidate" (elderly nutrition) are now shipped — 27 guides in
+> Plan 020 on top of the earlier waves. The menu is kept as the authoring record;
+> any *new* guide candidates start a fresh list below the candidate-menu sections.
+
 Newer guide plans pull from this menu and cite rows back here. Consumed so far:
 
 - **Шесть вкусов и их действие** (group A) → shipped as `tib-shest-vkusov`,
@@ -25,6 +30,10 @@ Newer guide plans pull from this menu and cite rows back here. Consumed so far:
 - **Rhythms & diagnosis** (the daily/seasonal cycles) → daily shipped as
   `tib-sutochnyj-ritm`, seasonal as `tib-sezonnoe-pitanie`; **diagnosis** remains,
   owned by **Plan 013** Phase 5. Do not author here.
+- **Elderly nutrition (the one "other candidate")** → cleared by **Plan 020**
+  Wave 5: `tib-pitanie-pozhilyh` (Сова Ригпа book гл. 6 — diet/conduct only, all
+  medical material dropped: blood-pressure remedies, ча-лунг, joint-disease
+  treatments, tibetan-medicine dosing).
 - **D. Образ жизни и поведение (9 open rows)** → cleared by **Plan 020** Wave 4:
   **Профилактика** → `tib-profilaktika` (Чжуд-ши гл. 23); **Сон** → `tib-son`
   (гл. 13); **Активность и отдых** → `tib-aktivnost-i-otdyh` (Сова Ригпа book

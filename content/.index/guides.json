@@ -143,6 +143,17 @@
     }
   },
   {
+    "id": "tib-pitanie-pozhilyh",
+    "tradition": "tibetan",
+    "title": "«Питание и образ жизни пожилых»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
+    }
+  },
+  {
     "id": "tib-pitanie-pri-nesvarenii",
     "tradition": "tibetan",
     "title": "«Питание при слабом пищеварении»",

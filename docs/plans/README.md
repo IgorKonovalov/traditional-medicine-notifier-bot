@@ -51,9 +51,9 @@ Plan 007 shared nav kit once 007 lands.
 
 ## Other candidates (not yet planned)
 
-- **Elderly nutrition & lifestyle guide** — гл. 6 of «Наука о здоровье»
-  (Сова Ригпа book); descoped from Plan 013 to backlog. Pregnancy/children (гл. 5)
-  is **excluded** (quasi-medical claims), not backlog.
+- ~~Elderly nutrition & lifestyle guide~~ — **shipped** as `tib-pitanie-pozhilyh`
+  (Plan 020 Wave 5, гл. 6 of «Наука о здоровье»). Pregnancy/children (гл. 5) stays
+  **excluded** (quasi-medical claims), not backlog.
 - Edit-an-existing-reminder (follow-up to Plan 008; v1 is create + cancel).
 - Per-user timezone (reminders currently use the bot-wide tz).
 - Per-category proactive digests. The `subscriptions` table is retained, but its
