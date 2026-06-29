@@ -266,8 +266,34 @@ exempt), **ADR 006** (render-time disclaimer); runs alongside **Plan 005** (tips
 
 ## Progress
 
-- [ ] Phase 1 — `Guide` type: types, loader, validate, index
-- [ ] Phase 2 — `splitForTelegram()` + render plumbing
-- [ ] Phase 3 — `/guides` browse + section pager
+- [x] Phase 1 — `Guide` type: types, loader, validate, index — `6222046`
+- [x] Phase 2 — `splitForTelegram()` + render plumbing — `8f8b871`
+- [x] Phase 3 — `/guides` browse + section pager — `ccf4e60`
 - [ ] Phase 4 — Author ≥3 guides: flagship «Основы тибетской медицины» (base) + 2 info guides (descriptive)
 - [ ] Phase 5 — Validation, docs & close
+
+### Deviation (Phase 3) — approved by owner 2026-06-29
+
+The plan (written 2026-06-26) specified a **standalone `/guides` command** with
+its own **`SessionKind 'guide'`** and a separate drilldown. By the time of
+implementation, **Plan 009** had consolidated `/browse`, `/search`, tips and
+formulas into a single **Library hub** (`commands/library.ts`, one `'library'`
+anchored session), and the hub already **reserved a guides slot**
+(`messages.library.guides = '📖 Статьи'`). The owner chose to **fold guides into
+the Library hub** instead:
+
+- Guides are the `📖 Статьи` branch of the hub: screens `guide-list` /
+  `guide-section`, callbacks `lib:guides` / `lib:glist` / `lib:guide` /
+  `lib:gsec`, reusing the existing `'library'` session (**no new `SessionKind`**).
+- A guide is page-flattened via `guidePages()` (sections → `splitForTelegram`
+  pages); the pager `◀ N / M ▶` steps pages, `« Назад` returns to the list at its
+  page, `🏠 В меню` to the hub. The render-time disclaimer (ADR 006) rides the
+  final page.
+- `/guides` opens the hub directly on the guide list (mirrors `/browse`), and is
+  listed in `/help`.
+
+This satisfies the plan's intent (a `/guides` surface, a section pager,
+`splitForTelegram`-backed delivery, disclaimer once at the end) while staying
+consistent with the post-Plan-009 navigation kit. Phase 5 (architect) should
+reconcile ADR 008's "standalone command / `SessionKind 'guide'`" wording with
+this hub-folded reality.
