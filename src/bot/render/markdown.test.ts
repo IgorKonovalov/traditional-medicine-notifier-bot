@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { clampToTelegram, toPlainText } from './markdown';
+import { clampToTelegram, splitForTelegram, TELEGRAM_LIMIT, toPlainText } from './markdown';
 
 describe('toPlainText', () => {
   it('joins soft-wrap newlines within a paragraph and preserves paragraph breaks', () => {
@@ -49,5 +49,71 @@ describe('clampToTelegram', () => {
     expect(out.length).toBeLessThanOrEqual(3801);
     expect(out.endsWith('…')).toBe(true);
     expect(out).not.toMatch(/слов…$/); // cut at a space, not mid-word
+  });
+});
+
+describe('splitForTelegram', () => {
+  /** A paragraph of `n` characters made of whole words (so word-boundary cuts exist). */
+  const para = (n: number): string =>
+    'слово '
+      .repeat(Math.ceil(n / 6))
+      .slice(0, n)
+      .trimEnd();
+
+  it('returns a single chunk when the text is within the limit', () => {
+    expect(splitForTelegram('короткая статья')).toEqual(['короткая статья']);
+  });
+
+  it('returns a single chunk at exactly the limit', () => {
+    const exact = 'a'.repeat(TELEGRAM_LIMIT);
+    expect(splitForTelegram(exact)).toEqual([exact]);
+  });
+
+  it('packs multiple paragraphs into as few chunks as possible, each within the limit', () => {
+    // Four ~1500-char paragraphs: two fit per chunk (2×1500 + 2 < 3800), so 2 chunks.
+    const paragraphs = [para(1500), para(1500), para(1500), para(1500)];
+    const chunks = splitForTelegram(paragraphs.join('\n\n'));
+
+    expect(chunks.length).toBe(2);
+    for (const chunk of chunks) expect(chunk.length).toBeLessThanOrEqual(TELEGRAM_LIMIT);
+    // Order and content are preserved (modulo the whitespace at split seams).
+    expect(chunks.join('\n\n').replace(/\s+/g, ' ')).toBe(
+      paragraphs.join('\n\n').replace(/\s+/g, ' '),
+    );
+  });
+
+  it('keeps each paragraph whole when it fits, breaking before an oversized join', () => {
+    const chunks = splitForTelegram([para(3000), para(3000)].join('\n\n'));
+    expect(chunks).toHaveLength(2);
+    expect(chunks[0]).toBe(para(3000));
+    expect(chunks[1]).toBe(para(3000));
+  });
+
+  it('splits a single oversized paragraph on word boundaries, losing nothing', () => {
+    const huge = para(9000); // one paragraph, no blank lines
+    const chunks = splitForTelegram(huge);
+
+    expect(chunks.length).toBeGreaterThan(1);
+    for (const chunk of chunks) {
+      expect(chunk.length).toBeLessThanOrEqual(TELEGRAM_LIMIT);
+      expect(chunk.endsWith(' ')).toBe(false); // trimmed at the seam
+    }
+    // No ellipsis, and every word survives the round-trip.
+    expect(chunks.join(' ')).toBe(huge);
+  });
+
+  it('cuts a single word longer than the limit as a last resort', () => {
+    const monolith = 'x'.repeat(TELEGRAM_LIMIT + 500);
+    const chunks = splitForTelegram(monolith);
+    expect(chunks).toHaveLength(2);
+    expect(chunks[0]?.length).toBe(TELEGRAM_LIMIT);
+    expect(chunks.join('')).toBe(monolith);
+  });
+
+  it('counts multi-byte/emoji content by string length and keeps chunks within the limit', () => {
+    const emojiParagraph = '🌿 трава '.repeat(700); // well over the limit
+    const chunks = splitForTelegram(emojiParagraph.trimEnd());
+    expect(chunks.length).toBeGreaterThan(1);
+    for (const chunk of chunks) expect(chunk.length).toBeLessThanOrEqual(TELEGRAM_LIMIT);
   });
 });
