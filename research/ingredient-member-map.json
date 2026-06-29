@@ -1,0 +1,356 @@
+{
+  "_comment": "Plan 019 — ingredient corpus backfill. Maps composition Latin binomials (incl. synonyms/misspellings actually present in content/combinations/*.md) to stable herb page ids. Drives authoring (Phases 3/4) and the members backfill (scripts/backfill-members.ts, Phase 5). 'freq' = number of formulas whose composition lists this ingredient (Latin-bearing files only). Matching is diacritic- and case-insensitive and tolerates a trailing 'sp.'/'spp.'. Rank 1 (tib-haritaki) is already authored.",
+  "items": [
+    {
+      "rank": 1,
+      "herbId": "tib-haritaki",
+      "nameRu": "Миробалан хебула (харитаки)",
+      "latin": "Terminalia chebula",
+      "synonyms": [],
+      "category": "digestive-herbs",
+      "freq": 34,
+      "kind": "botanical",
+      "authored": true
+    },
+    {
+      "rank": 2,
+      "herbId": "tib-saussurea",
+      "nameRu": "Соссюрея (костус)",
+      "latin": "Saussurea lappa",
+      "synonyms": [],
+      "category": "warming-spices",
+      "freq": 22,
+      "kind": "botanical"
+    },
+    {
+      "rank": 3,
+      "herbId": "tib-safflower",
+      "nameRu": "Сафлор",
+      "latin": "Carthamus tinctorius",
+      "synonyms": [],
+      "category": "heat-clearing-herbs",
+      "freq": 21,
+      "kind": "botanical"
+    },
+    {
+      "rank": 4,
+      "herbId": "tib-cardamom",
+      "nameRu": "Кардамон",
+      "latin": "Elettaria cardamomum",
+      "synonyms": [],
+      "category": "warming-spices",
+      "freq": 21,
+      "kind": "botanical"
+    },
+    {
+      "rank": 5,
+      "herbId": "tib-amla",
+      "nameRu": "Эмблика (амалаки)",
+      "latin": "Emblica officinalis",
+      "synonyms": ["Phyllanthus emblica"],
+      "category": "tonic-herbs",
+      "freq": 18,
+      "kind": "botanical"
+    },
+    {
+      "rank": 6,
+      "herbId": "tib-long-pepper",
+      "nameRu": "Перец длинный (пиппали)",
+      "latin": "Piper longum",
+      "synonyms": [],
+      "category": "warming-spices",
+      "freq": 17,
+      "kind": "botanical"
+    },
+    {
+      "rank": 7,
+      "herbId": "tib-nutmeg",
+      "nameRu": "Мускатный орех",
+      "latin": "Myristica fragrans",
+      "synonyms": [],
+      "category": "aromatic-herbs",
+      "freq": 16,
+      "kind": "botanical"
+    },
+    {
+      "rank": 8,
+      "herbId": "tib-bamboo-manna",
+      "nameRu": "Бамбуковая манна",
+      "latin": "Bambusa textilis",
+      "synonyms": ["Bambusa arundinacea"],
+      "category": "heat-clearing-herbs",
+      "freq": 16,
+      "kind": "botanical"
+    },
+    {
+      "rank": 9,
+      "herbId": "tib-inula",
+      "nameRu": "Девясил",
+      "latin": "Inula racemosa",
+      "synonyms": ["Inula helenium"],
+      "category": "digestive-herbs",
+      "freq": 16,
+      "kind": "botanical"
+    },
+    {
+      "rank": 10,
+      "herbId": "tib-pomegranate",
+      "nameRu": "Гранат",
+      "latin": "Punica granatum",
+      "synonyms": [],
+      "category": "digestive-herbs",
+      "freq": 16,
+      "kind": "botanical"
+    },
+    {
+      "rank": 11,
+      "herbId": "tib-bibhitaki",
+      "nameRu": "Терминалия беллерика (бибхитаки)",
+      "latin": "Terminalia bellirica",
+      "synonyms": ["Terminalia belerica"],
+      "category": "digestive-herbs",
+      "freq": 15,
+      "kind": "botanical"
+    },
+    {
+      "rank": 12,
+      "herbId": "tib-clove",
+      "nameRu": "Гвоздика",
+      "latin": "Eugenia caryophyllata",
+      "synonyms": ["Syzygium aromaticum", "Eugenia caryophyllus"],
+      "category": "aromatic-herbs",
+      "freq": 15,
+      "kind": "botanical"
+    },
+    {
+      "rank": 13,
+      "herbId": "tib-black-cardamom",
+      "nameRu": "Амомум (чёрный кардамон)",
+      "latin": "Amomum subulatum",
+      "synonyms": [],
+      "category": "warming-spices",
+      "freq": 10,
+      "kind": "botanical"
+    },
+    {
+      "rank": 14,
+      "herbId": "tib-cinnamon",
+      "nameRu": "Корица",
+      "latin": "Cinnamomum zeylanicum",
+      "synonyms": ["Cinnamomum verum"],
+      "category": "warming-spices",
+      "freq": 10,
+      "kind": "botanical"
+    },
+    {
+      "rank": 15,
+      "herbId": "tib-agarwood",
+      "nameRu": "Орлиное дерево (агар)",
+      "latin": "Aquilaria agallocha",
+      "synonyms": ["Aquilaria agollocha", "Aquilaria malaccensis"],
+      "category": "aromatic-herbs",
+      "freq": 9,
+      "kind": "botanical"
+    },
+    {
+      "rank": 16,
+      "herbId": "tib-tinospora",
+      "nameRu": "Тиноспора",
+      "latin": "Tinospora cordifolia",
+      "synonyms": [],
+      "category": "heat-clearing-herbs",
+      "freq": 9,
+      "kind": "botanical"
+    },
+    {
+      "rank": 17,
+      "herbId": "tib-hedychium",
+      "nameRu": "Кемпферия (хедихиум)",
+      "latin": "Hedychium spicatum",
+      "synonyms": [],
+      "category": "aromatic-herbs",
+      "freq": 9,
+      "kind": "botanical"
+    },
+    {
+      "rank": 18,
+      "herbId": "tib-red-sandalwood",
+      "nameRu": "Красный сандал",
+      "latin": "Pterocarpus santalinus",
+      "synonyms": [],
+      "category": "heat-clearing-herbs",
+      "freq": 8,
+      "kind": "botanical"
+    },
+    {
+      "rank": 19,
+      "herbId": "tib-swertia",
+      "nameRu": "Сверция",
+      "latin": "Swertia chirata",
+      "synonyms": ["Swertia chirayita"],
+      "category": "heat-clearing-herbs",
+      "freq": 8,
+      "kind": "botanical"
+    },
+    {
+      "rank": 20,
+      "herbId": "tib-white-sandalwood",
+      "nameRu": "Белый сандал",
+      "latin": "Santalum album",
+      "synonyms": [],
+      "category": "heat-clearing-herbs",
+      "freq": 8,
+      "kind": "botanical"
+    },
+    {
+      "rank": 21,
+      "herbId": "tib-ginger",
+      "nameRu": "Имбирь",
+      "latin": "Zingiber officinale",
+      "synonyms": [],
+      "category": "warming-spices",
+      "freq": 7,
+      "kind": "botanical"
+    },
+    {
+      "rank": 22,
+      "herbId": "tib-veronica",
+      "nameRu": "Вероника",
+      "latin": "Veronica ciliata",
+      "synonyms": [],
+      "category": "heat-clearing-herbs",
+      "freq": 7,
+      "kind": "botanical"
+    },
+    {
+      "rank": 23,
+      "herbId": "tib-melia",
+      "nameRu": "Мелия",
+      "latin": "Melia composita",
+      "synonyms": ["Melia azedarach", "Melia toosendan"],
+      "category": "heat-clearing-herbs",
+      "freq": 6,
+      "kind": "botanical"
+    },
+    {
+      "rank": 24,
+      "herbId": "tib-raspberry",
+      "nameRu": "Малина",
+      "latin": "Rubus idaeopsis",
+      "synonyms": ["Rubus idaeus"],
+      "category": "tonic-herbs",
+      "freq": 6,
+      "kind": "botanical"
+    },
+    {
+      "rank": 25,
+      "herbId": "tib-picrorhiza",
+      "nameRu": "Кутки (горечавка)",
+      "latin": "Picrorhiza kurroa",
+      "synonyms": ["Picrorhiza scrophulariiflora"],
+      "category": "heat-clearing-herbs",
+      "freq": 6,
+      "kind": "botanical"
+    },
+    {
+      "rank": 26,
+      "herbId": "tib-shilajit",
+      "nameRu": "Мумиё",
+      "latin": "Shilajit",
+      "synonyms": ["Shilajid", "Asphaltum"],
+      "category": "minerals-resins",
+      "freq": 6,
+      "kind": "mineral"
+    },
+    {
+      "rank": 27,
+      "herbId": "tib-calcite",
+      "nameRu": "Кальцит",
+      "latin": "Calcite",
+      "synonyms": [],
+      "category": "minerals-resins",
+      "freq": 5,
+      "kind": "mineral"
+    },
+    {
+      "rank": 28,
+      "herbId": "tib-mesua",
+      "nameRu": "Мезуя железная",
+      "latin": "Mesua ferrea",
+      "synonyms": [],
+      "category": "aromatic-herbs",
+      "freq": 4,
+      "kind": "botanical"
+    },
+    {
+      "rank": 29,
+      "herbId": "tib-shorea",
+      "nameRu": "Шорея (саловое дерево)",
+      "latin": "Shorea robusta",
+      "synonyms": [],
+      "category": "minerals-resins",
+      "freq": 4,
+      "kind": "botanical"
+    },
+    {
+      "rank": 30,
+      "herbId": "tib-rubia",
+      "nameRu": "Марена",
+      "latin": "Rubia cordifolia",
+      "synonyms": ["Rubia tinctorum"],
+      "category": "heat-clearing-herbs",
+      "freq": 4,
+      "kind": "botanical"
+    },
+    {
+      "rank": 31,
+      "herbId": "tib-geranium",
+      "nameRu": "Герань",
+      "latin": "Geranium",
+      "synonyms": ["Geranium sp."],
+      "category": "heat-clearing-herbs",
+      "freq": 4,
+      "kind": "botanical"
+    },
+    {
+      "rank": 32,
+      "herbId": "tib-licorice",
+      "nameRu": "Солодка",
+      "latin": "Glycyrrhiza uralensis",
+      "synonyms": ["Glycyrrhiza glabra"],
+      "category": "tonic-herbs",
+      "freq": 7,
+      "kind": "botanical"
+    },
+    {
+      "rank": 33,
+      "herbId": "tib-seabuckthorn",
+      "nameRu": "Облепиха",
+      "latin": "Hippophae rhamnoides",
+      "synonyms": [],
+      "category": "tonic-herbs",
+      "freq": 4,
+      "kind": "botanical"
+    },
+    {
+      "rank": 34,
+      "herbId": "tib-dracocephalum",
+      "nameRu": "Змееголовник",
+      "latin": "Dracocephalum tanguticum",
+      "synonyms": ["Dracocephalum heterophyllum"],
+      "category": "aromatic-herbs",
+      "freq": 4,
+      "kind": "botanical"
+    },
+    {
+      "rank": 35,
+      "herbId": "tib-musk",
+      "nameRu": "Мускус",
+      "latin": "Moschus moschiferus",
+      "synonyms": [],
+      "category": "aromatic-herbs",
+      "freq": 4,
+      "kind": "animal"
+    }
+  ]
+}

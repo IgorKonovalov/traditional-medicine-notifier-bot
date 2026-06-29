@@ -24,6 +24,7 @@
     "content:index": "tsx scripts/build-content-index.ts",
     "content:index:check": "tsx scripts/build-content-index.ts --check --validate",
     "content:review": "tsx scripts/build-formula-review.ts",
+    "content:members": "tsx scripts/backfill-members.ts",
     "prepare": "husky"
   },
   "dependencies": {
