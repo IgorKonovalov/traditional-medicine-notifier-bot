@@ -276,7 +276,9 @@ untouched), **ADR 002** (renderer-agnostic; `Источник:` built by
 - [x] Phase 3 — Чжуд-ши extracted + OCR-cleaned + chapter map — 766pp →
   `_private/zhud-shi-text.txt` (768 safe subs), `_private/zhud-shi-chapter-map.md`
   (I+II, printed=PDF−2, III/IV off-limits), README provenance
-- [ ] Phase 4 — Master tip outline (owner-reviewed)
+- [x] Phase 4 — Master tip outline (owner-reviewed) — `_private/tips-018-outline.md`;
+  owner signed off **~165 land-point** (prod ~93 / gated ~72), high-risk gated tips
+  authored behind the gate for doctor review (2026-06-29)
 - [ ] Phase 5 — Production tier authored (~36)
 - [ ] Phase 6 — Gated tier authored (~80)
 - [ ] Phase 7 — Index, conventions, doctor-review surface, close + minor bump
