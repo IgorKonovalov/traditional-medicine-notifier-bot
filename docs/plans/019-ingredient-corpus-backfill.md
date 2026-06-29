@@ -226,9 +226,19 @@ Plan 013 (Food).
 
 ## Progress
 
-- [ ] Phase 1 — ranking artifact, id convention, member-backfill script
-- [ ] Phase 2 — display-rename branch to «Ингредиенты»
-- [ ] Phase 3 — author tier-1 ingredients (ranks 2–18, 17)
-- [ ] Phase 4 — author tier-2 ingredients (ranks 19–35, 17) + categories
-- [ ] Phase 5 — backfill `members:` across formulas + regen index
-- [ ] Phase 6 — (deferred) Russian-only composition enrichment
+- [x] Phase 1 — ranking artifact, id convention, member-backfill script (042eb7c).
+      Map + slugs owner-approved 2026-06-29. Dry-run: 53 formulas / 441 links.
+      Corpus has **56** Latin-bearing formulas (plan estimated 65); ~93 Russian-only.
+- [x] Phase 2 — display-rename branch to «Ингредиенты» (13ff67a). Label/copy only.
+- [x] Phase 3 — author tier-1 ingredients (ranks 2–18, 17) (da59f99)
+- [x] Phase 4 — author tier-2 ingredients (ranks 19–35, 17) + categories (da59f99).
+      Corpus 1 → 35; 4 new categories (warming-spices, heat-clearing-herbs,
+      aromatic-herbs, minerals-resins); 6 populated categories total.
+- [x] Phase 5 — backfill `members:` across formulas + regen index (6259760).
+      53 formulas gained members; 441 links across 113 cards; 0 unresolved.
+- [ ] Phase 6 — (deferred) Russian-only composition enrichment — not started.
+
+**Close pending (architect):** review → move to `done/`, minor version bump
+(0.20.0 → 0.21.0) + `versionAnnouncements` entry + CLAUDE.md one-line note on the
+«Ингредиенты» display/code split. Not auto-done (CLAUDE.md: plans reviewed before
+`done/`; version bump is the architect close ritual).
