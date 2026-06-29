@@ -269,8 +269,23 @@ exempt), **ADR 006** (render-time disclaimer); runs alongside **Plan 005** (tips
 - [x] Phase 1 — `Guide` type: types, loader, validate, index — `6222046`
 - [x] Phase 2 — `splitForTelegram()` + render plumbing — `8f8b871`
 - [x] Phase 3 — `/guides` browse + section pager — `ccf4e60`
-- [ ] Phase 4 — Author ≥3 guides: flagship «Основы тибетской медицины» (base) + 2 info guides (descriptive)
+- [x] Phase 4 — Author ≥3 guides: flagship «Основы тибетской медицины» (гл. 5–6) + «Питание и образ жизни по сезонам» (гл. 14) + «Распорядок дня» (гл. 13) — `be9522b`
 - [ ] Phase 5 — Validation, docs & close
+
+### Note (Phase 4) — sourcing & topic choices
+
+- **Flagship** `tib-osnovy`: intro + the 7 spec'd sections, canon-faithful
+  subtype names per `research/_private/fundamentals-canon-crosscheck.md`; source
+  cites Чжуд-ши, Тантра объяснений, гл. 5–6 (manla.ru/base credited inline as the
+  popular restatement). Жар/Холод and конституция kept strictly taxonomic.
+- **Two shorter guides:** chose «Питание и образ жизни по сезонам» (the spec'd
+  seasonal guide) and «Распорядок дня» (the "daily conduct" option, richer than
+  incompatible-foods). Both cite **Чжуд-ши directly** (verified chapters гл. 14 /
+  гл. 13 — the same the seasonal/conduct tips cite) instead of the plan's literal
+  `Сова Ригпа (manla.ru/info)`, per honest-sourcing (the prose paraphrases those
+  canon chapters). Flag for Phase 5 review if manla attribution is preferred.
+- All sections ≤ `TELEGRAM_LIMIT` (max ~880 chars); `tib-osnovy` = intro + 7
+  sections; disclaimer rides the final page at render time.
 
 ### Deviation (Phase 3) — approved by owner 2026-06-29
 
