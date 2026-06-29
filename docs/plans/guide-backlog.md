@@ -25,10 +25,14 @@ Newer guide plans pull from this menu and cite rows back here. Consumed so far:
 - **Rhythms & diagnosis** (the daily/seasonal cycles) → daily shipped as
   `tib-sutochnyj-ritm`, seasonal as `tib-sezonnoe-pitanie`; **diagnosis** remains,
   owned by **Plan 013** Phase 5. Do not author here.
-
-Deferred-but-still-open theory rows (Plan 016 Waves 2–3): **Пищеварительный огонь**
-and **Семь сил тела / «чистый сок»** (group A) — re-plan as a follow-up wave when
-wanted.
+- **A. Foundations & theory (whole group)** → cleared by **Plan 020** Wave 1:
+  **Пищеварительный огонь** → `tib-pishchevaritelnyj-ogon` (sourced to Чжуд-ши
+  гл. 5, where the three-stage mechanism actually lives — *not* гл. 16, which is a
+  food-properties catalog); **Семь сил тела / «чистый сок»** → `tib-sem-sil-tela`
+  (гл. 5); **Принцип противоположного** → `tib-princip-protivopolozhnogo` (гл. 20
+  — 17 качеств vs 20 свойств, principle only, no drug catalog/dosing); **Тело в
+  образах традиции** → `tib-telo-v-obrazah` (гл. 3–4); **Зачатие и развитие** →
+  `tib-zachatie-i-razvitie` (гл. 2).
 
 ## Tradition scope — Tibetan-only (2026-06-29)
 

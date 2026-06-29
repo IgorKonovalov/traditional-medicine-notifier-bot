@@ -154,7 +154,9 @@ manla `/info` section already named per-row in `guide-backlog.md`.
 
 ## Progress
 
-- [ ] Wave 1 — A. Foundations (5)
+- [x] Wave 1 — A. Foundations (5) — `tib-pishchevaritelnyj-ogon`,
+  `tib-sem-sil-tela`, `tib-princip-protivopolozhnogo`, `tib-telo-v-obrazah`,
+  `tib-zachatie-i-razvitie` (digestive-fire re-sourced гл. 16→гл. 5)
 - [ ] Wave 2 — B. Disease taxonomy (4)
 - [ ] Wave 3 — C. Nutrition (8, incl. 2 ⚠️)
 - [ ] Wave 4 — D. Lifestyle (9, incl. 2 ⚠️)

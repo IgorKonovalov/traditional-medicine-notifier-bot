@@ -33,6 +33,28 @@
     }
   },
   {
+    "id": "tib-pishchevaritelnyj-ogon",
+    "tradition": "tibetan",
+    "title": "«Пищеварительный огонь»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 5 «Существенные признаки тела»"
+    }
+  },
+  {
+    "id": "tib-princip-protivopolozhnogo",
+    "tradition": "tibetan",
+    "title": "«Принцип противоположного»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 20 «Действие разных лекарственных средств»"
+    }
+  },
+  {
     "id": "tib-rasporyadok-dnya",
     "tradition": "tibetan",
     "title": "«Распорядок дня»",
@@ -41,6 +63,17 @@
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
       "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
+  },
+  {
+    "id": "tib-sem-sil-tela",
+    "tradition": "tibetan",
+    "title": "«Семь сил тела и „чистый сок“»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 5 «Существенные признаки тела»"
     }
   },
   {
@@ -77,6 +110,17 @@
     }
   },
   {
+    "id": "tib-telo-v-obrazah",
+    "tradition": "tibetan",
+    "title": "«Тело в образах традиции»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 3–4 «Сравнения тела», «Строение тела»"
+    }
+  },
+  {
     "id": "tib-tri-prirody",
     "tradition": "tibetan",
     "title": "«Три природы человека»",
@@ -85,6 +129,17 @@
       "work": "Наука о здоровье. Сова Ригпа",
       "part": "Ринчен Тензин, популярные лекции 2012–2013",
       "chapter": "гл. 3 «Люди природы Ветра, Огня, Земли-Воды»"
+    }
+  },
+  {
+    "id": "tib-zachatie-i-razvitie",
+    "tradition": "tibetan",
+    "title": "«Зачатие и развитие тела»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 2 «Зачатие»"
     }
   }
 ]
