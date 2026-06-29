@@ -1,8 +1,18 @@
 # Plan 013 — Foods content type (raw-ingredient properties) + book-derived guides
 
-**Status:** Approved — Phases 1–3 unblocked; Phases 5 blocked on Plan 006
+**Status:** Approved — Phases 1–4 unblocked; Phase 5 narrowed & unblocked (Plan 006 shipped)
 **Created:** 2026-06-28
 **Approved:** 2026-06-28
+**Revised:** 2026-06-29 (architect, post Plan 016 close) — **Phase 5 narrowed and
+unblocked.** Plan 006 has shipped (`tib-osnovy.md` is live), so Phase 5 is no
+longer blocked on it. More importantly, the rhythms material Phase 5 planned to
+author is now **mostly already covered**: the **daily** cycle of the three начала
+shipped as the standalone guide `tib-sutochnyj-ritm` (Plan 016 session), and the
+**seasonal/annual** начала-cycle is carried by `tib-sezonnoe-pitanie`. Phase 5 is
+therefore reduced to its one genuinely-uncovered piece — **diagnosis observation**
+(pulse/urine/tongue) — plus, at most, a thin annual-cycle *theory* framing folded
+into `tib-sezonnoe-pitanie` only if non-redundant. The bot is also **Tibetan-only**
+now (ADR 013); this plan was already Tibetan-source-only, so nothing changes there.
 **Restructured:** 2026-06-29 — owner interview reshaped Phase 1. The food-properties
 material is no longer a prose guide: the owner wants it **structured and
 filterable** ("how warm is this fruit, who is it for, what it balances" → browse +
@@ -33,9 +43,10 @@ daily tips:
    detailed body / gait / speech / mind / sleep / eating profiles of the three pure
    types and the seven mixed types. Far richer than the single
    `## Конституция человека` section the Plan 006 fundamentals guide carries.
-3. **Rhythms & diagnosis** (гл. 1–2) — the daily and annual cycle of the three
-   life-principles, and how the tradition observes the body (pulse, urine, tongue).
-   Best read as an **enrichment of the Plan 006 fundamentals guide**.
+3. **Diagnosis** (how the tradition observes the body — pulse, urine, tongue,
+   questioning). *(Originally bundled with rhythms; the daily cycle since shipped as
+   `tib-sutochnyj-ritm` and the seasonal cycle as `tib-sezonnoe-pitanie`, so only
+   diagnosis remains genuinely un-mined — see the 2026-06-29 revision note.)*
 
 The owner selected food-properties, constitution portraits, and rhythms/diagnosis
 for this pass; **elderly (гл. 6) is backlog** and **pregnancy/children (гл. 5) is
@@ -53,8 +64,9 @@ Plan 006 surface.
   both already shipped. They can land before Plan 006 closes.
 - **Constitution-portraits guide (Phase 4)** needs only the `Guide` type +
   `/guides` browser, which **are shipped** (Plan 006 Phases 1–3, done) — unblocked.
-- **Rhythms/diagnosis (Phase 5)** appends to `tib-osnovy.md`, authored in
-  **Plan 006 Phase 4 (not yet done)** — **blocked on Plan 006** authoring landing.
+- **Diagnosis (Phase 5)** — **unblocked**: `tib-osnovy.md` has shipped (Plan 006).
+  Narrowed to the diagnosis-observation material only (rhythms now covered by
+  `tib-sutochnyj-ritm` + `tib-sezonnoe-pitanie`); see Phase 5.
 
 **Related:** introduces **ADR 012** (`foods` type); builds on **Plan 009**
 (Library hub / anchored-session kit) and **Plan 006 / ADR 008** (Guide type, for
@@ -83,8 +95,10 @@ scare-quotes on technical terms, no reader-directed dosing).
     cited to the book.
   - **Guide «Три природы человека: Ветер, Огонь, Земля-Вода»** (constitution
     portraits) — `##`-delimited, strictly descriptive.
-  - **Rhythms & diagnosis** folded into the Plan 006 fundamentals guide as two
-    appended sections (after Plan 006 Phase 4 lands).
+  - **Diagnosis observation** (how the tradition reads pulse / urine / tongue),
+    authored descriptively — standalone guide or a `tib-osnovy` section (Phase 5).
+    Rhythms are **not** re-authored (daily → `tib-sutochnyj-ritm`; seasonal →
+    `tib-sezonnoe-pitanie`).
   - All gates green; minor bump; announcement queued.
 - **Non-goals:**
   - **No internet-sourced content** — book + Чжуд-ши only; web is a silent
@@ -185,18 +199,39 @@ shipped Guide type — unblocked.*
   self-treat framing; reads as "как традиция описывает людей", not "узнай свой тип
   и лечись"; sections ≤ `TELEGRAM_LIMIT`.
 
-### Phase 5 — Rhythms & diagnosis into the fundamentals guide
-*Owner: content-curator. **Blocked on Plan 006 Phase 4** (authors `tib-osnovy.md`).*
+### Phase 5 — Diagnosis observation (deduped; rhythms already shipped)
+*Owner: content-curator. **Unblocked** — `tib-osnovy.md` has shipped (Plan 006).*
+
+**Narrowed 2026-06-29.** Do **not** author a «Ритмы дня и года» section: the daily
+cycle of the three начала is the shipped standalone guide `tib-sutochnyj-ritm`, and
+the seasonal/annual cycle is carried by `tib-sezonnoe-pitanie` (which already walks
+Слизь→Желчь→Слизь through весна/лето/осень/зима by the principle of opposites). The
+only genuinely-uncovered material is **diagnosis observation**.
+
 - **Deliverables:**
-  - Append two `##` sections to `content/guides/tibetan/tib-osnovy.md`:
-    `## Ритмы дня и года` (daily/annual cycle of the three principles) and
-    `## Как тибетская медицина наблюдает тело` (pulse/urine/tongue —
-    **informational**, "врач смотрит…", explicitly *not* a self-diagnosis key).
-  - Update that guide's `source` to credit the book alongside its existing citation
-    if the new sections lean on it.
-- **Acceptance:** the fundamentals guide still has every section ≤ `TELEGRAM_LIMIT`;
-  the diagnosis section is purely descriptive (no "если у вас X, то…"); the
-  `/guides` pager walks the added sections cleanly.
+  - **Diagnosis (primary):** a descriptive account of how the tradition reads the
+    body — pulse, urine, tongue, questioning — framed strictly as *«врач
+    наблюдает…»*, explicitly **not** a self-diagnosis key. Author as a **standalone
+    guide** `content/guides/tibetan/tib-nablyudenie-tela.md` (preferred — `tib-osnovy`
+    already runs 9 sections and the daily cycle precedent shipped standalone) **or**,
+    if it proves short, a single `## Как тибетская медицина наблюдает тело` section
+    appended to `tib-osnovy.md` — content-curator's call, flag which. Source:
+    Чжуд-ши (diagnosis chapters) with the book as a silent cross-check; cite per the
+    Plan 012 convention.
+  - **Annual-cycle framing (only if non-redundant):** at most a one-paragraph
+    *theory* note on the накопление → возбуждение → успокоение triad of each начало
+    across the year, folded into `tib-sezonnoe-pitanie`'s intro (or a short
+    `## Годовой круг начал`) **only if** it adds beyond what the seasons sections
+    already say. Otherwise **skip and note it as already covered** — do not create a
+    third home for seasonal-начала material.
+  - **Cross-link, don't duplicate:** reference `tib-sutochnyj-ritm` (daily) and
+    `tib-sezonnoe-pitanie` (seasonal) from the diagnosis guide where natural rather
+    than restating any cycle.
+- **Acceptance:** the diagnosis material is purely descriptive (no «если у вас X,
+  то…», no self-diagnosis key); every touched guide keeps each section ≤
+  `TELEGRAM_LIMIT`; the `/guides` pager walks the new/added sections cleanly; no
+  duplication of the daily or seasonal cycle (reviewer confirms against
+  `tib-sutochnyj-ritm` and `tib-sezonnoe-pitanie`).
 
 ### Phase 6 — Index regen, docs & close
 *Owner: content-curator → architect (close).*
@@ -250,8 +285,9 @@ shipped Guide type — unblocked.*
 - Manual: `/foods` → groups list → open «Фрукты» → open «Яблоко» (warmth, taste,
   per-начало effect, descriptive effect, disclaimer once); back to groups; open the
   **filter** → «Ветер» → list of foods that pacify Ветер; → warmth «прохладные» →
-  cooling foods. `/guides` lists «Три природы человека»; page ◀ ▶ through it; the
-  fundamentals guide shows the two appended sections (after Plan 006 lands).
+  cooling foods. `/guides` lists «Три природы человека» and the diagnosis guide
+  (or `tib-osnovy` shows the appended diagnosis section); page ◀ ▶ through them; no
+  daily/seasonal-cycle content is duplicated.
 - Read every food `effect`, constitution portrait, and diagnosis section against the
   non-medical-advice rule (no disease→remedy prescription).
 
@@ -261,6 +297,6 @@ shipped Guide type — unblocked.*
 - [ ] Phase 2 — `🥗 Продукты` browse + constitution/warmth filter
 - [ ] Phase 3 — Author the food catalogue (eggs, meat, fruits, berries, greens, …)
 - [ ] Phase 4 — Guide «Три природы человека» (constitution portraits)
-- [ ] Phase 5 — Rhythms & diagnosis into the fundamentals guide (blocked on Plan 006)
+- [ ] Phase 5 — Diagnosis observation guide/section (narrowed; rhythms already shipped — unblocked)
 - [ ] Phase 6 — Index regen, docs & close
 </content>

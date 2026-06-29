@@ -17,7 +17,7 @@ before the **dev** skill implements it, then moved to `done/` on close.
 | 009 | Library browser (gated formulas) | **Completed** → `done/` (v0.11.0) — formulas gate lifted on owner sign-off |
 | 011 | Drop subscriptions · optional herb link in reminders | Completed → `done/` (v0.10.0) |
 | 012 | Tip sourcing reconciliation + content voice tightening | Completed → `done/` (v0.12.0) |
-| 013 | Sova Rigpa book guides (food properties · constitution portraits · rhythms/diagnosis) | Approved — Phase 5 needs narrowing (see 016 close note: daily cycle already shipped as `tib-sutochnyj-ritm`) |
+| 013 | Foods content type · constitution portraits · diagnosis | Approved — Phases 1–4 unblocked; Phase 5 narrowed to diagnosis only (rhythms shipped as `tib-sutochnyj-ritm` + `tib-sezonnoe-pitanie`), revised 2026-06-29 |
 | 015 | Hide the Chinese tradition (Tibetan-only surface) | Completed → `done/` (v0.16.0, ADR 013) |
 | 016 | Foundational theory guides | Completed (Wave 1) → `done/` (v0.17.0); Waves 2–3 deferred to backlog |
 
