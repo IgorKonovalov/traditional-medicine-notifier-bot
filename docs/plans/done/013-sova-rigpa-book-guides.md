@@ -1,6 +1,6 @@
 # Plan 013 — Foods content type (raw-ingredient properties) + book-derived guides
 
-**Status:** Approved — Phases 1–4 unblocked; Phase 5 narrowed & unblocked (Plan 006 shipped)
+**Status:** Completed — 2026-06-29 (all phases shipped, v0.19.0)
 **Created:** 2026-06-28
 **Approved:** 2026-06-28
 **Revised:** 2026-06-29 (architect, post Plan 016 close) — **Phase 5 narrowed and
@@ -181,7 +181,7 @@ scare-quotes on technical terms, no reader-directed dosing).
   - Regenerate `content/.index/foods.json`.
 - **Acceptance:** every food loads & validates; the warmth/constitution facets are
   populated from the book (spot-checked against the source lines, e.g. eggs =
-  горячая, виноград = прохладная, баран = тёплая+тяжёлая); spot-read confirms
+  горячая, виноград = прохладная, баран = горячая+тяжёлая); spot-read confirms
   faithful, descriptive prose with no diagnostic/dosing framing;
   `content:index:check` green; the Phase 2 filters return sensible sets.
 
@@ -298,5 +298,5 @@ only genuinely-uncovered material is **diagnosis observation**.
 - [x] Phase 3 — Author the food catalogue (55 foods, all 10 groups) — `875ea5e`
 - [x] Phase 4 — Guide «Три природы человека» (constitution portraits) — `4794716`
 - [x] Phase 5 — Diagnosis observation guide `tib-nablyudenie-tela` (annual-cycle note skipped — already covered by `tib-sezonnoe-pitanie`) — `20acf08`
-- [ ] Phase 6 — Index regen, docs & close
+- [x] Phase 6 — Index regen, docs & close — v0.19.0
 </content>

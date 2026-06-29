@@ -4,6 +4,19 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.19.0 — 2026-06-29
+
+- Add a structured, queryable **`foods` content type** (ADR 012) and a
+  **🥗 Продукты** browse + filter surface in the Library hub: browse the catalogue
+  by group, or filter by which начало a food успокаивает (Ветер/Желчь/Слизь) or
+  by warmth band (тёплые/прохладные); a plain-text food card shows warmth, taste,
+  the three начала and the descriptive effect. Opens via 🥗 Продукты or `/foods`
+  (Plan 013 Phases 1–2).
+- Author a **55-food catalogue** (all ten groups) from гл. 4 of «Наука о здоровье.
+  Сова Ригпа», plus two long-form guides — «Три природы человека» (constitution
+  portraits) and «Как врач наблюдает тело» (diagnosis observation), browsable via
+  📖 Статьи / `/guides` (Plan 013 Phases 3–5).
+
 ## 0.18.0 — 2026-06-29
 
 - Add a formula-only search reachable from a 🔎 button atop the formula list, so
