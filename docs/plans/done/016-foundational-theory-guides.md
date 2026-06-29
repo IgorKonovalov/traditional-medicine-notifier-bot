@@ -1,9 +1,34 @@
 # Plan 016 — Foundational theory guides (tastes, disease causation, digestive fire, tissues)
 
-**Status:** Approved — 2026-06-29 (owner; Wave 1 scope + citation locked). Authoring not started.
+**Status:** Completed (Wave 1) — 2026-06-29 (v0.17.0). Waves 2–3 deferred to backlog.
 **Created:** 2026-06-29
 **Approved:** 2026-06-29 — Wave 1 = {Шесть вкусов, Как возникает болезнь}; later waves deferred. Citation = book, Чжуд-ши named inline.
+**Completed:** 2026-06-29 — Wave 1 only; commits `6b6d14d` (content), `c3ec948` (release).
 **Bump on close:** minor (new user-facing guides)
+
+## Close note (architect review, 2026-06-29)
+
+**Wave 1 (Phases 1, 2, 5) delivered and validated; closed.** Gate green
+(typecheck, lint, 218 tests, build, `content:index:check` → 6 guides). Both
+guides load, split into 4 sections each (longest page 1182 / 743 chars, well
+under the Telegram budget), cite the book with Чжуд-ши named inline, and pass the
+**non-medical-advice invariant**: the ⚠️ disease-causation guide frames the
+«виновник» model as the tradition's taxonomy («не ключ к самодиагностике»),
+hedges the lekarstva line as descriptive («не как совет читателю»), and carries
+no dosing / disease→remedy / self-diagnosis. Cross-links resolve (`tib-osnovy`
+out-link + `tip-007` deep-link).
+
+**Deferred to backlog (not delivered):** Phase 3 «Пищеварительный огонь»
+(Wave 2) and Phase 4 «Семь тканей тела» (Wave 3, stretch). Both were always
+optional/may-merge per the plan and are already tracked as ★/unticked rows in
+`006-guide-candidates.md` (group A). Re-plan as a follow-up wave if/when wanted —
+this plan is closed against its **Wave 1** scope, not the full 4-guide menu.
+
+**Carried flag for the owner / next architect pass:** Plan 013 Phase 5
+(«Ритмы дня и года» → `tib-osnovy`) is **partly superseded** by the already-shipped
+`tib-sutochnyj-ritm` (daily cycle). Recommend narrowing Plan 013 Phase 5 to
+**annual cycle** (deduped vs `tib-sezonnoe-pitanie`) **+ diagnosis** before it is
+authored. Not actioned here.
 
 ## Context
 
@@ -274,8 +299,8 @@ Authoring owner: **content-curator**; framing review where flagged: **ux-telegra
 
 ## Progress
 
-- [ ] Phase 1 — Guide «Шесть вкусов» (flagship)
-- [ ] Phase 2 — Guide «Как возникает болезнь» (⚠️ framing review)
-- [ ] Phase 3 — Guide «Пищеварительный огонь» (Wave 2; may merge into osnovy)
-- [ ] Phase 4 — Guide «Семь тканей тела» (Wave 3; stretch/optional)
-- [ ] Phase 5 — Cross-links, index regen, docs & close
+- [x] Phase 1 — Guide «Шесть вкусов» (flagship) — `tib-shest-vkusov`
+- [x] Phase 2 — Guide «Как возникает болезнь» (⚠️ framing review) — `tib-kak-voznikaet-bolezn`
+- [ ] Phase 3 — Guide «Пищеварительный огонь» (Wave 2; may merge into osnovy) — **deferred to backlog**
+- [ ] Phase 4 — Guide «Семь тканей тела» (Wave 3; stretch/optional) — **deferred to backlog**
+- [x] Phase 5 — Cross-links, index regen, docs & close

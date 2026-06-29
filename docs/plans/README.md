@@ -4,7 +4,7 @@ Implementation plans authored by the **architect** skill drive all non-trivial
 work. Each plan is `NNN-short-name.md` (zero-padded), reviewed and approved
 before the **dev** skill implements it, then moved to `done/` on close.
 
-- **Next free number:** `014`
+- **Next free number:** `018` (017 is taken)
 - **Completed:** see `done/`
 
 ### Active roster
@@ -12,13 +12,14 @@ before the **dev** skill implements it, then moved to `done/` on close.
 | Plan | Title | Status |
 |---|---|---|
 | 004 | Formula doctor-review remediation | Draft |
-| 006 | Long-form guides | Approved — not started |
 | 007 | Navigation shell & UX foundation | Completed → `done/` |
 | 008 | Reminder-create flow | Completed → `done/` |
 | 009 | Library browser (gated formulas) | **Completed** → `done/` (v0.11.0) — formulas gate lifted on owner sign-off |
 | 011 | Drop subscriptions · optional herb link in reminders | Completed → `done/` (v0.10.0) |
 | 012 | Tip sourcing reconciliation + content voice tightening | Completed → `done/` (v0.12.0) |
-| 013 | Sova Rigpa book guides (food properties · constitution portraits · rhythms/diagnosis) | Approved — blocked on 006 |
+| 013 | Sova Rigpa book guides (food properties · constitution portraits · rhythms/diagnosis) | Approved — Phase 5 needs narrowing (see 016 close note: daily cycle already shipped as `tib-sutochnyj-ritm`) |
+| 015 | Hide the Chinese tradition (Tibetan-only surface) | Completed → `done/` (v0.16.0, ADR 013) |
+| 016 | Foundational theory guides | Completed (Wave 1) → `done/` (v0.17.0); Waves 2–3 deferred to backlog |
 
 ### UI overhaul plan set (007–009)
 

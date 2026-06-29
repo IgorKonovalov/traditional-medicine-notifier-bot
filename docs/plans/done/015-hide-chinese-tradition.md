@@ -1,9 +1,26 @@
 # Plan 015 — Hide the Chinese tradition (Tibetan-only user surface)
 
-**Status:** Approved — 2026-06-29 (owner confirmed scope + menu shape)
+**Status:** Completed — 2026-06-29 (v0.16.0)
 **Created:** 2026-06-29
-**Decision record:** ADR 013 (Tibetan-only user surface)
+**Completed:** 2026-06-29 — commits `6a239d0` (feat), `2c02b7e` (release)
+**Decision record:** ADR 013 (Tibetan-only user surface) — Accepted
 **Bump on close:** minor (user-facing: navigation + copy change, corpus surface shrinks)
+
+## Close note (architect review, 2026-06-29)
+
+All four phases delivered; gate green (typecheck, lint, 218 tests, build,
+`content:index:check`). Verified: boot load `herbs.all = ['tib-haritaki']`, no
+`tcm-*` key, 149 combos intact; no user-facing string mentions китайск* (the one
+`китайск` hit in `_formula-card.ts` is an ingredient name-label abbreviation
+«Кит.», unrelated to the tradition axis — correctly untouched).
+
+**Accepted deviation:** the plan's "Index drift: None" risk note was wrong — the
+index builder runs through `loadContent`, so the filter would have stripped the
+Chinese herbs from the regenerated index, violating the "index entries stay"
+non-goal. Resolved by adding an `includeHiddenTraditions` opt-out to `loadContent`
+that the index builder sets — the runtime stays gated, the committed index keeps
+the full corpus. Correct call; ADR 013 point 3 updated to record it. The
+signature change is minimal and consistent with the ADR's stated consequence.
 
 ## Goal
 
