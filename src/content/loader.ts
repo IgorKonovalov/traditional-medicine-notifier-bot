@@ -15,6 +15,7 @@ import matter from 'gray-matter';
 
 import { buildCrossLinks } from './cross-links';
 import { validateCorpus } from './validate';
+import { isVisibleTradition } from './visibility';
 import type {
   Category,
   Combination,
@@ -35,9 +36,28 @@ interface RawDoc {
   readonly body: string;
 }
 
-export function loadContent(contentDir: string): LoadedContent {
-  const herbs = readDir(join(contentDir, 'herbs')).map(parseHerb);
-  const combinations = readDir(join(contentDir, 'combinations')).map(parseCombination);
+export interface LoadOptions {
+  /**
+   * Include hidden-tradition records (ADR 013) instead of applying the
+   * Tibetan-only visibility gate. The runtime bot loads with the gate **on**
+   * (default); the content-index builder loads with it **off** so the committed
+   * index keeps every authored record (Chinese files stay indexed, not deleted).
+   */
+  readonly includeHiddenTraditions?: boolean;
+}
+
+export function loadContent(contentDir: string, opts: LoadOptions = {}): LoadedContent {
+  // Tradition visibility gate (ADR 013): hidden-tradition records are dropped
+  // here, before buckets/cross-links/validation, so nothing downstream sees them.
+  // The index builder opts out (includeHiddenTraditions) to index the full corpus.
+  const visible = (t: Tradition): boolean =>
+    opts.includeHiddenTraditions === true || isVisibleTradition(t);
+  const herbs = readDir(join(contentDir, 'herbs'))
+    .map(parseHerb)
+    .filter((h) => visible(h.tradition));
+  const combinations = readDir(join(contentDir, 'combinations'))
+    .map(parseCombination)
+    .filter((c) => visible(c.tradition));
   const categories = readDir(join(contentDir, 'categories')).map(parseCategory);
   const tips = readDir(join(contentDir, 'tips')).map(parseTip);
   const guides = readDir(join(contentDir, 'guides')).map(parseGuide);

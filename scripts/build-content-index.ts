@@ -22,7 +22,9 @@ function main(): void {
   const args = new Set(process.argv.slice(2));
   const check = args.has('--check');
 
-  const content = loadContent(CONTENT_DIR);
+  // Index the FULL corpus — the visibility gate (ADR 013) hides traditions from
+  // the runtime bot, not from the committed index (Chinese files stay indexed).
+  const content = loadContent(CONTENT_DIR, { includeHiddenTraditions: true });
   const index = buildIndex(content);
 
   const files: Record<string, unknown> = {
@@ -45,7 +47,9 @@ function main(): void {
       }
     }
     if (drift) process.exit(1);
-    console.log(`content index OK (herbs ${index.counts.herbs}, combinations ${index.counts.combinations}, categories ${index.counts.categories}, tips ${index.counts.tips}, guides ${index.counts.guides})`);
+    console.log(
+      `content index OK (herbs ${index.counts.herbs}, combinations ${index.counts.combinations}, categories ${index.counts.categories}, tips ${index.counts.tips}, guides ${index.counts.guides})`,
+    );
     return;
   }
 
@@ -53,7 +57,9 @@ function main(): void {
   for (const [name, value] of Object.entries(files)) {
     writeFileSync(join(INDEX_DIR, name), serialize(value));
   }
-  console.log(`content index written (herbs ${index.counts.herbs}, combinations ${index.counts.combinations}, categories ${index.counts.categories}, tips ${index.counts.tips}, guides ${index.counts.guides})`);
+  console.log(
+    `content index written (herbs ${index.counts.herbs}, combinations ${index.counts.combinations}, categories ${index.counts.categories}, tips ${index.counts.tips}, guides ${index.counts.guides})`,
+  );
 }
 
 function serialize(value: unknown): string {

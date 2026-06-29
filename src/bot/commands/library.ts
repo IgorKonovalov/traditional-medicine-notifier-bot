@@ -2,7 +2,7 @@
  * 📚 Библиотека — the unified reference surface (Plan 009, ADR 009). One anchor
  * message, edited in place across screens:
  *
- *   hub → 🌿 Травы → (По традиции | По категории) → herb list → herb card
+ *   hub → 🌿 Травы → (Все травы | По категории) → herb list → herb card
  *       → 💡 Совет дня (in-anchor)
  *       → 🧪 Формулы (built but withheld — Phase 5, gated by `_formula-gate`)
  *
@@ -13,7 +13,7 @@
  * `_herb-card` module so every entry point is identical (render-time disclaimer,
  * ADR 006).
  *
- * Callback scope `lib:` — `lib:herbs`, `lib:bytrad`, `lib:bycat`, `lib:tr:<t>`,
+ * Callback scope `lib:` — `lib:herbs`, `lib:all`, `lib:bycat`,
  * `lib:cat:<id>`, `lib:catpg:<page>`, `lib:list:<page>`, `lib:herb:<id>`,
  * `lib:tips`, `lib:back`, `lib:home`. Each payload runs through
  * `assertCallbackData` and uses stable content ids (≤64 bytes).
@@ -21,7 +21,7 @@
 
 import { Markup, type Context, type Telegraf } from 'telegraf';
 
-import type { Combination, Herb, Tradition } from '../../content/types';
+import type { Combination, Herb } from '../../content/types';
 import type { BotDeps } from '../context';
 import { getUserId } from '../context';
 import { assertCallbackData, backRow, homeRow, pager } from '../keyboards';
@@ -57,7 +57,6 @@ const PAGE_SIZE = 8;
 type Screen =
   | 'hub'
   | 'herbs'
-  | 'pick-tradition'
   | 'pick-category'
   | 'list'
   | 'card'
@@ -70,16 +69,22 @@ type Screen =
   | 'formula-card';
 
 /**
- * Library drilldown state. `tradition` xor `category` xor `query` records how
- * the current herb list / results were reached (so `« Назад` from a card returns
- * to the right origin and a list returns to the right picker); `page` is the
- * active list/results/picker page; `herbId` is set while a herb card is open,
- * `formulaId` while a formula card is open (withheld branch, Phase 5).
+ * Library drilldown state. `category` xor `query` records how the current herb
+ * list / results were reached (so `« Назад` from a card returns to the right
+ * origin and a list returns to the right screen); a list reached with neither is
+ * the flat «Все травы» list of all visible herbs (ADR 013, Tibetan-only). `page`
+ * is the active list/results/picker page; `herbId` is set while a herb card is
+ * open, `formulaId` while a formula card is open.
  */
 interface LibraryState {
   readonly screen: Screen;
-  readonly tradition?: Tradition;
   readonly category?: string;
+  /**
+   * Marks a card whose origin is the flat «Все травы» list (no category/query),
+   * so `« Назад` returns there rather than to the hub — the latter being the
+   * fallback for a context-free card from the notification "Открыть" deep link.
+   */
+  readonly allList?: true;
   /** Normalized (lowercased) search query — set on the results/search screens. */
   readonly query?: string;
   readonly page: number;
@@ -156,15 +161,13 @@ function categoriesWithHerbs(deps: BotDeps): { id: string; nameRu: string; count
     .filter((c) => c.count > 0);
 }
 
-/** Herbs in the list the state selects (by category, else by tradition, else none). */
+/** Herbs in the list the state selects: by category, else the flat «Все травы»
+ *  list of every visible herb (ADR 013 — the tradition axis was removed). */
 function herbsFor(deps: BotDeps, state: LibraryState): readonly Herb[] {
   if (state.category !== undefined) {
     return deps.content.herbs.all.filter((h) => h.category === state.category);
   }
-  if (state.tradition !== undefined) {
-    return deps.content.herbs.all.filter((h) => h.tradition === state.tradition);
-  }
-  return [];
+  return deps.content.herbs.all;
 }
 
 // ─── per-screen views ─────────────────────────────────────────────────────────
@@ -192,19 +195,8 @@ function herbsMenuView(): View {
   return {
     text: messages.library.herbsTitle,
     keyboard: Markup.inlineKeyboard([
-      [Markup.button.callback(messages.library.byTradition, 'lib:bytrad')],
+      [Markup.button.callback(messages.library.allHerbs, 'lib:all')],
       [Markup.button.callback(messages.library.byCategory, 'lib:bycat')],
-      backRow('lib:back'),
-    ]),
-  };
-}
-
-function traditionPickView(): View {
-  return {
-    text: messages.library.pickTradition,
-    keyboard: Markup.inlineKeyboard([
-      [Markup.button.callback(messages.browse.chinese, 'lib:tr:chinese')],
-      [Markup.button.callback(messages.browse.tibetan, 'lib:tr:tibetan')],
       backRow('lib:back'),
     ]),
   };
@@ -462,8 +454,6 @@ function viewFor(
   switch (state.screen) {
     case 'herbs':
       return { ...herbsMenuView(), page: 0 };
-    case 'pick-tradition':
-      return { ...traditionPickView(), page: 0 };
     case 'pick-category':
       return categoryPickView(deps, state.page);
     case 'list':
@@ -503,20 +493,21 @@ export function backState(state: LibraryState): LibraryState {
       if (state.query !== undefined) {
         return { screen: 'results', query: state.query, page: state.page };
       }
-      if (state.tradition !== undefined || state.category !== undefined) {
-        return {
-          screen: 'list',
-          page: state.page,
-          ...(state.tradition !== undefined ? { tradition: state.tradition } : {}),
-          ...(state.category !== undefined ? { category: state.category } : {}),
-        };
+      if (state.category !== undefined) {
+        return { screen: 'list', page: state.page, category: state.category };
+      }
+      // A card from the flat «Все травы» list returns to that list; a context-free
+      // card (notification deep link) carries no origin marker and falls to hub.
+      if (state.allList === true) {
+        return { screen: 'list', page: state.page };
       }
       return { screen: 'hub', page: 0 };
     case 'list':
+      // The category list returns to the category picker; the flat «Все травы»
+      // list returns to the herbs sub-menu.
       return state.category !== undefined
         ? { screen: 'pick-category', page: 0 }
-        : { screen: 'pick-tradition', page: 0 };
-    case 'pick-tradition':
+        : { screen: 'herbs', page: 0 };
     case 'pick-category':
       return { screen: 'herbs', page: 0 };
     case 'results':
@@ -661,11 +652,11 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     await go(ctx, v, { screen: 'herbs', page: 0 });
   });
 
-  bot.action(/^lib:bytrad$/, async (ctx) => {
+  bot.action(/^lib:all$/, async (ctx) => {
     const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
     if (v === null) return;
     await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'pick-tradition', page: 0 });
+    await go(ctx, v, { screen: 'list', page: 0 });
   });
 
   bot.action(/^lib:bycat$/, async (ctx) => {
@@ -673,13 +664,6 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     if (v === null) return;
     await ctx.answerCbQuery();
     await go(ctx, v, { screen: 'pick-category', page: 0 });
-  });
-
-  bot.action(/^lib:tr:(chinese|tibetan)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'list', tradition: ctx.match[1] as Tradition, page: 0 });
   });
 
   bot.action(/^lib:cat:(.+)$/, async (ctx) => {
@@ -704,11 +688,10 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
     if (v === null) return;
     await ctx.answerCbQuery();
-    const { tradition, category } = v.session.state;
+    const { category } = v.session.state;
     await go(ctx, v, {
       screen: 'list',
       page: Number(ctx.match[1] ?? '0'),
-      ...(tradition !== undefined ? { tradition } : {}),
       ...(category !== undefined ? { category } : {}),
     });
   });
@@ -719,18 +702,18 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
     if (v === null) return;
     await ctx.answerCbQuery();
-    const { tradition, category, query, page } = v.session.state;
+    const { category, query, page } = v.session.state;
     await go(ctx, v, {
       screen: 'card',
       herbId: ctx.match[1] ?? '',
       page,
-      // Carry the origin so `« Назад` returns to the right screen (results vs list).
+      // Carry the origin so `« Назад` returns to the right screen: search results,
+      // a category list, else the flat «Все травы» list (the only remaining list).
       ...(query !== undefined
         ? { query }
-        : {
-            ...(tradition !== undefined ? { tradition } : {}),
-            ...(category !== undefined ? { category } : {}),
-          }),
+        : category !== undefined
+          ? { category }
+          : { allList: true }),
     });
   });
 

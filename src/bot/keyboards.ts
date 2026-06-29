@@ -88,7 +88,11 @@ export function pager(prefix: string, index: number, count: number): CallbackBut
   ];
 }
 
-/** Display label for a tradition. */
-export function tradition(value: Tradition): string {
-  return value === 'chinese' ? messages.browse.chinese : messages.browse.tibetan;
+/**
+ * Display label for a tradition. The user surface is Tibetan-only (ADR 013) —
+ * Chinese records are gated out at content load, so only `tibetan` is reachable
+ * here; the label stays a function so re-enabling Chinese needs no call-site change.
+ */
+export function tradition(_value: Tradition): string {
+  return messages.browse.tibetan;
 }

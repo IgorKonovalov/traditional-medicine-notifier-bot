@@ -31,10 +31,9 @@ describe('clampPage', () => {
 });
 
 describe('backState — library navigation never wraps or dead-ends', () => {
-  it('card reached via a tradition list returns to that list with its page', () => {
-    expect(backState({ screen: 'card', tradition: 'tibetan', page: 2, herbId: 'h' })).toEqual({
+  it('card reached via the flat «Все травы» list returns to that list with its page', () => {
+    expect(backState({ screen: 'card', allList: true, page: 2, herbId: 'h' })).toEqual({
       screen: 'list',
-      tradition: 'tibetan',
       page: 2,
     });
   });
@@ -49,11 +48,8 @@ describe('backState — library navigation never wraps or dead-ends', () => {
     expect(backState({ screen: 'card', page: 0, herbId: 'h' })).toEqual({ screen: 'hub', page: 0 });
   });
 
-  it('a tradition list returns to the tradition picker', () => {
-    expect(backState({ screen: 'list', tradition: 'chinese', page: 3 })).toEqual({
-      screen: 'pick-tradition',
-      page: 0,
-    });
+  it('the flat «Все травы» list returns to the herbs sub-menu', () => {
+    expect(backState({ screen: 'list', page: 3 })).toEqual({ screen: 'herbs', page: 0 });
   });
 
   it('a category list returns to the category picker', () => {
@@ -63,8 +59,7 @@ describe('backState — library navigation never wraps or dead-ends', () => {
     });
   });
 
-  it('either picker returns to the herbs sub-menu', () => {
-    expect(backState({ screen: 'pick-tradition', page: 0 })).toEqual({ screen: 'herbs', page: 0 });
+  it('the category picker returns to the herbs sub-menu', () => {
     expect(backState({ screen: 'pick-category', page: 0 })).toEqual({ screen: 'herbs', page: 0 });
   });
 

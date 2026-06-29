@@ -228,6 +228,39 @@ describe('loadContent — combinations', () => {
   });
 });
 
+const CHINESE_HERB = `---
+id: tcm-ginger
+tradition: chinese
+category: digestive-herbs
+name_ru: Имбирь
+---
+
+Описание травы.
+`;
+
+describe('loadContent — tradition visibility gate (ADR 013)', () => {
+  it('drops hidden-tradition herbs (Chinese) and keeps visible ones (Tibetan) by default', () => {
+    const root = writeCorpus({
+      categories: { 'digestive-herbs': CATEGORY },
+      herbs: { 'tib-haritaki': HERB, 'tcm-ginger': CHINESE_HERB },
+    });
+
+    const content = loadContent(root);
+    expect(content.herbs.all.map((h) => h.id)).toEqual(['tib-haritaki']);
+    expect(content.herbs.byId.has('tcm-ginger')).toBe(false);
+  });
+
+  it('keeps the full corpus when includeHiddenTraditions is set (the index builder path)', () => {
+    const root = writeCorpus({
+      categories: { 'digestive-herbs': CATEGORY },
+      herbs: { 'tib-haritaki': HERB, 'tcm-ginger': CHINESE_HERB },
+    });
+
+    const content = loadContent(root, { includeHiddenTraditions: true });
+    expect(content.herbs.all.map((h) => h.id).sort()).toEqual(['tcm-ginger', 'tib-haritaki']);
+  });
+});
+
 describe('loadContent — deterministic traversal order', () => {
   it('returns docs in code-point filename order regardless of write order', () => {
     // Files are written in deliberately non-alphabetical order. The loader must
