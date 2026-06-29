@@ -1,7 +1,7 @@
 # ADR 013 — User-facing surface is Tibetan-only (Chinese deferred behind a visibility gate)
 
 **Date:** 2026-06-29
-**Status:** Proposed
+**Status:** Accepted (2026-06-29, Plan 015)
 
 ## Context
 
@@ -58,8 +58,11 @@ the index, and the `Tradition` type.**
 3. **Files and index untouched.** `content/herbs/chinese/*.md` and their entries
    in the committed `content/.index/herbs.json` **stay**. The index is a
    full-corpus build artifact for tooling/CI; runtime *visibility* is a separate
-   concern. `content:index:check` keeps passing (files and index still agree).
-   Re-enabling Chinese = add `'chinese'` back to `VISIBLE_TRADITIONS`.
+   concern. Because the index builder shares `loadContent` (which now applies the
+   gate), it loads with `loadContent(dir, { includeHiddenTraditions: true })` —
+   opting **out** of the gate so the committed index keeps every authored record.
+   `content:index:check` keeps passing (files and index still agree). Re-enabling
+   Chinese = add `'chinese'` back to `VISIBLE_TRADITIONS`.
 
 4. **Navigation collapses to one tradition.** With a single visible tradition the
    "По традиции" axis is meaningless. The Herbs sub-menu drops the tradition

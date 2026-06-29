@@ -4,6 +4,19 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.16.0 — 2026-06-29
+
+- Make the user-facing surface **Tibetan-only** (ADR 013, Plan 015). A single
+  content-load visibility gate (`src/content/visibility.ts` → `VISIBLE_TRADITIONS`)
+  drops Chinese (TCM) records before buckets/cross-links/validation, so no
+  list, category, search, card, or cross-link can surface them — by construction.
+- Replace the Herbs «По традиции» picker with a flat **«Все травы»** list; keep
+  «По категории». `/start` and `/help` now present the bot as a Tibetan-medicine
+  reference.
+- Chinese herb files and their committed index entries are **kept, not deleted**
+  (the index builder opts out of the gate via `includeHiddenTraditions`); the bot
+  is Tibetan-only by deliberate choice and re-enabling Chinese is a one-line flip.
+
 ## 0.15.1 — 2026-06-29
 
 - Render the formula card's traditional-use / dosing as plain bold-labelled
