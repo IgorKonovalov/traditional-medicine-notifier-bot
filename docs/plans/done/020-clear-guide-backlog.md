@@ -1,9 +1,17 @@
 # Plan 020 — Clear the guide backlog (bulk-author remaining waves)
 
-**Status:** Completed — 2026-06-29 (awaiting owner review before move to `done/`)
+**Status:** Completed — 2026-06-29 (reviewed via architect close ritual)
 **Created:** 2026-06-29
 **Completed:** 2026-06-29 — all 5 waves shipped (27 guides), v0.23.0
 **Bump on close:** minor (single close after all waves)
+
+> **Close note (architect review).** Owner flagged the first-pass voice as too
+> soft/vague. A voice-tightening pass followed (commit `61bc163`): cut the
+> boilerplate second-intro disclaimer across all 27 guides (render-time
+> disclaimer already covers framing), firmed soft headings, and converted
+> "За этим — взгляд…" connective filler to direct statements — substance/quotes
+> unchanged. CHANGELOG + architecture.md guide count also brought in line with
+> the architect ritual (commit `1136986`).
 
 ## Context
 
