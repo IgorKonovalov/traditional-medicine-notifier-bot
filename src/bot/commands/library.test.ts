@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { Telegraf, type Context } from 'telegraf';
 
-import type { Combination, Herb, LoadedContent } from '../../content/types';
+import type { Combination, Food, Herb, LoadedContent } from '../../content/types';
 import { buildCrossLinks } from '../../content/cross-links';
 import { ensureUser } from '../../db/repositories/user.repo';
 import { setupTestDb, teardownTestDb } from '../../db/test-helper';
@@ -13,6 +13,8 @@ import { FORMULA_BRANCH_ENABLED } from './_formula-gate';
 import {
   backState,
   clampPage,
+  foodGroupsView,
+  foodListView,
   formulaListView,
   formulaMatches,
   formulaResultsView,
@@ -245,6 +247,146 @@ describe('combinations surface tracks the ADR 006 doctor-gate', () => {
 describe('library hub — guides branch (Plan 006)', () => {
   it('the hub always shows the 📖 Статьи branch', () => {
     expect(buttonLabels(hubView())).toContain('📖 Статьи');
+  });
+});
+
+// ─── foods browse + filter (Plan 013, ADR 012) ────────────────────────────────
+
+function food(
+  id: string,
+  group: Food['group'],
+  warmth: Food['warmth'],
+  constitutions: Food['constitutions'],
+): Food {
+  return {
+    id,
+    tradition: 'tibetan',
+    nameRu: id,
+    group,
+    warmth,
+    tastes: ['сладкий'],
+    constitutions,
+    effect: 'описание',
+    tags: [],
+  };
+}
+
+const N = { wind: 'neutral', bile: 'neutral', phlegm: 'neutral' } as const;
+
+/** Deps with a small food catalogue spanning groups, warmth bands, and effects. */
+function foodDeps(): BotDeps {
+  const foods = [
+    food('food-banana', 'fruit', 'прохладная', { ...N, wind: 'pacifies' }),
+    food('food-grape', 'fruit', 'прохладная', N),
+    food('food-egg', 'egg', 'горячая', { ...N, phlegm: 'pacifies' }),
+    food('food-garlic', 'green-vegetable', 'тёплая', { ...N, wind: 'pacifies' }),
+    food('food-watermelon', 'berry', 'холодная', { ...N, wind: 'aggravates', bile: 'pacifies' }),
+  ];
+  const content = {
+    herbs: { all: [], byId: new Map() },
+    combinations: { all: [], byId: new Map() },
+    categories: { all: [], byId: new Map() },
+    tips: { all: [], byId: new Map() },
+    guides: { all: [], byId: new Map() },
+    foods: { all: foods, byId: new Map(foods.map((f) => [f.id, f])) },
+  } as unknown as LoadedContent;
+  return { content, timezone: 'UTC', botUsername: 'b', adminTelegramIds: new Set() };
+}
+
+describe('library hub — foods branch (Plan 013)', () => {
+  it('the hub always shows the 🥗 Продукты branch', () => {
+    expect(buttonLabels(hubView())).toContain('🥗 Продукты');
+    expect(buttonData(hubView())).toContain('lib:foods');
+  });
+});
+
+describe('foodGroupsView', () => {
+  it('lists only non-empty groups in catalogue order, with a filter entry on top', () => {
+    const view = foodGroupsView(foodDeps(), 0);
+    const data = buttonData(view);
+    // Filter entry is the first row.
+    expect(data[0]).toBe('lib:ffil');
+    // egg, green-vegetable, fruit, berry are present (catalogue order); grain absent.
+    expect(data).toEqual([
+      'lib:ffil',
+      'lib:fg:egg',
+      'lib:fg:green-vegetable',
+      'lib:fg:fruit',
+      'lib:fg:berry',
+      'lib:back',
+      'lib:home',
+    ]);
+  });
+
+  it('a group button is labelled with its Russian name and food count', () => {
+    expect(buttonLabels(foodGroupsView(foodDeps(), 0))).toContain('Фрукты (2)');
+  });
+});
+
+describe('foodListView — constitution filter lists only foods that pacify the начало', () => {
+  it('the Ветер filter lists exactly the wind-pacifying foods', () => {
+    const view = foodListView(foodDeps(), { screen: 'food-list', foodCon: 'wind', page: 0 });
+    const data = buttonData(view);
+    expect(data).toContain('lib:food:food-banana');
+    expect(data).toContain('lib:food:food-garlic');
+    // watermelon aggravates wind; grape is neutral — neither may appear.
+    expect(data).not.toContain('lib:food:food-watermelon');
+    expect(data).not.toContain('lib:food:food-grape');
+    expect(view.text).toBe(messages.foods.filterWind);
+  });
+});
+
+describe('foodListView — warmth filter bands', () => {
+  it('the прохладные band lists прохладная and холодная foods, never тёплая/горячая', () => {
+    const view = foodListView(foodDeps(), { screen: 'food-list', foodWarm: 'cool', page: 0 });
+    const data = buttonData(view);
+    expect(data).toContain('lib:food:food-banana'); // прохладная
+    expect(data).toContain('lib:food:food-watermelon'); // холодная
+    expect(data).not.toContain('lib:food:food-egg'); // горячая
+    expect(data).not.toContain('lib:food:food-garlic'); // тёплая
+    expect(view.text).toBe(messages.foods.coolTitle);
+  });
+
+  it('the тёплые band lists горячая and тёплая foods only', () => {
+    const data = buttonData(
+      foodListView(foodDeps(), { screen: 'food-list', foodWarm: 'warm', page: 0 }),
+    );
+    expect(data).toContain('lib:food:food-egg');
+    expect(data).toContain('lib:food:food-garlic');
+    expect(data).not.toContain('lib:food:food-banana');
+  });
+});
+
+describe('backState — foods navigation never wraps or dead-ends', () => {
+  it('a food card returns to its group list, restoring the group and page', () => {
+    expect(
+      backState({ screen: 'food-card', foodGroup: 'fruit', page: 1, foodId: 'food-banana' }),
+    ).toEqual({ screen: 'food-list', foodGroup: 'fruit', page: 1 });
+  });
+
+  it('a food card from a constitution filter returns to that filtered list', () => {
+    expect(
+      backState({ screen: 'food-card', foodCon: 'wind', page: 0, foodId: 'food-banana' }),
+    ).toEqual({ screen: 'food-list', foodCon: 'wind', page: 0 });
+  });
+
+  it('a group list returns to the groups screen; a filter list to the filter screen', () => {
+    expect(backState({ screen: 'food-list', foodGroup: 'fruit', page: 2 })).toEqual({
+      screen: 'food-groups',
+      page: 0,
+    });
+    expect(backState({ screen: 'food-list', foodWarm: 'cool', page: 0 })).toEqual({
+      screen: 'food-filter',
+      page: 0,
+    });
+  });
+
+  it('the filter screen and the groups screen return toward the hub', () => {
+    expect(backState({ screen: 'food-filter', page: 0 })).toEqual({
+      screen: 'food-groups',
+      page: 0,
+    });
+    expect(backState({ screen: 'food-groups', page: 0 })).toEqual({ screen: 'hub', page: 0 });
   });
 });
 

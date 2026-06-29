@@ -22,7 +22,14 @@
 
 import { Markup, type Context, type Telegraf } from 'telegraf';
 
-import type { Combination, Herb } from '../../content/types';
+import {
+  type Combination,
+  type Food,
+  type FoodGroup,
+  FOOD_GROUPS,
+  type Herb,
+  type Warmth,
+} from '../../content/types';
 import type { BotDeps } from '../context';
 import { getUserId } from '../context';
 import { assertCallbackData, backRow, homeRow, pager } from '../keyboards';
@@ -69,7 +76,16 @@ type Screen =
   | 'formula-list'
   | 'formula-search'
   | 'formula-results'
-  | 'formula-card';
+  | 'formula-card'
+  | 'food-groups'
+  | 'food-filter'
+  | 'food-list'
+  | 'food-card';
+
+/** Which constitution a food filter pacifies (the canonical Ветер/Желчь/Слизь key). */
+type FoodConstitution = 'wind' | 'bile' | 'phlegm';
+/** Warmth band the warmth filter selects (тёплые vs прохладные). */
+type FoodWarmthBand = 'warm' | 'cool';
 
 /**
  * Library drilldown state. `category` xor `query` records how the current herb
@@ -104,6 +120,18 @@ interface LibraryState {
   readonly guideId?: string;
   /** Active page index within the open guide (guide-section pager). */
   readonly section?: number;
+  /**
+   * How the current `food-list` was reached — exactly one of these is set, the
+   * same xor that herb lists use for `category`/`query`: a group browse
+   * (`foodGroup`), a constitution filter (`foodCon`, foods that pacify it), or a
+   * warmth-band filter (`foodWarm`). They also mark a `food-card`'s origin so
+   * `« Назад` returns to the right list/filter.
+   */
+  readonly foodGroup?: FoodGroup;
+  readonly foodCon?: FoodConstitution;
+  readonly foodWarm?: FoodWarmthBand;
+  /** Open food id (food-card screen). */
+  readonly foodId?: string;
 }
 
 interface View {
@@ -191,6 +219,7 @@ export function hubView(): View {
     [Markup.button.callback(messages.library.search, 'lib:search')],
     [Markup.button.callback(messages.library.tips, 'lib:tips')],
     [Markup.button.callback(messages.library.guides, 'lib:guides')],
+    [Markup.button.callback(messages.library.foods, 'lib:foods')],
   ];
   if (FORMULA_BRANCH_ENABLED) {
     rows.push([Markup.button.callback(messages.library.formulas, 'lib:formulas')]);
@@ -496,6 +525,138 @@ function guideSectionView(
   };
 }
 
+// ─── foods (🥗 Продукты — Plan 013, ADR 012) ──────────────────────────────────
+
+/** Which warmth levels each band collects (нейтральная is in neither). */
+const FOOD_WARMTH_BANDS: Record<FoodWarmthBand, readonly Warmth[]> = {
+  warm: ['горячая', 'тёплая'],
+  cool: ['прохладная', 'холодная'],
+};
+
+/** Map the compact constitution-filter slug (w|b|p) to its canonical key. */
+const FOOD_CON_BY_SLUG: Record<string, FoodConstitution> = {
+  w: 'wind',
+  b: 'bile',
+  p: 'phlegm',
+};
+
+/** The food groups that hold at least one food, in catalogue order, with counts. */
+function foodGroupsPresent(deps: BotDeps): { group: FoodGroup; count: number }[] {
+  return FOOD_GROUPS.map((group) => ({
+    group,
+    count: deps.content.foods.all.filter((f) => f.group === group).length,
+  })).filter((g) => g.count > 0);
+}
+
+/** Foods the current `food-list` state selects — by group xor constitution xor
+ *  warmth band, else (no facet) the whole catalogue. */
+function foodsFor(deps: BotDeps, state: LibraryState): readonly Food[] {
+  const all = deps.content.foods.all;
+  if (state.foodGroup !== undefined) return all.filter((f) => f.group === state.foodGroup);
+  if (state.foodCon !== undefined) {
+    const con = state.foodCon;
+    return all.filter((f) => f.constitutions[con] === 'pacifies');
+  }
+  if (state.foodWarm !== undefined) {
+    const band = FOOD_WARMTH_BANDS[state.foodWarm];
+    return all.filter((f) => band.includes(f.warmth));
+  }
+  return all;
+}
+
+/** Title for the active `food-list` (group name, constitution band, or warmth band). */
+function foodListTitle(state: LibraryState): string {
+  if (state.foodGroup !== undefined) return messages.foods.groupTitle(state.foodGroup);
+  if (state.foodCon === 'wind') return messages.foods.filterWind;
+  if (state.foodCon === 'bile') return messages.foods.filterBile;
+  if (state.foodCon === 'phlegm') return messages.foods.filterPhlegm;
+  if (state.foodWarm === 'warm') return messages.foods.warmTitle;
+  if (state.foodWarm === 'cool') return messages.foods.coolTitle;
+  return messages.library.foods;
+}
+
+/** The 🥗 Продукты root: a filter entry then one button per non-empty group. */
+export function foodGroupsView(deps: BotDeps, page: number): View & { readonly page: number } {
+  const groups = foodGroupsPresent(deps);
+  if (groups.length === 0) {
+    return {
+      text: messages.foods.emptyGroups,
+      keyboard: Markup.inlineKeyboard([backRow('lib:back'), homeRow('lib:home')]),
+      page: 0,
+    };
+  }
+  const { page: safePage, pageCount } = clampPage(page, groups.length);
+  const slice = groups.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
+  // The filter entry sits as the first row, above the groups, on every page.
+  const filterRow: CallbackButton[] = [
+    Markup.button.callback(messages.foods.filterEntry, 'lib:ffil'),
+  ];
+  const rows = slice.map((g) => [
+    Markup.button.callback(
+      messages.foods.groupButton(g.group, g.count),
+      assertCallbackData(`lib:fg:${g.group}`),
+    ),
+  ]);
+  const nav: CallbackButton[][] = [];
+  if (pageCount > 1) nav.push(pager('lib:fglist', safePage, pageCount));
+  nav.push(backRow('lib:back'), homeRow('lib:home'));
+  return {
+    text: messages.foods.groupsTitle,
+    keyboard: Markup.inlineKeyboard([filterRow, ...rows, ...nav]),
+    page: safePage,
+  };
+}
+
+/** The filter screen: pick a начало to pacify, or a warmth band. */
+function foodFilterView(): View {
+  return {
+    text: messages.foods.filterTitle,
+    keyboard: Markup.inlineKeyboard([
+      [Markup.button.callback(messages.foods.filterWind, 'lib:fcon:w')],
+      [Markup.button.callback(messages.foods.filterBile, 'lib:fcon:b')],
+      [Markup.button.callback(messages.foods.filterPhlegm, 'lib:fcon:p')],
+      [Markup.button.callback(messages.foods.filterWarm, 'lib:fwarm:warm')],
+      [Markup.button.callback(messages.foods.filterCool, 'lib:fwarm:cool')],
+      backRow('lib:back'),
+      homeRow('lib:home'),
+    ]),
+  };
+}
+
+export function foodListView(deps: BotDeps, state: LibraryState): View & { readonly page: number } {
+  const foods = foodsFor(deps, state);
+  if (foods.length === 0) {
+    return {
+      text: messages.foods.emptyList,
+      keyboard: Markup.inlineKeyboard([backRow('lib:back'), homeRow('lib:home')]),
+      page: 0,
+    };
+  }
+  const { page: safePage, pageCount } = clampPage(state.page, foods.length);
+  const slice = foods.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
+  const rows = slice.map((f) => [
+    Markup.button.callback(f.nameRu, assertCallbackData(`lib:food:${f.id}`)),
+  ]);
+  const nav: CallbackButton[][] = [];
+  if (pageCount > 1) nav.push(pager('lib:flpg', safePage, pageCount));
+  nav.push(backRow('lib:back'), homeRow('lib:home'));
+  return {
+    text: foodListTitle(state),
+    keyboard: Markup.inlineKeyboard([...rows, ...nav]),
+    page: safePage,
+  };
+}
+
+/** Food card, or null when the id is unknown (stale tap / bad deep link). */
+function foodCardView(deps: BotDeps, foodId: string): View | null {
+  const food = deps.content.foods.byId.get(foodId);
+  if (food === undefined) return null;
+  return {
+    text: messages.foods.card(food),
+    keyboard: Markup.inlineKeyboard([backRow('lib:back'), homeRow('lib:home')]),
+  };
+}
+
 /** Render whichever screen `state` names, clamping page where it paginates. */
 function viewFor(
   deps: BotDeps,
@@ -530,6 +691,16 @@ function viewFor(
     }
     case 'card': {
       const card = cardView(deps, state.herbId ?? '');
+      return card === null ? { ...hubView(), page: 0 } : { ...card, page: state.page };
+    }
+    case 'food-groups':
+      return foodGroupsView(deps, state.page);
+    case 'food-filter':
+      return { ...foodFilterView(), page: 0 };
+    case 'food-list':
+      return foodListView(deps, state);
+    case 'food-card': {
+      const card = foodCardView(deps, state.foodId ?? '');
       return card === null ? { ...hubView(), page: 0 } : { ...card, page: state.page };
     }
     case 'hub':
@@ -583,8 +754,30 @@ export function backState(state: LibraryState): LibraryState {
       return { screen: 'formula-search', page: 0 };
     case 'formula-search':
       return { screen: 'formula-list', page: 0 };
+    case 'food-card':
+      // Back to the originating list, restoring its facet (group xor constitution
+      // xor warmth) and page so the list reappears exactly as it was left.
+      return {
+        screen: 'food-list',
+        page: state.page,
+        ...(state.foodGroup !== undefined
+          ? { foodGroup: state.foodGroup }
+          : state.foodCon !== undefined
+            ? { foodCon: state.foodCon }
+            : state.foodWarm !== undefined
+              ? { foodWarm: state.foodWarm }
+              : {}),
+      };
+    case 'food-list':
+      // A group list returns to the groups screen; a filter list to the filter screen.
+      return state.foodGroup !== undefined
+        ? { screen: 'food-groups', page: 0 }
+        : { screen: 'food-filter', page: 0 };
+    case 'food-filter':
+      return { screen: 'food-groups', page: 0 };
     case 'formula-list':
     case 'guide-list':
+    case 'food-groups':
     case 'herbs':
     case 'tips':
     case 'search':
@@ -658,6 +851,19 @@ export async function libraryGuidesEntry(ctx: Context, deps: BotDeps): Promise<v
   persist(userId, anchor, { screen: 'guide-list', page: out.page });
 }
 
+/** Open the 🥗 Продукты groups screen as a fresh library session. Menu + `/foods`. */
+export async function libraryFoodsEntry(ctx: Context, deps: BotDeps): Promise<void> {
+  const userId = getUserId(ctx);
+  if (userId === undefined) {
+    await ctx.reply(messages.common.notRegistered);
+    return;
+  }
+  deleteSession(userId, 'library');
+  const out = viewFor(deps, { screen: 'food-groups', page: 0 });
+  const anchor = await sendView(ctx, out);
+  persist(userId, anchor, { screen: 'food-groups', page: out.page });
+}
+
 /**
  * Open a herb card as a fresh library session — the notification "Открыть" CTA.
  * Back lands on the hub (the card carries no list context).
@@ -703,6 +909,7 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
   bot.command('library', libraryEntry);
   bot.command('browse', libraryHerbsEntry);
   bot.command('guides', (ctx) => libraryGuidesEntry(ctx, deps));
+  bot.command('foods', (ctx) => libraryFoodsEntry(ctx, deps));
   bot.command('search', async (ctx) => {
     const raw = ctx.message.text.replace(/^\/search(@\w+)?\s*/i, '');
     await librarySearchEntry(ctx, deps, raw);
@@ -845,6 +1052,100 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
   });
 
   bot.action(/^lib:gsec:noop$/, (ctx) => ctx.answerCbQuery());
+
+  // 🥗 Продукты — the foods browse + filter branch (Plan 013, ADR 012). Always
+  // registered; reads from the in-memory `foods` bucket like every other branch.
+  bot.action(/^lib:foods$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    await go(ctx, v, { screen: 'food-groups', page: 0 });
+  });
+
+  bot.action(/^lib:fglist:(\d+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    await go(ctx, v, { screen: 'food-groups', page: Number(ctx.match[1] ?? '0') });
+  });
+
+  bot.action(/^lib:fglist:noop$/, (ctx) => ctx.answerCbQuery());
+
+  bot.action(/^lib:fg:(.+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const group = ctx.match[1] ?? '';
+    if (!FOOD_GROUPS.includes(group as FoodGroup)) return;
+    await go(ctx, v, { screen: 'food-list', foodGroup: group as FoodGroup, page: 0 });
+  });
+
+  bot.action(/^lib:ffil$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    await go(ctx, v, { screen: 'food-filter', page: 0 });
+  });
+
+  bot.action(/^lib:fcon:(w|b|p)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const foodCon = FOOD_CON_BY_SLUG[ctx.match[1] ?? ''];
+    if (foodCon === undefined) return;
+    await go(ctx, v, { screen: 'food-list', foodCon, page: 0 });
+  });
+
+  bot.action(/^lib:fwarm:(warm|cool)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const foodWarm = ctx.match[1] === 'warm' ? 'warm' : 'cool';
+    await go(ctx, v, { screen: 'food-list', foodWarm, page: 0 });
+  });
+
+  bot.action(/^lib:flpg:(\d+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    // Carry whichever facet selected this list so the page stays on the same set.
+    const { foodGroup, foodCon, foodWarm } = v.session.state;
+    await go(ctx, v, {
+      screen: 'food-list',
+      page: Number(ctx.match[1] ?? '0'),
+      ...(foodGroup !== undefined
+        ? { foodGroup }
+        : foodCon !== undefined
+          ? { foodCon }
+          : foodWarm !== undefined
+            ? { foodWarm }
+            : {}),
+    });
+  });
+
+  bot.action(/^lib:flpg:noop$/, (ctx) => ctx.answerCbQuery());
+
+  bot.action(/^lib:food:(.+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const foodId = ctx.match[1] ?? '';
+    if (!deps.content.foods.byId.has(foodId)) return;
+    // Carry the originating facet + page so `« Назад` returns to the right list.
+    const { foodGroup, foodCon, foodWarm, page } = v.session.state;
+    await go(ctx, v, {
+      screen: 'food-card',
+      foodId,
+      page,
+      ...(foodGroup !== undefined
+        ? { foodGroup }
+        : foodCon !== undefined
+          ? { foodCon }
+          : foodWarm !== undefined
+            ? { foodWarm }
+            : {}),
+    });
+  });
 
   // 🧪 Составы (formulas) — built but registered ONLY when the doctor-gate is
   // lifted (ADR 006, `_formula-gate`). While withheld, these handlers (including

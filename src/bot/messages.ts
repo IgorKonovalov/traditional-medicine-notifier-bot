@@ -8,7 +8,7 @@
  * the contract to keep.
  */
 
-import type { TipSource } from '../content/types';
+import type { Effect, Food, FoodGroup, TipSource } from '../content/types';
 import { changelogMessages, versionAnnouncements } from './messages/version-announcements';
 
 /** The informational disclaimer. Surfaced in /start, /help, and herb pages. */
@@ -22,6 +22,54 @@ const formatTipSource = (source: TipSource): string => {
     (part): part is string => part !== undefined,
   );
   return `Источник: ${parts.join(', ')}`;
+};
+
+/** Russian display names for the food groups (ADR 012), in catalogue order. */
+const FOOD_GROUP_NAMES: Record<FoodGroup, string> = {
+  grain: 'Зерновые',
+  legume: 'Бобовые',
+  oil: 'Масла',
+  meat: 'Мясо',
+  egg: 'Яйца',
+  dairy: 'Молочное',
+  'root-vegetable': 'Корнеплоды',
+  'green-vegetable': 'Зелень и овощи',
+  fruit: 'Фрукты',
+  berry: 'Ягоды',
+};
+
+/** How a per-начало effect reads on a food card. */
+const FOOD_EFFECT_LABELS: Record<Effect, string> = {
+  pacifies: 'успокаивает',
+  neutral: 'нейтрально',
+  aggravates: 'возбуждает',
+};
+
+/**
+ * Builds the plain-text food card (ADR 002): warmth (+ heaviness), tastes, the
+ * three начала with their effect — glossed Желчь (Огонь) / Слизь (Земля-Вода)
+ * once — the descriptive effect prose, cautions, source, and the render-time
+ * disclaimer (ADR 006). Food properties, never a prescription.
+ */
+const formatFoodCard = (food: Food): string => {
+  const facets: string[] = [`🥗 ${food.nameRu}`, ''];
+  facets.push(
+    `Природа: ${food.heaviness !== undefined ? `${food.warmth}, ${food.heaviness}` : food.warmth}`,
+  );
+  if (food.tastes.length > 0) facets.push(`Вкус: ${food.tastes.join(', ')}`);
+  facets.push(
+    'Влияние на начала:',
+    `• Ветер — ${FOOD_EFFECT_LABELS[food.constitutions.wind]}`,
+    `• Желчь (Огонь) — ${FOOD_EFFECT_LABELS[food.constitutions.bile]}`,
+    `• Слизь (Земля-Вода) — ${FOOD_EFFECT_LABELS[food.constitutions.phlegm]}`,
+  );
+  const parts = [facets.join('\n'), food.effect];
+  if (food.cautions !== undefined && food.cautions.length > 0) {
+    parts.push(['Предостережения:', ...food.cautions.map((c) => `• ${c}`)].join('\n'));
+  }
+  if (food.source !== undefined) parts.push(formatTipSource(food.source));
+  parts.push(disclaimer);
+  return parts.join('\n\n');
 };
 
 export const messages = {
@@ -88,6 +136,7 @@ export const messages = {
       '• /browse — список трав: все или по категориям\n' +
       '• /search — поиск травы по названию\n' +
       '• /guides — статьи и руководства\n' +
+      '• /foods — продукты: природа, вкус и для кого они подходят\n' +
       '• /tips — совет дня\n' +
       '• /reminders — ваши напоминания (создать, посмотреть, отключить)\n' +
       '• /settings — настройки\n' +
@@ -136,6 +185,7 @@ export const messages = {
     tips: '💡 Совет дня',
     search: '🔎 Поиск',
     formulas: '🧪 Составы',
+    foods: '🥗 Продукты',
     // 🌿 Травы branch
     herbsTitle: 'Травы — выберите способ просмотра.',
     allHerbs: 'Все травы',
@@ -156,6 +206,36 @@ export const messages = {
     formulasEmpty: 'Пока нет составов.',
     /** 🔎 button at the top of the formula list — opens the formula-only search. */
     formulasSearch: '🔎 Поиск по составам',
+  },
+
+  /**
+   * 🥗 Продукты — the foods browse + filter branch (Plan 013, ADR 012). Groups
+   * are listed with counts; the filter screen narrows by which начало a food
+   * успокаивает or by its warmth band. The card itself is built by `card`
+   * (`formatFoodCard`), which appends the render-time disclaimer (ADR 006).
+   */
+  foods: {
+    groupsTitle: 'Продукты — выберите раздел или подберите по свойствам.',
+    /** Top-of-list button on the groups screen, opening the filter screen. */
+    filterEntry: '🔍 Подобрать по свойствам',
+    filterTitle: 'Выберите начало, которое нужно успокоить, или природу продукта.',
+    emptyGroups: 'Пока нет продуктов.',
+    emptyList: 'Подходящих продуктов не найдено.',
+    /** Group button: Russian group name + how many foods it holds. */
+    groupButton: (group: FoodGroup, count: number): string =>
+      `${FOOD_GROUP_NAMES[group]} (${count})`,
+    /** Title of a single group's food list. */
+    groupTitle: (group: FoodGroup): string => FOOD_GROUP_NAMES[group],
+    // Filter buttons double as the resulting list titles for the constitution bands.
+    filterWind: 'Успокаивают Ветер',
+    filterBile: 'Успокаивают Желчь (Огонь)',
+    filterPhlegm: 'Успокаивают Слизь (Земля-Вода)',
+    filterWarm: 'Тёплые',
+    filterCool: 'Прохладные',
+    warmTitle: 'Тёплые продукты',
+    coolTitle: 'Прохладные продукты',
+    /** Plain-text food card (ADR 002) with the render-time disclaimer (ADR 006). */
+    card: formatFoodCard,
   },
 
   /**
