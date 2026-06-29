@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.23.0 — 2026-06-29
+
+- Cleared the long-form guide backlog (Plan 020): 27 new Tibetan «Статьи»
+  across foundations, disease taxonomy, nutrition, lifestyle/conduct, and
+  elderly care — 35 guides total. Pure content; sourced to the Чжуд-ши Тантра
+  объяснений and the «Наука о здоровье» (Ринчен Тензин) book, descriptive
+  framing throughout (the two ⚠️ rows per nutrition/lifestyle wave kept
+  diet/conduct only, all medical/dosing material dropped).
+
 ## 0.22.0 — 2026-06-29
 
 - The on-demand tip surfaces (💡 Советы menu button, `/tips`, and the library
