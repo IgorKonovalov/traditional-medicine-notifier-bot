@@ -33,6 +33,7 @@ function main(): void {
     'categories.json': index.categories,
     'tips.json': index.tips,
     'guides.json': index.guides,
+    'foods.json': index.foods,
   };
 
   if (check) {
@@ -48,7 +49,7 @@ function main(): void {
     }
     if (drift) process.exit(1);
     console.log(
-      `content index OK (herbs ${index.counts.herbs}, combinations ${index.counts.combinations}, categories ${index.counts.categories}, tips ${index.counts.tips}, guides ${index.counts.guides})`,
+      `content index OK (herbs ${index.counts.herbs}, combinations ${index.counts.combinations}, categories ${index.counts.categories}, tips ${index.counts.tips}, guides ${index.counts.guides}, foods ${index.counts.foods})`,
     );
     return;
   }
@@ -58,7 +59,7 @@ function main(): void {
     writeFileSync(join(INDEX_DIR, name), serialize(value));
   }
   console.log(
-    `content index written (herbs ${index.counts.herbs}, combinations ${index.counts.combinations}, categories ${index.counts.categories}, tips ${index.counts.tips}, guides ${index.counts.guides})`,
+    `content index written (herbs ${index.counts.herbs}, combinations ${index.counts.combinations}, categories ${index.counts.categories}, tips ${index.counts.tips}, guides ${index.counts.guides}, foods ${index.counts.foods})`,
   );
 }
 

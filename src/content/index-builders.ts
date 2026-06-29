@@ -5,7 +5,7 @@
  * for fast lookups and corpus-count questions without re-walking markdown.
  */
 
-import type { Guide, Herb, LoadedContent, Tip } from './types';
+import type { Food, Guide, Herb, LoadedContent, Tip } from './types';
 
 export interface HerbIndexEntry {
   readonly id: string;
@@ -54,6 +54,21 @@ export interface GuideIndexEntry {
   readonly source?: Guide['source'];
 }
 
+/**
+ * Projected food facets (ADR 012) — enough for the browse list, group counts,
+ * and the constitution/warmth filters without re-walking markdown. `effect`
+ * prose and `body` stay out of the index, like every other type's body.
+ */
+export interface FoodIndexEntry {
+  readonly id: string;
+  readonly tradition: Food['tradition'];
+  readonly nameRu: string;
+  readonly group: Food['group'];
+  readonly warmth: Food['warmth'];
+  readonly constitutions: Food['constitutions'];
+  readonly tags: readonly string[];
+}
+
 export interface ContentIndex {
   readonly counts: {
     herbs: number;
@@ -61,12 +76,14 @@ export interface ContentIndex {
     categories: number;
     tips: number;
     guides: number;
+    foods: number;
   };
   readonly herbs: readonly HerbIndexEntry[];
   readonly combinations: readonly CombinationIndexEntry[];
   readonly categories: readonly CategoryIndexEntry[];
   readonly tips: readonly TipIndexEntry[];
   readonly guides: readonly GuideIndexEntry[];
+  readonly foods: readonly FoodIndexEntry[];
 }
 
 export function buildIndex(content: LoadedContent): ContentIndex {
@@ -127,6 +144,16 @@ export function buildIndex(content: LoadedContent): ContentIndex {
     ...(g.source !== undefined ? { source: g.source } : {}),
   }));
 
+  const foods: FoodIndexEntry[] = content.foods.all.map((f) => ({
+    id: f.id,
+    tradition: f.tradition,
+    nameRu: f.nameRu,
+    group: f.group,
+    warmth: f.warmth,
+    constitutions: f.constitutions,
+    tags: f.tags,
+  }));
+
   return {
     counts: {
       herbs: herbs.length,
@@ -134,11 +161,13 @@ export function buildIndex(content: LoadedContent): ContentIndex {
       categories: categories.length,
       tips: tips.length,
       guides: guides.length,
+      foods: foods.length,
     },
     herbs,
     combinations,
     categories,
     tips,
     guides,
+    foods,
   };
 }

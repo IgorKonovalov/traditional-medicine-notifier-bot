@@ -15,6 +15,7 @@ export function validateCorpus(content: LoadedContent): void {
   assertUniqueIds(content.categories.all, 'category', errors);
   assertUniqueIds(content.tips.all, 'tip', errors);
   assertUniqueIds(content.guides.all, 'guide', errors);
+  assertUniqueIds(content.foods.all, 'food', errors);
 
   // Every herb's category must resolve to a real category.
   for (const herb of content.herbs.all) {

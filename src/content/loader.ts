@@ -19,7 +19,10 @@ import { isVisibleTradition } from './visibility';
 import type {
   Category,
   Combination,
+  ConstitutionEffects,
   ContentBucket,
+  Effect,
+  Food,
   Guide,
   GuideSection,
   Herb,
@@ -28,7 +31,7 @@ import type {
   TipSource,
   Tradition,
 } from './types';
-import { TRADITIONS } from './types';
+import { EFFECTS, FOOD_GROUPS, HEAVINESS_LEVELS, TRADITIONS, WARMTH_LEVELS } from './types';
 
 interface RawDoc {
   readonly file: string;
@@ -61,6 +64,9 @@ export function loadContent(contentDir: string, opts: LoadOptions = {}): LoadedC
   const categories = readDir(join(contentDir, 'categories')).map(parseCategory);
   const tips = readDir(join(contentDir, 'tips')).map(parseTip);
   const guides = readDir(join(contentDir, 'guides')).map(parseGuide);
+  const foods = readDir(join(contentDir, 'foods'))
+    .map(parseFood)
+    .filter((f) => visible(f.tradition));
 
   const content: LoadedContent = {
     herbs: toBucket(herbs),
@@ -68,6 +74,7 @@ export function loadContent(contentDir: string, opts: LoadOptions = {}): LoadedC
     categories: toBucket(categories),
     tips: toBucket(tips),
     guides: toBucket(guides),
+    foods: toBucket(foods),
     crossLinks: buildCrossLinks(combinations),
   };
 
@@ -264,7 +271,85 @@ function splitSections(body: string): GuideSection[] {
   return sections;
 }
 
+/**
+ * Parse a structured food record (ADR 012). The enum facets (`group`, `warmth`,
+ * `heaviness`, and each `constitutions` effect) are validated here, against the
+ * source file, so a malformed value fails boot with a file-pathed error — the
+ * same fail-fast contract `tradition` already gets. Corpus-level checks (unique
+ * ids) live in `validate.ts`.
+ */
+function parseFood(doc: RawDoc): Food {
+  const tradition = reqString(doc, 'tradition');
+  if (!TRADITIONS.includes(tradition as Tradition)) {
+    throw new Error(
+      `${doc.file}: invalid tradition "${tradition}" (expected one of ${TRADITIONS.join(', ')})`,
+    );
+  }
+  const cautions = strArray(doc, 'cautions');
+  const heaviness = optEnum(doc, 'heaviness', HEAVINESS_LEVELS);
+  const source = parseTipSource(doc);
+  const food: Food = {
+    id: reqString(doc, 'id'),
+    tradition: tradition as Tradition,
+    nameRu: reqString(doc, 'name_ru'),
+    group: reqEnum(doc, 'group', FOOD_GROUPS),
+    warmth: reqEnum(doc, 'warmth', WARMTH_LEVELS),
+    tastes: strArray(doc, 'tastes'),
+    constitutions: parseConstitutions(doc),
+    effect: reqString(doc, 'effect'),
+    tags: strArray(doc, 'tags'),
+    ...optString(doc, 'name_original', 'nameOriginal'),
+    ...(heaviness !== undefined ? { heaviness } : {}),
+    ...(cautions.length > 0 ? { cautions } : {}),
+    ...(source !== undefined ? { source } : {}),
+    ...(doc.body !== '' ? { body: doc.body } : {}),
+  };
+  return food;
+}
+
+/**
+ * Coerce the `constitutions` block into the canonical Ветер/Желчь/Слизь effects
+ * (ADR 012). Must be an object whose `wind`/`bile`/`phlegm` are each a valid
+ * `Effect`; any other shape fails fast with the file path.
+ */
+function parseConstitutions(doc: RawDoc): ConstitutionEffects {
+  const value = doc.data['constitutions'];
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) {
+    throw new Error(`${doc.file}: field "constitutions" must be an object (wind, bile, phlegm)`);
+  }
+  const raw = value as Record<string, unknown>;
+  const read = (key: keyof ConstitutionEffects): Effect => {
+    const v = raw[key];
+    if (typeof v !== 'string' || !EFFECTS.includes(v as Effect)) {
+      throw new Error(
+        `${doc.file}: field "constitutions.${key}" must be one of ${EFFECTS.join(', ')}`,
+      );
+    }
+    return v as Effect;
+  };
+  return { wind: read('wind'), bile: read('bile'), phlegm: read('phlegm') };
+}
+
 // ─── field coercion ─────────────────────────────────────────────────────────────
+
+/** Required string field whose value must be a member of `allowed` (file-pathed). */
+function reqEnum<T extends string>(doc: RawDoc, key: string, allowed: readonly T[]): T {
+  const value = reqString(doc, key);
+  if (!allowed.includes(value as T)) {
+    throw new Error(`${doc.file}: field "${key}" must be one of ${allowed.join(', ')}`);
+  }
+  return value as T;
+}
+
+/** Optional enum field: absent → `undefined`, else must be a member of `allowed`. */
+function optEnum<T extends string>(doc: RawDoc, key: string, allowed: readonly T[]): T | undefined {
+  const value = doc.data[key];
+  if (value === undefined || value === null) return undefined;
+  if (typeof value !== 'string' || !allowed.includes(value as T)) {
+    throw new Error(`${doc.file}: field "${key}" must be one of ${allowed.join(', ')}`);
+  }
+  return value as T;
+}
 
 function reqString(doc: RawDoc, key: string): string {
   const value = doc.data[key];

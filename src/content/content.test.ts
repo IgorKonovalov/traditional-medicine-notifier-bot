@@ -23,6 +23,7 @@ interface Corpus {
   readonly categories?: Record<string, string>;
   readonly tips?: Record<string, string>;
   readonly guides?: Record<string, string>;
+  readonly foods?: Record<string, string>;
 }
 
 function writeCorpus(corpus: Corpus): string {
@@ -517,6 +518,148 @@ describe('buildIndex — guides', () => {
       title: '«Основы тибетской медицины»',
       sectionCount: 3,
       source: { work: 'Чжуд-ши', part: 'Тантра объяснений', chapter: 'гл. 5–6' },
+    });
+  });
+});
+
+const FOOD = `---
+id: food-grape
+tradition: tibetan
+name_ru: Виноград
+name_original: rgun 'brum
+group: fruit
+warmth: прохладная
+heaviness: лёгкая
+tastes:
+  - сладкий
+  - кислый
+constitutions:
+  wind: pacifies
+  bile: pacifies
+  phlegm: aggravates
+effect: В традиции виноград связывают с увлажнением и устранением жара.
+cautions:
+  - в избытке отягощает Слизь
+source:
+  work: Наука о здоровье. Сова Ригпа
+  chapter: гл. 4 «Продукты и их свойства»
+tags:
+  - фрукты
+---
+
+Подробное описание свойств винограда.
+`;
+
+describe('loadContent — foods (ADR 012)', () => {
+  it('parses a food with all facets, constitutions, source and body', () => {
+    const root = writeCorpus({ foods: { 'food-grape': FOOD } });
+    const food = loadContent(root).foods.byId.get('food-grape');
+
+    expect(food).toBeDefined();
+    expect(food?.nameRu).toBe('Виноград');
+    expect(food?.nameOriginal).toBe("rgun 'brum");
+    expect(food?.group).toBe('fruit');
+    expect(food?.warmth).toBe('прохладная');
+    expect(food?.heaviness).toBe('лёгкая');
+    expect(food?.tastes).toEqual(['сладкий', 'кислый']);
+    expect(food?.constitutions).toEqual({
+      wind: 'pacifies',
+      bile: 'pacifies',
+      phlegm: 'aggravates',
+    });
+    expect(food?.effect).toContain('увлажнением');
+    expect(food?.cautions).toEqual(['в избытке отягощает Слизь']);
+    expect(food?.source).toEqual({
+      work: 'Наука о здоровье. Сова Ригпа',
+      chapter: 'гл. 4 «Продукты и их свойства»',
+    });
+    expect(food?.tags).toEqual(['фрукты']);
+    expect(food?.body).toContain('Подробное описание');
+  });
+
+  it('omits optional facets when absent', () => {
+    const minimal = FOOD.replace('heaviness: лёгкая\n', '')
+      .replace("name_original: rgun 'brum\n", '')
+      .replace('cautions:\n  - в избытке отягощает Слизь\n', '')
+      .replace(/source:\n {2}work:.*\n {2}chapter:.*\n/, '');
+    const root = writeCorpus({ foods: { 'food-grape': minimal } });
+    const food = loadContent(root).foods.byId.get('food-grape');
+
+    expect(food?.heaviness).toBeUndefined();
+    expect(food?.nameOriginal).toBeUndefined();
+    expect(food?.cautions).toBeUndefined();
+    expect(food?.source).toBeUndefined();
+  });
+
+  it('drops a hidden-tradition food by default (ADR 013)', () => {
+    const chinese = FOOD.replace('tradition: tibetan', 'tradition: chinese');
+    const root = writeCorpus({ foods: { 'food-grape': chinese } });
+    expect(loadContent(root).foods.all).toHaveLength(0);
+    expect(loadContent(root, { includeHiddenTraditions: true }).foods.all).toHaveLength(1);
+  });
+
+  it('rejects an invalid group with a file-pathed error', () => {
+    const bad = FOOD.replace('group: fruit', 'group: dessert');
+    const root = writeCorpus({ foods: { 'food-grape': bad } });
+    expect(() => loadContent(root)).toThrow(/field "group" must be one of/);
+  });
+
+  it('rejects an invalid warmth value', () => {
+    const bad = FOOD.replace('warmth: прохладная', 'warmth: ледяная');
+    const root = writeCorpus({ foods: { 'food-grape': bad } });
+    expect(() => loadContent(root)).toThrow(/field "warmth" must be one of/);
+  });
+
+  it('rejects an invalid constitution effect', () => {
+    const bad = FOOD.replace('wind: pacifies', 'wind: helps');
+    const root = writeCorpus({ foods: { 'food-grape': bad } });
+    expect(() => loadContent(root)).toThrow(/constitutions\.wind/);
+  });
+
+  it('rejects a missing constitutions block', () => {
+    const bad = FOOD.replace(
+      /constitutions:\n {2}wind: pacifies\n {2}bile: pacifies\n {2}phlegm: aggravates\n/,
+      '',
+    );
+    const root = writeCorpus({ foods: { 'food-grape': bad } });
+    expect(() => loadContent(root)).toThrow(/"constitutions" must be an object/);
+  });
+
+  it('rejects an empty effect', () => {
+    const bad = FOOD.replace(
+      'effect: В традиции виноград связывают с увлажнением и устранением жара.',
+      'effect: ""',
+    );
+    const root = writeCorpus({ foods: { 'food-grape': bad } });
+    expect(() => loadContent(root)).toThrow(/required string field "effect"/);
+  });
+
+  it('rejects an invalid tradition', () => {
+    const bad = FOOD.replace('tradition: tibetan', 'tradition: martian');
+    const root = writeCorpus({ foods: { 'food-grape': bad } });
+    expect(() => loadContent(root)).toThrow(/invalid tradition "martian"/);
+  });
+
+  it('rejects duplicate food ids', () => {
+    const root = writeCorpus({ foods: { a: FOOD, b: FOOD } });
+    expect(() => loadContent(root)).toThrow(/duplicate food id/);
+  });
+});
+
+describe('buildIndex — foods', () => {
+  it('projects foods with their facets and counts them', () => {
+    const root = writeCorpus({ foods: { 'food-grape': FOOD } });
+    const index = buildIndex(loadContent(root));
+
+    expect(index.counts.foods).toBe(1);
+    expect(index.foods[0]).toEqual({
+      id: 'food-grape',
+      tradition: 'tibetan',
+      nameRu: 'Виноград',
+      group: 'fruit',
+      warmth: 'прохладная',
+      constitutions: { wind: 'pacifies', bile: 'pacifies', phlegm: 'aggravates' },
+      tags: ['фрукты'],
     });
   });
 });

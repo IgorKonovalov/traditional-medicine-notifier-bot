@@ -84,6 +84,98 @@ export interface Combination {
   readonly body: string;
 }
 
+/**
+ * The three начала a food can act on, in the **canonical** Ветер/Желчь/Слизь
+ * vocabulary (ADR 012). The source food chapter says Огонь / Земля-Вода; those
+ * map to `bile` / `phlegm` here and are glossed once per surface in the UI.
+ */
+export type Effect = 'pacifies' | 'neutral' | 'aggravates';
+
+export const EFFECTS: readonly Effect[] = ['pacifies', 'neutral', 'aggravates'];
+
+/** The catalogue's natural sections (ADR 012). Unknown values fail validation. */
+export type FoodGroup =
+  | 'grain'
+  | 'legume'
+  | 'oil'
+  | 'meat'
+  | 'egg'
+  | 'dairy'
+  | 'root-vegetable'
+  | 'green-vegetable'
+  | 'fruit'
+  | 'berry';
+
+export const FOOD_GROUPS: readonly FoodGroup[] = [
+  'grain',
+  'legume',
+  'oil',
+  'meat',
+  'egg',
+  'dairy',
+  'root-vegetable',
+  'green-vegetable',
+  'fruit',
+  'berry',
+];
+
+/** The headline "how warm is it" facet — a 5-level scale (ADR 012). */
+export type Warmth = 'горячая' | 'тёплая' | 'нейтральная' | 'прохладная' | 'холодная';
+
+export const WARMTH_LEVELS: readonly Warmth[] = [
+  'горячая',
+  'тёплая',
+  'нейтральная',
+  'прохладная',
+  'холодная',
+];
+
+export type Heaviness = 'тяжёлая' | 'лёгкая';
+
+export const HEAVINESS_LEVELS: readonly Heaviness[] = ['тяжёлая', 'лёгкая'];
+
+/** Per-начало effect of a food, canonical Ветер/Желчь/Слизь keys (ADR 012). */
+export interface ConstitutionEffects {
+  readonly wind: Effect;
+  readonly bile: Effect;
+  readonly phlegm: Effect;
+}
+
+/**
+ * A raw cooking ingredient described from the Tibetan-medicine point of view
+ * (ADR 012): how warm it is, who it is for (per-начало effect), and what it
+ * balances. Structured and **queryable** — the type exists to be filtered by
+ * group, warmth, and constitution effect, which prose cannot serve.
+ *
+ * `id` is a stable join key prefixed `food-<slug>`. `effect` is descriptive
+ * Russian prose ("традиция связывает с…") — never dosing, never "при болезни X".
+ * The standard disclaimer is appended at render time (ADR 006), not baked in.
+ */
+export interface Food {
+  readonly id: string;
+  readonly tradition: Tradition;
+  /** Russian display name. */
+  readonly nameRu: string;
+  /** Transliterated original name, if known. */
+  readonly nameOriginal?: string;
+  readonly group: FoodGroup;
+  readonly warmth: Warmth;
+  readonly heaviness?: Heaviness;
+  /** Six-taste vocabulary (cross-links `tip-007-six-tastes`), e.g. `['кислый']`. */
+  readonly tastes: readonly string[];
+  /** The "who is it for" facet — canonical Ветер/Желчь/Слизь effects. */
+  readonly constitutions: ConstitutionEffects;
+  /** Descriptive prose: what the tradition says the food balances. */
+  readonly effect: string;
+  /** Cautions surfaced to the reader. */
+  readonly cautions?: readonly string[];
+  /** Provenance citation, formatted uniformly at render time. */
+  readonly source?: TipSource;
+  readonly tags: readonly string[];
+  /** Optional longer descriptive prose (renderer-agnostic, ADR 002). */
+  readonly body?: string;
+}
+
 /** A subscribable topic category. Its `id` is the subscription key. */
 export interface Category {
   readonly id: string;
@@ -169,5 +261,6 @@ export interface LoadedContent {
   readonly categories: ContentBucket<Category>;
   readonly tips: ContentBucket<Tip>;
   readonly guides: ContentBucket<Guide>;
+  readonly foods: ContentBucket<Food>;
   readonly crossLinks: CrossLinks;
 }
