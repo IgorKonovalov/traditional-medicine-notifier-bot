@@ -116,5 +116,5 @@ Related: Plan 005 (daily-tip rotation), Plan 018 (tip corpus to 126), ADR 004
 
 ## Progress
 
-- [x] Phase 1 — selection helper + per-user history
-- [x] Phase 2 — wire on-demand surfaces + wording
+- [x] Phase 1 — selection helper + per-user history (665edf1)
+- [x] Phase 2 — wire on-demand surfaces + wording (665edf1)
