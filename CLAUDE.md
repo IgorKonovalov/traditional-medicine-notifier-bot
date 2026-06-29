@@ -146,9 +146,12 @@ of reinventing routing/session/render:
   is `true`, so a hand-crafted `lib:formula:*` tap can't leak while off). **The
   gate was lifted on the owner's documented sign-off (2026-06-28,
   `docs/medical-review.md`):** `FORMULA_BRANCH_ENABLED = true`, the branch is live,
-  and the formula card surfaces only the approved **minimal field set**
-  (name/nature/composition/member cross-links/themes/cautions) — the verbose
-  review-pending fields stay unsurfaced pending a separate verbose-field review.
+  and the formula card surfaces the structured set
+  (name/nature/composition/member cross-links/themes/cautions) **plus, as of
+  2026-06-29, the structured verbose fields** (indications/traditional use/dosing)
+  as a **live-review surface** on the private pre-launch bot. Only the raw
+  `source_text`/`body` stay unsurfaced; final production sign-off of the verbose
+  fields is still pending (`docs/medical-review.md`).
 
 ## Portability discipline (ADR 003)
 

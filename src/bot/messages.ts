@@ -155,12 +155,18 @@ export const messages = {
 
   /**
    * Formula (combination) card chrome (Plan 009 Phase 5). The card is held
-   * behind the ADR 006 doctor-gate and surfaces only the minimal, owner-approved
-   * field set — composition, member cross-links, a descriptive line, cautions —
-   * never the verbose review-pending fields.
+   * behind the ADR 006 doctor-gate and, in addition to the minimal field set
+   * (composition, member cross-links, a descriptive line, cautions), now also
+   * surfaces the structured verbose fields — indications, traditional use and
+   * dosing — as a live-review surface (owner sign-off 2026-06-29, pending final
+   * review before large production). The raw `sourceText`/`body` stay
+   * unsurfaced.
    */
   formulaCard: {
     composition: (list: string): string => `Состав: ${list}`,
+    indications: (list: string): string => `Показания: ${list}`,
+    use: (text: string): string => `Применение: ${text}`,
+    dosing: (text: string): string => `Приём: ${text}`,
     cautions: (list: string): string => `Предостережения: ${list}`,
   },
 

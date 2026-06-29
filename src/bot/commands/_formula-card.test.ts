@@ -4,7 +4,11 @@ import type { Combination, Herb, LoadedContent } from '../../content/types';
 
 import { formulaMemberLinks, renderFormula } from './_formula-card';
 
-/** A formula carrying every verbose review-pending field, to prove none leak. */
+/**
+ * A formula carrying every verbose field: the structured ones
+ * (indications/traditionalUse/dosingNotes) are now surfaced, while the raw
+ * `sourceText`/`body` must never leak.
+ */
 function verboseFormula(): Combination {
   return {
     id: 'tib-formula-agar-8',
@@ -27,7 +31,7 @@ function verboseFormula(): Combination {
   };
 }
 
-describe('renderFormula — minimal owner-approved field set', () => {
+describe('renderFormula — surfaces structured verbose fields, never the raw body', () => {
   it('surfaces name(s), nature, composition, themes and cautions', () => {
     const out = renderFormula(verboseFormula());
     expect(out).toContain('Агар-8');
@@ -38,15 +42,19 @@ describe('renderFormula — minimal owner-approved field set', () => {
     expect(out).toContain('Предостережения: возможна индивидуальная непереносимость');
   });
 
-  it('never surfaces the verbose review-pending fields or the raw body (ADR 006)', () => {
+  it('surfaces the structured verbose fields with their labels (live-review surface)', () => {
     const out = renderFormula(verboseFormula());
-    for (const secret of [
-      'ЖАР-СЕРДЦА-СЕКРЕТ',
-      'ТРАД-ИСПОЛЬЗОВАНИЕ-СЕКРЕТ',
-      'ДОЗИРОВКА-СЕКРЕТ',
-      'ПОЛНЫЙ-ИСХОДНЫЙ-ТЕКСТ-СЕКРЕТ',
-      'СЫРОЙ-BODY-СЕКРЕТ',
-    ]) {
+    expect(out).toContain('Показания:');
+    expect(out).toContain('ЖАР-СЕРДЦА-СЕКРЕТ');
+    expect(out).toContain('Применение:');
+    expect(out).toContain('ТРАД-ИСПОЛЬЗОВАНИЕ-СЕКРЕТ');
+    expect(out).toContain('Приём:');
+    expect(out).toContain('ДОЗИРОВКА-СЕКРЕТ');
+  });
+
+  it('never surfaces the raw sourceText or the markdown body (ADR 006)', () => {
+    const out = renderFormula(verboseFormula());
+    for (const secret of ['ПОЛНЫЙ-ИСХОДНЫЙ-ТЕКСТ-СЕКРЕТ', 'СЫРОЙ-BODY-СЕКРЕТ']) {
       expect(out).not.toContain(secret);
     }
   });

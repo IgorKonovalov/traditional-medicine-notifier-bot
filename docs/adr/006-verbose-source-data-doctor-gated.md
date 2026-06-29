@@ -59,6 +59,12 @@ rather than one baked into every page.
   **verbose fields** (indications / traditional use / dosing / source text)
   **remain unsurfaced and unapproved** pending a separate review. Tracker:
   `docs/medical-review.md`.
+- **Update (2026-06-29):** the owner expanded the surfaced set — the **structured
+  verbose fields** (`indications` / `traditional_use` / `dosing_notes`) are now
+  shown on the formula card as a **live-review surface** (private pre-launch bot,
+  for in-situ review before large production). The raw `source_text`/`body` stay
+  unsurfaced; final production sign-off of the verbose fields remains pending.
+  Tracker: `docs/medical-review.md`.
 
 ## Alternatives considered
 

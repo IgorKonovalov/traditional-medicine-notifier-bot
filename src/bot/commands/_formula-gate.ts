@@ -14,8 +14,10 @@
  * medical sign-off.
  *
  * **Lifted 2026-06-28 (owner sign-off, recorded in `docs/medical-review.md`).**
- * Now `true`: the branch is registered and the formula card surfaces only the
- * owner-approved minimal field set (name/nature/composition/member cross-links/
- * themes/cautions) — the verbose review-pending fields stay unsurfaced.
+ * Now `true`: the branch is registered and the formula card surfaces the
+ * owner-approved field set (name/nature/composition/member cross-links/themes/
+ * cautions) and, as of the owner sign-off 2026-06-29, the structured verbose
+ * fields (indications/traditional use/dosing) too, as a live-review surface —
+ * only the raw `sourceText`/`body` stay unsurfaced.
  */
 export const FORMULA_BRANCH_ENABLED = true;

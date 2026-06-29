@@ -5,9 +5,10 @@ Tibetan-formula corpus under `content/combinations/` is a **staging artifact**
 (ADR 006). **As of 2026-06-28** the owner (relaying the practitioner) approved the
 **minimal library UI surface** (name / nature / composition / member cross-links /
 themes / cautions) and **adjudicated all seven review groups** (see Sign-off
-table) — the formula browser is live (Plan 009, gate lifted). The **verbose
-fields** (indications / traditional_use / dosing_notes / source_text) **remain
-unsurfaced**. The corpus **will be reviewed again on the live bot before large
+table) — the formula browser is live (Plan 009, gate lifted). As of **2026-06-29**
+the **structured verbose fields** (indications / traditional_use / dosing_notes)
+are also **surfaced on the formula card as a live-review surface**; only the raw
+`source_text`/`body` stay unsurfaced. The corpus **will be reviewed again on the live bot before large
 production**; the deferred items (Groups 6–7 and the left-as-is Group 5 entries)
 are revisited in that pass.
 
@@ -210,7 +211,8 @@ the session workflow outputs; raw verbatim source for both sites remains in
 | 2026-06-28 | Owner    | **Group 5 — source discrepancies** (`gurgum-8`, `srogdzin-11`, Melia, `gurkyung`, Terminalia spelling) | **Partial**: normalized `Terminalia belerica → bellirica` corpus-wide (v0.11.2); the rest left as-is. |
 | 2026-06-28 | Owner    | **Group 6 — incomplete descriptions** (6 bimala formulas, verbose) | **Leave as-is** — deferred to the pre-large-production live review. |
 | 2026-06-28 | Owner    | **Group 7 — dosing / administration & misc** (verbose) | **Retain what's possible, leave as-is** — deferred to the pre-large-production review. |
-| —          | —        | Verbose source fields (indications / dosing / traditional use) for any richer surface | pending (revisited before large production) |
+| 2026-06-29 | Owner    | **Surface the structured verbose fields** (`indications` / `traditional_use` / `dosing_notes`) on the formula card | **Approved as a live-review surface** — shown on the private pre-launch bot for in-situ review; raw `source_text`/`body` stay hidden; descriptive framing + render-time disclaimer. |
+| —          | —        | **Final production sign-off** of the verbose fields (incl. open Group 6–7 items) before large production | pending |
 
 _When production-eligible content is approved, record it here and define how it is
 surfaced._
@@ -221,8 +223,10 @@ with member cross-links — and it is now **registered**: the single
 `src/bot/commands/_formula-gate.ts → FORMULA_BRANCH_ENABLED` constant is `true`
 (owner sign-off, table above). The `🧪 Формулы` hub branch, formula search hits,
 and herb-card "Входит в формулы" cross-links are all live. The formula card
-surfaces only the owner-approved **minimal field set**
-(name / nature / composition / member cross-links / themes / cautions) — the
-verbose review-pending fields (indications / traditional_use / dosing_notes /
-source_text) and the raw body **remain unsurfaced**, still pending the
-verbose-field review.
+surfaces the structured set (name / nature / composition / member cross-links /
+themes / cautions) **plus, as of 2026-06-29, the structured verbose fields**
+(indications / traditional_use / dosing_notes) as a **live-review surface** —
+shown on the private pre-launch bot so the owner/practitioner can review them in
+situ before large production. Only the raw `source_text` and the verbatim `body`
+**remain unsurfaced**. Final production sign-off of the verbose fields (with the
+open Group 6–7 items) is still pending.

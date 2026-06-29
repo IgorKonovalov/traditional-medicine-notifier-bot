@@ -3,12 +3,13 @@
  * (Plan 009 Phase 5, ADR 006 doctor-gate). Reached only once the formula branch
  * is registered post sign-off (`_formula-gate`).
  *
- * Owner-approved minimal field set (2026-06-28): name(s) + `nature` («Сущность»)
- * + `composition` + `members` as herb cross-links + `themes` (one descriptive
- * line) + `cautions` + the render-time disclaimer (ADR 006). The verbose
- * review-pending fields (`indications`/`traditionalUse`/`dosingNotes`/
- * `sourceText`) and the raw `body` are **never** surfaced — they stay behind the
- * Plan 004 practitioner review.
+ * Owner-approved field set: name(s) + `nature` («Сущность») + `composition` +
+ * `members` as herb cross-links + `themes` (one descriptive line) + `cautions` +
+ * the render-time disclaimer (ADR 006). As of the owner sign-off 2026-06-29 the
+ * structured verbose fields `indications`/`traditionalUse`/`dosingNotes` are now
+ * surfaced too, as a live-review surface ahead of large production. The raw
+ * `sourceText` and the markdown `body` remain **unsurfaced** — they stay behind
+ * the Plan 004 practitioner review.
  */
 
 import { Markup } from 'telegraf';
@@ -50,6 +51,15 @@ export function renderFormula(combination: Combination): string {
     sections.push(messages.formulaCard.composition(combination.composition.join(', ')));
   }
   if (combination.themes.length > 0) sections.push(combination.themes.join('; '));
+  if (combination.indications?.length) {
+    sections.push(messages.formulaCard.indications(combination.indications.join('; ')));
+  }
+  if (combination.traditionalUse?.length) {
+    sections.push(messages.formulaCard.use(combination.traditionalUse.join('\n')));
+  }
+  if (combination.dosingNotes?.length) {
+    sections.push(messages.formulaCard.dosing(combination.dosingNotes.join('\n')));
+  }
   if (combination.cautions.length > 0) {
     sections.push(messages.formulaCard.cautions(combination.cautions.join('; ')));
   }
