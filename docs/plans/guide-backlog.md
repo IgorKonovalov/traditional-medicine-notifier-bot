@@ -1,11 +1,34 @@
-# Plan 006 — Long-form guide candidates (backlog draft)
+# Long-form guide backlog (standing menu)
 
-**Status:** Approved backlog — 2026-06-27 (owner vetted; all rows accepted)
-**Created:** 2026-06-27
+**Status:** Standing backlog — a menu later plans draw waves from, not itself an
+implementation plan (so it is **not** numbered and never moves to `done/`).
+**Created:** 2026-06-27 (as `006-guide-candidates.md`, companion to Plan 006)
+**Renamed:** 2026-06-29 — dropped the `006-` prefix once Plan 006 closed; this is
+the shared guide backlog, cited by row from the numbered guide plans below.
 **Revised:** 2026-06-27 — re-flagged under the clarified framing rule (see below)
-**Companion to:** Plan 006 (long-form guides). Plan 006 ships the infra + 3 first
-guides; this is the **follow-up bulk-authoring backlog** that plan 006 defers as a
-non-goal. Nothing here is approved — it's a menu to check off.
+**Companion to:** Plan 006 (long-form guides, now in `done/`), which shipped the
+infra + first 3 guides; this is the **follow-up bulk-authoring backlog** Plan 006
+deferred as a non-goal. Nothing here is auto-approved — it's a menu to check off.
+
+## Rows already consumed (don't re-author)
+
+Newer guide plans pull from this menu and cite rows back here. Consumed so far:
+
+- **Шесть вкусов и их действие** (group A) → shipped as `tib-shest-vkusov`,
+  **Plan 016** Wave 1 (v0.17.0).
+- **Причина и условие болезни** (group B) → shipped as `tib-kak-voznikaet-bolezn`,
+  **Plan 016** Wave 1 (v0.17.0).
+- **Распорядок дня** (group D) → shipped as `tib-rasporyadok-dnya`, **Plan 006**
+  Phase 4 (v0.14.0).
+- **Питание по конституции / Поведение по конституции** (groups C/D) → owned by
+  **Plan 013** Phase 4 (`tib-tri-prirody`); do not author here.
+- **Rhythms & diagnosis** (the daily/seasonal cycles) → daily shipped as
+  `tib-sutochnyj-ritm`, seasonal as `tib-sezonnoe-pitanie`; **diagnosis** remains,
+  owned by **Plan 013** Phase 5. Do not author here.
+
+Deferred-but-still-open theory rows (Plan 016 Waves 2–3): **Пищеварительный огонь**
+and **Семь сил тела / «чистый сок»** (group A) — re-plan as a follow-up wave when
+wanted.
 
 ## Tradition scope — Tibetan-only (2026-06-29)
 

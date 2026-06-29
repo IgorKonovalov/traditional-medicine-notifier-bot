@@ -42,6 +42,12 @@ governed by **ADR 009** (bot navigation model). They are sequential:
 owned by **Plan 006** and **Plan 005** respectively; Plan 006 should retarget the
 Plan 007 shared nav kit once 007 lands.
 
+## Standing backlogs
+
+- **`guide-backlog.md`** — the long-form **guide** candidate menu (was
+  `006-guide-candidates.md`). Not a numbered plan; later guide plans (006, 013,
+  016) draw waves from it and tick rows back. Check here before planning new guides.
+
 ## Other candidates (not yet planned)
 
 - **Elderly nutrition & lifestyle guide** — гл. 6 of «Наука о здоровье»
