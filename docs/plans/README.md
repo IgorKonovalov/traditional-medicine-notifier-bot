@@ -17,7 +17,7 @@ before the **dev** skill implements it, then moved to `done/` on close.
 | 008 | Reminder-create flow | Completed → `done/` |
 | 009 | Library browser (gated formulas) | **Completed** → `done/` (v0.11.0) — formulas gate lifted on owner sign-off |
 | 011 | Drop subscriptions · optional herb link in reminders | Completed → `done/` (v0.10.0) |
-| 012 | Tip sourcing reconciliation + content voice tightening | Approved — not started |
+| 012 | Tip sourcing reconciliation + content voice tightening | Completed → `done/` (v0.12.0) |
 | 013 | Sova Rigpa book guides (food properties · constitution portraits · rhythms/diagnosis) | Approved — blocked on 006 |
 
 ### UI overhaul plan set (007–009)

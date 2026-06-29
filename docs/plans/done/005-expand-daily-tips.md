@@ -207,3 +207,11 @@ prompting a sourcing review. Two corrections:
   to real «Наука о здоровье» chapters (book citation convention defined there).
   This note supersedes the `(manla.ru)` convention; **Plan 012 is authoritative**
   for tip sourcing going forward.
+
+**Outcome (Plan 012 executed, 2026-06-29).** Of the 30 Сова-Ригпа tips, **20 were
+re-cited** to real «Наука о здоровье» chapters (гл. 2–4) and **10 kept** the bare
+manla citation where the book has no clean counterpart (fasting, mono-diets,
+strengthening, weight-conduct, eye care, "avoid" list, occasional indulgence,
+age↔constitution). All 60 tip bodies were also rewritten into the source-faithful
+clinical register locked by Plan 012 (the soft "new-age" voice these tips shipped
+with is retired). Re-cite map: `research/_private/plan-012-recite-map.md`.

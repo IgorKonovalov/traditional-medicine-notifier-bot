@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.12.0 — 2026-06-29
+
+- Rewrote all 60 daily tips into a source-faithful clinical register (named
+  ньепа / пищеварительный огонь / Жар-Холод, single attribution, no scare-quotes
+  on terms), retiring the earlier soft "new-age" voice; re-cited 20 Сова-Ригпа
+  tips to real «Наука о здоровье» (Ринчен Тензин) chapters and kept 10 on the
+  manla citation where the book has no clean counterpart (Plan 012).
+
 ## 0.11.2 — 2026-06-28
 
 - Apply the practitioner's medical-review verdicts to the formula corpus

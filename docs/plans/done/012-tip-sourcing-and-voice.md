@@ -1,8 +1,9 @@
 # Plan 012 — Tip sourcing reconciliation + content voice tightening
 
-**Status:** Approved — not started
+**Status:** Completed
 **Created:** 2026-06-28
 **Approved:** 2026-06-28 (scope incl. voice rewrite — owner)
+**Completed:** 2026-06-29 (v0.12.0)
 **Bump on close:** minor (visible tip-body rewrites; citation changes ride along)
 
 ## Context
@@ -192,7 +193,7 @@ per-clause hedging does not make a tip read as advice.
 
 ## Progress
 
-- [x] Phase 1 — Voice spec & register owner-approved; emoji + terminology knobs locked. Remaining: confirm `part` string.
-- [ ] Phase 2 — Build the re-cite map (tips 031–060)
-- [ ] Phase 3 — One pass per tip: voice rewrite + re-cite
-- [ ] Phase 4 — Index regen, convention capture, Plan 005 note & close
+- [x] Phase 1 — Voice spec & register owner-approved; emoji + terminology knobs locked. `part` string locked 2026-06-28: `«Наука о здоровье» (Ринчен Тензин)`.
+- [x] Phase 2 — Re-cite map built & owner-approved (20 re-cite · 10 keep): `research/_private/plan-012-recite-map.md`.
+- [x] Phase 3 — All 60 bodies rewritten to the clinical register; 20 re-cites applied; caveats survived; terminology normalised (Желчь/ньепа). Gates green (166 tests).
+- [x] Phase 4 — Index regen ✓, conventions captured ✓, Plan 005 note ✓, minor bump v0.12.0 + CHANGELOG + versionAnnouncements ✓, moved to `done/`.
