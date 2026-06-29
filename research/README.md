@@ -68,3 +68,25 @@ the **source corpus for the daily-tips content** (existing tips already cite
 silently drops **all** Cyrillic. Use **PyMuPDF** (`fitz`) to recover clean UTF-8
 text; that recovered text is `_private/nauka-zdorovye-text.txt` (gitignored, with
 `===== PAGE n =====` markers). The PDF itself is gitignored via `research/*.pdf`.
+
+## `zhud_shi_canon.pdf` (gitignored) + `_private/zhud-shi-text.txt` + `_private/zhud-shi-chapter-map.md`
+
+«Чжуд-ши. Канон тибетской медицины» (М.: Наука) — the canonical Four-Tantras
+treatise, **source corpus for the canonical-voice daily tips** (Plan 018). 766 pp
+with a real **ABBYY OCR text layer** (unlike the Сова Ригпа PDF, Cyrillic
+survives both PyMuPDF and `pdftotext`). Extracted with **PyMuPDF** (Plan 018
+Phase 3) to `_private/zhud-shi-text.txt` (gitignored, `===== PAGE n =====`
+markers = 1-based PDF pages). A **conservative whole-word** OCR-cleanup map was
+applied (768 replacements — non-word garbles like `нало→надо`, `фуди→груди`, plus
+the corpus-unambiguous пища food-family; **never** blanket char swaps, since
+`д↔л`/`щ↔ш` misread both ways and `ф→г` would corrupt real ф-words). Residual
+confusions are left for **per-citation hand-check** — the Plan 018 headline risk.
+
+**Chapter→page map:** `_private/zhud-shi-chapter-map.md` recovers the printed
+ОГЛАВЛЕНИЕ. **Тома I+II printed page = PDF page − 2** (verified; the offset drifts
+only past the off-limits diagnosis zone). Tip-able material is **Тантра основ (I)
++ Тантра объяснений (II)** only; **Тантра наставлений (III, 92 ch)** and
+**Дополнительная тантра (IV, 27 ch)** are treatment/diagnosis/dosing =
+**off-limits** by the non-medical-advice invariant. Method is reproducible from
+this note; the one-off extraction script was not committed (mirrors the Сова
+Ригпа entry above).

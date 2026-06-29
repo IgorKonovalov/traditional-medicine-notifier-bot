@@ -273,7 +273,9 @@ untouched), **ADR 002** (renderer-agnostic; `Источник:` built by
 - [x] Phase 1 — Gating design + targets + ADR (owner-approved) — ADR 014, review-only
 - [x] Phase 2 — Tip-staging gate built (dev) — `Tip.status` + `includeStagingTips`
   chokepoint + `isProductionTip` + index `status` projection + tests; gates green
-- [ ] Phase 3 — Чжуд-ши extracted + OCR-cleaned + chapter map
+- [x] Phase 3 — Чжуд-ши extracted + OCR-cleaned + chapter map — 766pp →
+  `_private/zhud-shi-text.txt` (768 safe subs), `_private/zhud-shi-chapter-map.md`
+  (I+II, printed=PDF−2, III/IV off-limits), README provenance
 - [ ] Phase 4 — Master tip outline (owner-reviewed)
 - [ ] Phase 5 — Production tier authored (~36)
 - [ ] Phase 6 — Gated tier authored (~80)
