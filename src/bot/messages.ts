@@ -133,8 +133,8 @@ export const messages = {
       'Меню внизу экрана открывает основные разделы: 📚 Библиотека, ⏰ Напоминания, ' +
       '💡 Советы, ⚙️ Настройки, ❓ Помощь.\n\n' +
       'Команды:\n' +
-      '• /browse — список трав: все или по категориям\n' +
-      '• /search — поиск травы по названию\n' +
+      '• /browse — список ингредиентов: все или по категориям\n' +
+      '• /search — поиск по названию\n' +
       '• /guides — статьи и руководства\n' +
       '• /foods — продукты: природа, вкус и для кого они подходят\n' +
       '• /tips — совет дня\n' +
@@ -167,8 +167,8 @@ export const messages = {
   },
 
   browse: {
-    title: 'Травы',
-    empty: 'Пока нет доступных трав.',
+    title: 'Ингредиенты',
+    empty: 'Пока нет доступных ингредиентов.',
     tibetan: '🏔 Тибетская',
   },
 
@@ -180,19 +180,20 @@ export const messages = {
   library: {
     title: '📚 Библиотека',
     intro: 'Выберите раздел.',
-    herbs: '🌿 Травы',
+    herbs: '🌿 Ингредиенты',
     guides: '📖 Статьи',
     tips: '💡 Совет дня',
     search: '🔎 Поиск',
     formulas: '🧪 Составы',
     foods: '🥗 Продукты',
-    // 🌿 Травы branch
-    herbsTitle: 'Травы — выберите способ просмотра.',
-    allHerbs: 'Все травы',
+    // 🌿 Ингредиенты branch (display label only — code/ids/callbacks keep the
+    // "herb" vocabulary, mirroring the Plan 017 «Составы» split).
+    herbsTitle: 'Ингредиенты — выберите способ просмотра.',
+    allHerbs: 'Все ингредиенты',
     byCategory: 'По категории',
     pickCategory: 'Выберите категорию.',
-    emptyHerbs: 'Пока нет доступных трав.',
-    emptyCategories: 'Пока нет категорий с травами.',
+    emptyHerbs: 'Пока нет доступных ингредиентов.',
+    emptyCategories: 'Пока нет категорий с ингредиентами.',
     /** Category button: name + how many herbs it groups. */
     categoryButton: (name: string, count: number): string => `${name} (${count})`,
     // 💡 Совет дня branch (links to the existing daily-tip surface)
