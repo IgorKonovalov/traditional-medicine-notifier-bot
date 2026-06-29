@@ -135,7 +135,7 @@ export const messages = {
     guides: '📖 Статьи',
     tips: '💡 Совет дня',
     search: '🔎 Поиск',
-    formulas: '🧪 Формулы',
+    formulas: '🧪 Составы',
     // 🌿 Травы branch
     herbsTitle: 'Травы — выберите способ просмотра.',
     allHerbs: 'Все травы',
@@ -150,9 +150,12 @@ export const messages = {
     // 📖 Статьи branch (long-form guides, Plan 006)
     guidesTitle: 'Статьи — выберите, что почитать.',
     guidesEmpty: 'Пока нет статей.',
-    // 🧪 Формулы branch (withheld until the ADR 006 doctor-gate is lifted)
-    formulasTitle: 'Формулы',
-    formulasEmpty: 'Пока нет формул.',
+    // 🧪 Составы branch (live post the ADR 006 doctor-gate sign-off). The label
+    // is «Составы»; code/ids/callbacks keep the "formula/combination" vocabulary.
+    formulasTitle: 'Составы',
+    formulasEmpty: 'Пока нет составов.',
+    /** 🔎 button at the top of the formula list — opens the formula-only search. */
+    formulasSearch: '🔎 Поиск по составам',
   },
 
   /**
@@ -180,14 +183,16 @@ export const messages = {
   /** Shared herb-card chrome (the card body itself is content + disclaimer). */
   herbCard: {
     /** Header for the reverse cross-link section; formula names sit on buttons. */
-    inFormulas: 'Входит в формулы:',
+    inFormulas: 'Входит в составы:',
     /** Variant when the herb belongs to more formulas than the keyboard shows. */
     inFormulasCapped: (shown: number, total: number): string =>
-      `Входит в формулы (показаны ${shown} из ${total}):`,
+      `Входит в составы (показаны ${shown} из ${total}):`,
   },
 
   search: {
     prompt: 'Введите название травы для поиска:',
+    /** Prompt for the formula-only search reached from the formula list (Plan 017). */
+    formulaPrompt: 'Введите название состава для поиска:',
     nothingFound: 'Ничего не найдено. Попробуйте другое название.',
     results: 'Результаты поиска',
   },

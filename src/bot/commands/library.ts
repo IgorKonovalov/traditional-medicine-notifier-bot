@@ -4,7 +4,8 @@
  *
  *   hub → 🌿 Травы → (Все травы | По категории) → herb list → herb card
  *       → 💡 Совет дня (in-anchor)
- *       → 🧪 Формулы (built but withheld — Phase 5, gated by `_formula-gate`)
+ *       → 🧪 Составы (formula browser, live post sign-off — gated by `_formula-gate`;
+ *         labelled «Составы» while code/ids keep the "formula/combination" vocabulary)
  *
  * Supersedes the old standalone `/browse` drilldown: the persistent-menu
  * 📚 Библиотека button and the `/browse` shortcut both land here, and the
@@ -66,6 +67,8 @@ type Screen =
   | 'guide-list'
   | 'guide-section'
   | 'formula-list'
+  | 'formula-search'
+  | 'formula-results'
   | 'formula-card';
 
 /**
@@ -90,6 +93,13 @@ interface LibraryState {
   readonly page: number;
   readonly herbId?: string;
   readonly formulaId?: string;
+  /**
+   * Marks a `formula-card` opened from the formula-only `formula-results` screen,
+   * so `« Назад` returns to those results rather than the global mixed `results`
+   * (both carry `query`; this discriminates origin). Set at card-open time from
+   * the originating screen — the single source of truth for the back-state.
+   */
+  readonly formulaScope?: true;
   /** Open guide id (guide-section screen). */
   readonly guideId?: string;
   /** Active page index within the open guide (guide-section pager). */
@@ -173,7 +183,7 @@ function herbsFor(deps: BotDeps, state: LibraryState): readonly Herb[] {
 // ─── per-screen views ─────────────────────────────────────────────────────────
 
 /** The library root. The 📖 Статьи (guides) branch ships with Plan 006; the
- *  `🧪 Формулы` branch appears only once the doctor-gate is lifted
+ *  `🧪 Составы` (formula) branch appears only once the doctor-gate is lifted
  *  (`_formula-gate`). Exported so a test can assert the formula branch presence. */
 export function hubView(): View {
   const rows: CallbackButton[][] = [
@@ -356,9 +366,9 @@ function resultsView(deps: BotDeps, state: LibraryState): View & { readonly page
   };
 }
 
-// ─── formulas (withheld until sign-off — _formula-gate) ───────────────────────
+// ─── formulas (live post sign-off — _formula-gate; UI label «Составы») ────────
 
-function formulaListView(deps: BotDeps, page: number): View & { readonly page: number } {
+export function formulaListView(deps: BotDeps, page: number): View & { readonly page: number } {
   const formulas = deps.content.combinations.all;
   if (formulas.length === 0) {
     return {
@@ -369,6 +379,10 @@ function formulaListView(deps: BotDeps, page: number): View & { readonly page: n
   }
   const { page: safePage, pageCount } = clampPage(page, formulas.length);
   const slice = formulas.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
+  // 🔎 formula-only search sits as the first row, above the entries, on every page.
+  const searchRow: CallbackButton[] = [
+    Markup.button.callback(messages.library.formulasSearch, 'lib:fsearch'),
+  ];
   const rows = slice.map((f) => [
     Markup.button.callback(f.nameRu, assertCallbackData(`lib:formula:${f.id}`)),
   ]);
@@ -377,6 +391,42 @@ function formulaListView(deps: BotDeps, page: number): View & { readonly page: n
   nav.push(backRow('lib:back'), homeRow('lib:home'));
   return {
     text: messages.library.formulasTitle,
+    keyboard: Markup.inlineKeyboard([searchRow, ...rows, ...nav]),
+    page: safePage,
+  };
+}
+
+/** The 🔎 Поиск по составам prompt — typed queries are claimed by the text capture. */
+function formulaSearchPromptView(): View {
+  return {
+    text: messages.search.formulaPrompt,
+    keyboard: Markup.inlineKeyboard([backRow('lib:back'), homeRow('lib:home')]),
+  };
+}
+
+/** Formula-only results: filters combinations by `formulaMatches` — no herbs leak. */
+export function formulaResultsView(
+  deps: BotDeps,
+  state: LibraryState,
+): View & { readonly page: number } {
+  const hits = deps.content.combinations.all.filter((c) => formulaMatches(c, state.query ?? ''));
+  if (hits.length === 0) {
+    return {
+      text: messages.search.nothingFound,
+      keyboard: Markup.inlineKeyboard([backRow('lib:back'), homeRow('lib:home')]),
+      page: 0,
+    };
+  }
+  const { page: safePage, pageCount } = clampPage(state.page, hits.length);
+  const slice = hits.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
+  const rows = slice.map((c) => [
+    Markup.button.callback(c.nameRu, assertCallbackData(`lib:formula:${c.id}`)),
+  ]);
+  const nav: CallbackButton[][] = [];
+  if (pageCount > 1) nav.push(pager('lib:fresults', safePage, pageCount));
+  nav.push(backRow('lib:back'), homeRow('lib:home'));
+  return {
+    text: messages.search.results,
     keyboard: Markup.inlineKeyboard([...rows, ...nav]),
     page: safePage,
   };
@@ -470,6 +520,10 @@ function viewFor(
       return guideSectionView(deps, state);
     case 'formula-list':
       return formulaListView(deps, state.page);
+    case 'formula-search':
+      return { ...formulaSearchPromptView(), page: 0 };
+    case 'formula-results':
+      return formulaResultsView(deps, state);
     case 'formula-card': {
       const card = formulaCardView(deps, state.formulaId ?? '');
       return card === null ? { ...hubView(), page: 0 } : { ...card, page: state.page };
@@ -516,10 +570,19 @@ export function backState(state: LibraryState): LibraryState {
       // Back to the guide list, restoring the list page the guide was opened from.
       return { screen: 'guide-list', page: state.page };
     case 'formula-card':
-      // Back to search results (if reached from a search hit) else the formula list.
-      return state.query !== undefined
-        ? { screen: 'results', query: state.query, page: state.page }
-        : { screen: 'formula-list', page: state.page };
+      // Origin precedence: the formula-only results (formulaScope + query), then
+      // the global mixed results (query alone), else the flat formula list.
+      if (state.formulaScope === true && state.query !== undefined) {
+        return { screen: 'formula-results', query: state.query, page: state.page };
+      }
+      if (state.query !== undefined) {
+        return { screen: 'results', query: state.query, page: state.page };
+      }
+      return { screen: 'formula-list', page: state.page };
+    case 'formula-results':
+      return { screen: 'formula-search', page: 0 };
+    case 'formula-search':
+      return { screen: 'formula-list', page: 0 };
     case 'formula-list':
     case 'guide-list':
     case 'herbs':
@@ -783,9 +846,10 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
 
   bot.action(/^lib:gsec:noop$/, (ctx) => ctx.answerCbQuery());
 
-  // 🧪 Формулы — built but registered ONLY when the doctor-gate is lifted
-  // (ADR 006, `_formula-gate`). While withheld, these handlers are never wired,
-  // so even a hand-crafted `lib:formula:*` callback falls through to a no-op.
+  // 🧪 Составы (formulas) — built but registered ONLY when the doctor-gate is
+  // lifted (ADR 006, `_formula-gate`). While withheld, these handlers (including
+  // the formula-only search `lib:fsearch`/`lib:fresults`) are never wired, so even
+  // a hand-crafted `lib:formula:*` / `lib:fsearch` callback falls through to a no-op.
   if (FORMULA_BRANCH_ENABLED) {
     bot.action(/^lib:formulas$/, async (ctx) => {
       const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
@@ -803,19 +867,41 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
 
     bot.action(/^lib:flist:noop$/, (ctx) => ctx.answerCbQuery());
 
+    // 🔎 Поиск по составам — the formula-only search prompt (Plan 017).
+    bot.action(/^lib:fsearch$/, async (ctx) => {
+      const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+      if (v === null) return;
+      await ctx.answerCbQuery();
+      await go(ctx, v, { screen: 'formula-search', page: 0 });
+    });
+
+    bot.action(/^lib:fresults:(\d+)$/, async (ctx) => {
+      const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
+      if (v === null) return;
+      await ctx.answerCbQuery();
+      const { query } = v.session.state;
+      if (query === undefined) return;
+      await go(ctx, v, { screen: 'formula-results', query, page: Number(ctx.match[1] ?? '0') });
+    });
+
+    bot.action(/^lib:fresults:noop$/, (ctx) => ctx.answerCbQuery());
+
     bot.action(/^lib:formula:(.+)$/, async (ctx) => {
       const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
       if (v === null) return;
       await ctx.answerCbQuery();
       const formulaId = ctx.match[1] ?? '';
       if (!deps.content.combinations.byId.has(formulaId)) return;
-      const { query, page } = v.session.state;
+      const { query, page, screen } = v.session.state;
       await go(ctx, v, {
         screen: 'formula-card',
         formulaId,
         page,
-        // Carry a search origin so `« Назад` returns to the results.
+        // Carry a search origin so `« Назад` returns to the results; mark
+        // formula-only origin so it returns to the formula results, not the
+        // global mixed ones.
         ...(query !== undefined ? { query } : {}),
+        ...(screen === 'formula-results' ? { formulaScope: true } : {}),
       });
     });
   }
@@ -845,9 +931,10 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
 /**
  * Free-text search-query capture. Registered **after** the menu router so a menu
  * tap (handled by `bot.hears`) wins; this consumes a plain text message only
- * while the library session is parked on the `search` prompt, editing the anchor
- * into the results, and calls `next()` otherwise so it never swallows unrelated
- * messages (mirrors the reminder-create / feedback captures).
+ * while the library session is parked on the `search` prompt (→ global `results`)
+ * or the `formula-search` prompt (→ formula-only `formula-results`), editing the
+ * anchor into the matching results, and calls `next()` otherwise so it never
+ * swallows unrelated messages (mirrors the reminder-create / feedback captures).
  */
 export function registerLibrarySearchTextCapture(bot: Telegraf, deps: BotDeps): void {
   bot.on('text', async (ctx, next) => {
@@ -857,7 +944,8 @@ export function registerLibrarySearchTextCapture(bot: Telegraf, deps: BotDeps): 
       return;
     }
     const session = loadSession<AnchoredSession<LibraryState>>(userId, 'library');
-    if (session === null || session.state.screen !== 'search') {
+    const parked = session?.state.screen;
+    if (session === null || (parked !== 'search' && parked !== 'formula-search')) {
       await next();
       return;
     }
@@ -867,7 +955,11 @@ export function registerLibrarySearchTextCapture(bot: Telegraf, deps: BotDeps): 
       await next();
       return;
     }
-    const state: LibraryState = { screen: 'results', query: raw.toLowerCase(), page: 0 };
+    const query = raw.toLowerCase();
+    const state: LibraryState =
+      parked === 'formula-search'
+        ? { screen: 'formula-results', query, page: 0 }
+        : { screen: 'results', query, page: 0 };
     const out = viewFor(deps, state);
     await editViewAt(ctx, session.anchor.messageId, out);
     persist(userId, session.anchor, { ...state, page: out.page });

@@ -1,15 +1,37 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { Telegraf, type Context } from 'telegraf';
 
 import type { Combination, Herb, LoadedContent } from '../../content/types';
 import { buildCrossLinks } from '../../content/cross-links';
+import { ensureUser } from '../../db/repositories/user.repo';
+import { setupTestDb, teardownTestDb } from '../../db/test-helper';
 import type { BotDeps } from '../context';
+import { messages } from '../messages';
+import { type AnchoredSession, loadSession, saveSession, SESSION_TTL_MS } from '../session-store';
 
 import { FORMULA_BRANCH_ENABLED } from './_formula-gate';
-import { backState, clampPage, formulaMatches, herbMatches, hubView, searchHits } from './library';
+import {
+  backState,
+  clampPage,
+  formulaListView,
+  formulaMatches,
+  formulaResultsView,
+  herbMatches,
+  hubView,
+  registerLibrarySearchTextCapture,
+  searchHits,
+} from './library';
 
 /** Pull every button label out of an inline keyboard. */
-function buttonLabels(view: ReturnType<typeof hubView>): string[] {
+function buttonLabels(view: { keyboard: ReturnType<typeof hubView>['keyboard'] }): string[] {
   return view.keyboard.reply_markup.inline_keyboard.flat().map((b) => ('text' in b ? b.text : ''));
+}
+
+/** Pull every button's callback_data out of an inline keyboard. */
+function buttonData(view: { keyboard: ReturnType<typeof hubView>['keyboard'] }): string[] {
+  return view.keyboard.reply_markup.inline_keyboard
+    .flat()
+    .map((b) => ('callback_data' in b ? b.callback_data : ''));
 }
 
 describe('clampPage', () => {
@@ -93,6 +115,49 @@ describe('backState — library navigation never wraps or dead-ends', () => {
   it('the guide list returns to the hub', () => {
     expect(backState({ screen: 'guide-list', page: 2 })).toEqual({ screen: 'hub', page: 0 });
   });
+
+  // ── formula-only search chain (Plan 017) ──
+  it('a formula card carrying formulaScope+query returns to the formula results', () => {
+    expect(
+      backState({
+        screen: 'formula-card',
+        query: 'агар',
+        formulaScope: true,
+        page: 1,
+        formulaId: 'f',
+      }),
+    ).toEqual({ screen: 'formula-results', query: 'агар', page: 1 });
+  });
+
+  it('a formula card carrying only query (global search) returns to the mixed results', () => {
+    expect(backState({ screen: 'formula-card', query: 'агар', page: 1, formulaId: 'f' })).toEqual({
+      screen: 'results',
+      query: 'агар',
+      page: 1,
+    });
+  });
+
+  it('a formula card with no origin returns to the formula list', () => {
+    expect(backState({ screen: 'formula-card', page: 2, formulaId: 'f' })).toEqual({
+      screen: 'formula-list',
+      page: 2,
+    });
+  });
+
+  it('formula results return to the formula search prompt, and the prompt to the formula list', () => {
+    expect(backState({ screen: 'formula-results', query: 'агар', page: 3 })).toEqual({
+      screen: 'formula-search',
+      page: 0,
+    });
+    expect(backState({ screen: 'formula-search', page: 0 })).toEqual({
+      screen: 'formula-list',
+      page: 0,
+    });
+  });
+
+  it('the formula list returns to the hub', () => {
+    expect(backState({ screen: 'formula-list', page: 1 })).toEqual({ screen: 'hub', page: 0 });
+  });
 });
 
 // ─── search matching + the doctor-gate on formula hits ────────────────────────
@@ -172,13 +237,125 @@ describe('combinations surface tracks the ADR 006 doctor-gate', () => {
     expect(FORMULA_BRANCH_ENABLED).toBe(true);
   });
 
-  it('the hub shows the 🧪 Формулы branch when registered', () => {
-    expect(buttonLabels(hubView())).toContain('🧪 Формулы');
+  it('the hub shows the 🧪 Составы branch when registered', () => {
+    expect(buttonLabels(hubView())).toContain('🧪 Составы');
   });
 });
 
 describe('library hub — guides branch (Plan 006)', () => {
   it('the hub always shows the 📖 Статьи branch', () => {
     expect(buttonLabels(hubView())).toContain('📖 Статьи');
+  });
+});
+
+// ─── formula-only search surface (Plan 017) ───────────────────────────────────
+
+/** Deps whose herb and one formula share the token «миро», to prove no leak. */
+function formulaDeps(): BotDeps {
+  const herbs = [herb('tib-haritaki', 'Миробалан хебула')];
+  const combos = [
+    combo('tib-formula-agar-8', 'Агар-8'),
+    combo('tib-formula-miro', 'Миробалановая формула'),
+  ];
+  const content = {
+    herbs: { all: herbs, byId: new Map(herbs.map((h) => [h.id, h])) },
+    combinations: { all: combos, byId: new Map(combos.map((c) => [c.id, c])) },
+    categories: { all: [], byId: new Map() },
+    tips: { all: [], byId: new Map() },
+    crossLinks: buildCrossLinks(combos),
+  } as unknown as LoadedContent;
+  return { content, timezone: 'UTC', botUsername: 'b', adminTelegramIds: new Set() };
+}
+
+describe('formula-only search views', () => {
+  it('the formula list shows the 🔎 «Поиск по составам» button as its first row', () => {
+    const view = formulaListView(formulaDeps(), 0);
+    const firstRow = view.keyboard.reply_markup.inline_keyboard[0]!;
+    expect('text' in firstRow[0]! ? firstRow[0].text : '').toBe(messages.library.formulasSearch);
+    expect('callback_data' in firstRow[0]! ? firstRow[0].callback_data : '').toBe('lib:fsearch');
+  });
+
+  it('formula results filter to formulas only — a herb-matching token never leaks a herb', () => {
+    // «миро» matches the herb «Миробалан хебула» AND the formula «Миробалановая
+    // формула»; only the formula may appear in the formula-scoped results.
+    const view = formulaResultsView(formulaDeps(), {
+      screen: 'formula-results',
+      query: 'миро',
+      page: 0,
+    });
+    expect(buttonData(view)).toContain('lib:formula:tib-formula-miro');
+    expect(buttonData(view).some((d) => d.startsWith('lib:herb:'))).toBe(false);
+    expect(buttonLabels(view)).not.toContain('Миробалан хебула');
+  });
+
+  it('a non-matching formula query shows nothingFound', () => {
+    const view = formulaResultsView(formulaDeps(), {
+      screen: 'formula-results',
+      query: 'женьшень',
+      page: 0,
+    });
+    expect(view.text).toBe(messages.search.nothingFound);
+  });
+});
+
+describe('library text capture — formula-search routes to the formula-only results', () => {
+  beforeEach(() => setupTestDb());
+  afterEach(() => teardownTestDb());
+
+  type TextHandler = (ctx: Context, next: () => Promise<void>) => Promise<void>;
+  const ANCHOR_ID = 77;
+
+  /** Register the text capture against a stub, returning the captured handler. */
+  function captureTextHandler(deps: BotDeps): TextHandler {
+    let handler: TextHandler | undefined;
+    const stub = {
+      on: (_event: string, h: TextHandler) => {
+        handler = h;
+      },
+    } as unknown as Telegraf;
+    registerLibrarySearchTextCapture(stub, deps);
+    if (handler === undefined) throw new Error('text handler not registered');
+    return handler;
+  }
+
+  function makeCtx(userId: number, text: string): Context {
+    return {
+      state: { userId },
+      chat: { id: 1 },
+      message: { text },
+      telegram: { editMessageText: () => Promise.resolve(true) },
+    } as unknown as Context;
+  }
+
+  function seedSession(screen: 'search' | 'formula-search'): number {
+    const userId = ensureUser('1', 'u');
+    const session: AnchoredSession<{ screen: string; page: number }> = {
+      anchor: { messageId: ANCHOR_ID },
+      state: { screen, page: 0 },
+    };
+    saveSession(userId, 'library', session, SESSION_TTL_MS);
+    return userId;
+  }
+
+  it('a query typed on the formula-search prompt parks the session on formula-results', async () => {
+    const userId = seedSession('formula-search');
+    const deps = formulaDeps();
+    await captureTextHandler(deps)(makeCtx(userId, 'Миро'), () => Promise.resolve());
+
+    const session = loadSession<AnchoredSession<{ screen: string; query?: string }>>(
+      userId,
+      'library',
+    );
+    expect(session?.state.screen).toBe('formula-results');
+    expect(session?.state.query).toBe('миро');
+  });
+
+  it('a query typed on the global search prompt still parks on the mixed results', async () => {
+    const userId = seedSession('search');
+    const deps = formulaDeps();
+    await captureTextHandler(deps)(makeCtx(userId, 'Миро'), () => Promise.resolve());
+
+    const session = loadSession<AnchoredSession<{ screen: string }>>(userId, 'library');
+    expect(session?.state.screen).toBe('results');
   });
 });

@@ -143,8 +143,8 @@ of reinventing routing/session/render:
 - **Gated surfaces.** The combinations (formula) browser sat behind the ADR 006
   doctor-gate — one compile-time constant, `src/bot/commands/_formula-gate.ts →
   FORMULA_BRANCH_ENABLED` (not a runtime/env flag), gating all three surfaces:
-  the `🧪 Формулы` hub branch, formula search hits, and the herb-card "Входит в
-  формулы" cross-links (the formula callback handlers are only registered when it
+  the `🧪 Составы` hub branch, formula search hits, and the herb-card "Входит в
+  составы" cross-links (the formula callback handlers are only registered when it
   is `true`, so a hand-crafted `lib:formula:*` tap can't leak while off). **The
   gate was lifted on the owner's documented sign-off (2026-06-28,
   `docs/medical-review.md`):** `FORMULA_BRANCH_ENABLED = true`, the branch is live,
@@ -153,7 +153,12 @@ of reinventing routing/session/render:
   2026-06-29, the structured verbose fields** (indications/traditional use/dosing)
   as a **live-review surface** on the private pre-launch bot. Only the raw
   `source_text`/`body` stay unsurfaced; final production sign-off of the verbose
-  fields is still pending (`docs/medical-review.md`).
+  fields is still pending (`docs/medical-review.md`). **The branch is *labelled*
+  «Составы» in the UI (Plan 017) while all code, callbacks, ids, and the
+  `Combination` type keep the "formula/combination" vocabulary** — a deliberate
+  display-only split; do not chase a full rename of the stable join keys. It also
+  carries a formula-only 🔎 search (`lib:fsearch`/`lib:fresults`) reachable from
+  the top of the list, *in addition to* the unified top-level 🔎 Поиск.
 
 ## Portability discipline (ADR 003)
 

@@ -3,8 +3,9 @@
  * and the notification "Открыть" CTA. Keeping it in one place means every entry
  * point renders an identical card with the render-time disclaimer (ADR 006).
  *
- * The card optionally carries a **"Входит в формулы"** cross-link section
- * (Plan 009 Phase 3): the formulas whose `members` include this herb, resolved
+ * The card optionally carries a **"Входит в составы"** cross-link section
+ * (Plan 009 Phase 3; UI label «Составы», code keeps "formula" — Plan 017): the
+ * formulas whose `members` include this herb, resolved
  * from `content.crossLinks`. The section is **omitted entirely** while the
  * combinations branch is withheld (ADR 006 doctor-gate) — callers pass an empty
  * list, so there are never dead links to an unregistered formula card.

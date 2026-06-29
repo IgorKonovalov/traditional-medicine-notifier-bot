@@ -205,6 +205,12 @@ Commands: `npm run typecheck && npm run lint && npm test && npm run build && npm
 
 ## Progress
 
-- [ ] Phase 1 — formula-scoped search surface
-- [ ] Phase 2 — rename «Формулы» → «Составы»
-- [ ] Phase 3 — tests
+- [x] Phase 1 — formula-scoped search surface (`formula-search`/`formula-results`
+  screens, 🔎 button on the formula list, `lib:fsearch`/`lib:fresults` actions,
+  `formulaScope` back-marker, text capture broadened)
+- [x] Phase 2 — rename «Формулы» → «Составы» (messages, historical version
+  announcements 0.11/0.13/0.15, CLAUDE.md + code-comment label mentions; internal
+  vocabulary/callbacks/ids unchanged)
+- [x] Phase 3 — tests (back-states, formula-list 🔎 button, formula-only filtering,
+  text-capture routing, herb-card label assertions). `typecheck`/`lint`/`test`
+  (228)/`build`/`content:index:check` all green.
