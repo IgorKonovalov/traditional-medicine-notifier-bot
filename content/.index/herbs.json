@@ -24,6 +24,149 @@
     "nameOriginal": "Sheng Jiang (生姜)"
   },
   {
+    "id": "tib-agarwood",
+    "tradition": "tibetan",
+    "category": "aromatic-herbs",
+    "nameRu": "Орлиное дерево (агар)",
+    "tags": [
+      "смолистая древесина",
+      "ароматический"
+    ],
+    "nameLatin": "Aquilaria agallocha",
+    "nameOriginal": "A gar (ཨ་གར།)"
+  },
+  {
+    "id": "tib-amla",
+    "tradition": "tibetan",
+    "category": "tonic-herbs",
+    "nameRu": "Эмблика (амалаки)",
+    "tags": [
+      "плод",
+      "традиционный"
+    ],
+    "nameLatin": "Emblica officinalis",
+    "nameOriginal": "sKyu ru ra (སྐྱུ་རུ་ར།)"
+  },
+  {
+    "id": "tib-bamboo-manna",
+    "tradition": "tibetan",
+    "category": "heat-clearing-herbs",
+    "nameRu": "Бамбуковая манна",
+    "tags": [
+      "минеральная смола растения",
+      "традиционный"
+    ],
+    "nameLatin": "Bambusa textilis",
+    "nameOriginal": "Cu gang (ཅུ་གང་།)"
+  },
+  {
+    "id": "tib-bibhitaki",
+    "tradition": "tibetan",
+    "category": "digestive-herbs",
+    "nameRu": "Терминалия беллерика (бибхитаки)",
+    "tags": [
+      "плод",
+      "традиционный"
+    ],
+    "nameLatin": "Terminalia bellirica",
+    "nameOriginal": "Ba ru ra (བ་རུ་ར།)"
+  },
+  {
+    "id": "tib-black-cardamom",
+    "tradition": "tibetan",
+    "category": "warming-spices",
+    "nameRu": "Амомум (чёрный кардамон)",
+    "tags": [
+      "плод",
+      "специя"
+    ],
+    "nameLatin": "Amomum subulatum",
+    "nameOriginal": "Ka ko la (ཀ་ཀོ་ལ།)"
+  },
+  {
+    "id": "tib-calcite",
+    "tradition": "tibetan",
+    "category": "minerals-resins",
+    "nameRu": "Кальцит",
+    "tags": [
+      "минерал",
+      "традиционный"
+    ],
+    "nameLatin": "Calcite",
+    "nameOriginal": "Cong zhi (ཅོང་ཞི།)"
+  },
+  {
+    "id": "tib-cardamom",
+    "tradition": "tibetan",
+    "category": "warming-spices",
+    "nameRu": "Кардамон",
+    "tags": [
+      "плод",
+      "специя"
+    ],
+    "nameLatin": "Elettaria cardamomum",
+    "nameOriginal": "Sug smel (སུག་སྨེལ།)"
+  },
+  {
+    "id": "tib-cinnamon",
+    "tradition": "tibetan",
+    "category": "warming-spices",
+    "nameRu": "Корица",
+    "tags": [
+      "кора",
+      "специя"
+    ],
+    "nameLatin": "Cinnamomum zeylanicum",
+    "nameOriginal": "Shing tsha (ཤིང་ཚ།)"
+  },
+  {
+    "id": "tib-clove",
+    "tradition": "tibetan",
+    "category": "aromatic-herbs",
+    "nameRu": "Гвоздика",
+    "tags": [
+      "бутон",
+      "ароматический"
+    ],
+    "nameLatin": "Eugenia caryophyllata",
+    "nameOriginal": "Li shi (ལི་ཤི།)"
+  },
+  {
+    "id": "tib-dracocephalum",
+    "tradition": "tibetan",
+    "category": "aromatic-herbs",
+    "nameRu": "Змееголовник",
+    "tags": [
+      "трава",
+      "ароматический"
+    ],
+    "nameLatin": "Dracocephalum tanguticum"
+  },
+  {
+    "id": "tib-geranium",
+    "tradition": "tibetan",
+    "category": "heat-clearing-herbs",
+    "nameRu": "Герань",
+    "tags": [
+      "трава",
+      "традиционный"
+    ],
+    "nameLatin": "Geranium",
+    "nameOriginal": "Li ga dur (ལི་ག་དུར།)"
+  },
+  {
+    "id": "tib-ginger",
+    "tradition": "tibetan",
+    "category": "warming-spices",
+    "nameRu": "Имбирь",
+    "tags": [
+      "корневище",
+      "специя"
+    ],
+    "nameLatin": "Zingiber officinale",
+    "nameOriginal": "sGa (སྒ།)"
+  },
+  {
     "id": "tib-haritaki",
     "tradition": "tibetan",
     "category": "digestive-herbs",
@@ -34,5 +177,264 @@
     ],
     "nameLatin": "Terminalia chebula",
     "nameOriginal": "A ru ra (ཨ་རུ་ར།)"
+  },
+  {
+    "id": "tib-hedychium",
+    "tradition": "tibetan",
+    "category": "aromatic-herbs",
+    "nameRu": "Кемпферия (хедихиум)",
+    "tags": [
+      "корневище",
+      "ароматический"
+    ],
+    "nameLatin": "Hedychium spicatum"
+  },
+  {
+    "id": "tib-inula",
+    "tradition": "tibetan",
+    "category": "digestive-herbs",
+    "nameRu": "Девясил",
+    "tags": [
+      "корень",
+      "традиционный"
+    ],
+    "nameLatin": "Inula racemosa",
+    "nameOriginal": "Ma nu (མ་ནུ།)"
+  },
+  {
+    "id": "tib-licorice",
+    "tradition": "tibetan",
+    "category": "tonic-herbs",
+    "nameRu": "Солодка",
+    "tags": [
+      "корень",
+      "традиционный"
+    ],
+    "nameLatin": "Glycyrrhiza uralensis",
+    "nameOriginal": "Shing mngar (ཤིང་མངར།)"
+  },
+  {
+    "id": "tib-long-pepper",
+    "tradition": "tibetan",
+    "category": "warming-spices",
+    "nameRu": "Перец длинный (пиппали)",
+    "tags": [
+      "плод",
+      "специя"
+    ],
+    "nameLatin": "Piper longum",
+    "nameOriginal": "Pi pi ling (པི་པི་ལིང་།)"
+  },
+  {
+    "id": "tib-melia",
+    "tradition": "tibetan",
+    "category": "heat-clearing-herbs",
+    "nameRu": "Мелия",
+    "tags": [
+      "плод",
+      "традиционный"
+    ],
+    "nameLatin": "Melia composita"
+  },
+  {
+    "id": "tib-mesua",
+    "tradition": "tibetan",
+    "category": "aromatic-herbs",
+    "nameRu": "Мезуя железная",
+    "tags": [
+      "тычинки",
+      "ароматический"
+    ],
+    "nameLatin": "Mesua ferrea",
+    "nameOriginal": "Nāga ge sar (ནཱ་ག་གེ་སར།)"
+  },
+  {
+    "id": "tib-musk",
+    "tradition": "tibetan",
+    "category": "aromatic-herbs",
+    "nameRu": "Мускус",
+    "tags": [
+      "животное сырьё",
+      "ароматический"
+    ],
+    "nameLatin": "Moschus moschiferus",
+    "nameOriginal": "Gla rtsi (གླ་རྩི།)"
+  },
+  {
+    "id": "tib-nutmeg",
+    "tradition": "tibetan",
+    "category": "aromatic-herbs",
+    "nameRu": "Мускатный орех",
+    "tags": [
+      "плод",
+      "ароматический"
+    ],
+    "nameLatin": "Myristica fragrans",
+    "nameOriginal": "Dzā ti (ཛཱ་ཏི།)"
+  },
+  {
+    "id": "tib-picrorhiza",
+    "tradition": "tibetan",
+    "category": "heat-clearing-herbs",
+    "nameRu": "Кутки (горечавка)",
+    "tags": [
+      "корень",
+      "традиционный"
+    ],
+    "nameLatin": "Picrorhiza kurroa",
+    "nameOriginal": "Hong len (ཧོང་ལེན།)"
+  },
+  {
+    "id": "tib-pomegranate",
+    "tradition": "tibetan",
+    "category": "digestive-herbs",
+    "nameRu": "Гранат",
+    "tags": [
+      "плод",
+      "традиционный"
+    ],
+    "nameLatin": "Punica granatum",
+    "nameOriginal": "Se 'bru (སེ་འབྲུ།)"
+  },
+  {
+    "id": "tib-raspberry",
+    "tradition": "tibetan",
+    "category": "tonic-herbs",
+    "nameRu": "Малина",
+    "tags": [
+      "плод",
+      "традиционный"
+    ],
+    "nameLatin": "Rubus idaeopsis"
+  },
+  {
+    "id": "tib-red-sandalwood",
+    "tradition": "tibetan",
+    "category": "heat-clearing-herbs",
+    "nameRu": "Красный сандал",
+    "tags": [
+      "древесина",
+      "традиционный"
+    ],
+    "nameLatin": "Pterocarpus santalinus",
+    "nameOriginal": "Tsan dan dmar po (ཙན་དན་དམར་པོ།)"
+  },
+  {
+    "id": "tib-rubia",
+    "tradition": "tibetan",
+    "category": "heat-clearing-herbs",
+    "nameRu": "Марена",
+    "tags": [
+      "корень",
+      "традиционный"
+    ],
+    "nameLatin": "Rubia cordifolia",
+    "nameOriginal": "bTsod (བཙོད།)"
+  },
+  {
+    "id": "tib-safflower",
+    "tradition": "tibetan",
+    "category": "heat-clearing-herbs",
+    "nameRu": "Сафлор",
+    "tags": [
+      "цветок",
+      "традиционный"
+    ],
+    "nameLatin": "Carthamus tinctorius",
+    "nameOriginal": "Gur gum (གུར་གུམ།)"
+  },
+  {
+    "id": "tib-saussurea",
+    "tradition": "tibetan",
+    "category": "warming-spices",
+    "nameRu": "Соссюрея (костус)",
+    "tags": [
+      "корень",
+      "традиционный"
+    ],
+    "nameLatin": "Saussurea lappa",
+    "nameOriginal": "Ru rta (རུ་རྟ།)"
+  },
+  {
+    "id": "tib-seabuckthorn",
+    "tradition": "tibetan",
+    "category": "tonic-herbs",
+    "nameRu": "Облепиха",
+    "tags": [
+      "плод",
+      "традиционный"
+    ],
+    "nameLatin": "Hippophae rhamnoides",
+    "nameOriginal": "sTar bu (སྟར་བུ།)"
+  },
+  {
+    "id": "tib-shilajit",
+    "tradition": "tibetan",
+    "category": "minerals-resins",
+    "nameRu": "Мумиё",
+    "tags": [
+      "смола",
+      "минеральное сырьё"
+    ],
+    "nameLatin": "Shilajit",
+    "nameOriginal": "Brag zhun (བྲག་ཞུན།)"
+  },
+  {
+    "id": "tib-shorea",
+    "tradition": "tibetan",
+    "category": "minerals-resins",
+    "nameRu": "Шорея (саловое дерево)",
+    "tags": [
+      "смола",
+      "традиционный"
+    ],
+    "nameLatin": "Shorea robusta"
+  },
+  {
+    "id": "tib-swertia",
+    "tradition": "tibetan",
+    "category": "heat-clearing-herbs",
+    "nameRu": "Сверция",
+    "tags": [
+      "трава",
+      "традиционный"
+    ],
+    "nameLatin": "Swertia chirata",
+    "nameOriginal": "Tig ta (ཏིག་ཏ།)"
+  },
+  {
+    "id": "tib-tinospora",
+    "tradition": "tibetan",
+    "category": "heat-clearing-herbs",
+    "nameRu": "Тиноспора",
+    "tags": [
+      "стебель",
+      "традиционный"
+    ],
+    "nameLatin": "Tinospora cordifolia",
+    "nameOriginal": "Sle tres (སླེ་ཏྲེས།)"
+  },
+  {
+    "id": "tib-veronica",
+    "tradition": "tibetan",
+    "category": "heat-clearing-herbs",
+    "nameRu": "Вероника",
+    "tags": [
+      "трава",
+      "традиционный"
+    ],
+    "nameLatin": "Veronica ciliata"
+  },
+  {
+    "id": "tib-white-sandalwood",
+    "tradition": "tibetan",
+    "category": "heat-clearing-herbs",
+    "nameRu": "Белый сандал",
+    "tags": [
+      "древесина",
+      "ароматический"
+    ],
+    "nameLatin": "Santalum album",
+    "nameOriginal": "Tsan dan dkar po (ཙན་དན་དཀར་པོ།)"
   }
 ]

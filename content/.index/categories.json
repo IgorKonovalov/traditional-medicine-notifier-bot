@@ -1,8 +1,26 @@
 [
   {
+    "id": "aromatic-herbs",
+    "nameRu": "Ароматические",
+    "herbCount": 7,
+    "combinationCount": 0
+  },
+  {
     "id": "digestive-herbs",
     "nameRu": "Травы для пищеварения",
-    "herbCount": 2,
+    "herbCount": 5,
+    "combinationCount": 0
+  },
+  {
+    "id": "heat-clearing-herbs",
+    "nameRu": "Очищающие жар",
+    "herbCount": 11,
+    "combinationCount": 0
+  },
+  {
+    "id": "minerals-resins",
+    "nameRu": "Минералы и смолы",
+    "herbCount": 3,
     "combinationCount": 0
   },
   {
@@ -14,7 +32,13 @@
   {
     "id": "tonic-herbs",
     "nameRu": "Тонизирующие травы",
-    "herbCount": 1,
+    "herbCount": 5,
+    "combinationCount": 0
+  },
+  {
+    "id": "warming-spices",
+    "nameRu": "Согревающие специи",
+    "herbCount": 6,
     "combinationCount": 0
   }
 ]
