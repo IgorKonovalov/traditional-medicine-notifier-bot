@@ -293,7 +293,7 @@ only genuinely-uncovered material is **diagnosis observation**.
 
 ## Progress
 
-- [ ] Phase 1 — `Food` content type: types, loader, validate, index (ADR 012)
+- [x] Phase 1 — `Food` content type: types, loader, validate, index (ADR 012) — `a55bf7d`
 - [ ] Phase 2 — `🥗 Продукты` browse + constitution/warmth filter
 - [ ] Phase 3 — Author the food catalogue (eggs, meat, fruits, berries, greens, …)
 - [ ] Phase 4 — Guide «Три природы человека» (constitution portraits)
