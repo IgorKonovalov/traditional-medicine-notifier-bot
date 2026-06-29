@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.13.0 — 2026-06-29
+
+- Expand the 🧪 formula cards to surface the structured verbose fields — показания
+  (indications), применение (traditional use) and приём (dosing) — below the
+  existing set, as a **live-review surface** on the private pre-launch bot (owner
+  sign-off 2026-06-29) so the corpus can be reviewed in situ before large
+  production. The raw source text / verbatim body stay unsurfaced and the
+  render-time disclaimer is unchanged (ADR 006, `docs/medical-review.md`). Card
+  rendering and the inverted raw-body-never-surfaces test shipped in `0052711`;
+  this is the release close.
+
 ## 0.12.0 — 2026-06-29
 
 - Rewrote all 60 daily tips into a source-faithful clinical register (named
