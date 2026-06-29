@@ -4,6 +4,17 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.14.0 — 2026-06-29
+
+- Add **long-form guides** (ADR 008, Plan 006): a new pull content type browsed
+  via the 📖 Статьи branch of the library hub (and `/guides`), read one section at
+  a time with a ◀ ▶ pager. Ships three Tibetan guides — the flagship «Основы
+  тибетской медицины» (три начала, первоэлементы, Жар/Холод, конституция),
+  «Питание и образ жизни по сезонам» and «Распорядок дня» — grounded in Чжуд-ши
+  and written in the source-faithful clinical register (Plan 012), descriptive
+  throughout. Introduces `splitForTelegram`, the sanctioned message splitter for
+  long sends.
+
 ## 0.13.0 — 2026-06-29
 
 - Expand the 🧪 formula cards to surface the structured verbose fields — показания

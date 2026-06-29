@@ -1,8 +1,10 @@
 # Plan 006 — Long-form guides: content type, split delivery & browse
 
-**Status:** Approved — not started
+**Status:** Completed
 **Created:** 2026-06-26
 **Approved:** 2026-06-26
+**Completed:** 2026-06-29 — v0.14.0; all phases shipped (Phase 3 folded into the
+library hub, owner-approved; see Progress)
 **Amended:** 2026-06-26 — flagship first guide is now «Основы тибетской медицины»
 (fundamentals: three ньепа + Жар/Холод), sourced from `manla.ru/base/`; this
 becomes guide #1 in Phase 4 (owner request). Seasonal-eating guides drop to two.

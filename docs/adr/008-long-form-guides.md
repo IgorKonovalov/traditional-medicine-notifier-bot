@@ -80,6 +80,21 @@ Concrete surface a reviewer can grep against:
 (`splitForTelegram`), `src/bot/commands/guides.ts`, `src/bot/session-store.ts`
 (`SessionKind 'guide'`), `messages.ts`.
 
+## Implementation note (Plan 006, shipped 2026-06-29)
+
+Decisions 1–3, 5, 6 shipped as written. **Decision 4 (browse + pager) shipped as
+the second option it offered** — a branch of the existing surface, not a standalone
+command. By implementation time, Plan 009 had consolidated browse/search/tips/
+formulas into the **library hub** (`commands/library.ts`, one anchored `'library'`
+session), which already reserved a guides slot (`messages.library.guides`,
+«📖 Статьи»). Guides therefore became the hub's `guide-list` / `guide-section`
+screens (callbacks `lib:guides` / `lib:glist` / `lib:guide` / `lib:gsec`),
+**reusing the `'library'` SessionKind** — the dedicated `'guide'` SessionKind
+named above was **not** added. `/guides` opens the hub directly on the guide list.
+A guide is page-flattened by `_guide-card.guidePages()` (sections →
+`splitForTelegram` pages); the pager steps pages and the disclaimer rides the
+final page. Owner-approved deviation (see `docs/plans/006-long-form-guides.md`).
+
 ## Consequences
 
 - **Easier:** a real home for rich reference material; a sanctioned, reusable
@@ -118,4 +133,5 @@ Concrete surface a reviewer can grep against:
   proceeds independently).
 - ADR 007 is reserved by Plan 004 (combination categorization / rinchen); this
   ADR takes **008** to avoid collision.
-- Implementation plan: forthcoming (Plan 006 — long-form guides).
+- Implementation: **Plan 006 (long-form guides)** — shipped 2026-06-29; see the
+  Implementation note above for how decision 4 was realized in the library hub.
