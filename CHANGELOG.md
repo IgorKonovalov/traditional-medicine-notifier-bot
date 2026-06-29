@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.17.0 — 2026-06-29
+
+- Add two foundational theory guides (Plan 016 Wave 1): «Шесть вкусов» (the
+  six tastes, their element pairs and action on the three начала) and «Как
+  возникает болезнь» (how the tradition explains disease as accumulated
+  imbalance of Ветер/Желчь/Слизь). Both are source-cited, descriptive, and
+  end at render time with the standard disclaimer (ADR 006, ADR 008).
+- Cross-link the new guides into `tib-osnovy` and deep-link `tip-007` to
+  «Шесть вкусов». Content index now carries 6 guides.
+
 ## 0.16.0 — 2026-06-29
 
 - Make the user-facing surface **Tibetan-only** (ADR 013, Plan 015). A single
