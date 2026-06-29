@@ -1,5 +1,16 @@
 [
   {
+    "id": "tib-kak-bolezn-vhodit",
+    "tradition": "tibetan",
+    "title": "«Как болезнь входит и проявляется»",
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 10 «О вхождении болезней»"
+    }
+  },
+  {
     "id": "tib-kak-voznikaet-bolezn",
     "tradition": "tibetan",
     "title": "«Как возникает болезнь»",
@@ -8,6 +19,17 @@
       "work": "Наука о здоровье. Сова Ригпа",
       "part": "Ринчен Тензин, популярные лекции 2012–2013",
       "chapter": "гл. 1 «Как возникают болезни»"
+    }
+  },
+  {
+    "id": "tib-klassifikaciya-boleznej",
+    "tradition": "tibetan",
+    "title": "«Как традиция различает болезни»",
+    "sectionCount": 4,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 12 «Различия болезней»"
     }
   },
   {
@@ -52,6 +74,17 @@
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
       "chapter": "гл. 20 «Действие разных лекарственных средств»"
+    }
+  },
+  {
+    "id": "tib-priznaki-uvyadaniya",
+    "tradition": "tibetan",
+    "title": "«Признаки увядания тела»",
+    "sectionCount": 4,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 7 «Признаки разрушения тела»"
     }
   },
   {
@@ -140,6 +173,17 @@
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
       "chapter": "гл. 2 «Зачатие»"
+    }
+  },
+  {
+    "id": "tib-zhar-i-holod",
+    "tradition": "tibetan",
+    "title": "«Жар и Холод — подробно»",
+    "sectionCount": 4,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 12 «Различия болезней»"
     }
   }
 ]

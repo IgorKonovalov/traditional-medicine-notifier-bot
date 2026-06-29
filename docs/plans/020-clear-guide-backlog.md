@@ -157,7 +157,10 @@ manla `/info` section already named per-row in `guide-backlog.md`.
 - [x] Wave 1 — A. Foundations (5) — `tib-pishchevaritelnyj-ogon`,
   `tib-sem-sil-tela`, `tib-princip-protivopolozhnogo`, `tib-telo-v-obrazah`,
   `tib-zachatie-i-razvitie` (digestive-fire re-sourced гл. 16→гл. 5)
-- [ ] Wave 2 — B. Disease taxonomy (4)
+- [x] Wave 2 — B. Disease taxonomy (4) — `tib-kak-bolezn-vhodit`,
+  `tib-zhar-i-holod`, `tib-klassifikaciya-boleznej`, `tib-priznaki-uvyadaniya`
+  (heat sub-types named as taxonomy only; увядание reframed as element/sense
+  dissolution since гл. 7 is death, not aging)
 - [ ] Wave 3 — C. Nutrition (8, incl. 2 ⚠️)
 - [ ] Wave 4 — D. Lifestyle (9, incl. 2 ⚠️)
 - [ ] Wave 5 — elderly nutrition (1)

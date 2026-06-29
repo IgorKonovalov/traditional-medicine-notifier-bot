@@ -25,6 +25,16 @@ Newer guide plans pull from this menu and cite rows back here. Consumed so far:
 - **Rhythms & diagnosis** (the daily/seasonal cycles) → daily shipped as
   `tib-sutochnyj-ritm`, seasonal as `tib-sezonnoe-pitanie`; **diagnosis** remains,
   owned by **Plan 013** Phase 5. Do not author here.
+- **B. Как традиция объясняет болезнь (whole group)** → cleared by **Plan 020**
+  Wave 2: **Как болезнь входит** → `tib-kak-bolezn-vhodit` (гл. 10–11);
+  **Жар и Холод — подробно** → `tib-zhar-i-holod` (гл. 12 — the Жар/Холод
+  dichotomy + the six heat *names* live in the allowed Том II zone; the per-type
+  treatment definitions are Том III, off-limits, so the guide names them as
+  taxonomy only); **Как традиция различает болезни** → `tib-klassifikaciya-boleznej`
+  (гл. 12 — three axes, 404 болезни); **Признаки увядания тела** →
+  `tib-priznaki-uvyadaniya` (гл. 7 dissolution imagery + гл. 12's one-line
+  «старческая болезнь… понижение сил первоэлементов» — гл. 7 is death/dissolution,
+  not aging, so the guide is reframed around element/sense withdrawal).
 - **A. Foundations & theory (whole group)** → cleared by **Plan 020** Wave 1:
   **Пищеварительный огонь** → `tib-pishchevaritelnyj-ogon` (sourced to Чжуд-ши
   гл. 5, where the three-stage mechanism actually lives — *not* гл. 16, which is a
