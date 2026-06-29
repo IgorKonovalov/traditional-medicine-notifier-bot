@@ -1,9 +1,9 @@
 # Plan 017 — formula-scoped search + rename «Формулы» → «Составы»
 
-**Status:** Approved
+**Status:** Completed
 **Created:** 2026-06-29
 **Approved:** 2026-06-29 (owner)
-**Completed:** —
+**Completed:** 2026-06-29 (v0.18.0, commit cfb2328)
 **Bump on close:** minor
 
 ## Context

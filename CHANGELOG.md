@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.18.0 — 2026-06-29
+
+- Add a formula-only search reachable from a 🔎 button atop the formula list, so
+  the 149-formula section can be filtered without leaving the branch; results
+  surface formulas only (no herb leak) and back-navigation returns to those
+  scoped results (Plan 017 Phase 1). The global 🔎 Поиск stays mixed.
+- Relabel the formula branch «Формулы» → «Составы» throughout the UI
+  (display-only; callback scopes, ids, the `Combination` type and all internal
+  vocabulary are unchanged — Plan 017 Phase 2).
+
 ## 0.17.0 — 2026-06-29
 
 - Add two foundational theory guides (Plan 016 Wave 1): «Шесть вкусов» (the
