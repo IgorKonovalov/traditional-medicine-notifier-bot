@@ -321,6 +321,36 @@ describe('foodGroupsView', () => {
   it('a group button is labelled with its Russian name and food count', () => {
     expect(buttonLabels(foodGroupsView(foodDeps(), 0))).toContain('Фрукты (2)');
   });
+
+  it('shows the whole taxonomy on one screen — never paginates the groups root', () => {
+    // One food in every group: all 10 must appear with no `lib:fglist` pager.
+    const groups: Food['group'][] = [
+      'grain',
+      'legume',
+      'oil',
+      'meat',
+      'egg',
+      'dairy',
+      'root-vegetable',
+      'green-vegetable',
+      'fruit',
+      'berry',
+    ];
+    const foods = groups.map((g) => food(`food-${g}`, g, 'нейтральная', N));
+    const content = {
+      herbs: { all: [], byId: new Map() },
+      combinations: { all: [], byId: new Map() },
+      categories: { all: [], byId: new Map() },
+      tips: { all: [], byId: new Map() },
+      guides: { all: [], byId: new Map() },
+      foods: { all: foods, byId: new Map(foods.map((f) => [f.id, f])) },
+    } as unknown as LoadedContent;
+    const deps = { content, timezone: 'UTC', botUsername: 'b', adminTelegramIds: new Set() };
+
+    const data = buttonData(foodGroupsView(deps, 0));
+    expect(data.filter((d) => d.startsWith('lib:fg:'))).toHaveLength(groups.length);
+    expect(data.some((d) => d.startsWith('lib:fglist'))).toBe(false);
+  });
 });
 
 describe('foodListView — constitution filter lists only foods that pacify the начало', () => {

@@ -216,8 +216,9 @@ export const messages = {
    */
   foods: {
     groupsTitle: 'Продукты — выберите раздел или подберите по свойствам.',
-    /** Top-of-list button on the groups screen, opening the filter screen. */
-    filterEntry: '🔍 Подобрать по свойствам',
+    /** Top-of-list button on the groups screen, opening the filter screen. A
+     *  non-magnifier glyph so it reads as a pick-list, not the 🔎 text search. */
+    filterEntry: '🎯 Подобрать по свойствам',
     filterTitle: 'Выберите начало, которое нужно успокоить, или природу продукта.',
     emptyGroups: 'Пока нет продуктов.',
     emptyList: 'Подходящих продуктов не найдено.',

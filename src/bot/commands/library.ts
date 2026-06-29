@@ -575,6 +575,14 @@ function foodListTitle(state: LibraryState): string {
   return messages.library.foods;
 }
 
+/**
+ * The whole group taxonomy fits on one screen (it is short and bounded by
+ * `FOOD_GROUPS`), so it is never split into pages — unlike content lists, a
+ * paginated navigation root is pure friction. The `lib:fglist` pager stays wired
+ * but only ever fires if the taxonomy outgrows this; for now it never does.
+ */
+const FOOD_GROUPS_PAGE_SIZE = FOOD_GROUPS.length;
+
 /** The 🥗 Продукты root: a filter entry then one button per non-empty group. */
 export function foodGroupsView(deps: BotDeps, page: number): View & { readonly page: number } {
   const groups = foodGroupsPresent(deps);
@@ -585,8 +593,11 @@ export function foodGroupsView(deps: BotDeps, page: number): View & { readonly p
       page: 0,
     };
   }
-  const { page: safePage, pageCount } = clampPage(page, groups.length);
-  const slice = groups.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
+  const { page: safePage, pageCount } = clampPage(page, groups.length, FOOD_GROUPS_PAGE_SIZE);
+  const slice = groups.slice(
+    safePage * FOOD_GROUPS_PAGE_SIZE,
+    safePage * FOOD_GROUPS_PAGE_SIZE + FOOD_GROUPS_PAGE_SIZE,
+  );
   // The filter entry sits as the first row, above the groups, on every page.
   const filterRow: CallbackButton[] = [
     Markup.button.callback(messages.foods.filterEntry, 'lib:ffil'),
