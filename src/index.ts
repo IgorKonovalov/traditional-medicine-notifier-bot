@@ -200,6 +200,7 @@ async function setBotCommands(bot: Telegraf): Promise<void> {
     { command: 'reminders', description: 'Напоминания' },
     { command: 'settings', description: 'Настройки' },
     { command: 'changelog', description: 'История обновлений' },
+    { command: 'sources', description: 'Об источниках справочника' },
     { command: 'donate', description: 'Поддержать проект' },
     { command: 'feedback', description: 'Написать разработчику' },
     { command: 'help', description: 'Справка' },

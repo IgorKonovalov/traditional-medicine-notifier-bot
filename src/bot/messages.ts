@@ -146,6 +146,7 @@ export const messages = {
       '• /reminders — ваши напоминания (создать, посмотреть, отключить)\n' +
       '• /settings — настройки\n' +
       '• /changelog — история обновлений бота\n' +
+      '• /sources — об источниках справочника\n' +
       '• /donate — поддержать проект\n' +
       '• /feedback — написать разработчику\n\n' +
       disclaimer,
@@ -401,6 +402,25 @@ export const messages = {
       source !== undefined
         ? `🌿 Совет\n\n${body}\n\n${formatTipSource(source)}`
         : `🌿 Совет\n\n${body}`,
+  },
+
+  /**
+   * /sources — short «Об источниках» page. Names the texts the corpus draws on
+   * (Чжуд-ши, Сова Ригпа, manla.ru for составы). Plain-text reply (ADR 002),
+   * listed in /help. Kept factual and descriptive — no disclaimer trailer
+   * (scoped to the formula card + /start + /help, 2026-06-29).
+   */
+  sources: {
+    body:
+      '📚 Об источниках\n\n' +
+      'Материалы справочника опираются на тибетские медицинские тексты:\n\n' +
+      '• «Чжуд-ши» — коренной трактат тибетской медицины. Основа разделов ' +
+      'о вкусах, природах, питании и образе жизни.\n' +
+      '• «Сова Ригпа. Наука о здоровье» — современное изложение тибетской ' +
+      'медицины; источник статей о продуктах и сезонном питании.\n' +
+      '• manla.ru — составы (рецептуры) и их компоненты.\n\n' +
+      'Справочник передаёт, как описанные средства и продукты традиционно ' +
+      'применялись в этой традиции.',
   },
 
   notify: {
