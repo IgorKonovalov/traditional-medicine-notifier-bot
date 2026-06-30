@@ -471,9 +471,8 @@ function intakeView(): View {
  * The `time` step: a `:00` / `:30` minute-mode toggle row above an hour grid
  * (Plan 022). The active mode (default `'00'`) sets the minute applied to an
  * hour tap. A reminder carries a **single** time (all kinds): tapping an hour
- * commits that one slot and advances, so there is no «Далее» button here. An
- * hour is checkmarked when `HH:<mode>` is the chosen slot — useful when the user
- * navigates back to this step.
+ * selects that one slot (replacing any prior) and is checkmarked; the user
+ * confirms with «Далее». The chosen slot is echoed under a `Выбрано:` line.
  */
 export function timeView(draft: ReminderDraft): View {
   const rc = messages.reminderCreate;
@@ -493,9 +492,17 @@ export function timeView(draft: ReminderDraft): View {
       assertCallbackData(`rc:time:${hh}`),
     );
   });
+  const lines: string[] = [rc.timePrompt];
+  const chosen = draft.times[0];
+  if (chosen !== undefined) lines.push(rc.selectedTime(chosen));
   return {
-    text: rc.timePrompt,
-    keyboard: Markup.inlineKeyboard([toggleRow, ...chunk(hourBtns, HOUR_COLS), navRow(true)]),
+    text: lines.join('\n'),
+    keyboard: Markup.inlineKeyboard([
+      toggleRow,
+      ...chunk(hourBtns, HOUR_COLS),
+      [Markup.button.callback(rc.next, 'rc:next')],
+      navRow(true),
+    ]),
   };
 }
 
@@ -847,12 +854,11 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     await ctx.answerCbQuery();
     const draft = v.session.state;
     // A reminder carries a single time (all kinds): a tap replaces any prior
-    // selection and advances. The slot is built from the tapped hour + the
-    // authoritative server-side minute mode — never the callback — so a stale
-    // `:00` keyboard tapped after the user switched to `:30` still commits
-    // `HH:30` (Plan 024 `.30` fix).
+    // selection but does NOT advance — the user confirms with «Далее». The slot
+    // is built from the tapped hour + the authoritative server-side minute mode
+    // — never the callback — so a stale `:00` keyboard tapped after the user
+    // switched to `:30` still commits `HH:30` (Plan 024 `.30` fix).
     draft.times = [`${ctx.match[1] ?? ''}:${draft.minuteMode ?? '00'}`];
-    draft.step = nextStep(draft);
     await editAndPersist(ctx, v, draft);
   });
 
@@ -886,6 +892,11 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     if (draft.step === 'label') {
       if (draft.label === undefined || draft.label.trim() === '') {
         await ctx.answerCbQuery();
+        return;
+      }
+    } else if (draft.step === 'time') {
+      if (draft.times.length === 0) {
+        await ctx.answerCbQuery(messages.reminderCreate.needTime);
         return;
       }
     } else if (draft.step === 'weekdays') {

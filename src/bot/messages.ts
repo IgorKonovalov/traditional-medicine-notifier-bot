@@ -347,11 +347,13 @@ export const messages = {
     // step: every (interval)
     everyPrompt: 'Каждые сколько дней напоминать?',
     everyLabel: (n: number): string => `${n} дн.`,
-    // step: time (single time per reminder — a tap picks it and advances)
-    timePrompt: 'Выберите час. Минуты — переключатель :00 / :30.',
+    // step: time (single time per reminder — tap to pick, then «Далее»)
+    timePrompt: 'Выберите час. Минуты — переключатель :00 / :30. Затем «Далее».',
     /** Minute-mode toggle buttons above the hour grid. */
     minute00: ':00',
     minute30: ':30',
+    /** Echoes the chosen single time under the grid. */
+    selectedTime: (t: string): string => `Выбрано: ${t}`,
     // step: date (once)
     datePrompt: 'В какой день напомнить?',
     dateToday: 'Сегодня',

@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.25.2 — 2026-06-30
+
+- The reminder time step no longer auto-advances on an hour tap: tapping an hour
+  now just selects that time (shown under a «Выбрано:» line), and you confirm
+  with «Далее». Makes picking and re-picking the time, including switching
+  between :00 and :30, less surprising.
+
 ## 0.25.1 — 2026-06-30
 
 - The reminder time step now takes a single time across all schedule kinds:

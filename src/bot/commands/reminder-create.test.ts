@@ -149,13 +149,22 @@ describe('timeView (Plan 022 minute-mode picker)', () => {
     expect(at30.find((b) => b.callback_data === 'rc:time:08')?.text).toBe('08');
   });
 
-  it('offers no Далее button — a tap picks the single time and advances (all kinds)', () => {
+  it('offers a Далее button for every kind (a tap selects, «Далее» advances)', () => {
     const daily = buttons(timeView(draft({ step: 'time', kind: 'daily' })));
     const once = buttons(timeView(draft({ step: 'time', kind: 'once' })));
     const weekly = buttons(timeView(draft({ step: 'time', kind: 'weekly' })));
-    expect(daily.some((b) => b.callback_data === 'rc:next')).toBe(false);
-    expect(once.some((b) => b.callback_data === 'rc:next')).toBe(false);
-    expect(weekly.some((b) => b.callback_data === 'rc:next')).toBe(false);
+    expect(daily.some((b) => b.callback_data === 'rc:next')).toBe(true);
+    expect(once.some((b) => b.callback_data === 'rc:next')).toBe(true);
+    expect(weekly.some((b) => b.callback_data === 'rc:next')).toBe(true);
+  });
+
+  it('echoes the chosen single time under a Выбрано line', () => {
+    expect(timeView(draft({ step: 'time', kind: 'daily', times: ['08:30'] })).text).toContain(
+      'Выбрано: 08:30',
+    );
+    expect(timeView(draft({ step: 'time', kind: 'daily', times: [] })).text).not.toContain(
+      'Выбрано',
+    );
   });
 });
 
@@ -417,8 +426,8 @@ describe('rc:time commit handler (Plan 024 .30 fix)', () => {
     const after = loadSession<AnchoredSession<ReminderDraft>>(userId, 'reminder-create');
     // Even though the callback carried no minute, the slot follows draft.minuteMode.
     expect(after?.state.times).toEqual(['08:30']);
-    // A tap commits the single time and advances — no «Далее» on the time step.
-    expect(after?.state.step).not.toBe('time');
+    // A tap only selects — the user advances with «Далее».
+    expect(after?.state.step).toBe('time');
   });
 
   it('replaces any prior time (single-select) instead of accumulating', async () => {
@@ -437,7 +446,7 @@ describe('rc:time commit handler (Plan 024 .30 fix)', () => {
 
     const after = loadSession<AnchoredSession<ReminderDraft>>(userId, 'reminder-create');
     expect(after?.state.times).toEqual(['12:30']);
-    expect(after?.state.step).not.toBe('time');
+    expect(after?.state.step).toBe('time');
   });
 
   it('still follows minuteMode after a mode switch the keyboard had not yet re-rendered', async () => {
@@ -456,8 +465,8 @@ describe('rc:time commit handler (Plan 024 .30 fix)', () => {
 
     const after = loadSession<AnchoredSession<ReminderDraft>>(userId, 'reminder-create');
     expect(after?.state.times).toEqual(['09:30']);
-    // `once` commits and advances past the time step.
-    expect(after?.state.step).not.toBe('time');
+    // A tap only selects (all kinds) — no auto-advance past the time step.
+    expect(after?.state.step).toBe('time');
   });
 
   it('commits HH:00 when minuteMode is the default 00', async () => {
@@ -474,7 +483,39 @@ describe('rc:time commit handler (Plan 024 .30 fix)', () => {
 
     const after = loadSession<AnchoredSession<ReminderDraft>>(userId, 'reminder-create');
     expect(after?.state.times).toEqual(['08:00']);
-    expect(after?.state.step).not.toBe('time');
+    expect(after?.state.step).toBe('time');
+  });
+
+  it('rc:next advances from the time step once a time is chosen, else toasts', async () => {
+    const actions = captureActions();
+    const next = actions.get('^rc:next$');
+    expect(next).toBeDefined();
+
+    // No time chosen yet → stays on the time step (a needTime toast is shown).
+    const empty = seedSession({
+      step: 'time',
+      kind: 'daily',
+      minuteMode: '00',
+      times: [],
+      weekdays: [],
+    });
+    await next!(makeCtx(empty, '08'));
+    expect(loadSession<AnchoredSession<ReminderDraft>>(empty, 'reminder-create')?.state.step).toBe(
+      'time',
+    );
+
+    // A time chosen → «Далее» advances past the time step.
+    const ready = seedSession({
+      step: 'time',
+      kind: 'daily',
+      minuteMode: '00',
+      times: ['08:00'],
+      weekdays: [],
+    });
+    await next!(makeCtx(ready, '08'));
+    expect(
+      loadSession<AnchoredSession<ReminderDraft>>(ready, 'reminder-create')?.state.step,
+    ).not.toBe('time');
   });
 });
 
