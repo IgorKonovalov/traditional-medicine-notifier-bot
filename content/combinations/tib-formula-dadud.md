@@ -13,7 +13,7 @@ composition:
   - Соссюрея лопуховидная (Saussurea lappa)
   - Кальцит (Calcite)
   - Мумиё (Shilajid)
-  - Etc.
+  - И другие
 members:
   - tib-safflower
   - tib-dracocephalum

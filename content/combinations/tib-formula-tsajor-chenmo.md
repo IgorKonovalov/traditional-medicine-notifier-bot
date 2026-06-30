@@ -11,7 +11,7 @@ composition:
   - Имбирь
   - Гвоздика
   - Чёрный перец
-  - Дерево «cutch»
+  - Катеху (Acacia catechu)
   - И другие
 indications:
   - Ревматизм
