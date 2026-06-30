@@ -1,18 +1,32 @@
-import { describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { Telegraf, type Context } from 'telegraf';
 
+import { ensureUser } from '../../db/repositories/user.repo';
+import { setupTestDb, teardownTestDb } from '../../db/test-helper';
+import type { BotDeps } from '../context';
+import { type AnchoredSession, loadSession, saveSession, SESSION_TTL_MS } from '../session-store';
 import {
   type ReminderDraft,
   draftToRecurrence,
   firstFireAt,
   herbPageSlice,
   normalizeTimes,
+  registerReminderCreateCommand,
   stepsFor,
+  timeView,
   validateDraft,
 } from './reminder-create';
 
 /** Build a draft from partial fields over the empty base. */
 function draft(partial: Partial<ReminderDraft>): ReminderDraft {
   return { step: 'confirm', times: [], weekdays: [], ...partial };
+}
+
+type Btn = { text: string; callback_data?: string };
+
+/** Flat list of inline-keyboard buttons from a built view's keyboard. */
+function buttons(view: ReturnType<typeof timeView>): Btn[] {
+  return view.keyboard.reply_markup.inline_keyboard.flat() as Btn[];
 }
 
 describe('normalizeTimes', () => {
@@ -73,6 +87,63 @@ describe('stepsFor', () => {
   it('keeps the herb step in the pre-kind head while kind is still undefined', () => {
     expect(stepsFor(undefined, false)).toEqual(['label', 'herb', 'kind']);
     expect(stepsFor(undefined, true)).toEqual(['label', 'kind']);
+  });
+});
+
+describe('timeView (Plan 022 minute-mode picker)', () => {
+  it('shows the minute toggle with ✓ on the active mode (default :00)', () => {
+    const btns = buttons(timeView(draft({ step: 'time', kind: 'daily' })));
+    const min00 = btns.find((b) => b.callback_data === 'rc:min:00');
+    const min30 = btns.find((b) => b.callback_data === 'rc:min:30');
+    expect(min00?.text).toBe('✓ :00');
+    expect(min30?.text).toBe(':30');
+  });
+
+  it('marks the :30 toggle active and leaves :00 unmarked when minuteMode is 30', () => {
+    const btns = buttons(timeView(draft({ step: 'time', kind: 'daily', minuteMode: '30' })));
+    expect(btns.find((b) => b.callback_data === 'rc:min:00')?.text).toBe(':00');
+    expect(btns.find((b) => b.callback_data === 'rc:min:30')?.text).toBe('✓ :30');
+  });
+
+  it('emits rc:time:HHmm hour buttons for the active mode', () => {
+    const at00 = buttons(timeView(draft({ step: 'time', kind: 'daily', minuteMode: '00' })));
+    expect(at00.some((b) => b.callback_data === 'rc:time:0800')).toBe(true);
+    expect(at00.some((b) => b.callback_data === 'rc:time:2300')).toBe(true);
+    expect(at00.some((b) => b.callback_data === 'rc:time:0830')).toBe(false);
+
+    const at30 = buttons(timeView(draft({ step: 'time', kind: 'daily', minuteMode: '30' })));
+    expect(at30.some((b) => b.callback_data === 'rc:time:0830')).toBe(true);
+    expect(at30.some((b) => b.callback_data === 'rc:time:2330')).toBe(true);
+  });
+
+  it('checkmarks only hours selected at the current mode', () => {
+    const d = draft({ step: 'time', kind: 'daily', minuteMode: '00', times: ['08:00', '14:30'] });
+    const at00 = buttons(timeView(d));
+    expect(at00.find((b) => b.callback_data === 'rc:time:0800')?.text).toBe('✓ 08');
+    // 14:30 is not selected at the :00 mode, so its hour shows no checkmark
+    expect(at00.find((b) => b.callback_data === 'rc:time:1400')?.text).toBe('14');
+
+    const d30 = { ...d, minuteMode: '30' as const };
+    const at30 = buttons(timeView(d30));
+    expect(at30.find((b) => b.callback_data === 'rc:time:1430')?.text).toBe('✓ 14');
+    expect(at30.find((b) => b.callback_data === 'rc:time:0830')?.text).toBe('08');
+  });
+
+  it('lists the full sorted concrete set under a Выбрано line when times exist', () => {
+    const v = timeView(draft({ step: 'time', kind: 'daily', times: ['14:30', '08:00'] }));
+    expect(v.text).toContain('Выбрано: 08:00, 14:30');
+  });
+
+  it('omits the Выбрано line when no times are selected', () => {
+    const v = timeView(draft({ step: 'time', kind: 'daily', times: [] }));
+    expect(v.text).not.toContain('Выбрано');
+  });
+
+  it('offers a Далее button for recurring kinds but not for once', () => {
+    const daily = buttons(timeView(draft({ step: 'time', kind: 'daily' })));
+    const once = buttons(timeView(draft({ step: 'time', kind: 'once' })));
+    expect(daily.some((b) => b.callback_data === 'rc:next')).toBe(true);
+    expect(once.some((b) => b.callback_data === 'rc:next')).toBe(false);
   });
 });
 
@@ -147,6 +218,13 @@ describe('firstFireAt', () => {
     const next = firstFireAt(draft({ kind: 'interval', everyDays: 2, times: ['08:00'] }), now, tz);
     expect(next).toBe(Date.UTC(2026, 0, 3, 8, 0));
   });
+
+  it('carries a :30 selection through to a minute-30 next_fire_at (Plan 022)', () => {
+    const now = Date.UTC(2026, 0, 1, 7, 0);
+    const d = draft({ kind: 'daily', minuteMode: '30', times: ['14:30'] });
+    expect(draftToRecurrence(d)).toEqual({ kind: 'daily', times: ['14:30'] });
+    expect(firstFireAt(d, now, tz)).toBe(Date.UTC(2026, 0, 1, 14, 30));
+  });
 });
 
 describe('validateDraft', () => {
@@ -190,5 +268,83 @@ describe('validateDraft', () => {
     expect(
       validateDraft(draft({ label: 'x', kind: 'once', times: ['08:00'], dateOffset: 0 }), late, tz),
     ).toBe('past');
+  });
+});
+
+describe('rc:min minute-mode toggle handler (Plan 022)', () => {
+  type Handler = (ctx: Context) => Promise<unknown>;
+  const ANCHOR_ID = 7;
+
+  beforeEach(() => setupTestDb());
+  afterEach(() => teardownTestDb());
+
+  /** Register the wizard against a stub, capturing action handlers by regex source. */
+  function captureActions(): Map<string, Handler> {
+    const actions = new Map<string, Handler>();
+    const stub = {
+      action: (matcher: RegExp, handler: Handler) => {
+        actions.set(matcher.source, handler);
+      },
+    } as unknown as Telegraf;
+    const deps = {
+      timezone: 'Europe/Moscow',
+      content: { herbs: { all: [] } },
+    } as unknown as BotDeps;
+    registerReminderCreateCommand(stub, deps);
+    return actions;
+  }
+
+  function seedSession(state: ReminderDraft): number {
+    const userId = ensureUser('1', 'u');
+    const session: AnchoredSession<ReminderDraft> = { anchor: { messageId: ANCHOR_ID }, state };
+    saveSession(userId, 'reminder-create', session, SESSION_TTL_MS);
+    return userId;
+  }
+
+  interface Edit {
+    text: string;
+    buttonLabels: string[];
+  }
+
+  function makeCtx(userId: number, mode: '00' | '30'): { ctx: Context; edits: Edit[] } {
+    const edits: Edit[] = [];
+    const ctx = {
+      state: { userId },
+      match: [`rc:min:${mode}`, mode],
+      callbackQuery: { message: { message_id: ANCHOR_ID } },
+      answerCbQuery: () => Promise.resolve(true),
+      editMessageText: (
+        text: string,
+        kb: { reply_markup?: { inline_keyboard: { text: string }[][] } } | undefined,
+      ) => {
+        const buttonLabels = (kb?.reply_markup?.inline_keyboard ?? []).flat().map((b) => b.text);
+        edits.push({ text, buttonLabels });
+        return Promise.resolve(true);
+      },
+    } as unknown as Context;
+    return { ctx, edits };
+  }
+
+  it('flips minuteMode and re-renders without changing step or times', async () => {
+    const userId = seedSession({
+      step: 'time',
+      kind: 'daily',
+      minuteMode: '00',
+      times: ['08:00'],
+      weekdays: [],
+    });
+    const handler = captureActions().get('^rc:min:(00|30)$');
+    expect(handler).toBeDefined();
+
+    const { ctx, edits } = makeCtx(userId, '30');
+    await handler!(ctx);
+
+    const after = loadSession<AnchoredSession<ReminderDraft>>(userId, 'reminder-create');
+    expect(after?.state.minuteMode).toBe('30');
+    expect(after?.state.step).toBe('time');
+    expect(after?.state.times).toEqual(['08:00']);
+    expect(edits).toHaveLength(1);
+    expect(edits[0]!.buttonLabels).toContain('✓ :30');
+    expect(edits[0]!.buttonLabels).toContain(':00');
   });
 });

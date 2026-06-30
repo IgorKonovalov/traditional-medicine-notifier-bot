@@ -72,6 +72,12 @@ export interface ReminderDraft {
   /** Current page of the herb picker (0-based). */
   herbPage?: number;
   kind?: RecurrenceKind;
+  /**
+   * Minute applied to an hour tap in the time grid: `:00` or `:30` (Plan 022).
+   * Optional so in-flight sessions from before this field shipped keep working —
+   * always read it through `?? '00'`.
+   */
+  minuteMode?: '00' | '30';
   /** Selected local `HH:MM` slots (deduped/sorted on use). */
   times: string[];
   /** Selected weekdays 0=Sun…6=Sat (weekly only). */
@@ -86,7 +92,7 @@ export interface ReminderDraft {
 
 /** A fresh, empty draft. */
 export function emptyDraft(): ReminderDraft {
-  return { step: 'label', times: [], weekdays: [] };
+  return { step: 'label', times: [], weekdays: [], minuteMode: '00' };
 }
 
 /** Reason a draft cannot yet be saved, or `null` when it is valid. */
@@ -208,8 +214,19 @@ interface View {
   readonly keyboard: InlineKeyboard;
 }
 
-/** Time slots offered in the grid (local wall-clock). */
-const TIME_SLOTS = ['07:00', '08:00', '09:00', '12:00', '18:00', '21:00'];
+/**
+ * Inclusive hour range offered in the picker grid (local wall-clock). Single
+ * tunable constants — widen to `0…23` for night-time reminders (Plan 022 Risks),
+ * or change `HOUR_COLS` for a different grid width.
+ */
+const HOUR_START = 6;
+const HOUR_END = 23;
+const HOURS: readonly number[] = Array.from(
+  { length: HOUR_END - HOUR_START + 1 },
+  (_, i) => HOUR_START + i,
+);
+/** Hour buttons per grid row. */
+const HOUR_COLS = 4;
 /** Interval lengths offered for the "каждые N дней" kind. */
 const EVERY_OPTIONS = [2, 3, 5, 7, 10, 14, 30];
 /** Day offsets offered for a one-shot's date picker (0=today … 6). */
@@ -235,7 +252,6 @@ export function herbPageSlice<T>(
   return { slice: items.slice(start, start + perPage), page: safePage, pageCount };
 }
 
-const timeCode = (t: string): string => t.replace(':', '');
 const timeFromCode = (c: string): string => `${c.slice(0, 2)}:${c.slice(2)}`;
 
 function chunk<T>(items: readonly T[], size: number): T[][] {
@@ -322,6 +338,40 @@ function herbView(draft: ReminderDraft, herbs: readonly Herb[]): View {
   return { text: rc.herbPrompt, keyboard: Markup.inlineKeyboard(rows) };
 }
 
+/**
+ * The `time` step: a `:00` / `:30` minute-mode toggle row above an hour grid
+ * (Plan 022). The active mode (default `'00'`) sets the minute applied to an
+ * hour tap; an hour is checkmarked when `HH:<mode>` is already selected, and the
+ * full concrete set (across both modes) is listed under a `Выбрано:` line so no
+ * selection is ever hidden by the per-mode checkmarks.
+ */
+export function timeView(draft: ReminderDraft): View {
+  const rc = messages.reminderCreate;
+  const mode = draft.minuteMode ?? '00';
+  const selected = new Set(draft.times);
+  const toggleRow: CallbackButton[] = [
+    Markup.button.callback(mode === '00' ? `✓ ${rc.minute00}` : rc.minute00, 'rc:min:00'),
+    Markup.button.callback(mode === '30' ? `✓ ${rc.minute30}` : rc.minute30, 'rc:min:30'),
+  ];
+  const hourBtns = HOURS.map((h) => {
+    const hh = String(h).padStart(2, '0');
+    return Markup.button.callback(
+      selected.has(`${hh}:${mode}`) ? `✓ ${hh}` : hh,
+      assertCallbackData(`rc:time:${hh}${mode}`),
+    );
+  });
+  const tail: CallbackButton[][] = [];
+  if (draft.kind !== 'once') tail.push([Markup.button.callback(rc.next, 'rc:next')]);
+  tail.push(navRow(true));
+  const lines: string[] = [draft.kind === 'once' ? rc.timePromptOnce : rc.timePrompt];
+  const times = normalizeTimes(draft.times);
+  if (times.length > 0) lines.push(rc.selectedTimes(times.join(', ')));
+  return {
+    text: lines.join('\n'),
+    keyboard: Markup.inlineKeyboard([toggleRow, ...chunk(hourBtns, HOUR_COLS), ...tail]),
+  };
+}
+
 /** Render the screen for the draft's current step. */
 function view(draft: ReminderDraft, timeZone: string, now: number, herbs: readonly Herb[]): View {
   const rc = messages.reminderCreate;
@@ -354,22 +404,8 @@ function view(draft: ReminderDraft, timeZone: string, now: number, herbs: readon
         keyboard: Markup.inlineKeyboard([...chunk(btns, 4), navRow(true)]),
       };
     }
-    case 'time': {
-      const selected = new Set(draft.times);
-      const btns = TIME_SLOTS.map((t) =>
-        Markup.button.callback(
-          selected.has(t) ? `✓ ${t}` : t,
-          assertCallbackData(`rc:time:${timeCode(t)}`),
-        ),
-      );
-      const tail: CallbackButton[][] = [];
-      if (draft.kind !== 'once') tail.push([Markup.button.callback(rc.next, 'rc:next')]);
-      tail.push(navRow(true));
-      return {
-        text: draft.kind === 'once' ? rc.timePromptOnce : rc.timePrompt,
-        keyboard: Markup.inlineKeyboard([...chunk(btns, 3), ...tail]),
-      };
-    }
+    case 'time':
+      return timeView(draft);
     case 'date': {
       const btns = DATE_OFFSETS.map((off) => {
         const label =
@@ -579,6 +615,18 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     const draft = v.session.state;
     draft.everyDays = Number(ctx.match[1]);
     draft.step = nextStep(draft);
+    await editAndPersist(ctx, v, draft);
+  });
+
+  // Minute-mode toggle (Plan 022): flips the minute applied to an hour tap and
+  // re-renders the grid. Must NOT touch `step` or `times` — even for `once`,
+  // only an hour tap commits a time and advances.
+  bot.action(/^rc:min:(00|30)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const draft = v.session.state;
+    draft.minuteMode = ctx.match[1] as '00' | '30';
     await editAndPersist(ctx, v, draft);
   });
 

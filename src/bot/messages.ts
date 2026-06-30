@@ -330,8 +330,13 @@ export const messages = {
     everyPrompt: 'Каждые сколько дней напоминать?',
     everyLabel: (n: number): string => `${n} дн.`,
     // step: time
-    timePrompt: 'Выберите время. Можно несколько — затем «Далее».',
-    timePromptOnce: 'Выберите время.',
+    timePrompt: 'Выберите час. Минуты — переключатель :00 / :30. Можно несколько — затем «Далее».',
+    timePromptOnce: 'Выберите час. Минуты — переключатель :00 / :30.',
+    /** Minute-mode toggle buttons above the hour grid. */
+    minute00: ':00',
+    minute30: ':30',
+    /** Lists the full concrete set of chosen times under the grid. */
+    selectedTimes: (list: string): string => `Выбрано: ${list}`,
     // step: date (once)
     datePrompt: 'В какой день напомнить?',
     dateToday: 'Сегодня',
