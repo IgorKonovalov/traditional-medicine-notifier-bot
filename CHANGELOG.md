@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.24.0 — 2026-06-30
+
+- Reminder times can now be set on the half-hour (Plan 022): the create-reminder
+  time step shows a `:00` / `:30` minute-mode toggle above an hour grid (06–23),
+  so a reminder at e.g. 14:30 is now reachable. Multi-select and the `once`
+  single-tap flow are preserved; no schema or recurrence-math change — the stack
+  below the picker was already minute-aware.
+
 ## 0.23.0 — 2026-06-29
 
 - Cleared the long-form guide backlog (Plan 020): 27 new Tibetan «Статьи»
