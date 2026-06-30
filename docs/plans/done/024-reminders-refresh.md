@@ -1,9 +1,9 @@
 # Plan 024 — Reminders refresh (formula link, intake type, list detail, `.30` fix)
 
-**Status:** Draft
+**Status:** Completed
 **Created:** 2026-06-30
-**Completed:** —
-**Bump on close:** minor
+**Completed:** 2026-06-30
+**Bump on close:** minor (v0.25.0)
 
 ## Context
 
@@ -248,9 +248,9 @@ regardless of keyboard-edit timing. (Display/checkmark logic is unchanged.)
 
 ## Progress
 
-- [ ] Phase 1 — Data model (migration 003, types, repo)
-- [ ] Phase 2 — `.30` minute fix
-- [ ] Phase 3 — Wizard link picker + intake step
-- [ ] Phase 4 — Notification formula CTA + intake echo
-- [ ] Phase 5 — List → detail screen
-- [ ] Phase 6 — Review + docs + version bump
+- [x] Phase 1 — Data model (migration 003, types, repo)
+- [x] Phase 2 — `.30` minute fix
+- [x] Phase 3 — Wizard link picker + intake step
+- [x] Phase 4 — Notification formula CTA + intake echo
+- [x] Phase 5 — List → detail screen
+- [x] Phase 6 — Review + docs + version bump

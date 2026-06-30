@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.25.0 — 2026-06-30
+
+- Reminders can now link to a **formula (состав)** as well as an ingredient: the
+  create wizard offers an ingredient/formula/skip picker, and a formula-linked
+  reminder asks how it is taken (с тёплой водой / отвар), echoed on the confirm
+  screen, the fired notification, and the new list **detail screen**. Tapping a
+  reminder in the list opens that detail screen, where deletion now lives. Also
+  fixes a `:30` minute-selection race in the time picker (Plan 024).
+
 ## 0.24.1 — 2026-06-30
 
 - Formula (Составы) card member ingredients now render as a 3-column button grid
