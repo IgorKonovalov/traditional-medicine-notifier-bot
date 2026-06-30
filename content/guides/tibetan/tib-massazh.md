@@ -1,6 +1,7 @@
 ---
 id: tib-massazh
 tradition: tibetan
+order: 31
 title: «Массаж и масляные процедуры»
 source:
   work: Чжуд-ши

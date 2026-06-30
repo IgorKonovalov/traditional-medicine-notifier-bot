@@ -1,129 +1,9 @@
 [
   {
-    "id": "tib-aktivnost-i-otdyh",
-    "tradition": "tibetan",
-    "title": "«Активность и отдых»",
-    "sectionCount": 4,
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 2 «Питание и образ жизни»"
-    }
-  },
-  {
-    "id": "tib-kak-bolezn-vhodit",
-    "tradition": "tibetan",
-    "title": "«Как болезнь входит и проявляется»",
-    "sectionCount": 5,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 10 «О вхождении болезней»"
-    }
-  },
-  {
-    "id": "tib-kak-voznikaet-bolezn",
-    "tradition": "tibetan",
-    "title": "«Как возникает болезнь»",
-    "sectionCount": 4,
-    "source": {
-      "work": "Наука о здоровье. Сова Ригпа",
-      "part": "Ринчен Тензин, популярные лекции 2012–2013",
-      "chapter": "гл. 1 «Как возникают болезни»"
-    }
-  },
-  {
-    "id": "tib-klassifikaciya-boleznej",
-    "tradition": "tibetan",
-    "title": "«Как традиция различает болезни»",
-    "sectionCount": 4,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 12 «Различия болезней»"
-    }
-  },
-  {
-    "id": "tib-legkaya-i-tyazhelaya-pishcha",
-    "tradition": "tibetan",
-    "title": "«Лёгкая и тяжёлая пища»",
-    "sectionCount": 5,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 16 «О том, как надо питаться»"
-    }
-  },
-  {
-    "id": "tib-masla-i-zharenie",
-    "tradition": "tibetan",
-    "title": "«Масла и приготовление пищи»",
-    "sectionCount": 4,
-    "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 4 «Приготовление пищи»"
-    }
-  },
-  {
-    "id": "tib-massazh",
-    "tradition": "tibetan",
-    "title": "«Массаж и масляные процедуры»",
-    "sectionCount": 4,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 13 «Повседневный образ жизни»"
-    }
-  },
-  {
-    "id": "tib-mera-pitaniya",
-    "tradition": "tibetan",
-    "title": "«Мера питания: сколько есть»",
-    "sectionCount": 5,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 18 «Мера питания»"
-    }
-  },
-  {
-    "id": "tib-nablyudenie-tela",
-    "tradition": "tibetan",
-    "title": "«Как врач наблюдает тело»",
-    "sectionCount": 5,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Заключительная тантра",
-      "chapter": "гл. 1–2 «Исследование пульса и мочи»"
-    }
-  },
-  {
-    "id": "tib-nesovmestimye-produkty",
-    "tradition": "tibetan",
-    "title": "«Несовместимые сочетания продуктов»",
-    "sectionCount": 5,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 17 «Пищевые запреты»"
-    }
-  },
-  {
-    "id": "tib-o-lekare",
-    "tradition": "tibetan",
-    "title": "«О лекаре: этика традиции»",
-    "sectionCount": 5,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 31 «О лекаре»"
-    }
-  },
-  {
     "id": "tib-osnovy",
     "tradition": "tibetan",
     "title": "«Основы тибетской медицины»",
+    "order": 1,
     "sectionCount": 9,
     "source": {
       "work": "Чжуд-ши",
@@ -132,9 +12,46 @@
     }
   },
   {
-    "id": "tib-pishchevaritelnyj-ogon",
+    "id": "tib-tri-prirody",
     "tradition": "tibetan",
-    "title": "«Пищеварительный огонь»",
+    "title": "«Три природы человека»",
+    "order": 2,
+    "sectionCount": 5,
+    "source": {
+      "work": "Наука о здоровье. Сова Ригпа",
+      "part": "Ринчен Тензин, популярные лекции 2012–2013",
+      "chapter": "гл. 3 «Люди природы Ветра, Огня, Земли-Воды»"
+    }
+  },
+  {
+    "id": "tib-telo-v-obrazah",
+    "tradition": "tibetan",
+    "title": "«Тело в образах традиции»",
+    "order": 3,
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 3–4 «Сравнения тела», «Строение тела»"
+    }
+  },
+  {
+    "id": "tib-zachatie-i-razvitie",
+    "tradition": "tibetan",
+    "title": "«Зачатие и развитие тела»",
+    "order": 4,
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 2 «Зачатие»"
+    }
+  },
+  {
+    "id": "tib-sem-sil-tela",
+    "tradition": "tibetan",
+    "title": "«Семь сил тела и „чистый сок“»",
+    "order": 5,
     "sectionCount": 5,
     "source": {
       "work": "Чжуд-ши",
@@ -143,53 +60,82 @@
     }
   },
   {
-    "id": "tib-pitanie-pozhilyh",
+    "id": "tib-pishchevaritelnyj-ogon",
     "tradition": "tibetan",
-    "title": "«Питание и образ жизни пожилых»",
+    "title": "«Пищеварительный огонь»",
+    "order": 6,
     "sectionCount": 5,
     "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
-      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 5 «Существенные признаки тела»"
     }
   },
   {
-    "id": "tib-pitanie-pri-nesvarenii",
+    "id": "tib-sutochnyj-ritm",
     "tradition": "tibetan",
-    "title": "«Питание при слабом пищеварении»",
-    "sectionCount": 5,
+    "title": "«Суточный ритм трёх начал»",
+    "order": 7,
+    "sectionCount": 6,
     "source": {
-      "work": "Сова Ригпа",
-      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "work": "Наука о здоровье. Сова Ригпа",
+      "part": "Ринчен Тензин, популярные лекции 2012–2013",
       "chapter": "гл. 2 «Питание и образ жизни»"
     }
   },
   {
-    "id": "tib-polovaya-zhizn",
+    "id": "tib-kak-voznikaet-bolezn",
     "tradition": "tibetan",
-    "title": "«Половая жизнь в традиции»",
+    "title": "«Как возникает болезнь»",
+    "order": 8,
     "sectionCount": 4,
     "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 13 «Повседневный образ жизни»"
+      "work": "Наука о здоровье. Сова Ригпа",
+      "part": "Ринчен Тензин, популярные лекции 2012–2013",
+      "chapter": "гл. 1 «Как возникают болезни»"
     }
   },
   {
-    "id": "tib-povedenie-v-chastnyh-sluchayah",
+    "id": "tib-kak-bolezn-vhodit",
     "tradition": "tibetan",
-    "title": "«Поведение в частных случаях»",
+    "title": "«Как болезнь входит и проявляется»",
+    "order": 9,
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 10 «О вхождении болезней»"
+    }
+  },
+  {
+    "id": "tib-klassifikaciya-boleznej",
+    "tradition": "tibetan",
+    "title": "«Как традиция различает болезни»",
+    "order": 10,
     "sectionCount": 4,
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
-      "chapter": "гл. 15 «Как вести себя в частных случаях»"
+      "chapter": "гл. 12 «Различия болезней»"
+    }
+  },
+  {
+    "id": "tib-zhar-i-holod",
+    "tradition": "tibetan",
+    "title": "«Жар и Холод — подробно»",
+    "order": 11,
+    "sectionCount": 4,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 12 «Различия болезней»"
     }
   },
   {
     "id": "tib-princip-protivopolozhnogo",
     "tradition": "tibetan",
     "title": "«Принцип противоположного»",
+    "order": 12,
     "sectionCount": 5,
     "source": {
       "work": "Чжуд-ши",
@@ -201,6 +147,7 @@
     "id": "tib-priznaki-uvyadaniya",
     "tradition": "tibetan",
     "title": "«Признаки увядания тела»",
+    "order": 13,
     "sectionCount": 4,
     "source": {
       "work": "Чжуд-ши",
@@ -209,53 +156,34 @@
     }
   },
   {
-    "id": "tib-profilaktika",
+    "id": "tib-nablyudenie-tela",
     "tradition": "tibetan",
-    "title": "«Как жить не болея: профилактика»",
-    "sectionCount": 4,
+    "title": "«Как врач наблюдает тело»",
+    "order": 14,
+    "sectionCount": 5,
     "source": {
       "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 23 «Как жить не болея»"
+      "part": "Заключительная тантра",
+      "chapter": "гл. 1–2 «Исследование пульса и мочи»"
     }
   },
   {
-    "id": "tib-rasporyadok-dnya",
+    "id": "tib-o-lekare",
     "tradition": "tibetan",
-    "title": "«Распорядок дня»",
+    "title": "«О лекаре: этика традиции»",
+    "order": 15,
     "sectionCount": 5,
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
-      "chapter": "гл. 13 «Повседневный образ жизни»"
-    }
-  },
-  {
-    "id": "tib-sem-sil-tela",
-    "tradition": "tibetan",
-    "title": "«Семь сил тела и „чистый сок“»",
-    "sectionCount": 5,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 5 «Существенные признаки тела»"
-    }
-  },
-  {
-    "id": "tib-sezonnoe-pitanie",
-    "tradition": "tibetan",
-    "title": "«Питание и образ жизни по сезонам»",
-    "sectionCount": 5,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 14 «Сезонный образ жизни»"
+      "chapter": "гл. 31 «О лекаре»"
     }
   },
   {
     "id": "tib-shest-vkusov",
     "tradition": "tibetan",
     "title": "«Шесть вкусов»",
+    "order": 16,
     "sectionCount": 4,
     "source": {
       "work": "Наука о здоровье. Сова Ригпа",
@@ -264,64 +192,22 @@
     }
   },
   {
-    "id": "tib-son",
+    "id": "tib-mera-pitaniya",
     "tradition": "tibetan",
-    "title": "«Сон: режим и значение»",
-    "sectionCount": 4,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 13 «Повседневный образ жизни»"
-    }
-  },
-  {
-    "id": "tib-sutochnyj-ritm",
-    "tradition": "tibetan",
-    "title": "«Суточный ритм трёх начал»",
-    "sectionCount": 6,
-    "source": {
-      "work": "Наука о здоровье. Сова Ригпа",
-      "part": "Ринчен Тензин, популярные лекции 2012–2013",
-      "chapter": "гл. 2 «Питание и образ жизни»"
-    }
-  },
-  {
-    "id": "tib-telo-v-obrazah",
-    "tradition": "tibetan",
-    "title": "«Тело в образах традиции»",
+    "title": "«Мера питания: сколько есть»",
+    "order": 17,
     "sectionCount": 5,
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
-      "chapter": "гл. 3–4 «Сравнения тела», «Строение тела»"
+      "chapter": "гл. 18 «Мера питания»"
     }
   },
   {
-    "id": "tib-tri-prirody",
+    "id": "tib-vremya-priema-pishchi",
     "tradition": "tibetan",
-    "title": "«Три природы человека»",
-    "sectionCount": 5,
-    "source": {
-      "work": "Наука о здоровье. Сова Ригпа",
-      "part": "Ринчен Тензин, популярные лекции 2012–2013",
-      "chapter": "гл. 3 «Люди природы Ветра, Огня, Земли-Воды»"
-    }
-  },
-  {
-    "id": "tib-uhod-za-zreniem",
-    "tradition": "tibetan",
-    "title": "«Уход за зрением»",
-    "sectionCount": 3,
-    "source": {
-      "work": "Чжуд-ши",
-      "part": "Тантра объяснений",
-      "chapter": "гл. 13 «Повседневный образ жизни»"
-    }
-  },
-  {
-    "id": "tib-ukreplenie-i-ves",
-    "tradition": "tibetan",
-    "title": "«Укрепление тела и вес»",
+    "title": "«Время приёма пищи»",
+    "order": 18,
     "sectionCount": 4,
     "source": {
       "work": "Сова Ригпа",
@@ -330,9 +216,10 @@
     }
   },
   {
-    "id": "tib-voda-i-napitki",
+    "id": "tib-legkaya-i-tyazhelaya-pishcha",
     "tradition": "tibetan",
-    "title": "«Вода и напитки»",
+    "title": "«Лёгкая и тяжёлая пища»",
+    "order": 19,
     "sectionCount": 5,
     "source": {
       "work": "Чжуд-ши",
@@ -341,20 +228,82 @@
     }
   },
   {
-    "id": "tib-vodnye-procedury",
+    "id": "tib-nesovmestimye-produkty",
     "tradition": "tibetan",
-    "title": "«Водные процедуры и омовения»",
-    "sectionCount": 3,
+    "title": "«Несовместимые сочетания продуктов»",
+    "order": 20,
+    "sectionCount": 5,
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
-      "chapter": "гл. 13 «Повседневный образ жизни»"
+      "chapter": "гл. 17 «Пищевые запреты»"
     }
   },
   {
-    "id": "tib-vremya-priema-pishchi",
+    "id": "tib-voda-i-napitki",
     "tradition": "tibetan",
-    "title": "«Время приёма пищи»",
+    "title": "«Вода и напитки»",
+    "order": 21,
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 16 «О том, как надо питаться»"
+    }
+  },
+  {
+    "id": "tib-masla-i-zharenie",
+    "tradition": "tibetan",
+    "title": "«Масла и приготовление пищи»",
+    "order": 22,
+    "sectionCount": 4,
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 4 «Приготовление пищи»"
+    }
+  },
+  {
+    "id": "tib-sezonnoe-pitanie",
+    "tradition": "tibetan",
+    "title": "«Питание и образ жизни по сезонам»",
+    "order": 23,
+    "sectionCount": 5,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 14 «Сезонный образ жизни»"
+    }
+  },
+  {
+    "id": "tib-pitanie-pri-nesvarenii",
+    "tradition": "tibetan",
+    "title": "«Питание при слабом пищеварении»",
+    "order": 24,
+    "sectionCount": 5,
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 2 «Питание и образ жизни»"
+    }
+  },
+  {
+    "id": "tib-pitanie-pozhilyh",
+    "tradition": "tibetan",
+    "title": "«Питание и образ жизни пожилых»",
+    "order": 25,
+    "sectionCount": 5,
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 6 «Питание и образ жизни пожилых»"
+    }
+  },
+  {
+    "id": "tib-ukreplenie-i-ves",
+    "tradition": "tibetan",
+    "title": "«Укрепление тела и вес»",
+    "order": 26,
     "sectionCount": 4,
     "source": {
       "work": "Сова Ригпа",
@@ -363,25 +312,111 @@
     }
   },
   {
-    "id": "tib-zachatie-i-razvitie",
+    "id": "tib-rasporyadok-dnya",
     "tradition": "tibetan",
-    "title": "«Зачатие и развитие тела»",
+    "title": "«Распорядок дня»",
+    "order": 27,
     "sectionCount": 5,
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
-      "chapter": "гл. 2 «Зачатие»"
+      "chapter": "гл. 13 «Повседневный образ жизни»"
     }
   },
   {
-    "id": "tib-zhar-i-holod",
+    "id": "tib-profilaktika",
     "tradition": "tibetan",
-    "title": "«Жар и Холод — подробно»",
+    "title": "«Как жить не болея: профилактика»",
+    "order": 28,
     "sectionCount": 4,
     "source": {
       "work": "Чжуд-ши",
       "part": "Тантра объяснений",
-      "chapter": "гл. 12 «Различия болезней»"
+      "chapter": "гл. 23 «Как жить не болея»"
+    }
+  },
+  {
+    "id": "tib-son",
+    "tradition": "tibetan",
+    "title": "«Сон: режим и значение»",
+    "order": 29,
+    "sectionCount": 4,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
+  },
+  {
+    "id": "tib-povedenie-v-chastnyh-sluchayah",
+    "tradition": "tibetan",
+    "title": "«Поведение в частных случаях»",
+    "order": 30,
+    "sectionCount": 4,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 15 «Как вести себя в частных случаях»"
+    }
+  },
+  {
+    "id": "tib-massazh",
+    "tradition": "tibetan",
+    "title": "«Массаж и масляные процедуры»",
+    "order": 31,
+    "sectionCount": 4,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
+  },
+  {
+    "id": "tib-vodnye-procedury",
+    "tradition": "tibetan",
+    "title": "«Водные процедуры и омовения»",
+    "order": 32,
+    "sectionCount": 3,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
+  },
+  {
+    "id": "tib-uhod-za-zreniem",
+    "tradition": "tibetan",
+    "title": "«Уход за зрением»",
+    "order": 33,
+    "sectionCount": 3,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
+  },
+  {
+    "id": "tib-polovaya-zhizn",
+    "tradition": "tibetan",
+    "title": "«Половая жизнь в традиции»",
+    "order": 34,
+    "sectionCount": 4,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 13 «Повседневный образ жизни»"
+    }
+  },
+  {
+    "id": "tib-aktivnost-i-otdyh",
+    "tradition": "tibetan",
+    "title": "«Активность и отдых»",
+    "order": 35,
+    "sectionCount": 4,
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "гл. 2 «Питание и образ жизни»"
     }
   }
 ]

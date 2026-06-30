@@ -1,6 +1,7 @@
 ---
 id: tib-vodnye-procedury
 tradition: tibetan
+order: 32
 title: «Водные процедуры и омовения»
 source:
   work: Чжуд-ши

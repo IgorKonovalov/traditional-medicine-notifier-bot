@@ -1,6 +1,7 @@
 ---
 id: tib-zhar-i-holod
 tradition: tibetan
+order: 11
 title: «Жар и Холод — подробно»
 source:
   work: Чжуд-ши

@@ -1,6 +1,7 @@
 ---
 id: tib-rasporyadok-dnya
 tradition: tibetan
+order: 27
 title: «Распорядок дня»
 source:
   work: Чжуд-ши

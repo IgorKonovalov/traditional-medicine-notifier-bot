@@ -1,6 +1,7 @@
 ---
 id: tib-sutochnyj-ritm
 tradition: tibetan
+order: 7
 title: «Суточный ритм трёх начал»
 source:
   work: "Наука о здоровье. Сова Ригпа"

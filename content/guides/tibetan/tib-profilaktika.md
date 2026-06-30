@@ -1,6 +1,7 @@
 ---
 id: tib-profilaktika
 tradition: tibetan
+order: 28
 title: "«Как жить не болея: профилактика»"
 source:
   work: Чжуд-ши

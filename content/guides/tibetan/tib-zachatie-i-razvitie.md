@@ -1,6 +1,7 @@
 ---
 id: tib-zachatie-i-razvitie
 tradition: tibetan
+order: 4
 title: «Зачатие и развитие тела»
 source:
   work: Чжуд-ши

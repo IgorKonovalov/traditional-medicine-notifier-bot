@@ -1,6 +1,7 @@
 ---
 id: tib-nablyudenie-tela
 tradition: tibetan
+order: 14
 title: «Как врач наблюдает тело»
 source:
   work: Чжуд-ши

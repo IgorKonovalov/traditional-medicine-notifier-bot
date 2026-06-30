@@ -1,6 +1,7 @@
 ---
 id: tib-voda-i-napitki
 tradition: tibetan
+order: 21
 title: «Вода и напитки»
 source:
   work: Чжуд-ши

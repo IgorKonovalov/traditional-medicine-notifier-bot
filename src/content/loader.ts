@@ -63,7 +63,7 @@ export function loadContent(contentDir: string, opts: LoadOptions = {}): LoadedC
     .filter((c) => visible(c.tradition));
   const categories = readDir(join(contentDir, 'categories')).map(parseCategory);
   const tips = readDir(join(contentDir, 'tips')).map(parseTip);
-  const guides = readDir(join(contentDir, 'guides')).map(parseGuide);
+  const guides = readDir(join(contentDir, 'guides')).map(parseGuide).sort(byGuideOrder);
   const foods = readDir(join(contentDir, 'foods'))
     .map(parseFood)
     .filter((f) => visible(f.tradition));
@@ -233,14 +233,29 @@ function parseGuide(doc: RawDoc): Guide {
     );
   }
   const source = parseTipSource(doc);
+  const order = optNumber(doc, 'order');
   return {
     id: reqString(doc, 'id'),
     tradition: tradition as Tradition,
     title: reqString(doc, 'title'),
     tags: strArray(doc, 'tags'),
     sections: splitSections(doc.body),
+    ...(order !== undefined ? { order } : {}),
     ...(source !== undefined ? { source } : {}),
   };
+}
+
+/**
+ * Order guides by their curated reading rank (ascending, lower = more
+ * foundational). Guides without an `order` sort last; ties — and the whole
+ * unranked tail — fall back to code-point order by `id` so the list stays
+ * deterministic across platforms (mirrors `readDir`).
+ */
+function byGuideOrder(a: Guide, b: Guide): number {
+  const ao = a.order ?? Infinity;
+  const bo = b.order ?? Infinity;
+  if (ao !== bo) return ao - bo;
+  return a.id < b.id ? -1 : a.id > b.id ? 1 : 0;
 }
 
 /**
@@ -367,6 +382,16 @@ function optString(doc: RawDoc, key: string, outKey: string): Record<string, str
     throw new Error(`${doc.file}: field "${key}" must be a string`);
   }
   return { [outKey]: value };
+}
+
+/** Returns the numeric field value when present, or `undefined` when absent. */
+function optNumber(doc: RawDoc, key: string): number | undefined {
+  const value = doc.data[key];
+  if (value === undefined || value === null) return undefined;
+  if (typeof value !== 'number' || !Number.isFinite(value)) {
+    throw new Error(`${doc.file}: field "${key}" must be a number`);
+  }
+  return value;
 }
 
 function strArray(doc: RawDoc, key: string): string[] {

@@ -504,6 +504,33 @@ title: Пустая статья
     const root = writeCorpus({ guides: { a: GUIDE, b: GUIDE } });
     expect(() => loadContent(root)).toThrow(/duplicate guide id/);
   });
+
+  it('orders guides by their curated `order`, unranked last by id', () => {
+    const mk = (id: string, order?: number): string =>
+      `---\nid: ${id}\ntradition: tibetan\n` +
+      (order !== undefined ? `order: ${order}\n` : '') +
+      `title: ${id}\n---\n\nТекст.\n`;
+    const root = writeCorpus({
+      guides: {
+        'tib-b': mk('tib-b', 2),
+        'tib-a': mk('tib-a', 1),
+        'tib-zzz': mk('tib-zzz'), // no order → tail
+        'tib-aaa': mk('tib-aaa'), // no order → tail, before tib-zzz by id
+      },
+    });
+    expect(loadContent(root).guides.all.map((g) => g.id)).toEqual([
+      'tib-a',
+      'tib-b',
+      'tib-aaa',
+      'tib-zzz',
+    ]);
+  });
+
+  it('rejects a guide whose order is not a number', () => {
+    const bad = GUIDE.replace('tradition: tibetan', 'tradition: tibetan\norder: first');
+    const root = writeCorpus({ guides: { 'tib-osnovy': bad } });
+    expect(() => loadContent(root)).toThrow(/field "order" must be a number/);
+  });
 });
 
 describe('buildIndex — guides', () => {
@@ -519,6 +546,14 @@ describe('buildIndex — guides', () => {
       sectionCount: 3,
       source: { work: 'Чжуд-ши', part: 'Тантра объяснений', chapter: 'гл. 5–6' },
     });
+  });
+
+  it('projects the curated `order` when present', () => {
+    const ranked = GUIDE.replace('tradition: tibetan', 'tradition: tibetan\norder: 1');
+    const root = writeCorpus({ guides: { 'tib-osnovy': ranked } });
+    const index = buildIndex(loadContent(root));
+
+    expect(index.guides[0]?.order).toBe(1);
   });
 });
 

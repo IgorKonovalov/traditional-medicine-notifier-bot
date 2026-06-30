@@ -1,6 +1,7 @@
 ---
 id: tib-klassifikaciya-boleznej
 tradition: tibetan
+order: 10
 title: «Как традиция различает болезни»
 source:
   work: Чжуд-ши

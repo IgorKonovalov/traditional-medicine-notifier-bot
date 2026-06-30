@@ -1,6 +1,7 @@
 ---
 id: tib-kak-voznikaet-bolezn
 tradition: tibetan
+order: 8
 title: «Как возникает болезнь»
 source:
   work: "Наука о здоровье. Сова Ригпа"

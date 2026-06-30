@@ -1,6 +1,7 @@
 ---
 id: tib-povedenie-v-chastnyh-sluchayah
 tradition: tibetan
+order: 30
 title: «Поведение в частных случаях»
 source:
   work: Чжуд-ши

@@ -1,6 +1,7 @@
 ---
 id: tib-masla-i-zharenie
 tradition: tibetan
+order: 22
 title: «Масла и приготовление пищи»
 source:
   work: Сова Ригпа

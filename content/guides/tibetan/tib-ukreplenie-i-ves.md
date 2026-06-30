@@ -1,6 +1,7 @@
 ---
 id: tib-ukreplenie-i-ves
 tradition: tibetan
+order: 26
 title: «Укрепление тела и вес»
 source:
   work: Сова Ригпа

@@ -1,6 +1,7 @@
 ---
 id: tib-nesovmestimye-produkty
 tradition: tibetan
+order: 20
 title: «Несовместимые сочетания продуктов»
 source:
   work: Чжуд-ши

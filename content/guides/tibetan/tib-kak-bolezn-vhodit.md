@@ -1,6 +1,7 @@
 ---
 id: tib-kak-bolezn-vhodit
 tradition: tibetan
+order: 9
 title: «Как болезнь входит и проявляется»
 source:
   work: Чжуд-ши

@@ -1,6 +1,7 @@
 ---
 id: tib-son
 tradition: tibetan
+order: 29
 title: "«Сон: режим и значение»"
 source:
   work: Чжуд-ши

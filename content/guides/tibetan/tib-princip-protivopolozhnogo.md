@@ -1,6 +1,7 @@
 ---
 id: tib-princip-protivopolozhnogo
 tradition: tibetan
+order: 12
 title: «Принцип противоположного»
 source:
   work: Чжуд-ши

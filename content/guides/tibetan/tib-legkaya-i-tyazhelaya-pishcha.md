@@ -1,6 +1,7 @@
 ---
 id: tib-legkaya-i-tyazhelaya-pishcha
 tradition: tibetan
+order: 19
 title: «Лёгкая и тяжёлая пища»
 source:
   work: Чжуд-ши

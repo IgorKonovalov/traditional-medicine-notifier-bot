@@ -227,6 +227,12 @@ export interface Guide {
   readonly tradition: Tradition;
   /** Russian display title. */
   readonly title: string;
+  /**
+   * Curated reading rank — ascending, lower = more foundational. Guides are
+   * listed in this order (alphabetical by `id` as a tie-break / for any without
+   * an `order`), so the list opens on the foundational articles, not A-to-Я.
+   */
+  readonly order?: number;
   /** Provenance citation, formatted uniformly at render time. */
   readonly source?: TipSource;
   readonly tags: readonly string[];

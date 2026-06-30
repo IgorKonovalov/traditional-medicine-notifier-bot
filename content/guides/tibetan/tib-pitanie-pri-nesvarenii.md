@@ -1,6 +1,7 @@
 ---
 id: tib-pitanie-pri-nesvarenii
 tradition: tibetan
+order: 24
 title: «Питание при слабом пищеварении»
 source:
   work: Сова Ригпа

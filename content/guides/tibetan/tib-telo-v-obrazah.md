@@ -1,6 +1,7 @@
 ---
 id: tib-telo-v-obrazah
 tradition: tibetan
+order: 3
 title: «Тело в образах традиции»
 source:
   work: Чжуд-ши

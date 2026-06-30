@@ -1,6 +1,7 @@
 ---
 id: tib-sezonnoe-pitanie
 tradition: tibetan
+order: 23
 title: «Питание и образ жизни по сезонам»
 source:
   work: Чжуд-ши

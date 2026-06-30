@@ -215,16 +215,20 @@ function herbsFor(deps: BotDeps, state: LibraryState): readonly Herb[] {
  *  `🧪 Составы` (formula) branch appears only once the doctor-gate is lifted
  *  (`_formula-gate`). Exported so a test can assert the formula branch presence. */
 export function hubView(): View {
-  const rows: CallbackButton[][] = [
-    [Markup.button.callback(messages.library.herbs, 'lib:herbs')],
-    [Markup.button.callback(messages.library.search, 'lib:search')],
-    [Markup.button.callback(messages.library.tips, 'lib:tips')],
-    [Markup.button.callback(messages.library.guides, 'lib:guides')],
-    [Markup.button.callback(messages.library.foods, 'lib:foods')],
-  ];
+  // Branch order (Plan-driven): составы → ингредиенты → продукты → статьи →
+  // поиск → случайный совет. Составы lead but only when the doctor-gate is
+  // lifted (`_formula-gate`); otherwise the list opens on ингредиенты.
+  const rows: CallbackButton[][] = [];
   if (FORMULA_BRANCH_ENABLED) {
     rows.push([Markup.button.callback(messages.library.formulas, 'lib:formulas')]);
   }
+  rows.push(
+    [Markup.button.callback(messages.library.herbs, 'lib:herbs')],
+    [Markup.button.callback(messages.library.foods, 'lib:foods')],
+    [Markup.button.callback(messages.library.guides, 'lib:guides')],
+    [Markup.button.callback(messages.library.search, 'lib:search')],
+    [Markup.button.callback(messages.library.tips, 'lib:tips')],
+  );
   return {
     text: `${messages.library.title}\n\n${messages.library.intro}`,
     keyboard: Markup.inlineKeyboard(rows),

@@ -50,6 +50,7 @@ export interface GuideIndexEntry {
   readonly id: string;
   readonly tradition: Guide['tradition'];
   readonly title: string;
+  readonly order?: Guide['order'];
   readonly sectionCount: number;
   readonly source?: Guide['source'];
 }
@@ -140,6 +141,7 @@ export function buildIndex(content: LoadedContent): ContentIndex {
     id: g.id,
     tradition: g.tradition,
     title: g.title,
+    ...(g.order !== undefined ? { order: g.order } : {}),
     sectionCount: g.sections.length,
     ...(g.source !== undefined ? { source: g.source } : {}),
   }));

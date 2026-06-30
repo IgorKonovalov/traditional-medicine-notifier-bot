@@ -1,6 +1,7 @@
 ---
 id: tib-osnovy
 tradition: tibetan
+order: 1
 title: «Основы тибетской медицины»
 source:
   work: Чжуд-ши

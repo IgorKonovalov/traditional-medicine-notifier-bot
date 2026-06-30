@@ -1,6 +1,7 @@
 ---
 id: tib-sem-sil-tela
 tradition: tibetan
+order: 5
 title: «Семь сил тела и „чистый сок“»
 source:
   work: Чжуд-ши

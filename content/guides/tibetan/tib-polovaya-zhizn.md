@@ -1,6 +1,7 @@
 ---
 id: tib-polovaya-zhizn
 tradition: tibetan
+order: 34
 title: «Половая жизнь в традиции»
 source:
   work: Чжуд-ши

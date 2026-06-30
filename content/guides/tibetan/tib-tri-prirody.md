@@ -1,6 +1,7 @@
 ---
 id: tib-tri-prirody
 tradition: tibetan
+order: 2
 title: «Три природы человека»
 source:
   work: "Наука о здоровье. Сова Ригпа"

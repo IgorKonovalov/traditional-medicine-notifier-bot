@@ -1,6 +1,7 @@
 ---
 id: tib-o-lekare
 tradition: tibetan
+order: 15
 title: "«О лекаре: этика традиции»"
 source:
   work: Чжуд-ши

@@ -1,6 +1,7 @@
 ---
 id: tib-shest-vkusov
 tradition: tibetan
+order: 16
 title: «Шесть вкусов»
 source:
   work: "Наука о здоровье. Сова Ригпа"

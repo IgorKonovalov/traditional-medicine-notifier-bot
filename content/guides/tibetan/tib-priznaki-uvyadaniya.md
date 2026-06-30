@@ -1,6 +1,7 @@
 ---
 id: tib-priznaki-uvyadaniya
 tradition: tibetan
+order: 13
 title: «Признаки увядания тела»
 source:
   work: Чжуд-ши

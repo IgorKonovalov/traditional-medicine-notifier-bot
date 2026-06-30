@@ -1,6 +1,7 @@
 ---
 id: tib-pishchevaritelnyj-ogon
 tradition: tibetan
+order: 6
 title: «Пищеварительный огонь»
 source:
   work: Чжуд-ши

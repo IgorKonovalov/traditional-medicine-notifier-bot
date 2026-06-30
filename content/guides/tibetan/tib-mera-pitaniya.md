@@ -1,6 +1,7 @@
 ---
 id: tib-mera-pitaniya
 tradition: tibetan
+order: 17
 title: "«Мера питания: сколько есть»"
 source:
   work: Чжуд-ши

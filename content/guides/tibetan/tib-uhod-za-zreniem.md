@@ -1,6 +1,7 @@
 ---
 id: tib-uhod-za-zreniem
 tradition: tibetan
+order: 33
 title: «Уход за зрением»
 source:
   work: Чжуд-ши

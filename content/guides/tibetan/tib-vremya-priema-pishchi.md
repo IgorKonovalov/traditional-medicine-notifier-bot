@@ -1,6 +1,7 @@
 ---
 id: tib-vremya-priema-pishchi
 tradition: tibetan
+order: 18
 title: «Время приёма пищи»
 source:
   work: Сова Ригпа

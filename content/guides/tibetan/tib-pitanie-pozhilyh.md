@@ -1,6 +1,7 @@
 ---
 id: tib-pitanie-pozhilyh
 tradition: tibetan
+order: 25
 title: «Питание и образ жизни пожилых»
 source:
   work: Сова Ригпа

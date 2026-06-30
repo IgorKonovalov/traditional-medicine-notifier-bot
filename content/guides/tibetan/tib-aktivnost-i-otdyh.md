@@ -1,6 +1,7 @@
 ---
 id: tib-aktivnost-i-otdyh
 tradition: tibetan
+order: 35
 title: «Активность и отдых»
 source:
   work: Сова Ригпа
