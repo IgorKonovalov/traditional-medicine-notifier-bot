@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.24.1 — 2026-06-30
+
+- Formula (Составы) card member ingredients now render as a 3-column button grid
+  instead of one button per row (Plan 023), cutting the keyboard's height ~⅔ for
+  typical formulas so the card text is no longer pushed off-screen. Navigation is
+  unchanged — each member still opens its ingredient card in place via
+  `lib:herb:<id>`.
+
 ## 0.24.0 — 2026-06-30
 
 - Reminder times can now be set on the half-hour (Plan 022): the create-reminder
