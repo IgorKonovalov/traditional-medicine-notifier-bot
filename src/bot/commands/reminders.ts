@@ -1,35 +1,38 @@
 /**
- * /reminders — list the user's active reminders and let them cancel one or
- * create a new one. Each row shows a human-readable schedule + next fire; the
- * `➕ Новое` button hands off to the create wizard (`rc:new`, Plan 008). The
- * create flow itself lives in `reminder-create.ts`.
+ * /reminders — list the user's active reminders, open one into a detail screen,
+ * and create a new one. Each list row is an **open** button (`rem:open:<id>`)
+ * that edits the message into a detail view (full schedule + linked ingredient/
+ * formula + intake type); deletion lives only there (`rem:del:<id>`, immediate,
+ * no confirm — Plan 024). The `➕ Новое` button hands off to the create wizard
+ * (`rc:new`, Plan 008); the create flow itself lives in `reminder-create.ts`.
  *
- * The list is a single message (not an anchored session): the cancel button
- * (`rem:cancel:<id>`) re-renders it in place, and `➕ Новое` opens a fresh
- * wizard anchor.
+ * The screen is a single message (not an anchored session): the id rides in the
+ * callback data, so open / delete / back just re-render it in place.
  */
 
 import { Markup, type Context, type Telegraf } from 'telegraf';
 
 import { deactivateReminder, listUserReminders } from '../../db/repositories/reminder.repo';
+import type { ScheduledReminder } from '../../notifications/types';
 import { formatDateTime } from '../../utils/datetime';
 import type { BotDeps } from '../context';
 import { getUserId } from '../context';
 import { assertCallbackData } from '../keyboards';
 import { messages } from '../messages';
-import { describeReminder } from './reminder-create';
+import { describeReminder, intakeLabel } from './reminder-create';
 
 /** Trim a label for a button face so the row stays compact. */
 function shortLabel(label: string): string {
-  return label.length > 24 ? `${label.slice(0, 23)}…` : label;
+  return label.length > 40 ? `${label.slice(0, 39)}…` : label;
 }
 
-interface ListView {
+interface MsgView {
   readonly text: string;
   readonly keyboard: ReturnType<typeof Markup.inlineKeyboard>;
 }
 
-function listView(userId: number, timeZone: string): ListView {
+/** The reminders list: a schedule block + an open button per active reminder. */
+export function listView(userId: number, timeZone: string): MsgView {
   const reminders = listUserReminders(userId).filter((r) => r.active);
   const newRow = [Markup.button.callback(messages.reminders.newButton, 'rc:new')];
 
@@ -46,16 +49,53 @@ function listView(userId: number, timeZone: string): ListView {
   });
 
   const rows = reminders.map((r) => [
-    Markup.button.callback(
-      messages.reminders.rowCancel(shortLabel(r.label)),
-      assertCallbackData(`rem:cancel:${r.id}`),
-    ),
+    Markup.button.callback(shortLabel(r.label), assertCallbackData(`rem:open:${r.id}`)),
   ]);
   rows.push(newRow);
 
   return {
     text: [messages.reminders.title, '', blocks.join('\n\n')].join('\n'),
     keyboard: Markup.inlineKeyboard(rows),
+  };
+}
+
+/**
+ * The per-reminder detail screen: full schedule + next fire + the linked
+ * ingredient/formula (and, for a formula, its intake type), with 🗑 Удалить and
+ * « Назад. Link names resolve from the in-memory content (Plan 024).
+ */
+export function detailView(reminder: ScheduledReminder, deps: BotDeps): MsgView {
+  const tz = deps.timezone;
+  const rc = messages.reminderCreate;
+  const lines = [
+    messages.reminders.detailTitle,
+    '',
+    `«${reminder.label}»`,
+    describeReminder(reminder.recurrence, reminder.nextFireAt, tz),
+  ];
+  if (reminder.recurrence.kind !== 'once') {
+    lines.push(messages.reminders.nextFire(formatDateTime(reminder.nextFireAt, tz)));
+  }
+  if (reminder.combinationId !== null) {
+    const name = deps.content.combinations.byId.get(reminder.combinationId)?.nameRu;
+    if (name !== undefined) lines.push(rc.formulaLine(name));
+    if (reminder.intakeType !== null) lines.push(rc.intakeLine(intakeLabel(reminder.intakeType)));
+  } else if (reminder.herbId !== null) {
+    const name = deps.content.herbs.byId.get(reminder.herbId)?.nameRu;
+    if (name !== undefined) lines.push(rc.herbLine(name));
+  }
+
+  return {
+    text: lines.join('\n'),
+    keyboard: Markup.inlineKeyboard([
+      [
+        Markup.button.callback(
+          messages.reminders.deleteButton,
+          assertCallbackData(`rem:del:${reminder.id}`),
+        ),
+      ],
+      [Markup.button.callback(messages.nav.back, 'rem:list')],
+    ]),
   };
 }
 
@@ -73,7 +113,25 @@ export async function remindersEntry(ctx: Context, deps: BotDeps): Promise<void>
 export function registerRemindersCommand(bot: Telegraf, deps: BotDeps): void {
   bot.command('reminders', (ctx) => remindersEntry(ctx, deps));
 
-  bot.action(/^rem:cancel:(\d+)$/, async (ctx) => {
+  // Open a reminder into its detail screen. A stale tap (already deleted) just
+  // re-renders the list.
+  bot.action(/^rem:open:(\d+)$/, async (ctx) => {
+    const userId = getUserId(ctx);
+    if (userId === undefined) {
+      await ctx.answerCbQuery(messages.common.notRegistered);
+      return;
+    }
+    await ctx.answerCbQuery();
+    const id = Number(ctx.match[1]);
+    const reminder = listUserReminders(userId).find((r) => r.id === id && r.active);
+    const view =
+      reminder === undefined ? listView(userId, deps.timezone) : detailView(reminder, deps);
+    await ctx.editMessageText(view.text, view.keyboard);
+  });
+
+  // Delete from the detail screen — immediate, no confirm (owner decision); then
+  // re-render the list.
+  bot.action(/^rem:del:(\d+)$/, async (ctx) => {
     const userId = getUserId(ctx);
     if (userId === undefined) {
       await ctx.answerCbQuery(messages.common.notRegistered);
@@ -81,6 +139,18 @@ export function registerRemindersCommand(bot: Telegraf, deps: BotDeps): void {
     }
     deactivateReminder(Number(ctx.match[1]), userId);
     await ctx.answerCbQuery(messages.reminders.cancelled);
+    const view = listView(userId, deps.timezone);
+    await ctx.editMessageText(view.text, view.keyboard);
+  });
+
+  // « Назад from the detail screen back to the list.
+  bot.action(/^rem:list$/, async (ctx) => {
+    const userId = getUserId(ctx);
+    if (userId === undefined) {
+      await ctx.answerCbQuery(messages.common.notRegistered);
+      return;
+    }
+    await ctx.answerCbQuery();
     const view = listView(userId, deps.timezone);
     await ctx.editMessageText(view.text, view.keyboard);
   });

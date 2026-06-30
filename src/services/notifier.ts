@@ -22,9 +22,12 @@ export type UserId = number;
  * Optional in-domain action hint a payload can carry. The Notifier adapter
  * renders it however its channel allows — for Telegraf, an inline keyboard
  * button; for a future mobile push, a deep link. Carries domain ids only so
- * the seam stays renderer-agnostic.
+ * the seam stays renderer-agnostic. A reminder links to a herb **or** a formula
+ * (состав), never both (plan 024).
  */
-export type NotificationCta = { kind: 'open-herb'; herbId: string };
+export type NotificationCta =
+  | { kind: 'open-herb'; herbId: string }
+  | { kind: 'open-formula'; combinationId: string };
 
 /**
  * Pre-rendered, locale-correct message body. The Notifier does not localize or

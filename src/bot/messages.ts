@@ -296,8 +296,10 @@ export const messages = {
     created: 'Напоминание создано.',
     cancelled: 'Напоминание отключено.',
     newButton: '➕ Новое',
-    /** Per-row cancel button: the reminder summary + its next fire. */
-    rowCancel: (summary: string): string => `❌ ${summary}`,
+    /** Title of the per-reminder detail screen (Plan 024). */
+    detailTitle: 'Напоминание',
+    /** Delete button on the detail screen — immediate, no confirm (Plan 024). */
+    deleteButton: '🗑 Удалить',
     /** Next-fire line under the list title. */
     nextFire: (whenText: string): string => `Ближайшее: ${whenText}`,
   },
@@ -316,11 +318,26 @@ export const messages = {
     useHerbName: '✅ Оставить название',
     enterCustom: '✏️ Ввести своё',
     labelTooLong: (max: number): string => `Слишком длинно — сократите до ${max} символов.`,
-    // step: herb (optional link)
-    herbPrompt: 'Привязать траву к напоминанию? Выберите из списка или пропустите.',
+    // step: link (optional) — type picker → ingredient / formula browser
+    linkPrompt: 'Привязать к напоминанию ингредиент или состав?',
+    linkHerb: '🌿 Ингредиент',
+    linkFormula: '🧪 Состав',
+    herbPrompt: 'Выберите ингредиент из списка.',
+    formulaPrompt: 'Выберите состав из списка.',
     herbSkip: '⏭ Пропустить',
-    /** Linked-herb line shown on the confirm screen when a herb is attached. */
-    herbLine: (name: string): string => `🌿 Трава: ${name}`,
+    /** Linked-ingredient line on the confirm / detail screens. */
+    herbLine: (name: string): string => `🌿 Ингредиент: ${name}`,
+    /** Linked-formula line on the confirm / detail screens. */
+    formulaLine: (name: string): string => `🧪 Состав: ${name}`,
+    // step: intake (formula-only) — how the состав is taken
+    intakePrompt: 'Как принимать состав?',
+    intakePlain: '💧 С тёплой водой',
+    intakeDecoction: '🍵 Отвар',
+    /** Display names of the intake type — used to build `intakeLine`. */
+    intakePlainLabel: 'с тёплой водой',
+    intakeDecoctionLabel: 'отвар',
+    /** Intake-type line on the confirm / detail screens + the fired notification. */
+    intakeLine: (label: string): string => `🍶 Приём: ${label}`,
     // step: kind
     kindPrompt: (label: string): string => `«${label}»\n\nКак часто напоминать?`,
     kindOnce: 'Один раз',

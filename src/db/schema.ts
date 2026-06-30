@@ -19,7 +19,7 @@ import { getVersion } from '../utils/version';
 
 type MigrationFn = (db: Database.Database) => void;
 
-const LATEST_VERSION = 2;
+const LATEST_VERSION = 3;
 
 export function runMigrations(db: Database.Database): void {
   db.exec(`
@@ -181,4 +181,21 @@ const migration002: MigrationFn = (db) => {
   db.prepare('UPDATE users SET notified_version = ?').run(getVersion());
 };
 
-const MIGRATIONS: readonly MigrationFn[] = [migration001, migration002];
+/**
+ * Migration 003 — link a reminder to a **formula** (состав) and record how that
+ * formula is taken (plan 024). Both columns are additive and nullable, mirroring
+ * the existing `herb_id` link: `combination_id` is the formula join key
+ * (`Combination.id`), `intake_type` is `'plain' | 'decoction'` (see
+ * notifications/types.ts → IntakeType), set only for formula-linked reminders.
+ *
+ * No backfill — existing rows keep `NULL` link/intake, which the repo maps to
+ * `null` and the wizard/list treat as "no formula linked".
+ */
+const migration003: MigrationFn = (db) => {
+  db.exec(`
+    ALTER TABLE scheduled_reminders ADD COLUMN combination_id TEXT;
+    ALTER TABLE scheduled_reminders ADD COLUMN intake_type TEXT;
+  `);
+};
+
+const MIGRATIONS: readonly MigrationFn[] = [migration001, migration002, migration003];

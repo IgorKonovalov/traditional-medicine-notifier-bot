@@ -47,11 +47,11 @@ export function createTelegrafNotifier(bot: Telegraf): Notifier {
   };
 }
 
-function buildCta(cta: NotificationCta): ReturnType<typeof Markup.inlineKeyboard> {
-  // The bot's callback router resolves `herb:<id>` to a herb page.
-  return Markup.inlineKeyboard([
-    [Markup.button.callback(messages.notify.openCta, `herb:${cta.herbId}`)],
-  ]);
+export function buildCta(cta: NotificationCta): ReturnType<typeof Markup.inlineKeyboard> {
+  // The bot's global callback router resolves `herb:<id>` to a herb card and
+  // `formula:<id>` to a formula card (both open a fresh library session).
+  const data = cta.kind === 'open-herb' ? `herb:${cta.herbId}` : `formula:${cta.combinationId}`;
+  return Markup.inlineKeyboard([[Markup.button.callback(messages.notify.openCta, data)]]);
 }
 
 /**

@@ -24,6 +24,40 @@ describe('reminder.repo', () => {
     expect(due[0]?.recurrence).toEqual({ kind: 'daily', times: ['08:00'] });
   });
 
+  it('round-trips a formula-linked reminder with an intake type', () => {
+    const userId = ensureUser('1003', 'tester');
+    const id = createReminder({
+      userId,
+      label: 'Агар-8',
+      combinationId: 'tib-formula-agar-8',
+      intakeType: 'decoction',
+      recurrence: { kind: 'daily', times: ['08:00'] },
+      nextFireAt: 1_000,
+    });
+
+    const [reminder] = listUserReminders(userId);
+    expect(reminder?.id).toBe(id);
+    expect(reminder?.herbId).toBeNull();
+    expect(reminder?.combinationId).toBe('tib-formula-agar-8');
+    expect(reminder?.intakeType).toBe('decoction');
+  });
+
+  it('round-trips a herb-linked reminder with null formula + intake fields', () => {
+    const userId = ensureUser('1004', 'tester');
+    createReminder({
+      userId,
+      label: 'Имбирь',
+      herbId: 'tib-ginger',
+      recurrence: { kind: 'daily', times: ['09:00'] },
+      nextFireAt: 1_000,
+    });
+
+    const [reminder] = listUserReminders(userId);
+    expect(reminder?.herbId).toBe('tib-ginger');
+    expect(reminder?.combinationId).toBeNull();
+    expect(reminder?.intakeType).toBeNull();
+  });
+
   it('deactivates a reminder when next fire is null', () => {
     const userId = ensureUser('1002', null);
     const id = createReminder({

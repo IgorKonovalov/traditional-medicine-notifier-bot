@@ -13,7 +13,7 @@
 
 import { Markup, type Context, type Telegraf } from 'telegraf';
 
-import type { Herb } from '../../content/types';
+import type { Combination, Herb } from '../../content/types';
 import { createReminder } from '../../db/repositories/reminder.repo';
 import {
   addDays,
@@ -21,7 +21,8 @@ import {
   formatLocalDate,
   zonedWallTimeToEpoch,
 } from '../../notifications/recurrence';
-import type { RecurrenceSpec } from '../../notifications/types';
+import type { IntakeType, RecurrenceSpec, ScheduledReminder } from '../../notifications/types';
+import type { NotificationPayload } from '../../services/notifier';
 import { formatDateTime, formatDayLabel } from '../../utils/datetime';
 import type { BotDeps } from '../context';
 import { getUserId } from '../context';
@@ -43,13 +44,17 @@ export type RecurrenceKind = RecurrenceSpec['kind'];
 /** Steps of the wizard, in nominal order; the active set depends on `kind`. */
 export type ReminderStep =
   | 'label'
-  | 'herb'
+  | 'link'
+  | 'intake'
   | 'kind'
   | 'every'
   | 'time'
   | 'date'
   | 'weekdays'
   | 'confirm';
+
+/** Sub-screen of the `link` step: the type picker, or one of the two browsers. */
+export type LinkView = 'choose' | 'herbs' | 'formulas';
 
 /** Max label length — it is echoed back verbatim in every fired notification. */
 export const LABEL_MAX = 100;
@@ -62,15 +67,29 @@ export const LABEL_MAX = 100;
 export interface ReminderDraft {
   step: ReminderStep;
   label?: string;
-  /** Optional content herb this reminder links to. */
+  /** Optional content herb (ingredient) this reminder links to. */
   herbId?: string;
+  /** Optional content formula (состав) this reminder links to. */
+  combinationId?: string;
+  /**
+   * How a linked **formula** is taken (plan 024). Set only on the formula path;
+   * the `intake` step is present only while `combinationId` is set.
+   */
+  intakeType?: IntakeType;
+  /**
+   * Active sub-screen of the `link` step: the `🌿 / 🧪 / ⏭` type picker
+   * (`choose`, default) or one of the two browsers (`herbs` / `formulas`).
+   */
+  linkView?: LinkView;
   /**
    * Set when the herb was pre-linked at entry (herb-card `⏰ Напомнить` path).
-   * Suppresses the in-wizard herb picker step — the herb is already chosen.
+   * Suppresses the in-wizard link + intake steps — the herb is already chosen.
    */
   herbPrelinked?: boolean;
   /** Current page of the herb picker (0-based). */
   herbPage?: number;
+  /** Current page of the formula picker (0-based). */
+  formulaPage?: number;
   kind?: RecurrenceKind;
   /**
    * Minute applied to an hour tap in the time grid: `:00` or `:30` (Plan 022).
@@ -252,8 +271,6 @@ export function herbPageSlice<T>(
   return { slice: items.slice(start, start + perPage), page: safePage, pageCount };
 }
 
-const timeFromCode = (c: string): string => `${c.slice(0, 2)}:${c.slice(2)}`;
-
 function chunk<T>(items: readonly T[], size: number): T[][] {
   const out: T[][] = [];
   for (let i = 0; i < items.length; i += size) out.push(items.slice(i, i + size));
@@ -262,12 +279,27 @@ function chunk<T>(items: readonly T[], size: number): T[][] {
 
 /**
  * The step sequence for a given kind; drives next/prev and which steps exist.
- * The optional herb-link step sits between `label` and `kind`, and is present
- * only when the herb was **not** pre-linked at entry (the herb-card path
- * already chose it, so its picker is skipped).
+ *
+ * The `link` step (type picker → ingredient/formula browser) sits between
+ * `label` and `kind`, present only when the link was **not** pre-chosen at entry
+ * (the herb-card path already linked a herb, so `herbPrelinked` skips both link
+ * and intake). The `intake` step follows `link` **only when a formula is linked**
+ * (`hasFormula`) — ingredient and free-text reminders carry no intake type.
+ *
+ * `nextStep`/`prevStep` recompute this from the live draft, so picking a formula
+ * (which sets `combinationId`) inserts `intake`, and switching to an ingredient
+ * or skipping (which clears it) drops it again.
  */
-export function stepsFor(kind: RecurrenceKind | undefined, herbPrelinked: boolean): ReminderStep[] {
-  const head: ReminderStep[] = herbPrelinked ? ['label', 'kind'] : ['label', 'herb', 'kind'];
+export function stepsFor(
+  kind: RecurrenceKind | undefined,
+  herbPrelinked: boolean,
+  hasFormula: boolean,
+): ReminderStep[] {
+  const head: ReminderStep[] = herbPrelinked
+    ? ['label', 'kind']
+    : hasFormula
+      ? ['label', 'link', 'intake', 'kind']
+      : ['label', 'link', 'kind'];
   switch (kind) {
     case 'once':
       return [...head, 'time', 'date', 'confirm'];
@@ -282,14 +314,18 @@ export function stepsFor(kind: RecurrenceKind | undefined, herbPrelinked: boolea
   }
 }
 
+function stepsForDraft(draft: ReminderDraft): ReminderStep[] {
+  return stepsFor(draft.kind, draft.herbPrelinked === true, draft.combinationId !== undefined);
+}
+
 function nextStep(draft: ReminderDraft): ReminderStep {
-  const steps = stepsFor(draft.kind, draft.herbPrelinked === true);
+  const steps = stepsForDraft(draft);
   const i = steps.indexOf(draft.step);
   return steps[Math.min(i + 1, steps.length - 1)] ?? draft.step;
 }
 
 function prevStep(draft: ReminderDraft): ReminderStep {
-  const steps = stepsFor(draft.kind, draft.herbPrelinked === true);
+  const steps = stepsForDraft(draft);
   const i = steps.indexOf(draft.step);
   return steps[Math.max(i - 1, 0)] ?? draft.step;
 }
@@ -325,17 +361,110 @@ function labelView(draft: ReminderDraft): View {
   return { text: lines.join('\n'), keyboard: Markup.inlineKeyboard(rows) };
 }
 
-/** The optional herb-link picker: a paginated list of herbs + a skip button. */
-function herbView(draft: ReminderDraft, herbs: readonly Herb[]): View {
+/** Display name of an intake type — for the confirm / detail / notification lines. */
+export function intakeLabel(type: IntakeType): string {
+  const rc = messages.reminderCreate;
+  return type === 'decoction' ? rc.intakeDecoctionLabel : rc.intakePlainLabel;
+}
+
+/**
+ * Build the fired-reminder notification payload (the reminder-dispatch
+ * `buildMessage`, plan 024). A formula reminder echoes its intake type in the
+ * body and carries an `open-formula` CTA; a herb reminder carries `open-herb`;
+ * a free-text reminder carries no CTA. A reminder links to a formula **or** a
+ * herb, never both — formula takes precedence defensively. Pure (no IO), so the
+ * dispatch contract is unit-testable without booting the app.
+ */
+export function buildReminderMessage(reminder: ScheduledReminder): NotificationPayload {
+  if (reminder.combinationId !== null) {
+    const lines = [messages.reminder.body(reminder.label)];
+    if (reminder.intakeType !== null) {
+      lines.push(messages.reminderCreate.intakeLine(intakeLabel(reminder.intakeType)));
+    }
+    return {
+      body: lines.join('\n'),
+      cta: { kind: 'open-formula', combinationId: reminder.combinationId },
+    };
+  }
+  if (reminder.herbId !== null) {
+    return {
+      body: messages.reminder.body(reminder.label),
+      cta: { kind: 'open-herb', herbId: reminder.herbId },
+    };
+  }
+  return { body: messages.reminder.body(reminder.label) };
+}
+
+/** Sub-view back row for the link browsers: returns to the type picker, not prevStep. */
+function linkBackRow(): CallbackButton[] {
+  return [
+    Markup.button.callback(messages.nav.back, 'rc:link:back'),
+    Markup.button.callback(messages.reminderCreate.cancel, 'rc:cancel'),
+  ];
+}
+
+/** The `link` type picker: 🌿 Ингредиент / 🧪 Состав / ⏭ Пропустить. Back → label. */
+function linkChooseView(): View {
+  const rc = messages.reminderCreate;
+  return {
+    text: rc.linkPrompt,
+    keyboard: Markup.inlineKeyboard([
+      [Markup.button.callback(rc.linkHerb, 'rc:link:herbs')],
+      [Markup.button.callback(rc.linkFormula, 'rc:link:formulas')],
+      [Markup.button.callback(rc.herbSkip, 'rc:link:skip')],
+      navRow(true),
+    ]),
+  };
+}
+
+/** The ingredient (herb) browser: a paginated list; back → the type picker. */
+function herbPickerView(draft: ReminderDraft, herbs: readonly Herb[]): View {
   const rc = messages.reminderCreate;
   const { slice, page, pageCount } = herbPageSlice(herbs, draft.herbPage ?? 0);
   const rows: CallbackButton[][] = slice.map((h) => [
     Markup.button.callback(h.nameRu, assertCallbackData(`rc:herb:${h.id}`)),
   ]);
   if (pageCount > 1) rows.push(pager('rc:hpg', page, pageCount));
-  rows.push([Markup.button.callback(rc.herbSkip, 'rc:herb:skip')]);
-  rows.push(navRow(true));
+  rows.push(linkBackRow());
   return { text: rc.herbPrompt, keyboard: Markup.inlineKeyboard(rows) };
+}
+
+/** The formula (состав) browser: a paginated list; back → the type picker. */
+export function formulaPickerView(draft: ReminderDraft, formulas: readonly Combination[]): View {
+  const rc = messages.reminderCreate;
+  const { slice, page, pageCount } = herbPageSlice(formulas, draft.formulaPage ?? 0);
+  const rows: CallbackButton[][] = slice.map((f) => [
+    Markup.button.callback(f.nameRu, assertCallbackData(`rc:formula:${f.id}`)),
+  ]);
+  if (pageCount > 1) rows.push(pager('rc:fpg', page, pageCount));
+  rows.push(linkBackRow());
+  return { text: rc.formulaPrompt, keyboard: Markup.inlineKeyboard(rows) };
+}
+
+/** Render the active `link` sub-screen (type picker, ingredient, or formula). */
+function linkView(draft: ReminderDraft, deps: BotDeps): View {
+  switch (draft.linkView ?? 'choose') {
+    case 'herbs':
+      return herbPickerView(draft, deps.content.herbs.all);
+    case 'formulas':
+      return formulaPickerView(draft, deps.content.combinations.all);
+    case 'choose':
+    default:
+      return linkChooseView();
+  }
+}
+
+/** The `intake` step (formula-only): plain warm water vs a decoction (отвар). */
+function intakeView(): View {
+  const rc = messages.reminderCreate;
+  return {
+    text: rc.intakePrompt,
+    keyboard: Markup.inlineKeyboard([
+      [Markup.button.callback(rc.intakePlain, 'rc:intake:plain')],
+      [Markup.button.callback(rc.intakeDecoction, 'rc:intake:decoction')],
+      navRow(true),
+    ]),
+  };
 }
 
 /**
@@ -355,9 +484,12 @@ export function timeView(draft: ReminderDraft): View {
   ];
   const hourBtns = HOURS.map((h) => {
     const hh = String(h).padStart(2, '0');
+    // Carry only the hour in the callback; the commit handler combines it with
+    // the authoritative server-side `draft.minuteMode` (Plan 024 `.30` fix). The
+    // checkmark stays keyed on the per-mode concrete slot.
     return Markup.button.callback(
       selected.has(`${hh}:${mode}`) ? `✓ ${hh}` : hh,
-      assertCallbackData(`rc:time:${hh}${mode}`),
+      assertCallbackData(`rc:time:${hh}`),
     );
   });
   const tail: CallbackButton[][] = [];
@@ -372,14 +504,17 @@ export function timeView(draft: ReminderDraft): View {
   };
 }
 
-/** Render the screen for the draft's current step. */
-function view(draft: ReminderDraft, timeZone: string, now: number, herbs: readonly Herb[]): View {
+/** Render the screen for the draft's current step. Exported for render tests. */
+export function view(draft: ReminderDraft, deps: BotDeps, now: number): View {
   const rc = messages.reminderCreate;
+  const timeZone = deps.timezone;
   switch (draft.step) {
     case 'label':
       return labelView(draft);
-    case 'herb':
-      return herbView(draft, herbs);
+    case 'link':
+      return linkView(draft, deps);
+    case 'intake':
+      return intakeView();
     case 'kind':
       return {
         text: rc.kindPrompt(draft.label ?? ''),
@@ -446,9 +581,17 @@ function view(draft: ReminderDraft, timeZone: string, now: number, herbs: readon
           ? rc.describeOnce('—')
           : describeReminder(draftToRecurrence(draft), at, timeZone);
       const summary = rc.summary(draft.label ?? '', recurrenceText, timeZone);
-      const herbName =
-        draft.herbId !== undefined ? herbs.find((h) => h.id === draft.herbId)?.nameRu : undefined;
-      const body = herbName !== undefined ? `${summary}\n${rc.herbLine(herbName)}` : summary;
+      const lines = [summary];
+      if (draft.combinationId !== undefined) {
+        const formulaName = deps.content.combinations.byId.get(draft.combinationId)?.nameRu;
+        if (formulaName !== undefined) lines.push(rc.formulaLine(formulaName));
+        if (draft.intakeType !== undefined)
+          lines.push(rc.intakeLine(intakeLabel(draft.intakeType)));
+      } else if (draft.herbId !== undefined) {
+        const herbName = deps.content.herbs.byId.get(draft.herbId)?.nameRu;
+        if (herbName !== undefined) lines.push(rc.herbLine(herbName));
+      }
+      const body = lines.join('\n');
       return {
         text: `${rc.confirmPrompt}\n\n${body}`,
         keyboard: Markup.inlineKeyboard([
@@ -487,7 +630,7 @@ export async function reminderCreateEntry(
     draft.herbPrelinked = true;
     if (opts.herbName !== undefined) draft.label = opts.herbName;
   }
-  const out = view(draft, deps.timezone, Date.now(), deps.content.herbs.all);
+  const out = view(draft, deps, Date.now());
   const anchor = await sendAnchor(ctx, out.text, out.keyboard);
   persist(userId, anchor, draft);
 }
@@ -533,7 +676,7 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     v: { userId: number; session: AnchoredSession<ReminderDraft> },
     draft: ReminderDraft,
   ): Promise<void> => {
-    const out = view(draft, tz, Date.now(), deps.content.herbs.all);
+    const out = view(draft, deps, Date.now());
     await editAnchor(ctx, out.text, out.keyboard);
     persist(v.userId, v.session.anchor, draft);
   };
@@ -564,26 +707,77 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     await editAndPersist(ctx, v, draft);
   });
 
-  // Optional herb-link step. `rc:herb:skip` must be registered before the
-  // catch-all `rc:herb:(.+)` so the skip token never resolves as a herb id.
-  bot.action(/^rc:herb:skip$/, async (ctx) => {
+  // ── link step: type picker (choose) → ingredient / formula browser ──────────
+
+  // `rc:link:herbs|formulas` open a browser (stay on the `link` step, flip the
+  // sub-view). `rc:link:skip` clears any link and advances to `kind`. `rc:link:back`
+  // returns the browser to the type picker (two-level back, not prevStep).
+  bot.action(/^rc:link:herbs$/, async (ctx) => {
     const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
     if (v === null) return;
     await ctx.answerCbQuery();
     const draft = v.session.state;
-    delete draft.herbId; // skip ⇒ no herb, even if one was picked then revisited
-    draft.step = nextStep(draft);
+    draft.linkView = 'herbs';
     await editAndPersist(ctx, v, draft);
   });
 
+  bot.action(/^rc:link:formulas$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const draft = v.session.state;
+    draft.linkView = 'formulas';
+    await editAndPersist(ctx, v, draft);
+  });
+
+  bot.action(/^rc:link:back$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const draft = v.session.state;
+    draft.linkView = 'choose';
+    await editAndPersist(ctx, v, draft);
+  });
+
+  bot.action(/^rc:link:skip$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const draft = v.session.state;
+    delete draft.herbId;
+    delete draft.combinationId;
+    delete draft.intakeType;
+    draft.step = nextStep(draft); // → kind (no formula ⇒ no intake step)
+    await editAndPersist(ctx, v, draft);
+  });
+
+  // Picking an ingredient links it (clearing any formula + intake) and advances
+  // to `kind`; picking a formula links it (clearing any herb) and advances to the
+  // formula-only `intake` step. Both recompute the step graph from the live draft.
   bot.action(/^rc:herb:(.+)$/, async (ctx) => {
     const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
     if (v === null) return;
     await ctx.answerCbQuery();
     const draft = v.session.state;
     const herbId = ctx.match[1] ?? '';
-    if (deps.content.herbs.byId.has(herbId)) draft.herbId = herbId;
+    if (!deps.content.herbs.byId.has(herbId)) return;
+    draft.herbId = herbId;
+    delete draft.combinationId;
+    delete draft.intakeType;
     draft.step = nextStep(draft);
+    await editAndPersist(ctx, v, draft);
+  });
+
+  bot.action(/^rc:formula:(.+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const draft = v.session.state;
+    const formulaId = ctx.match[1] ?? '';
+    if (!deps.content.combinations.byId.has(formulaId)) return;
+    draft.combinationId = formulaId;
+    delete draft.herbId;
+    draft.step = nextStep(draft); // → intake (formula sets hasFormula)
     await editAndPersist(ctx, v, draft);
   });
 
@@ -597,6 +791,28 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
   });
 
   bot.action(/^rc:hpg:noop$/, (ctx) => ctx.answerCbQuery());
+
+  bot.action(/^rc:fpg:(\d+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const draft = v.session.state;
+    draft.formulaPage = Number(ctx.match[1]);
+    await editAndPersist(ctx, v, draft);
+  });
+
+  bot.action(/^rc:fpg:noop$/, (ctx) => ctx.answerCbQuery());
+
+  // Intake step (formula-only): records how the formula is taken, then → kind.
+  bot.action(/^rc:intake:(plain|decoction)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const draft = v.session.state;
+    draft.intakeType = ctx.match[1] as IntakeType;
+    draft.step = nextStep(draft);
+    await editAndPersist(ctx, v, draft);
+  });
 
   bot.action(/^rc:kind:(once|daily|weekly|interval)$/, async (ctx) => {
     const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
@@ -630,12 +846,15 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     await editAndPersist(ctx, v, draft);
   });
 
-  bot.action(/^rc:time:(\d{4})$/, async (ctx) => {
+  bot.action(/^rc:time:(\d{2})$/, async (ctx) => {
     const v = await requireSessionAndAnchor<ReminderDraft>(ctx, 'reminder-create');
     if (v === null) return;
     await ctx.answerCbQuery();
     const draft = v.session.state;
-    const t = timeFromCode(ctx.match[1] ?? '');
+    // Build the slot from the tapped hour + the authoritative server-side minute
+    // mode — never the callback — so a stale `:00` keyboard tapped after the user
+    // switched to `:30` still commits `HH:30` (Plan 024 `.30` fix).
+    const t = `${ctx.match[1] ?? ''}:${draft.minuteMode ?? '00'}`;
     if (draft.kind === 'once') {
       draft.times = [t];
       draft.step = nextStep(draft);
@@ -705,6 +924,9 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     await ctx.answerCbQuery();
     const draft = v.session.state;
     draft.step = prevStep(draft);
+    // Re-entering the link step lands on the type picker, not a stale browser
+    // sub-view; the chosen id is preserved so confirm/intake stay coherent.
+    if (draft.step === 'link') draft.linkView = 'choose';
     await editAndPersist(ctx, v, draft);
   });
 
@@ -732,6 +954,8 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
         userId: v.userId,
         label: (draft.label ?? '').trim(),
         herbId: draft.herbId ?? null,
+        combinationId: draft.combinationId ?? null,
+        intakeType: draft.intakeType ?? null,
         recurrence: draftToRecurrence(draft),
         nextFireAt: fire,
       },
@@ -779,7 +1003,7 @@ export function registerReminderCreateTextCapture(bot: Telegraf, deps: BotDeps):
     if (raw.length > LABEL_MAX) {
       draft.customLabel = true;
       delete draft.label;
-      const out = view(draft, deps.timezone, Date.now(), deps.content.herbs.all);
+      const out = view(draft, deps, Date.now());
       await editAnchorAt(
         ctx,
         session.anchor.messageId,
@@ -791,7 +1015,7 @@ export function registerReminderCreateTextCapture(bot: Telegraf, deps: BotDeps):
     }
     draft.label = raw;
     draft.step = nextStep(draft);
-    const out = view(draft, deps.timezone, Date.now(), deps.content.herbs.all);
+    const out = view(draft, deps, Date.now());
     await editAnchorAt(ctx, session.anchor.messageId, out.text, out.keyboard);
     persist(userId, session.anchor, draft);
   });

@@ -919,6 +919,33 @@ export async function openHerbCardAnchor(
   persist(userId, anchor, { screen: 'card', page: 0, herbId });
 }
 
+/**
+ * Open a formula card as a fresh library session — the formula-reminder "Открыть"
+ * CTA (plan 024). Mirrors {@link openHerbCardAnchor}; back lands on the formula
+ * list (the card carries no list context). Only ever reached while the formula
+ * branch is live (`FORMULA_BRANCH_ENABLED`), as a formula CTA is only attached to
+ * formula-linked reminders, which exist only once the branch is up.
+ */
+export async function openFormulaCardAnchor(
+  ctx: Context,
+  deps: BotDeps,
+  formulaId: string,
+): Promise<void> {
+  const userId = getUserId(ctx);
+  if (userId === undefined) {
+    await ctx.reply(messages.common.notRegistered);
+    return;
+  }
+  const view = formulaCardView(deps, formulaId);
+  if (view === null) {
+    await ctx.reply(messages.common.sessionExpired);
+    return;
+  }
+  deleteSession(userId, 'library');
+  const anchor = await sendView(ctx, view);
+  persist(userId, anchor, { screen: 'formula-card', page: 0, formulaId });
+}
+
 // ─── registration ─────────────────────────────────────────────────────────────
 
 export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {

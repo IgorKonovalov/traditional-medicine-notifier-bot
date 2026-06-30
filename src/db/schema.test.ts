@@ -31,15 +31,65 @@ describe('runMigrations', () => {
 
   it('migrates a fresh DB to the latest version with notified_version present', () => {
     const db = setupTestDb();
-    expect(schemaVersion(db)).toBe(2);
+    expect(schemaVersion(db)).toBe(3);
     expect(columnNames(db, 'users')).toContain('notified_version');
+  });
+
+  it('adds the formula link + intake columns on scheduled_reminders (migration 003)', () => {
+    const db = setupTestDb();
+    const cols = columnNames(db, 'scheduled_reminders');
+    expect(cols).toContain('combination_id');
+    expect(cols).toContain('intake_type');
   });
 
   it('is idempotent — re-running on an up-to-date DB is a no-op', () => {
     const db = setupTestDb();
     expect(() => runMigrations(db)).not.toThrow();
     expect(() => runMigrations(db)).not.toThrow();
-    expect(schemaVersion(db)).toBe(2);
+    expect(schemaVersion(db)).toBe(3);
+  });
+});
+
+describe('migration 003 upgrade from v2', () => {
+  let db: Database.Database;
+
+  afterEach(() => {
+    db.close();
+  });
+
+  it('upgrades an existing v2 DB cleanly, adding the new columns to existing rows', () => {
+    // Reconstruct a post-migration-002 state: the v1 scheduled_reminders table
+    // (no link/intake columns) with a row, schema_version pinned to 2. Then
+    // runMigrations runs migration 003 alone — the production upgrade path.
+    db = new Database(':memory:');
+    db.exec(`
+      CREATE TABLE schema_version (version INTEGER PRIMARY KEY);
+      CREATE TABLE scheduled_reminders (
+        id            INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id       INTEGER NOT NULL,
+        label         TEXT NOT NULL,
+        herb_id       TEXT,
+        recurrence    TEXT NOT NULL,
+        next_fire_at  INTEGER NOT NULL,
+        active        INTEGER NOT NULL DEFAULT 1,
+        created_at    INTEGER NOT NULL
+      );
+      INSERT INTO schema_version (version) VALUES (2);
+      INSERT INTO scheduled_reminders (user_id, label, herb_id, recurrence, next_fire_at, created_at)
+        VALUES (1, 'legacy', NULL, '{"kind":"once"}', 1000, 1);
+    `);
+
+    runMigrations(db);
+
+    expect(schemaVersion(db)).toBe(3);
+    const cols = columnNames(db, 'scheduled_reminders');
+    expect(cols).toContain('combination_id');
+    expect(cols).toContain('intake_type');
+    const row = db
+      .prepare('SELECT combination_id, intake_type FROM scheduled_reminders WHERE label = ?')
+      .get('legacy') as { combination_id: string | null; intake_type: string | null };
+    expect(row.combination_id).toBeNull();
+    expect(row.intake_type).toBeNull();
   });
 });
 
@@ -61,6 +111,16 @@ describe('migration 002 backfill', () => {
         last_seen_at  INTEGER NOT NULL,
         active        INTEGER NOT NULL DEFAULT 1
       );
+      CREATE TABLE scheduled_reminders (
+        id            INTEGER PRIMARY KEY AUTOINCREMENT,
+        user_id       INTEGER NOT NULL,
+        label         TEXT NOT NULL,
+        herb_id       TEXT,
+        recurrence    TEXT NOT NULL,
+        next_fire_at  INTEGER NOT NULL,
+        active        INTEGER NOT NULL DEFAULT 1,
+        created_at    INTEGER NOT NULL
+      );
       INSERT INTO schema_version (version) VALUES (1);
       INSERT INTO users (username, created_at, last_seen_at) VALUES ('alice', 1, 1);
       INSERT INTO users (username, created_at, last_seen_at) VALUES ('bob', 2, 2);
@@ -77,6 +137,6 @@ describe('migration 002 backfill', () => {
       notified_version: string | null;
     }[];
     expect(rows).toEqual([{ notified_version: getVersion() }, { notified_version: getVersion() }]);
-    expect(schemaVersion(db)).toBe(2);
+    expect(schemaVersion(db)).toBe(3);
   });
 });

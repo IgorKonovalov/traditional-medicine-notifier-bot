@@ -32,11 +32,10 @@ import { startSubscriptionDispatch } from './services/subscription-dispatch';
 import { announceNewVersion, validateAnnouncements } from './services/version-announcer';
 import { getVersion } from './utils/version';
 import { createBot } from './bot/index';
+import { buildReminderMessage } from './bot/commands/reminder-create';
 import { createTelegrafNotifier } from './bot/notifier';
 import { deleteExpiredSessions } from './bot/session-store';
 import { messages } from './bot/messages';
-import type { NotificationPayload } from './services/notifier';
-import type { ScheduledReminder } from './notifications/types';
 import type { Tip } from './content/types';
 
 async function main(): Promise<void> {
@@ -84,18 +83,14 @@ async function main(): Promise<void> {
 
   const notifier = createTelegrafNotifier(bot);
 
-  // SOLICITED: user-scheduled reminders (no daily cap).
+  // SOLICITED: user-scheduled reminders (no daily cap). The payload (intake echo,
+  // formula/herb CTA, or none) is built by the pure `buildReminderMessage`
+  // (plan 024).
   const reminderTask = startReminderDispatch({
     cronExpression: config.reminderTickCron,
     timezone: config.timezone,
     notifier,
-    buildMessage: (reminder: ScheduledReminder): NotificationPayload =>
-      reminder.herbId
-        ? {
-            body: messages.reminder.body(reminder.label),
-            cta: { kind: 'open-herb', herbId: reminder.herbId },
-          }
-        : { body: messages.reminder.body(reminder.label) },
+    buildMessage: buildReminderMessage,
   });
 
   // PROACTIVE: opt-in daily tip (≤1 proactive push/user/day via the budget gate).
