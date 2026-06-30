@@ -1,9 +1,16 @@
+import { Markup } from 'telegraf';
 import { describe, expect, it } from 'vitest';
 
 import type { Combination, Herb, LoadedContent } from '../../content/types';
 import { TELEGRAM_LIMIT } from '../render/markdown';
 
-import { formulaMemberLinks, parseOriginalNames, renderFormula } from './_formula-card';
+import {
+  formulaCardKeyboard,
+  formulaMemberLinks,
+  parseOriginalNames,
+  renderFormula,
+  type MemberLink,
+} from './_formula-card';
 
 /**
  * A formula carrying every verbose field: the structured ones
@@ -176,5 +183,76 @@ describe('formulaMemberLinks', () => {
     expect(formulaMemberLinks(formula, content)).toEqual([
       { id: 'tib-haritaki', nameRu: 'Миробалан хебула' },
     ]);
+  });
+});
+
+describe('formulaCardKeyboard — 3-column member grid (Plan 023)', () => {
+  /** Telegram inline-keyboard rows: [{ text, callback_data }][][]. */
+  function rowsOf(kb: ReturnType<typeof formulaCardKeyboard>): { text: string; data: string }[][] {
+    return kb.reply_markup.inline_keyboard.map((row) =>
+      row.map((b) => ({
+        text: b.text,
+        data: (b as { callback_data: string }).callback_data,
+      })),
+    );
+  }
+
+  function members(n: number): MemberLink[] {
+    return Array.from({ length: n }, (_, i) => ({ id: `tib-h${i}`, nameRu: `Трава ${i}` }));
+  }
+
+  const navRows = [[Markup.button.callback('« Назад', 'nav:back')]];
+
+  it('groups members 3 per row, with a remainder row of 2 for 8 members', () => {
+    const rows = rowsOf(formulaCardKeyboard(members(8), navRows));
+    // 8 members → 3/3/2 member rows, then the nav row.
+    const memberRows = rows.slice(0, -1);
+    expect(memberRows.map((r) => r.length)).toEqual([3, 3, 2]);
+  });
+
+  it('leaves a single leftover button in the last member row for a remainder of 1', () => {
+    const rows = rowsOf(formulaCardKeyboard(members(4), navRows));
+    const memberRows = rows.slice(0, -1);
+    expect(memberRows.map((r) => r.length)).toEqual([3, 1]);
+  });
+
+  it('fills exact rows with no short row when the count is a multiple of 3', () => {
+    const rows = rowsOf(formulaCardKeyboard(members(6), navRows));
+    const memberRows = rows.slice(0, -1);
+    expect(memberRows.map((r) => r.length)).toEqual([3, 3]);
+  });
+
+  it('keeps the lib:herb:<id> callback route and preserves member order', () => {
+    const rows = rowsOf(formulaCardKeyboard(members(5), navRows));
+    const flat = rows.slice(0, -1).flat();
+    expect(flat).toEqual([
+      { text: 'Трава 0', data: 'lib:herb:tib-h0' },
+      { text: 'Трава 1', data: 'lib:herb:tib-h1' },
+      { text: 'Трава 2', data: 'lib:herb:tib-h2' },
+      { text: 'Трава 3', data: 'lib:herb:tib-h3' },
+      { text: 'Трава 4', data: 'lib:herb:tib-h4' },
+    ]);
+  });
+
+  it('appends the nav rows unchanged after the member grid', () => {
+    const twoNavRows = [
+      [Markup.button.callback('« Назад', 'nav:back')],
+      [Markup.button.callback('🏠 Меню', 'nav:home')],
+    ];
+    const rows = rowsOf(formulaCardKeyboard(members(2), twoNavRows));
+    // 2 members → 1 member row, then the 2 nav rows verbatim.
+    expect(rows).toEqual([
+      [
+        { text: 'Трава 0', data: 'lib:herb:tib-h0' },
+        { text: 'Трава 1', data: 'lib:herb:tib-h1' },
+      ],
+      [{ text: '« Назад', data: 'nav:back' }],
+      [{ text: '🏠 Меню', data: 'nav:home' }],
+    ]);
+  });
+
+  it('renders just the nav rows when there are no members', () => {
+    const rows = rowsOf(formulaCardKeyboard([], navRows));
+    expect(rows).toEqual([[{ text: '« Назад', data: 'nav:back' }]]);
   });
 });

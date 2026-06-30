@@ -181,17 +181,31 @@ export function renderFormula(combination: Combination): Html {
   return unsafeHtml(`${body}\n\n${disclaimer}`);
 }
 
+/** Member buttons per row. A 3-up grid keeps the keyboard short (Plan 023). */
+const MEMBER_COLUMNS = 3;
+
 /**
- * Keyboard for a formula card: one button per resolved member herb (opening that
- * herb's card via the shared `lib:herb:<id>` route), then the calling flow's
- * navigation rows.
+ * Keyboard for a formula card: resolved member herbs as a 3-column grid of
+ * callback buttons (each opening that herb's card via the shared `lib:herb:<id>`
+ * route), then the calling flow's navigation rows. The card body already lists
+ * the full composition, so the buttons are purely a navigation affordance —
+ * packing them into a grid loses no information and cuts the keyboard height
+ * ~⅔ for typical formulas (Plan 023). A non-multiple-of-3 member count leaves
+ * 1–2 buttons in the final member row; nav rows still follow on their own rows.
  */
 export function formulaCardKeyboard(
   memberLinks: readonly MemberLink[],
   navRows: CallbackButton[][],
 ): ReturnType<typeof Markup.inlineKeyboard> {
-  const rows: CallbackButton[][] = memberLinks.map((link) => [
-    Markup.button.callback(link.nameRu, assertCallbackData(`lib:herb:${link.id}`)),
-  ]);
-  return Markup.inlineKeyboard([...rows, ...navRows]);
+  const memberRows: CallbackButton[][] = [];
+  for (let i = 0; i < memberLinks.length; i += MEMBER_COLUMNS) {
+    memberRows.push(
+      memberLinks
+        .slice(i, i + MEMBER_COLUMNS)
+        .map((link) =>
+          Markup.button.callback(link.nameRu, assertCallbackData(`lib:herb:${link.id}`)),
+        ),
+    );
+  }
+  return Markup.inlineKeyboard([...memberRows, ...navRows]);
 }
