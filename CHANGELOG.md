@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.25.1 — 2026-06-30
+
+- The reminder time step now takes a single time across all schedule kinds:
+  tapping an hour picks that time and advances immediately (no «Далее»), instead
+  of letting daily/weekly/interval reminders accumulate several times. Fixes a
+  confusing flow where switching to `:30` and tapping another hour appended a
+  second time (e.g. «Выбрано: 10:00, 12:30») instead of replacing it.
+
 ## 0.25.0 — 2026-06-30
 
 - Reminders can now link to a **formula (состав)** as well as an ingredient: the

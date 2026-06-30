@@ -149,21 +149,13 @@ describe('timeView (Plan 022 minute-mode picker)', () => {
     expect(at30.find((b) => b.callback_data === 'rc:time:08')?.text).toBe('08');
   });
 
-  it('lists the full sorted concrete set under a Выбрано line when times exist', () => {
-    const v = timeView(draft({ step: 'time', kind: 'daily', times: ['14:30', '08:00'] }));
-    expect(v.text).toContain('Выбрано: 08:00, 14:30');
-  });
-
-  it('omits the Выбрано line when no times are selected', () => {
-    const v = timeView(draft({ step: 'time', kind: 'daily', times: [] }));
-    expect(v.text).not.toContain('Выбрано');
-  });
-
-  it('offers a Далее button for recurring kinds but not for once', () => {
+  it('offers no Далее button — a tap picks the single time and advances (all kinds)', () => {
     const daily = buttons(timeView(draft({ step: 'time', kind: 'daily' })));
     const once = buttons(timeView(draft({ step: 'time', kind: 'once' })));
-    expect(daily.some((b) => b.callback_data === 'rc:next')).toBe(true);
+    const weekly = buttons(timeView(draft({ step: 'time', kind: 'weekly' })));
+    expect(daily.some((b) => b.callback_data === 'rc:next')).toBe(false);
     expect(once.some((b) => b.callback_data === 'rc:next')).toBe(false);
+    expect(weekly.some((b) => b.callback_data === 'rc:next')).toBe(false);
   });
 });
 
@@ -425,6 +417,27 @@ describe('rc:time commit handler (Plan 024 .30 fix)', () => {
     const after = loadSession<AnchoredSession<ReminderDraft>>(userId, 'reminder-create');
     // Even though the callback carried no minute, the slot follows draft.minuteMode.
     expect(after?.state.times).toEqual(['08:30']);
+    // A tap commits the single time and advances — no «Далее» on the time step.
+    expect(after?.state.step).not.toBe('time');
+  });
+
+  it('replaces any prior time (single-select) instead of accumulating', async () => {
+    // The owner-reported bug: tapping a second hour used to append (e.g.
+    // "10:00, 12:30"). A tap must now replace the prior selection outright.
+    const userId = seedSession({
+      step: 'time',
+      kind: 'daily',
+      minuteMode: '30',
+      times: ['10:00'],
+      weekdays: [],
+    });
+    const handler = captureActions().get('^rc:time:(\\d{2})$');
+
+    await handler!(makeCtx(userId, '12'));
+
+    const after = loadSession<AnchoredSession<ReminderDraft>>(userId, 'reminder-create');
+    expect(after?.state.times).toEqual(['12:30']);
+    expect(after?.state.step).not.toBe('time');
   });
 
   it('still follows minuteMode after a mode switch the keyboard had not yet re-rendered', async () => {
@@ -461,6 +474,7 @@ describe('rc:time commit handler (Plan 024 .30 fix)', () => {
 
     const after = loadSession<AnchoredSession<ReminderDraft>>(userId, 'reminder-create');
     expect(after?.state.times).toEqual(['08:00']);
+    expect(after?.state.step).not.toBe('time');
   });
 });
 

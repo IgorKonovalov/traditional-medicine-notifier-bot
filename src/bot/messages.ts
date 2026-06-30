@@ -347,14 +347,11 @@ export const messages = {
     // step: every (interval)
     everyPrompt: 'Каждые сколько дней напоминать?',
     everyLabel: (n: number): string => `${n} дн.`,
-    // step: time
-    timePrompt: 'Выберите час. Минуты — переключатель :00 / :30. Можно несколько — затем «Далее».',
-    timePromptOnce: 'Выберите час. Минуты — переключатель :00 / :30.',
+    // step: time (single time per reminder — a tap picks it and advances)
+    timePrompt: 'Выберите час. Минуты — переключатель :00 / :30.',
     /** Minute-mode toggle buttons above the hour grid. */
     minute00: ':00',
     minute30: ':30',
-    /** Lists the full concrete set of chosen times under the grid. */
-    selectedTimes: (list: string): string => `Выбрано: ${list}`,
     // step: date (once)
     datePrompt: 'В какой день напомнить?',
     dateToday: 'Сегодня',
@@ -375,7 +372,7 @@ export const messages = {
     saved: (whenText: string): string => `✓ Напоминание создано. Ближайшее: ${whenText}.`,
     cancelled: 'Создание отменено.',
     // validation toasts
-    needTime: 'Выберите хотя бы одно время.',
+    needTime: 'Выберите время.',
     needWeekday: 'Выберите хотя бы один день недели.',
     pastOnce: 'Это время уже прошло. Выберите другой день или время.',
     // human-readable recurrence (reused by the reminders list)

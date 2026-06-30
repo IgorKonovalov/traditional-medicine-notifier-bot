@@ -470,9 +470,10 @@ function intakeView(): View {
 /**
  * The `time` step: a `:00` / `:30` minute-mode toggle row above an hour grid
  * (Plan 022). The active mode (default `'00'`) sets the minute applied to an
- * hour tap; an hour is checkmarked when `HH:<mode>` is already selected, and the
- * full concrete set (across both modes) is listed under a `Выбрано:` line so no
- * selection is ever hidden by the per-mode checkmarks.
+ * hour tap. A reminder carries a **single** time (all kinds): tapping an hour
+ * commits that one slot and advances, so there is no «Далее» button here. An
+ * hour is checkmarked when `HH:<mode>` is the chosen slot — useful when the user
+ * navigates back to this step.
  */
 export function timeView(draft: ReminderDraft): View {
   const rc = messages.reminderCreate;
@@ -492,15 +493,9 @@ export function timeView(draft: ReminderDraft): View {
       assertCallbackData(`rc:time:${hh}`),
     );
   });
-  const tail: CallbackButton[][] = [];
-  if (draft.kind !== 'once') tail.push([Markup.button.callback(rc.next, 'rc:next')]);
-  tail.push(navRow(true));
-  const lines: string[] = [draft.kind === 'once' ? rc.timePromptOnce : rc.timePrompt];
-  const times = normalizeTimes(draft.times);
-  if (times.length > 0) lines.push(rc.selectedTimes(times.join(', ')));
   return {
-    text: lines.join('\n'),
-    keyboard: Markup.inlineKeyboard([toggleRow, ...chunk(hourBtns, HOUR_COLS), ...tail]),
+    text: rc.timePrompt,
+    keyboard: Markup.inlineKeyboard([toggleRow, ...chunk(hourBtns, HOUR_COLS), navRow(true)]),
   };
 }
 
@@ -851,19 +846,13 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     if (v === null) return;
     await ctx.answerCbQuery();
     const draft = v.session.state;
-    // Build the slot from the tapped hour + the authoritative server-side minute
-    // mode — never the callback — so a stale `:00` keyboard tapped after the user
-    // switched to `:30` still commits `HH:30` (Plan 024 `.30` fix).
-    const t = `${ctx.match[1] ?? ''}:${draft.minuteMode ?? '00'}`;
-    if (draft.kind === 'once') {
-      draft.times = [t];
-      draft.step = nextStep(draft);
-    } else {
-      const set = new Set(draft.times);
-      if (set.has(t)) set.delete(t);
-      else set.add(t);
-      draft.times = normalizeTimes([...set]);
-    }
+    // A reminder carries a single time (all kinds): a tap replaces any prior
+    // selection and advances. The slot is built from the tapped hour + the
+    // authoritative server-side minute mode — never the callback — so a stale
+    // `:00` keyboard tapped after the user switched to `:30` still commits
+    // `HH:30` (Plan 024 `.30` fix).
+    draft.times = [`${ctx.match[1] ?? ''}:${draft.minuteMode ?? '00'}`];
+    draft.step = nextStep(draft);
     await editAndPersist(ctx, v, draft);
   });
 
@@ -897,11 +886,6 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     if (draft.step === 'label') {
       if (draft.label === undefined || draft.label.trim() === '') {
         await ctx.answerCbQuery();
-        return;
-      }
-    } else if (draft.step === 'time') {
-      if (normalizeTimes(draft.times).length === 0) {
-        await ctx.answerCbQuery(messages.reminderCreate.needTime);
         return;
       }
     } else if (draft.step === 'weekdays') {
