@@ -8,14 +8,20 @@
 FROM node:22-alpine AS builder
 
 RUN apk add --no-cache python3 make g++
+# Corepack ships with node:22-alpine; it provisions the pnpm version pinned in
+# package.json's `packageManager` field.
+RUN corepack enable
 
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
 COPY tsconfig.json ./
 COPY src/ ./src/
-RUN npm run build
-RUN rm -rf node_modules && npm ci --omit=dev --ignore-scripts && npm rebuild better-sqlite3
+RUN pnpm run build
+# Slim node_modules to prod-only, then rebuild the one native dep so its binding
+# is present in the tree copied into the runtime stage. `allowBuilds` (pnpm 11)
+# authorizes better-sqlite3's build script.
+RUN pnpm install --prod --frozen-lockfile --ignore-scripts && pnpm rebuild better-sqlite3
 
 FROM node:22-alpine
 
