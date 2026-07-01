@@ -4,7 +4,7 @@ Implementation plans authored by the **architect** skill drive all non-trivial
 work. Each plan is `NNN-short-name.md` (zero-padded), reviewed and approved
 before the **dev** skill implements it, then moved to `done/` on close.
 
-- **Next free number:** `020` (019 is taken)
+- **Next free number:** `027` (026 = round-2 guide wave, Approved 2026-07-01 — not started)
 - **Completed:** see `done/`
 
 ### Active roster
