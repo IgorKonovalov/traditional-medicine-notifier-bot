@@ -15,6 +15,7 @@ import cron, { type ScheduledTask } from 'node-cron';
 
 import { listDueReminders, setNextFire } from '../db/repositories/reminder.repo';
 import { logNotification } from '../db/repositories/notification-log.repo';
+import { getUserTimezone } from '../db/repositories/user.repo';
 import { getLogger } from '../logger';
 import { advanceReminder } from '../notifications/scheduler';
 import type { ScheduledReminder } from '../notifications/types';
@@ -61,12 +62,17 @@ export async function runReminderTick(
       logNotification(reminder.userId, 'reminder', now);
     } else if (result === 'transient-failure') {
       // Leave `next_fire_at` untouched so the next tick retries this reminder.
-      log.warn({ reminderId: reminder.id, userId: reminder.userId }, 'reminder delivery failed (transient)');
+      log.warn(
+        { reminderId: reminder.id, userId: reminder.userId },
+        'reminder delivery failed (transient)',
+      );
       continue;
     }
     // On 'ok' or 'permanent-failure' (dead chat), advance the schedule so a
-    // blocked user doesn't wedge the row as perpetually due.
-    const next = advanceReminder(reminder, now, options.timezone);
+    // blocked user doesn't wedge the row as perpetually due. The next local
+    // fire time is resolved in the reminder owner's timezone (Plan 025), not
+    // the bot-global default.
+    const next = advanceReminder(reminder, now, getUserTimezone(reminder.userId, options.timezone));
     setNextFire(reminder.id, next);
   }
 }

@@ -15,6 +15,7 @@ import { Markup, type Context, type Telegraf } from 'telegraf';
 
 import type { Combination, Herb } from '../../content/types';
 import { createReminder } from '../../db/repositories/reminder.repo';
+import { getUserTimezone } from '../../db/repositories/user.repo';
 import {
   addDays,
   computeNextFire,
@@ -506,10 +507,19 @@ export function timeView(draft: ReminderDraft): View {
   };
 }
 
-/** Render the screen for the draft's current step. Exported for render tests. */
-export function view(draft: ReminderDraft, deps: BotDeps, now: number): View {
+/**
+ * Render the screen for the draft's current step. `timeZone` is the reminder
+ * owner's effective zone (Plan 025); it defaults to the bot-global default so
+ * render tests can call `view(draft, deps, now)` unchanged.
+ * Exported for render tests.
+ */
+export function view(
+  draft: ReminderDraft,
+  deps: BotDeps,
+  now: number,
+  timeZone: string = deps.timezone,
+): View {
   const rc = messages.reminderCreate;
-  const timeZone = deps.timezone;
   switch (draft.step) {
     case 'label':
       return labelView(draft);
@@ -632,7 +642,7 @@ export async function reminderCreateEntry(
     draft.herbPrelinked = true;
     if (opts.herbName !== undefined) draft.label = opts.herbName;
   }
-  const out = view(draft, deps, Date.now());
+  const out = view(draft, deps, Date.now(), getUserTimezone(userId, deps.timezone));
   const anchor = await sendAnchor(ctx, out.text, out.keyboard);
   persist(userId, anchor, draft);
 }
@@ -670,7 +680,8 @@ function errorStep(err: DraftError, draft: ReminderDraft): ReminderStep {
 }
 
 export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): void {
-  const tz = deps.timezone;
+  /** The reminder owner's effective timezone (Plan 025), per handler. */
+  const tzOf = (userId: number): string => getUserTimezone(userId, deps.timezone);
 
   /** Re-render the current step into the anchor and persist the draft. */
   const editAndPersist = async (
@@ -678,7 +689,7 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     v: { userId: number; session: AnchoredSession<ReminderDraft> },
     draft: ReminderDraft,
   ): Promise<void> => {
-    const out = view(draft, deps, Date.now());
+    const out = view(draft, deps, Date.now(), tzOf(v.userId));
     await editAnchor(ctx, out.text, out.keyboard);
     persist(v.userId, v.session.anchor, draft);
   };
@@ -930,6 +941,7 @@ export function registerReminderCreateCommand(bot: Telegraf, deps: BotDeps): voi
     if (v === null) return;
     const draft = v.session.state;
     const now = Date.now();
+    const tz = tzOf(v.userId);
     const err = validateDraft(draft, now, tz);
     if (err !== null) {
       await ctx.answerCbQuery(errorToast(err));
@@ -995,10 +1007,11 @@ export function registerReminderCreateTextCapture(bot: Telegraf, deps: BotDeps):
       return;
     }
     const draft = session.state;
+    const tz = getUserTimezone(userId, deps.timezone);
     if (raw.length > LABEL_MAX) {
       draft.customLabel = true;
       delete draft.label;
-      const out = view(draft, deps, Date.now());
+      const out = view(draft, deps, Date.now(), tz);
       await editAnchorAt(
         ctx,
         session.anchor.messageId,
@@ -1010,7 +1023,7 @@ export function registerReminderCreateTextCapture(bot: Telegraf, deps: BotDeps):
     }
     draft.label = raw;
     draft.step = nextStep(draft);
-    const out = view(draft, deps, Date.now());
+    const out = view(draft, deps, Date.now(), tz);
     await editAnchorAt(ctx, session.anchor.messageId, out.text, out.keyboard);
     persist(userId, session.anchor, draft);
   });
