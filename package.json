@@ -7,6 +7,10 @@
   "author": "Igor Konovalov",
   "type": "commonjs",
   "main": "dist/index.js",
+  "packageManager": "pnpm@11.1.2",
+  "engines": {
+    "node": ">=22 <23"
+  },
   "directories": {
     "doc": "docs"
   },

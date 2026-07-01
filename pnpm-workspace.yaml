@@ -1,0 +1,28 @@
+# pnpm settings file (single-package repo — no `packages:` list; this file
+# exists only to carry the settings below). See docs/adr/016.
+
+# Supply-chain cooldown: refuse to RESOLVE any dependency version until it has
+# been published for at least 7 days (10080 minutes). Most malicious npm
+# releases are detected and yanked within hours, so a multi-day cooldown filters
+# out the "smash-and-grab" class at ~zero cost. This only bites on `pnpm add` /
+# `pnpm update`; with the committed lockfile + `--frozen-lockfile`, CI and Docker
+# installs are unaffected. Urgent-patch escape hatch: minimumReleaseAgeExclude,
+# or a one-off `pnpm add pkg@ver --config.minimumReleaseAge=0` (see ADR 016).
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude: []
+
+# pnpm >=11 blocks dependency lifecycle/build scripts by default (strictDepBuilds,
+# a supply-chain default we keep) and aborts the whole build phase if any
+# script-having dep is not explicitly allowed. `allowBuilds` (a package→boolean
+# map) replaced the removed `onlyBuiltDependencies` in pnpm 11. Only the two deps
+# that legitimately need an install/build script are enabled:
+#   - better-sqlite3: native SQLite binding (prebuild fetch / native compile)
+#   - esbuild: places its own prebuilt platform binary (pulled in via tsx)
+allowBuilds:
+  better-sqlite3: true
+  esbuild: true
+
+# Flat node_modules like npm. Chosen so the Docker `COPY --from=builder
+# /app/node_modules` and the better-sqlite3 native artifact behave identically to
+# the previous npm setup. Revisit later if we want pnpm's stricter default.
+nodeLinker: hoisted
