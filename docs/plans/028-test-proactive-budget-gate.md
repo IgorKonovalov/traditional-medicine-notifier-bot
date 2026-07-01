@@ -79,5 +79,12 @@ the day-boundary math turns them red (confirms they bind the invariant).
 
 ## Progress
 
-- [ ] Phase 1 — notification-budget unit tests
-- [ ] Phase 2 — subscription-dispatch tests
+- [x] Phase 1 — notification-budget unit tests (`4e6080d`)
+- [x] Phase 2 — subscription-dispatch tests (`4e6080d`)
+
+Both phases landed in one commit (`4e6080d`), pure test additions. No source
+seam was needed — `sendProactivePush` already takes an injectable `now`/`timezone`
+via `BudgetContext`, and `runDailyTipTick` takes an injectable `now`, so the
+day-boundary and per-user gate cases are covered without touching production
+code (the Risk-1 refactor was not required). Full gate green under pnpm
+(typecheck + lint + 345 tests).
