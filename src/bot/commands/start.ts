@@ -34,16 +34,17 @@ function tipOptInKeyboard(): ReturnType<typeof Markup.inlineKeyboard> {
   ]);
 }
 
-/** The onboarding timezone picker; marks the bot-global default with a `✓`. */
+/** The onboarding timezone picker (2-col); marks the bot-global default with `✓`. */
 function timezoneKeyboard(defaultZoneId: string): ReturnType<typeof Markup.inlineKeyboard> {
-  return Markup.inlineKeyboard(
-    TIMEZONES.map((tz, i) => [
-      Markup.button.callback(
-        tz.id === defaultZoneId ? `✓ ${tz.label}` : tz.label,
-        assertCallbackData(`ob:tz:${i}`),
-      ),
-    ]),
+  const buttons = TIMEZONES.map((tz, i) =>
+    Markup.button.callback(
+      tz.id === defaultZoneId ? `✓ ${tz.label}` : tz.label,
+      assertCallbackData(`ob:tz:${i}`),
+    ),
   );
+  const rows: (typeof buttons)[] = [];
+  for (let i = 0; i < buttons.length; i += 2) rows.push(buttons.slice(i, i + 2));
+  return Markup.inlineKeyboard(rows);
 }
 
 export function registerStartCommand(bot: Telegraf, deps: BotDeps): void {

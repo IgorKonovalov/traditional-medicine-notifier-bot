@@ -77,14 +77,16 @@ function hubView(
   };
 }
 
-/** The timezone picker screen; marks the user's current zone with a `✓`. */
+/** The timezone picker screen (2-col); marks the user's current zone with a `✓`. */
 function timezonePickerView(currentZoneId: string): HubView {
-  const rows = TIMEZONES.map((tz, i) => [
+  const buttons = TIMEZONES.map((tz, i) =>
     Markup.button.callback(
       tz.id === currentZoneId ? `✓ ${tz.label}` : tz.label,
       assertCallbackData(`set:tz:${i}`),
     ),
-  ]);
+  );
+  const rows: (typeof buttons)[] = [];
+  for (let i = 0; i < buttons.length; i += 2) rows.push(buttons.slice(i, i + 2));
   return {
     text: messages.settings.timezonePrompt,
     keyboard: Markup.inlineKeyboard([...rows, backRow('set:tz:back')]),

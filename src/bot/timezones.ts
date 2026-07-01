@@ -18,10 +18,24 @@ export interface TimezoneOption {
 }
 
 export const TIMEZONES: readonly TimezoneOption[] = [
+  // Europe (audience default first). Several CET cities are listed by name so
+  // users pick their own city; the IANA id makes them equivalent + DST-correct.
   { id: 'Europe/Belgrade', label: 'Белград (CET)' },
-  { id: 'Europe/Moscow', label: 'Москва' },
-  { id: 'Europe/Kyiv', label: 'Киев' },
+  { id: 'Europe/Berlin', label: 'Берлин' },
+  { id: 'Europe/Paris', label: 'Париж' },
+  { id: 'Europe/Madrid', label: 'Мадрид' },
+  { id: 'Europe/Rome', label: 'Рим' },
   { id: 'Europe/London', label: 'Лондон' },
+  { id: 'Europe/Lisbon', label: 'Лиссабон' },
+  { id: 'Europe/Athens', label: 'Афины' },
+  { id: 'Europe/Kyiv', label: 'Киев' },
+  { id: 'Europe/Moscow', label: 'Москва' },
+  // North America (Russian region hints — offsets shift with DST, so no fixed number).
+  { id: 'America/New_York', label: 'Нью-Йорк (восточное)' },
+  { id: 'America/Chicago', label: 'Чикаго (центральное)' },
+  { id: 'America/Denver', label: 'Денвер (горное)' },
+  { id: 'America/Los_Angeles', label: 'Лос-Анджелес (тихоокеанское)' },
+  // Caucasus / Central Asia / SE Asia.
   { id: 'Asia/Yerevan', label: 'Ереван' },
   { id: 'Asia/Tbilisi', label: 'Тбилиси' },
   { id: 'Asia/Almaty', label: 'Алматы' },

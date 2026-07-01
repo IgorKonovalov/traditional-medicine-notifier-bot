@@ -141,7 +141,8 @@ describe('settings: timezone picker (Plan 025)', () => {
 
     expect(edits[0]!.text).toBe(messages.settings.timezonePrompt);
     const rows = edits[0]!.keyboard?.reply_markup?.inline_keyboard ?? [];
-    expect(rows).toHaveLength(TIMEZONES.length + 1); // zones + back
+    // One button per zone (2-col layout) plus a single back button.
+    expect(rows.flat()).toHaveLength(TIMEZONES.length + 1);
   });
 
   it('persists the chosen zone and re-renders the hub with a confirmation', async () => {
