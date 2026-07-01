@@ -1,9 +1,9 @@
 # Plan 026 — Guides on the tradition's own frame (round-2 wave 1)
 
-**Status:** Approved — 2026-07-01 (owner sign-off; implementation not yet started)
+**Status:** Completed — 2026-07-01 (v0.27.0)
 **Created:** 2026-07-01
-**Completed:** —
-**Bump on close:** minor (new user-facing content)
+**Completed:** 2026-07-01
+**Bump on close:** minor (new user-facing content) → v0.27.0
 
 ## Context
 

@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.27.0 — 2026-07-01
+
+- Four new **Статьи** on the tradition's own frame: «Древо тибетской медицины»,
+  «Истоки и разделы тибетской медицины», «Четыре способа лечения» and «Виды
+  лекарственных форм» — the structure, origin, method, and pharmacy the corpus
+  had explained around but never mapped (Plan 026, Group E). Descriptive only,
+  no herb/dosing lines.
+
 ## 0.26.0 — 2026-07-01
 
 - Reminders now honour a **per-user timezone**. Pick your city during onboarding
