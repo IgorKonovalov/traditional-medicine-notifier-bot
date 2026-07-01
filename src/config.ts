@@ -19,7 +19,12 @@ export interface Config {
   readonly dbPath: string;
   readonly contentDir: string;
   readonly logLevel: string;
-  /** Single timezone for all schedules and calendar-day boundaries (MVP). */
+  /**
+   * The bot-global default timezone. Reminders resolve a **per-user** zone
+   * (Plan 025 / ADR 015) and fall back to this when the user hasn't set one;
+   * proactive daily-tip timing and calendar-day boundaries still use it
+   * directly. Defaults to `Europe/Belgrade` (the current audience).
+   */
   readonly timezone: string;
   /**
    * Cron for the SOLICITED reminder dispatch tick. Runs often (default every
@@ -64,7 +69,7 @@ export function loadConfig(): Config {
     dbPath: optionalEnv('DB_PATH', './data/tm-bot.db'),
     contentDir: optionalEnv('CONTENT_DIR', './content'),
     logLevel: optionalEnv('LOG_LEVEL', 'info'),
-    timezone: assertValidTimezone(optionalEnv('TIMEZONE', 'UTC')),
+    timezone: assertValidTimezone(optionalEnv('TIMEZONE', 'Europe/Belgrade')),
     reminderTickCron: optionalEnv('REMINDER_TICK_CRON', '* * * * *'),
     dailyTipCron: optionalEnv('DAILY_TIP_CRON', '0 9 * * *'),
     backupDir: optionalEnv('BACKUP_DIR', '/var/backups/traditional-medicine-notifier-bot'),

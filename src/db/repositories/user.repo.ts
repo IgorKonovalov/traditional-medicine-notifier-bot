@@ -24,6 +24,11 @@ export const SETTING_DAILY_TIP = 'daily_tip';
 export const SETTING_ONBOARDED = 'onboarded';
 /** Whether the user opted in to post-deploy "what's new" pushes (`'1'` = on). */
 export const SETTING_FEATURE_ANNOUNCEMENTS = 'feature_announcements';
+/**
+ * The user's IANA timezone for reminders (Plan 025). Absent → the bot-global
+ * default is used. Stored as a validated IANA name (e.g. `Europe/Belgrade`).
+ */
+export const SETTING_TIMEZONE = 'timezone';
 
 interface UserRow {
   id: number;
@@ -169,6 +174,24 @@ export function getSetting(userId: UserId, key: string): string | null {
     .prepare('SELECT value FROM user_settings WHERE user_id = ? AND key = ?')
     .get(userId, key) as { value: string } | undefined;
   return row?.value ?? null;
+}
+
+/**
+ * The user's effective reminder timezone (Plan 025): their stored `timezone`
+ * setting, or `fallback` (the bot-global default) when unset. A stored value is
+ * validated on write, but we still guard against a corrupt row here so the
+ * dispatch loop never throws — an unparseable zone falls back rather than
+ * crashing the tick.
+ */
+export function getUserTimezone(userId: UserId, fallback: string): string {
+  const stored = getSetting(userId, SETTING_TIMEZONE);
+  if (stored === null) return fallback;
+  try {
+    new Intl.DateTimeFormat('en-US', { timeZone: stored });
+    return stored;
+  } catch {
+    return fallback;
+  }
 }
 
 export function setSetting(userId: UserId, key: string, value: string): void {

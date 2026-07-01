@@ -11,10 +11,12 @@ import {
   findActiveUsersBehindCurrentVersion,
   getFeatureAnnouncementsEnabled,
   getUserById,
+  getUserTimezone,
   markInactive,
   markNotified,
   setSetting,
   SETTING_FEATURE_ANNOUNCEMENTS,
+  SETTING_TIMEZONE,
 } from './user.repo';
 
 describe('findActiveUsersBehindCurrentVersion', () => {
@@ -69,6 +71,28 @@ describe('markNotified', () => {
     const id = ensureUser('1', 'u');
     markNotified(id, '0.3.0');
     expect(getUserById(id)?.notified_version).toBe('0.3.0');
+  });
+});
+
+describe('getUserTimezone', () => {
+  beforeEach(() => setupTestDb());
+  afterEach(() => teardownTestDb());
+
+  it('returns the fallback when no timezone is set', () => {
+    const id = ensureUser('1', 'u');
+    expect(getUserTimezone(id, 'Europe/Belgrade')).toBe('Europe/Belgrade');
+  });
+
+  it('returns the stored zone when set', () => {
+    const id = ensureUser('1', 'u');
+    setSetting(id, SETTING_TIMEZONE, 'Europe/Moscow');
+    expect(getUserTimezone(id, 'Europe/Belgrade')).toBe('Europe/Moscow');
+  });
+
+  it('falls back on a corrupt stored value rather than throwing', () => {
+    const id = ensureUser('1', 'u');
+    setSetting(id, SETTING_TIMEZONE, 'Not/AZone');
+    expect(getUserTimezone(id, 'Europe/Belgrade')).toBe('Europe/Belgrade');
   });
 });
 
