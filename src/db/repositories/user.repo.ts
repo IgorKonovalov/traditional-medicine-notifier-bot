@@ -11,6 +11,7 @@
  */
 
 import { getDb } from '../connection';
+import { MS_PER_DAY } from '../../constants';
 
 export type UserId = number;
 
@@ -82,6 +83,39 @@ export function ensureUser(
     'INSERT INTO auth_identities (provider, external_id, user_id, created_at) VALUES (?, ?, ?, ?)',
   ).run(PROVIDER_TELEGRAM, externalId, userId, now);
   return userId;
+}
+
+// ─── operator stats (plan 032) ─────────────────────────────────────────────
+
+/**
+ * Global user counts for the admin `/stats` readout. `active7d`/`active30d`
+ * count users seen within the trailing N-day window (rolling `last_seen_at`,
+ * not a calendar boundary); `activeFlag` counts rows the bot still considers
+ * reachable (`active = 1`), which a permanent send failure flips off.
+ */
+export interface UserStats {
+  total: number;
+  active7d: number;
+  active30d: number;
+  activeFlag: number;
+}
+
+export function getUserStats(now: number = Date.now()): UserStats {
+  const db = getDb();
+  const count = (sql: string, ...params: number[]): number =>
+    (db.prepare(sql).get(...params) as { n: number }).n;
+  return {
+    total: count('SELECT COUNT(*) AS n FROM users'),
+    active7d: count(
+      'SELECT COUNT(*) AS n FROM users WHERE last_seen_at >= ?',
+      now - 7 * MS_PER_DAY,
+    ),
+    active30d: count(
+      'SELECT COUNT(*) AS n FROM users WHERE last_seen_at >= ?',
+      now - 30 * MS_PER_DAY,
+    ),
+    activeFlag: count('SELECT COUNT(*) AS n FROM users WHERE active = 1'),
+  };
 }
 
 /** Flip a user inactive — called when a send permanently fails (blocked bot). */

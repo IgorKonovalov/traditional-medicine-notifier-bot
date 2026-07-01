@@ -105,3 +105,23 @@ export function deactivateReminder(id: ReminderId, userId: number): void {
     .prepare('UPDATE scheduled_reminders SET active = 0 WHERE id = ? AND user_id = ?')
     .run(id, userId);
 }
+
+/**
+ * Global reminder counts for the admin `/stats` readout (plan 032):
+ * `activeReminders` = live reminder rows, `usersWithReminders` = distinct users
+ * who hold at least one — both scoped to `active = 1`.
+ */
+export interface ReminderStats {
+  activeReminders: number;
+  usersWithReminders: number;
+}
+
+export function getReminderStats(): ReminderStats {
+  const row = getDb()
+    .prepare(
+      `SELECT COUNT(*) AS active, COUNT(DISTINCT user_id) AS users
+         FROM scheduled_reminders WHERE active = 1`,
+    )
+    .get() as { active: number; users: number };
+  return { activeReminders: row.active, usersWithReminders: row.users };
+}

@@ -2,7 +2,13 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { setupTestDb, teardownTestDb } from '../test-helper';
 import { ensureUser } from './user.repo';
-import { createReminder, listDueReminders, listUserReminders, setNextFire } from './reminder.repo';
+import {
+  createReminder,
+  getReminderStats,
+  listDueReminders,
+  listUserReminders,
+  setNextFire,
+} from './reminder.repo';
 
 describe('reminder.repo', () => {
   beforeEach(() => setupTestDb());
@@ -69,5 +75,19 @@ describe('reminder.repo', () => {
     setNextFire(id, null);
     expect(listUserReminders(userId).every((r) => !r.active)).toBe(true);
     expect(listDueReminders(5_000)).toHaveLength(0);
+  });
+
+  it('getReminderStats counts active reminders and distinct holders, ignoring deactivated rows', () => {
+    expect(getReminderStats()).toEqual({ activeReminders: 0, usersWithReminders: 0 });
+
+    const u1 = ensureUser('2001', 'a');
+    const u2 = ensureUser('2002', 'b');
+    const rec = { kind: 'daily', times: ['08:00'] } as const;
+    createReminder({ userId: u1, label: 'x', recurrence: rec, nextFireAt: 1_000 });
+    createReminder({ userId: u1, label: 'y', recurrence: rec, nextFireAt: 1_000 });
+    const gone = createReminder({ userId: u2, label: 'z', recurrence: rec, nextFireAt: 1_000 });
+    setNextFire(gone, null); // deactivate u2's only reminder
+
+    expect(getReminderStats()).toEqual({ activeReminders: 2, usersWithReminders: 1 });
   });
 });

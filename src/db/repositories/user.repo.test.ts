@@ -5,12 +5,14 @@
 
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
+import { MS_PER_DAY } from '../../constants';
 import { setupTestDb, teardownTestDb } from '../test-helper';
 import {
   ensureUser,
   findActiveUsersBehindCurrentVersion,
   getFeatureAnnouncementsEnabled,
   getUserById,
+  getUserStats,
   getUserTimezone,
   markInactive,
   markNotified,
@@ -93,6 +95,35 @@ describe('getUserTimezone', () => {
     const id = ensureUser('1', 'u');
     setSetting(id, SETTING_TIMEZONE, 'Not/AZone');
     expect(getUserTimezone(id, 'Europe/Belgrade')).toBe('Europe/Belgrade');
+  });
+});
+
+describe('getUserStats', () => {
+  beforeEach(() => setupTestDb());
+  afterEach(() => teardownTestDb());
+
+  it('reports zeros against an empty users table', () => {
+    expect(getUserStats(100 * MS_PER_DAY)).toEqual({
+      total: 0,
+      active7d: 0,
+      active30d: 0,
+      activeFlag: 0,
+    });
+  });
+
+  it('counts total, rolling 7d/30d windows, and the active flag', () => {
+    const now = 100 * MS_PER_DAY;
+    ensureUser('1', 'recent', now - 1 * MS_PER_DAY); // within 7d and 30d
+    ensureUser('2', 'midold', now - 10 * MS_PER_DAY); // within 30d only
+    const stale = ensureUser('3', 'stale', now - 40 * MS_PER_DAY); // outside both windows
+    markInactive(stale);
+
+    expect(getUserStats(now)).toEqual({
+      total: 3,
+      active7d: 1,
+      active30d: 2,
+      activeFlag: 2,
+    });
   });
 });
 

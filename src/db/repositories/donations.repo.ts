@@ -35,3 +35,26 @@ export function totalStars(userId: number): number {
     .get(userId) as { total: number };
   return row.total;
 }
+
+/**
+ * Ledger-wide donation totals for the admin `/stats` readout (plan 032):
+ * number of payments, summed Stars, and the timestamp of the most recent tip
+ * (`null` when the ledger is empty).
+ */
+export interface DonationTotals {
+  count: number;
+  totalStars: number;
+  mostRecentAt: number | null;
+}
+
+export function getDonationTotals(): DonationTotals {
+  const row = getDb()
+    .prepare(
+      `SELECT COUNT(*) AS count,
+              COALESCE(SUM(stars_amount), 0) AS totalStars,
+              MAX(created_at) AS mostRecentAt
+         FROM donations`,
+    )
+    .get() as { count: number; totalStars: number; mostRecentAt: number | null };
+  return { count: row.count, totalStars: row.totalStars, mostRecentAt: row.mostRecentAt };
+}
