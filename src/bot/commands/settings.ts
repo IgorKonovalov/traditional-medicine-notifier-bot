@@ -14,16 +14,20 @@ import { Markup, type Context, type Telegraf } from 'telegraf';
 
 import {
   getSetting,
+  getUserTimezone,
   setSetting,
   SETTING_DAILY_TIP,
   SETTING_FEATURE_ANNOUNCEMENTS,
+  SETTING_TIMEZONE,
 } from '../../db/repositories/user.repo';
+import { recomputeUserReminderFireTimes } from '../../services/reminder-timezone';
 import type { BotDeps } from '../context';
 import { getUserId } from '../context';
-import { backRow } from '../keyboards';
+import { assertCallbackData, backRow } from '../keyboards';
 import { messages } from '../messages';
 import { editAnchor, sendAnchor } from '../render/anchor';
 import { type AnchoredSession, deleteSession, saveSession, SESSION_TTL_MS } from '../session-store';
+import { TIMEZONES, timezoneLabel } from '../timezones';
 import { requireSessionAndAnchor } from './_callback-prologue';
 import { donateEntry } from './donate';
 import { feedbackEntry } from './feedback';
@@ -33,7 +37,10 @@ interface HubView {
   readonly keyboard: ReturnType<typeof Markup.inlineKeyboard>;
 }
 
-/** Render the hub. `confirmation` prepends a `✓` line after a state change. */
+/**
+ * Render the hub. `timezone` is the user's effective IANA zone (its Russian
+ * label is shown); `confirmation` prepends a `✓` line after a state change.
+ */
 function hubView(
   dailyTipOn: boolean,
   announcementsOn: boolean,
@@ -42,7 +49,7 @@ function hubView(
 ): HubView {
   const lines = [messages.settings.title, ''];
   if (confirmation !== undefined) lines.push(confirmation, '');
-  lines.push(messages.settings.body, '', messages.settings.timezone(timezone));
+  lines.push(messages.settings.body, '', messages.settings.timezone(timezoneLabel(timezone)));
   return {
     text: lines.join('\n'),
     keyboard: Markup.inlineKeyboard([
@@ -60,12 +67,27 @@ function hubView(
           'set:ann:toggle',
         ),
       ],
+      [Markup.button.callback(messages.settings.timezoneButton, 'set:tz:open')],
       [
         Markup.button.callback(messages.settings.donateButton, 'set:open:donate'),
         Markup.button.callback(messages.settings.feedbackButton, 'set:open:feedback'),
       ],
       backRow('set:close'),
     ]),
+  };
+}
+
+/** The timezone picker screen; marks the user's current zone with a `✓`. */
+function timezonePickerView(currentZoneId: string): HubView {
+  const rows = TIMEZONES.map((tz, i) => [
+    Markup.button.callback(
+      tz.id === currentZoneId ? `✓ ${tz.label}` : tz.label,
+      assertCallbackData(`set:tz:${i}`),
+    ),
+  ]);
+  return {
+    text: messages.settings.timezonePrompt,
+    keyboard: Markup.inlineKeyboard([...rows, backRow('set:tz:back')]),
   };
 }
 
@@ -90,7 +112,11 @@ export async function settingsEntry(ctx: Context, deps: BotDeps): Promise<void> 
     return;
   }
   deleteSession(userId, 'settings');
-  const view = hubView(dailyTipOn(userId), announcementsOn(userId), deps.timezone);
+  const view = hubView(
+    dailyTipOn(userId),
+    announcementsOn(userId),
+    getUserTimezone(userId, deps.timezone),
+  );
   const anchor = await sendAnchor(ctx, view.text, view.keyboard);
   persist(userId, anchor.messageId);
 }
@@ -120,6 +146,52 @@ export function registerSettingsCommand(bot: Telegraf, deps: BotDeps): void {
       ? messages.settings.confirmAnnouncementsOn
       : messages.settings.confirmAnnouncementsOff;
     const view = hubView(dailyTipOn(v.userId), turnOn, deps.timezone, confirmation);
+    await editAnchor(ctx, view.text, view.keyboard);
+    persist(v.userId, v.session.anchor.messageId);
+  });
+
+  // ── Timezone picker (Plan 025) ───────────────────────────────────────────
+  bot.action(/^set:tz:open$/, async (ctx) => {
+    const v = await requireSessionAndAnchor(ctx, 'settings');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const view = timezonePickerView(getUserTimezone(v.userId, deps.timezone));
+    await editAnchor(ctx, view.text, view.keyboard);
+    persist(v.userId, v.session.anchor.messageId);
+  });
+
+  bot.action(/^set:tz:back$/, async (ctx) => {
+    const v = await requireSessionAndAnchor(ctx, 'settings');
+    if (v === null) return;
+    await ctx.answerCbQuery();
+    const view = hubView(
+      dailyTipOn(v.userId),
+      announcementsOn(v.userId),
+      getUserTimezone(v.userId, deps.timezone),
+    );
+    await editAnchor(ctx, view.text, view.keyboard);
+    persist(v.userId, v.session.anchor.messageId);
+  });
+
+  bot.action(/^set:tz:(\d+)$/, async (ctx) => {
+    const v = await requireSessionAndAnchor(ctx, 'settings');
+    if (v === null) return;
+    const chosen = TIMEZONES[Number(ctx.match[1])];
+    if (chosen === undefined) {
+      await ctx.answerCbQuery();
+      return;
+    }
+    setSetting(v.userId, SETTING_TIMEZONE, chosen.id);
+    // Shift the user's active recurring reminders into the new zone so they keep
+    // firing at the intended local time (one-shots are left as-is).
+    recomputeUserReminderFireTimes(v.userId, chosen.id);
+    await ctx.answerCbQuery();
+    const view = hubView(
+      dailyTipOn(v.userId),
+      announcementsOn(v.userId),
+      chosen.id,
+      messages.settings.confirmTimezone(chosen.label),
+    );
     await editAnchor(ctx, view.text, view.keyboard);
     persist(v.userId, v.session.anchor.messageId);
   });

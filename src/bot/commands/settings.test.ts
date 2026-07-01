@@ -9,15 +9,18 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { Telegraf, type Context } from 'telegraf';
 
 import { setupTestDb, teardownTestDb } from '../../db/test-helper';
+import { createReminder, listUserReminders } from '../../db/repositories/reminder.repo';
 import {
   ensureUser,
   getSetting,
   setSetting,
   SETTING_FEATURE_ANNOUNCEMENTS,
+  SETTING_TIMEZONE,
 } from '../../db/repositories/user.repo';
 import type { BotDeps } from '../context';
 import { messages } from '../messages';
 import { type AnchoredSession, saveSession, SESSION_TTL_MS } from '../session-store';
+import { TIMEZONES } from '../timezones';
 import { registerSettingsCommand } from './settings';
 
 type Handler = (ctx: Context) => Promise<unknown>;
@@ -101,5 +104,88 @@ describe('settings: feature-announcements toggle', () => {
     expect(getSetting(userId, SETTING_FEATURE_ANNOUNCEMENTS)).toBe('0');
     expect(edits[0]!.text).toContain(messages.settings.confirmAnnouncementsOff);
     expect(announcementsButtonLabel(edits[0]!)).toBe(messages.settings.announcementsLabelOff);
+  });
+});
+
+describe('settings: timezone picker (Plan 025)', () => {
+  beforeEach(() => setupTestDb());
+  afterEach(() => teardownTestDb());
+
+  function seedSession(): number {
+    const userId = ensureUser('1', 'u');
+    const session: AnchoredSession<Record<string, never>> = {
+      anchor: { messageId: ANCHOR_ID },
+      state: {},
+    };
+    saveSession(userId, 'settings', session, SESSION_TTL_MS);
+    return userId;
+  }
+
+  /** ctx with a preset regex match, for the `set:tz:(\d+)` select handler. */
+  function makeCtxMatch(userId: number, arg: string): { ctx: Context; edits: EditCall[] } {
+    const { ctx, edits } = makeCtx(userId);
+    (ctx as unknown as { match: RegExpExecArray }).match = [
+      `set:tz:${arg}`,
+      arg,
+    ] as unknown as RegExpExecArray;
+    return { ctx, edits };
+  }
+
+  it('opens the picker with a row per zone plus a back row', async () => {
+    const userId = seedSession();
+    const handler = captureActions().get('^set:tz:open$');
+    expect(handler).toBeDefined();
+
+    const { ctx, edits } = makeCtx(userId);
+    await handler!(ctx);
+
+    expect(edits[0]!.text).toBe(messages.settings.timezonePrompt);
+    const rows = edits[0]!.keyboard?.reply_markup?.inline_keyboard ?? [];
+    expect(rows).toHaveLength(TIMEZONES.length + 1); // zones + back
+  });
+
+  it('persists the chosen zone and re-renders the hub with a confirmation', async () => {
+    const userId = seedSession();
+    const handler = captureActions().get('^set:tz:(\\d+)$');
+    expect(handler).toBeDefined();
+
+    // Index 1 = Europe/Moscow in the curated list.
+    const chosen = TIMEZONES[1]!;
+    const { ctx, edits } = makeCtxMatch(userId, '1');
+    await handler!(ctx);
+
+    expect(getSetting(userId, SETTING_TIMEZONE)).toBe(chosen.id);
+    expect(edits[0]!.text).toContain(messages.settings.confirmTimezone(chosen.label));
+    expect(edits[0]!.text).toContain(messages.settings.timezone(chosen.label));
+  });
+
+  it('recomputes the user active reminders into the new zone', async () => {
+    const userId = seedSession();
+    // A stale far-past fire time proves the recompute ran (it becomes a future slot).
+    createReminder({
+      userId,
+      label: 'x',
+      recurrence: { kind: 'daily', times: ['08:00'] },
+      nextFireAt: 1_000,
+    });
+    const handler = captureActions().get('^set:tz:(\\d+)$');
+
+    const { ctx } = makeCtxMatch(userId, '0'); // Europe/Belgrade
+    await handler!(ctx);
+
+    const [r] = listUserReminders(userId);
+    expect(r?.active).toBe(true);
+    expect(r?.nextFireAt).toBeGreaterThan(Date.now());
+  });
+
+  it('ignores an out-of-range index', async () => {
+    const userId = seedSession();
+    const handler = captureActions().get('^set:tz:(\\d+)$');
+
+    const { ctx, edits } = makeCtxMatch(userId, '999');
+    await handler!(ctx);
+
+    expect(getSetting(userId, SETTING_TIMEZONE)).toBeNull();
+    expect(edits).toHaveLength(0);
   });
 });

@@ -157,8 +157,14 @@ export const messages = {
   settings: {
     title: '⚙️ Настройки',
     body: 'Управляйте уведомлениями и поддержкой проекта.',
-    /** Read-only bot timezone line; per-user timezones are a later plan. */
-    timezone: (tz: string): string => `🕔 Часовой пояс напоминаний: ${tz}`,
+    /** Current-zone line in the hub; `label` is the Russian zone name (Plan 025). */
+    timezone: (label: string): string => `🕔 Часовой пояс напоминаний: ${label}`,
+    /** Button that opens the timezone picker. */
+    timezoneButton: '🕔 Изменить часовой пояс',
+    /** Timezone picker screen title. */
+    timezonePrompt: 'Выберите ваш часовой пояс. По нему будут срабатывать напоминания.',
+    /** Confirmation after a zone change; `label` is the chosen Russian zone name. */
+    confirmTimezone: (label: string): string => `✓ Часовой пояс изменён: ${label}.`,
     tipLabelOn: 'Совет дня: вкл ✅',
     tipLabelOff: 'Совет дня: выкл 🔕',
     announcementsLabelOn: 'Новые функции: вкл ✅',
