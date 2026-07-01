@@ -15,10 +15,11 @@
  * Per ADR 003 rule 3 this depends on the `Notifier` interface, not Telegraf.
  */
 
-import cron, { type ScheduledTask } from 'node-cron';
+import { type ScheduledTask } from 'node-cron';
 
 import { getSetting, listActiveUserIds, SETTING_DAILY_TIP } from '../db/repositories/user.repo';
 import { getLogger } from '../logger';
+import { startCronTick } from './cron-tick';
 import { sendProactivePush, type BudgetContext } from './notification-budget';
 import type { NotificationCta, Notifier } from './notifier';
 
@@ -34,19 +35,13 @@ export interface SubscriptionDispatchOptions {
 }
 
 export function startSubscriptionDispatch(options: SubscriptionDispatchOptions): ScheduledTask {
-  const log = getLogger();
-  if (!cron.validate(options.cronExpression)) {
-    throw new Error(`Invalid cron expression: ${options.cronExpression}`);
-  }
-  const task = cron.schedule(
-    options.cronExpression,
-    () => {
-      runDailyTipTick(options).catch((err: unknown) => log.error({ err }, 'daily-tip tick failed'));
-    },
-    { timezone: options.timezone },
-  );
-  log.info({ cron: options.cronExpression, tz: options.timezone }, 'subscription dispatch started');
-  return task;
+  return startCronTick({
+    cronExpression: options.cronExpression,
+    timezone: options.timezone,
+    tick: () => runDailyTipTick(options),
+    dispatchLabel: 'subscription',
+    tickLabel: 'daily-tip',
+  });
 }
 
 /** Single tick. `now` is injectable for deterministic tests. */

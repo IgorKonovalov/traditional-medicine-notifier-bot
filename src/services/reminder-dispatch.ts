@@ -11,7 +11,7 @@
  * Telegraf; the Telegraf-backed implementation is wired in `src/index.ts`.
  */
 
-import cron, { type ScheduledTask } from 'node-cron';
+import { type ScheduledTask } from 'node-cron';
 
 import { listDueReminders, setNextFire } from '../db/repositories/reminder.repo';
 import { logNotification } from '../db/repositories/notification-log.repo';
@@ -19,6 +19,7 @@ import { getUserTimezone } from '../db/repositories/user.repo';
 import { getLogger } from '../logger';
 import { advanceReminder } from '../notifications/scheduler';
 import type { ScheduledReminder } from '../notifications/types';
+import { startCronTick } from './cron-tick';
 import type { NotificationPayload, Notifier } from './notifier';
 
 export interface ReminderDispatchOptions {
@@ -30,19 +31,13 @@ export interface ReminderDispatchOptions {
 }
 
 export function startReminderDispatch(options: ReminderDispatchOptions): ScheduledTask {
-  const log = getLogger();
-  if (!cron.validate(options.cronExpression)) {
-    throw new Error(`Invalid cron expression: ${options.cronExpression}`);
-  }
-  const task = cron.schedule(
-    options.cronExpression,
-    () => {
-      runReminderTick(options).catch((err: unknown) => log.error({ err }, 'reminder tick failed'));
-    },
-    { timezone: options.timezone },
-  );
-  log.info({ cron: options.cronExpression, tz: options.timezone }, 'reminder dispatch started');
-  return task;
+  return startCronTick({
+    cronExpression: options.cronExpression,
+    timezone: options.timezone,
+    tick: () => runReminderTick(options),
+    dispatchLabel: 'reminder',
+    tickLabel: 'reminder',
+  });
 }
 
 /**
