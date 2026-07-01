@@ -225,6 +225,17 @@ rebalance-by-начало set.
 
 ## E. Устройство и метод традиции (the tradition's own frame — the clearest gap)
 
+> **Group E fully consumed by Plan 026 (2026-07-01, v0.27.0).** All four rows
+> shipped: **Древо тибетской медицины** → `tib-drevo-mediciny` (Тантра основ
+> гл. 6 — tree structure only, гл. 5 remedy/purge lists dropped); **Истоки и
+> разделы тибетской медицины** → `tib-istoki-i-razdely` (Сова Ригпа book +
+> canon front-matter); **Четыре способа лечения** → `tib-chetyre-sposoba-lecheniya`
+> (объяснений гл. 27 — питание→образ жизни→лекарства→процедуры framework only,
+> гл. 27–30 drug/purge specifics dropped); **Виды лекарственных форм** →
+> `tib-vidy-lekarstvennyh-form` (Дополнительная тантра Сутра 2 · объяснений
+> гл. 21 — forms taxonomy, no dosing; cross-links the live 🧪 Составы /
+> `rinchen-pills` branch). Groups F and G stay open below.
+
 | ★ | Title (RU) | Source | Scope | Flag | Tip |
 |---|---|---|---|---|---|
 | ★ | Древо тибетской медицины | Тантра основ гл. 6 «Пример, показывающий строение „Чжуд-ши"» · Наука «Древняя наука Сова Ригпа» | Аллегория древа: три корня (тело в норме и в болезни, диагностика, лечение), стволы, ветви и листья — как традиция раскладывает саму себя. Iconic, flagship-tier. | ✅ **draw the diagram's *structure* only** — гл. 5 «Средства лечения» names specific herbs/purges; those are off-limits | — |

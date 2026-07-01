@@ -138,5 +138,10 @@ Single authoring wave, committed as one reviewable batch. Each row lists a
 
 ## Progress
 
-- [ ] Phase 1 — Group E (4): `tib-drevo-mediciny`, `tib-istoki-i-razdely`,
-  `tib-chetyre-sposoba-lecheniya`, `tib-vidy-lekarstvennyh-form` —
+- [x] Phase 1 — Group E (4): `tib-drevo-mediciny` (order 36),
+  `tib-istoki-i-razdely` (37), `tib-chetyre-sposoba-lecheniya` (38),
+  `tib-vidy-lekarstvennyh-form` (39) — authored 2026-07-01; `guides.json`
+  grows by exactly 4; typecheck/lint/test (332)/build/index:check all green;
+  round-2 Group E rows ticked in `guide-backlog.md`. Caveats honoured: the two
+  caveated guides carry zero herb/formula/purge/dosing lines; the forms guide
+  lists forms without any dose. Awaiting architect review before close.

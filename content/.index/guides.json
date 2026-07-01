@@ -418,5 +418,53 @@
       "part": "«Наука о здоровье» (Ринчен Тензин)",
       "chapter": "гл. 2 «Питание и образ жизни»"
     }
+  },
+  {
+    "id": "tib-drevo-mediciny",
+    "tradition": "tibetan",
+    "title": "«Древо тибетской медицины»",
+    "order": 36,
+    "sectionCount": 6,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра основ",
+      "chapter": "гл. 6 «Пример, показывающий строение „Чжуд-ши\"»"
+    }
+  },
+  {
+    "id": "tib-istoki-i-razdely",
+    "tradition": "tibetan",
+    "title": "«Истоки и разделы тибетской медицины»",
+    "order": 37,
+    "sectionCount": 7,
+    "source": {
+      "work": "Сова Ригпа",
+      "part": "«Наука о здоровье» (Ринчен Тензин)",
+      "chapter": "«Истоки и разделы тибетской медицины»"
+    }
+  },
+  {
+    "id": "tib-chetyre-sposoba-lecheniya",
+    "tradition": "tibetan",
+    "title": "«Четыре способа лечения»",
+    "order": 38,
+    "sectionCount": 6,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Тантра объяснений",
+      "chapter": "гл. 27 «Общие методы лечения»"
+    }
+  },
+  {
+    "id": "tib-vidy-lekarstvennyh-form",
+    "tradition": "tibetan",
+    "title": "«Виды лекарственных форм»",
+    "order": 39,
+    "sectionCount": 7,
+    "source": {
+      "work": "Чжуд-ши",
+      "part": "Дополнительная тантра",
+      "chapter": "Сутра 2 «Приготовление лекарств» · объяснений гл. 21"
+    }
   }
 ]
