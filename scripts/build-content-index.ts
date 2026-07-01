@@ -1,8 +1,8 @@
 /**
  * Regenerate (or check) the committed content index under `content/.index/`.
  *
- *   npm run content:index              # write herbs.json / categories.json / tips.json
- *   npm run content:index:check        # --check --validate: fail on drift, no write
+ *   pnpm run content:index             # write herbs.json / categories.json / tips.json
+ *   pnpm run content:index:check       # --check --validate: fail on drift, no write
  *
  * `--validate` is implicit in loading: `loadContent` runs corpus validation and
  * throws on a malformed corpus. `--check` rebuilds in memory and diffs against
@@ -43,7 +43,7 @@ function main(): void {
       const expected = serialize(value);
       const actual = existsSync(path) ? readFileSync(path, 'utf8') : '';
       if (actual !== expected) {
-        console.error(`content index drift: ${path} is stale — run \`npm run content:index\``);
+        console.error(`content index drift: ${path} is stale — run \`pnpm run content:index\``);
         drift = true;
       }
     }

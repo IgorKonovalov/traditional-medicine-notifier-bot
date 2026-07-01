@@ -1,1 +1,1 @@
-npm run typecheck && npm run test && npm run content:index:check
+pnpm run typecheck && pnpm run test && pnpm run content:index:check
