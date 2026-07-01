@@ -2,11 +2,11 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { Telegraf, type Context } from 'telegraf';
 
 import { createReminder, listUserReminders } from '../../db/repositories/reminder.repo';
-import { ensureUser } from '../../db/repositories/user.repo';
+import { ensureUser, setSetting, SETTING_TIMEZONE } from '../../db/repositories/user.repo';
 import { setupTestDb, teardownTestDb } from '../../db/test-helper';
 import type { ScheduledReminder } from '../../notifications/types';
 import type { BotDeps } from '../context';
-import { detailView, listView, registerRemindersCommand } from './reminders';
+import { detailView, listView, registerRemindersCommand, remindersEntry } from './reminders';
 
 type Btn = { text: string; callback_data?: string };
 
@@ -69,7 +69,50 @@ describe('listView (Plan 024)', () => {
   });
 });
 
+// Regression (Plan 025): the reminders list must render "Ближайшее" in the
+// user's own effective zone, not the bot-global fallback. Here the fallback is
+// Europe/Moscow (UTC+3) while the user runs on Europe/Belgrade (UTC+2); a
+// nextFireAt of 15:30 UTC must therefore surface as 17:30 (Belgrade), not 18:30
+// (Moscow). Before the fix, `remindersEntry` passed `deps.timezone` straight
+// through, so the line showed the fallback zone.
+describe('remindersEntry: per-user timezone (Plan 025)', () => {
+  beforeEach(() => setupTestDb());
+  afterEach(() => teardownTestDb());
+
+  it('renders the next-fire line in the user timezone, not the global fallback', async () => {
+    const userId = ensureUser('1', 'u');
+    setSetting(userId, SETTING_TIMEZONE, 'Europe/Belgrade');
+    createReminder({
+      userId,
+      label: 'Пить воду',
+      // Recurrence wall-clock is unrelated to the fire instant on purpose, so the
+      // only source of "17:30" in the output is the zone-formatted nextFireAt.
+      recurrence: { kind: 'daily', times: ['09:00'] },
+      nextFireAt: Date.UTC(2026, 6, 1, 15, 30),
+    });
+
+    const deps = { timezone: 'Europe/Moscow' } as unknown as BotDeps;
+    let replied: string | undefined;
+    const ctx = {
+      state: { userId },
+      reply: (text: string) => {
+        replied = text;
+        return Promise.resolve(true);
+      },
+    } as unknown as Context;
+
+    await remindersEntry(ctx, deps);
+
+    expect(replied).toContain('17:30'); // Belgrade
+    expect(replied).not.toContain('18:30'); // Moscow (the buggy fallback)
+  });
+});
+
 describe('detailView (Plan 024)', () => {
+  // detailView resolves the owner's timezone (Plan 025), which reads the DB.
+  beforeEach(() => setupTestDb());
+  afterEach(() => teardownTestDb());
+
   it('renders a formula reminder schedule + formula + intake with delete/back', () => {
     const view = detailView(
       reminder({ combinationId: 'tib-formula-agar-8', intakeType: 'decoction' }),

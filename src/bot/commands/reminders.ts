@@ -13,6 +13,7 @@
 import { Markup, type Context, type Telegraf } from 'telegraf';
 
 import { deactivateReminder, listUserReminders } from '../../db/repositories/reminder.repo';
+import { getUserTimezone } from '../../db/repositories/user.repo';
 import type { ScheduledReminder } from '../../notifications/types';
 import { formatDateTime } from '../../utils/datetime';
 import type { BotDeps } from '../context';
@@ -65,7 +66,7 @@ export function listView(userId: number, timeZone: string): MsgView {
  * « Назад. Link names resolve from the in-memory content (Plan 024).
  */
 export function detailView(reminder: ScheduledReminder, deps: BotDeps): MsgView {
-  const tz = deps.timezone;
+  const tz = getUserTimezone(reminder.userId, deps.timezone);
   const rc = messages.reminderCreate;
   const lines = [
     messages.reminders.detailTitle,
@@ -106,7 +107,7 @@ export async function remindersEntry(ctx: Context, deps: BotDeps): Promise<void>
     await ctx.reply(messages.common.notRegistered);
     return;
   }
-  const view = listView(userId, deps.timezone);
+  const view = listView(userId, getUserTimezone(userId, deps.timezone));
   await ctx.reply(view.text, view.keyboard);
 }
 
@@ -125,7 +126,9 @@ export function registerRemindersCommand(bot: Telegraf, deps: BotDeps): void {
     const id = Number(ctx.match[1]);
     const reminder = listUserReminders(userId).find((r) => r.id === id && r.active);
     const view =
-      reminder === undefined ? listView(userId, deps.timezone) : detailView(reminder, deps);
+      reminder === undefined
+        ? listView(userId, getUserTimezone(userId, deps.timezone))
+        : detailView(reminder, deps);
     await ctx.editMessageText(view.text, view.keyboard);
   });
 
@@ -139,7 +142,7 @@ export function registerRemindersCommand(bot: Telegraf, deps: BotDeps): void {
     }
     deactivateReminder(Number(ctx.match[1]), userId);
     await ctx.answerCbQuery(messages.reminders.cancelled);
-    const view = listView(userId, deps.timezone);
+    const view = listView(userId, getUserTimezone(userId, deps.timezone));
     await ctx.editMessageText(view.text, view.keyboard);
   });
 
@@ -151,7 +154,7 @@ export function registerRemindersCommand(bot: Telegraf, deps: BotDeps): void {
       return;
     }
     await ctx.answerCbQuery();
-    const view = listView(userId, deps.timezone);
+    const view = listView(userId, getUserTimezone(userId, deps.timezone));
     await ctx.editMessageText(view.text, view.keyboard);
   });
 }

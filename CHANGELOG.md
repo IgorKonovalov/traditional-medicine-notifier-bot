@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.27.1 — 2026-07-01
+
+- Reminders now show the «Ближайшее» next-fire time in your own timezone
+  instead of the bot-global default, fixing a constant offset for users on a
+  custom zone (the reminders were already firing correctly — display only).
+
 ## 0.27.0 — 2026-07-01
 
 - Four new **Статьи** on the tradition's own frame: «Древо тибетской медицины»,
