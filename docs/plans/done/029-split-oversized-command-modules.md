@@ -1,9 +1,9 @@
 # Plan 029 — Split the two oversized command modules
 
-**Status:** Draft
+**Status:** Completed
 **Created:** 2026-07-01
-**Completed:** —
-**Bump on close:** patch
+**Completed:** 2026-07-01
+**Bump on close:** patch (v0.27.4)
 
 ## Context
 

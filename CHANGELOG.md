@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.27.4 — 2026-07-01
+
+- Internal refactor only: split the two oversized command modules
+  (`library.ts` 1326 lines, `reminder-create.ts` 1051 lines) into focused
+  `commands/library/` and `commands/reminder-create/` packages — a thin
+  registrar plus per-branch/per-step siblings, largest module now 469 lines
+  (Plan 029). Pure move, no behavior change.
+
 ## 0.27.3 — 2026-07-01
 
 - Internal tests only: added coverage for the proactive notification-budget gate
