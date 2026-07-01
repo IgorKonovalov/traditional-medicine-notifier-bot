@@ -91,5 +91,18 @@ move-only (no logic deltas) outside the new registrar wiring.
 
 ## Progress
 
-- [ ] Phase 1 — split `library.ts`
-- [ ] Phase 2 — split `reminder-create.ts`
+- [x] Phase 1 — split `library.ts` into a `commands/library/` package. Owner
+      chose the subfolder layout. Modules: `state` (shared types/View/anchor
+      dispatch/persist/clampPage), `hub`, one per branch (`herbs`/`search`/
+      `formulas`/`guides`/`foods`/`tips`), `dispatch` (viewFor/backState),
+      `entries`, and `index` (registrar via `onSession` + barrel). `./library`
+      resolves to `library/index.ts`, which re-exports the same symbols, so
+      `library.test.ts` and every importer are unchanged. Largest module 355
+      lines. Pure move — callback scopes/ids + ADR 009 semantics identical.
+- [x] Phase 2 — split `reminder-create.ts` into a `commands/reminder-create/`
+      package. Modules: `draft` (pure domain core), `steps` (step graph),
+      `describe` (summary + weekday helpers), `message` (fired-reminder payload),
+      `view-kit` (shared View/chunk/navRow — leaf), `time-view` (time picker),
+      `link-view` (herb-attach paging), `views` (recurrence-selection +
+      dispatcher), and `index` (registrar + entry + text capture + barrel).
+      `reminder-create.test.ts` unchanged. Largest module 469 lines. Pure move.
