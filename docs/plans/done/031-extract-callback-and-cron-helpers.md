@@ -1,8 +1,8 @@
 # Plan 031 — Extract shared callback-registrar + cron-tick helpers
 
-**Status:** Draft
+**Status:** Completed
 **Created:** 2026-07-01
-**Completed:** —
+**Completed:** 2026-07-01
 **Bump on close:** patch
 
 ## Context

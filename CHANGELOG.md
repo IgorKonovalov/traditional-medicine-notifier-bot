@@ -4,6 +4,15 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.27.6 — 2026-07-01
+
+- Internal refactor only: factored the two repeated scaffolds into tested
+  helpers — a `startCronTick` wrapper (validate → schedule → catch-and-log →
+  startup log) adopted by both dispatch services, and an `onSession`/`onAck`
+  callback registrar collapsing the ~30 copy-pasted `requireSessionAndAnchor`
+  action bodies in the library branch (Plan 031). ADR 009 session semantics and
+  cron log strings preserved byte-for-byte.
+
 ## 0.27.5 — 2026-07-01
 
 - Internal refactor only: introduced `src/constants.ts` as the single source of
