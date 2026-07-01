@@ -23,6 +23,7 @@ before the **dev** skill implements it, then moved to `done/` on close.
 | 016 | Foundational theory guides | Completed (Wave 1) → `done/` (v0.17.0); Waves 2–3 deferred to backlog |
 | 019 | Ingredient corpus backfill · formula→ingredient cross-link | Approved — 2026-06-29 (Plan 017 display/code split; corpus 1→35, `members:` backfill) |
 | 028 | Test the proactive notification-budget gate | Completed → `done/` (v0.27.3) — budget + subscription-dispatch coverage (ADR 004) |
+| 032 | Admin `/stats` command | Approved — 2026-07-01 (allowlist already wired; adds command + global aggregate queries; not implemented) |
 
 ### UI overhaul plan set (007–009)
 
@@ -61,5 +62,4 @@ Plan 007 shared nav kit once 007 lands.
 - Per-category proactive digests. The `subscriptions` table is retained, but its
   UI and repo (`listSubscribers` et al.) were removed in Plan 011 — a digest
   feature would re-add the access layer.
-- Admin `/stats` command (the `adminTelegramIds` allowlist is already wired).
 - Feedback admin-routing (today logs to stdout).
