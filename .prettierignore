@@ -1,11 +1,11 @@
-# Generated content index — written verbatim by `npm run content:index`
+# Generated content index — written verbatim by `pnpm run content:index`
 # (JSON.stringify(…, 2)). Prettier must NOT reformat it, or it diverges from
 # the generator and `content:index:check` (pre-push / CI guard) reports drift
 # on every commit that touches the corpus.
 content/.index/
 
-# npm owns the lockfile's format.
-package-lock.json
+# pnpm owns the lockfile's format.
+pnpm-lock.yaml
 
 # Build output.
 dist/

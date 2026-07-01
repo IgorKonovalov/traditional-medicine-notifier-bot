@@ -1,7 +1,7 @@
 /**
  * Regenerate the doctor-facing combination review page.
  *
- *   npm run content:review        # write research/_private/formula-review.html
+ *   pnpm run content:review       # write research/_private/formula-review.html
  *
  * This is the reproducible re-audit tool for Plan 004's fix → re-audit loop.
  * It renders every combination in the corpus as a filterable card (tradition /

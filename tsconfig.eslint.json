@@ -3,7 +3,7 @@
   // that tsconfig.json deliberately excludes from the build — to belong to a
   // TS project. This config extends the build tsconfig but widens `include`
   // to cover tests so rules like no-floating-promises can resolve types.
-  // It is never used for emit (eslint only); `npm run build` still uses
+  // It is never used for emit (eslint only); `pnpm run build` still uses
   // tsconfig.json and keeps tests out of dist/.
   "extends": "./tsconfig.json",
   "include": ["src/**/*"],

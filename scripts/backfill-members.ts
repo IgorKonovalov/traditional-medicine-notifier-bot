@@ -2,8 +2,8 @@
  * Plan 019 Phase 1/5 — backfill `members:` across formula files from their
  * free-text `composition:` Latin binomials, using research/ingredient-member-map.json.
  *
- *   npm run content:members -- --dry-run    # print a per-formula diff, no writes
- *   npm run content:members                 # write resolved members in place
+ *   pnpm run content:members --dry-run      # print a per-formula diff, no writes
+ *   pnpm run content:members                # write resolved members in place
  *
  * Design constraints:
  *   - **Minimal diff.** Only the `members:` block is rewritten; the rest of the

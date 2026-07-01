@@ -1,6 +1,6 @@
 # Plan 027 — Migrate to pnpm + supply-chain release-age cooldown
 
-**Status:** Draft
+**Status:** In progress — implementation complete, awaiting architect review/close
 **Created:** 2026-07-01
 **Completed:** —
 **Bump on close:** patch
@@ -64,15 +64,19 @@ historical records, not updated).
       `--frozen-lockfile`, CI/Docker installs are unaffected — exactly the right
       place for the friction.
     - `minimumReleaseAgeExclude: []` — the documented escape hatch, empty for now.
-    - `onlyBuiltDependencies: [better-sqlite3]` — pnpm ≥10 blocks dependency
-      lifecycle/build scripts by default (a supply-chain default we *keep*); the
-      one native dep that legitimately needs its build is allowlisted here.
+    - `allowBuilds: { better-sqlite3: true, esbuild: true }` — pnpm blocks
+      dependency lifecycle/build scripts by default (a supply-chain default we
+      *keep*). **Implementation note:** pnpm 11 **removed** the `onlyBuiltDependencies`
+      array this plan originally named and replaced it with the `allowBuilds`
+      package→boolean map; pnpm aborts the whole build phase if *any* script-having
+      dep is unlisted, so `esbuild` (pulled in via `tsx`) must be enabled too, not
+      just `better-sqlite3` (ADR 016).
     - `nodeLinker: hoisted` — flat `node_modules` like npm. Chosen so the
       Docker `COPY --from=builder /app/node_modules` and the `better-sqlite3`
       native `.node` artifact behave identically to today. (Revisit later if we
       want pnpm's stricter default linker; out of scope here.)
-  - **`package.json`** — add `"packageManager": "pnpm@<exact.resolved.version>"`
-    (Corepack pin, with integrity hash) and `"engines": { "node": ">=22 <23" }`.
+  - **`package.json`** — add `"packageManager": "pnpm@11.1.2"` (Corepack pin) and
+    `"engines": { "node": ">=22 <23" }`.
   - **`.nvmrc`** (new) — `22`.
   - Delete **`package-lock.json`**; run `pnpm install` to generate
     **`pnpm-lock.yaml`**; commit it.
@@ -141,9 +145,11 @@ historical records, not updated).
 ## Risks / Open questions
 
 - **`better-sqlite3` native build under pnpm [high].** The main risk. Mitigated
-  by `nodeLinker: hoisted` (flat layout ≈ npm) + `onlyBuiltDependencies`
-  allowlist + explicit `pnpm rebuild better-sqlite3` in the Docker prune step.
-  Must be verified in the actual Docker build (Phase 4), not just locally.
+  by `nodeLinker: hoisted` (flat layout ≈ npm) + `allowBuilds` + explicit `pnpm
+  rebuild better-sqlite3` in the Docker prune step. **Status: verified on Windows
+  locally** — the `.node` binding builds and `require('better-sqlite3')` round-
+  trips; the full test suite passes. **The Docker image build is NOT yet verified**
+  (no Docker on the dev box) — it must be exercised by the deploy job / droplet.
 - **Corepack in `node:22-alpine` [low].** Corepack is bundled with Node 22;
   `corepack enable` should suffice. If the pinned pnpm version download is
   flaky in the build sandbox, fall back to `npm i -g pnpm@<ver>` in the image.
@@ -152,11 +158,12 @@ historical records, not updated).
   (`minimumReleaseAgeExclude` / one-off `--config.minimumReleaseAge=0`). Since
   installs use the committed lockfile, this only affects the person running the
   upgrade, not CI/Docker.
-- **Windows dev box [medium].** Owner develops on Windows 10. Verify the store,
-  hoisted linker, and `better-sqlite3` rebuild work under pnpm on Windows as
-  Phase 1 acceptance, not only on Linux/CI.
-- **Exact pnpm version for the `packageManager` pin — open.** Resolve the
-  current pnpm 11.x at implementation time and pin it with its integrity hash.
+- **Windows dev box [medium].** Owner develops on Windows 10. **Resolved:** store,
+  hoisted linker, and `better-sqlite3` build all work under pnpm 11.1.2 on
+  Windows; full gate green locally.
+- **Exact pnpm version for the `packageManager` pin — resolved.** Pinned
+  `pnpm@11.1.2` (the installed/Corepack version); no integrity hash (Corepack
+  accepts the bare version and it isn't required for a private repo).
 
 ## Verification
 
@@ -176,8 +183,8 @@ End-to-end, after all phases:
 
 ## Progress
 
-- [ ] Phase 1 — pnpm adoption + cooldown config
-- [ ] Phase 2 — git hooks + script wording
-- [ ] Phase 3 — CI
-- [ ] Phase 4 — Docker
-- [ ] Phase 5 — docs + ADR 016
+- [x] Phase 1 — pnpm adoption + cooldown config (b7735da; README refresh 8793d29)
+- [x] Phase 2 — git hooks + script wording (62f72fe)
+- [x] Phase 3 — CI (746a8f6)
+- [x] Phase 4 — Docker (6ab3f0f) — image build unverified (no local Docker)
+- [x] Phase 5 — docs + ADR 016 (this commit)
