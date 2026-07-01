@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.27.7 — 2026-07-01
+
+- Added an admin-only `/stats` command: a plaintext operational readout (user
+  counts, reminders, proactive pushes, donations, running version) gated on the
+  `ADMIN_TELEGRAM_IDS` allowlist and deliberately unlisted — non-admins get no
+  reply. Backed by four new per-table aggregate queries (Plan 032). Operator-only
+  surface; no end-user-visible change.
+
 ## 0.27.6 — 2026-07-01
 
 - Internal refactor only: factored the two repeated scaffolds into tested
