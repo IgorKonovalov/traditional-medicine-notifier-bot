@@ -32,8 +32,31 @@ interface MsgView {
   readonly keyboard: ReturnType<typeof Markup.inlineKeyboard>;
 }
 
+/**
+ * The linked-content lines for a reminder: the formula (with, when
+ * `includeIntake`, its intake type) or the ingredient. Empty when the reminder
+ * is unlinked or the stored id no longer resolves to content. Shared by the
+ * list rows and the detail screen so both describe a link the same way.
+ */
+function linkLines(reminder: ScheduledReminder, deps: BotDeps, includeIntake: boolean): string[] {
+  const rc = messages.reminderCreate;
+  const out: string[] = [];
+  if (reminder.combinationId !== null) {
+    const name = deps.content.combinations.byId.get(reminder.combinationId)?.nameRu;
+    if (name !== undefined) out.push(rc.formulaLine(name));
+    if (includeIntake && reminder.intakeType !== null) {
+      out.push(rc.intakeLine(intakeLabel(reminder.intakeType)));
+    }
+  } else if (reminder.herbId !== null) {
+    const name = deps.content.herbs.byId.get(reminder.herbId)?.nameRu;
+    if (name !== undefined) out.push(rc.herbLine(name));
+  }
+  return out;
+}
+
 /** The reminders list: a schedule block + an open button per active reminder. */
-export function listView(userId: number, timeZone: string): MsgView {
+export function listView(userId: number, deps: BotDeps): MsgView {
+  const timeZone = getUserTimezone(userId, deps.timezone);
   const reminders = listUserReminders(userId).filter((r) => r.active);
   const newRow = [Markup.button.callback(messages.reminders.newButton, 'rc:new')];
 
@@ -46,6 +69,9 @@ export function listView(userId: number, timeZone: string): MsgView {
     if (r.recurrence.kind !== 'once') {
       lines.push(`  ${messages.reminders.nextFire(formatDateTime(r.nextFireAt, timeZone))}`);
     }
+    // Surface the linked formula/ingredient on the row too (intake stays on the
+    // detail screen to keep list rows compact).
+    for (const link of linkLines(r, deps, false)) lines.push(`  ${link}`);
     return lines.join('\n');
   });
 
@@ -67,7 +93,6 @@ export function listView(userId: number, timeZone: string): MsgView {
  */
 export function detailView(reminder: ScheduledReminder, deps: BotDeps): MsgView {
   const tz = getUserTimezone(reminder.userId, deps.timezone);
-  const rc = messages.reminderCreate;
   const lines = [
     messages.reminders.detailTitle,
     '',
@@ -77,14 +102,7 @@ export function detailView(reminder: ScheduledReminder, deps: BotDeps): MsgView 
   if (reminder.recurrence.kind !== 'once') {
     lines.push(messages.reminders.nextFire(formatDateTime(reminder.nextFireAt, tz)));
   }
-  if (reminder.combinationId !== null) {
-    const name = deps.content.combinations.byId.get(reminder.combinationId)?.nameRu;
-    if (name !== undefined) lines.push(rc.formulaLine(name));
-    if (reminder.intakeType !== null) lines.push(rc.intakeLine(intakeLabel(reminder.intakeType)));
-  } else if (reminder.herbId !== null) {
-    const name = deps.content.herbs.byId.get(reminder.herbId)?.nameRu;
-    if (name !== undefined) lines.push(rc.herbLine(name));
-  }
+  lines.push(...linkLines(reminder, deps, true));
 
   return {
     text: lines.join('\n'),
@@ -107,7 +125,7 @@ export async function remindersEntry(ctx: Context, deps: BotDeps): Promise<void>
     await ctx.reply(messages.common.notRegistered);
     return;
   }
-  const view = listView(userId, getUserTimezone(userId, deps.timezone));
+  const view = listView(userId, deps);
   await ctx.reply(view.text, view.keyboard);
 }
 
@@ -125,10 +143,7 @@ export function registerRemindersCommand(bot: Telegraf, deps: BotDeps): void {
     await ctx.answerCbQuery();
     const id = Number(ctx.match[1]);
     const reminder = listUserReminders(userId).find((r) => r.id === id && r.active);
-    const view =
-      reminder === undefined
-        ? listView(userId, getUserTimezone(userId, deps.timezone))
-        : detailView(reminder, deps);
+    const view = reminder === undefined ? listView(userId, deps) : detailView(reminder, deps);
     await ctx.editMessageText(view.text, view.keyboard);
   });
 
@@ -142,7 +157,7 @@ export function registerRemindersCommand(bot: Telegraf, deps: BotDeps): void {
     }
     deactivateReminder(Number(ctx.match[1]), userId);
     await ctx.answerCbQuery(messages.reminders.cancelled);
-    const view = listView(userId, getUserTimezone(userId, deps.timezone));
+    const view = listView(userId, deps);
     await ctx.editMessageText(view.text, view.keyboard);
   });
 
@@ -154,7 +169,7 @@ export function registerRemindersCommand(bot: Telegraf, deps: BotDeps): void {
       return;
     }
     await ctx.answerCbQuery();
-    const view = listView(userId, getUserTimezone(userId, deps.timezone));
+    const view = listView(userId, deps);
     await ctx.editMessageText(view.text, view.keyboard);
   });
 }

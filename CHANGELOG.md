@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.27.8 — 2026-07-01
+
+- Fix: the reminders list now shows the linked formula/ingredient on each row
+  (`🧪 Состав: …` / `🌿 Ингредиент: …`), not only on the detail screen. Intake
+  type stays on the detail screen to keep rows compact.
+
 ## 0.27.7 — 2026-07-01
 
 - Added an admin-only `/stats` command: a plaintext operational readout (user

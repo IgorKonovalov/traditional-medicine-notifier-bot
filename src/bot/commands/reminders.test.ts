@@ -55,7 +55,7 @@ describe('listView (Plan 024)', () => {
       recurrence: { kind: 'daily', times: ['08:00'] },
       nextFireAt: 1_000,
     });
-    const btns = buttons(listView(userId, 'UTC'));
+    const btns = buttons(listView(userId, depsStub()));
     expect(btns.find((b) => b.text === 'Пить воду')?.callback_data).toBe(`rem:open:${id}`);
     expect(btns.some((b) => b.callback_data?.startsWith('rem:cancel'))).toBe(false);
     expect(btns.some((b) => b.callback_data === 'rc:new')).toBe(true);
@@ -63,9 +63,38 @@ describe('listView (Plan 024)', () => {
 
   it('shows the empty state with only the ➕ Новое row when there are none', () => {
     const userId = ensureUser('2', 'u');
-    const btns = buttons(listView(userId, 'UTC'));
+    const btns = buttons(listView(userId, depsStub()));
     expect(btns).toHaveLength(1);
     expect(btns[0]?.callback_data).toBe('rc:new');
+  });
+
+  it('surfaces the linked formula on the row (not just the detail screen)', () => {
+    const userId = ensureUser('3', 'u');
+    createReminder({
+      userId,
+      label: 'Агар-8',
+      combinationId: 'tib-formula-agar-8',
+      intakeType: 'decoction',
+      recurrence: { kind: 'daily', times: ['08:00'] },
+      nextFireAt: 1_000,
+    });
+    const view = listView(userId, depsStub());
+    expect(view.text).toContain('🧪 Состав: Агар-8');
+    // Intake stays on the detail screen to keep list rows compact.
+    expect(view.text).not.toContain('🍶 Приём');
+  });
+
+  it('surfaces the linked ingredient on the row', () => {
+    const userId = ensureUser('4', 'u');
+    createReminder({
+      userId,
+      label: 'Имбирь',
+      herbId: 'tib-ginger',
+      recurrence: { kind: 'daily', times: ['08:00'] },
+      nextFireAt: 1_000,
+    });
+    const view = listView(userId, depsStub());
+    expect(view.text).toContain('🌿 Ингредиент: Имбирь');
   });
 });
 
