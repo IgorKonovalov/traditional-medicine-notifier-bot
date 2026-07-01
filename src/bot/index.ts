@@ -51,7 +51,7 @@ export function createBot(options: CreateBotOptions): CreatedBot {
   bot.use(limiter.middleware);
   bot.use(ensureUserMiddleware());
 
-  registerStartCommand(bot);
+  registerStartCommand(bot, options.deps);
   registerHelpCommand(bot);
   registerSettingsCommand(bot, options.deps);
   registerLibraryCommand(bot, options.deps);

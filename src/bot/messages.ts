@@ -125,8 +125,12 @@ export const messages = {
       '\n\nХотите получать ежедневный совет дня?',
     tipYes: '🔔 Да, присылайте',
     tipNo: '🔕 Нет, спасибо',
-    tipOnConfirm: '✓ Ежедневный совет включён. Изменить можно в ⚙️ Настройках.',
-    tipOffConfirm: '✓ Совет дня выключен. Включить можно в ⚙️ Настройках.',
+    /** Onboarding step 2: pick the timezone reminders fire by (Plan 025). */
+    timezonePrompt:
+      'Спасибо! И последний шаг: выберите ваш часовой пояс — по нему будут ' +
+      'приходить напоминания. Изменить можно в ⚙️ Настройках.',
+    /** Confirmation after the onboarding timezone pick; `label` is the zone name. */
+    timezoneConfirm: (label: string): string => `✓ Часовой пояс: ${label}.`,
     done:
       'Готово! Меню внизу экрана открывает разделы: 📚 Библиотека, ⏰ Напоминания, ' +
       '💡 Советы, ⚙️ Настройки. Начните с 📚 Библиотеки.',
