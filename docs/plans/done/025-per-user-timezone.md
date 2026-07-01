@@ -1,8 +1,9 @@
 # Plan 025 — Per-user timezone for reminders
 
-**Status:** Draft
+**Status:** Completed
 **Created:** 2026-07-01
-**Bump on close:** minor
+**Completed:** 2026-07-01
+**Bump on close:** minor (v0.26.0)
 
 ## Context
 
@@ -195,9 +196,32 @@ Plan 024 (reminders refresh).
   3. Create a `once` reminder, change zone → confirm it keeps its original instant.
   4. Repeat `/start` → lands straight on the menu, no re-prompt.
 
+## Review Comments (2026-07-01)
+
+Implementation complete, all gates green (typecheck / lint / 331 tests / build /
+content index). Two items block a clean close:
+
+1. **Bug — hub shows the wrong zone after a toggle** (`src/bot/commands/settings.ts:136`,
+   `:150`). The `set:tip:toggle` and `set:ann:toggle` handlers re-render `hubView`
+   with `deps.timezone` (bot-global fallback) instead of
+   `getUserTimezone(v.userId, deps.timezone)`. A user with a custom zone sees the
+   timezone line revert to the global default label until they reopen Settings.
+   Contradicts the Phase 3 acceptance ("Show the effective zone in the hub, not
+   `deps.timezone`"). Fix: use the effective zone in both handlers; consider a
+   regression test asserting the label survives a toggle.
+2. **Stale comment** (`src/bot/commands/settings.ts:9-11`): header still says the
+   timezone is "shown read-only (per-user timezones are a later plan)" — now false.
+
+**Resolved (2026-07-01):** both fixed. The `set:tip:toggle` / `set:ann:toggle`
+handlers now re-render `hubView` with `getUserTimezone(v.userId, deps.timezone)`,
+and a regression test (`keeps the user timezone label after a daily-tip toggle`)
+asserts the label survives a toggle. The `settings.ts` header comment now
+describes the user-specific timezone + `set:tz:*` picker. All gates re-run green
+(typecheck / lint / 332 tests / build / content index).
+
 ## Progress
 
 - [x] Phase 1 — Storage, resolver, config default (86531b2)
 - [x] Phase 2 — Per-user zone in create + dispatch (f8b1b72)
 - [x] Phase 3 — Settings entry (change timezone) (dd144a3)
-- [x] Phase 4 — Onboarding step + ADR + docs (this commit)
+- [x] Phase 4 — Onboarding step + ADR + docs (c037d4e)

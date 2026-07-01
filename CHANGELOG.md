@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.26.0 — 2026-07-01
+
+- Reminders now honour a **per-user timezone**. Pick your city during onboarding
+  or change it any time in ⚙️ Настройки; existing recurring reminders shift to
+  fire at the intended local time, and the default is now Europe/Belgrade (CET)
+  instead of UTC. Proactive daily-tip timing stays bot-global (ADR 015, Plan 025).
+
 ## 0.25.2 — 2026-06-30
 
 - The reminder time step no longer auto-advances on an hour tap: tapping an hour

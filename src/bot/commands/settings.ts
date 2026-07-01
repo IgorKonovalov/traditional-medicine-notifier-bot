@@ -6,8 +6,10 @@
  * open as their own messages.
  *
  * Callback scope `set:` — `set:tip:toggle`, `set:open:<surface>`, `set:close`.
- * Settings persist via the existing `user_settings` repo; the bot timezone is
- * shown read-only (per-user timezones are a later plan).
+ * Settings persist via the existing `user_settings` repo; the timezone is
+ * user-specific (Plan 025) and changeable via the `set:tz:*` picker — the hub
+ * shows the user's effective zone (`getUserTimezone`), and picking a new one
+ * recomputes their recurring reminders' fire times.
  */
 
 import { Markup, type Context, type Telegraf } from 'telegraf';
@@ -133,7 +135,12 @@ export function registerSettingsCommand(bot: Telegraf, deps: BotDeps): void {
     setSetting(v.userId, SETTING_DAILY_TIP, turnOn ? '1' : '0');
     await ctx.answerCbQuery();
     const confirmation = turnOn ? messages.settings.confirmTipOn : messages.settings.confirmTipOff;
-    const view = hubView(turnOn, announcementsOn(v.userId), deps.timezone, confirmation);
+    const view = hubView(
+      turnOn,
+      announcementsOn(v.userId),
+      getUserTimezone(v.userId, deps.timezone),
+      confirmation,
+    );
     await editAnchor(ctx, view.text, view.keyboard);
     persist(v.userId, v.session.anchor.messageId);
   });
@@ -147,7 +154,12 @@ export function registerSettingsCommand(bot: Telegraf, deps: BotDeps): void {
     const confirmation = turnOn
       ? messages.settings.confirmAnnouncementsOn
       : messages.settings.confirmAnnouncementsOff;
-    const view = hubView(dailyTipOn(v.userId), turnOn, deps.timezone, confirmation);
+    const view = hubView(
+      dailyTipOn(v.userId),
+      turnOn,
+      getUserTimezone(v.userId, deps.timezone),
+      confirmation,
+    );
     await editAnchor(ctx, view.text, view.keyboard);
     persist(v.userId, v.session.anchor.messageId);
   });

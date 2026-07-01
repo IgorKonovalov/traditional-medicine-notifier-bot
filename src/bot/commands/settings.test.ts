@@ -20,7 +20,7 @@ import {
 import type { BotDeps } from '../context';
 import { messages } from '../messages';
 import { type AnchoredSession, saveSession, SESSION_TTL_MS } from '../session-store';
-import { TIMEZONES } from '../timezones';
+import { TIMEZONES, timezoneLabel } from '../timezones';
 import { registerSettingsCommand } from './settings';
 
 type Handler = (ctx: Context) => Promise<unknown>;
@@ -104,6 +104,24 @@ describe('settings: feature-announcements toggle', () => {
     expect(getSetting(userId, SETTING_FEATURE_ANNOUNCEMENTS)).toBe('0');
     expect(edits[0]!.text).toContain(messages.settings.confirmAnnouncementsOff);
     expect(announcementsButtonLabel(edits[0]!)).toBe(messages.settings.announcementsLabelOff);
+  });
+
+  // Regression (Plan 025): a toggle must re-render the hub with the user's own
+  // effective zone, not the bot-global fallback (deps.timezone = Europe/Moscow
+  // in this suite). The user below runs on Europe/Belgrade.
+  it('keeps the user timezone label after a daily-tip toggle', async () => {
+    const userId = seedSession();
+    setSetting(userId, SETTING_TIMEZONE, 'Europe/Belgrade');
+    const handler = captureActions().get('^set:tip:toggle$');
+    expect(handler).toBeDefined();
+
+    const { ctx, edits } = makeCtx(userId);
+    await handler!(ctx);
+
+    expect(edits[0]!.text).toContain(messages.settings.timezone(timezoneLabel('Europe/Belgrade')));
+    expect(edits[0]!.text).not.toContain(
+      messages.settings.timezone(timezoneLabel('Europe/Moscow')),
+    );
   });
 });
 
