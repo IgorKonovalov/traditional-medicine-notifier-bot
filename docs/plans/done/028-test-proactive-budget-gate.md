@@ -1,8 +1,8 @@
 # Plan 028 — Test the proactive notification-budget gate
 
-**Status:** Draft
+**Status:** Completed
 **Created:** 2026-07-01
-**Completed:** —
+**Completed:** 2026-07-01 (v0.27.3)
 **Bump on close:** patch
 
 ## Context

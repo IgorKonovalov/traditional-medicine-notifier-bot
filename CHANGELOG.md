@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.27.3 — 2026-07-01
+
+- Internal tests only: added coverage for the proactive notification-budget gate
+  (≤1 push/user/day, ADR 004) and its `subscription-dispatch` caller (Plan 028).
+  No user-facing change.
+
 ## 0.27.2 — 2026-07-01
 
 - Internal tooling only: migrated the package manager from npm to pnpm with a

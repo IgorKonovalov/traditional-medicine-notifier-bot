@@ -4,7 +4,8 @@ Implementation plans authored by the **architect** skill drive all non-trivial
 work. Each plan is `NNN-short-name.md` (zero-padded), reviewed and approved
 before the **dev** skill implements it, then moved to `done/` on close.
 
-- **Next free number:** `027` (026 = round-2 guide wave, Approved 2026-07-01 — not started)
+- **Next free number:** `032` (028 closed v0.27.3; 029–031 are the open
+  maintainability-review plan set, 2026-07-01 — 031 before 029)
 - **Completed:** see `done/`
 
 ### Active roster
@@ -21,6 +22,7 @@ before the **dev** skill implements it, then moved to `done/` on close.
 | 015 | Hide the Chinese tradition (Tibetan-only surface) | Completed → `done/` (v0.16.0, ADR 013) |
 | 016 | Foundational theory guides | Completed (Wave 1) → `done/` (v0.17.0); Waves 2–3 deferred to backlog |
 | 019 | Ingredient corpus backfill · formula→ingredient cross-link | Approved — 2026-06-29 (Plan 017 display/code split; corpus 1→35, `members:` backfill) |
+| 028 | Test the proactive notification-budget gate | Completed → `done/` (v0.27.3) — budget + subscription-dispatch coverage (ADR 004) |
 
 ### UI overhaul plan set (007–009)
 
