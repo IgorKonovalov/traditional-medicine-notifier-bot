@@ -35,5 +35,8 @@ research/*.pdf
 # Private research notes derived from local sources (not distributed)
 research/_private/
 
+# Doctor-review artifacts (generated docx for offline review, not distributed)
+docs/review/
+
 # skills, settings
 .claude
