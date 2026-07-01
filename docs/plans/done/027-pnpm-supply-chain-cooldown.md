@@ -1,9 +1,9 @@
 # Plan 027 — Migrate to pnpm + supply-chain release-age cooldown
 
-**Status:** In progress — implementation complete, awaiting architect review/close
+**Status:** Completed
 **Created:** 2026-07-01
-**Completed:** —
-**Bump on close:** patch
+**Completed:** 2026-07-01
+**Bump on close:** patch (v0.27.2)
 
 ## Context
 
@@ -187,4 +187,13 @@ End-to-end, after all phases:
 - [x] Phase 2 — git hooks + script wording (62f72fe)
 - [x] Phase 3 — CI (746a8f6)
 - [x] Phase 4 — Docker (6ab3f0f) — image build unverified (no local Docker)
-- [x] Phase 5 — docs + ADR 016 (this commit)
+- [x] Phase 5 — docs + ADR 016 (9b6c7a9)
+
+## Review (2026-07-01, architect)
+
+Full gate green under pnpm on Windows: typecheck, lint, build, `pnpm test`
+(333/333, 31 files), `content:index:check`, and a native `better-sqlite3`
+round-trip all pass. All five phases delivered; no functional `npm`/`npx`
+invocation remains in scripts, hooks, CI, or Docker. The Docker **image** build
+stays unverified on the dev box (no Docker) — deferred to the deploy job as the
+plan documents; not a blocker. Closed at v0.27.2 (patch, no announcement).

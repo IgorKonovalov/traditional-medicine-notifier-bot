@@ -4,6 +4,12 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.27.2 — 2026-07-01
+
+- Internal tooling only: migrated the package manager from npm to pnpm with a
+  7-day supply-chain release-age cooldown and default-denied build scripts
+  (Plan 027, ADR 016). No user-facing change.
+
 ## 0.27.1 — 2026-07-01
 
 - Reminders now show the «Ближайшее» next-fire time in your own timezone
