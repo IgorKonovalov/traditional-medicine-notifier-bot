@@ -10,13 +10,11 @@
 
 import { Markup } from 'telegraf';
 
+import { CALLBACK_DATA_LIMIT } from '../constants';
 import type { Tradition } from '../content/types';
 import { messages } from './messages';
 
 type CallbackButton = ReturnType<typeof Markup.button.callback>;
-
-/** Telegram's hard limit on `callback_data` length, in bytes. */
-const CALLBACK_DATA_LIMIT = 64;
 
 /**
  * Guard a `callback_data` payload against Telegram's 64-byte limit. Returns the

@@ -8,8 +8,15 @@
  * centralized helper — never set `parse_mode` ad hoc in a handler.
  */
 
-/** Telegram's practical per-message character ceiling (well under the 4096 hard cap). */
-export const TELEGRAM_LIMIT = 3800;
+import { TELEGRAM_MESSAGE_LIMIT } from '../../constants';
+
+/**
+ * Telegram's practical per-message character ceiling (well under the 4096 hard
+ * cap). Re-exported under this long-standing local name from the canonical
+ * `TELEGRAM_MESSAGE_LIMIT` (`src/constants.ts`) so the many call sites here and
+ * across the bot keep working while the value lives in exactly one place.
+ */
+export const TELEGRAM_LIMIT = TELEGRAM_MESSAGE_LIMIT;
 
 /**
  * Escape the characters that break Telegram HTML context (ADR 011). `&`, `<`,

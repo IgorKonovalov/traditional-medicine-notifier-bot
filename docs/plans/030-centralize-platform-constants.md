@@ -77,4 +77,12 @@ tests pass).
 
 ## Progress
 
-- [ ] Phase 1 — constants.ts + rewire
+- [x] Phase 1 — constants.ts + rewire (`src/constants.ts`; `keyboards.ts`,
+      `version-announcer.ts`, `render/markdown.ts`,
+      `messages/version-announcements.ts`, `recurrence.ts`, `reminder-create.ts`
+      rewired). `TELEGRAM_LIMIT` kept as a re-export from
+      `TELEGRAM_MESSAGE_LIMIT` so its many call sites are untouched;
+      `CHANGELOG_BUDGET` derives from the same canonical constant (same
+      "one message fits" invariant). The `MS_PER_DAY` literal in
+      `notification-budget.test.ts` is left as an independent test literal (like
+      `changelog.test.ts`'s `TELEGRAM_REPLY_CAP`), not a production duplicate.

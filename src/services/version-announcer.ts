@@ -49,6 +49,7 @@
 
 import type { Logger } from 'pino';
 
+import { CALLBACK_DATA_LIMIT } from '../constants';
 import {
   findActiveUsersBehindCurrentVersion,
   markNotified,
@@ -325,14 +326,6 @@ function normalizeEntry(entry: AnnouncementEntry | undefined): AnnouncementMessa
 }
 
 /**
- * Telegram's hard cap on `callback_data`. Callback strings longer than this
- * can't even be registered with the keyboard — Telegram rejects the outgoing
- * message. We check at boot so a bad herb id is caught once, not for every
- * recipient mid-broadcast.
- */
-const TELEGRAM_CALLBACK_DATA_LIMIT = 64;
-
-/**
  * Lookup contract a CTA validator needs from the content corpus. Mirrors the
  * slice of `LoadedContent` the announcer touches without dragging the full
  * content type into the services layer.
@@ -375,9 +368,9 @@ function validateCta(
       }
       const callbackData = `herb:${cta.herbId}`;
       const byteLength = Buffer.byteLength(callbackData, 'utf8');
-      if (byteLength > TELEGRAM_CALLBACK_DATA_LIMIT) {
+      if (byteLength > CALLBACK_DATA_LIMIT) {
         throw new Error(
-          `version-announcer: announcement '${version}' callback_data '${callbackData}' is ${byteLength} bytes (limit ${TELEGRAM_CALLBACK_DATA_LIMIT})`,
+          `version-announcer: announcement '${version}' callback_data '${callbackData}' is ${byteLength} bytes (limit ${CALLBACK_DATA_LIMIT})`,
         );
       }
       return;

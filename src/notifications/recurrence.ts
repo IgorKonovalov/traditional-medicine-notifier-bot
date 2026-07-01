@@ -12,9 +12,9 @@
  * flag when real scheduling logic is implemented. See docs/plans/ (TBD).
  */
 
+import { MS_PER_DAY } from '../constants';
 import type { RecurrenceSpec } from './types';
 
-const MS_PER_DAY = 86_400_000;
 const SEARCH_HORIZON_DAYS = 366; // guarantees a hit for any weekly/interval spec
 
 /**

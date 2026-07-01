@@ -13,6 +13,7 @@
 
 import { Markup, type Context, type Telegraf } from 'telegraf';
 
+import { MS_PER_DAY } from '../../constants';
 import type { Combination, Herb } from '../../content/types';
 import { createReminder } from '../../db/repositories/reminder.repo';
 import { getUserTimezone } from '../../db/repositories/user.repo';
@@ -253,7 +254,6 @@ const EVERY_OPTIONS = [2, 3, 5, 7, 10, 14, 30];
 const DATE_OFFSETS = [0, 1, 2, 3, 4, 5, 6];
 /** Weekday buttons in Monday-first display order (values stay 0=Sun…6=Sat). */
 const WEEKDAY_ORDER = [1, 2, 3, 4, 5, 6, 0];
-const MS_PER_DAY = 86_400_000;
 /** Herbs shown per page of the optional herb-link picker. */
 const HERBS_PER_PAGE = 8;
 

@@ -10,19 +10,21 @@
  * `<b>` markup. Each entry stays ≤ one sentence / ~15 words.
  */
 
+import { TELEGRAM_MESSAGE_LIMIT } from '../../constants';
 import type { AnnouncementMessage } from '../../services/notifier';
 
 const CHANGELOG_HEADER = '📋 Что нового в боте';
 const CHANGELOG_EMPTY = 'История обновлений пока пуста.';
 const CHANGELOG_TRUNCATED = '… (более ранние версии скрыты)';
 /**
- * Conservative buffer under Telegram's reply cap. The render loop stops adding
- * entries when the next one would push the body past this number; older
- * entries are replaced with `CHANGELOG_TRUNCATED`. Mirrors the
- * `TELEGRAM_REPLY_CAP` regression guard in `changelog.test.ts` — keep the two
- * in sync.
+ * Conservative buffer under Telegram's reply cap: the render loop stops adding
+ * entries when the next one would push the body past this number; older entries
+ * are replaced with `CHANGELOG_TRUNCATED`. This is the same "one message fits"
+ * invariant as the generic message limit, so it derives from the canonical
+ * `TELEGRAM_MESSAGE_LIMIT` (`src/constants.ts`). The `TELEGRAM_REPLY_CAP`
+ * regression guard in `changelog.test.ts` asserts the same value.
  */
-const CHANGELOG_BUDGET = 3800;
+const CHANGELOG_BUDGET = TELEGRAM_MESSAGE_LIMIT;
 
 /**
  * Descending semver-tuple comparator. Splits on `.`, parses each segment as an
