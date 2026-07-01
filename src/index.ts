@@ -90,7 +90,11 @@ async function main(): Promise<void> {
     cronExpression: config.reminderTickCron,
     timezone: config.timezone,
     notifier,
-    buildMessage: buildReminderMessage,
+    buildMessage: (reminder) =>
+      buildReminderMessage(reminder, {
+        formulaName: (id) => content.combinations.byId.get(id)?.nameRu,
+        herbName: (id) => content.herbs.byId.get(id)?.nameRu,
+      }),
   });
 
   // PROACTIVE: opt-in daily tip (≤1 proactive push/user/day via the budget gate).

@@ -369,16 +369,34 @@ export function intakeLabel(type: IntakeType): string {
 }
 
 /**
- * Build the fired-reminder notification payload (the reminder-dispatch
- * `buildMessage`, plan 024). A formula reminder echoes its intake type in the
- * body and carries an `open-formula` CTA; a herb reminder carries `open-herb`;
- * a free-text reminder carries no CTA. A reminder links to a formula **or** a
- * herb, never both — formula takes precedence defensively. Pure (no IO), so the
- * dispatch contract is unit-testable without booting the app.
+ * Resolves a linked content id to its display name for the fired-reminder body.
+ * Passed in by the boot wiring (`src/index.ts`) so `buildReminderMessage` stays
+ * pure and dependency-free — the dispatch layer owns the content handle.
  */
-export function buildReminderMessage(reminder: ScheduledReminder): NotificationPayload {
+export interface ReminderContentNames {
+  formulaName(id: string): string | undefined;
+  herbName(id: string): string | undefined;
+}
+
+/**
+ * Build the fired-reminder notification payload (the reminder-dispatch
+ * `buildMessage`, plan 024). A formula reminder names the состав (and echoes its
+ * intake type) in the body and carries an `open-formula` CTA; a herb reminder
+ * names the ingredient and carries `open-herb`; a free-text reminder carries no
+ * CTA. The linked name resolves from the optional `names` lookup — omitted (or
+ * unresolved) it is simply skipped, so the payload degrades gracefully. A
+ * reminder links to a formula **or** a herb, never both — formula takes
+ * precedence defensively. Pure (no IO), so the dispatch contract is
+ * unit-testable without booting the app.
+ */
+export function buildReminderMessage(
+  reminder: ScheduledReminder,
+  names?: ReminderContentNames,
+): NotificationPayload {
   if (reminder.combinationId !== null) {
     const lines = [messages.reminder.body(reminder.label)];
+    const name = names?.formulaName(reminder.combinationId);
+    if (name !== undefined) lines.push(messages.reminderCreate.formulaLine(name));
     if (reminder.intakeType !== null) {
       lines.push(messages.reminderCreate.intakeLine(intakeLabel(reminder.intakeType)));
     }
@@ -388,8 +406,11 @@ export function buildReminderMessage(reminder: ScheduledReminder): NotificationP
     };
   }
   if (reminder.herbId !== null) {
+    const lines = [messages.reminder.body(reminder.label)];
+    const name = names?.herbName(reminder.herbId);
+    if (name !== undefined) lines.push(messages.reminderCreate.herbLine(name));
     return {
-      body: messages.reminder.body(reminder.label),
+      body: lines.join('\n'),
       cta: { kind: 'open-herb', herbId: reminder.herbId },
     };
   }

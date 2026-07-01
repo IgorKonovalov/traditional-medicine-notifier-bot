@@ -543,25 +543,47 @@ describe('buildReminderMessage (Plan 024 fired-notification payload)', () => {
     };
   }
 
+  const names = {
+    formulaName: (id: string) => (id === 'tib-formula-agar-8' ? 'Агар-8' : undefined),
+    herbName: (id: string) => (id === 'tib-ginger' ? 'Имбирь' : undefined),
+  };
+
   it('builds an open-formula CTA and echoes the intake type for a formula reminder', () => {
     const payload = buildReminderMessage(
       reminder({ combinationId: 'tib-formula-agar-8', intakeType: 'decoction' }),
+      names,
     );
     expect(payload.cta).toEqual({ kind: 'open-formula', combinationId: 'tib-formula-agar-8' });
     expect(payload.body).toContain('Принимать');
     expect(payload.body).toContain('🍶 Приём: отвар');
   });
 
+  it('names the linked состав in a formula reminder body', () => {
+    const payload = buildReminderMessage(reminder({ combinationId: 'tib-formula-agar-8' }), names);
+    expect(payload.body).toContain('🧪 Состав: Агар-8');
+  });
+
+  it('names the linked ingredient in a herb reminder body', () => {
+    const payload = buildReminderMessage(reminder({ herbId: 'tib-ginger' }), names);
+    expect(payload.body).toContain('🌿 Ингредиент: Имбирь');
+  });
+
   it('omits the intake line for a formula reminder with no intake type', () => {
-    const payload = buildReminderMessage(reminder({ combinationId: 'tib-formula-agar-8' }));
+    const payload = buildReminderMessage(reminder({ combinationId: 'tib-formula-agar-8' }), names);
     expect(payload.cta).toEqual({ kind: 'open-formula', combinationId: 'tib-formula-agar-8' });
     expect(payload.body).not.toContain('🍶 Приём');
   });
 
   it('builds an open-herb CTA for a herb reminder (unchanged)', () => {
-    const payload = buildReminderMessage(reminder({ herbId: 'tib-ginger' }));
+    const payload = buildReminderMessage(reminder({ herbId: 'tib-ginger' }), names);
     expect(payload.cta).toEqual({ kind: 'open-herb', herbId: 'tib-ginger' });
     expect(payload.body).not.toContain('🍶 Приём');
+  });
+
+  it('degrades gracefully without a name lookup (no linked line)', () => {
+    const payload = buildReminderMessage(reminder({ herbId: 'tib-ginger' }));
+    expect(payload.cta).toEqual({ kind: 'open-herb', herbId: 'tib-ginger' });
+    expect(payload.body).not.toContain('🌿 Ингредиент');
   });
 
   it('carries no CTA for a free-text reminder', () => {

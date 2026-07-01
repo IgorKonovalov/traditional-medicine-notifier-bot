@@ -4,11 +4,29 @@ import type { Guide } from '../../content/types';
 import { messages } from '../messages';
 import { TELEGRAM_LIMIT } from '../render/markdown';
 
-import { guidePages, renderGuideSection } from './_guide-card';
+import { guideDisplayTitle, guidePages, renderGuideSection } from './_guide-card';
 
 function guide(sections: Guide['sections']): Guide {
   return { id: 'g', tradition: 'tibetan', title: 'Статья', tags: [], sections };
 }
+
+describe('guideDisplayTitle', () => {
+  it('strips a single outer pair of guillemets', () => {
+    expect(guideDisplayTitle({ ...guide([]), title: '«Основы тибетской медицины»' })).toBe(
+      'Основы тибетской медицины',
+    );
+  });
+
+  it('keeps inner typographic quotes intact', () => {
+    expect(guideDisplayTitle({ ...guide([]), title: '«Семь сил тела и „чистый сок“»' })).toBe(
+      'Семь сил тела и „чистый сок“',
+    );
+  });
+
+  it('leaves an unquoted title unchanged', () => {
+    expect(guideDisplayTitle({ ...guide([]), title: 'Статья' })).toBe('Статья');
+  });
+});
 
 describe('renderGuideSection', () => {
   it('renders an intro (no heading) as the body alone', () => {

@@ -13,6 +13,15 @@
 import type { Guide, GuideSection } from '../../content/types';
 import { splitForTelegram, toPlainText } from '../render/markdown';
 
+/**
+ * Guide titles are authored wrapped in guillemets («…») for prose use. In the
+ * browse list every button then reads as a quoted string, which is noise — strip
+ * a single outer pair for display. Inner low/typographic quotes are left intact.
+ */
+export function guideDisplayTitle(guide: Guide): string {
+  return guide.title.replace(/^«([\s\S]*)»$/u, '$1');
+}
+
 /** A section as plain text: its heading (if any) followed by the body prose. */
 export function renderGuideSection(section: GuideSection): string {
   const body = toPlainText(section.body);

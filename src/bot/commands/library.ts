@@ -55,7 +55,7 @@ import {
 import { requireSessionAndAnchor, type ValidatedCallback } from './_callback-prologue';
 import { formulaCardKeyboard, formulaMemberLinks, renderFormula } from './_formula-card';
 import { FORMULA_BRANCH_ENABLED } from './_formula-gate';
-import { guidePages } from './_guide-card';
+import { guideDisplayTitle, guidePages } from './_guide-card';
 import { herbCardKeyboard, herbFormulaLinks, renderHerb } from './_herb-card';
 import { getRecent, recordShown } from './tip-history';
 import { pickRandomTip } from './tips';
@@ -501,7 +501,7 @@ function guideListView(deps: BotDeps, page: number): View & { readonly page: num
   const { page: safePage, pageCount } = clampPage(page, guides.length);
   const slice = guides.slice(safePage * PAGE_SIZE, safePage * PAGE_SIZE + PAGE_SIZE);
   const rows = slice.map((g) => [
-    Markup.button.callback(g.title, assertCallbackData(`lib:guide:${g.id}`)),
+    Markup.button.callback(guideDisplayTitle(g), assertCallbackData(`lib:guide:${g.id}`)),
   ]);
   const nav: CallbackButton[][] = [];
   if (pageCount > 1) nav.push(pager('lib:glist', safePage, pageCount));
