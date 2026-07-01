@@ -52,11 +52,12 @@ import {
   saveSession,
   SESSION_TTL_MS,
 } from '../session-store';
-import { requireSessionAndAnchor, type ValidatedCallback } from './_callback-prologue';
+import { type ValidatedCallback } from './_callback-prologue';
 import { formulaCardKeyboard, formulaMemberLinks, renderFormula } from './_formula-card';
 import { FORMULA_BRANCH_ENABLED } from './_formula-gate';
 import { guideDisplayTitle, guidePages } from './_guide-card';
 import { herbCardKeyboard, herbFormulaLinks, renderHerb } from './_herb-card';
+import { onAck, onSession } from './_session-registrar';
 import { getRecent, recordShown } from './tip-history';
 import { pickRandomTip } from './tips';
 
@@ -973,65 +974,44 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     await librarySearchEntry(ctx, deps, raw);
   });
 
-  bot.action(/^lib:herbs$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'herbs', page: 0 });
-  });
+  onSession<LibraryState>(bot, /^lib:herbs$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'herbs', page: 0 }),
+  );
 
-  bot.action(/^lib:all$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'list', page: 0 });
-  });
+  onSession<LibraryState>(bot, /^lib:all$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'list', page: 0 }),
+  );
 
-  bot.action(/^lib:bycat$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'pick-category', page: 0 });
-  });
+  onSession<LibraryState>(bot, /^lib:bycat$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'pick-category', page: 0 }),
+  );
 
-  bot.action(/^lib:cat:(.+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
+  onSession<LibraryState>(bot, /^lib:cat:(.+)$/, 'library', async (ctx, v) => {
     const category = ctx.match[1] ?? '';
     if (!deps.content.categories.byId.has(category)) return;
     await go(ctx, v, { screen: 'list', category, page: 0 });
   });
 
-  bot.action(/^lib:catpg:(\d+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'pick-category', page: Number(ctx.match[1] ?? '0') });
-  });
+  onSession<LibraryState>(bot, /^lib:catpg:(\d+)$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'pick-category', page: Number(ctx.match[1] ?? '0') }),
+  );
 
-  bot.action(/^lib:catpg:noop$/, (ctx) => ctx.answerCbQuery());
+  onAck(bot, /^lib:catpg:noop$/);
 
-  bot.action(/^lib:list:(\d+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
+  onSession<LibraryState>(bot, /^lib:list:(\d+)$/, 'library', (ctx, v) => {
     const { category } = v.session.state;
-    await go(ctx, v, {
+    return go(ctx, v, {
       screen: 'list',
       page: Number(ctx.match[1] ?? '0'),
       ...(category !== undefined ? { category } : {}),
     });
   });
 
-  bot.action(/^lib:list:noop$/, (ctx) => ctx.answerCbQuery());
+  onAck(bot, /^lib:list:noop$/);
 
-  bot.action(/^lib:herb:(.+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
+  onSession<LibraryState>(bot, /^lib:herb:(.+)$/, 'library', (ctx, v) => {
     const { category, query, page } = v.session.state;
-    await go(ctx, v, {
+    return go(ctx, v, {
       screen: 'card',
       herbId: ctx.match[1] ?? '',
       page,
@@ -1045,45 +1025,30 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     });
   });
 
-  bot.action(/^lib:search$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'search', page: 0 });
-  });
+  onSession<LibraryState>(bot, /^lib:search$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'search', page: 0 }),
+  );
 
-  bot.action(/^lib:results:(\d+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
+  onSession<LibraryState>(bot, /^lib:results:(\d+)$/, 'library', async (ctx, v) => {
     const { query } = v.session.state;
     if (query === undefined) return;
     await go(ctx, v, { screen: 'results', query, page: Number(ctx.match[1] ?? '0') });
   });
 
-  bot.action(/^lib:results:noop$/, (ctx) => ctx.answerCbQuery());
+  onAck(bot, /^lib:results:noop$/);
 
   // 📖 Статьи — the guides branch (Plan 006). Always registered.
-  bot.action(/^lib:guides$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'guide-list', page: 0 });
-  });
+  onSession<LibraryState>(bot, /^lib:guides$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'guide-list', page: 0 }),
+  );
 
-  bot.action(/^lib:glist:(\d+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'guide-list', page: Number(ctx.match[1] ?? '0') });
-  });
+  onSession<LibraryState>(bot, /^lib:glist:(\d+)$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'guide-list', page: Number(ctx.match[1] ?? '0') }),
+  );
 
-  bot.action(/^lib:glist:noop$/, (ctx) => ctx.answerCbQuery());
+  onAck(bot, /^lib:glist:noop$/);
 
-  bot.action(/^lib:guide:(.+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
+  onSession<LibraryState>(bot, /^lib:guide:(.+)$/, 'library', async (ctx, v) => {
     const guideId = ctx.match[1] ?? '';
     if (!deps.content.guides.byId.has(guideId)) return;
     // Carry the current list page so `« Назад` returns to it.
@@ -1095,10 +1060,7 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     });
   });
 
-  bot.action(/^lib:gsec:(\d+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
+  onSession<LibraryState>(bot, /^lib:gsec:(\d+)$/, 'library', async (ctx, v) => {
     const { guideId, page } = v.session.state;
     if (guideId === undefined) return;
     await go(ctx, v, {
@@ -1109,66 +1071,45 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     });
   });
 
-  bot.action(/^lib:gsec:noop$/, (ctx) => ctx.answerCbQuery());
+  onAck(bot, /^lib:gsec:noop$/);
 
   // 🥗 Продукты — the foods browse + filter branch (Plan 013, ADR 012). Always
   // registered; reads from the in-memory `foods` bucket like every other branch.
-  bot.action(/^lib:foods$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'food-groups', page: 0 });
-  });
+  onSession<LibraryState>(bot, /^lib:foods$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'food-groups', page: 0 }),
+  );
 
-  bot.action(/^lib:fglist:(\d+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'food-groups', page: Number(ctx.match[1] ?? '0') });
-  });
+  onSession<LibraryState>(bot, /^lib:fglist:(\d+)$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'food-groups', page: Number(ctx.match[1] ?? '0') }),
+  );
 
-  bot.action(/^lib:fglist:noop$/, (ctx) => ctx.answerCbQuery());
+  onAck(bot, /^lib:fglist:noop$/);
 
-  bot.action(/^lib:fg:(.+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
+  onSession<LibraryState>(bot, /^lib:fg:(.+)$/, 'library', async (ctx, v) => {
     const group = ctx.match[1] ?? '';
     if (!FOOD_GROUPS.includes(group as FoodGroup)) return;
     await go(ctx, v, { screen: 'food-list', foodGroup: group as FoodGroup, page: 0 });
   });
 
-  bot.action(/^lib:ffil$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'food-filter', page: 0 });
-  });
+  onSession<LibraryState>(bot, /^lib:ffil$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'food-filter', page: 0 }),
+  );
 
-  bot.action(/^lib:fcon:(w|b|p)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
+  onSession<LibraryState>(bot, /^lib:fcon:(w|b|p)$/, 'library', async (ctx, v) => {
     const foodCon = FOOD_CON_BY_SLUG[ctx.match[1] ?? ''];
     if (foodCon === undefined) return;
     await go(ctx, v, { screen: 'food-list', foodCon, page: 0 });
   });
 
-  bot.action(/^lib:fwarm:(warm|cool)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
+  onSession<LibraryState>(bot, /^lib:fwarm:(warm|cool)$/, 'library', (ctx, v) => {
     const foodWarm = ctx.match[1] === 'warm' ? 'warm' : 'cool';
-    await go(ctx, v, { screen: 'food-list', foodWarm, page: 0 });
+    return go(ctx, v, { screen: 'food-list', foodWarm, page: 0 });
   });
 
-  bot.action(/^lib:flpg:(\d+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
+  onSession<LibraryState>(bot, /^lib:flpg:(\d+)$/, 'library', (ctx, v) => {
     // Carry whichever facet selected this list so the page stays on the same set.
     const { foodGroup, foodCon, foodWarm } = v.session.state;
-    await go(ctx, v, {
+    return go(ctx, v, {
       screen: 'food-list',
       page: Number(ctx.match[1] ?? '0'),
       ...(foodGroup !== undefined
@@ -1181,12 +1122,9 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     });
   });
 
-  bot.action(/^lib:flpg:noop$/, (ctx) => ctx.answerCbQuery());
+  onAck(bot, /^lib:flpg:noop$/);
 
-  bot.action(/^lib:food:(.+)$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
+  onSession<LibraryState>(bot, /^lib:food:(.+)$/, 'library', async (ctx, v) => {
     const foodId = ctx.match[1] ?? '';
     if (!deps.content.foods.byId.has(foodId)) return;
     // Carry the originating facet + page so `« Назад` returns to the right list.
@@ -1210,45 +1148,30 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
   // the formula-only search `lib:fsearch`/`lib:fresults`) are never wired, so even
   // a hand-crafted `lib:formula:*` / `lib:fsearch` callback falls through to a no-op.
   if (FORMULA_BRANCH_ENABLED) {
-    bot.action(/^lib:formulas$/, async (ctx) => {
-      const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-      if (v === null) return;
-      await ctx.answerCbQuery();
-      await go(ctx, v, { screen: 'formula-list', page: 0 });
-    });
+    onSession<LibraryState>(bot, /^lib:formulas$/, 'library', (ctx, v) =>
+      go(ctx, v, { screen: 'formula-list', page: 0 }),
+    );
 
-    bot.action(/^lib:flist:(\d+)$/, async (ctx) => {
-      const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-      if (v === null) return;
-      await ctx.answerCbQuery();
-      await go(ctx, v, { screen: 'formula-list', page: Number(ctx.match[1] ?? '0') });
-    });
+    onSession<LibraryState>(bot, /^lib:flist:(\d+)$/, 'library', (ctx, v) =>
+      go(ctx, v, { screen: 'formula-list', page: Number(ctx.match[1] ?? '0') }),
+    );
 
-    bot.action(/^lib:flist:noop$/, (ctx) => ctx.answerCbQuery());
+    onAck(bot, /^lib:flist:noop$/);
 
     // 🔎 Поиск по составам — the formula-only search prompt (Plan 017).
-    bot.action(/^lib:fsearch$/, async (ctx) => {
-      const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-      if (v === null) return;
-      await ctx.answerCbQuery();
-      await go(ctx, v, { screen: 'formula-search', page: 0 });
-    });
+    onSession<LibraryState>(bot, /^lib:fsearch$/, 'library', (ctx, v) =>
+      go(ctx, v, { screen: 'formula-search', page: 0 }),
+    );
 
-    bot.action(/^lib:fresults:(\d+)$/, async (ctx) => {
-      const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-      if (v === null) return;
-      await ctx.answerCbQuery();
+    onSession<LibraryState>(bot, /^lib:fresults:(\d+)$/, 'library', async (ctx, v) => {
       const { query } = v.session.state;
       if (query === undefined) return;
       await go(ctx, v, { screen: 'formula-results', query, page: Number(ctx.match[1] ?? '0') });
     });
 
-    bot.action(/^lib:fresults:noop$/, (ctx) => ctx.answerCbQuery());
+    onAck(bot, /^lib:fresults:noop$/);
 
-    bot.action(/^lib:formula:(.+)$/, async (ctx) => {
-      const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-      if (v === null) return;
-      await ctx.answerCbQuery();
+    onSession<LibraryState>(bot, /^lib:formula:(.+)$/, 'library', async (ctx, v) => {
       const formulaId = ctx.match[1] ?? '';
       if (!deps.content.combinations.byId.has(formulaId)) return;
       const { query, page, screen } = v.session.state;
@@ -1265,26 +1188,17 @@ export function registerLibraryCommand(bot: Telegraf, deps: BotDeps): void {
     });
   }
 
-  bot.action(/^lib:tips$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'tips', page: 0 });
-  });
+  onSession<LibraryState>(bot, /^lib:tips$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'tips', page: 0 }),
+  );
 
-  bot.action(/^lib:back$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, backState(v.session.state));
-  });
+  onSession<LibraryState>(bot, /^lib:back$/, 'library', (ctx, v) =>
+    go(ctx, v, backState(v.session.state)),
+  );
 
-  bot.action(/^lib:home$/, async (ctx) => {
-    const v = await requireSessionAndAnchor<LibraryState>(ctx, 'library');
-    if (v === null) return;
-    await ctx.answerCbQuery();
-    await go(ctx, v, { screen: 'hub', page: 0 });
-  });
+  onSession<LibraryState>(bot, /^lib:home$/, 'library', (ctx, v) =>
+    go(ctx, v, { screen: 'hub', page: 0 }),
+  );
 }
 
 /**

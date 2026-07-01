@@ -89,5 +89,17 @@ shows the scaffold replaced by helper calls, no logic deltas.
 
 ## Progress
 
-- [ ] Phase 1 — cron-tick helper
-- [ ] Phase 2 — callback onSession registrar
+- [x] Phase 1 — cron-tick helper (`src/services/cron-tick.ts` +
+      `cron-tick.test.ts`; `reminder-dispatch.ts` / `subscription-dispatch.ts`
+      adopt `startCronTick`). Exact log strings preserved via `dispatchLabel`
+      (`<label> dispatch started`) + `tickLabel` (`<label> tick failed`) — the
+      two services' labels are asymmetric (tick: `reminder`/`daily-tip`). The
+      swallow-and-log wrapper is exported as `guardTick` with an injectable
+      logger so it is unit-tested without a live cron.
+- [x] Phase 2 — callback `onSession` registrar
+      (`src/bot/commands/_session-registrar.ts` + `_session-registrar.test.ts`).
+      All ~30 `library.ts` action registrations rewired through `onSession<S>`
+      (generic over state, no `any`; `CallbackActionCtx` keeps `ctx.match`
+      typed), and the 9 no-op ack handlers through `onAck`. `library.ts`
+      1326→1240 lines; ADR 009 stale/absent/wrong-anchor semantics preserved
+      (the prologue is unchanged; registrar tests cover live/absent/stale).
