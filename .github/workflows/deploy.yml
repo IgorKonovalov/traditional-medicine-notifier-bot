@@ -17,17 +17,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # pnpm/action-setup reads the pinned version from package.json's
+      # `packageManager` field; it must run before setup-node so `cache: pnpm`
+      # can find pnpm on PATH.
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run typecheck
-      - run: npm run lint
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck
+      - run: pnpm run lint
       # Compile to dist/ so emit-only TS errors (which `--noEmit` typecheck can
       # miss) fail CI rather than the droplet build.
-      - run: npm run build
-      - run: npm test
+      - run: pnpm run build
+      - run: pnpm test
 
   deploy:
     needs: check
