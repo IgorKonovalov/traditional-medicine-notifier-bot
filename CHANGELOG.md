@@ -4,6 +4,13 @@ All notable changes to this project are documented here. The project follows
 [Semantic Versioning](https://semver.org/). `package.json` is the source of
 truth for the current version.
 
+## 0.27.5 — 2026-07-01
+
+- Internal refactor only: introduced `src/constants.ts` as the single source of
+  truth for the duplicated platform invariants (`CALLBACK_DATA_LIMIT = 64`,
+  `TELEGRAM_MESSAGE_LIMIT = 3800`, `MS_PER_DAY`), rewiring the six sites that had
+  redefined them (Plan 030, ADR 003-clean leaf module). Same numbers, one home.
+
 ## 0.27.4 — 2026-07-01
 
 - Internal refactor only: split the two oversized command modules

@@ -1,8 +1,8 @@
 # Plan 030 — Centralize duplicated platform constants
 
-**Status:** Draft
+**Status:** Completed
 **Created:** 2026-07-01
-**Completed:** —
+**Completed:** 2026-07-01
 **Bump on close:** patch
 
 ## Context
